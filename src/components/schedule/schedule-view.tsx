@@ -6,7 +6,7 @@ import { useFavorites } from '@/hooks/use-favorites';
 import ArtistCard from './artist-card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Search, Filter, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { format } from 'date-fns';
 
@@ -41,8 +41,8 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
     const startMinutes = (startHours - MIN_TIME) * 60 + start.getUTCMinutes();
     const endMinutes = (endHours - MIN_TIME) * 60 + end.getUTCMinutes();
 
-    const startRow = Math.floor(startMinutes / 30) + 2;
-    const endRow = Math.floor(endMinutes / 30) + 2;
+    const startRow = Math.floor(startMinutes / 15) + 2; // 15 min increments
+    const endRow = Math.floor(endMinutes / 15) + 2;
 
     return { gridRowStart: startRow, gridRowEnd: endRow };
   };
@@ -70,16 +70,15 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
   return (
     <div className="container px-0 md:px-4">
       <Tabs value={activeDay} onValueChange={setActiveDay} className="w-full">
-        <div className="flex flex-col gap-4 p-4">
-          {/* Search and Filter Bar */}
-          <div className="flex flex-col md:flex-row gap-3 items-center justify-between w-full max-w-6xl mx-auto">
+        <div className="flex flex-col gap-4 p-4 sticky top-0 md:top-16 bg-background/95 backdrop-blur-sm z-30 border-b">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between w-full max-w-7xl mx-auto">
             <div className="relative w-full md:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input 
                 placeholder="Search artists..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 h-10"
+                className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
               />
               {search && (
                 <button 
@@ -91,8 +90,8 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
               )}
             </div>
 
-            <div className="flex justify-center flex-1">
-              <TabsList className="grid w-full max-w-lg grid-cols-5">
+            <div className="flex-1 flex justify-center w-full">
+              <TabsList className="grid w-full max-w-lg grid-cols-5 bg-muted/50">
                 {days.map(day => (
                   <TabsTrigger key={day} value={day} className="text-xs sm:text-sm">
                     {day.slice(0, 3)}
@@ -101,28 +100,29 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
               </TabsList>
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 w-full md:w-auto">
-              <Filter className="h-4 w-4 text-muted-foreground shrink-0" />
-              <div className="flex gap-1">
-                <Badge 
-                  variant={!selectedGenre ? "default" : "outline"}
-                  className="cursor-pointer whitespace-nowrap"
-                  onClick={() => setSelectedGenre(null)}
-                >
-                  All
-                </Badge>
-                {allGenres.slice(0, 5).map(genre => (
-                  <Badge 
-                    key={genre}
-                    variant={selectedGenre === genre ? "default" : "outline"}
-                    className="cursor-pointer whitespace-nowrap"
-                    onClick={() => setSelectedGenre(genre)}
-                  >
-                    {genre}
-                  </Badge>
-                ))}
-              </div>
+            <div className="hidden md:flex items-center gap-2 w-64 justify-end">
+              <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">Filters</p>
             </div>
+          </div>
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full max-w-7xl mx-auto md:px-10">
+              <Badge 
+                variant={!selectedGenre ? "default" : "outline"}
+                className="cursor-pointer whitespace-nowrap"
+                onClick={() => setSelectedGenre(null)}
+              >
+                All Genres
+              </Badge>
+              {allGenres.slice(0, 10).map(genre => (
+                <Badge 
+                  key={genre}
+                  variant={selectedGenre === genre ? "default" : "outline"}
+                  className="cursor-pointer whitespace-nowrap"
+                  onClick={() => setSelectedGenre(genre)}
+                >
+                  {genre}
+                </Badge>
+              ))}
           </div>
         </div>
 
@@ -130,17 +130,17 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
           <TabsContent key={day} value={day} className="mt-0">
             <div className="relative overflow-x-auto">
               <div
-                className="grid min-w-[800px] gap-x-2 gap-y-1 p-4"
+                className="grid min-w-[1200px] gap-x-1"
                 style={{
-                  gridTemplateColumns: `60px repeat(${stages.length}, 1fr)`,
-                  gridTemplateRows: `auto repeat(${(MAX_TIME - MIN_TIME) * 2}, 30px)`,
+                  gridTemplateColumns: `40px repeat(${stages.length}, 1fr)`,
+                  gridTemplateRows: `auto repeat(${(MAX_TIME - MIN_TIME) * 4}, 15px)`,
                 }}
               >
                 {/* Stage Headers */}
                 {stages.map((stage, index) => (
                   <div
                     key={stage}
-                    className="sticky top-32 md:top-44 z-20 text-center font-bold text-foreground"
+                    className="sticky top-48 md:top-[188px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
                     style={{ gridColumn: index + 2 }}
                   >
                     {stage}
@@ -149,34 +149,40 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
 
                 {/* Time Slots */}
                 {timeSlots.map((time, index) => (
-                  <div
-                    key={time}
-                    className="relative text-right text-xs text-muted-foreground pr-2"
-                    style={{ gridRow: index + 2, gridColumn: 1 }}
-                  >
-                    <span className="relative -top-2">{time}</span>
-                    <div className="absolute right-0 top-0 h-px w-screen bg-border/20"></div>
-                  </div>
+                   index % 2 === 0 && (
+                    <div
+                      key={time}
+                      className="relative text-right text-xs text-muted-foreground pr-2"
+                      style={{ gridRow: index * 2 + 2, gridRowEnd: `span 2`, gridColumn: 1 }}
+                    >
+                      <span className="relative -top-1.5">{time.endsWith(':00') ? time : ''}</span>
+                       <div className="absolute right-0 top-0 h-px w-screen bg-border/20"></div>
+                    </div>
+                  )
                 ))}
 
                 {/* Artist Cards */}
-                {dailyLineup.filter(item => item.day === day).map(item => (
-                  <div
-                    key={item.id}
-                    className="relative"
-                    style={{
-                      ...getGridRow(item.startTime, item.endTime),
-                      gridColumn: stages.indexOf(item.stage) + 2,
-                    }}
-                  >
-                    <ArtistCard
-                      artist={item}
-                      isFavorite={favorites.has(item.id)}
-                      isConflicting={conflicts.has(item.id)}
-                      onToggleFavorite={() => toggleFavorite(item.id)}
-                    />
-                  </div>
-                ))}
+                {dailyLineup.filter(item => item.day === day).map(item => {
+                    const col = stages.indexOf(item.stage) + 2;
+                    if (col === 1) return null; // Don't render if stage not found
+                    return (
+                        <div
+                            key={item.id}
+                            className="relative p-1"
+                            style={{
+                            ...getGridRow(item.startTime, item.endTime),
+                            gridColumn: col,
+                            }}
+                        >
+                            <ArtistCard
+                            artist={item}
+                            isFavorite={favorites.has(item.id)}
+                            isConflicting={conflicts.has(item.id)}
+                            onToggleFavorite={() => toggleFavorite(item.id)}
+                            />
+                        </div>
+                    );
+                })}
               </div>
             </div>
           </TabsContent>
