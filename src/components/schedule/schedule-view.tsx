@@ -8,7 +8,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
-import { format } from 'date-fns';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Button } from '@/components/ui/button';
 
 const MIN_TIME = 12; // 12 PM
 const MAX_TIME = 29; // 5 AM (of the next day)
@@ -70,60 +71,68 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
   return (
     <div className="container px-0 md:px-4">
       <Tabs value={activeDay} onValueChange={setActiveDay} className="w-full">
-        <div className="flex flex-col gap-4 p-4 sticky top-0 md:top-16 bg-background/95 backdrop-blur-sm z-30 border-b">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between w-full max-w-7xl mx-auto">
-            <div className="relative w-full md:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input 
-                placeholder="Search artists..." 
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
-              />
-              {search && (
-                <button 
-                  onClick={() => setSearch('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2"
-                >
-                  <X className="h-4 w-4 text-muted-foreground" />
-                </button>
-              )}
-            </div>
+        <div className="sticky top-[60px] md:top-16 z-30 border-b bg-background/95 backdrop-blur-sm">
+            <div className="flex flex-col gap-4 p-4 w-full max-w-7xl mx-auto">
+                <div className="flex flex-col md:flex-row gap-4 items-center justify-between w-full">
+                    <div className="relative w-full md:w-64">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Input 
+                        placeholder="Search artists..." 
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
+                    />
+                    {search && (
+                        <button 
+                        onClick={() => setSearch('')}
+                        className="absolute right-3 top-1/2 -translate-y-1/2"
+                        >
+                        <X className="h-4 w-4 text-muted-foreground" />
+                        </button>
+                    )}
+                    </div>
+                    <div className="flex-1 flex justify-center w-full">
+                        <TabsList className="grid w-full max-w-lg grid-cols-5 bg-muted/50">
+                            {days.map(day => (
+                            <TabsTrigger key={day} value={day} className="text-xs sm:text-sm">
+                                {day.slice(0, 3)}
+                            </TabsTrigger>
+                            ))}
+                        </TabsList>
+                    </div>
+                    <div className="hidden md:flex w-64 justify-end"></div>
+                </div>
 
-            <div className="flex-1 flex justify-center w-full">
-              <TabsList className="grid w-full max-w-lg grid-cols-5 bg-muted/50">
-                {days.map(day => (
-                  <TabsTrigger key={day} value={day} className="text-xs sm:text-sm">
-                    {day.slice(0, 3)}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+                <Collapsible>
+                    <CollapsibleTrigger asChild>
+                        <Button variant="ghost" className="w-full md:w-auto text-muted-foreground">
+                            <SlidersHorizontal className="h-4 w-4 mr-2"/>
+                            Filter by Genre
+                        </Button>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                        <div className="flex items-center gap-2 overflow-x-auto pt-4 pb-2 w-full">
+                            <Badge 
+                                variant={!selectedGenre ? "default" : "outline"}
+                                className="cursor-pointer whitespace-nowrap transition-all"
+                                onClick={() => setSelectedGenre(null)}
+                            >
+                                All Genres
+                            </Badge>
+                            {allGenres.slice(0, 20).map(genre => (
+                                <Badge 
+                                key={genre}
+                                variant={selectedGenre === genre ? "default" : "outline"}
+                                className="cursor-pointer whitespace-nowrap transition-all"
+                                onClick={() => setSelectedGenre(genre)}
+                                >
+                                {genre}
+                                </Badge>
+                            ))}
+                        </div>
+                    </CollapsibleContent>
+                </Collapsible>
             </div>
-
-            <div className="hidden md:flex items-center gap-2 w-64 justify-end">
-              <SlidersHorizontal className="h-4 w-4 text-muted-foreground" />
-              <p className="text-sm text-muted-foreground">Filters</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full max-w-7xl mx-auto md:px-10">
-              <Badge 
-                variant={!selectedGenre ? "default" : "outline"}
-                className="cursor-pointer whitespace-nowrap"
-                onClick={() => setSelectedGenre(null)}
-              >
-                All Genres
-              </Badge>
-              {allGenres.slice(0, 10).map(genre => (
-                <Badge 
-                  key={genre}
-                  variant={selectedGenre === genre ? "default" : "outline"}
-                  className="cursor-pointer whitespace-nowrap"
-                  onClick={() => setSelectedGenre(genre)}
-                >
-                  {genre}
-                </Badge>
-              ))}
-          </div>
         </div>
 
         {days.map(day => (
@@ -140,7 +149,7 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                 {stages.map((stage, index) => (
                   <div
                     key={stage}
-                    className="sticky top-48 md:top-[188px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
+                    className="sticky top-[220px] md:top-[188px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
                     style={{ gridColumn: index + 2 }}
                   >
                     {stage}
