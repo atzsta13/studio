@@ -1,0 +1,99 @@
+
+[
+  {
+    "id": "1",
+    "artist": "Stellar Wave",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T18:00:00Z",
+    "endTime": "2026-08-12T19:00:00Z"
+  },
+  {
+    "id": "2",
+    "artist": "Cosmic Drift",
+    "stage": "Dance Arena",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T18:30:00Z",
+    "endTime": "2026-08-12T19:30:00Z"
+  },
+  {
+    "id": "3",
+    "artist": "Retrograde",
+    "stage": "Rock Pavilion",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T19:00:00Z",
+    "endTime": "2026-08-12T20:00:00Z"
+  },
+  {
+    "id": "4",
+    "artist": "Aurora Haze",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T19:30:00Z",
+    "endTime": "2026-08-12T20:30:00Z"
+  },
+  {
+    "id": "5",
+    "artist": "Echo Bloom",
+    "stage": "A38 Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T20:00:00Z",
+    "endTime": "2026-08-12T21:00:00Z"
+  },
+  {
+    "id": "6",
+    "artist": "Neon Prophets",
+    "stage": "Dance Arena",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T20:30:00Z",
+    "endTime": "2026-08-12T22:00:00Z"
+  },
+  {
+    "id": "7",
+    "artist": "Crimson Tide",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T21:00:00Z",
+    "endTime": "2026-08-12T22:30:00Z"
+  },
+  {
+    "id": "8",
+    "artist": "Solar Flare",
+    "stage": "Rock Pavilion",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T22:00:00Z",
+    "endTime": "2026-08-12T23:00:00Z"
+  },
+  {
+    "id": "9",
+    "artist": "The Vindicators",
+    "stage": "A38 Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T19:00:00Z",
+    "endTime": "2026-08-13T20:00:00Z"
+  },
+  {
+    "id": "10",
+    "artist": "Liquid Gold",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T19:30:00Z",
+    "endTime": "2026-08-13T20:30:00Z"
+  },
+  {
+    "id": "11",
+    "artist": "Groove Armada",
+    "stage": "Dance Arena",
+    "day": "Thursday",
+    "startTime": "2026-08-13T21:00:00Z",
+    "endTime": "2026-08-13T22:30:00Z"
+  },
+  {
+    "id": "12",
+    "artist": "Kings of Leon",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T22:00:00Z",
+    "endTime": "2026-08-13T23:30:00Z"
+  }
+]

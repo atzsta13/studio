@@ -1,0 +1,21 @@
+{
+  "name": "Sziget Insider 2026",
+  "short_name": "Sziget 2026",
+  "description": "Your unofficial offline-first guide to Sziget Festival 2026.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#222051",
+  "theme_color": "#222051",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+export interface LineupItem {
+  id: string;
+  artist: string;
+  stage: string;
+  day: string;
+  startTime: string;
+  endTime: string;
+}
+
+export interface MapPin {
+  id: string;
+  label: string;
+  type: 'stage' | 'water' | 'toilet' | 'first-aid' | 'camping';
+  position: { top: string; left: string };
+}
