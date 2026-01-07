@@ -101,7 +101,7 @@ export default function DiscoverPage() {
               </CardHeader>
               <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="mb-4 flex flex-wrap gap-2">
-                  {artist.genres?.map(genre => (
+                  {artist.genres?.slice(0, 3).map(genre => (
                     <Badge key={genre} variant="secondary">
                       {genre}
                     </Badge>
