@@ -24,10 +24,11 @@ You can start editing the main page by modifying `src/app/page.tsx`.
 
 ## Next Tasks (Roadmap)
 
-Here are some ideas for the next steps to make this the ultimate fan app:
+Here's the new plan, focusing on the ultimate festival experience:
 
--   **Food & Drink Finder**: Add a searchable directory of food stalls and bars.
--   **Artist Bio & Music Previews**: Integrate with a music API (like Spotify) to show artist details and play song previews.
--   **AI Recommendations**: Create a GenAI-powered feature to recommend artists based on a user's favorites.
--   **Customizable Map Pins**: Allow users to add their own personal pins to the map (e.g., "My Tent", "Meeting Spot").
--   **Enhanced Search**: Implement a global search to quickly find artists, stages, or guide topics.
+-   **Smart Packing Checklist**: A customizable list to ensure you bring everything you need.
+-   **Food & Drink Finder**: A searchable directory of food stalls and bars.
+-   **Set Time Push Notifications**: Get alerts 15 minutes before your favorited artists start.
+-   **Friend Finder & Meetups (Future Goal)**: Location sharing on the map to easily find your crew. 
+-   **Taste Matcher (On Hold)**: We'll revisit this if the Spotify API becomes available again.
+-   **Interactive Map (On Hold)**: We'll wait for the official Sziget map before building this.

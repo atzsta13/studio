@@ -1,5 +1,6 @@
 const CACHE_NAME = 'sziget-insider-cache-v1';
 
+// --- Caching Logic (existing) ---
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
@@ -55,6 +56,26 @@ self.addEventListener('fetch', (event) => {
         }
         return networkResponse;
       });
+    })
+  );
+});
+
+// --- Notification Click Handler ---
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
+      // If the app window is already open, focus it
+      for (const client of clientList) {
+        const url = new URL(client.url);
+        if (url.origin === self.location.origin) {
+          return client.focus();
+        }
+      }
+      // Otherwise, open a new window
+      return clients.openWindow(self.location.origin);
     })
   );
 });

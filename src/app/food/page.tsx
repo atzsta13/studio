@@ -1,112 +1,133 @@
 'use client';
 
-import { useState } from 'react';
-import { Search, Utensils, Beer, Leaf, MapPin } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import foodDrinksData from '@/data/food_drinks.json';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { UtensilsCrossed, GlassWater, Leaf, WheatOff } from 'lucide-react';
+import foodAndDrinkData from '@/data/food.json';
 
-export default function FoodDrinksPage() {
-    const [search, setSearch] = useState('');
-    const [filter, setFilter] = useState<'All' | 'Food' | 'Drink'>('All');
+// Define the type for a vendor item
+interface Vendor {
+  id: string;
+  name: string;
+  category: 'Food' | 'Drink';
+  cuisine: string;
+  tags: string[];
+  priceRange: string;
+  location: string;
+  description: string;
+}
 
-    const filteredItems = foodDrinksData.filter((item) => {
-        const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) ||
-            item.type.toLowerCase().includes(search.toLowerCase());
-        const matchesFilter = filter === 'All' || item.category === filter;
-        return matchesSearch && matchesFilter;
-    });
+// Explicitly type the imported data
+const vendors: Vendor[] = foodAndDrinkData;
+
+// Define available filters
+const filters = {
+    FOOD: { label: 'Food', icon: UtensilsCrossed, category: 'Food' },
+    DRINK: { label: 'Drink', icon: GlassWater, category: 'Drink' },
+    VEGAN: { label: 'Vegan', icon: Leaf, tag: 'vegan' },
+    'GLUTEN-FREE': { label: 'Gluten-Free', icon: WheatOff, tag: 'gluten-free' },
+};
+
+export default function FoodFinderPage() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+    const handleFilterToggle = (filterKey: string) => {
+        setActiveFilters(prev => 
+            prev.includes(filterKey) 
+                ? prev.filter(f => f !== filterKey) 
+                : [...prev, filterKey]
+        );
+    };
+
+    const filteredVendors = useMemo(() => {
+        return vendors.filter(vendor => {
+            const lowerSearchTerm = searchTerm.toLowerCase();
+
+            // Search term check
+            const matchesSearch = 
+                vendor.name.toLowerCase().includes(lowerSearchTerm) ||
+                vendor.cuisine.toLowerCase().includes(lowerSearchTerm) ||
+                vendor.description.toLowerCase().includes(lowerSearchTerm) ||
+                vendor.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm));
+
+            // Filters check
+            const matchesFilters = activeFilters.every(filterKey => {
+                const filter = filters[filterKey as keyof typeof filters];
+                if (filter.category) {
+                    return vendor.category === filter.category;
+                }
+                if (filter.tag) {
+                    return vendor.tags.includes(filter.tag);
+                }
+                return true;
+            });
+
+            return matchesSearch && matchesFilters;
+        });
+    }, [searchTerm, activeFilters]);
 
     return (
         <div className="container mx-auto max-w-4xl px-4 py-8">
             <header className="mb-8 flex flex-col items-center text-center">
                 <div className="inline-block rounded-full bg-primary/20 p-4 mb-4">
-                    <Utensils className="h-10 w-10 text-primary" />
+                    <UtensilsCrossed className="h-10 w-10 text-primary" />
                 </div>
                 <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                     Food & Drink Finder
                 </h1>
                 <p className="mt-2 text-muted-foreground">
-                    Fuel your festival adventure with the best bites and brews.
+                    Find the perfect meal or a refreshing drink on the island.
                 </p>
             </header>
 
-            <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-md pb-4 pt-2">
-                <div className="flex flex-col gap-4 sm:flex-row">
-                    <div className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                        <Input
-                            placeholder="Search burgers, pizza, cocktails..."
-                            className="pl-10"
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                        />
-                    </div>
-                    <div className="flex gap-2">
-                        {(['All', 'Food', 'Drink'] as const).map((f) => (
-                            <button
-                                key={f}
-                                onClick={() => setFilter(f)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === f
-                                        ? 'bg-primary text-primary-foreground shadow-lg'
-                                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                                    }`}
-                            >
-                                {f}
-                            </button>
-                        ))}
-                    </div>
+            {/* Search and Filter UI */}
+            <div className="sticky top-16 z-20 bg-background/95 py-4 backdrop-blur-sm">
+                <Input 
+                    placeholder="Search for food, drinks, or vibes (e.g., 'burger', 'vegan', 'coffee')" 
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    className="mb-4"
+                />
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                    {Object.entries(filters).map(([key, { label, icon: Icon }]) => (
+                        <Button 
+                            key={key}
+                            variant={activeFilters.includes(key) ? 'default' : 'outline'}
+                            onClick={() => handleFilterToggle(key)}
+                            className="flex items-center gap-2"
+                        >
+                            <Icon className="h-4 w-4"/>
+                            <span>{label}</span>
+                        </Button>
+                    ))}
                 </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                {filteredItems.map((item) => (
-                    <Card key={item.id} className="overflow-hidden bg-card/50 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300">
-                        <CardHeader className="pb-2">
-                            <div className="flex justify-between items-start">
-                                <div className="flex items-center gap-2">
-                                    {item.category === 'Food' ? (
-                                        <Utensils className="h-5 w-5 text-primary" />
-                                    ) : (
-                                        <Beer className="h-5 w-5 text-accent-secondary" />
-                                    )}
-                                    <CardTitle className="text-xl">{item.name}</CardTitle>
-                                </div>
-                                <Badge variant="outline" className="border-primary/30 text-primary">
-                                    {item.type}
-                                </Badge>
-                            </div>
-                            <CardDescription className="flex items-center gap-1 mt-1">
-                                <MapPin className="h-3 w-3" /> {item.location}
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="text-card-foreground/80 text-sm mb-4">
-                                {item.description}
-                            </p>
-                            <div className="flex gap-2">
-                                {item.isVegan && (
-                                    <Badge variant="secondary" className="bg-green-500/20 text-green-400 hover:bg-green-500/30 border-0">
-                                        <Leaf className="h-3 w-3 mr-1" /> Vegan
-                                    </Badge>
-                                )}
-                                {item.isVegetarian && !item.isVegan && (
-                                    <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 border-0">
-                                        Vegetarian
-                                    </Badge>
-                                )}
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
+            {/* Results Grid */}
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filteredVendors.length > 0 ? (
+                    filteredVendors.map(vendor => (
+                        <Card key={vendor.id} className="flex flex-col">
+                            <CardHeader>
+                                <CardTitle>{vendor.name}</CardTitle>
+                                <CardDescription>{vendor.cuisine} - {vendor.priceRange}</CardDescription>
+                            </CardHeader>
+                            <CardContent className="flex-grow">
+                                <p className="text-sm text-muted-foreground mb-3">{vendor.description}</p>
+                                <p className="text-xs font-semibold text-primary">Location: {vendor.location}</p>
+                            </CardContent>
+                        </Card>
+                    ))
+                ) : (
+                    <div className="col-span-full py-16 text-center text-muted-foreground">
+                        <p className="font-bold">No matches found!</p>
+                        <p className="text-sm">Try changing your search term or filters.</p>
+                    </div>
+                )}
             </div>
-
-            {filteredItems.length === 0 && (
-                <div className="text-center py-20">
-                    <p className="text-xl text-muted-foreground italic">No results found for your search.</p>
-                </div>
-            )}
         </div>
     );
 }

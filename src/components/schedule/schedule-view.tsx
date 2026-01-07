@@ -1,21 +1,57 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import { useFavorites } from '@/hooks/use-favorites';
 import ArtistCard from './artist-card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Bell, BellRing } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Button } from '@/components/ui/button';
+import {
+  areNotificationsSupported,
+  requestNotificationPermission,
+  scheduleNotification,
+  cancelNotification,
+} from '@/lib/notifications';
 
 const MIN_TIME = 12; // 12 PM
 const MAX_TIME = 29; // 5 AM (of the next day)
 
 export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
   const { favorites, toggleFavorite, conflicts } = useFavorites(lineup);
+  
+  // Notification state management
+  const [notificationsSupported, setNotificationsSupported] = useState(false);
+  const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
+
+  useEffect(() => {
+    if (areNotificationsSupported()) {
+      setNotificationsSupported(true);
+      setNotificationPermission(Notification.permission);
+    }
+  }, []);
+
+  const handleRequestPermission = async () => {
+    const permission = await requestNotificationPermission();
+    setNotificationPermission(permission);
+  };
+
+  // Enhanced favorite toggle
+  const handleToggleFavorite = (artist: LineupItem) => {
+    const isFavorited = favorites.has(artist.id);
+    toggleFavorite(artist.id);
+
+    if (notificationPermission === 'granted') {
+      if (!isFavorited) {
+        scheduleNotification(artist);
+      } else {
+        cancelNotification(artist.id);
+      }
+    }
+  };
 
   const { days, stages, timeSlots } = useMemo(() => {
     const uniqueDays = [...new Set(lineup.map(item => item.day))].sort((a, b) => new Date(lineup.find(l => l.day === a)!.startTime).getTime() - new Date(lineup.find(l => l.day === b)!.startTime).getTime());
@@ -42,7 +78,7 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
     const startMinutes = (startHours - MIN_TIME) * 60 + start.getUTCMinutes();
     const endMinutes = (endHours - MIN_TIME) * 60 + end.getUTCMinutes();
 
-    const startRow = Math.floor(startMinutes / 15) + 2; // 15 min increments
+    const startRow = Math.floor(startMinutes / 15) + 2;
     const endRow = Math.floor(endMinutes / 15) + 2;
 
     return { gridRowStart: startRow, gridRowEnd: endRow };
@@ -67,6 +103,32 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
   }, [lineup, search, selectedGenre]);
 
   const dailyLineup = filteredLineup.filter(item => item.day === activeDay);
+  
+  const renderNotificationBell = () => {
+    if (!notificationsSupported) return null;
+
+    if (notificationPermission === 'granted') {
+      return (
+          <div className="flex items-center gap-2 text-xs text-green-500">
+              <BellRing className="h-4 w-4" />
+              <span>Notifications Active</span>
+          </div>
+      );
+    }
+
+    return (
+        <Button 
+            size="sm"
+            variant="outline"
+            onClick={handleRequestPermission} 
+            disabled={notificationPermission === 'denied'}
+            className={notificationPermission === 'denied' ? 'cursor-not-allowed text-muted-foreground' : ''}
+        >
+            <Bell className="h-4 w-4 mr-2"/>
+            {notificationPermission === 'denied' ? 'Permissions Blocked' : 'Enable Set Reminders'}
+        </Button>
+    );
+  };
 
   return (
     <div className="container px-0 md:px-4">
@@ -75,21 +137,21 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
             <div className="flex flex-col gap-4 p-4 w-full max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row gap-4 items-center justify-between w-full">
                     <div className="relative w-full md:w-64">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input 
-                        placeholder="Search artists..." 
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
-                    />
-                    {search && (
-                        <button 
-                        onClick={() => setSearch('')}
-                        className="absolute right-3 top-1/2 -translate-y-1/2"
-                        >
-                        <X className="h-4 w-4 text-muted-foreground" />
-                        </button>
-                    )}
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input 
+                          placeholder="Search artists..." 
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
+                      />
+                      {search && (
+                          <button 
+                          onClick={() => setSearch('')}
+                          className="absolute right-3 top-1/2 -translate-y-1/2"
+                          >
+                          <X className="h-4 w-4 text-muted-foreground" />
+                          </button>
+                      )}
                     </div>
                     <div className="flex-1 flex justify-center w-full">
                         <TabsList className="grid w-full max-w-lg grid-cols-5 bg-muted/50">
@@ -100,7 +162,9 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                             ))}
                         </TabsList>
                     </div>
-                    <div className="hidden md:flex w-64 justify-end"></div>
+                    <div className="hidden md:flex w-64 justify-end">
+                       {renderNotificationBell()}
+                    </div>
                 </div>
 
                 <Collapsible>
@@ -110,6 +174,11 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                             Filter by Genre
                         </Button>
                     </CollapsibleTrigger>
+                     <CollapsibleContent className="md:hidden">
+                        <div className="flex justify-center mt-2">
+                           {renderNotificationBell()}
+                        </div>
+                    </CollapsibleContent>
                     <CollapsibleContent>
                         <div className="flex items-center gap-2 overflow-x-auto pt-4 pb-2 w-full">
                             <Badge 
@@ -149,7 +218,7 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                 {stages.map((stage, index) => (
                   <div
                     key={stage}
-                    className="sticky top-[220px] md:top-[188px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
+                    className="sticky top-[250px] md:top-[220px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
                     style={{ gridColumn: index + 2 }}
                   >
                     {stage}
@@ -173,7 +242,7 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                 {/* Artist Cards */}
                 {dailyLineup.filter(item => item.day === day).map(item => {
                     const col = stages.indexOf(item.stage) + 2;
-                    if (col === 1) return null; // Don't render if stage not found
+                    if (col === 1) return null;
                     return (
                         <div
                             key={item.id}
@@ -184,10 +253,10 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
                             }}
                         >
                             <ArtistCard
-                            artist={item}
-                            isFavorite={favorites.has(item.id)}
-                            isConflicting={conflicts.has(item.id)}
-                            onToggleFavorite={() => toggleFavorite(item.id)}
+                                artist={item}
+                                isFavorite={favorites.has(item.id)}
+                                isConflicting={conflicts.has(item.id)}
+                                onToggleFavorite={() => handleToggleFavorite(item)}
                             />
                         </div>
                     );

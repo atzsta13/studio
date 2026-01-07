@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Bus, Tent, HeartPulse, ChevronRight } from 'lucide-react';
+import { Bus, Tent, HeartPulse, ChevronRight, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -27,6 +27,12 @@ const guideSections = [
     description: 'Stay safe and get help if needed.',
     href: '/guide/emergency',
     icon: HeartPulse,
+  },
+  {
+    title: 'Health & Safety',
+    description: 'Tips for a safe and enjoyable festival.',
+    href: '/guide/health',
+    icon: ShieldCheck,
   },
 ];
 

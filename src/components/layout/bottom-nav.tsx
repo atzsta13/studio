@@ -2,14 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, CalendarDays, Map, LifeBuoy, Utensils } from 'lucide-react';
+import { Home, CalendarDays, Map, LifeBuoy, Wand2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/schedule', label: 'Schedule', icon: CalendarDays },
+  { href: '/discover', label: 'Discover', icon: Wand2 },
   { href: '/map', label: 'Map', icon: Map },
-  { href: '/food', label: 'Food', icon: Utensils },
   { href: '/guide', label: 'Guide', icon: LifeBuoy },
 ];
 

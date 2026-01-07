@@ -1,6 +1,11 @@
 import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Map, CalendarDays, LifeBuoy, Music, Utensils } from 'lucide-react';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from '@/components/ui/card';
+import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2 } from 'lucide-react';
 
 const features = [
   {
@@ -14,6 +19,12 @@ const features = [
     description: 'Find your way around the island',
     href: '/map',
     icon: Map,
+  },
+  {
+    title: 'Discover Artists',
+    description: 'AI-powered recommendations',
+    href: '/discover',
+    icon: Wand2,
   },
   {
     title: 'Food & Drink',
@@ -40,8 +51,8 @@ export default function Home() {
           Welcome to Sziget Insider 2026
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-          Your unofficial offline-first companion for the Island of Freedom.
-          All features work without an internet connection.
+          Your unofficial offline-first companion for the Island of Freedom. All
+          features work without an internet connection.
         </p>
       </header>
 
@@ -53,8 +64,12 @@ export default function Home() {
                 <div className="mb-4 rounded-full bg-background p-3">
                   <feature.icon className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl font-bold text-card-foreground">{feature.title}</CardTitle>
-                <CardDescription className="mt-2 text-card-foreground/80">{feature.description}</CardDescription>
+                <CardTitle className="text-xl font-bold text-card-foreground">
+                  {feature.title}
+                </CardTitle>
+                <CardDescription className="mt-2 text-card-foreground/80">
+                  {feature.description}
+                </CardDescription>
               </CardHeader>
             </Card>
           </Link>
