@@ -28,7 +28,7 @@ export default function ArtistDetailPage({ params }: { params: { id: string } })
 
   const startTime = format(new Date(artist.startTime), 'HH:mm');
   const endTime = format(new Date(artist.endTime), 'HH:mm');
-  
+
   const socialLinks = [
     { platform: 'Spotify', url: artist.socials?.spotify, icon: Music },
     { platform: 'Instagram', url: artist.socials?.instagram, icon: Instagram },
@@ -49,6 +49,16 @@ export default function ArtistDetailPage({ params }: { params: { id: string } })
           </Link>
         </Button>
       </div>
+
+      {artist.imageUrl && (
+        <div className="mb-8 overflow-hidden rounded-xl bg-muted shadow-2xl">
+          <img
+            src={artist.imageUrl}
+            alt={artist.artist}
+            className="w-full object-cover max-h-[400px]"
+          />
+        </div>
+      )}
 
       <header className="mb-8">
         <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -86,19 +96,19 @@ export default function ArtistDetailPage({ params }: { params: { id: string } })
         </div>
 
         {socialLinks.length > 0 && (
-            <div>
-                <h3 className="mb-2 font-semibold text-lg">Follow them</h3>
-                <div className="flex flex-wrap gap-2">
-                    {socialLinks.map(link => (
-                    <Button asChild variant="outline" key={link.platform}>
-                        <a href={link.url} target="_blank" rel="noopener noreferrer">
-                        <link.icon className="mr-2 h-4 w-4" />
-                        {link.platform}
-                        </a>
-                    </Button>
-                    ))}
-                </div>
+          <div>
+            <h3 className="mb-2 font-semibold text-lg">Follow them</h3>
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map(link => (
+                <Button asChild variant="outline" key={link.platform}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    <link.icon className="mr-2 h-4 w-4" />
+                    {link.platform}
+                  </a>
+                </Button>
+              ))}
             </div>
+          </div>
         )}
       </div>
 

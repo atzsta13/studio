@@ -58,13 +58,23 @@ def fetch_artist_data():
                     print(f"  Found description ({len(description)} chars)")
 
                 # --- Extract Image ---
-                # Try to get the Open Graph image, which is usually the best representation
-                image_el = page.query_selector('meta[property="og:image"]')
+                # Strategy 1: Specific selector
+                image_el = page.query_selector('.ArtistSingleHeader__fullimg')
                 if image_el:
-                    image_url = image_el.get_attribute('content')
-                    if image_url:
-                        artist['imageUrl'] = image_url
-                        print(f"  Found image URL: {image_url}")
+                    src = image_el.get_attribute('src')
+                    if src:
+                        artist['imageUrl'] = src
+                        print(f"  Found image URL (via selector): {src}")
+                
+                if not artist.get('imageUrl'):
+                    # Strategy 2: Fallback to Appmiral URLs
+                    imgs = page.query_selector_all('img')
+                    for img in imgs:
+                        src = img.get_attribute('src')
+                        if src and ('media.appmiral.com' in src or 'performance_' in src):
+                            artist['imageUrl'] = src
+                            print(f"  Found image URL (via fallback): {src}")
+                            break
 
                 # --- Extract Socials ---
                 socials = {

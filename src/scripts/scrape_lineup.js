@@ -75,8 +75,18 @@ async function scrapeLineup() {
 
                 // --- Image Extraction ---
                 const imageUrl = await page.evaluate(() => {
-                    const el = document.querySelector('meta[property="og:image"]');
-                    return el ? el.content : null;
+                    // Strategy 1: Specific selector provided by user
+                    const fullImg = document.querySelector('.ArtistSingleHeader__fullimg');
+                    if (fullImg && fullImg.src) return fullImg.src;
+
+                    // Strategy 2: Fallback to any Appmiral hosted image if selector doesn't match
+                    const allImgs = Array.from(document.querySelectorAll('img'));
+                    for (const img of allImgs) {
+                        const src = img.src;
+                        if (src.includes('media.appmiral.com')) return src;
+                        if (src.includes('performance_') || src.includes('thumb_')) return src;
+                    }
+                    return null;
                 });
 
                 if (imageUrl) {

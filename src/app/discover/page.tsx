@@ -66,13 +66,13 @@ export default function DiscoverPage() {
           />
         </div>
         <div className="flex flex-wrap items-center justify-center gap-2">
-            <Button 
-                variant={!selectedGenre ? 'default' : 'outline'}
-                onClick={() => setSelectedGenre(null)}
-                size="sm"
-            >
-                All Genres
-            </Button>
+          <Button
+            variant={!selectedGenre ? 'default' : 'outline'}
+            onClick={() => setSelectedGenre(null)}
+            size="sm"
+          >
+            All Genres
+          </Button>
           {allGenres.map(genre => (
             <Button
               key={genre}
@@ -89,7 +89,20 @@ export default function DiscoverPage() {
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredArtists.length > 0 ? (
           filteredArtists.map(artist => (
-            <Card key={artist.id} className="flex flex-col transition-all hover:shadow-lg hover:border-primary">
+            <Card key={artist.id} className="group flex flex-col overflow-hidden transition-all hover:shadow-xl hover:border-primary">
+              <div className="aspect-video w-full overflow-hidden bg-muted">
+                {artist.imageUrl ? (
+                  <img
+                    src={artist.imageUrl}
+                    alt={artist.artist}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-muted">
+                    <Music className="h-10 w-10 text-muted-foreground/20" />
+                  </div>
+                )}
+              </div>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Music className="h-5 w-5" />
