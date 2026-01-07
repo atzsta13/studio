@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "userProfile": {
+      "title": "User Profile",
+      "description": "Represents a user's public profile and basic information.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "description": "The user's public display name."
+        },
+        "photoURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the user's profile picture."
+        }
+      },
+      "required": ["displayName"]
+    },
+    "favorite": {
+        "title": "Favorite",
+        "description": "Represents a favorite artist in a user's schedule.",
+        "type": "object",
+        "properties": {
+            "artistId": {
+                "type": "string",
+                "description": "The ID of the lineup item."
+            },
+            "favoritedAt": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Timestamp when the user favorited the artist."
+            }
+        },
+        "required": ["artistId", "favoritedAt"]
+    }
+  },
+  "auth": {
+    "providers": [
+      "anonymous",
+      "google.com"
+    ]
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/userProfile"
+      },
+      "description": "Stores public information for each user."
+    },
+    "/users/{userId}/favorites/{favoriteId}": {
+        "schema": {
+            "$ref": "#/entities/favorite"
+        },
+        "description": "A collection of a user's favorited artists for the festival."
+    }
+  }
+}
