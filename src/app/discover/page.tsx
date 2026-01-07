@@ -11,7 +11,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { Music, Search, Tag, User, Users } from 'lucide-react';
+import { Music, Search, Users } from 'lucide-react';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -38,7 +38,7 @@ export default function DiscoverPage() {
       const matchesGenre =
         !selectedGenre || artist.genres?.includes(selectedGenre);
       return matchesSearch && matchesGenre;
-    });
+    }).sort((a, b) => a.artist.localeCompare(b.artist));
   }, [searchTerm, selectedGenre]);
 
   return (
@@ -89,7 +89,7 @@ export default function DiscoverPage() {
       <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredArtists.length > 0 ? (
           filteredArtists.map(artist => (
-            <Card key={artist.id} className="flex flex-col">
+            <Card key={artist.id} className="flex flex-col transition-all hover:shadow-lg hover:border-primary">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Music className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default function DiscoverPage() {
                   {artist.day} &bull; {artist.stage}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow">
+              <CardContent className="flex-grow flex flex-col justify-between">
                 <div className="mb-3 flex flex-wrap gap-2">
                   {artist.genres?.map(genre => (
                     <Badge key={genre} variant="secondary">
@@ -107,9 +107,9 @@ export default function DiscoverPage() {
                     </Badge>
                   ))}
                 </div>
-                <Button asChild variant="link" className="h-auto p-0">
-                  <Link href={`/schedule?artist=${artist.id}`}>
-                    View on Schedule
+                <Button asChild variant="link" className="h-auto p-0 self-start">
+                  <Link href={`/artist/${artist.id}`}>
+                    View Details
                   </Link>
                 </Button>
               </CardContent>
