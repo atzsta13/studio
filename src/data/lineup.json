@@ -1,99 +1,533 @@
-
 [
   {
     "id": "1",
-    "artist": "Stellar Wave",
+    "artist": "Florence + The Machine",
     "stage": "Main Stage",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T18:00:00Z",
-    "endTime": "2026-08-12T19:00:00Z"
+    "day": "Tuesday",
+    "startTime": "2026-08-11T17:00:00Z",
+    "endTime": "2026-08-11T18:00:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE",
+      "POP",
+      "POP-ROCK",
+      "INDIE ROCK",
+      "INDIE POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064800-florence-%2B-the-machine",
+    "socials": {
+      "website": "https://florenceandthemachine.net/",
+      "facebook": "https://www.facebook.com/florenceandthemachine",
+      "instagram": "https://www.instagram.com/florenceandthemachine",
+      "twitter": "https://x.com/florencemachine",
+      "tiktok": "https://www.tiktok.com/@florence",
+      "youtube": "https://www.youtube.com/@florencemachine",
+      "spotify": "https://open.spotify.com/artist/1moxjboGR7GNWYIMWsRjgG",
+      "appleMusic": "https://music.apple.com/gb/artist/florence-the-machine/281070699"
+    },
+    "description": "Florence Welch - also known as Florence + The Machine - has announced her sixth studio album Everybody Scream, set for release on October 31. The album’s title track Everybody Scream was written and produced by Florence Welch over the past two years with a close-knit circle of collaborators including Mark Bowen of IDLES, who appears in the video for the single, Aaron Dessner and Mitski. After needing lifesaving surgery on the Dance Fever Tour, Florence’s recovery took her down the path of spiritual mysticism, witchcraft and folk horror as she felt the limits of her body and explored what it means to be “healed”. The album treads through womanhood, partnership, aging and dying; exposing the murky in the mundane. Across five albums - 2009’s Lungs, 2011’s Ceremonials, 2015’s How Big, How Blue, How Beautiful, 2018’s High As Hope and 2022’s Dance Fever - Florence has become one of the most monumental artists of a generation, with multiple US and UK #1 albums and countless awards. Known for her earth-shattering live show and singular, iconic voice, Florence has sold out shows and headlined festivals the entire world over. She has collaborated and shared stages with icons - The Rolling Stones, Lady Gaga and Taylor Swift among them - and published a book of lyrics, poetry and drawings, Useless Magic."
   },
   {
     "id": "2",
-    "artist": "Cosmic Drift",
-    "stage": "Dance Arena",
+    "artist": "Lewis Capaldi",
+    "stage": "Main Stage",
     "day": "Wednesday",
-    "startTime": "2026-08-12T18:30:00Z",
-    "endTime": "2026-08-12T19:30:00Z"
+    "startTime": "2026-08-12T17:30:00Z",
+    "endTime": "2026-08-12T18:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064849-lewis-capaldi",
+    "socials": {
+      "website": "https://www.lewiscapaldi.com/",
+      "facebook": "https://www.facebook.com/lewiscapaldi",
+      "instagram": "https://www.instagram.com/lewiscapaldi",
+      "twitter": "https://x.com/lewiscapaldi",
+      "tiktok": "https://www.tiktok.com/@lewiscapaldi",
+      "youtube": "https://www.youtube.com/channel/UCveFkLdSOUsGwMJEgedO9dQ",
+      "spotify": "https://open.spotify.com/artist/4GNC7GD6oZMSxPGyXy4MNB",
+      "appleMusic": "https://music.apple.com/us/artist/1213405916"
+    },
+    "description": "Global superstar Lewis Capaldi returns with ‘Almost’ - a soaring, full-band anthem marking his third new single since his comeback. The track arrives ahead of his newly announced EP Survive - out November 14th. Arriving hot on the heels of a critically-lauded return to touring after almost 2 years away, and latest success ‘Something In The Heavens’, his tenth UK Top 10 single, ‘Almost’ is a raw and intimate exploration of what it means to move on - or at least try to. Honest and understated, the song captures the struggle to let go. “I swear to God I’m almost alright, I only think about you all the time,” Lewis admits, showcasing yet again his extraordinary gift for finding truth and emotion in the most nuanced of details."
   },
   {
     "id": "3",
-    "artist": "Retrograde",
-    "stage": "Rock Pavilion",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T19:00:00Z",
-    "endTime": "2026-08-12T20:00:00Z"
+    "artist": "Sombr",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T17:00:00Z",
+    "endTime": "2026-08-13T18:00:00Z",
+    "countryCode": "US",
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "ALTERNATIVE",
+      "INDIE"
+    ]
   },
   {
     "id": "4",
-    "artist": "Aurora Haze",
+    "artist": "Twenty One Pilots",
     "stage": "Main Stage",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T19:30:00Z",
-    "endTime": "2026-08-12T20:30:00Z"
+    "day": "Friday",
+    "startTime": "2026-08-14T17:30:00Z",
+    "endTime": "2026-08-14T18:30:00Z",
+    "countryCode": "US",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "INDIE POP"
+    ]
   },
   {
     "id": "5",
-    "artist": "Echo Bloom",
-    "stage": "A38 Stage",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T20:00:00Z",
-    "endTime": "2026-08-12T21:00:00Z"
+    "artist": "Ashnikko",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T17:00:00Z",
+    "endTime": "2026-08-15T18:00:00Z",
+    "countryCode": "US",
+    "genres": [
+      "ALT POP",
+      "HIP-HOP"
+    ]
   },
   {
     "id": "6",
-    "artist": "Neon Prophets",
-    "stage": "Dance Arena",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T20:30:00Z",
-    "endTime": "2026-08-12T22:00:00Z"
+    "artist": "Bbno$",
+    "stage": "Revolut Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T17:30:00Z",
+    "endTime": "2026-08-11T18:30:00Z",
+    "countryCode": "CA",
+    "genres": [
+      "HIP-HOP"
+    ]
   },
   {
     "id": "7",
-    "artist": "Crimson Tide",
-    "stage": "Main Stage",
+    "artist": "Biffy Clyro",
+    "stage": "Revolut Stage",
     "day": "Wednesday",
-    "startTime": "2026-08-12T21:00:00Z",
-    "endTime": "2026-08-12T22:30:00Z"
+    "startTime": "2026-08-12T17:00:00Z",
+    "endTime": "2026-08-12T18:00:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ]
   },
   {
     "id": "8",
-    "artist": "Solar Flare",
-    "stage": "Rock Pavilion",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T22:00:00Z",
-    "endTime": "2026-08-12T23:00:00Z"
+    "artist": "Dijon",
+    "stage": "Revolut Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T17:30:00Z",
+    "endTime": "2026-08-13T18:30:00Z",
+    "countryCode": "US",
+    "genres": [
+      "INDIE",
+      "ALTERNATIVE"
+    ]
   },
   {
     "id": "9",
-    "artist": "The Vindicators",
-    "stage": "A38 Stage",
-    "day": "Thursday",
-    "startTime": "2026-08-13T19:00:00Z",
-    "endTime": "2026-08-13T20:00:00Z"
+    "artist": "Dom Dolla",
+    "stage": "Revolut Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T17:00:00Z",
+    "endTime": "2026-08-14T18:00:00Z",
+    "countryCode": "AU",
+    "genres": [
+      "TECH-HOUSE",
+      "ELECTRONIC"
+    ]
   },
   {
     "id": "10",
-    "artist": "Liquid Gold",
-    "stage": "Main Stage",
-    "day": "Thursday",
-    "startTime": "2026-08-13T19:30:00Z",
-    "endTime": "2026-08-13T20:30:00Z"
+    "artist": "Indira Paganotto",
+    "stage": "Revolut Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T17:30:00Z",
+    "endTime": "2026-08-15T18:30:00Z",
+    "countryCode": "ES",
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC"
+    ]
   },
   {
     "id": "11",
-    "artist": "Groove Armada",
-    "stage": "Dance Arena",
-    "day": "Thursday",
-    "startTime": "2026-08-13T21:00:00Z",
-    "endTime": "2026-08-13T22:30:00Z"
+    "artist": "Tash Sultana",
+    "stage": "Bolt Party Arena",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T18:00:00Z",
+    "endTime": "2026-08-11T19:00:00Z",
+    "countryCode": "AU",
+    "genres": [
+      "HIP-HOP",
+      "ROCK",
+      "INDIE"
+    ]
   },
   {
     "id": "12",
-    "artist": "Kings of Leon",
+    "artist": "Tomora",
+    "stage": "Bolt Party Arena",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T18:30:00Z",
+    "endTime": "2026-08-12T19:30:00Z",
+    "countryCode": null,
+    "genres": [
+      "ELECTRONIC",
+      "INDIE"
+    ]
+  },
+  {
+    "id": "13",
+    "artist": "Underworld",
+    "stage": "Bolt Party Arena",
+    "day": "Thursday",
+    "startTime": "2026-08-13T18:00:00Z",
+    "endTime": "2026-08-13T19:00:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "HOUSE",
+      "ELECTRONIC",
+      "TECHNO"
+    ]
+  },
+  {
+    "id": "14",
+    "artist": "Alt Blk Era",
+    "stage": "Bolt Party Arena",
+    "day": "Friday",
+    "startTime": "2026-08-14T18:30:00Z",
+    "endTime": "2026-08-14T19:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "ROCK",
+      "ALT POP"
+    ]
+  },
+  {
+    "id": "15",
+    "artist": "Anna",
+    "stage": "Bolt Party Arena",
+    "day": "Saturday",
+    "startTime": "2026-08-15T18:00:00Z",
+    "endTime": "2026-08-15T19:00:00Z",
+    "countryCode": "BR",
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC"
+    ]
+  },
+  {
+    "id": "16",
+    "artist": "Antony Szmierek",
+    "stage": "Colosseum",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T18:30:00Z",
+    "endTime": "2026-08-11T19:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "HIP-HOP",
+      "INDIE"
+    ]
+  },
+  {
+    "id": "17",
+    "artist": "Baby Lasagna",
+    "stage": "Colosseum",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T18:00:00Z",
+    "endTime": "2026-08-12T19:00:00Z",
+    "countryCode": "HR",
+    "genres": [
+      "METAL",
+      "POP PUNK",
+      "ROCK"
+    ]
+  },
+  {
+    "id": "18",
+    "artist": "Bad Nerves",
+    "stage": "Colosseum",
+    "day": "Thursday",
+    "startTime": "2026-08-13T18:30:00Z",
+    "endTime": "2026-08-13T19:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "ROCK",
+      "PUNK ROCK"
+    ]
+  },
+  {
+    "id": "19",
+    "artist": "Biia",
+    "stage": "Colosseum",
+    "day": "Friday",
+    "startTime": "2026-08-14T18:00:00Z",
+    "endTime": "2026-08-14T19:00:00Z",
+    "countryCode": "PT",
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC"
+    ]
+  },
+  {
+    "id": "20",
+    "artist": "Brooke Combe",
+    "stage": "Colosseum",
+    "day": "Saturday",
+    "startTime": "2026-08-15T18:30:00Z",
+    "endTime": "2026-08-15T19:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "INDIE"
+    ]
+  },
+  {
+    "id": "21",
+    "artist": "Cassia",
+    "stage": "Europe Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T19:00:00Z",
+    "endTime": "2026-08-11T20:00:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "INDIE"
+    ]
+  },
+  {
+    "id": "22",
+    "artist": "Charlotte Cardin",
+    "stage": "Europe Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T19:30:00Z",
+    "endTime": "2026-08-12T20:30:00Z",
+    "countryCode": "CA",
+    "genres": [
+      "ALT POP",
+      "INDIE"
+    ]
+  },
+  {
+    "id": "23",
+    "artist": "De'wayne",
+    "stage": "Europe Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T19:00:00Z",
+    "endTime": "2026-08-13T20:00:00Z",
+    "countryCode": "US",
+    "genres": [
+      "ROCK",
+      "INDIE"
+    ]
+  },
+  {
+    "id": "24",
+    "artist": "Elefant",
+    "stage": "Europe Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T19:30:00Z",
+    "endTime": "2026-08-14T20:30:00Z",
+    "countryCode": "BE",
+    "genres": [
+      "ALTERNATIVE",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ]
+  },
+  {
+    "id": "25",
+    "artist": "Giant Rooks",
+    "stage": "Europe Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T19:00:00Z",
+    "endTime": "2026-08-15T20:00:00Z",
+    "countryCode": "DE",
+    "genres": [
+      "INDIE POP",
+      "ROCK",
+      "INDIE ROCK"
+    ]
+  },
+  {
+    "id": "26",
+    "artist": "Jazzy",
+    "stage": "Main Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T19:30:00Z",
+    "endTime": "2026-08-11T20:30:00Z",
+    "countryCode": "IE",
+    "genres": [
+      "HOUSE",
+      "ELECTRONIC"
+    ]
+  },
+  {
+    "id": "27",
+    "artist": "Joris Voorn",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T19:00:00Z",
+    "endTime": "2026-08-12T20:00:00Z",
+    "countryCode": "NL",
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC",
+      "TECH-HOUSE"
+    ]
+  },
+  {
+    "id": "28",
+    "artist": "Karen Dio",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-08-13T22:00:00Z",
-    "endTime": "2026-08-13T23:30:00Z"
+    "startTime": "2026-08-13T19:30:00Z",
+    "endTime": "2026-08-13T20:30:00Z",
+    "countryCode": "BR",
+    "genres": [
+      "INDIE",
+      "PUNK ROCK",
+      "ROCK"
+    ]
+  },
+  {
+    "id": "29",
+    "artist": "Kim Dracula",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T19:00:00Z",
+    "endTime": "2026-08-14T20:00:00Z",
+    "countryCode": "AU",
+    "genres": [
+      "METAL",
+      "ROCK",
+      "ALTERNATIVE"
+    ]
+  },
+  {
+    "id": "30",
+    "artist": "Lambrini Girls",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T19:30:00Z",
+    "endTime": "2026-08-15T20:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "PUNK ROCK",
+      "ROCK"
+    ]
+  },
+  {
+    "id": "31",
+    "artist": "Makrohang",
+    "stage": "Revolut Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T20:00:00Z",
+    "endTime": "2026-08-11T21:00:00Z",
+    "countryCode": "HU",
+    "genres": [
+      "JAZZ",
+      "METAL"
+    ]
+  },
+  {
+    "id": "32",
+    "artist": "Oskar Med K",
+    "stage": "Revolut Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T20:30:00Z",
+    "endTime": "2026-08-12T21:30:00Z",
+    "countryCode": "NO",
+    "genres": [
+      "HOUSE",
+      "ELECTRONIC"
+    ]
+  },
+  {
+    "id": "33",
+    "artist": "Pan Pot",
+    "stage": "Revolut Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T20:00:00Z",
+    "endTime": "2026-08-13T21:00:00Z",
+    "countryCode": "DE",
+    "genres": [
+      "TECH-HOUSE",
+      "TECHNO",
+      "ELECTRONIC"
+    ]
+  },
+  {
+    "id": "34",
+    "artist": "Paris Paloma",
+    "stage": "Revolut Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T20:30:00Z",
+    "endTime": "2026-08-14T21:30:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "INDIE",
+      "ALTERNATIVE"
+    ]
+  },
+  {
+    "id": "35",
+    "artist": "Sim0ne",
+    "stage": "Revolut Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T20:00:00Z",
+    "endTime": "2026-08-15T21:00:00Z",
+    "countryCode": "UK",
+    "genres": [
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE"
+    ]
+  },
+  {
+    "id": "36",
+    "artist": "Sisi",
+    "stage": "Bolt Party Arena",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T20:30:00Z",
+    "endTime": "2026-08-11T21:30:00Z",
+    "countryCode": "HU",
+    "genres": [
+      "HIP-HOP"
+    ]
+  },
+  {
+    "id": "37",
+    "artist": "Ski Aggu",
+    "stage": "Bolt Party Arena",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T20:00:00Z",
+    "endTime": "2026-08-12T21:00:00Z",
+    "countryCode": "DE",
+    "genres": [
+      "HIP-HOP"
+    ]
+  },
+  {
+    "id": "38",
+    "artist": "Zimmer90",
+    "stage": "Bolt Party Arena",
+    "day": "Thursday",
+    "startTime": "2026-08-13T20:30:00Z",
+    "endTime": "2026-08-13T21:30:00Z",
+    "countryCode": "DE",
+    "genres": [
+      "INDIE",
+      "ELECTRONIC"
+    ]
   }
 ]

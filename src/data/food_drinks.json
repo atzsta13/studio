@@ -1,0 +1,52 @@
+[
+    {
+        "id": "f1",
+        "name": "Stardust Burgers",
+        "category": "Food",
+        "type": "Burger",
+        "description": "Juicy stellar burgers with secret cosmic sauce.",
+        "location": "Main Stage West",
+        "isVegan": false,
+        "isVegetarian": true
+    },
+    {
+        "id": "f2",
+        "name": "Green Galaxy",
+        "category": "Food",
+        "type": "Vegan",
+        "description": "100% plant-based bowls and wraps.",
+        "location": "A38 Stage North",
+        "isVegan": true,
+        "isVegetarian": true
+    },
+    {
+        "id": "d1",
+        "name": "Nebula Bar",
+        "category": "Drink",
+        "type": "Cocktails",
+        "description": "Refreshing cocktails that glow in the dark.",
+        "location": "Dance Arena",
+        "isVegan": true,
+        "isVegetarian": true
+    },
+    {
+        "id": "f3",
+        "name": "Pizza Planet",
+        "category": "Food",
+        "type": "Pizza",
+        "description": "Wood-fired pizzas from another dimension.",
+        "location": "Rock Pavilion",
+        "isVegan": false,
+        "isVegetarian": true
+    },
+    {
+        "id": "d2",
+        "name": "Hydration Station",
+        "category": "Drink",
+        "type": "Water",
+        "description": "Pure filtered water and electrolytic drinks.",
+        "location": "Central Hub",
+        "isVegan": true,
+        "isVegetarian": true
+    }
+]

@@ -5,6 +5,20 @@ export interface LineupItem {
   day: string;
   startTime: string;
   endTime: string;
+  countryCode?: string;
+  genres?: string[];
+  szigetUrl?: string;
+  socials?: {
+    spotify?: string;
+    appleMusic?: string;
+    instagram?: string;
+    facebook?: string;
+    twitter?: string;
+    youtube?: string;
+    website?: string;
+    tiktok?: string;
+  };
+  description?: string;
 }
 
 export interface MapPin {

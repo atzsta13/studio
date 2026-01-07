@@ -25,9 +25,33 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         "group"
       )}
     >
-      <div>
-        <h3 className={cn("font-bold", duration < 45 ? 'text-sm' : 'text-base', 'truncate')}>{artist.artist}</h3>
-        {duration >= 45 && <p className="text-xs opacity-80">{startTime} - {endTime}</p>}
+      <div className="relative">
+        <div className="flex items-center gap-1.5 mb-0.5">
+          <h3 className={cn("font-bold", duration < 45 ? 'text-sm' : 'text-base', 'truncate leading-tight')}>
+            {artist.artist}
+          </h3>
+          {artist.countryCode && (
+            <span className="text-[10px] bg-foreground/10 px-1 rounded font-medium opacity-70 shrink-0">
+              {artist.countryCode}
+            </span>
+          )}
+        </div>
+        {duration >= 45 && (
+          <div className="flex flex-col gap-1">
+            <p className="text-[10px] uppercase font-semibold tracking-wider opacity-60">
+              {startTime} — {endTime}
+            </p>
+            {artist.genres && artist.genres.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-0.5">
+                {artist.genres.slice(0, 2).map((genre) => (
+                  <span key={genre} className="text-[9px] bg-foreground/5 px-1.5 py-0.5 rounded-full uppercase font-medium">
+                    {genre}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <button
         onClick={(e) => {

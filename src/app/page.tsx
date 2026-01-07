@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Map, CalendarDays, LifeBuoy, Music } from 'lucide-react';
+import { Map, CalendarDays, LifeBuoy, Music, Utensils } from 'lucide-react';
 
 const features = [
   {
@@ -14,6 +14,12 @@ const features = [
     description: 'Find your way around the island',
     href: '/map',
     icon: Map,
+  },
+  {
+    title: 'Food & Drink',
+    description: 'Find stalls and bars nearby',
+    href: '/food',
+    icon: Utensils,
   },
   {
     title: 'Survival Guide',
