@@ -103,7 +103,7 @@ async function scrapeLineup() {
                         const href = a.href;
                         if (href.includes('facebook.com')) links.facebook = href;
                         else if (href.includes('instagram.com')) links.instagram = href;
-                        else if (href.includes('twitter.com') || href.includes('x.com')) links.twitter = href;
+                        else if (href.includes('twitter.com') || href.includes('x.com')) links.x = href;
                         else if (href.includes('tiktok.com')) links.tiktok = href;
                         else if (href.includes('youtube.com')) links.youtube = href;
                         else if (href.includes('spotify.com')) links.spotify = href;
@@ -118,7 +118,7 @@ async function scrapeLineup() {
                 if (!artist.socials) {
                     artist.socials = {
                         website: null, facebook: null, instagram: null,
-                        twitter: null, tiktok: null, youtube: null,
+                        x: null, tiktok: null, youtube: null,
                         spotify: null, appleMusic: null
                     };
                 }

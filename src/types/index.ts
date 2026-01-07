@@ -14,7 +14,7 @@ export interface LineupItem {
     appleMusic?: string;
     instagram?: string;
     facebook?: string;
-    twitter?: string;
+    x?: string;
     youtube?: string;
     website?: string;
     tiktok?: string;

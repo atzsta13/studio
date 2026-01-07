@@ -81,7 +81,7 @@ def fetch_artist_data():
                     "website": None,
                     "facebook": None,
                     "instagram": None,
-                    "twitter": None,
+                    "x": None,
                     "tiktok": None,
                     "youtube": None,
                     "spotify": None,
@@ -99,7 +99,7 @@ def fetch_artist_data():
                     elif 'instagram.com' in href:
                         socials['instagram'] = href
                     elif 'twitter.com' in href or 'x.com' in href:
-                        socials['twitter'] = href
+                        socials['x'] = href
                     elif 'tiktok.com' in href:
                         socials['tiktok'] = href
                     elif 'youtube.com' in href:
