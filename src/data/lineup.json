@@ -64,10 +64,27 @@
     "endTime": "2026-08-13T18:00:00Z",
     "countryCode": "US",
     "genres": [
-      "ALTERNATIVE ROCK",
+      "MUSIC",
+      "ROCK",
+      "INDIE",
       "ALTERNATIVE",
-      "INDIE"
-    ]
+      "ALT POP",
+      "INDIE ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064847-sombr",
+    "socials": {
+      "website": "https://www.sombrmusic.com/",
+      "facebook": "https://www.facebook.com/s0mbr",
+      "instagram": "https://www.instagram.com/sombr",
+      "twitter": null,
+      "tiktok": "https://www.tiktok.com/@sombr",
+      "youtube": "https://www.youtube.com/channel/UCXlqFQmZZOb78teSnAqhuwA",
+      "spotify": "https://open.spotify.com/artist/4G9NDjRyZFDlJKMRL8hx3S",
+      "appleMusic": "https://music.apple.com/us/artist/sombr/1589842503",
+      "soundcloud": "https://soundcloud.com/sombrsongs"
+    },
+    "description": "A New York City-native raised on the Lower East Side, sombr—born Shane Boose—started making music in his bedroom while studying classical music as a student at the prestigious public school, LaGuardia High School. His breakout hit 'Caroline' (2022) took the internet by storm, and he has since released a series of EPs and singles - all self-written and co-produced by the artist himself - that has propelled him to 500 million streams and counting."
   },
   {
     "id": "4",
@@ -78,10 +95,26 @@
     "endTime": "2026-08-14T18:30:00Z",
     "countryCode": "US",
     "genres": [
+      "MUSIC",
       "ROCK",
       "INDIE",
-      "INDIE POP"
-    ]
+      "INDIE POP",
+      "ALTERNATIVE ROCK",
+      "HIP-HOP",
+      "ELECTROPOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064850-twenty-one-pilots",
+    "socials": {
+      "website": "https://twentyonepilots.com/",
+      "facebook": "https://www.facebook.com/twentyonepilots",
+      "instagram": "https://instagram.com/twentyonepilots/",
+      "twitter": "https://twitter.com/twentyonepilots",
+      "tiktok": "https://www.tiktok.com/@twentyonepilots",
+      "youtube": "https://www.youtube.com/channel/UCBQZwaNPFfJ1gZ1fLZpAEGw",
+      "spotify": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx",
+      "appleMusic": "https://music.apple.com/us/artist/twenty-one-pilots/349736311"
+    },
+    "description": "Twenty One Pilots, the American musical duo from Columbus, Ohio, comprises lead vocalist and multi-instrumentalist Tyler Joseph and drummer Josh Dun. The band, known for its genre-blending sound incorporating alternative rock, hip-hop, and electropop, was initially formed in 2009. The duo gained significant recognition for singles like 'Stressed Out', 'Ride', and 'Heathens'. They received a Grammy Award for Best Pop Duo/Group Performance for 'Stressed Out' at the 59th Annual Grammy Awards. Their album 'Blurryface' (2015) notably produced chart-topping singles and, along with its predecessor 'Vessel' (2013), became the first albums where every track received at least a gold certification. Twenty One Pilots continued their artistic evolution with albums such as 'Trench' (2018), 'Scaled and Icy' (2021), 'Clancy' (2024), and 'Breach' (2025)."
   },
   {
     "id": "5",
@@ -92,9 +125,24 @@
     "endTime": "2026-08-15T18:00:00Z",
     "countryCode": "US",
     "genres": [
+      "MUSIC",
       "ALT POP",
-      "HIP-HOP"
-    ]
+      "HIP-HOP",
+      "ELECTROPOP",
+      "ELECTRONIC POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065315-ashnikko",
+    "socials": {
+      "website": "https://ashnikko.com/",
+      "facebook": "https://www.facebook.com/ashnikkomusic",
+      "instagram": "https://www.instagram.com/ashnikko",
+      "twitter": "https://twitter.com/ashnikko",
+      "tiktok": "https://www.tiktok.com/@ashnikko",
+      "youtube": "https://www.youtube.com/c/ashnikko",
+      "spotify": "https://open.spotify.com/artist/5BcAKTbp20cv7tC5VqPFoC",
+      "appleMusic": "https://music.apple.com/us/artist/ashnikko/1368736371"
+    },
+    "description": "Ashton Nicole Casey, known professionally as Ashnikko, is an American rapper, singer, and songwriter. She was born in Oak Ridge, North Carolina on February 19, 1996, and raised in Greensboro, where she was exposed to diverse musical styles from a young age. At the age of 10, she developed an interest in rap music after listening to M.I.A.'s 'Arular'. During her teenage years, her family moved to Estonia and then Latvia, where she began uploading songs to SoundCloud. She later moved to London, England, at 18. Ashnikko gained significant viral popularity with her 2019 single 'Stupid' featuring Baby Tate, which became a hit on TikTok and was certified platinum in the United States and Canada. Her debut mixtape, 'Demidevil', was released in January 2021, featuring singles like 'Daisy' and 'Slumber Party'. Her debut studio album, 'Weedkiller', followed in 2023. In October 2025, Ashnikko released her second studio album, 'Smoochies'. Ashnikko is known for her genre-bending music, incorporating elements of alt-pop, electropop, hip-hop, and electronic pop, along with a hyper-stylized, anime and video game-influenced persona."
   },
   {
     "id": "6",
@@ -106,7 +154,8 @@
     "countryCode": "CA",
     "genres": [
       "HIP-HOP"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064842-bbno%24"
   },
   {
     "id": "7",
@@ -119,7 +168,8 @@
     "genres": [
       "ROCK",
       "ALTERNATIVE ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065608-biffy-clyro"
   },
   {
     "id": "8",
@@ -132,7 +182,8 @@
     "genres": [
       "INDIE",
       "ALTERNATIVE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064846-dijon"
   },
   {
     "id": "9",
@@ -145,7 +196,8 @@
     "genres": [
       "TECH-HOUSE",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065311-dom-dolla"
   },
   {
     "id": "10",
@@ -158,7 +210,8 @@
     "genres": [
       "TECHNO",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064818-indira-paganotto"
   },
   {
     "id": "11",
@@ -172,7 +225,8 @@
       "HIP-HOP",
       "ROCK",
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064844-tash-sultana"
   },
   {
     "id": "12",
@@ -185,7 +239,8 @@
     "genres": [
       "ELECTRONIC",
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064840-tomora"
   },
   {
     "id": "13",
@@ -199,7 +254,8 @@
       "HOUSE",
       "ELECTRONIC",
       "TECHNO"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065313-underworld"
   },
   {
     "id": "14",
@@ -212,7 +268,8 @@
     "genres": [
       "ROCK",
       "ALT POP"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064843-alt-blk-era"
   },
   {
     "id": "15",
@@ -225,7 +282,8 @@
     "genres": [
       "TECHNO",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064839-anna"
   },
   {
     "id": "16",
@@ -238,7 +296,8 @@
     "genres": [
       "HIP-HOP",
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064845-antony-szmierek"
   },
   {
     "id": "17",
@@ -252,7 +311,8 @@
       "METAL",
       "POP PUNK",
       "ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065607-baby-lasagna"
   },
   {
     "id": "18",
@@ -265,7 +325,8 @@
     "genres": [
       "ROCK",
       "PUNK ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064799-bad-nerves"
   },
   {
     "id": "19",
@@ -278,7 +339,8 @@
     "genres": [
       "TECHNO",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064817-biia"
   },
   {
     "id": "20",
@@ -290,7 +352,8 @@
     "countryCode": "UK",
     "genres": [
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064824-brooke-combe"
   },
   {
     "id": "21",
@@ -302,7 +365,8 @@
     "countryCode": "UK",
     "genres": [
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065312-cassia"
   },
   {
     "id": "22",
@@ -315,7 +379,8 @@
     "genres": [
       "ALT POP",
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064816-charlotte-cardin"
   },
   {
     "id": "23",
@@ -328,7 +393,8 @@
     "genres": [
       "ROCK",
       "INDIE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064812-de'wayne"
   },
   {
     "id": "24",
@@ -342,7 +408,8 @@
       "ALTERNATIVE",
       "ROCK",
       "ALTERNATIVE ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064820-elefant"
   },
   {
     "id": "25",
@@ -356,7 +423,8 @@
       "INDIE POP",
       "ROCK",
       "INDIE ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064628-giant-rooks"
   },
   {
     "id": "26",
@@ -369,7 +437,8 @@
     "genres": [
       "HOUSE",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065317-jazzy"
   },
   {
     "id": "27",
@@ -383,7 +452,8 @@
       "TECHNO",
       "ELECTRONIC",
       "TECH-HOUSE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064810-joris-voorn"
   },
   {
     "id": "28",
@@ -397,7 +467,8 @@
       "INDIE",
       "PUNK ROCK",
       "ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065318-karen-dio"
   },
   {
     "id": "29",
@@ -411,7 +482,8 @@
       "METAL",
       "ROCK",
       "ALTERNATIVE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065316-kim-dracula"
   },
   {
     "id": "30",
@@ -424,7 +496,8 @@
     "genres": [
       "PUNK ROCK",
       "ROCK"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064848-lambrini-girls"
   },
   {
     "id": "31",
@@ -437,7 +510,8 @@
     "genres": [
       "JAZZ",
       "METAL"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064795-makrohang"
   },
   {
     "id": "32",
@@ -450,7 +524,8 @@
     "genres": [
       "HOUSE",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065314-oskar-med-k"
   },
   {
     "id": "33",
@@ -464,7 +539,8 @@
       "TECH-HOUSE",
       "TECHNO",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064838-pan-pot"
   },
   {
     "id": "34",
@@ -477,7 +553,8 @@
     "genres": [
       "INDIE",
       "ALTERNATIVE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064819-paris-paloma"
   },
   {
     "id": "35",
@@ -491,7 +568,8 @@
       "ELECTRONIC",
       "TECHNO",
       "HOUSE"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065319-sim0ne"
   },
   {
     "id": "36",
@@ -503,7 +581,8 @@
     "countryCode": "HU",
     "genres": [
       "HIP-HOP"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064823-sisi"
   },
   {
     "id": "37",
@@ -515,7 +594,8 @@
     "countryCode": "DE",
     "genres": [
       "HIP-HOP"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064825-ski-aggu"
   },
   {
     "id": "38",
@@ -528,6 +608,7 @@
     "genres": [
       "INDIE",
       "ELECTRONIC"
-    ]
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065320-zimmer90"
   }
 ]
