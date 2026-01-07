@@ -100,14 +100,14 @@ export default function DiscoverPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-grow flex flex-col justify-between">
-                <div className="mb-3 flex flex-wrap gap-2">
+                <div className="mb-4 flex flex-wrap gap-2">
                   {artist.genres?.map(genre => (
                     <Badge key={genre} variant="secondary">
                       {genre}
                     </Badge>
                   ))}
                 </div>
-                <Button asChild variant="link" className="h-auto p-0 self-start">
+                <Button asChild size="sm" className="mt-auto w-full">
                   <Link href={`/artist/${artist.id}`}>
                     View Details
                   </Link>
