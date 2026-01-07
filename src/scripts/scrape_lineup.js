@@ -63,9 +63,37 @@ async function scrapeLineup() {
                 }
 
                 // --- Description ---
+                try {
+                    const moreBtn = await page.$('.ArtistSingleBody__content__description__more');
+                    if (moreBtn) {
+                        const hasMore = await page.evaluate(() => {
+                            const btn = document.querySelector('.ArtistSingleBody__content__description__more');
+                            return btn && btn.innerText.includes('More');
+                        });
+
+                        if (hasMore) {
+                            await moreBtn.click();
+                            // Wait for the text to actually change (no more "...") 
+                            // or for the button to change to "Less"
+                            try {
+                                await page.waitForFunction(() => {
+                                    const btn = document.querySelector('.ArtistSingleBody__content__description__more');
+                                    const desc = document.querySelector('.ArtistSingleBody__content__description');
+                                    return (btn && btn.innerText.includes('Less')) || (desc && !desc.innerText.endsWith('...'));
+                                }, { timeout: 3000 });
+                            } catch (e) {
+                                // Fallback to a fixed wait if condition fails
+                                await new Promise(r => setTimeout(r, 1000));
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.log(`  Warning: Could not expand description for ${artist.artist}`);
+                }
+
                 const description = await page.evaluate(() => {
                     const el = document.querySelector('.ArtistSingleBody__content__description');
-                    return el ? el.innerText.replace('More...', '').trim() : null;
+                    return el ? el.innerText.trim() : null;
                 });
 
                 if (description) {

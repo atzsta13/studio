@@ -50,10 +50,19 @@ def fetch_artist_data():
                     print(f"  Found genres: {genres}")
 
                 # --- Extract Description ---
+                # Check if there's a "More..." button and click it to reveal full text
+                more_btn = page.query_selector('.ArtistSingleBody__content__description__more')
+                if more_btn and more_btn.is_visible():
+                    try:
+                        more_btn.click()
+                        # Small wait for expansion animation
+                        time.sleep(0.5)
+                    except Exception:
+                        pass
+                
                 description_el = page.query_selector('.ArtistSingleBody__content__description')
                 if description_el:
-                    # Get text, maybe clean up "More..." text if present
-                    description = description_el.inner_text().replace('More...', '').strip()
+                    description = description_el.inner_text().strip()
                     artist['description'] = description
                     print(f"  Found description ({len(description)} chars)")
 
