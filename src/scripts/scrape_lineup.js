@@ -30,10 +30,8 @@ async function scrapeLineup() {
         for (let i = 0; i < artists.length; i++) {
             const artist = artists[i];
 
-            // OPTIONAL: Process artists 1-10 to ensure Sziget-only consistency
-            if (parseInt(artist.id) < 1 || parseInt(artist.id) > 10) {
-                continue;
-            }
+            // Process all artists for image extraction
+            // if (parseInt(artist.id) < 1 || parseInt(artist.id) > 10) { continue; }
 
             console.log(`\n[${artist.id}] Processing ${artist.artist}...`);
 
@@ -73,6 +71,17 @@ async function scrapeLineup() {
                 if (description) {
                     artist.description = description;
                     console.log(`  Description found (${description.length} chars)`);
+                }
+
+                // --- Image Extraction ---
+                const imageUrl = await page.evaluate(() => {
+                    const el = document.querySelector('meta[property="og:image"]');
+                    return el ? el.content : null;
+                });
+
+                if (imageUrl) {
+                    artist.imageUrl = imageUrl;
+                    console.log(`  Image found: ${imageUrl}`);
                 }
 
                 // --- Socials ---

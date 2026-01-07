@@ -57,6 +57,15 @@ def fetch_artist_data():
                     artist['description'] = description
                     print(f"  Found description ({len(description)} chars)")
 
+                # --- Extract Image ---
+                # Try to get the Open Graph image, which is usually the best representation
+                image_el = page.query_selector('meta[property="og:image"]')
+                if image_el:
+                    image_url = image_el.get_attribute('content')
+                    if image_url:
+                        artist['imageUrl'] = image_url
+                        print(f"  Found image URL: {image_url}")
+
                 # --- Extract Socials ---
                 socials = {
                     "website": None,

@@ -8,6 +8,7 @@ export interface LineupItem {
   countryCode?: string;
   genres?: string[];
   szigetUrl?: string;
+  imageUrl?: string;
   socials?: {
     spotify?: string;
     appleMusic?: string;
