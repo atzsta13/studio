@@ -17,9 +17,9 @@ import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight } from 
 
 const features = [
   {
-    title: 'Full Schedule',
+    title: 'Full Timetable',
     description: 'Plan your festival day by day',
-    href: '/schedule',
+    href: '/timetable',
     icon: CalendarDays,
     color: '#e6007e',
   },
@@ -101,7 +101,7 @@ export default function Home() {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-            <Link href="/schedule" style={{ textDecoration: 'none' }}>
+            <Link href="/timetable" style={{ textDecoration: 'none' }}>
               <Button
                 variant="contained"
                 size="large"

@@ -7,7 +7,7 @@ import { Home, CalendarDays, Map, LifeBuoy, Wand2 } from 'lucide-react';
 
 const navItems = [
   { href: '/', label: 'HOME', icon: Home },
-  { href: '/schedule', label: 'LINEUP', icon: CalendarDays },
+  { href: '/timetable', label: 'TIMETABLE', icon: CalendarDays },
   { href: '/discover', label: 'ARTISTS', icon: Wand2 },
   { href: '/map', label: 'MAP', icon: Map },
   { href: '/guide', label: 'GUIDE', icon: LifeBuoy },

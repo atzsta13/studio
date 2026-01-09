@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import ScheduleView from '@/components/schedule/schedule-view';
+import TimetableView from '@/components/timetable/timetable-view';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
 import { History, Calendar } from 'lucide-react';
 import { Box, Typography, Container, Button } from '@mui/material';
 
-export default function SchedulePage() {
+export default function TimetablePage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
 
   const currentLineup = useMemo(() => {
@@ -29,7 +29,7 @@ export default function SchedulePage() {
               fontSize: { xs: '2.5rem', md: '4rem' }
             }}
           >
-            LINEUP <span style={{ color: '#ff0080' }}>EXPLORER</span>
+            TIMETABLE <span style={{ color: '#ff0080' }}>2026</span>
           </Typography>
 
           <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
@@ -66,7 +66,7 @@ export default function SchedulePage() {
       </Box>
 
       <Box sx={{ flex: 1 }}>
-        <ScheduleView key={activeYear} lineup={currentLineup} />
+        <TimetableView key={activeYear} lineup={currentLineup} />
       </Box>
     </Box>
   );

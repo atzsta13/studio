@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const guideSections = [
   {
     title: 'Shuttle Bus Info',
-    description: 'Schedules and pickup locations.',
+    description: 'Timetables and pickup locations.',
     href: '/guide/shuttle',
     icon: Bus,
   },

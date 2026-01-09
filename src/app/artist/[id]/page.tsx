@@ -179,8 +179,8 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
           )}
 
           <Button asChild size="lg" className="w-full sm:w-auto rounded-xl shadow-lg shadow-primary/20">
-            <Link href={`/schedule?day=${artist.day}`}>
-              Add to my Schedule
+            <Link href={`/timetable?day=${artist.day}`}>
+              View Timetable
             </Link>
           </Button>
         </div>

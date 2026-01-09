@@ -107,8 +107,8 @@ export default function MapPage() {
             <button
               onClick={() => setActiveYear('2026')}
               className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-bold transition-all ${activeYear === '2026'
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'text-zinc-400 hover:text-white'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'text-zinc-400 hover:text-white'
                 }`}
             >
               2026
@@ -116,8 +116,8 @@ export default function MapPage() {
             <button
               onClick={() => setActiveYear('2025')}
               className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-bold transition-all ${activeYear === '2025'
-                  ? 'bg-primary text-primary-foreground shadow-lg'
-                  : 'text-zinc-400 hover:text-white'
+                ? 'bg-primary text-primary-foreground shadow-lg'
+                : 'text-zinc-400 hover:text-white'
                 }`}
             >
               <History className="h-3 w-3" />
@@ -214,7 +214,7 @@ export default function MapPage() {
                       Artist: {selectedPin.data?.artist || 'TBA'}
                     </Badge>
                     <Button asChild className="w-full rounded-xl">
-                      <Link href={selectedPin.data?.id ? `/artist/${selectedPin.data.id}` : '/schedule'}>Lineup Details</Link>
+                      <Link href={selectedPin.data?.id ? `/artist/${selectedPin.data.id}` : '/timetable'}>Lineup Details</Link>
                     </Button>
                   </div>
                 )}

@@ -33,7 +33,7 @@ export default function ShuttlePage() {
           </div>
           <div>
             <h3 className="font-bold">City Center Line</h3>
-            <p>A dedicated bus line often runs from major transport hubs in Budapest, like Deák Ferenc tér, directly to the festival. Check the official Sziget website for the exact route and schedule for 2026.</p>
+            <p>A dedicated bus line often runs from major transport hubs in Budapest, like Deák Ferenc tér, directly to the festival. Check the official Sziget website for the exact route and timetable for 2026.</p>
           </div>
           <div>
             <h3 className="font-bold">Tickets &amp; Pricing</h3>
