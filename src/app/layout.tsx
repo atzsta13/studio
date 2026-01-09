@@ -5,6 +5,7 @@ import PwaLoader from '@/components/pwa-loader';
 import Header from '@/components/layout/header';
 import BottomNav from '@/components/layout/bottom-nav';
 import MuiRegistry from '@/components/mui-registry';
+import InstallPrompt from '@/components/install-prompt';
 
 const APP_NAME = "Sziget Insider 2026";
 const APP_DEFAULT_TITLE = "Sziget Insider 2026";
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body className="font-body antialiased" suppressHydrationWarning>
         <MuiRegistry>
           <PwaLoader />
+          <InstallPrompt />
           <div className="relative flex min-h-screen w-full flex-col">
             <Header />
             <main className="flex-1 pb-20 md:pb-0">{children}</main>
