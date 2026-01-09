@@ -1,68 +1,46 @@
-import Link from 'next/link';
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Bus, Tent, HeartPulse, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Icon, IconName } from "@/components/ui/icon";
+import { PageHeader } from "@/components/layout/page-header";
+import guideData from "@/data/guide.json";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Survival Guide',
-  description: 'Essential tips, rules, and emergency information for Sziget Festival.',
+  description: 'Essential tips and information for Sziget Festival.',
 };
-
-
-const guideSections = [
-  {
-    title: 'Shuttle Bus Info',
-    description: 'Timetables and pickup locations.',
-    href: '/guide/shuttle',
-    icon: Bus,
-  },
-  {
-    title: 'Camping Rules',
-    description: 'Know the dos and don\'ts.',
-    href: '/guide/camping',
-    icon: Tent,
-  },
-  {
-    title: 'Emergency Numbers',
-    description: 'Stay safe and get help if needed.',
-    href: '/guide/emergency',
-    icon: HeartPulse,
-  },
-  {
-    title: 'Health & Safety',
-    description: 'Tips for a safe and enjoyable festival.',
-    href: '/guide/health',
-    icon: ShieldCheck,
-  },
-];
 
 export default function GuidePage() {
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
-      <header className="text-center">
-        <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Survival Guide
-        </h1>
-        <p className="mt-2 max-w-xl mx-auto text-muted-foreground">
-          Everything you need to know for a smooth festival experience.
-        </p>
-      </header>
-      <div className="mt-12 space-y-4">
-        {guideSections.map((section) => (
-          <Link href={section.href} key={section.title}>
-            <Card className="transition-all duration-300 hover:bg-card/80 hover:border-primary">
-              <CardHeader className="flex flex-row items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <section.icon className="h-8 w-8 text-primary" />
-                  <div>
-                    <CardTitle className="text-lg text-card-foreground">{section.title}</CardTitle>
-                    <CardDescription className="text-card-foreground/80">{section.description}</CardDescription>
-                  </div>
-                </div>
-                <ChevronRight className="h-6 w-6 text-card-foreground/50" />
-              </CardHeader>
-            </Card>
-          </Link>
+    <div className="container mx-auto max-w-4xl py-8 px-4 sm:px-6 lg:px-8">
+      <PageHeader 
+        title={guideData.title} 
+        description={guideData.description} 
+      />
+
+      <div className="space-y-6">
+        {guideData.sections.map((section) => (
+          <div key={section.title} className="rounded-lg border bg-card text-card-foreground shadow-sm">
+             <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value={section.title}>
+                <AccordionTrigger className="p-6 text-xl font-semibold hover:no-underline">
+                    <div className="flex items-center gap-4">
+                        <span className="text-primary"><Icon name={section.icon as IconName} className="h-5 w-5" /></span>
+                        {section.title}
+                    </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-6">
+                    <div className="space-y-4">
+                        {section.items.map((item) => (
+                            <div key={item.title} className="p-4 rounded-md bg-muted/50">
+                                <h4 className="font-bold text-md text-foreground">{item.title}</h4>
+                                <p className="mt-1 text-muted-foreground text-sm">{item.content}</p>
+                            </div>
+                        ))}
+                    </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         ))}
       </div>
     </div>

@@ -6,8 +6,8 @@ import { Clock, Navigation } from 'lucide-react';
 import {
     areNotificationsSupported,
     requestNotificationPermission,
-    scheduleNotification,
-    cancelNotification,
+    timetableNotification,
+    cancelTimetableNotification,
 } from '@/lib/notifications';
 
 const MIN_TIME = 12; // 12 PM
@@ -35,8 +35,8 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
         const isFavorited = favorites.has(artist.id);
         toggleFavorite(artist.id);
         if (notificationPermission === 'granted') {
-            if (!isFavorited) scheduleNotification(artist);
-            else cancelNotification(artist.id);
+            if (!isFavorited) timetableNotification(artist);
+            else cancelTimetableNotification(artist.id);
         }
     };
 

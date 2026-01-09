@@ -3,15 +3,8 @@
 import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/material';
-import { Home, CalendarDays, Map, LifeBuoy, Wand2 } from 'lucide-react';
-
-const navItems = [
-  { href: '/', label: 'HOME', icon: Home },
-  { href: '/timetable', label: 'TIMETABLE', icon: CalendarDays },
-  { href: '/discover', label: 'ARTISTS', icon: Wand2 },
-  { href: '/map', label: 'MAP', icon: Map },
-  { href: '/guide', label: 'GUIDE', icon: LifeBuoy },
-];
+import { Icon } from '@/components/ui/icon';
+import { navItems } from '@/config/nav';
 
 export default function BottomNav() {
   const pathname = usePathname();
@@ -47,7 +40,7 @@ export default function BottomNav() {
             router.push(navItems[newValue].href);
           }}
           sx={{
-            height: 64, // Sleeker height
+            height: 64,
             backgroundColor: 'transparent',
             '& .MuiBottomNavigationAction-root': {
               minWidth: 'auto',
@@ -78,10 +71,10 @@ export default function BottomNav() {
           {navItems.map((item) => (
             <BottomNavigationAction
               key={item.href}
-              label={item.label}
+              label={item.label.toUpperCase()} // Keep uppercase style for mobile
               icon={
                 <Box className="MuiBottomNavigationAction-iconWrapper" sx={{ transition: 'all 0.3s ease' }}>
-                  <item.icon size={20} />
+                  <Icon name={item.icon} size={20} />
                 </Box>
               }
             />

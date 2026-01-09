@@ -1,0 +1,73 @@
+
+{
+  "title": "Festival Survival Guide",
+  "description": "Essential tips and information to make your Sziget experience amazing, safe, and unforgettable. Everything here works offline, so you'll never be stranded.",
+  "sections": [
+    {
+      "title": "General Tips",
+      "icon": "sparkles",
+      "items": [
+        {
+          "title": "Stay Hydrated",
+          "content": "Drink plenty of water! Dehydration is the fastest way to ruin your festival. Refill stations are available throughout the island. Bring a reusable bottle."
+        },
+        {
+          "title": "Pace Yourself",
+          "content": "Sziget is a marathon, not a sprint. Don't go too hard on the first day. Get some sleep, eat proper meals, and take breaks in the shade."
+        },
+        {
+          "title": "Plan Your Day, But Be Flexible",
+          "content": "Use this app to favorite your must-see artists, but don't be afraid to wander. Some of the best discoveries are acts you stumble upon by chance."
+        },
+        {
+          "title": "Comfortable Shoes Are a Must",
+          "content": "You'll be walking and dancing for miles every day. Prioritize comfort over style. Your feet will thank you."
+        },
+        {
+          "title": "Secure Your Valuables",
+          "content": "Use a secure bag or money belt. Be mindful of your surroundings, especially in dense crowds. Consider using the on-site lockers for passports and larger valuables."
+        }
+      ]
+    },
+    {
+      "title": "Health & Safety",
+      "icon": "heart-pulse",
+      "items": [
+        {
+          "title": "First Aid & Medical",
+          "content": "First aid tents are clearly marked on the festival map. Don't hesitate to visit them for any issue, big or small. The staff is there to help."
+        },
+        {
+          "title": "Emergency Services",
+          "content": "In a serious emergency, find the nearest security guard or staff member. The general emergency number in Hungary is 112."
+        },
+        {
+          "title": "Look After Your Friends",
+          "content": "Establish a meeting point in case you get separated. Keep an eye on each other and seek help if a friend seems unwell."
+        },
+        {
+          "title": "Sun Protection",
+          "content": "The sun can be intense. Use sunscreen, wear a hat, and find shade during the peak hours of the afternoon."
+        }
+      ]
+    },
+    {
+      "title": "Rules & Regulations",
+      "icon": "gavel",
+      "items": [
+        {
+          "title": "Prohibited Items",
+          "content": "Glass, pyrotechnics, professional recording equipment, and illicit substances are strictly forbidden. Check the official Sziget website for a full list before you pack."
+        },
+        {
+          "title": "Cashless System",
+          "content": "Sziget is a cashless festival. You'll use your wristband (topped up via the official app or at top-up points) to pay for everything."
+        },
+        {
+          "title": "Be a Good Szitizen",
+          "content": "Respect the island, the staff, and your fellow festival-goers. Dispose of your trash in the designated bins. The 'Island of Freedom' works best when everyone is respectful."
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
-// This file contains the logic for scheduling local, offline notifications.
-// It uses the Notification API with `showTrigger` for true serverless scheduling.
+// This file contains the logic for timetabling local, offline notifications.
+// It uses the Notification API with `showTrigger` for true serverless timetabling.
 
 // Type definition for the experimental showTrigger property
 interface NotificationOptionsWithTrigger extends NotificationOptions {
@@ -11,7 +11,7 @@ interface NotificationOptionsWithTrigger extends NotificationOptions {
 import { LineupItem } from '@/types';
 
 /**
- * Checks if the browser supports scheduled notifications.
+ * Checks if the browser supports timetabled notifications.
  */
 export function areNotificationsSupported(): boolean {
   return typeof window !== 'undefined' && 'Notification' in window && 'serviceWorker' in navigator && 'showTrigger' in Notification.prototype;
@@ -26,10 +26,10 @@ export async function requestNotificationPermission(): Promise<NotificationPermi
 }
 
 /**
- * Schedules a notification for a favorite artist.
- * @param {LineupItem} arist The artist object with schedule details.
+ * Timetables a notification for a favorite artist.
+ * @param {LineupItem} artist The artist object with timetable details.
  */
-export async function scheduleNotification(artist: LineupItem) {
+export async function timetableNotification(artist: LineupItem) {
   if (!areNotificationsSupported()) return;
 
   const registration = await navigator.serviceWorker.getRegistration();
@@ -57,10 +57,10 @@ export async function scheduleNotification(artist: LineupItem) {
 }
 
 /**
- * Cancels a scheduled notification for an artist.
+ * Cancels a timetabled notification for an artist.
  * @param {string} artistId The ID of the artist.
  */
-export async function cancelNotification(artistId: string) {
+export async function cancelTimetableNotification(artistId: string) {
   if (!areNotificationsSupported()) return;
 
   const registration = await navigator.serviceWorker.getRegistration();

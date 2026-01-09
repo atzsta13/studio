@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { X, Backpack, Plus } from 'lucide-react';
+import { X, Plus } from 'lucide-react';
+import { PageHeader } from '@/components/layout/page-header';
 
 interface PackingItem {
   id: number;
@@ -73,17 +74,10 @@ export default function PackingChecklistPage() {
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-8">
-      <header className="mb-8 flex flex-col items-center text-center">
-        <div className="inline-block rounded-full bg-primary/20 p-4 mb-4">
-          <Backpack className="h-10 w-10 text-primary" />
-        </div>
-        <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Packing Checklist
-        </h1>
-        <p className="mt-2 text-muted-foreground">
-          Don't leave the important stuff behind! Your list is saved on this device.
-        </p>
-      </header>
+      <PageHeader 
+        title="Packing Checklist"
+        description="Don't leave the important stuff behind! Your list is saved on this device."
+      />
 
       <Card>
         <CardHeader>

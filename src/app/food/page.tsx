@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search } from 'lucide-react';
 import foodAndDrinkData from '@/data/food.json';
 import { Badge } from '@/components/ui/badge';
+import { PageHeader } from '@/components/layout/page-header';
 
 // Define the type for a vendor item
 interface Vendor {
@@ -78,18 +79,10 @@ export default function FoodFinderPage() {
 
     return (
         <div className="container mx-auto max-w-5xl px-4 py-8">
-            <header className="mb-12 flex flex-col items-center text-center">
-                <div className="inline-block rounded-2xl bg-emerald-500/10 p-6 mb-4 shadow-inner">
-                    <UtensilsCrossed className="h-12 w-12 text-emerald-500" />
-                </div>
-                <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                    Food & Drink Scout
-                </h1>
-                <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
-                    Find the tastiest meals and the best value on Sziget.
-                    Look for the <span className="text-emerald-500 font-bold">Budget Hero</span> badge for official festival-priced options.
-                </p>
-            </header>
+            <PageHeader 
+                title="Food & Drink Scout"
+                description="Find the tastiest meals and the best value on Sziget. Look for the Budget Hero badge for official festival-priced options."
+            />
 
             {/* Search and Filter UI */}
             <div className="sticky top-0 z-30 -mx-4 space-y-4 bg-background/95 px-4 pb-6 pt-4 backdrop-blur-md md:top-16 border-b">
@@ -186,4 +179,3 @@ export default function FoodFinderPage() {
         </div>
     );
 }
-
