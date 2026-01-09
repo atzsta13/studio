@@ -20,6 +20,7 @@ export interface LineupItem {
     tiktok?: string;
   };
   description?: string;
+  vibes?: string[];
 }
 
 export interface MapPin {

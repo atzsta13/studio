@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import PwaLoader from '@/components/pwa-loader';
 import Header from '@/components/layout/header';
 import BottomNav from '@/components/layout/bottom-nav';
+import MuiRegistry from '@/components/mui-registry';
 
 const APP_NAME = "Sziget Insider 2026";
 const APP_DEFAULT_TITLE = "Sziget Insider 2026";
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#222051",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -37,20 +38,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Varela+Round&display=swap" rel="stylesheet" />
       </head>
-      <body className="font-body antialiased">
-        <PwaLoader />
-        <div className="relative flex min-h-screen w-full flex-col">
-          <Header />
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
-          <BottomNav />
-        </div>
-        <Toaster />
+      <body className="font-body antialiased" suppressHydrationWarning>
+        <MuiRegistry>
+          <PwaLoader />
+          <div className="relative flex min-h-screen w-full flex-col">
+            <Header />
+            <main className="flex-1 pb-20 md:pb-0">{children}</main>
+            <BottomNav />
+          </div>
+          <Toaster />
+        </MuiRegistry>
       </body>
     </html>
   );

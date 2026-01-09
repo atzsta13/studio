@@ -2,22 +2,27 @@
 
 ## Core Features:
 
-- Schedule Grid: Display festival schedule in a grid format with stages as columns and time as rows, sourced from `lineup.json`.
-- Favorites Management: Allow users to 'heart' artists and store their favorites in `localStorage` for offline access.
-- Conflict Detection: Detect and visually warn users about overlapping favorite artists in the schedule.
-- Interactive Map: Load a static map image and provide clickable pins for key locations within the festival.
-- Survival Guide: Offer instant-loading static pages for essential information (Shuttle Bus, Camping Rules, Emergency Numbers).
-- Offline Configuration: Configure `vite-plugin-pwa` with a 'NetworkFirst' strategy for HTML and 'CacheFirst' for assets. The `manifest.json` theme color is `#222051`.
-- Firestore Initialization: Initialize Firebase for potential read-only updates. Using `localStorage` for the 'Favorites' feature to ensure offline reliability
+- **Schedule Grid**: Display festival schedule in a grid format with stages as columns and time as rows, sourced from `lineup.json`.
+- **Favorites Management**: Allow users to 'heart' artists and store their favorites in `localStorage` for complete offline access.
+- **Conflict Detection**: Detect and visually warn users about overlapping favorite artists in the schedule.
+- **Interactive Map**: Load a static map image with clickable pins for key locations.
+- **Survival Guide**: Instant-loading static pages for essential information (Shuttle Bus, Camping Rules, Emergency Numbers).
+- **Data Strategy**: Entirely **offline and local**. No user accounts or cloud syncing. Lineup is updated via bundled JSON files.
 
 ## Style Guidelines:
 
-- Background: Midnight Navy (#222051) to set a unique, dark, and immersive tone, contrasting against standard blacks.
-- Primary Text: Sziget Yellow (#FFF53C) for high-contrast headers and text, ensuring readability and vibrancy.
-- Accents: Deep Violet (#AA1E8C) to highlight interactive elements like borders, active states, and buttons, providing clear visual cues.
-- Soft UI: Peach (#FFD2C1) used for card backgrounds and secondary elements, adding warmth and retro flair.
-- Alerts: Pink (#FF7387) for error states and conflict warnings, immediately drawing the user's attention.
-- Font: 'Varela Round' (sans-serif) from Google Fonts. Note: currently only Google Fonts are supported.
-- Use `lucide-react` icons throughout the app to maintain a consistent and clean aesthetic.
-- Feature-based project structure: `/schedule`, `/map`, `/guide` to organize components effectively.
-- Subtle animations on the `ScheduleGrid` component. For example highlighting artists with an opacity change as they come into focus, creating a more engaging experience.
+- **Primary Colors**:
+    - Background: **Midnight Navy** (#222051)
+    - Primary Text: **Sziget Yellow** (#FFF53C)
+    - Accents: **Deep Violet** (#AA1E8C)
+    - Soft UI: **Peach** (#FFD2C1)
+    - Alerts: **Pink** (#FF7387)
+- **Typography**: 'Outfit' or 'Varela Round' (sans-serif) for a modern, approachable feel.
+- **Icons**: `lucide-react` icons for consistency.
+
+## Technical Notes:
+
+- **Framework**: Next.js 15 (App Router).
+- **Architecture**: Feature-based project structure (/app/schedule, /app/map, /app/guide).
+- **Animations**: `framer-motion` for smooth transitions and interactive elements.
+- **Deployment**: Local-first PWA strategy.

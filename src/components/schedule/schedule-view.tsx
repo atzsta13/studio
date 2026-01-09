@@ -4,12 +4,7 @@ import { useMemo, useState, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import { useFavorites } from '@/hooks/use-favorites';
 import ArtistCard from './artist-card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Input } from "@/components/ui/input";
-import { Search, SlidersHorizontal, X, Bell, BellRing } from 'lucide-react';
-import { Badge } from "@/components/ui/badge";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Button } from '@/components/ui/button';
+import { Clock, Navigation } from 'lucide-react';
 import {
   areNotificationsSupported,
   requestNotificationPermission,
@@ -18,12 +13,11 @@ import {
 } from '@/lib/notifications';
 
 const MIN_TIME = 12; // 12 PM
-const MAX_TIME = 29; // 5 AM (of the next day)
+const MAX_TIME = 36; // 12 PM (the next day)
 
 export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
   const { favorites, toggleFavorite, conflicts } = useFavorites(lineup);
-  
-  // Notification state management
+
   const [notificationsSupported, setNotificationsSupported] = useState(false);
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
 
@@ -39,22 +33,20 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
     setNotificationPermission(permission);
   };
 
-  // Enhanced favorite toggle
   const handleToggleFavorite = (artist: LineupItem) => {
     const isFavorited = favorites.has(artist.id);
     toggleFavorite(artist.id);
-
     if (notificationPermission === 'granted') {
-      if (!isFavorited) {
-        scheduleNotification(artist);
-      } else {
-        cancelNotification(artist.id);
-      }
+      if (!isFavorited) scheduleNotification(artist);
+      else cancelNotification(artist.id);
     }
   };
 
   const { days, stages, timeSlots } = useMemo(() => {
-    const uniqueDays = [...new Set(lineup.map(item => item.day))].sort((a, b) => new Date(lineup.find(l => l.day === a)!.startTime).getTime() - new Date(lineup.find(l => l.day === b)!.startTime).getTime());
+    const sortedDays = [...new Set(lineup.map(item => item.day))].sort((a, b) =>
+      new Date(lineup.find(l => l.day === a)!.startTime).getTime() -
+      new Date(lineup.find(l => l.day === b)!.startTime).getTime()
+    );
     const uniqueStages = [...new Set(lineup.map(item => item.stage))];
     const slots = Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }, (_, i) => {
       const totalHour = MIN_TIME + Math.floor(i / 2);
@@ -62,210 +54,158 @@ export default function ScheduleView({ lineup }: { lineup: LineupItem[] }) {
       const minute = (i % 2) * 30;
       return `${displayHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
     });
-    return { days: uniqueDays, stages: uniqueStages, timeSlots: slots };
+    return { days: sortedDays, stages: uniqueStages, timeSlots: slots };
   }, [lineup]);
+
+  const [activeDayIdx, setActiveDayIdx] = useState(0);
+  const activeDay = days[activeDayIdx];
 
   const getGridRow = (startTime: string, endTime: string) => {
     const start = new Date(startTime);
     const end = new Date(endTime);
-
     let startHours = start.getUTCHours();
     if (startHours < MIN_TIME) startHours += 24;
-
     let endHours = end.getUTCHours();
     if (endHours < MIN_TIME) endHours += 24;
-
     const startMinutes = (startHours - MIN_TIME) * 60 + start.getUTCMinutes();
     const endMinutes = (endHours - MIN_TIME) * 60 + end.getUTCMinutes();
-
-    const startRow = Math.floor(startMinutes / 15) + 2;
-    const endRow = Math.floor(endMinutes / 15) + 2;
-
-    return { gridRowStart: startRow, gridRowEnd: endRow };
+    return { gridRowStart: Math.floor(startMinutes / 15) + 2, gridRowEnd: Math.floor(endMinutes / 15) + 2 };
   };
 
-  const [activeDay, setActiveDay] = useState(days[0]);
-  const [search, setSearch] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
-
-  const allGenres = useMemo(() => {
-    const genres = new Set<string>();
-    lineup.forEach(item => item.genres?.forEach(g => genres.add(g)));
-    return Array.from(genres).sort();
-  }, [lineup]);
-
-  const filteredLineup = useMemo(() => {
-    return lineup.filter(item => {
-      const matchesSearch = item.artist.toLowerCase().includes(search.toLowerCase());
-      const matchesGenre = !selectedGenre || item.genres?.includes(selectedGenre);
-      return matchesSearch && matchesGenre;
-    });
-  }, [lineup, search, selectedGenre]);
-
-  const dailyLineup = filteredLineup.filter(item => item.day === activeDay);
-  
-  const renderNotificationBell = () => {
-    if (!notificationsSupported) return null;
-
-    if (notificationPermission === 'granted') {
-      return (
-          <div className="flex items-center gap-2 text-xs text-green-500">
-              <BellRing className="h-4 w-4" />
-              <span>Notifications Active</span>
-          </div>
-      );
-    }
-
-    return (
-        <Button 
-            size="sm"
-            variant="outline"
-            onClick={handleRequestPermission} 
-            disabled={notificationPermission === 'denied'}
-            className={notificationPermission === 'denied' ? 'cursor-not-allowed text-muted-foreground' : ''}
-        >
-            <Bell className="h-4 w-4 mr-2"/>
-            {notificationPermission === 'denied' ? 'Permissions Blocked' : 'Enable Set Reminders'}
-        </Button>
-    );
-  };
+  const dailyLineup = useMemo(() => {
+    return lineup.filter(item => item.day === activeDay);
+  }, [lineup, activeDay]);
 
   return (
-    <div className="container px-0 md:px-4">
-      <Tabs value={activeDay} onValueChange={setActiveDay} className="w-full">
-        <div className="sticky top-[60px] md:top-16 z-30 border-b bg-background/95 backdrop-blur-sm">
-            <div className="flex flex-col gap-4 p-4 w-full max-w-7xl mx-auto">
-                <div className="flex flex-col md:flex-row gap-4 items-center justify-between w-full">
-                    <div className="relative w-full md:w-64">
-                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                      <Input 
-                          placeholder="Search artists..." 
-                          value={search}
-                          onChange={(e) => setSearch(e.target.value)}
-                          className="pl-9 h-10 bg-muted/50 border-0 focus-visible:ring-primary"
-                      />
-                      {search && (
-                          <button 
-                          onClick={() => setSearch('')}
-                          className="absolute right-3 top-1/2 -translate-y-1/2"
-                          >
-                          <X className="h-4 w-4 text-muted-foreground" />
-                          </button>
-                      )}
-                    </div>
-                    <div className="flex-1 flex justify-center w-full">
-                        <TabsList className="grid w-full max-w-lg grid-cols-5 bg-muted/50">
-                            {days.map(day => (
-                            <TabsTrigger key={day} value={day} className="text-xs sm:text-sm">
-                                {day.slice(0, 3)}
-                            </TabsTrigger>
-                            ))}
-                        </TabsList>
-                    </div>
-                    <div className="hidden md:flex w-64 justify-end">
-                       {renderNotificationBell()}
-                    </div>
-                </div>
-
-                <Collapsible>
-                    <CollapsibleTrigger asChild>
-                        <Button variant="ghost" className="w-full md:w-auto text-muted-foreground">
-                            <SlidersHorizontal className="h-4 w-4 mr-2"/>
-                            Filter by Genre
-                        </Button>
-                    </CollapsibleTrigger>
-                     <CollapsibleContent className="md:hidden">
-                        <div className="flex justify-center mt-2">
-                           {renderNotificationBell()}
-                        </div>
-                    </CollapsibleContent>
-                    <CollapsibleContent>
-                        <div className="flex items-center gap-2 overflow-x-auto pt-4 pb-2 w-full">
-                            <Badge 
-                                variant={!selectedGenre ? "default" : "outline"}
-                                className="cursor-pointer whitespace-nowrap transition-all"
-                                onClick={() => setSelectedGenre(null)}
-                            >
-                                All Genres
-                            </Badge>
-                            {allGenres.slice(0, 20).map(genre => (
-                                <Badge 
-                                key={genre}
-                                variant={selectedGenre === genre ? "default" : "outline"}
-                                className="cursor-pointer whitespace-nowrap transition-all"
-                                onClick={() => setSelectedGenre(genre)}
-                                >
-                                {genre}
-                                </Badge>
-                            ))}
-                        </div>
-                    </CollapsibleContent>
-                </Collapsible>
+    <div className="w-full bg-black min-h-screen text-white font-sans selection:bg-pink-500">
+      {/* Brutalist Sticky Header */}
+      <div className="sticky top-0 z-[100] bg-black/90 backdrop-blur-xl border-b border-white/10">
+        <div className="flex flex-col">
+          <div className="flex items-center justify-between px-4 py-3 gap-4">
+            {/* Custom Day Selector */}
+            <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
+              {days.map((day, idx) => (
+                <button
+                  key={day}
+                  onClick={() => setActiveDayIdx(idx)}
+                  className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase transition-all whitespace-nowrap border-2 ${activeDayIdx === idx
+                    ? 'bg-pink-600 border-pink-600 text-white'
+                    : 'bg-transparent border-white/10 text-white/40 hover:text-white hover:border-white/30'
+                    }`}
+                >
+                  {day.slice(0, 3)}
+                </button>
+              ))}
             </div>
+          </div>
         </div>
+      </div>
 
-        {days.map(day => (
-          <TabsContent key={day} value={day} className="mt-0">
-            <div className="relative overflow-x-auto">
+      <div className="relative overflow-x-auto no-scrollbar px-1 mt-4">
+        <div
+          className="grid min-w-max gap-x-px"
+          style={{
+            gridTemplateColumns: `60px repeat(${stages.length}, 320px)`,
+            gridTemplateRows: `auto repeat(${(MAX_TIME - MIN_TIME) * 4}, 20px)`,
+          }}
+        >
+          {/* Stage Row */}
+          <div className="sticky top-[64px] z-30 flex contents">
+            <div className="sticky top-[64px] left-0 z-40 bg-black border-r border-b border-white/10 h-10 flex items-center justify-center">
+              <Clock size={16} className="text-white opacity-20" />
+            </div>
+            {stages.map((stage, index) => (
               <div
-                className="grid min-w-[1200px] gap-x-1"
+                key={stage}
+                className="sticky top-[64px] z-30 flex items-center justify-center p-2 bg-black border-b border-white/10 h-10"
+                style={{ gridColumn: index + 2 }}
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-pink-500 whitespace-nowrap">
+                  {stage}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Time Column */}
+          {timeSlots.map((time, index) => (
+            index % 2 === 0 && (
+              <div
+                key={time}
+                className="sticky left-0 z-20 flex items-start justify-end pr-2 bg-black border-r border-white/10"
                 style={{
-                  gridTemplateColumns: `40px repeat(${stages.length}, 1fr)`,
-                  gridTemplateRows: `auto repeat(${(MAX_TIME - MIN_TIME) * 4}, 15px)`,
+                  gridRow: index * 2 + 2,
+                  gridRowEnd: `span 2`,
+                  gridColumn: 1,
+                  height: '40px'
                 }}
               >
-                {/* Stage Headers */}
-                {stages.map((stage, index) => (
-                  <div
-                    key={stage}
-                    className="sticky top-[250px] md:top-[220px] z-20 text-center font-bold text-foreground text-sm py-2 bg-background/90 backdrop-blur-sm"
-                    style={{ gridColumn: index + 2 }}
-                  >
-                    {stage}
-                  </div>
-                ))}
-
-                {/* Time Slots */}
-                {timeSlots.map((time, index) => (
-                   index % 2 === 0 && (
-                    <div
-                      key={time}
-                      className="relative text-right text-xs text-muted-foreground pr-2"
-                      style={{ gridRow: index * 2 + 2, gridRowEnd: `span 2`, gridColumn: 1 }}
-                    >
-                      <span className="relative -top-1.5">{time.endsWith(':00') ? time : ''}</span>
-                       <div className="absolute right-0 top-0 h-px w-screen bg-border/20"></div>
-                    </div>
-                  )
-                ))}
-
-                {/* Artist Cards */}
-                {dailyLineup.filter(item => item.day === day).map(item => {
-                    const col = stages.indexOf(item.stage) + 2;
-                    if (col === 1) return null;
-                    return (
-                        <div
-                            key={item.id}
-                            className="relative p-1"
-                            style={{
-                            ...getGridRow(item.startTime, item.endTime),
-                            gridColumn: col,
-                            }}
-                        >
-                            <ArtistCard
-                                artist={item}
-                                isFavorite={favorites.has(item.id)}
-                                isConflicting={conflicts.has(item.id)}
-                                onToggleFavorite={() => handleToggleFavorite(item)}
-                            />
-                        </div>
-                    );
-                })}
+                <span className="text-[10px] font-black text-white/20 tabular-nums leading-none pt-2">
+                  {time.endsWith(':00') ? time : ''}
+                </span>
               </div>
-            </div>
-          </TabsContent>
-        ))}
-      </Tabs>
+            )
+          ))}
+
+          {/* Artist Cards */}
+          {dailyLineup.map(item => {
+            const col = stages.indexOf(item.stage) + 2;
+            if (col === 1) return null;
+            return (
+              <div
+                key={item.id}
+                className="relative z-10"
+                style={{
+                  ...getGridRow(item.startTime, item.endTime),
+                  gridColumn: col,
+                }}
+              >
+                <ArtistCard
+                  artist={item}
+                  isFavorite={favorites.has(item.id)}
+                  isConflicting={conflicts.has(item.id)}
+                  onToggleFavorite={() => handleToggleFavorite(item)}
+                />
+              </div>
+            );
+          })}
+
+          {/* Horizontal Grid Texture */}
+          {Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }).map((_, i) => (
+            <div
+              key={i}
+              className="border-b border-white/[0.03] pointer-events-none"
+              style={{
+                gridRow: i * 2 + 2,
+                gridColumn: `2 / span ${stages.length}`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Floating Status Bar */}
+      <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] pointer-events-none flex flex-col items-center gap-2">
+        {conflicts.size > 0 && (
+          <div className="bg-red-600 px-4 py-1 rounded-full shadow-2xl animate-pulse">
+            <span className="text-[10px] font-black text-white uppercase tracking-widest">{conflicts.size} CLASHES DETECTED</span>
+          </div>
+        )}
+        <div className="bg-white/5 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-4">
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+            <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">FAVE</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+            <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">GENRE</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Navigation size={12} className="text-white opacity-30" />
+            <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">SCROLL</span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,29 +1,73 @@
-import ScheduleView from '@/components/schedule/schedule-view';
-import lineup from '@/data/lineup.json';
-import type { LineupItem } from '@/types';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Schedule',
-  description: 'The full lineup and schedule for Sziget 2026. Plan your festival experience.',
-};
+import { useState, useMemo } from 'react';
+import ScheduleView from '@/components/schedule/schedule-view';
+import lineup2026 from '@/data/lineup.json';
+import lineup2025 from '@/data/lineup_2025.json';
+import { History, Calendar } from 'lucide-react';
+import { Box, Typography, Container, Button } from '@mui/material';
 
 export default function SchedulePage() {
-  const typedLineup: LineupItem[] = lineup as LineupItem[];
+  const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
+
+  const currentLineup = useMemo(() => {
+    return activeYear === '2026' ? (lineup2026 as any) : (lineup2025 as any);
+  }, [activeYear]);
 
   return (
-    <div className="flex h-full flex-col">
-      <header className="container sticky top-0 z-30 bg-background/95 py-4 backdrop-blur-sm md:top-16">
-        <h1 className="text-center font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Festival Schedule
-        </h1>
-        <p className="mt-2 text-center text-muted-foreground">
-          Tap the heart to favorite an artist. We'll warn you about any clashes!
-        </p>
-      </header>
-      <div className="flex-1">
-        <ScheduleView lineup={typedLineup} />
-      </div>
-    </div>
+    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: '#000' }}>
+      <Box sx={{ pt: 6, pb: 4, textAlign: 'center' }}>
+        <Container maxWidth="md">
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 900,
+              color: '#fff',
+              letterSpacing: '-0.05em',
+              mb: 3,
+              textTransform: 'uppercase',
+              fontSize: { xs: '2.5rem', md: '4rem' }
+            }}
+          >
+            LINEUP <span style={{ color: '#ff0080' }}>EXPLORER</span>
+          </Typography>
+
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
+            <Button
+              onClick={() => setActiveYear('2026')}
+              variant={activeYear === '2026' ? 'contained' : 'text'}
+              startIcon={<Calendar size={18} />}
+              sx={{
+                borderRadius: 2,
+                px: 3,
+                bgcolor: activeYear === '2026' ? 'primary.main' : 'transparent',
+                color: activeYear === '2026' ? '#fff' : 'rgba(255,255,255,0.4)',
+                '&:hover': { bgcolor: activeYear === '2026' ? 'primary.dark' : 'rgba(255,255,255,0.05)' }
+              }}
+            >
+              2026
+            </Button>
+            <Button
+              onClick={() => setActiveYear('2025')}
+              variant={activeYear === '2025' ? 'contained' : 'text'}
+              startIcon={<History size={18} />}
+              sx={{
+                borderRadius: 2,
+                px: 3,
+                bgcolor: activeYear === '2025' ? 'primary.main' : 'transparent',
+                color: activeYear === '2025' ? '#fff' : 'rgba(255,255,255,0.4)',
+                '&:hover': { bgcolor: activeYear === '2025' ? 'primary.dark' : 'rgba(255,255,255,0.05)' }
+              }}
+            >
+              2025
+            </Button>
+          </Box>
+        </Container>
+      </Box>
+
+      <Box sx={{ flex: 1 }}>
+        <ScheduleView key={activeYear} lineup={currentLineup} />
+      </Box>
+    </Box>
   );
 }

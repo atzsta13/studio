@@ -4,99 +4,201 @@
     "name": "Pizza Paradise",
     "category": "Food",
     "cuisine": "Italian",
-    "tags": ["pizza", "fast food", "vegetarian"],
+    "tags": [
+      "pizza",
+      "fast food",
+      "vegetarian"
+    ],
     "priceRange": "$$",
     "location": "Food Court A",
-    "description": "Authentic Italian pizza with fresh ingredients, including vegetarian options."
+    "description": "Authentic Italian pizza with fresh ingredients, including vegetarian options.",
+    "budgetOption": "Slice of Margherita",
+    "budgetPrice": "€6.50",
+    "mapCoords": {
+      "x": 45,
+      "y": 32
+    }
   },
   {
     "id": "fd2",
     "name": "Burger Barn",
     "category": "Food",
     "cuisine": "American",
-    "tags": ["burger", "fries", "fast food"],
+    "tags": [
+      "burger",
+      "fries",
+      "fast food"
+    ],
     "priceRange": "$$",
     "location": "Main Stage Left",
-    "description": "Classic beef and chicken burgers, with loaded fries."
+    "description": "Classic beef and chicken burgers, with loaded fries.",
+    "budgetOption": "Junior Chicken Burger",
+    "budgetPrice": "€7.90",
+    "mapCoords": {
+      "x": 28,
+      "y": 45
+    }
   },
   {
     "id": "fd3",
     "name": "Vegan Vibes",
     "category": "Food",
     "cuisine": "International",
-    "tags": ["vegan", "healthy", "salad", "gluten-free"],
+    "tags": [
+      "vegan",
+      "healthy",
+      "salad",
+      "gluten-free"
+    ],
     "priceRange": "$$$",
     "location": "Art Garden",
-    "description": "Delicious and creative plant-based dishes, from salads to hearty mains."
+    "description": "Delicious and creative plant-based dishes, from salads to hearty mains.",
+    "budgetOption": "Hummus & Pita Plate",
+    "budgetPrice": "€7.00",
+    "mapCoords": {
+      "x": 72,
+      "y": 18
+    }
   },
   {
     "id": "fd4",
     "name": "Taco Town",
     "category": "Food",
     "cuisine": "Mexican",
-    "tags": ["tacos", "burritos", "spicy"],
+    "tags": [
+      "tacos",
+      "burritos",
+      "spicy"
+    ],
     "priceRange": "$$",
     "location": "Food Court B",
-    "description": "Serving up tasty tacos and burritos with a variety of fillings."
+    "description": "Serving up tasty tacos and burritos with a variety of fillings.",
+    "budgetOption": "Single Soft Taco (Bean)",
+    "budgetPrice": "€5.50",
+    "mapCoords": {
+      "x": 58,
+      "y": 62
+    }
   },
   {
     "id": "fd5",
     "name": "The Hydration Station",
     "category": "Drink",
     "cuisine": "Beverages",
-    "tags": ["water", "soft drinks", "juice", "non-alcoholic"],
+    "tags": [
+      "water",
+      "soft drinks",
+      "juice",
+      "non-alcoholic"
+    ],
     "priceRange": "$",
     "location": "Near all major stages",
-    "description": "Stay hydrated! Official water and soft drink point."
+    "description": "Stay hydrated! Official water and soft drink point.",
+    "budgetOption": "Refillable Water Bottle",
+    "budgetPrice": "€4.00",
+    "mapCoords": {
+      "x": 50,
+      "y": 50
+    }
   },
   {
     "id": "fd6",
     "name": "Crafty Corner",
     "category": "Drink",
     "cuisine": "Beverages",
-    "tags": ["beer", "craft beer", "alcoholic"],
+    "tags": [
+      "beer",
+      "craft beer",
+      "alcoholic"
+    ],
     "priceRange": "$$$",
     "location": "Main Stage Right",
-    "description": "A selection of local and international craft beers."
+    "description": "A selection of local and international craft beers.",
+    "budgetOption": "Local Lager (0.4l)",
+    "budgetPrice": "€6.20",
+    "mapCoords": {
+      "x": 42,
+      "y": 48
+    }
   },
   {
     "id": "fd7",
     "name": "Wok & Roll",
     "category": "Food",
     "cuisine": "Asian",
-    "tags": ["noodles", "stir-fry", "asian"],
+    "tags": [
+      "noodles",
+      "stir-fry",
+      "asian"
+    ],
     "priceRange": "$$",
     "location": "Food Court A",
-    "description": "Quick and delicious noodle stir-fries made to order."
+    "description": "Quick and delicious noodle stir-fries made to order.",
+    "budgetOption": "Small Vegetable Wok",
+    "budgetPrice": "€7.50",
+    "mapCoords": {
+      "x": 46,
+      "y": 34
+    }
   },
   {
     "id": "fd8",
     "name": "Coffee Stop",
     "category": "Drink",
     "cuisine": "Beverages",
-    "tags": ["coffee", "tea", "hot drinks"],
+    "tags": [
+      "coffee",
+      "tea",
+      "hot drinks"
+    ],
     "priceRange": "$$",
     "location": "Entrance",
-    "description": "Get your caffeine fix with quality espresso, coffee, and tea."
+    "description": "Get your caffeine fix with quality espresso, coffee, and tea.",
+    "budgetOption": "Espresso Shot",
+    "budgetPrice": "€3.50",
+    "mapCoords": {
+      "x": 12,
+      "y": 88
+    }
   },
   {
     "id": "fd9",
     "name": "The Cocktail Bar",
     "category": "Drink",
     "cuisine": "Beverages",
-    "tags": ["cocktails", "spirits", "alcoholic"],
+    "tags": [
+      "cocktails",
+      "spirits",
+      "alcoholic"
+    ],
     "priceRange": "$$$",
     "location": "VIP Area",
-    "description": "Classic and signature cocktails mixed by expert bartenders."
+    "description": "Classic and signature cocktails mixed by expert bartenders.",
+    "budgetOption": "Shot of Unicum",
+    "budgetPrice": "€5.00",
+    "mapCoords": {
+      "x": 85,
+      "y": 15
+    }
   },
   {
     "id": "fd10",
     "name": "Gozleme Tent",
     "category": "Food",
     "cuisine": "Turkish",
-    "tags": ["gozleme", "pastry", "vegetarian"],
+    "tags": [
+      "gozleme",
+      "pastry",
+      "vegetarian"
+    ],
     "priceRange": "$",
     "location": "World Music Stage",
-    "description": "Traditional Turkish savory flatbreads with various fillings."
+    "description": "Traditional Turkish savory flatbreads with various fillings.",
+    "budgetOption": "Cheese Gozleme",
+    "budgetPrice": "€6.80",
+    "mapCoords": {
+      "x": 65,
+      "y": 78
+    }
   }
 ]

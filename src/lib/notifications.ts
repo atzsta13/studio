@@ -8,19 +8,10 @@ interface NotificationOptionsWithTrigger extends NotificationOptions {
   };
 }
 
-// Interface for artist data used in notifications
-interface Artist {
-    id: string;
-    name: string;
-    stage: string;
-    day: string;
-    start: string;
-}
+import { LineupItem } from '@/types';
 
 /**
  * Checks if the browser supports scheduled notifications.
- * This is a progressive enhancement, so it's fine if it's not supported everywhere.
- * @returns {boolean} True if supported, false otherwise.
  */
 export function areNotificationsSupported(): boolean {
   return typeof window !== 'undefined' && 'Notification' in window && 'serviceWorker' in navigator && 'showTrigger' in Notification.prototype;
@@ -28,7 +19,6 @@ export function areNotificationsSupported(): boolean {
 
 /**
  * Requests permission from the user to show notifications.
- * @returns {Promise<NotificationPermission>} The user's permission choice.
  */
 export async function requestNotificationPermission(): Promise<NotificationPermission> {
   const permission = await Notification.requestPermission();
@@ -37,26 +27,24 @@ export async function requestNotificationPermission(): Promise<NotificationPermi
 
 /**
  * Schedules a notification for a favorite artist.
- * @param {Artist} artist The artist object with schedule details.
+ * @param {LineupItem} arist The artist object with schedule details.
  */
-export async function scheduleNotification(artist: Artist) {
+export async function scheduleNotification(artist: LineupItem) {
   if (!areNotificationsSupported()) return;
 
   const registration = await navigator.serviceWorker.getRegistration();
   if (!registration) return;
 
-  // Check for permission, but don't ask for it here. We'll do that via UI.
   const permission = await navigator.permissions.query({ name: 'notifications' });
   if (permission.state !== 'granted') return;
 
-  const setTime = new Date(`${artist.day}T${artist.start}:00`).getTime();
+  const setTime = new Date(artist.startTime).getTime();
   const notificationTime = setTime - 15 * 60 * 1000; // 15 minutes before
 
-  // Don't schedule notifications for events in the past
   if (notificationTime < Date.now()) return;
 
   const options: NotificationOptionsWithTrigger = {
-    tag: `artist-${artist.id}`, // Unique ID for the notification
+    tag: `artist-${artist.id}`,
     body: `${artist.stage} - Starts in 15 minutes`,
     icon: '/icons/icon-192x192.png',
     badge: '/icons/icon-96x96.png',
@@ -65,7 +53,7 @@ export async function scheduleNotification(artist: Artist) {
     },
   };
 
-  await registration.showNotification(`${artist.name} is starting soon!`, options);
+  await registration.showNotification(`${artist.artist} is starting soon!`, options);
 }
 
 /**
@@ -73,17 +61,16 @@ export async function scheduleNotification(artist: Artist) {
  * @param {string} artistId The ID of the artist.
  */
 export async function cancelNotification(artistId: string) {
-    if (!areNotificationsSupported()) return;
+  if (!areNotificationsSupported()) return;
 
-    const registration = await navigator.serviceWorker.getRegistration();
-    if (!registration) return;
+  const registration = await navigator.serviceWorker.getRegistration();
+  if (!registration) return;
 
-    const notifications = await registration.getNotifications({
-        tag: `artist-${artistId}`,
-        includeTriggered: true, // Important: includes scheduled notifications
-    });
+  const notifications = await registration.getNotifications({
+    tag: `artist-${artistId}`,
+  });
 
-    notifications.forEach(notification => {
-        notification.close();
-    });
+  notifications.forEach(notification => {
+    notification.close();
+  });
 }

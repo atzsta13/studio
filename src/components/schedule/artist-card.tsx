@@ -1,7 +1,7 @@
-import type { LineupItem } from '@/types';
-import { Heart, Clock } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Box, Typography, IconButton } from '@mui/material';
+import { Heart } from 'lucide-react';
 import { format } from 'date-fns';
+import type { LineupItem } from '@/types';
 
 interface ArtistCardProps {
   artist: LineupItem;
@@ -11,65 +11,84 @@ interface ArtistCardProps {
 }
 
 export default function ArtistCard({ artist, isFavorite, isConflicting, onToggleFavorite }: ArtistCardProps) {
-  const startTime = format(new Date(artist.startTime), 'HH:mm');
-  const endTime = format(new Date(artist.endTime), 'HH:mm');
-  const duration = (new Date(artist.endTime).getTime() - new Date(artist.startTime).getTime()) / (1000 * 60);
+  const start = new Date(artist.startTime);
+  const startTime = format(start, 'HH:mm');
+  const duration = (new Date(artist.endTime).getTime() - start.getTime()) / (1000 * 60);
+
+  const isSmall = duration < 40;
 
   return (
-    <div
-      className={cn(
-        "group absolute inset-1 flex flex-col justify-between overflow-hidden rounded-md p-2 text-card-foreground shadow-lg transition-all duration-300",
-        isFavorite ? "bg-primary/90 text-primary-foreground" : "bg-card/80 backdrop-blur-sm",
-        isConflicting && "ring-4 ring-destructive/80",
-        duration < 45 && "justify-center",
-        "hover:scale-[1.02] hover:shadow-primary/20 hover:z-10"
-      )}
+    <Box
+      onClick={onToggleFavorite}
+      sx={{
+        position: 'absolute',
+        inset: '1px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: isSmall ? 'center' : 'space-between',
+        p: 1.5,
+        borderRadius: 0.5,
+        bgcolor: '#0a0a0a',
+        border: '1px solid rgba(255,255,255,0.05)',
+        borderLeft: isFavorite ? '3px solid #ff0080' : isConflicting ? '3px solid #ef4444' : '1px solid rgba(255,255,255,0.05)',
+        transition: 'all 0.1s ease',
+        cursor: 'pointer',
+        boxShadow: isFavorite ? '0 0 15px rgba(255,0,128,0.1)' : 'none',
+        '&:hover': {
+          bgcolor: '#111',
+          borderColor: 'rgba(255,255,255,0.2)',
+          zIndex: 50,
+        },
+      }}
     >
-      <div>
-        <div className="flex justify-between items-start">
-            <h3 className={cn(
-                "font-bold leading-tight pr-5",
-                duration < 40 && 'text-xs',
-                duration >= 40 && duration < 60 && 'text-sm',
-                duration >= 60 && 'text-base',
-            )}>
-                {artist.artist}
-            </h3>
-            <button
-                onClick={(e) => {
-                e.stopPropagation();
-                onToggleFavorite();
-                }}
-                className="absolute right-1.5 top-1.5 p-0.5 opacity-60 transition-opacity group-hover:opacity-100"
-                aria-label={`Favorite ${artist.artist}`}
-            >
-                <Heart className={cn("h-5 w-5 transition-all", isFavorite ? "fill-destructive text-destructive" : "fill-transparent text-current group-hover:text-destructive")} />
-            </button>
-        </div>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <Box sx={{ flex: 1, minWidth: 0 }}>
+          <Typography
+            sx={{
+              color: '#fff',
+              fontWeight: 900,
+              fontSize: isSmall ? '0.75rem' : '0.9rem',
+              lineHeight: 1,
+              letterSpacing: '-0.02em',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              textTransform: 'uppercase',
+            }}
+          >
+            {artist.artist}
+          </Typography>
+          <Typography
+            sx={{
+              color: 'rgba(255,255,255,0.4)',
+              fontSize: '0.65rem',
+              fontWeight: 700,
+              fontFamily: 'monospace',
+              mt: 0.5,
+            }}
+          >
+            {startTime}
+          </Typography>
+        </Box>
 
-        {duration >= 45 && (
-            <p className={cn(
-                "text-xs opacity-70 mt-1 flex items-center gap-1",
-                isFavorite && "opacity-100",
-            )}>
-              <Clock className="h-3 w-3"/>
-              {startTime} – {endTime}
-            </p>
+        {isFavorite && (
+          <Heart size={14} fill="#ff0080" color="#ff0080" style={{ marginTop: 2, marginLeft: 4 }} />
         )}
-      </div>
+      </Box>
 
-      {artist.genres && artist.genres.length > 0 && duration >= 60 && (
-        <div className="flex flex-wrap gap-1 mt-1.5">
-          {artist.genres.slice(0, 2).map((genre) => (
-            <span key={genre} className={cn(
-                "text-[9px] px-1.5 py-0.5 rounded-full uppercase font-medium",
-                isFavorite ? 'bg-primary-foreground/20' : 'bg-foreground/10'
-            )}>
-              {genre}
-            </span>
-          ))}
-        </div>
+      {!isSmall && artist.genres?.[0] && (
+        <Typography
+          sx={{
+            fontSize: '0.55rem',
+            fontWeight: 900,
+            color: isFavorite ? '#ff0080' : '#00f2ff',
+            letterSpacing: '0.1em',
+            mt: 'auto',
+          }}
+        >
+          {artist.genres[0].toUpperCase()}
+        </Typography>
       )}
-    </div>
+    </Box>
   );
 }
