@@ -58,5 +58,35 @@
             "x": 45,
             "y": 55
         }
+    },
+    {
+        "id": "p6",
+        "name": "Hygiene Center Center",
+        "type": "toilet",
+        "location": "Behind Main Stage",
+        "mapCoords": {
+            "x": 45,
+            "y": 55
+        }
+    },
+    {
+        "id": "p7",
+        "name": "Water Point East",
+        "type": "water",
+        "location": "Siesta Camping",
+        "mapCoords": {
+            "x": 75,
+            "y": 45
+        }
+    },
+    {
+        "id": "p8",
+        "name": "Quick Tap North",
+        "type": "water",
+        "location": "Near Circus",
+        "mapCoords": {
+            "x": 60,
+            "y": 20
+        }
     }
 ]

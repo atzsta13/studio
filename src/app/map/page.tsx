@@ -9,7 +9,9 @@ import {
   Navigation,
   Info,
   X,
-  History
+  History,
+  Tent,
+  Zap
 } from 'lucide-react';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
@@ -19,6 +21,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
+import TentFinder from '@/components/tools/tent-finder';
 
 // Helper to get unique stages with fixed coordinates
 const stagePositions: Record<string, { x: number; y: number }> = {
@@ -37,6 +40,8 @@ export default function MapPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util'>('all');
   const [selectedPin, setSelectedPin] = useState<any>(null);
+  const [showTools, setShowTools] = useState(false);
+  const [hydrationMode, setHydrationMode] = useState(false);
 
   const currentLineup = useMemo(() => {
     return activeYear === '2026' ? lineup2026 : lineup2025;
@@ -57,6 +62,7 @@ export default function MapPage() {
         ...coords,
         icon: Music,
         color: 'bg-primary',
+        subType: undefined,
         data: stageData
       };
     }).filter(Boolean);
@@ -65,6 +71,7 @@ export default function MapPage() {
       id: f.id,
       name: f.name,
       type: 'food',
+      subType: undefined,
       x: f.mapCoords.x,
       y: f.mapCoords.y,
       icon: Utensils,
@@ -76,6 +83,7 @@ export default function MapPage() {
       id: p.id,
       name: p.name,
       type: 'util',
+      subType: p.type,
       x: p.mapCoords.x,
       y: p.mapCoords.y,
       icon: p.type === 'water' ? Droplet : p.type === 'first-aid' ? Activity : Info,
@@ -86,14 +94,15 @@ export default function MapPage() {
     return [...musicPins, ...foodPins, ...utilPins];
   }, [currentLineup, activeYear]);
 
-  const filteredPins = allPins.filter(pin =>
-    activeCategory === 'all' || pin?.type === activeCategory
-  );
+  const filteredPins = allPins.filter(pin => {
+    if (hydrationMode) return pin?.subType === 'water';
+    return activeCategory === 'all' || pin?.type === activeCategory;
+  });
 
   return (
     <div className="relative flex h-[calc(100vh-64px)] w-full flex-col overflow-hidden bg-zinc-950">
       {/* Map Header Overlay */}
-      <div className="absolute left-4 right-4 top-4 z-20 flex flex-col gap-4 md:left-8 md:top-8 md:flex-row md:items-start md:justify-between">
+      <div className={`absolute left-4 right-4 top-4 z-20 flex flex-col gap-4 md:left-8 md:top-8 md:flex-row md:items-start md:justify-between transition-all duration-300 ${showTools || hydrationMode ? 'opacity-20 pointer-events-none' : 'opacity-100'}`}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <h1 className="text-2xl font-black uppercase tracking-tighter text-white md:text-3xl">
@@ -155,18 +164,71 @@ export default function MapPage() {
         </div>
       </div>
 
+      {/* Floating Survival FAB */}
+      <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
+        <Button
+          size="icon"
+          className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${hydrationMode ? 'bg-blue-500 border-blue-300 shadow-blue-500/50 animate-pulse' : 'bg-black/60 border-white/20 hover:bg-black/80'}`}
+          onClick={() => setHydrationMode(!hydrationMode)}
+        >
+          <Droplet className={`h-6 w-6 ${hydrationMode ? 'text-white' : 'text-blue-400'} `} />
+        </Button>
+        <Button
+          size="icon"
+          className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${showTools ? 'bg-emerald-600 border-emerald-400' : 'bg-black/60 border-white/20 hover:bg-black/80'}`}
+          onClick={() => { setShowTools(!showTools); setSelectedPin(null); }}
+        >
+          <Zap className={`h-6 w-6 ${showTools ? 'text-white' : 'text-yellow-400'} `} />
+        </Button>
+      </div>
+
+      {/* Tools Overlay */}
+      {showTools && (
+        <div className="absolute inset-0 z-40 bg-black/60 backdrop-blur-md flex items-center justify-center p-6 animate-in fade-in duration-200">
+          <div className="w-full max-w-md space-y-4">
+            <div className="flex justify-between items-center text-white mb-2">
+              <h2 className="text-2xl font-black uppercase italic">Survival Tools</h2>
+              <Button variant="ghost" size="icon" onClick={() => setShowTools(false)}>
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+
+            <TentFinder />
+
+            <Card className="p-4 bg-zinc-900 border-white/10 mt-4">
+              <div className="flex gap-4 items-center overflow-hidden">
+                <div className="p-3 bg-blue-500/20 rounded-xl text-blue-400">
+                  <Droplet size={24} />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white">Hydration Mode</h3>
+                  <p className="text-sm text-zinc-400">Hide all markers except free water taps.</p>
+                </div>
+                <Button
+                  variant={hydrationMode ? "default" : "outline"}
+                  className="ml-auto"
+                  onClick={() => { setHydrationMode(!hydrationMode); setShowTools(false); }}
+                >
+                  {hydrationMode ? 'On' : 'Off'}
+                </Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      )}
+
       {/* The Visual Map Area */}
       <div className="relative flex-1 cursor-grab active:cursor-grabbing">
         {/* Stylized Island SVG Background */}
-        <div className="absolute inset-0 flex items-center justify-center p-8 md:p-16">
-          <div className="relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] bg-zinc-900 shadow-2xl border border-white/5">
+        <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode ? 'scale-110' : ''}`}>
+          <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#1e3a8a_0%,transparent_70%)] opacity-30" />
 
             <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path
                 d="M20,10 Q50,0 80,15 T90,50 T70,90 T30,85 T10,50 Z"
-                fill="#18181b"
-                stroke="#27272a"
+                fill={hydrationMode ? "#0f172a" : "#18181b"}
+                stroke={hydrationMode ? "#1e40af" : "#27272a"}
                 strokeWidth="0.5"
               />
               <circle cx="25" cy="25" r="10" fill="#064e3b" opacity="0.3" />
@@ -176,21 +238,27 @@ export default function MapPage() {
             </svg>
 
             {/* Interactive Pins */}
-            {filteredPins.map((pin) => pin && (
-              <button
-                key={pin.id}
-                className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-full p-2 ring-4 ring-black/50 transition-all hover:scale-125 hover:z-20 ${pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}`}
-                style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-                onClick={() => setSelectedPin(pin)}
-              >
-                <pin.icon className="h-4 w-4 text-white" />
-              </button>
-            ))}
+            {filteredPins.map((pin) => {
+              if (!pin || !pin.icon) return null;
+              const Icon = pin.icon;
+              return (
+                <button
+                  key={pin.id}
+                  className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all hover:z-20 
+                      ${hydrationMode && pin.subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.8)]' : 'p-2 ring-4 ring-black/50 hover:scale-125'} 
+                      ${!hydrationMode && pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}`}
+                  style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
+                  onClick={() => setSelectedPin(pin)}
+                >
+                  <Icon className={`${hydrationMode ? 'h-8 w-8 text-white' : 'h-4 w-4 text-white'}`} />
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Selected Pin Details */}
-        {selectedPin && (
+        {selectedPin && !showTools && (
           <div className="absolute bottom-6 left-6 right-6 z-30 animate-in slide-in-from-bottom-10 lg:left-auto lg:right-10 lg:top-32 lg:bottom-auto lg:w-80">
             <Card className="overflow-hidden border-white/10 bg-zinc-900/90 shadow-2xl backdrop-blur-2xl">
               <div className="relative p-6">
@@ -202,7 +270,7 @@ export default function MapPage() {
                 </button>
 
                 <div className={`mb-4 inline-flex rounded-xl p-3 ${selectedPin.color}`}>
-                  <selectedPin.icon className="h-6 w-6 text-white" />
+                  {selectedPin.icon && <selectedPin.icon className="h-6 w-6 text-white" />}
                 </div>
 
                 <h3 className="text-xl font-black text-white">{selectedPin.name}</h3>
@@ -249,13 +317,23 @@ export default function MapPage() {
       </div>
 
       {/* Legend */}
-      <div className="absolute bottom-8 right-8 z-20 hidden flex-col gap-2 md:flex">
-        <div className="flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 backdrop-blur-md border border-white/5">
-          <span className="h-2 w-2 rounded-full bg-primary" /> Stages
-          <span className="ml-2 h-2 w-2 rounded-full bg-emerald-500" /> Stalls
-          <span className="ml-2 h-2 w-2 rounded-full bg-blue-500" /> Utility
+      {!hydrationMode && (
+        <div className="absolute bottom-8 right-8 z-20 hidden flex-col gap-2 md:flex">
+          <div className="flex items-center gap-2 rounded-full bg-black/60 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400 backdrop-blur-md border border-white/5">
+            <span className="h-2 w-2 rounded-full bg-primary" /> Stages
+            <span className="ml-2 h-2 w-2 rounded-full bg-emerald-500" /> Stalls
+            <span className="ml-2 h-2 w-2 rounded-full bg-blue-500" /> Utility
+          </div>
         </div>
-      </div>
+      )}
+
+      {hydrationMode && (
+        <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center animate-pulse pointer-events-none">
+          <div className="rounded-full bg-blue-600/90 px-6 py-2 text-sm font-black uppercase tracking-widest text-white shadow-[0_0_30px_rgba(59,130,246,0.6)] backdrop-blur-md border border-blue-400/50">
+            Hydration Mode Active
+          </div>
+        </div>
+      )}
     </div>
   );
 }
