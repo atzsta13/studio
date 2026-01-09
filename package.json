@@ -68,8 +68,9 @@
     "@types/node": "^25",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.23",
     "genkit-cli": "^1.27.0",
-    "postcss": "^8",
+    "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
     "typescript": "^5"
   }
