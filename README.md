@@ -14,19 +14,54 @@ This is your unofficial, offline-first companion app for the Sziget Festival 202
 
 ## 🚀 Getting Started
 
-To run the development server:
-
 ```bash
+npm install
 npm run dev
 ```
 
 Open [http://localhost:9002](http://localhost:9002) in your browser.
 
+## 🎪 Lineup Data Management
+
+When Sziget announces new artists:
+
+```bash
+npm run lineup:update
+```
+
+This scrapes the Sziget website, cleans the data, adds country codes, generates vibes, and shows a summary.
+
+**Full documentation:** [docs/LINEUP.md](docs/LINEUP.md)
+
+### Quick Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run lineup:update` | Full update pipeline (scrape → clean → vibes → show) |
+| `npm run lineup:scrape` | Scrape new artists from Sziget website |
+| `npm run lineup:clean` | Dedupe, fix encoding, add countries |
+| `npm run lineup:vibes` | Generate vibe tags |
+| `npm run lineup:show` | Display lineup summary |
+
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: Tailwind CSS / Shadcn UI
+- **Framework**: [Next.js](https://nextjs.org/) 16
+- **Styling**: Tailwind CSS 4 / Shadcn UI
 - **Icons**: Lucide React
-- **Data**: Local JSON & LocalStorage
-- **Scraping**: Node.js/Python scripts for lineup data
+- **Data**: Local JSON (`src/data/lineup.json`)
+- **Scraping**: Puppeteer (Node.js)
 
+## 📁 Project Structure
+
+```
+src/
+├── app/           # Next.js pages
+├── components/    # React components
+├── data/          # JSON data files
+│   └── lineup.json   # 🎯 Single source of truth for lineup
+├── scripts/       # Lineup management scripts
+│   ├── scrape_all_artists.js
+│   ├── clean_lineup.js
+│   └── show_lineup.js
+└── ...
+```

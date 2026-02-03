@@ -41,11 +41,14 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
     };
 
     const { days, stages, timeSlots } = useMemo(() => {
-        const sortedDays = [...new Set(lineup.map(item => item.day))].sort((a, b) =>
-            new Date(lineup.find(l => l.day === a)!.startTime).getTime() -
-            new Date(lineup.find(l => l.day === b)!.startTime).getTime()
+        // Filter out artists without schedule data (day/stage/times might be null for newly scraped artists)
+        const scheduledLineup = lineup.filter(item => item.day && item.stage && item.startTime && item.endTime);
+
+        const sortedDays = [...new Set(scheduledLineup.map(item => item.day))].sort((a, b) =>
+            new Date(scheduledLineup.find(l => l.day === a)!.startTime).getTime() -
+            new Date(scheduledLineup.find(l => l.day === b)!.startTime).getTime()
         );
-        const uniqueStages = [...new Set(lineup.map(item => item.stage))];
+        const uniqueStages = [...new Set(scheduledLineup.map(item => item.stage))];
         const slots = Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }, (_, i) => {
             const totalHour = MIN_TIME + Math.floor(i / 2);
             const displayHour = totalHour % 24;
