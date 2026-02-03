@@ -1,7 +1,10 @@
 /**
  * show_lineup.js
  * 
- * Displays a formatted summary of lineup.json grouped by day
+ * Displays a formatted summary of lineup.json grouped by:
+ * 1. Headliners (by day)
+ * 2. Other artists (by day)
+ * 3. Day TBD
  * 
  * Usage: node src/scripts/show_lineup.js
  */
@@ -14,21 +17,32 @@ const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
 function showLineup() {
     const data = require(LINEUP_FILE);
 
+    // Separate headliners and others
+    const headliners = data.filter(a => a.isHeadliner);
+    const others = data.filter(a => !a.isHeadliner);
+
     // Group by day
-    const byDay = new Map();
+    const headlinersByDay = new Map();
+    const othersByDay = new Map();
     const noDay = [];
 
-    data.forEach(a => {
+    headliners.forEach(a => {
         if (a.day) {
-            if (!byDay.has(a.day)) byDay.set(a.day, []);
-            byDay.get(a.day).push(a);
+            if (!headlinersByDay.has(a.day)) headlinersByDay.set(a.day, []);
+            headlinersByDay.get(a.day).push(a);
+        }
+    });
+
+    others.forEach(a => {
+        if (a.day) {
+            if (!othersByDay.has(a.day)) othersByDay.set(a.day, []);
+            othersByDay.get(a.day).push(a);
         } else {
             noDay.push(a);
         }
     });
 
     // Stats
-    const scheduled = data.filter(a => a.stage && a.startTime);
     const withDay = data.filter(a => a.day);
 
     console.log('');
@@ -37,51 +51,62 @@ function showLineup() {
     console.log('╚════════════════════════════════════════════════════════╝');
     console.log('');
     console.log(`  Total Artists:     ${data.length}`);
-    console.log(`  With Schedule:     ${scheduled.length} (stage + time)`);
-    console.log(`  With Day Only:     ${withDay.length - scheduled.length}`);
+    console.log(`  Headliners:        ${headliners.length}`);
+    console.log(`  With Day:          ${withDay.length}`);
     console.log(`  Day TBD:           ${noDay.length}`);
     console.log('');
-    console.log('  Legend: ⭐ = Full schedule | 🎵 = Day only | • = TBD');
+
+    // ===== HEADLINERS SECTION =====
+    console.log('╔════════════════════════════════════════════════════════╗');
+    console.log('║                    ⭐ HEADLINERS ⭐                     ║');
+    console.log('╚════════════════════════════════════════════════════════╝');
     console.log('');
 
-    // Show each day
     DAY_ORDER.forEach(day => {
-        const artists = byDay.get(day) || [];
+        const artists = headlinersByDay.get(day) || [];
         if (!artists.length) return;
 
-        const dayScheduled = artists.filter(a => a.stage && a.startTime);
-        const dayOnly = artists.filter(a => !a.stage || !a.startTime);
+        console.log(`  📅 ${day.toUpperCase()}`);
+        artists.sort((a, b) => a.artist.localeCompare(b.artist)).forEach(a => {
+            const flag = a.countryCode ? ` [${a.countryCode}]` : '';
+            console.log(`     🌟 ${a.artist}${flag}`);
+        });
+        console.log('');
+    });
+
+    // ===== OTHER ARTISTS SECTION =====
+    console.log('╔════════════════════════════════════════════════════════╗');
+    console.log('║                   🎵 LINEUP BY DAY                     ║');
+    console.log('╚════════════════════════════════════════════════════════╝');
+    console.log('');
+
+    DAY_ORDER.forEach(day => {
+        const artists = othersByDay.get(day) || [];
+        if (!artists.length) return;
 
         console.log('┌────────────────────────────────────────────────────────┐');
         console.log(`│  📅 ${day.toUpperCase().padEnd(50)} │`);
         console.log('├────────────────────────────────────────────────────────┤');
 
-        if (dayScheduled.length) {
-            dayScheduled.sort((a, b) => a.artist.localeCompare(b.artist)).forEach(a => {
-                const line = `⭐ ${a.artist} (${a.stage})`;
-                console.log(`│  ${line.substring(0, 54).padEnd(54)}│`);
-            });
-        }
-
-        if (dayOnly.length) {
-            if (dayScheduled.length) console.log('│' + '─'.repeat(56) + '│');
-            dayOnly.sort((a, b) => a.artist.localeCompare(b.artist)).forEach(a => {
-                const line = `🎵 ${a.artist}`;
-                console.log(`│  ${line.substring(0, 54).padEnd(54)}│`);
-            });
-        }
+        artists.sort((a, b) => a.artist.localeCompare(b.artist)).forEach(a => {
+            const flag = a.countryCode ? ` [${a.countryCode}]` : '';
+            const line = `🎵 ${a.artist}${flag}`;
+            console.log(`│  ${line.substring(0, 54).padEnd(54)}│`);
+        });
 
         console.log('└────────────────────────────────────────────────────────┘');
         console.log('');
     });
 
-    // Show TBD
+    // ===== DAY TBD SECTION =====
     if (noDay.length) {
         console.log('┌────────────────────────────────────────────────────────┐');
         console.log('│  ❓ DAY TBD                                            │');
         console.log('├────────────────────────────────────────────────────────┤');
         noDay.sort((a, b) => a.artist.localeCompare(b.artist)).forEach(a => {
-            console.log(`│  • ${a.artist.substring(0, 52).padEnd(52)}│`);
+            const flag = a.countryCode ? ` [${a.countryCode}]` : '';
+            const line = `• ${a.artist}${flag}`;
+            console.log(`│  ${line.substring(0, 54).padEnd(54)}│`);
         });
         console.log('└────────────────────────────────────────────────────────┘');
         console.log('');

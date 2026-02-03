@@ -110,6 +110,16 @@ const ARTIST_COUNTRIES = {
     'mehringer': 'AT',
 };
 
+// Main stage headliners - displayed prominently in the app
+const HEADLINERS = [
+    'bring me the horizon',
+    'florence + the machine',
+    'lewis capaldi',
+    'sombr',
+    'twenty one pilots',
+    'zara larsson',
+];
+
 function cleanLineup() {
     console.log('🧹 Cleaning lineup.json...\n');
 
@@ -218,8 +228,23 @@ function cleanLineup() {
     }
     console.log('');
 
-    // Step 5: Sort and reassign IDs
-    console.log('5️⃣  Sorting and reassigning IDs...');
+    // Step 5: Mark headliners
+    console.log('5️⃣  Marking headliners...');
+    let headlinerCount = 0;
+    merged.forEach(a => {
+        const key = a.artist.toLowerCase();
+        if (HEADLINERS.includes(key)) {
+            a.isHeadliner = true;
+            console.log(`   ⭐ ${a.artist}`);
+            headlinerCount++;
+        } else {
+            a.isHeadliner = false;
+        }
+    });
+    console.log(`   ✓ Marked ${headlinerCount} headliners\n`);
+
+    // Step 6: Sort and reassign IDs
+    console.log('6️⃣  Sorting and reassigning IDs...');
     merged.sort((a, b) => a.artist.localeCompare(b.artist));
     merged.forEach((a, i) => {
         a.id = String(i + 1);
