@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ChevronRight, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -51,6 +51,11 @@ export default function DiscoverPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const allArtists = useMemo(() => {
     return activeYear === '2026' ? allArtists2026 : allArtists2025;
@@ -127,141 +132,137 @@ export default function DiscoverPage() {
     const isHeadliner = artist.isHeadliner;
 
     return (
-      <Link
-        href={`/artist/${artist.id}`}
-        className={`group relative flex flex-col overflow-hidden rounded-2xl shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card ${isHeadliner
-          ? 'border-2 border-yellow-500 hover:shadow-yellow-500/30 hover:shadow-xl'
-          : 'border border-border/50 hover:border-primary/30 hover:shadow-primary/10 hover:shadow-xl'
+      <div
+        className={`group relative flex flex-col overflow-hidden rounded-2xl shadow-xl transition-all duration-300 bg-card border-2 ${isHeadliner
+          ? 'border-yellow-500/50 shadow-yellow-500/10'
+          : 'border-white/5 hover:border-primary/50'
           }`}
       >
-        {/* Image Container */}
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+        <Link href={`/artist/${artist.id}`} className="block relative aspect-[16/10] w-full overflow-hidden bg-muted">
           {artist.imageUrl ? (
             <img
               src={artist.imageUrl}
               alt={artist.artist}
-              className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-muted to-muted/50">
-              <Music className="h-12 w-12 text-muted-foreground/20" />
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
+              <Music className="h-16 w-16 text-white/10" />
             </div>
           )}
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
 
           {/* Day Badge */}
           {artist.day && (
-            <div className={`absolute top-2 right-2 rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider backdrop-blur-md ${isHeadliner
+            <div className={`absolute top-3 right-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-widest backdrop-blur-md ${isHeadliner
               ? 'bg-yellow-500 text-black border-yellow-400'
               : 'bg-black/60 text-white/90 border-white/10'}`}>
               {artist.day}
             </div>
           )}
 
-          {/* Headliner Badge - Explicit Visual Marker */}
+          {/* Headliner Badge */}
           {isHeadliner && (
-            <div className="absolute top-2 left-2 rounded-full bg-yellow-500 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-black shadow-lg">
-              Headliner
+            <div className="absolute top-3 left-3 rounded-full bg-yellow-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-black shadow-lg animate-pulse">
+              HEADLINER
             </div>
           )}
 
           {/* Bottom Content Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 p-3">
-            {/* Artist Name */}
-            <div className="flex items-center gap-1.5 mb-1.5">
-              <span className="text-lg" suppressHydrationWarning>{getFlagEmoji(artist.countryCode)}</span>
-              <h3 className={`font-bold text-sm leading-tight drop-shadow-lg line-clamp-1 ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <div className="flex items-center gap-2 mb-2">
+              {isMounted && <span className="text-xl" suppressHydrationWarning>{getFlagEmoji(artist.countryCode)}</span>}
+              <h3 className={`font-black text-lg leading-tight drop-shadow-2xl line-clamp-1 uppercase tracking-tighter ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
                 {artist.artist}
               </h3>
             </div>
 
-            {/* Genre Pills */}
-            <div className="flex flex-wrap gap-1">
-              {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
+            <div className="flex flex-wrap gap-1.5">
+              {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 3).map(genre => (
                 <span
                   key={genre}
-                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide border shadow-sm bg-white/20 backdrop-blur-sm text-white border-white/20"
+                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest border bg-white/10 backdrop-blur-md text-white/80 border-white/10"
                 >
                   {genre}
                 </span>
               ))}
             </div>
           </div>
-        </div>
+        </Link>
 
-        {/* Card Footer */}
-        <div className="flex items-center justify-between px-3 py-2 bg-card">
-          <div className="flex-1 min-w-0 flex items-center gap-2">
+        {/* Card Footer with VERY PROMINENT View Details Button */}
+        <div className="flex flex-col p-4 bg-zinc-900/50 backdrop-blur-sm gap-4">
+          <div className="min-h-[1.2rem]">
             {artist.vibes && artist.vibes.length > 0 && (
-              <p className="text-[10px] text-muted-foreground truncate">
-                {artist.vibes.slice(0, 2).join(' • ')}
+              <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest truncate">
+                {artist.vibes.slice(0, 3).join(' // ')}
               </p>
             )}
           </div>
-
-          <div className={`flex-shrink-0 ml-2 h-6 w-6 rounded-full flex items-center justify-center transition-all duration-300 ${isHeadliner
-            ? 'bg-yellow-500/20 group-hover:bg-yellow-500 group-hover:scale-110'
-            : 'bg-primary/10 group-hover:bg-primary group-hover:scale-110'
-            }`}>
-            <svg
-              className={`h-3 w-3 transition-colors ${isHeadliner ? 'text-yellow-500 group-hover:text-black' : 'text-primary group-hover:text-primary-foreground'}`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
+          
+          <Button 
+            asChild 
+            size="lg" 
+            variant="default"
+            className={`w-full font-black text-xs uppercase tracking-[0.2em] rounded-xl h-12 shadow-2xl transition-all duration-300 group-hover:scale-[1.02] active:scale-95 ${
+              isHeadliner 
+                ? "bg-yellow-500 hover:bg-yellow-400 text-black border-none" 
+                : "bg-primary hover:bg-primary/90 text-white border-none shadow-primary/20"
+            }`}
+          >
+            <Link href={`/artist/${artist.id}`}>
+              Explore Artist
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
-      </Link>
+      </div>
     );
   };
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
-      <header className="mb-10 text-center">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-          <Music className="h-7 w-7 text-primary" />
+      <header className="mb-12 text-center">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-[2.5rem] bg-primary/10 shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
+          <Music className="h-10 w-10 text-primary" />
         </div>
-        <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Music Finder
+        <h1 className="font-headline text-4xl font-black tracking-tighter text-foreground sm:text-6xl uppercase italic">
+          Music <span className="text-primary">Finder</span>
         </h1>
-        <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
-          Discover your next favorite artists by mood, genre, and vibe.
+        <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-muted-foreground leading-relaxed">
+          The ultimate scouting tool for the Island of Freedom.
         </p>
 
-        <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
-          <div className="inline-flex rounded-xl bg-muted/50 p-1 border border-border/50 shadow-inner">
+        <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-6">
+          <div className="inline-flex rounded-2xl bg-zinc-900/50 p-1.5 border border-white/5 shadow-2xl backdrop-blur-xl">
             <button
               onClick={() => setActiveYear('2026')}
-              className={`flex items-center gap-2 rounded-lg px-5 py-1.5 text-sm font-bold transition-all ${activeYear === '2026'
-                ? 'bg-primary text-primary-foreground shadow-lg'
-                : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-black tracking-widest transition-all ${activeYear === '2026'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                : 'text-zinc-500 hover:text-white'
                 }`}
             >
               2026
             </button>
             <button
               onClick={() => setActiveYear('2025')}
-              className={`flex items-center gap-2 rounded-lg px-5 py-1.5 text-sm font-bold transition-all ${activeYear === '2025'
-                ? 'bg-primary text-primary-foreground shadow-lg'
-                : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-black tracking-widest transition-all ${activeYear === '2025'
+                ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                : 'text-zinc-500 hover:text-white'
                 }`}
             >
-              <History className="h-3.5 w-3.5" />
+              <History className="h-4 w-4" />
               2025
             </button>
           </div>
 
           <div className="flex items-center relative z-10">
             <SpotifyConnect onMatchesFound={(ids) => {
-              console.log('DiscoverPage received matches:', ids);
               setSpotifyMatches(ids);
               setIsSpotifyConnected(true);
               if (ids.length > 0) {
-                console.log('Switching to spotify view mode');
                 setViewMode('spotify');
               }
             }} />
@@ -269,13 +270,13 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-3 bg-background/95 px-4 pb-4 pt-3 backdrop-blur-md md:top-16 border-b shadow-sm">
-        <div className="flex flex-col gap-3 sm:flex-row justify-between items-center">
+      <div className="sticky top-0 z-30 -mx-4 space-y-4 bg-background/95 px-4 pb-6 pt-4 backdrop-blur-md md:top-16 border-b border-white/5">
+        <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
           {/* View Mode Toggle */}
-          <div className="inline-flex rounded-lg bg-muted p-0.5 border shadow-sm">
+          <div className="inline-flex rounded-xl bg-zinc-900 p-1 border border-white/5 shadow-inner">
             <button
               onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'discover' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'discover' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <Sparkles className="h-3.5 w-3.5" />
@@ -283,7 +284,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('az')}
-              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'az' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'az' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <SortAsc className="h-3.5 w-3.5" />
@@ -291,7 +292,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'by-day' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <Calendar className="h-3.5 w-3.5" />
@@ -300,7 +301,7 @@ export default function DiscoverPage() {
             {isSpotifyConnected && (
               <button
                 onClick={() => setViewMode('spotify')}
-                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                   }`}
               >
                 <div className="h-3.5 w-3.5 flex items-center justify-center">
@@ -308,33 +309,33 @@ export default function DiscoverPage() {
                     <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
                   </svg>
                 </div>
-                Matches ({spotifyMatches.length})
+                Matches
               </button>
             )}
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-8 w-[140px] text-xs">
-                <SelectValue placeholder="Any Mood" />
+              <SelectTrigger className="h-10 w-full sm:w-[160px] text-xs font-bold uppercase tracking-widest bg-zinc-900 border-white/5 rounded-xl">
+                <SelectValue placeholder="ANY MOOD" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Any Mood</SelectItem>
+              <SelectContent className="bg-zinc-900 border-white/10">
+                <SelectItem value="all">ANY MOOD</SelectItem>
                 {allVibeSet.map(vibe => (
-                  <SelectItem key={vibe} value={vibe}>{vibe}</SelectItem>
+                  <SelectItem key={vibe} value={vibe}>{vibe.toUpperCase()}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
 
             <Select value={selectedGenre || 'all'} onValueChange={v => setSelectedGenre(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-8 w-[140px] text-xs">
-                <SelectValue placeholder="Any Genre" />
+              <SelectTrigger className="h-10 w-full sm:w-[160px] text-xs font-bold uppercase tracking-widest bg-zinc-900 border-white/5 rounded-xl">
+                <SelectValue placeholder="ANY GENRE" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Any Genre</SelectItem>
+              <SelectContent className="bg-zinc-900 border-white/10">
+                <SelectItem value="all">ANY GENRE</SelectItem>
                 {allGenres.map(genre => (
-                  <SelectItem key={genre} value={genre}>{genre}</SelectItem>
+                  <SelectItem key={genre} value={genre}>{genre.toUpperCase()}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -347,23 +348,19 @@ export default function DiscoverPage() {
                   setSelectedGenre(null);
                   setSelectedVibe(null);
                 }}
-                className="h-8 text-xs text-primary hover:text-primary/80"
+                className="h-10 text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary/10 rounded-xl"
               >
-                Clear filters
+                Clear all
               </Button>
             )}
-
-            <span className="ml-auto text-xs text-muted-foreground self-center">
-              {filteredArtists.length} artists
-            </span>
           </div>
         </div>
       </div>
 
       {/* Content based on view mode */}
-      {
-        viewMode === 'by-day' && (
-          <div className="mt-6 space-y-8">
+      <div className="mt-8">
+        {viewMode === 'by-day' && (
+          <div className="space-y-12">
             {DAY_ORDER.map(day => {
               const dayArtists = artistsByDay.grouped[day];
               if (!dayArtists || dayArtists.length === 0) return null;
@@ -373,16 +370,16 @@ export default function DiscoverPage() {
 
               return (
                 <section key={day}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <h2 className="text-xl font-bold text-foreground">{day}</h2>
-                    <div className="flex-1 h-px bg-border" />
-                    <span className="text-xs text-muted-foreground">{dayArtists.length} acts</span>
+                  <div className="flex items-center gap-4 mb-6">
+                    <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
+                    <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{dayArtists.length} acts</span>
                   </div>
 
                   {/* Headliners Row */}
                   {headliners.length > 0 && (
-                    <div className="mb-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="mb-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {headliners.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} />
                         ))}
@@ -392,7 +389,7 @@ export default function DiscoverPage() {
 
                   {/* Other Artists Grid */}
                   {others.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                       {others.map(artist => (
                         <ArtistCard key={artist.id} artist={artist} />
                       ))}
@@ -405,12 +402,12 @@ export default function DiscoverPage() {
             {/* No Day Yet */}
             {artistsByDay.noDay.length > 0 && (
               <section>
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-xl font-bold text-muted-foreground">Day TBD</h2>
-                  <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs text-muted-foreground">{artistsByDay.noDay.length} acts</span>
+                <div className="flex items-center gap-4 mb-6">
+                  <h2 className="text-3xl font-black italic uppercase tracking-tighter text-muted-foreground">Day TBD</h2>
+                  <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{artistsByDay.noDay.length} acts</span>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                   {artistsByDay.noDay.map(artist => (
                     <ArtistCard key={artist.id} artist={artist} />
                   ))}
@@ -418,118 +415,27 @@ export default function DiscoverPage() {
               </section>
             )}
           </div>
-        )
-      }
+        )}
 
-      {
-        viewMode === 'az' && (
-          <div className="mt-6">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-              {artistsAZ.map(artist => (
-                <ArtistCard key={artist.id} artist={artist} />
-              ))}
-            </div>
+        {viewMode === 'az' && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {artistsAZ.map(artist => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
           </div>
-        )
-      }
+        )}
 
-      {viewMode === 'spotify' && (
-        <div className="mt-6 space-y-10">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-[#1DB954] p-2 rounded-full text-white shadow-sm ring-2 ring-[#1DB954]/20">
-              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-              </svg>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-foreground">Your Sziget Match</h2>
-              <p className="text-sm text-muted-foreground">Based on your Spotify library</p>
-            </div>
-          </div>
-
-          {/* Logic for sorting */}
-          {(() => {
-            const getDayIndex = (day: string | null | undefined) => {
-              if (!day) return 999;
-              const idx = DAY_ORDER.indexOf(day);
-              return idx === -1 ? 999 : idx;
-            };
-
-            const sortedMatches = [...artistsSpotify].sort((a, b) => getDayIndex(a.day) - getDayIndex(b.day));
-            const headliners = sortedMatches.filter(a => a.isHeadliner);
-            const others = sortedMatches.filter(a => !a.isHeadliner);
-
-            if (sortedMatches.length === 0) {
-              return (
-                <div className="text-center py-16 bg-muted/20 rounded-2xl border border-dashed border-border mx-auto max-w-lg">
-                  <div className="mx-auto bg-muted rounded-full w-16 h-16 flex items-center justify-center mb-4">
-                    <Music className="h-8 w-8 text-muted-foreground/40" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">No matches found yet</h3>
-                  <p className="text-muted-foreground text-sm px-6">
-                    We couldn't find any Sziget artists in your top liked songs. Try adding more artists on Spotify or check back later!
-                  </p>
-                </div>
-              );
-            }
-
-            return (
-              <>
-                {/* Spotify Headliners */}
-                {headliners.length > 0 && (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Sparkles className="h-5 w-5 text-yellow-500" />
-                      <h3 className="text-xl font-bold text-foreground">Matched Headliners</h3>
-                      <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
-                      <span className="text-xs font-mono bg-yellow-500/10 text-yellow-600 px-2 py-0.5 rounded-full border border-yellow-500/20">
-                        {headliners.length}
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {headliners.map(artist => (
-                        <ArtistCard key={artist.id} artist={artist} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Spotify Others */}
-                {others.length > 0 && (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Music className="h-5 w-5 text-[#1DB954]" />
-                      <h3 className="text-xl font-bold text-foreground">Matched Artists</h3>
-                      <div className="flex-1 h-px bg-border" />
-                      <span className="text-xs font-mono bg-[#1DB954]/10 text-[#1DB954] px-2 py-0.5 rounded-full border border-[#1DB954]/20">
-                        {others.length}
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-                      {others.map(artist => (
-                        <ArtistCard key={artist.id} artist={artist} />
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </>
-            );
-          })()}
-        </div>
-      )}
-
-      {
-        viewMode === 'discover' && (
-          <div className="mt-6 space-y-8">
+        {viewMode === 'discover' && (
+          <div className="space-y-12">
             {/* Headliners Section */}
             {artistsDiscover.filter(a => a.isHeadliner).length > 0 && (
               <section>
-                <div className="flex items-center gap-3 mb-4">
-                  <Sparkles className="h-5 w-5 text-yellow-500" />
-                  <h2 className="text-xl font-bold text-foreground">Headliners</h2>
-                  <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
+                <div className="flex items-center gap-4 mb-6">
+                  <Sparkles className="h-6 w-6 text-yellow-500" />
+                  <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Headliners</h2>
+                  <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   {artistsDiscover.filter(a => a.isHeadliner).map(artist => (
                     <ArtistCard key={artist.id} artist={artist} />
                   ))}
@@ -539,45 +445,112 @@ export default function DiscoverPage() {
 
             {/* All Others */}
             <section>
-              <div className="flex items-center gap-3 mb-4">
-                <Music className="h-5 w-5 text-primary" />
-                <h2 className="text-xl font-bold text-foreground">Full Lineup</h2>
-                <div className="flex-1 h-px bg-border" />
+              <div className="flex items-center gap-4 mb-6">
+                <Music className="h-6 w-6 text-primary" />
+                <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Full Lineup</h2>
+                <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                 {artistsDiscover.filter(a => !a.isHeadliner).map(artist => (
                   <ArtistCard key={artist.id} artist={artist} />
                 ))}
               </div>
             </section>
           </div>
-        )
-      }
+        )}
+
+        {viewMode === 'spotify' && (
+          <div className="space-y-10">
+            <div className="flex items-center gap-4 mb-8 bg-[#1DB954]/5 p-6 rounded-[2rem] border border-[#1DB954]/20">
+              <div className="bg-[#1DB954] p-4 rounded-3xl text-white shadow-2xl shadow-[#1DB954]/40">
+                <svg viewBox="0 0 24 24" className="h-8 w-8 fill-current">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Your Sziget Match</h2>
+                <p className="text-sm font-bold text-[#1DB954] uppercase tracking-widest mt-1">Found {artistsSpotify.length} artists in your library</p>
+              </div>
+            </div>
+
+            {(() => {
+              const headliners = artistsSpotify.filter(a => a.isHeadliner);
+              const others = artistsSpotify.filter(a => !a.isHeadliner);
+
+              if (artistsSpotify.length === 0) {
+                return (
+                  <div className="text-center py-24 bg-zinc-900/30 rounded-[3rem] border-2 border-dashed border-white/5 mx-auto max-w-lg">
+                    <div className="mx-auto bg-zinc-800 rounded-full w-20 h-20 flex items-center justify-center mb-6">
+                      <Music className="h-10 w-10 text-white/20" />
+                    </div>
+                    <h3 className="text-2xl font-black uppercase italic text-white mb-3">No matches found</h3>
+                    <p className="text-zinc-500 font-medium px-8 leading-relaxed">
+                      We checked your top tracks but couldn't find any Sziget 2026 artists yet. Keep listening and sync again later!
+                    </p>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="space-y-12">
+                  {headliners.length > 0 && (
+                    <section>
+                      <div className="flex items-center gap-4 mb-6">
+                        <Sparkles className="h-6 w-6 text-yellow-500" />
+                        <h3 className="text-2xl font-black italic uppercase tracking-tighter text-foreground">Matched Headliners</h3>
+                        <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {headliners.map(artist => (
+                          <ArtistCard key={artist.id} artist={artist} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {others.length > 0 && (
+                    <section>
+                      <div className="flex items-center gap-4 mb-6">
+                        <Music className="h-6 w-6 text-[#1DB954]" />
+                        <h3 className="text-2xl font-black italic uppercase tracking-tighter text-foreground">Library Artists</h3>
+                        <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/30 to-transparent" />
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                        {others.map(artist => (
+                          <ArtistCard key={artist.id} artist={artist} />
+                        ))}
+                      </div>
+                    </section>
+                  )}
+                </div>
+              );
+            })()}
+          </div>
+        )}
+      </div>
 
       {/* Empty State */}
-      {
-        filteredArtists.length === 0 && (
-          <div className="py-24 text-center">
-            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
-              <Search className="h-10 w-10 text-muted-foreground/30" />
-            </div>
-            <h3 className="text-2xl font-bold text-foreground">No artists found</h3>
-            <p className="mt-2 text-muted-foreground">
-              Try adjusting your filters.
-            </p>
-            <Button
-              variant="outline"
-              className="mt-6"
-              onClick={() => {
-                setSelectedGenre(null);
-                setSelectedVibe(null);
-              }}
-            >
-              Reset all filters
-            </Button>
+      {filteredArtists.length === 0 && (
+        <div className="py-32 text-center bg-zinc-900/20 rounded-[3rem] border border-white/5">
+          <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-zinc-800">
+            <Search className="h-12 w-12 text-zinc-600" />
           </div>
-        )
-      }
-    </div >
+          <h3 className="text-3xl font-black uppercase italic text-foreground">Dead Silence</h3>
+          <p className="mt-4 text-zinc-500 font-medium">
+            Try loosening your filters to discover something new.
+          </p>
+          <Button
+            variant="outline"
+            className="mt-8 rounded-xl px-8 h-12 font-black uppercase tracking-widest border-white/10 hover:bg-white/5"
+            onClick={() => {
+              setSelectedGenre(null);
+              setSelectedVibe(null);
+            }}
+          >
+            Reset all filters
+          </Button>
+        </div>
+      )}
+    </div>
   );
 }
