@@ -17,11 +17,11 @@ import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight } from 
 
 const features = [
   {
-    title: 'Full Timetable',
-    description: 'Plan your festival day by day',
-    href: '/timetable',
-    icon: CalendarDays,
-    color: '#e6007e',
+    title: 'Discover Artists',
+    description: 'AI-powered lineup & matches',
+    href: '/discover',
+    icon: Wand2,
+    color: '#ffee00',
   },
   {
     title: 'Interactive Map',
@@ -31,18 +31,18 @@ const features = [
     color: '#00c3ff',
   },
   {
-    title: 'Discover Artists',
-    description: 'AI-powered recommendations',
-    href: '/discover',
-    icon: Wand2,
-    color: '#ffee00',
-  },
-  {
     title: 'Survival Guide',
     description: 'Essential tips and info',
     href: '/guide',
     icon: LifeBuoy,
     color: '#4ade80',
+  },
+  {
+    title: 'Full Timetable',
+    description: 'Coming soon...',
+    href: '/timetable',
+    icon: CalendarDays,
+    color: '#e6007e',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function Home() {
           </Typography>
 
           <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
-            <Link href="/timetable" style={{ textDecoration: 'none' }}>
+            <Link href="/discover" style={{ textDecoration: 'none' }}>
               <Button
                 variant="contained"
                 size="large"

@@ -8,7 +8,6 @@ import { Music, Search, History, Calendar, SortAsc, Sparkles } from 'lucide-reac
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
-
 import {
   Select,
   SelectContent,
@@ -49,7 +48,7 @@ export default function DiscoverPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('by-day');
+  const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
 
@@ -271,17 +270,16 @@ export default function DiscoverPage() {
       </header>
 
       <div className="sticky top-0 z-30 -mx-4 space-y-3 bg-background/95 px-4 pb-4 pt-3 backdrop-blur-md md:top-16 border-b shadow-sm">
-        {/* View Mode and Filters Row */}
         <div className="flex flex-col gap-3 sm:flex-row justify-between items-center">
           {/* View Mode Toggle */}
           <div className="inline-flex rounded-lg bg-muted p-0.5 border shadow-sm">
             <button
-              onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+              onClick={() => setViewMode('discover')}
+              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'discover' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
-              <Calendar className="h-3.5 w-3.5" />
-              By Day
+              <Sparkles className="h-3.5 w-3.5" />
+              Discover
             </button>
             <button
               onClick={() => setViewMode('az')}
@@ -292,12 +290,12 @@ export default function DiscoverPage() {
               A-Z
             </button>
             <button
-              onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'discover' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
+              onClick={() => setViewMode('by-day')}
+              className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
-              <Sparkles className="h-3.5 w-3.5" />
-              Discover
+              <Calendar className="h-3.5 w-3.5" />
+              By Day
             </button>
             {isSpotifyConnected && (
               <button
@@ -436,28 +434,87 @@ export default function DiscoverPage() {
       }
 
       {viewMode === 'spotify' && (
-        <div className="mt-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="bg-[#1DB954] p-2 rounded-full text-white shadow-sm">
-              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+        <div className="mt-6 space-y-10">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="bg-[#1DB954] p-2 rounded-full text-white shadow-sm ring-2 ring-[#1DB954]/20">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current">
                 <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
               </svg>
             </div>
-            <h2 className="text-xl font-bold text-foreground">Your Spotify Matches</h2>
-            <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/50 to-transparent" />
-            <span className="text-xs text-muted-foreground">{artistsSpotify.length} matched artists</span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-            {artistsSpotify.map(artist => (
-              <ArtistCard key={artist.id} artist={artist} />
-            ))}
-          </div>
-          {artistsSpotify.length === 0 && (
-            <div className="text-center py-10 bg-muted/20 rounded-xl border border-dashed border-border">
-              <p className="text-muted-foreground font-medium">No matches found in your first 1000 liked songs matching the lineup.</p>
-              <p className="text-xs text-muted-foreground mt-1">Try adding more artists on Spotify!</p>
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">Your Sziget Match</h2>
+              <p className="text-sm text-muted-foreground">Based on your Spotify library</p>
             </div>
-          )}
+          </div>
+
+          {/* Logic for sorting */}
+          {(() => {
+            const getDayIndex = (day: string | null | undefined) => {
+              if (!day) return 999;
+              const idx = DAY_ORDER.indexOf(day);
+              return idx === -1 ? 999 : idx;
+            };
+
+            const sortedMatches = [...artistsSpotify].sort((a, b) => getDayIndex(a.day) - getDayIndex(b.day));
+            const headliners = sortedMatches.filter(a => a.isHeadliner);
+            const others = sortedMatches.filter(a => !a.isHeadliner);
+
+            if (sortedMatches.length === 0) {
+              return (
+                <div className="text-center py-16 bg-muted/20 rounded-2xl border border-dashed border-border mx-auto max-w-lg">
+                  <div className="mx-auto bg-muted rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                    <Music className="h-8 w-8 text-muted-foreground/40" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">No matches found yet</h3>
+                  <p className="text-muted-foreground text-sm px-6">
+                    We couldn't find any Sziget artists in your top liked songs. Try adding more artists on Spotify or check back later!
+                  </p>
+                </div>
+              );
+            }
+
+            return (
+              <>
+                {/* Spotify Headliners */}
+                {headliners.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Sparkles className="h-5 w-5 text-yellow-500" />
+                      <h3 className="text-xl font-bold text-foreground">Matched Headliners</h3>
+                      <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
+                      <span className="text-xs font-mono bg-yellow-500/10 text-yellow-600 px-2 py-0.5 rounded-full border border-yellow-500/20">
+                        {headliners.length}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {headliners.map(artist => (
+                        <ArtistCard key={artist.id} artist={artist} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Spotify Others */}
+                {others.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <Music className="h-5 w-5 text-[#1DB954]" />
+                      <h3 className="text-xl font-bold text-foreground">Matched Artists</h3>
+                      <div className="flex-1 h-px bg-border" />
+                      <span className="text-xs font-mono bg-[#1DB954]/10 text-[#1DB954] px-2 py-0.5 rounded-full border border-[#1DB954]/20">
+                        {others.length}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                      {others.map(artist => (
+                        <ArtistCard key={artist.id} artist={artist} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </div>
       )}
 

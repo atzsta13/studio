@@ -1,13 +1,15 @@
-const CACHE_NAME = 'sziget-insider-cache-v1';
+const CACHE_NAME = 'sziget-insider-cache-v3';
 
-// --- Caching Logic (existing) ---
+// --- Lifecycle: Install ---
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
+// --- Lifecycle: Activate ---
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
+      // Clean up old caches
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName.startsWith('sziget-insider-cache-') && cacheName !== CACHE_NAME) {
@@ -15,18 +17,37 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });
 
+// --- Lifecycle: Fetch ---
 self.addEventListener('fetch', (event) => {
   const { request } = event;
+  const url = new URL(request.url);
 
+  // 1. SAFETY CHECK: Ignore non-HTTP/HTTPS schemes (like chrome-extension://)
+  if (!url.protocol.startsWith('http')) {
+    return;
+  }
+
+  // 2. SAFETY CHECK: Ignore non-GET requests (cannot cache POSTs)
+  if (request.method !== 'GET') {
+    return;
+  }
+
+  // 3. API CHECK: Don't cache API calls (keep data fresh)
+  if (url.pathname.startsWith('/api/')) {
+    return;
+  }
+
+  // 4. Navigation Requests (HTML) - Network First, fallback to Cache
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
         .then(response => {
-          if (response && response.status === 200) {
+          // If valid response, cache it
+          if (response && response.status === 200 && response.type === 'basic') {
             const responseToCache = response.clone();
             caches.open(CACHE_NAME).then(cache => {
               cache.put(request, responseToCache);
@@ -35,12 +56,14 @@ self.addEventListener('fetch', (event) => {
           return response;
         })
         .catch(() => {
+          // If offline, return cached page
           return caches.match(request);
         })
     );
     return;
   }
 
+  // 5. Asset Requests - Cache First, fallback to Network
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {
@@ -48,7 +71,8 @@ self.addEventListener('fetch', (event) => {
       }
 
       return fetch(request).then(networkResponse => {
-        if (networkResponse && networkResponse.status === 200) {
+        // Cache valid responses
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then(cache => {
             cache.put(request, responseToCache);
@@ -60,22 +84,22 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// --- Notification Click Handler ---
-
+// --- Notifications ---
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-
   event.waitUntil(
     clients.matchAll({ type: 'window', includeUncontrolled: true }).then(clientList => {
-      // If the app window is already open, focus it
       for (const client of clientList) {
-        const url = new URL(client.url);
-        if (url.origin === self.location.origin) {
-          return client.focus();
+        if (client.url && 'focus' in client) {
+          const clientUrl = new URL(client.url);
+          if (clientUrl.origin === self.location.origin) {
+            return client.focus();
+          }
         }
       }
-      // Otherwise, open a new window
-      return clients.openWindow(self.location.origin);
+      if (clients.openWindow) {
+        return clients.openWindow(self.location.origin);
+      }
     })
   );
 });

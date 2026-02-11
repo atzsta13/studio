@@ -8,8 +8,8 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
   { href: '/', label: 'Home', icon: 'home' },
-  { href: '/timetable', label: 'Timetable', icon: 'calendar-days' },
-  { href: '/packing-list', label: 'Packing List', icon: 'wand-2' },
-  { href: '/food', label: 'Food & Drink', icon: 'map' },
+  { href: '/discover', label: 'Artists', icon: 'wand-2' },
+  { href: '/map', label: 'Map', icon: 'map' },
   { href: '/guide', label: 'Guide', icon: 'life-buoy' },
+  { href: '/timetable', label: 'Timetable', icon: 'calendar-days' },
 ];
