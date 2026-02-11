@@ -77,6 +77,17 @@ When new artists are added, edit the `ARTIST_COUNTRIES` object in `clean_lineup.
 const ARTIST_COUNTRIES = {
     'new artist name': 'XX',  // ISO 2-letter code
     // ...
+    // ...
+};
+```
+
+**Overriding Incorrect Days:**
+To manually fix a schedule day (e.g. if extracted incorrectly), edit `MANUAL_DAYS` in `clean_lineup.js`:
+
+```javascript
+const MANUAL_DAYS = {
+    'bbno$': 'Saturday',
+    // ...
 };
 ```
 

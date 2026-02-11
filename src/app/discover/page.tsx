@@ -7,6 +7,7 @@ import lineup2025 from '@/data/lineup_2025.json';
 import { Music, Search, History, Calendar, SortAsc, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { SpotifyConnect } from '@/components/SpotifyConnect';
 
 import {
   Select,
@@ -42,13 +43,15 @@ const getFlagEmoji = (countryCode: string | undefined) => {
 
 const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-type ViewMode = 'discover' | 'by-day' | 'az';
+type ViewMode = 'discover' | 'by-day' | 'az' | 'spotify';
 
 export default function DiscoverPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('by-day');
+  const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
+  const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
 
   const allArtists = useMemo(() => {
     return activeYear === '2026' ? allArtists2026 : allArtists2025;
@@ -115,6 +118,11 @@ export default function DiscoverPage() {
     const others = filteredArtists.filter(a => !a.isHeadliner);
     return [...headliners, ...others.sort((a, b) => a.artist.localeCompare(b.artist))];
   }, [filteredArtists]);
+
+  // Spotify Matches
+  const artistsSpotify = useMemo(() => {
+    return filteredArtists.filter(a => spotifyMatches.includes(a.id));
+  }, [filteredArtists, spotifyMatches]);
 
   const ArtistCard = ({ artist }: { artist: typeof filteredArtists[0] }) => {
     const isHeadliner = artist.isHeadliner;
@@ -225,7 +233,7 @@ export default function DiscoverPage() {
           Discover your next favorite artists by mood, genre, and vibe.
         </p>
 
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex flex-col sm:flex-row justify-center items-center gap-4">
           <div className="inline-flex rounded-xl bg-muted/50 p-1 border border-border/50 shadow-inner">
             <button
               onClick={() => setActiveYear('2026')}
@@ -246,6 +254,18 @@ export default function DiscoverPage() {
               <History className="h-3.5 w-3.5" />
               2025
             </button>
+          </div>
+
+          <div className="flex items-center relative z-10">
+            <SpotifyConnect onMatchesFound={(ids) => {
+              console.log('DiscoverPage received matches:', ids);
+              setSpotifyMatches(ids);
+              setIsSpotifyConnected(true);
+              if (ids.length > 0) {
+                console.log('Switching to spotify view mode');
+                setViewMode('spotify');
+              }
+            }} />
           </div>
         </div>
       </header>
@@ -279,6 +299,20 @@ export default function DiscoverPage() {
               <Sparkles className="h-3.5 w-3.5" />
               Discover
             </button>
+            {isSpotifyConnected && (
+              <button
+                onClick={() => setViewMode('spotify')}
+                className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-sm' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+              >
+                <div className="h-3.5 w-3.5 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="h-3 w-3 fill-current">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                  </svg>
+                </div>
+                Matches ({spotifyMatches.length})
+              </button>
+            )}
           </div>
 
           {/* Filters */}
@@ -329,130 +363,164 @@ export default function DiscoverPage() {
       </div>
 
       {/* Content based on view mode */}
-      {viewMode === 'by-day' && (
-        <div className="mt-6 space-y-8">
-          {DAY_ORDER.map(day => {
-            const dayArtists = artistsByDay.grouped[day];
-            if (!dayArtists || dayArtists.length === 0) return null;
+      {
+        viewMode === 'by-day' && (
+          <div className="mt-6 space-y-8">
+            {DAY_ORDER.map(day => {
+              const dayArtists = artistsByDay.grouped[day];
+              if (!dayArtists || dayArtists.length === 0) return null;
 
-            const headliners = dayArtists.filter(a => a.isHeadliner);
-            const others = dayArtists.filter(a => !a.isHeadliner);
+              const headliners = dayArtists.filter(a => a.isHeadliner);
+              const others = dayArtists.filter(a => !a.isHeadliner);
 
-            return (
-              <section key={day}>
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-xl font-bold text-foreground">{day}</h2>
-                  <div className="flex-1 h-px bg-border" />
-                  <span className="text-xs text-muted-foreground">{dayArtists.length} acts</span>
-                </div>
+              return (
+                <section key={day}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h2 className="text-xl font-bold text-foreground">{day}</h2>
+                    <div className="flex-1 h-px bg-border" />
+                    <span className="text-xs text-muted-foreground">{dayArtists.length} acts</span>
+                  </div>
 
-                {/* Headliners Row */}
-                {headliners.length > 0 && (
-                  <div className="mb-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {headliners.map(artist => (
+                  {/* Headliners Row */}
+                  {headliners.length > 0 && (
+                    <div className="mb-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {headliners.map(artist => (
+                          <ArtistCard key={artist.id} artist={artist} />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Other Artists Grid */}
+                  {others.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                      {others.map(artist => (
                         <ArtistCard key={artist.id} artist={artist} />
                       ))}
                     </div>
-                  </div>
-                )}
+                  )}
+                </section>
+              );
+            })}
 
-                {/* Other Artists Grid */}
-                {others.length > 0 && (
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-                    {others.map(artist => (
-                      <ArtistCard key={artist.id} artist={artist} />
-                    ))}
-                  </div>
-                )}
+            {/* No Day Yet */}
+            {artistsByDay.noDay.length > 0 && (
+              <section>
+                <div className="flex items-center gap-3 mb-4">
+                  <h2 className="text-xl font-bold text-muted-foreground">Day TBD</h2>
+                  <div className="flex-1 h-px bg-border" />
+                  <span className="text-xs text-muted-foreground">{artistsByDay.noDay.length} acts</span>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                  {artistsByDay.noDay.map(artist => (
+                    <ArtistCard key={artist.id} artist={artist} />
+                  ))}
+                </div>
               </section>
-            );
-          })}
-
-          {/* No Day Yet */}
-          {artistsByDay.noDay.length > 0 && (
-            <section>
-              <div className="flex items-center gap-3 mb-4">
-                <h2 className="text-xl font-bold text-muted-foreground">Day TBD</h2>
-                <div className="flex-1 h-px bg-border" />
-                <span className="text-xs text-muted-foreground">{artistsByDay.noDay.length} acts</span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-                {artistsByDay.noDay.map(artist => (
-                  <ArtistCard key={artist.id} artist={artist} />
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
-      )}
-
-      {viewMode === 'az' && (
-        <div className="mt-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-            {artistsAZ.map(artist => (
-              <ArtistCard key={artist.id} artist={artist} />
-            ))}
+            )}
           </div>
-        </div>
-      )}
+        )
+      }
 
-      {viewMode === 'discover' && (
-        <div className="mt-6 space-y-8">
-          {/* Headliners Section */}
-          {artistsDiscover.filter(a => a.isHeadliner).length > 0 && (
-            <section>
-              <div className="flex items-center gap-3 mb-4">
-                <Sparkles className="h-5 w-5 text-yellow-500" />
-                <h2 className="text-xl font-bold text-foreground">Headliners</h2>
-                <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {artistsDiscover.filter(a => a.isHeadliner).map(artist => (
-                  <ArtistCard key={artist.id} artist={artist} />
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* All Others */}
-          <section>
-            <div className="flex items-center gap-3 mb-4">
-              <Music className="h-5 w-5 text-primary" />
-              <h2 className="text-xl font-bold text-foreground">Full Lineup</h2>
-              <div className="flex-1 h-px bg-border" />
-            </div>
+      {
+        viewMode === 'az' && (
+          <div className="mt-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
-              {artistsDiscover.filter(a => !a.isHeadliner).map(artist => (
+              {artistsAZ.map(artist => (
                 <ArtistCard key={artist.id} artist={artist} />
               ))}
             </div>
-          </section>
+          </div>
+        )
+      }
+
+      {viewMode === 'spotify' && (
+        <div className="mt-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-[#1DB954] p-2 rounded-full text-white shadow-sm">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+              </svg>
+            </div>
+            <h2 className="text-xl font-bold text-foreground">Your Spotify Matches</h2>
+            <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/50 to-transparent" />
+            <span className="text-xs text-muted-foreground">{artistsSpotify.length} matched artists</span>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+            {artistsSpotify.map(artist => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
+          </div>
+          {artistsSpotify.length === 0 && (
+            <div className="text-center py-10 bg-muted/20 rounded-xl border border-dashed border-border">
+              <p className="text-muted-foreground font-medium">No matches found in your first 1000 liked songs matching the lineup.</p>
+              <p className="text-xs text-muted-foreground mt-1">Try adding more artists on Spotify!</p>
+            </div>
+          )}
         </div>
       )}
 
-      {/* Empty State */}
-      {filteredArtists.length === 0 && (
-        <div className="py-24 text-center">
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
-            <Search className="h-10 w-10 text-muted-foreground/30" />
+      {
+        viewMode === 'discover' && (
+          <div className="mt-6 space-y-8">
+            {/* Headliners Section */}
+            {artistsDiscover.filter(a => a.isHeadliner).length > 0 && (
+              <section>
+                <div className="flex items-center gap-3 mb-4">
+                  <Sparkles className="h-5 w-5 text-yellow-500" />
+                  <h2 className="text-xl font-bold text-foreground">Headliners</h2>
+                  <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/50 to-transparent" />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {artistsDiscover.filter(a => a.isHeadliner).map(artist => (
+                    <ArtistCard key={artist.id} artist={artist} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* All Others */}
+            <section>
+              <div className="flex items-center gap-3 mb-4">
+                <Music className="h-5 w-5 text-primary" />
+                <h2 className="text-xl font-bold text-foreground">Full Lineup</h2>
+                <div className="flex-1 h-px bg-border" />
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3">
+                {artistsDiscover.filter(a => !a.isHeadliner).map(artist => (
+                  <ArtistCard key={artist.id} artist={artist} />
+                ))}
+              </div>
+            </section>
           </div>
-          <h3 className="text-2xl font-bold text-foreground">No artists found</h3>
-          <p className="mt-2 text-muted-foreground">
-            Try adjusting your filters.
-          </p>
-          <Button
-            variant="outline"
-            className="mt-6"
-            onClick={() => {
-              setSelectedGenre(null);
-              setSelectedVibe(null);
-            }}
-          >
-            Reset all filters
-          </Button>
-        </div>
-      )}
-    </div>
+        )
+      }
+
+      {/* Empty State */}
+      {
+        filteredArtists.length === 0 && (
+          <div className="py-24 text-center">
+            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
+              <Search className="h-10 w-10 text-muted-foreground/30" />
+            </div>
+            <h3 className="text-2xl font-bold text-foreground">No artists found</h3>
+            <p className="mt-2 text-muted-foreground">
+              Try adjusting your filters.
+            </p>
+            <Button
+              variant="outline"
+              className="mt-6"
+              onClick={() => {
+                setSelectedGenre(null);
+                setSelectedVibe(null);
+              }}
+            >
+              Reset all filters
+            </Button>
+          </div>
+        )
+      }
+    </div >
   );
 }
