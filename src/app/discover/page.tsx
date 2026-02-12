@@ -42,7 +42,7 @@ const getFlagEmoji = (countryCode: string | undefined) => {
 
 const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-type ViewMode = 'discover' | 'by-day' | 'by-country' | 'az' | 'spotify';
+type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify';
 
 export default function DiscoverPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
@@ -99,7 +99,6 @@ export default function DiscoverPage() {
       }
     });
 
-    // Sort each day: headliners first, then alphabetically
     Object.keys(grouped).forEach(day => {
       grouped[day].sort((a, b) => {
         if (a.isHeadliner && !b.isHeadliner) return -1;
@@ -167,7 +166,7 @@ export default function DiscoverPage() {
 
     return (
       <div
-        className={`group relative flex flex-col overflow-hidden rounded-3xl shadow-2xl transition-all duration-500 bg-zinc-900 border-2 ${isHeadliner
+        className={`group relative flex flex-col overflow-hidden rounded-[2.5rem] shadow-2xl transition-all duration-500 bg-zinc-900 border-2 ${isHeadliner
           ? 'border-yellow-500/50 shadow-yellow-500/20'
           : 'border-white/5 hover:border-primary/50'
           }`}
@@ -201,14 +200,14 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          <div className="absolute bottom-0 left-0 right-0 p-5">
+          <div className="absolute bottom-0 left-0 right-0 p-6">
             <div className="flex items-center gap-3 mb-2">
               {isMounted && (
                 <span className="text-2xl drop-shadow-lg" suppressHydrationWarning>
                   {getFlagEmoji(artist.countryCode)}
                 </span>
               )}
-              <h3 className={`font-black text-xl leading-tight drop-shadow-2xl line-clamp-1 uppercase tracking-tighter ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
+              <h3 className={`font-black text-2xl leading-tight drop-shadow-2xl line-clamp-1 uppercase tracking-tighter ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
                 {artist.artist}
               </h3>
             </div>
@@ -226,7 +225,7 @@ export default function DiscoverPage() {
           </div>
         </Link>
 
-        <div className="flex flex-col p-5 bg-zinc-950/80 backdrop-blur-md gap-5 border-t border-white/5">
+        <div className="flex flex-col p-6 bg-zinc-950/80 backdrop-blur-md gap-6 border-t border-white/5">
           <div className="min-h-[1.2rem]">
             {artist.vibes && artist.vibes.length > 0 && (
               <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] truncate">
@@ -239,15 +238,15 @@ export default function DiscoverPage() {
             asChild 
             size="lg" 
             variant="default"
-            className={`w-full font-black text-xs uppercase tracking-[0.25em] rounded-2xl h-14 shadow-2xl transition-all duration-300 group-hover:scale-[1.03] active:scale-95 border-none ${
+            className={`w-full font-black text-sm uppercase tracking-[0.25em] rounded-2xl h-16 shadow-2xl transition-all duration-300 group-hover:scale-[1.03] active:scale-95 border-none ${
               isHeadliner 
                 ? "bg-yellow-500 hover:bg-yellow-400 text-black shadow-yellow-500/20" 
                 : "bg-primary hover:bg-primary/90 text-white shadow-primary/30"
             }`}
           >
             <Link href={`/artist/${artist.id}`}>
-              View Artist Details
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1.5" />
+              Explore Artist
+              <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
             </Link>
           </Button>
         </div>
@@ -261,10 +260,10 @@ export default function DiscoverPage() {
         <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-[3rem] bg-primary/10 shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
           <Music className="h-12 w-12 text-primary" />
         </div>
-        <h1 className="font-headline text-5xl font-black tracking-tighter text-foreground sm:text-7xl uppercase italic">
+        <h1 className="font-headline text-5xl font-black tracking-tighter text-white sm:text-7xl uppercase italic">
           Music <span className="text-primary">Finder</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed">
+        <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-zinc-400 leading-relaxed">
           The ultimate scouting tool for the Island of Freedom. Find your new favorite obsession.
         </p>
 
@@ -409,9 +408,9 @@ export default function DiscoverPage() {
               return (
                 <section key={day}>
                   <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
+                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">{day}</h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{dayArtists.length} acts</span>
+                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{dayArtists.length} acts</span>
                   </div>
 
                   {headliners.length > 0 && (
@@ -438,9 +437,9 @@ export default function DiscoverPage() {
             {artistsByDay.noDay.length > 0 && (
               <section>
                 <div className="flex items-center gap-6 mb-10">
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-muted-foreground">Day TBD</h2>
+                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-zinc-500">Day TBD</h2>
                   <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                  <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
+                  <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                   {artistsByDay.noDay.map(artist => (
@@ -461,7 +460,7 @@ export default function DiscoverPage() {
               return (
                 <section key={country}>
                   <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-4">
+                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white flex items-center gap-4">
                       {isMounted && (
                         <span className="drop-shadow-lg" suppressHydrationWarning>
                           {getFlagEmoji(firstArtist.countryCode)}
@@ -470,7 +469,7 @@ export default function DiscoverPage() {
                       {country}
                     </h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
+                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -498,7 +497,7 @@ export default function DiscoverPage() {
               <section>
                 <div className="flex items-center gap-6 mb-10">
                   <Sparkles className="h-8 w-8 text-yellow-500" />
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Headliners</h2>
+                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Headliners</h2>
                   <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -512,7 +511,7 @@ export default function DiscoverPage() {
             <section>
               <div className="flex items-center gap-6 mb-10">
                 <Music className="h-8 w-8 text-primary" />
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Full Lineup</h2>
+                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Full Lineup</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -533,7 +532,7 @@ export default function DiscoverPage() {
                 </svg>
               </div>
               <div>
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Your Sziget Match</h2>
+                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Your Sziget Match</h2>
                 <p className="text-sm font-black text-[#1DB954] uppercase tracking-[0.3em] mt-2">Found {artistsSpotify.length} artists in your library</p>
               </div>
             </div>
@@ -562,7 +561,7 @@ export default function DiscoverPage() {
                     <section>
                       <div className="flex items-center gap-6 mb-10">
                         <Sparkles className="h-8 w-8 text-yellow-500" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Matched Headliners</h3>
+                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Matched Headliners</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -577,7 +576,7 @@ export default function DiscoverPage() {
                     <section>
                       <div className="flex items-center gap-6 mb-10">
                         <Music className="h-8 w-8 text-[#1DB954]" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Library Artists</h3>
+                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Library Artists</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/30 to-transparent" />
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -599,7 +598,7 @@ export default function DiscoverPage() {
           <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-zinc-800 shadow-inner">
             <Search className="h-16 w-16 text-zinc-600" />
           </div>
-          <h3 className="text-4xl font-black uppercase italic text-foreground">Dead Silence</h3>
+          <h3 className="text-4xl font-black uppercase italic text-white">Dead Silence</h3>
           <p className="mt-6 text-zinc-500 text-lg font-medium">
             Try loosening your filters to discover something new on the island.
           </p>
