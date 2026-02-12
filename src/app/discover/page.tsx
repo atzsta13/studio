@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ChevronRight, ArrowRight } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ChevronRight, ArrowRight, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -42,7 +42,7 @@ const getFlagEmoji = (countryCode: string | undefined) => {
 
 const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-type ViewMode = 'discover' | 'by-day' | 'az' | 'spotify';
+type ViewMode = 'discover' | 'by-day' | 'by-country' | 'az' | 'spotify';
 
 export default function DiscoverPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
@@ -109,6 +109,41 @@ export default function DiscoverPage() {
     });
 
     return { grouped, noDay: noDay.sort((a, b) => a.artist.localeCompare(b.artist)) };
+  }, [filteredArtists]);
+
+  // Group by country
+  const artistsByCountry = useMemo(() => {
+    const grouped: Record<string, typeof filteredArtists> = {};
+    // Use Intl to get proper country names from codes
+    const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
+
+    filteredArtists.forEach(a => {
+      let countryName = 'International';
+      if (a.countryCode && a.countryCode !== 'Unknown') {
+        try {
+          const code = a.countryCode.toUpperCase() === 'UK' ? 'GB' : a.countryCode.toUpperCase();
+          countryName = regionNames.of(code) || countryName;
+        } catch (e) {
+          countryName = a.countryCode;
+        }
+      }
+
+      if (!grouped[countryName]) grouped[countryName] = [];
+      grouped[countryName].push(a);
+    });
+
+    // Sort each country alphabetically
+    Object.keys(grouped).forEach(country => {
+      grouped[country].sort((a, b) => a.artist.localeCompare(b.artist));
+    });
+
+    const sortedCountryNames = Object.keys(grouped).sort((a, b) => {
+      if (a === 'International') return 1;
+      if (b === 'International') return -1;
+      return a.localeCompare(b);
+    });
+
+    return { grouped, sortedCountryNames };
   }, [filteredArtists]);
 
   // A-Z sorted
@@ -271,9 +306,9 @@ export default function DiscoverPage() {
       </header>
 
       <div className="sticky top-0 z-30 -mx-4 space-y-4 bg-background/95 px-4 pb-6 pt-4 backdrop-blur-md md:top-16 border-b border-white/5">
-        <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
+        <div className="flex flex-col gap-4 sm:flex-row justify-between items-center overflow-x-auto no-scrollbar">
           {/* View Mode Toggle */}
-          <div className="inline-flex rounded-xl bg-zinc-900 p-1 border border-white/5 shadow-inner">
+          <div className="inline-flex rounded-xl bg-zinc-900 p-1 border border-white/5 shadow-inner shrink-0">
             <button
               onClick={() => setViewMode('discover')}
               className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'discover' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
@@ -298,6 +333,14 @@ export default function DiscoverPage() {
               <Calendar className="h-3.5 w-3.5" />
               By Day
             </button>
+            <button
+              onClick={() => setViewMode('by-country')}
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'by-country' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+                }`}
+            >
+              <Globe className="h-3.5 w-3.5" />
+              Country
+            </button>
             {isSpotifyConnected && (
               <button
                 onClick={() => setViewMode('spotify')}
@@ -315,7 +358,7 @@ export default function DiscoverPage() {
           </div>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+          <div className="flex flex-wrap gap-3 w-full sm:w-auto shrink-0">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
               <SelectTrigger className="h-10 w-full sm:w-[160px] text-xs font-bold uppercase tracking-widest bg-zinc-900 border-white/5 rounded-xl">
                 <SelectValue placeholder="ANY MOOD" />
@@ -414,6 +457,34 @@ export default function DiscoverPage() {
                 </div>
               </section>
             )}
+          </div>
+        )}
+
+        {viewMode === 'by-country' && (
+          <div className="space-y-12">
+            {artistsByCountry.sortedCountryNames.map(country => {
+              const countryArtists = artistsByCountry.grouped[country];
+              const flag = getFlagEmoji(countryArtists[0].countryCode);
+
+              return (
+                <section key={country}>
+                  <div className="flex items-center gap-4 mb-6">
+                    <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-3">
+                      <span suppressHydrationWarning>{flag}</span>
+                      {country}
+                    </h2>
+                    <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
+                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{countryArtists.length} acts</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                    {countryArtists.map(artist => (
+                      <ArtistCard key={artist.id} artist={artist} />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         )}
 
