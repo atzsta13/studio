@@ -1,6 +1,6 @@
 # Sziget Insider 2026
 
-This is your unofficial, offline-first companion app for the Sziget Festival 2026. Built with Next.js and designed for the best festival experience.
+This is your unofficial, offline-first companion app for the Sziget Festival 2026. Built with Next.js 15 and designed for the best festival experience.
 
 ## ✨ Features
 
@@ -45,8 +45,8 @@ This scrapes the Sziget website, cleans the data, adds country codes, generates 
 
 ## 🛠 Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) 16
-- **Styling**: Tailwind CSS 4 / Shadcn UI
+- **Framework**: [Next.js](https://nextjs.org/) 15.2
+- **Styling**: Tailwind CSS 4.0 / Shadcn UI / MUI 6
 - **Icons**: Lucide React
 - **Data**: Local JSON (`src/data/lineup.json`)
 - **Scraping**: Puppeteer (Node.js)
