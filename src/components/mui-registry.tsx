@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ReactNode, useMemo } from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
+// Define theme options outside the component to ensure stability
 const themeOptions = {
     palette: {
         mode: 'dark' as const,
