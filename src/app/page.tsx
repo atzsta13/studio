@@ -13,36 +13,36 @@ import {
   Button,
   Grid
 } from '@mui/material';
-import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight } from 'lucide-react';
+import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight, Sparkles } from 'lucide-react';
 
 const features = [
   {
     title: 'Discover Artists',
-    description: 'AI-powered lineup & matches',
+    description: 'Lineup scouting & international acts',
     href: '/discover',
     icon: Wand2,
-    color: '#ffee00',
+    color: '#ffee00', // Sziget Yellow
   },
   {
     title: 'Interactive Map',
-    description: 'Find your way around the island',
+    description: 'Navigate the island & find utilities',
     href: '/map',
     icon: Map,
-    color: '#00c3ff',
+    color: '#00c3ff', // Sziget Cyan
   },
   {
     title: 'Survival Guide',
-    description: 'Essential tips and info',
+    description: 'Essential tips for the island life',
     href: '/guide',
     icon: LifeBuoy,
-    color: '#4ade80',
+    color: '#4ade80', // Sziget Green
   },
   {
     title: 'Full Timetable',
-    description: 'Coming soon...',
+    description: 'Plan your day & avoid clashes',
     href: '/timetable',
     icon: CalendarDays,
-    color: '#e6007e',
+    color: '#e6007e', // Sziget Pink
   },
 ];
 
@@ -53,54 +53,75 @@ export default function Home() {
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', pb: 12 }}>
       {/* Hero Section */}
       <Box sx={{
-        pt: { xs: 8, md: 12 },
-        pb: { xs: 6, md: 8 },
+        pt: { xs: 10, md: 16 },
+        pb: { xs: 8, md: 12 },
         textAlign: 'center',
-        background: 'radial-gradient(circle at 50% -20%, rgba(230,0,126,0.15) 0%, transparent 50%)'
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'radial-gradient(circle at 50% -20%, rgba(230,0,126,0.2) 0%, transparent 60%)'
       }}>
-        <Container maxWidth="md">
+        {/* Animated Background Element */}
+        <Box sx={{
+          position: 'absolute',
+          top: -100,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+          height: '100%',
+          opacity: 0.05,
+          pointerEvents: 'none',
+          zIndex: 0,
+          background: 'repeating-linear-gradient(45deg, #fff, #fff 10px, transparent 10px, transparent 20px)'
+        }} />
+
+        <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <Avatar
             sx={{
-              width: 80,
-              height: 80,
+              width: 96,
+              height: 96,
               bgcolor: 'rgba(230,0,126,0.1)',
               mx: 'auto',
-              mb: 3,
-              border: '1px solid rgba(230,0,126,0.2)'
+              mb: 4,
+              border: '2px solid rgba(230,0,126,0.3)',
+              boxShadow: '0 0 40px rgba(230,0,126,0.2)'
             }}
           >
-            <Music size={40} color="#e6007e" />
+            <Music size={48} color="#e6007e" />
           </Avatar>
 
           <Typography
-            variant="h2"
-            component="h1"
+            variant="h1"
             sx={{
               fontWeight: 900,
               color: 'text.primary',
               mb: 2,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1
+              letterSpacing: '-0.04em',
+              lineHeight: 1,
+              fontSize: { xs: '3.5rem', md: '5rem' },
+              textTransform: 'uppercase',
+              fontStyle: 'italic'
             }}
           >
-            Sziget <span style={{ color: '#e6007e' }}>Insider</span> 2026
+            Sziget <span style={{ color: '#e6007e' }}>Insider</span>
           </Typography>
 
           <Typography
-            variant="h6"
+            variant="h5"
             sx={{
               color: 'text.secondary',
-              mb: 4,
+              mb: 6,
               fontWeight: 500,
-              maxWidth: 600,
+              maxWidth: 650,
               mx: 'auto',
-              lineHeight: 1.6
+              lineHeight: 1.6,
+              fontSize: { xs: '1.1rem', md: '1.25rem' }
             }}
           >
-            The unofficial offline-first companion for the <span style={{ borderBottom: '2px solid #ffee00', paddingBottom: 2 }}>Island of Freedom</span>. All features work deep in the crowd without a signal.
+            Your unofficial, offline-first companion for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
+            Built to work deep in the crowd, no signal required.
           </Typography>
 
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/discover" style={{ textDecoration: 'none' }}>
               <Button
                 variant="contained"
@@ -108,58 +129,84 @@ export default function Home() {
                 disableElevation
                 endIcon={<ArrowRight size={20} />}
                 sx={{
-                  height: 56,
-                  px: 4,
-                  fontSize: '1rem',
-                  boxShadow: '0 8px 16px rgba(230,0,126,0.2)'
+                  height: 64,
+                  px: 6,
+                  fontSize: '1.1rem',
+                  borderRadius: 4,
+                  boxShadow: '0 12px 24px rgba(230,0,126,0.3)',
+                  background: 'linear-gradient(45deg, #e6007e, #ff0080)',
+                  '&:hover': {
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 16px 32px rgba(230,0,126,0.4)',
+                  }
                 }}
               >
-                Start Exploring
+                Start Scouting
               </Button>
             </Link>
           </Box>
         </Container>
       </Box>
 
-      {/* Feature Grid - M3 Cards */}
+      {/* Feature Grid Section */}
       <Container maxWidth="lg">
-        <Grid container spacing={3}>
+        <Box sx={{ mb: 6, textAlign: { xs: 'center', md: 'left' } }}>
+          <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.2em' }}>
+            The Survival Toolkit
+          </Typography>
+          <Typography variant="h4" sx={{ fontWeight: 900, mt: 1, textTransform: 'uppercase', letterSpacing: '-0.02em' }}>
+            Experience the Island
+          </Typography>
+        </Box>
+
+        <Grid container spacing={4}>
           {features.map((feature, index) => (
-            <Grid key={feature.title} size={{ xs: 12, sm: 6, md: 3 }}>
+            <Grid key={feature.title} item xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: '100%',
-                  transition: 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  bgcolor: 'background.paper',
+                  backgroundImage: 'none',
+                  borderRadius: 6,
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  overflow: 'hidden',
                   '&:hover': {
-                    transform: 'translateY(-8px)',
+                    transform: 'translateY(-12px)',
                     borderColor: feature.color,
+                    boxShadow: `0 20px 40px -10px ${feature.color}20`,
+                    '& .icon-box': {
+                      transform: 'scale(1.1) rotate(5deg)',
+                      bgcolor: `${feature.color}30`,
+                    }
                   }
                 }}
-                variant="outlined"
               >
                 <Link href={feature.href} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <CardActionArea sx={{ height: '100%', p: 1 }}>
-                    <CardContent sx={{ textAlign: 'center', py: 4 }}>
+                    <CardContent sx={{ textAlign: 'center', py: 5, px: 3 }}>
                       <Box
+                        className="icon-box"
                         sx={{
-                          width: 56,
-                          height: 56,
-                          borderRadius: 4,
+                          width: 72,
+                          height: 72,
+                          borderRadius: 5,
                           bgcolor: `${feature.color}15`,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           mx: 'auto',
-                          mb: 3,
-                          color: feature.color
+                          mb: 4,
+                          color: feature.color,
+                          transition: 'all 0.3s ease'
                         }}
                       >
-                        <feature.icon size={28} />
+                        <feature.icon size={36} />
                       </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, letterSpacing: '-0.01em' }}>
+                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, letterSpacing: '-0.01em', textTransform: 'uppercase' }}>
                         {feature.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500, lineHeight: 1.5 }}>
                         {feature.description}
                       </Typography>
                     </CardContent>
@@ -169,6 +216,42 @@ export default function Home() {
             </Grid>
           ))}
         </Grid>
+
+        {/* Bottom Banner */}
+        <Box sx={{ 
+          mt: 12, 
+          p: 4, 
+          borderRadius: 8, 
+          bgcolor: 'rgba(255,255,255,0.02)', 
+          border: '1px dashed rgba(255,255,255,0.1)',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          alignItems: 'center',
+          gap: 4,
+          textAlign: { xs: 'center', md: 'left' }
+        }}>
+          <Box sx={{ 
+            p: 2, 
+            borderRadius: '50%', 
+            bgcolor: 'rgba(255,238,0,0.1)', 
+            color: '#ffee00' 
+          }}>
+            <Sparkles size={32} />
+          </Box>
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#fff' }}>
+              Official Lineup Updated
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
+              The 2026 artist roster is live! We've just synced the latest batch of headliners and international scouting reports.
+            </Typography>
+          </Box>
+          <Link href="/discover" style={{ textDecoration: 'none' }}>
+            <Button variant="outlined" sx={{ borderRadius: 3, px: 4, borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+              View All 80+ Acts
+            </Button>
+          </Link>
+        </Box>
       </Container>
     </Box>
   );
