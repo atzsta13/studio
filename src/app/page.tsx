@@ -150,7 +150,7 @@ export default function Home() {
 
       {/* Feature Grid Section */}
       <Container maxWidth="lg">
-        <Box sx={{ mb: 6, textAlign: { xs: 'center', md: 'left' } }}>
+        <Box sx={{ mb: 8, textAlign: { xs: 'center', md: 'left' } }}>
           <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.2em' }}>
             The Survival Toolkit
           </Typography>
@@ -159,7 +159,7 @@ export default function Home() {
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={6}>
           {features.map((feature, index) => (
             <Grid key={feature.title} item xs={12} sm={6} md={3}>
               <Card
@@ -184,12 +184,12 @@ export default function Home() {
               >
                 <Link href={feature.href} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <CardActionArea sx={{ height: '100%', p: 1 }}>
-                    <CardContent sx={{ textAlign: 'center', py: 5, px: 3 }}>
+                    <CardContent sx={{ textAlign: 'center', py: 6, px: 3 }}>
                       <Box
                         className="icon-box"
                         sx={{
-                          width: 72,
-                          height: 72,
+                          width: 80,
+                          height: 80,
                           borderRadius: 5,
                           bgcolor: `${feature.color}15`,
                           display: 'flex',
@@ -198,15 +198,16 @@ export default function Home() {
                           mx: 'auto',
                           mb: 4,
                           color: feature.color,
-                          transition: 'all 0.3s ease'
+                          transition: 'all 0.3s ease',
+                          boxShadow: `0 8px 16px -4px ${feature.color}30`
                         }}
                       >
-                        <feature.icon size={36} />
+                        <feature.icon size={40} />
                       </Box>
                       <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, letterSpacing: '-0.01em', textTransform: 'uppercase' }}>
                         {feature.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500, lineHeight: 1.5 }}>
+                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500, lineHeight: 1.6, px: 2 }}>
                         {feature.description}
                       </Typography>
                     </CardContent>
@@ -220,7 +221,7 @@ export default function Home() {
         {/* Bottom Banner */}
         <Box sx={{ 
           mt: 12, 
-          p: 4, 
+          p: 6, 
           borderRadius: 8, 
           bgcolor: 'rgba(255,255,255,0.02)', 
           border: '1px dashed rgba(255,255,255,0.1)',
@@ -231,23 +232,24 @@ export default function Home() {
           textAlign: { xs: 'center', md: 'left' }
         }}>
           <Box sx={{ 
-            p: 2, 
+            p: 3, 
             borderRadius: '50%', 
             bgcolor: 'rgba(255,238,0,0.1)', 
-            color: '#ffee00' 
+            color: '#ffee00',
+            boxShadow: '0 0 20px rgba(255,238,0,0.1)'
           }}>
-            <Sparkles size={32} />
+            <Sparkles size={40} />
           </Box>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 800, color: '#fff' }}>
+            <Typography variant="h5" sx={{ fontWeight: 900, color: '#fff', textTransform: 'uppercase', fontStyle: 'italic' }}>
               Official Lineup Updated
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
+            <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1, maxWidth: 600 }}>
               The 2026 artist roster is live! We've just synced the latest batch of headliners and international scouting reports.
             </Typography>
           </Box>
           <Link href="/discover" style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" sx={{ borderRadius: 3, px: 4, borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+            <Button variant="outlined" sx={{ borderRadius: 3, px: 6, py: 1.5, borderColor: 'rgba(255,255,255,0.2)', color: '#fff', fontWeight: 900 }}>
               View All 80+ Acts
             </Button>
           </Link>
