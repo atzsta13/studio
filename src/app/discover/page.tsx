@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -165,18 +165,20 @@ export default function DiscoverPage() {
     const isHeadliner = artist.isHeadliner;
 
     return (
-      <div
-        className={`group relative flex flex-col overflow-hidden rounded-[2.5rem] shadow-2xl transition-all duration-500 bg-zinc-900 border-2 ${isHeadliner
-          ? 'border-yellow-500/50 shadow-yellow-500/20'
-          : 'border-white/5 hover:border-primary/50'
-          }`}
+      <Link 
+        href={`/artist/${artist.id}`}
+        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-zinc-900 border-2 ${
+          isHeadliner
+            ? 'border-yellow-500/30 shadow-2xl shadow-yellow-500/10'
+            : 'border-white/5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10'
+        }`}
       >
-        <Link href={`/artist/${artist.id}`} className="block relative aspect-[16/10] w-full overflow-hidden bg-zinc-800">
+        <div className="relative aspect-[1/1] w-full overflow-hidden bg-zinc-800">
           {artist.imageUrl ? (
             <img
               src={artist.imageUrl}
               alt={artist.artist}
-              className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+              className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
@@ -184,73 +186,70 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90" />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
 
+          {/* Labels */}
           {artist.day && (
-            <div className={`absolute top-4 right-4 rounded-full border px-4 py-1.5 text-[10px] font-black uppercase tracking-widest backdrop-blur-xl ${isHeadliner
-              ? 'bg-yellow-500 text-black border-yellow-400'
-              : 'bg-black/60 text-white/90 border-white/10'}`}>
+            <div className={`absolute top-4 right-4 rounded-full border px-3 py-1 text-[9px] font-black uppercase tracking-widest backdrop-blur-xl z-10 ${
+              isHeadliner
+                ? 'bg-yellow-500 text-black border-yellow-400'
+                : 'bg-black/60 text-white/90 border-white/10'
+            }`}>
               {artist.day}
             </div>
           )}
 
           {isHeadliner && (
-            <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-4 py-1.5 text-[10px] font-black uppercase tracking-widest text-black shadow-lg animate-pulse">
-              HEADLINER
+            <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-black shadow-lg z-10">
+              STAR
             </div>
           )}
 
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <div className="flex items-center gap-3 mb-2">
+          {/* Text Content */}
+          <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+            <div className="flex items-center gap-2 mb-1.5">
               {isMounted && (
-                <span className="text-2xl drop-shadow-lg" suppressHydrationWarning>
+                <span className="text-xl drop-shadow-lg" suppressHydrationWarning>
                   {getFlagEmoji(artist.countryCode)}
                 </span>
               )}
-              <h3 className={`font-black text-2xl leading-tight drop-shadow-2xl line-clamp-1 uppercase tracking-tighter ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
+              <h3 className={`font-black text-xl sm:text-2xl leading-tight uppercase tracking-tighter transition-colors ${
+                isHeadliner ? 'text-yellow-400' : 'text-white group-hover:text-primary'
+              }`}>
                 {artist.artist}
               </h3>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 3).map(genre => (
+            <div className="flex flex-wrap gap-1.5">
+              {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                 <span
                   key={genre}
-                  className="inline-flex items-center rounded-full px-3 py-1 text-[9px] font-black uppercase tracking-widest border bg-white/5 backdrop-blur-md text-white/70 border-white/10"
+                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/5 backdrop-blur-md text-white/60 border-white/10"
                 >
                   {genre}
                 </span>
               ))}
             </div>
           </div>
-        </Link>
 
-        <div className="flex flex-col p-6 bg-zinc-950/80 backdrop-blur-md gap-6 border-t border-white/5">
-          <div className="min-h-[1.2rem]">
-            {artist.vibes && artist.vibes.length > 0 && (
-              <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] truncate">
-                {artist.vibes.slice(0, 3).join(' • ')}
-              </p>
-            )}
+          {/* Hover View Indicator */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-full">
+              <ArrowRight className="h-6 w-6 text-white" />
+            </div>
           </div>
-          
-          <Button 
-            asChild 
-            size="lg" 
-            variant="default"
-            className={`w-full font-black text-sm uppercase tracking-[0.25em] rounded-2xl h-16 shadow-2xl transition-all duration-300 group-hover:scale-[1.03] active:scale-95 border-none ${
-              isHeadliner 
-                ? "bg-yellow-500 hover:bg-yellow-400 text-black shadow-yellow-500/20" 
-                : "bg-primary hover:bg-primary/90 text-white shadow-primary/30"
-            }`}
-          >
-            <Link href={`/artist/${artist.id}`}>
-              Explore Artist
-              <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-2" />
-            </Link>
-          </Button>
         </div>
-      </div>
+
+        {/* Footer Vibes (Minimal) */}
+        {artist.vibes && artist.vibes.length > 0 && (
+          <div className="px-5 py-3 bg-zinc-950/50 backdrop-blur-sm border-t border-white/5">
+            <p className="text-[9px] font-black text-zinc-500 uppercase tracking-widest truncate">
+              {artist.vibes.slice(0, 3).join(' • ')}
+            </p>
+          </div>
+        )}
+      </Link>
     );
   };
 
@@ -303,7 +302,7 @@ export default function DiscoverPage() {
       </header>
 
       <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-white/5">
-        <div className="flex flex-col gap-6 sm:flex-row justify-between items-center">
+        <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
           <div className="inline-flex rounded-2xl bg-zinc-950 p-1.5 border border-white/5 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setViewMode('discover')}
@@ -353,7 +352,7 @@ export default function DiscoverPage() {
             )}
           </div>
 
-          <div className="flex flex-wrap gap-4 w-full sm:w-auto shrink-0">
+          <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
               <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-zinc-950 border-white/5 rounded-xl shadow-inner">
                 <SelectValue placeholder="ANY MOOD" />
@@ -415,7 +414,7 @@ export default function DiscoverPage() {
 
                   {headliners.length > 0 && (
                     <div className="mb-10">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
                         {headliners.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} />
                         ))}
@@ -424,7 +423,7 @@ export default function DiscoverPage() {
                   )}
 
                   {others.length > 0 && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                       {others.map(artist => (
                         <ArtistCard key={artist.id} artist={artist} />
                       ))}
@@ -441,7 +440,7 @@ export default function DiscoverPage() {
                   <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
                   <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                   {artistsByDay.noDay.map(artist => (
                     <ArtistCard key={artist.id} artist={artist} />
                   ))}
@@ -472,7 +471,7 @@ export default function DiscoverPage() {
                     <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                     {countryArtists.map(artist => (
                       <ArtistCard key={artist.id} artist={artist} />
                     ))}
@@ -484,7 +483,7 @@ export default function DiscoverPage() {
         )}
 
         {viewMode === 'az' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
             {artistsAZ.map(artist => (
               <ArtistCard key={artist.id} artist={artist} />
             ))}
@@ -500,7 +499,7 @@ export default function DiscoverPage() {
                   <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Headliners</h2>
                   <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
                   {artistsDiscover.filter(a => a.isHeadliner).map(artist => (
                     <ArtistCard key={artist.id} artist={artist} />
                   ))}
@@ -514,7 +513,7 @@ export default function DiscoverPage() {
                 <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Full Lineup</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                 {artistsDiscover.filter(a => !a.isHeadliner).map(artist => (
                   <ArtistCard key={artist.id} artist={artist} />
                 ))}
@@ -564,7 +563,7 @@ export default function DiscoverPage() {
                         <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Matched Headliners</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
                         {headliners.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} />
                         ))}
@@ -579,7 +578,7 @@ export default function DiscoverPage() {
                         <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Library Artists</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/30 to-transparent" />
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                         {others.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} />
                         ))}
