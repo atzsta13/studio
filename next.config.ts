@@ -1,12 +1,19 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Explicitly transpile MUI packages to resolve runtime 'call' of undefined errors in Next.js 15
-  transpilePackages: ['@mui/material', '@mui/system', '@mui/icons-material', '@mui/material-nextjs'],
+  // Aggressively transpile MUI and Emotion packages to prevent runtime 'call' errors in Next.js 15
+  transpilePackages: [
+    '@mui/material',
+    '@mui/system',
+    '@mui/icons-material',
+    '@mui/material-nextjs',
+    '@emotion/react',
+    '@emotion/styled',
+    '@emotion/cache'
+  ],
   images: {
     remotePatterns: [
       {
