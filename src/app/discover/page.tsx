@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ChevronRight, ArrowRight, Globe } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -114,7 +114,6 @@ export default function DiscoverPage() {
   // Group by country
   const artistsByCountry = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
-    // Use Intl to get proper country names from codes
     const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
 
     filteredArtists.forEach(a => {
@@ -132,7 +131,6 @@ export default function DiscoverPage() {
       grouped[countryName].push(a);
     });
 
-    // Sort each country alphabetically
     Object.keys(grouped).forEach(country => {
       grouped[country].sort((a, b) => a.artist.localeCompare(b.artist));
     });
@@ -146,19 +144,16 @@ export default function DiscoverPage() {
     return { grouped, sortedCountryNames };
   }, [filteredArtists]);
 
-  // A-Z sorted
   const artistsAZ = useMemo(() => {
     return [...filteredArtists].sort((a, b) => a.artist.localeCompare(b.artist));
   }, [filteredArtists]);
 
-  // Discover mode (headliners first, then others)
   const artistsDiscover = useMemo(() => {
     const headliners = filteredArtists.filter(a => a.isHeadliner);
     const others = filteredArtists.filter(a => !a.isHeadliner);
     return [...headliners, ...others.sort((a, b) => a.artist.localeCompare(b.artist))];
   }, [filteredArtists]);
 
-  // Spotify Matches
   const artistsSpotify = useMemo(() => {
     return filteredArtists.filter(a => spotifyMatches.includes(a.id));
   }, [filteredArtists, spotifyMatches]);
@@ -186,10 +181,8 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
 
-          {/* Day Badge */}
           {artist.day && (
             <div className={`absolute top-3 right-3 rounded-full border px-3 py-1 text-[10px] font-black uppercase tracking-widest backdrop-blur-md ${isHeadliner
               ? 'bg-yellow-500 text-black border-yellow-400'
@@ -198,17 +191,19 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          {/* Headliner Badge */}
           {isHeadliner && (
             <div className="absolute top-3 left-3 rounded-full bg-yellow-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-black shadow-lg animate-pulse">
               HEADLINER
             </div>
           )}
 
-          {/* Bottom Content Overlay */}
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <div className="flex items-center gap-2 mb-2">
-              {isMounted && <span className="text-xl" suppressHydrationWarning>{getFlagEmoji(artist.countryCode)}</span>}
+              {isMounted && (
+                <span className="text-xl" suppressHydrationWarning>
+                  {getFlagEmoji(artist.countryCode)}
+                </span>
+              )}
               <h3 className={`font-black text-lg leading-tight drop-shadow-2xl line-clamp-1 uppercase tracking-tighter ${isHeadliner ? 'text-yellow-400' : 'text-white'}`}>
                 {artist.artist}
               </h3>
@@ -227,7 +222,6 @@ export default function DiscoverPage() {
           </div>
         </Link>
 
-        {/* Card Footer with VERY PROMINENT View Details Button */}
         <div className="flex flex-col p-4 bg-zinc-900/50 backdrop-blur-sm gap-4">
           <div className="min-h-[1.2rem]">
             {artist.vibes && artist.vibes.length > 0 && (
@@ -306,12 +300,11 @@ export default function DiscoverPage() {
       </header>
 
       <div className="sticky top-0 z-30 -mx-4 space-y-4 bg-background/95 px-4 pb-6 pt-4 backdrop-blur-md md:top-16 border-b border-white/5">
-        <div className="flex flex-col gap-4 sm:flex-row justify-between items-center overflow-x-auto no-scrollbar">
-          {/* View Mode Toggle */}
-          <div className="inline-flex rounded-xl bg-zinc-900 p-1 border border-white/5 shadow-inner shrink-0">
+        <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
+          <div className="inline-flex rounded-xl bg-zinc-900 p-1 border border-white/5 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'discover' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <Sparkles className="h-3.5 w-3.5" />
@@ -319,7 +312,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('az')}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'az' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <SortAsc className="h-3.5 w-3.5" />
@@ -327,7 +320,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'by-day' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <Calendar className="h-3.5 w-3.5" />
@@ -335,7 +328,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-country')}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'by-country' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-zinc-800 text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               <Globe className="h-3.5 w-3.5" />
@@ -344,7 +337,7 @@ export default function DiscoverPage() {
             {isSpotifyConnected && (
               <button
                 onClick={() => setViewMode('spotify')}
-                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-sm' : 'text-zinc-500 hover:text-zinc-300'
                   }`}
               >
                 <div className="h-3.5 w-3.5 flex items-center justify-center">
@@ -357,7 +350,6 @@ export default function DiscoverPage() {
             )}
           </div>
 
-          {/* Filters */}
           <div className="flex flex-wrap gap-3 w-full sm:w-auto shrink-0">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
               <SelectTrigger className="h-10 w-full sm:w-[160px] text-xs font-bold uppercase tracking-widest bg-zinc-900 border-white/5 rounded-xl">
@@ -400,7 +392,6 @@ export default function DiscoverPage() {
         </div>
       </div>
 
-      {/* Content based on view mode */}
       <div className="mt-8">
         {viewMode === 'by-day' && (
           <div className="space-y-12">
@@ -419,7 +410,6 @@ export default function DiscoverPage() {
                     <span className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{dayArtists.length} acts</span>
                   </div>
 
-                  {/* Headliners Row */}
                   {headliners.length > 0 && (
                     <div className="mb-6">
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -430,7 +420,6 @@ export default function DiscoverPage() {
                     </div>
                   )}
 
-                  {/* Other Artists Grid */}
                   {others.length > 0 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
                       {others.map(artist => (
@@ -442,7 +431,6 @@ export default function DiscoverPage() {
               );
             })}
 
-            {/* No Day Yet */}
             {artistsByDay.noDay.length > 0 && (
               <section>
                 <div className="flex items-center gap-4 mb-6">
@@ -464,13 +452,17 @@ export default function DiscoverPage() {
           <div className="space-y-12">
             {artistsByCountry.sortedCountryNames.map(country => {
               const countryArtists = artistsByCountry.grouped[country];
-              const flag = getFlagEmoji(countryArtists[0].countryCode);
+              const firstArtist = countryArtists[0];
 
               return (
                 <section key={country}>
                   <div className="flex items-center gap-4 mb-6">
                     <h2 className="text-3xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-3">
-                      <span suppressHydrationWarning>{flag}</span>
+                      {isMounted && (
+                        <span suppressHydrationWarning>
+                          {getFlagEmoji(firstArtist.countryCode)}
+                        </span>
+                      )}
                       {country}
                     </h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
@@ -498,7 +490,6 @@ export default function DiscoverPage() {
 
         {viewMode === 'discover' && (
           <div className="space-y-12">
-            {/* Headliners Section */}
             {artistsDiscover.filter(a => a.isHeadliner).length > 0 && (
               <section>
                 <div className="flex items-center gap-4 mb-6">
@@ -514,7 +505,6 @@ export default function DiscoverPage() {
               </section>
             )}
 
-            {/* All Others */}
             <section>
               <div className="flex items-center gap-4 mb-6">
                 <Music className="h-6 w-6 text-primary" />
@@ -600,7 +590,6 @@ export default function DiscoverPage() {
         )}
       </div>
 
-      {/* Empty State */}
       {filteredArtists.length === 0 && (
         <div className="py-32 text-center bg-zinc-900/20 rounded-[3rem] border border-white/5">
           <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-zinc-800">
