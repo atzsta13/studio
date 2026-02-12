@@ -132,7 +132,11 @@ export default function DiscoverPage() {
     });
 
     Object.keys(grouped).forEach(country => {
-      grouped[country].sort((a, b) => a.artist.localeCompare(b.artist));
+      grouped[country].sort((a, b) => {
+        if (a.isHeadliner && !b.isHeadliner) return -1;
+        if (!a.isHeadliner && b.isHeadliner) return 1;
+        return a.artist.localeCompare(b.artist);
+      });
     });
 
     const sortedCountryNames = Object.keys(grouped).sort((a, b) => {
