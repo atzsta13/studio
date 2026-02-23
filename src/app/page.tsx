@@ -12,9 +12,10 @@ import {
   Button,
   Grid,
   Paper,
+  Fade,
 } from '@mui/material';
 import { 
-  Map, 
+  Map as MapIcon, 
   Wand2, 
   Gavel, 
   Trophy, 
@@ -22,10 +23,15 @@ import {
   Camera, 
   Newspaper,
   Flame,
-  ChevronRight
+  ChevronRight,
+  Clock,
+  Navigation,
+  Zap
 } from 'lucide-react';
 import { HydrationTracker } from '@/components/tools/hydration-tracker';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
+import lineup from '@/data/lineup.json';
+import { format } from 'date-fns';
 
 const features = [
   {
@@ -39,7 +45,7 @@ const features = [
     title: 'Tactical Map',
     description: 'Find Water & Vibes',
     href: '/map',
-    icon: Map,
+    icon: MapIcon,
     color: '#00c3ff',
   },
   {
@@ -60,9 +66,18 @@ const features = [
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  
+  // Simulated Festival Clock (Wednesday at 8:00 PM)
+  const [simulatedTime] = useState(new Date('2026-08-12T20:00:00Z'));
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  const nowPlaying = useMemo(() => {
+    // Basic logic to find what would be playing at the simulated time
+    // In a real scenario, this would filter by the current real time
+    return (lineup as any[]).filter(a => a.day === 'Wednesday').slice(0, 3);
   }, []);
 
   if (!mounted) return null;
@@ -101,7 +116,7 @@ export default function Home() {
               mb: 1,
               letterSpacing: '-0.05em',
               lineHeight: 1,
-              fontSize: { xs: '3.5rem', md: '6rem' },
+              fontSize: { xs: '3.5rem', md: '6.5rem' },
               textTransform: 'uppercase',
               fontStyle: 'italic'
             }}
@@ -121,10 +136,10 @@ export default function Home() {
               fontSize: { xs: '1rem', md: '1.25rem' }
             }}
           >
-            Tactical companion for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
+            The ultimate intelligence layer for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
           </Typography>
 
-          <Grid container spacing={3} sx={{ maxWidth: 850, mx: 'auto' }}>
+          <Grid container spacing={3} sx={{ maxWidth: 900, mx: 'auto' }}>
             <Grid item xs={12} sm={6}>
               <HydrationTracker />
             </Grid>
@@ -151,7 +166,7 @@ export default function Home() {
                   Vibe: Electric. Dust: High.
                 </Typography>
                 <Typography variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
-                  Colosseum peak expected at 02:00. <br/>All water points are active.
+                  Colosseum peak expected at 02:00. <br/>All 12 water points are active and 100% free.
                 </Typography>
               </Paper>
             </Grid>
@@ -159,7 +174,48 @@ export default function Home() {
         </Container>
       </Box>
 
-      {/* Feature Grid Section */}
+      {/* Now Playing Live Widget */}
+      <Container maxWidth="lg" sx={{ mt: 6, mb: 8 }}>
+        <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: '#ff0080', animation: 'pulse 2s infinite' }} />
+          <Typography variant="h5" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic' }}>
+            Island Pulse: <span style={{ opacity: 0.5 }}>Now Playing</span>
+          </Typography>
+        </Box>
+        <Grid container spacing={2}>
+          {nowPlaying.map((artist, idx) => (
+            <Grid item key={artist.id} xs={12} md={4}>
+              <Card sx={{ bgcolor: 'background.paper', borderRadius: 4, overflow: 'hidden' }}>
+                <CardActionArea href={`/artist/${artist.id}`}>
+                  <Box sx={{ p: 2.5, display: 'flex', gap: 2, alignItems: 'center' }}>
+                    <Box sx={{ 
+                      width: 60, 
+                      height: 60, 
+                      borderRadius: 3, 
+                      bgcolor: 'muted.main', 
+                      backgroundImage: `url(${artist.imageUrl})`, 
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }} />
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography noWrap sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>{artist.artist}</Typography>
+                      <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>
+                        {artist.stage || 'Main Stage'}
+                      </Typography>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
+                        Started {idx * 15 + 10}m ago
+                      </Typography>
+                    </Box>
+                    <ChevronRight size={16} />
+                  </Box>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      {/* Operations Section */}
       <Container maxWidth="lg">
         <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <Box>
@@ -191,7 +247,7 @@ export default function Home() {
                   '&:hover': {
                     transform: 'translateY(-6px)',
                     borderColor: feature.color,
-                    boxShadow: `0 30px 60px -12px ${feature.color}15`,
+                    boxShadow: `0 30px 60px -12px ${feature.color}20`,
                   }
                 }}
               >
@@ -239,7 +295,7 @@ export default function Home() {
                   </Box>
                   <Box>
                     <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Memory Log</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Private local-only diary for your best moments.</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Capture the magic. 100% Private & Offline diary.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
@@ -253,8 +309,8 @@ export default function Home() {
                     <Flame size={28} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Active Quests</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Challenges available. Earn Island XP.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Island Quests</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Explore the island. Earn Legend XP and Stamps.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
@@ -262,6 +318,15 @@ export default function Home() {
           </Grid>
         </Grid>
       </Container>
+
+      {/* Global CSS for Animations */}
+      <style jsx global>{`
+        @keyframes pulse {
+          0% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.5; transform: scale(1.2); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
     </Box>
   );
 }

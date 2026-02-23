@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -15,6 +14,9 @@ import {
   FileText, 
   Weight,
   ShieldCheck,
+  QrCode,
+  MapPin,
+  Share2
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -22,6 +24,7 @@ export default function ToolsPage() {
   const { toast } = useToast();
   const [hufAmount, setHufAmount] = useState<string>('1000');
   const [isFlashOn, setIsFlashOn] = useState(false);
+  const [showQr, setShowQr] = useState(false);
   
   // Hike-In Weight Calculator State
   const [bagWeight, setWeight] = useState(8);
@@ -61,6 +64,14 @@ export default function ToolsPage() {
     toast({
       title: "STATUS SAVED",
       description: `Logged at ${time}. Stay safe, Szitizen.`,
+    });
+  };
+
+  const handleGenerateShareCode = () => {
+    setShowQr(true);
+    toast({
+      title: "OFFLINE QR READY",
+      description: "Friends can scan this to save your meet-up point.",
     });
   };
 
@@ -121,22 +132,45 @@ export default function ToolsPage() {
               </CardContent>
             </Card>
 
-            {/* SOS Beacon */}
+            {/* Peer-to-Peer Share Widget */}
             <Card className="bg-card border-border shadow-xl overflow-hidden rounded-[2.5rem]">
-              <CardHeader className="bg-primary/5 border-b border-primary/10 px-8 py-6">
-                <CardTitle className="flex items-center gap-3 text-primary text-xl font-black uppercase italic tracking-tight">
-                  <Zap size={24} />
-                  Crowd Finder
+              <CardHeader className="bg-blue-500/5 border-b border-blue-500/10 px-8 py-6">
+                <CardTitle className="flex items-center gap-3 text-blue-600 text-xl font-black uppercase italic tracking-tight">
+                  <Share2 size={24} />
+                  QR Spot Share
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8 flex flex-col items-center justify-center text-center">
-                <p className="text-sm font-medium text-muted-foreground mb-8 max-w-xs leading-relaxed">High-intensity tactical strobe to signal friends in the thickest of crowds.</p>
-                <Button 
-                  onClick={toggleFlash}
-                  className="w-full h-20 rounded-[1.5rem] bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] text-lg shadow-2xl shadow-primary/30 transition-transform active:scale-95"
-                >
-                  Unleash Strobe
-                </Button>
+                {showQr ? (
+                  <div className="space-y-4">
+                    <div className="bg-white p-4 rounded-3xl shadow-inner border">
+                      <svg width="160" height="160" viewBox="0 0 160 160" className="mx-auto">
+                        <rect width="160" height="160" fill="white" />
+                        <rect x="20" y="20" width="40" height="40" fill="black" />
+                        <rect x="100" y="20" width="40" height="40" fill="black" />
+                        <rect x="20" y="100" width="40" height="40" fill="black" />
+                        <rect x="35" y="35" width="10" height="10" fill="white" />
+                        <rect x="115" y="35" width="10" height="10" fill="white" />
+                        <rect x="35" y="115" width="10" height="10" fill="white" />
+                        <rect x="70" y="70" width="20" height="20" fill="#ff0080" />
+                        <rect x="100" y="100" width="10" height="10" fill="black" />
+                        <rect x="130" y="130" width="10" height="10" fill="black" />
+                      </svg>
+                    </div>
+                    <p className="text-xs font-bold uppercase text-muted-foreground">SCAN TO FIND ME</p>
+                    <Button variant="ghost" onClick={() => setShowQr(false)} className="text-[10px] uppercase font-black">Close</Button>
+                  </div>
+                ) : (
+                  <>
+                    <p className="text-sm font-medium text-muted-foreground mb-8 max-w-xs leading-relaxed">Generate a local QR code for your tent coordinates. Your friend scans it to save it instantly.</p>
+                    <Button 
+                      onClick={handleGenerateShareCode}
+                      className="w-full h-20 rounded-[1.5rem] bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-[0.25em] text-lg shadow-2xl shadow-blue-500/30 transition-transform active:scale-95"
+                    >
+                      GENERATE QR
+                    </Button>
+                  </>
+                )}
               </CardContent>
             </Card>
           </div>

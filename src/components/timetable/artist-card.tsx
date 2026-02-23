@@ -1,7 +1,8 @@
 import { Box, Typography, IconButton } from '@mui/material';
-import { Heart } from 'lucide-react';
+import { Heart, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
+import Link from 'next/link';
 
 interface ArtistCardProps {
   artist: LineupItem;
@@ -19,7 +20,6 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
 
   return (
     <Box
-      onClick={onToggleFavorite}
       sx={{
         position: 'absolute',
         inset: '1px',
@@ -32,7 +32,7 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         border: '1px solid rgba(255,255,255,0.05)',
         borderLeft: isFavorite ? '3px solid #ff0080' : isConflicting ? '3px solid #ef4444' : '1px solid rgba(255,255,255,0.05)',
         transition: 'all 0.1s ease',
-        cursor: 'pointer',
+        cursor: 'default',
         boxShadow: isFavorite ? '0 0 15px rgba(255,0,128,0.1)' : 'none',
         '&:hover': {
           bgcolor: '#111',
@@ -42,7 +42,10 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <Box sx={{ flex: 1, minWidth: 0 }}>
+        <Box 
+          onClick={onToggleFavorite}
+          sx={{ flex: 1, minWidth: 0, cursor: 'pointer' }}
+        >
           <Typography
             sx={{
               color: '#fff',
@@ -71,9 +74,18 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
           </Typography>
         </Box>
 
-        {isFavorite && (
-          <Heart size={14} fill="#ff0080" color="#ff0080" style={{ marginTop: 2, marginLeft: 4 }} />
-        )}
+        <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+          {isFavorite && (
+            <Heart size={14} fill="#ff0080" color="#ff0080" style={{ marginTop: 2 }} />
+          )}
+          {!isSmall && (
+            <Link href={`/map?stage=${encodeURIComponent(artist.stage)}`} style={{ textDecoration: 'none' }}>
+              <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: '#00f2ff' } }}>
+                <MapPin size={12} />
+              </IconButton>
+            </Link>
+          )}
+        </Box>
       </Box>
 
       {!isSmall && artist.genres?.[0] && (
