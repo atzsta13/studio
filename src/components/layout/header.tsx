@@ -15,7 +15,7 @@ export default function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center gap-2 group">
-            < Music2 className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+            <Music2 className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
             <span className="hidden font-bold sm:inline-block text-lg tracking-tight">
               Sziget <span className="text-primary">Insider</span>
             </span>

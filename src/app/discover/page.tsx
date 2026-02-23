@@ -287,10 +287,10 @@ export default function DiscoverPage() {
 
             <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="rounded-2xl h-14 px-8 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-widest gap-3 shadow-xl shadow-indigo-500/20 border-none transition-transform hover:scale-105 active:scale-95">
+                <button className="flex items-center justify-center rounded-2xl h-14 px-8 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-widest gap-3 shadow-xl shadow-indigo-500/20 transition-transform hover:scale-105 active:scale-95 cursor-pointer">
                   <Wand2 className="h-5 w-5" />
                   AI Scout
-                </Button>
+                </button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3rem]">
                 <DialogHeader>
