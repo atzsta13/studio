@@ -33,4 +33,4 @@ When rendering browser-specific data (like GPS or Flags), use the `isMounted` st
 ## 📝 Code Standards
 - **Functional Components**: Use `export default function` syntax.
 - **Strict Types**: Always type your data (see `src/types/index.ts`).
-- **Lucide Icons**: Primary icon library. Use `react-icons/si` for brand-specific icons (Spotify, etc.).
+- **Lucide Icons**: Primary icon library. Ensure icons are imported individually if HMR module factory errors occur.
