@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import { useFavorites } from '@/hooks/use-favorites';
 import ArtistCard from './artist-card';
-import { Clock, Navigation } from 'lucide-react';
+import { Clock, Navigation, AlertTriangle } from 'lucide-react';
 import {
     areNotificationsSupported,
     requestNotificationPermission,
@@ -26,11 +26,6 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
         }
     }, []);
 
-    const handleRequestPermission = async () => {
-        const permission = await requestNotificationPermission();
-        setNotificationPermission(permission);
-    };
-
     const handleToggleFavorite = (artist: LineupItem) => {
         const isFavorited = favorites.has(artist.id);
         toggleFavorite(artist.id);
@@ -41,7 +36,6 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
     };
 
     const { days, stages, timeSlots } = useMemo(() => {
-        // Filter out artists without schedule data (day/stage/times might be null for newly scraped artists)
         const scheduledLineup = lineup.filter(item => item.day && item.stage && item.startTime && item.endTime);
 
         const sortedDays = [...new Set(scheduledLineup.map(item => item.day))].sort((a, b) =>
@@ -79,11 +73,9 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
 
     return (
         <div className="w-full bg-black min-h-screen text-white font-sans selection:bg-pink-500">
-            {/* Brutalist Sticky Header */}
             <div className="sticky top-0 z-[100] bg-black/90 backdrop-blur-xl border-b border-white/10">
                 <div className="flex flex-col">
                     <div className="flex items-center justify-between px-4 py-3 gap-4">
-                        {/* Custom Day Selector */}
                         <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
                             {days.map((day, idx) => (
                                 <button
@@ -110,7 +102,6 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
                         gridTemplateRows: `auto repeat(${(MAX_TIME - MIN_TIME) * 4}, 20px)`,
                     }}
                 >
-                    {/* Stage Row */}
                     <div className="sticky top-[64px] z-30 flex contents">
                         <div className="sticky top-[64px] left-0 z-40 bg-black border-r border-b border-white/10 h-10 flex items-center justify-center">
                             <Clock size={16} className="text-white opacity-20" />
@@ -128,7 +119,6 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
                         ))}
                     </div>
 
-                    {/* Time Column */}
                     {timeSlots.map((time, index) => (
                         index % 2 === 0 && (
                             <div
@@ -148,7 +138,6 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
                         )
                     ))}
 
-                    {/* Artist Cards */}
                     {dailyLineup.map(item => {
                         const col = stages.indexOf(item.stage) + 2;
                         if (col === 1) return null;
@@ -170,40 +159,24 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
                             </div>
                         );
                     })}
-
-                    {/* Horizontal Grid Texture */}
-                    {Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }).map((_, i) => (
-                        <div
-                            key={i}
-                            className="border-b border-white/[0.03] pointer-events-none"
-                            style={{
-                                gridRow: i * 2 + 2,
-                                gridColumn: `2 / span ${stages.length}`,
-                            }}
-                        />
-                    ))}
                 </div>
             </div>
 
-            {/* Floating Status Bar */}
             <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[200] pointer-events-none flex flex-col items-center gap-2">
                 {conflicts.size > 0 && (
-                    <div className="bg-red-600 px-4 py-1 rounded-full shadow-2xl animate-pulse">
-                        <span className="text-[10px] font-black text-white uppercase tracking-widest">{conflicts.size} CLASHES DETECTED</span>
+                    <div className="bg-red-600 px-4 py-1.5 rounded-full shadow-2xl animate-bounce flex items-center gap-2 border-2 border-white/20">
+                        <AlertTriangle size={14} className="text-white" />
+                        <span className="text-[10px] font-black text-white uppercase tracking-widest">{conflicts.size / 2} CLASHES DETECTED</span>
                     </div>
                 )}
-                <div className="bg-white/5 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-4">
+                <div className="bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-4">
                     <div className="flex items-center gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
-                        <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">FAVE</span>
+                        <span className="text-[9px] font-black text-white/60 uppercase tracking-tighter">FAVE</span>
                     </div>
-                    <div className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                        <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">GENRE</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                        <Navigation size={12} className="text-white opacity-30" />
-                        <span className="text-[9px] font-black text-white opacity-40 uppercase tracking-tighter">SCROLL</span>
+                    <div className="flex items-center gap-1.5 text-white/60">
+                        <Navigation size={12} className="opacity-30" />
+                        <span className="text-[9px] font-black uppercase tracking-tighter">EXPLORE</span>
                     </div>
                 </div>
             </div>

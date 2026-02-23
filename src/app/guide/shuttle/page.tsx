@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bus } from 'lucide-react';
+import { Bus, Plane, Train, MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,41 +8,48 @@ export const metadata: Metadata = {
 };
 
 export default function ShuttlePage() {
+  const routes = [
+    { title: "Airport (BUD) Express", desc: "Runs 24/7 during the festival. Direct from Terminal 2 to the H-Bridge entrance.", icon: Plane },
+    { title: "City Center Line", desc: "Every 15-20 mins from Deák Ferenc tér to Filatorigát station.", icon: Bus },
+    { title: "Night Bus Line", desc: "Special night routes run from 01:00 to 05:00 to major hostel hubs.", icon: Bus },
+  ];
+
   return (
     <div>
       <header className="mb-8">
         <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Shuttle Bus Information
+          Island Transit
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Your ride to and from the Island of Freedom.
+          Getting to and from the Island of Freedom.
         </p>
       </header>
 
-      <Card className="bg-card/50">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-card-foreground">
-            <Bus className="h-6 w-6" />
-            Key Details
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4 text-card-foreground/90">
-          <div>
-            <h3 className="font-bold">Airport Transfer</h3>
-            <p>Shuttle buses run directly from Liszt Ferenc International Airport (BUD) to the festival entrance. Busses are available 24/7 during the festival period, typically starting two days before the festival and ending one day after.</p>
-          </div>
-          <div>
-            <h3 className="font-bold">City Center Line</h3>
-            <p>A dedicated bus line often runs from major transport hubs in Budapest, like Deák Ferenc tér, directly to the festival. Check the official Sziget website for the exact route and timetable for 2026.</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Tickets &amp; Pricing</h3>
-            <p>Shuttle bus tickets can usually be purchased online in advance (often at a discount) or directly from the driver. A CityPass may include free use of the shuttle services.</p>
-          </div>
-          <div>
-            <h3 className="font-bold">Tip</h3>
-            <p>To avoid long queues, try to travel outside of peak hours (mid-day arrivals, and late-night departures from the island).</p>
-          </div>
+      <div className="space-y-4">
+        {routes.map(route => (
+          <Card key={route.title} className="bg-card/50 border-border/50">
+            <CardHeader className="flex flex-row items-center gap-4 pb-2">
+              <div className="p-3 bg-primary/10 rounded-xl text-primary">
+                <route.icon size={20} />
+              </div>
+              <CardTitle className="text-lg">{route.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground leading-relaxed">{route.desc}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <Card className="mt-8 bg-blue-500/10 border-blue-500/20">
+        <CardContent className="p-6">
+          <h3 className="font-bold text-blue-400 flex items-center gap-2 mb-2">
+            <MapPin size={18} />
+            Insider Tip
+          </h3>
+          <p className="text-sm text-blue-300/80">
+            The Sziget CityPass by BKK includes all public transport and shuttle services for free. We highly recommend activating it before your first ride to the island.
+          </p>
         </CardContent>
       </Card>
     </div>

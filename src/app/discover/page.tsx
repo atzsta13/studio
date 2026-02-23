@@ -92,19 +92,29 @@ export default function DiscoverPage() {
   }, [allArtists]);
 
   const filteredArtists = useMemo(() => {
+    let base = [...allArtists];
+
     if (viewMode === 'ai' && aiResult) {
       const ids = aiResult.recommendations.map(r => r.artistId);
-      return allArtists.filter(a => ids.includes(a.id));
+      base = base.filter(a => ids.includes(a.id));
     }
 
-    return allArtists.filter(artist => {
+    if (viewMode === 'spotify') {
+      base = base.filter(a => spotifyMatches.includes(a.id));
+    }
+
+    if (viewMode === 'az') {
+      base.sort((a, b) => a.artist.localeCompare(b.artist));
+    }
+
+    return base.filter(artist => {
       const matchesGenre =
         !selectedGenre || artist.genres?.includes(selectedGenre);
       const matchesVibe =
         !selectedVibe || artist.vibes?.includes(selectedVibe);
       return matchesGenre && matchesVibe;
     });
-  }, [allArtists, selectedGenre, selectedVibe, viewMode, aiResult]);
+  }, [allArtists, selectedGenre, selectedVibe, viewMode, aiResult, spotifyMatches]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -128,6 +138,18 @@ export default function DiscoverPage() {
     });
 
     return { grouped, noDay: noDay.sort((a, b) => a.artist.localeCompare(b.artist)) };
+  }, [filteredArtists]);
+
+  const artistsByCountry = useMemo(() => {
+    const grouped: Record<string, typeof filteredArtists> = {};
+    filteredArtists.forEach(a => {
+      const country = a.countryCode || 'Unknown';
+      if (!grouped[country]) grouped[country] = [];
+      grouped[country].push(a);
+    });
+    
+    const sortedCountryNames = Object.keys(grouped).sort();
+    return { grouped, sortedCountryNames };
   }, [filteredArtists]);
 
   const handleAiScout = async () => {
@@ -219,7 +241,7 @@ export default function DiscoverPage() {
         {aiReason ? (
           <div className="px-5 py-4 bg-primary/5 border-t border-primary/20">
             <p className="text-[10px] font-bold text-primary leading-tight italic">
-              "{{aiReason}}"
+              "{aiReason}"
             </p>
           </div>
         ) : artist.vibes && artist.vibes.length > 0 && (

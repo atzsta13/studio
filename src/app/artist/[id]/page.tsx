@@ -47,8 +47,8 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
     notFound();
   }
 
-  const startTime = format(new Date(artist.startTime), 'HH:mm');
-  const endTime = format(new Date(artist.endTime), 'HH:mm');
+  const startTime = format(new Date(artist.startTime || Date.now()), 'HH:mm');
+  const endTime = format(new Date(artist.endTime || Date.now()), 'HH:mm');
 
   const socialLinks = [
     { platform: 'Spotify', url: artist.socials?.spotify, icon: SiSpotify },
@@ -121,21 +121,21 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
                   <Calendar className="h-5 w-5 text-primary" />
                   <div>
                     <p className="text-xs font-bold uppercase text-muted-foreground">Day</p>
-                    <p className="font-semibold">{artist.day}</p>
+                    <p className="font-semibold">{artist.day || 'TBD'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Clock className="h-5 w-5 text-primary" />
                   <div>
                     <p className="text-xs font-bold uppercase text-muted-foreground">Time</p>
-                    <p className="font-semibold">{startTime} - {endTime}</p>
+                    <p className="font-semibold">{artist.startTime ? `${startTime} - ${endTime}` : 'Schedule TBA'}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Building className="h-5 w-5 text-primary" />
                   <div>
                     <p className="text-xs font-bold uppercase text-muted-foreground">Stage</p>
-                    <p className="font-semibold">{artist.stage}</p>
+                    <p className="font-semibold">{artist.stage || 'TBA'}</p>
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
           )}
 
           <Button asChild size="lg" className="w-full sm:w-auto rounded-xl shadow-lg shadow-primary/20">
-            <Link href={`/timetable?day=${artist.day}`}>
+            <Link href={`/timetable?day=${artist.day || ''}`}>
               View Timetable
             </Link>
           </Button>
@@ -207,7 +207,7 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
                   </div>
                   <div className="flex-grow overflow-hidden">
                     <h4 className="font-bold text-lg group-hover:text-primary transition-colors truncate">{similar.artist}</h4>
-                    <p className="text-sm text-muted-foreground truncate">{similar.stage} &bull; {similar.day}</p>
+                    <p className="text-sm text-muted-foreground truncate">{similar.stage || 'Stage TBA'} &bull; {similar.day || 'Day TBA'}</p>
                     <div className="mt-2 flex gap-1">
                       {similar.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(g => (
                         <span key={g} className="text-[10px] uppercase font-bold text-primary/70">{g}</span>
