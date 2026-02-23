@@ -16,7 +16,8 @@ import {
   ShieldCheck,
   QrCode,
   MapPin,
-  Share2
+  Share2,
+  Languages
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -182,16 +183,19 @@ export default function ToolsPage() {
 
             <TabsContent value="survival" className="mt-10 space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg">
-                  <div className="flex items-start gap-6">
+                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg relative overflow-hidden group">
+                  <div className="absolute right-[-10px] top-[-10px] opacity-5 group-hover:scale-110 transition-transform">
+                    <Sun size={120} />
+                  </div>
+                  <div className="flex items-start gap-6 relative z-10">
                     <div className="p-4 rounded-2xl bg-orange-500/10 text-orange-500 shadow-inner">
                       <Sun size={32} />
                     </div>
                     <div>
-                      <h4 className="font-black text-xl mb-2 uppercase italic tracking-tight">Solar Forecast</h4>
+                      <h4 className="font-black text-xl mb-2 uppercase italic tracking-tight">UV Forecast</h4>
                       <p className="text-sm font-medium text-muted-foreground leading-relaxed">
-                        UV Index: <span className="text-orange-500 font-black">HIGH (8)</span>. <br/>
-                        Optimal charging: 10:00 - 15:30.
+                        Index: <span className="text-orange-500 font-black">HIGH (8)</span>. <br/>
+                        Reapply sunscreen every 2h. Peak burn: 11:00-15:00.
                       </p>
                     </div>
                   </div>
@@ -221,7 +225,11 @@ export default function ToolsPage() {
               </Button>
             </TabsContent>
 
-            <TabsContent value="culture" className="mt-10">
+            <TabsContent value="culture" className="mt-10 space-y-8">
+              <div className="flex items-center gap-4 mb-2">
+                <Languages className="text-primary h-6 w-6" />
+                <h3 className="text-2xl font-black uppercase italic tracking-tighter">Hungarian Survival</h3>
+              </div>
               <Card className="border-border rounded-[2.5rem] overflow-hidden shadow-2xl">
                 <CardContent className="p-0">
                   <div className="divide-y divide-border/50">
@@ -231,6 +239,7 @@ export default function ToolsPage() {
                       { h: 'Egy sört kérek', e: 'A beer, please', p: 'Edge shirt kay-reck' },
                       { h: 'Hol van a víz?', e: 'Where is the water?', p: 'Hole vawn a veez?' },
                       { h: 'Egészségedre!', e: 'Cheers!', p: 'Ag-esh-shay-ge-dre' },
+                      { h: 'Segítség!', e: 'Help!', p: 'She-geet-shaig!' },
                     ].map((item) => (
                       <div key={item.h} className="p-6 flex items-center justify-between hover:bg-muted/30 transition-colors group">
                         <div>
@@ -290,15 +299,26 @@ export default function ToolsPage() {
                   </div>
                 </Card>
 
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg">
+                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg group">
                   <div className="flex items-center gap-6 mb-4">
                     <div className="p-4 rounded-2xl bg-yellow-500/10 text-yellow-500 shadow-inner">
                       <FileText size={32} />
                     </div>
-                    <h4 className="font-black text-xl uppercase italic tracking-tight">Lost Item Log</h4>
+                    <h4 className="font-black text-xl uppercase italic tracking-tight">Lost Item Helper</h4>
                   </div>
-                  <p className="text-sm font-medium text-muted-foreground mb-6 leading-relaxed max-w-md">Structured preparation tool for official Hungarian police or festival security reports.</p>
-                  <Button variant="outline" className="w-full h-14 rounded-2xl border-border hover:bg-muted font-black uppercase tracking-widest text-xs">Generate Metadata</Button>
+                  <p className="text-sm font-medium text-muted-foreground mb-6 leading-relaxed max-w-md">Prepare the required technical metadata for official Sziget security or Police reports.</p>
+                  <Button 
+                    variant="outline" 
+                    className="w-full h-14 rounded-2xl border-border hover:bg-muted font-black uppercase tracking-widest text-xs"
+                    onClick={() => {
+                      toast({
+                        title: "METADATA READY",
+                        description: "Check your local 'Memories' log for the report template.",
+                      });
+                    }}
+                  >
+                    Generate Report Template
+                  </Button>
                 </Card>
               </div>
             </TabsContent>
