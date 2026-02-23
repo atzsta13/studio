@@ -13,7 +13,8 @@ import {
   Button,
   Grid
 } from '@mui/material';
-import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight, Sparkles } from 'lucide-react';
+import { Map, CalendarDays, LifeBuoy, Music, Utensils, Wand2, ArrowRight, Sparkles, Gavel, Trophy } from 'lucide-react';
+import { HydrationTracker } from '@/components/tools/hydration-tracker';
 
 const features = [
   {
@@ -31,17 +32,17 @@ const features = [
     color: '#00c3ff', // Sziget Cyan
   },
   {
-    title: 'Survival Guide',
-    description: 'Essential tips for the island life',
-    href: '/guide',
-    icon: LifeBuoy,
+    title: 'Survival Toolkit',
+    description: 'Converter, SOS & phrasebook',
+    href: '/tools',
+    icon: Gavel,
     color: '#4ade80', // Sziget Green
   },
   {
-    title: 'Full Timetable',
-    description: 'Plan your day & avoid clashes',
-    href: '/timetable',
-    icon: CalendarDays,
+    title: 'Island Passport',
+    description: 'Collect stamps & earn rewards',
+    href: '/passport',
+    icon: Trophy,
     color: '#e6007e', // Sziget Pink
   },
 ];
@@ -121,7 +122,7 @@ export default function Home() {
             Built to work deep in the crowd, no signal required.
           </Typography>
 
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', mb: 8 }}>
             <Link href="/discover" style={{ textDecoration: 'none' }}>
               <Button
                 variant="contained"
@@ -144,6 +145,10 @@ export default function Home() {
                 Start Scouting
               </Button>
             </Link>
+          </Box>
+
+          <Box sx={{ maxWidth: 400, mx: 'auto' }}>
+            <HydrationTracker />
           </Box>
         </Container>
       </Box>
@@ -245,7 +250,7 @@ export default function Home() {
               Official Lineup Updated
             </Typography>
             <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1, maxWidth: 600 }}>
-              The 2026 artist roster is live! We've just synced the latest batch of headliners and international scouting reports.
+              The 2026 artist roster is live! We've just synced the latest batch of 45+ standout features and hardware tools.
             </Typography>
           </Box>
           <Link href="/discover" style={{ textDecoration: 'none' }}>
