@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Calendar, Clock, ChevronLeft, Building, Music, Sparkles } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Building, Music, Sparkles, UserPlus } from 'lucide-react';
 import {
   SiSpotify,
   SiApplemusic,
@@ -29,6 +29,13 @@ function getArtist(id: string): LineupItem | undefined {
   return allArtists.find((artist) => artist.id === id);
 }
 
+function getSimilarArtists(artist: LineupItem) {
+  if (!artist.genres) return [];
+  return allArtists
+    .filter(a => a.id !== artist.id && a.genres?.some(g => artist.genres?.includes(g)))
+    .slice(0, 4);
+}
+
 const getFlagEmoji = (countryCode: string | undefined) => {
   if (!countryCode || countryCode === 'Unknown') return '';
   const trimmedCode = countryCode.trim().toUpperCase();
@@ -49,6 +56,7 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
     notFound();
   }
 
+  const similar = getSimilarArtists(artist);
   const startTime = artist.startTime ? format(new Date(artist.startTime), 'HH:mm') : 'TBA';
   const endTime = artist.endTime ? format(new Date(artist.endTime), 'HH:mm') : 'TBA';
 
@@ -148,24 +156,39 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-t pt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t pt-12">
         <section>
           <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Vibe Radar</h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mb-12">
             {artist.vibes?.map(vibe => (
               <Badge key={vibe} variant="outline" className="px-4 py-2 border-primary/30 text-primary font-bold uppercase tracking-widest text-[10px]">
                 {vibe}
               </Badge>
             )) || <p className="text-muted-foreground">Scouting vibes...</p>}
           </div>
+
+          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
+          <div className="grid grid-cols-2 gap-4">
+            {similar.map(a => (
+              <Link key={a.id} href={`/artist/${a.id}`} className="group block">
+                <div className="aspect-square rounded-2xl bg-muted overflow-hidden mb-2 relative">
+                  <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <UserPlus className="text-white h-6 w-6" />
+                  </div>
+                </div>
+                <p className="font-black uppercase italic text-[10px] tracking-tight truncate">{a.artist}</p>
+              </Link>
+            ))}
+          </div>
         </section>
 
         <section>
-          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Player</h3>
+          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Listen</h3>
           {spotifyArtistId ? (
             <iframe
               src={`https://open.spotify.com/embed/artist/${spotifyArtistId}?utm_source=generator&theme=0`}
-              width="100%" height="320" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+              width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
               className="rounded-2xl shadow-xl bg-muted"
             ></iframe>
           ) : (

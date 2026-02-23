@@ -22,7 +22,7 @@ import {
   Camera, 
   Newspaper,
   Flame,
-  ArrowUpRight
+  ChevronRight
 } from 'lucide-react';
 import { HydrationTracker } from '@/components/tools/hydration-tracker';
 import { useEffect, useState } from 'react';
@@ -171,7 +171,7 @@ export default function Home() {
             </Typography>
           </Box>
           <Link href="/timetable" style={{ textDecoration: 'none' }}>
-            <Button size="small" endIcon={<ArrowUpRight size={14} />} sx={{ color: 'text.secondary', fontWeight: 700 }}>
+            <Button size="small" endIcon={<ChevronRight size={14} />} sx={{ color: 'text.secondary', fontWeight: 700 }}>
               Full Schedule
             </Button>
           </Link>
