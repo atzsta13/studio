@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -295,7 +294,7 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/80 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/40 transition-colors">
+      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/90 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/40 transition-colors">
         <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
           <div className="inline-flex rounded-2xl bg-muted/50 p-1.5 border border-border/50 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -12,11 +11,11 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 hidden w-full border-b border-border/40 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60 md:block">
+    <header className="sticky top-0 z-50 hidden w-full border-b border-border/40 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 md:block transition-colors">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center gap-2 group">
-            <Music2 className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+            < Music2 className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
             <span className="hidden font-bold sm:inline-block text-lg tracking-tight">
               Sziget <span className="text-primary">Insider</span>
             </span>
