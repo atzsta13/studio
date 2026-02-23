@@ -229,7 +229,7 @@ export default function Home() {
         </Grid>
 
         {/* Tactical Row */}
-        <Grid container spacing={3} sx={{ mt: 1 }}>
+        <Grid container spacing={3} sx={{ mt: 3 }}>
           <Grid item xs={12} md={6}>
             <Card sx={{ bgcolor: 'rgba(255,238,0,0.03)', border: '1px dashed rgba(255,238,0,0.15)', borderRadius: 7 }}>
               <CardActionArea href="/memories" sx={{ p: 0 }}>
@@ -254,7 +254,7 @@ export default function Home() {
                   </Box>
                   <Box>
                     <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Active Quests</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>3 challenges available. Earn Island XP.</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Challenges available. Earn Island XP.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>

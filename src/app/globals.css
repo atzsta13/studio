@@ -19,7 +19,7 @@
     --accent-foreground: 0 0% 100%;
     --destructive: 0 100% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 242 20% 94%;
+    --border: 242 20% 92%;
     --input: 242 20% 94%;
     --ring: 314 100% 45%;
     --radius: 1.25rem;
@@ -59,7 +59,7 @@
   }
 
   .glass {
-    @apply backdrop-blur-xl bg-background/80 border-border/50;
+    @apply backdrop-blur-3xl bg-background/80 border-border/50;
   }
 }
 

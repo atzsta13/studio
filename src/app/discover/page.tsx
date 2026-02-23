@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, Calendar, SortAsc, Sparkles, ArrowRight, Globe, Wand2, Loader2 } from 'lucide-react';
+import { Music, Search, Calendar, SortAsc, Sparkles, Globe, Wand2, Loader2, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -221,7 +221,7 @@ export default function DiscoverPage() {
 
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100">
             <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-5 rounded-full shadow-2xl">
-              <ArrowRight className="h-7 w-7 text-white" />
+              <ChevronRight className="h-7 w-7 text-white" />
             </div>
           </div>
         </div>
@@ -320,7 +320,7 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/90 px-4 pb-8 pt-6 backdrop-blur-2xl md:top-16 border-b border-border/40">
+      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-3xl md:top-16 border-b border-border/20">
         <div className="flex flex-col gap-6 lg:flex-row justify-between items-center max-w-7xl mx-auto w-full">
           <div className="inline-flex rounded-2xl bg-muted/50 p-1.5 border border-border/50 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
