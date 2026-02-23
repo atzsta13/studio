@@ -124,6 +124,9 @@ export default function DiscoverPage() {
     // Sort filtering
     if (viewMode === 'az') {
       base.sort((a, b) => a.artist.localeCompare(b.artist));
+    } else if (viewMode === 'discover') {
+      // Prioritize headliners in discover mode
+      base.sort((a, b) => (b.isHeadliner ? 1 : 0) - (a.isHeadliner ? 1 : 0));
     }
 
     return base.filter(artist => {
@@ -180,16 +183,16 @@ export default function DiscoverPage() {
     const hasConflict = conflicts.has(artist.id);
 
     return (
-      <div className="relative group">
+      <div className="relative group h-full">
         <Link 
           href={`/artist/${artist.id}`}
-          className={`relative flex flex-col overflow-hidden rounded-[2.5rem] transition-all duration-500 bg-card border ${
+          className={`relative flex flex-col h-full overflow-hidden rounded-[2.5rem] transition-all duration-500 bg-card border ${
             isHeadliner
               ? 'border-primary/40 shadow-2xl shadow-primary/5'
               : 'border-border/50 hover:border-primary/40 hover:shadow-2xl'
           }`}
         >
-          <div className="relative aspect-square w-full overflow-hidden bg-muted">
+          <div className="relative aspect-square w-full overflow-hidden bg-muted shrink-0">
             {artist.imageUrl ? (
               <img
                 src={artist.imageUrl}
@@ -198,47 +201,47 @@ export default function DiscoverPage() {
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-muted">
-                <Music className="h-16 w-16 text-muted-foreground/20" />
+                <Music className="h-12 w-12 text-muted-foreground/20" />
               </div>
             )}
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
 
             {/* Status Badges */}
-            <div className="absolute top-5 left-5 right-5 flex justify-between items-start z-20">
-              <div className="flex flex-col gap-2">
+            <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
+              <div className="flex flex-col gap-1.5">
                 {artist.day && (
-                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[8px] font-black uppercase tracking-widest backdrop-blur-xl">
+                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[7px] font-black uppercase tracking-widest backdrop-blur-xl px-2 py-0.5">
                     {artist.day}
                   </Badge>
                 )}
                 {hasConflict && isFave && (
-                  <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-2 py-0.5 text-[8px] font-black">
-                    <AlertTriangle size={10} /> CLASH
+                  <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-2 py-0.5 text-[7px] font-black">
+                    <AlertTriangle size={8} /> CLASH
                   </Badge>
                 )}
               </div>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-              <div className="flex items-center gap-2 mb-2">
+            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+              <div className="flex items-center gap-2 mb-1.5">
                 {isMounted && (
-                  <span className="text-xl drop-shadow-lg" suppressHydrationWarning>
+                  <span className="text-lg drop-shadow-lg" suppressHydrationWarning>
                     {getFlagEmoji(artist.countryCode)}
                   </span>
                 )}
-                <h3 className={`font-black text-2xl leading-[0.9] uppercase tracking-tighter transition-colors text-white ${
+                <h3 className={`font-black text-xl leading-[0.9] uppercase tracking-tighter transition-colors text-white truncate ${
                   isHeadliner ? 'text-primary group-hover:text-white' : 'group-hover:text-primary'
                 }`}>
                   {artist.artist}
                 </h3>
               </div>
 
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1">
                 {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                   <span
                     key={genre}
-                    className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[8px] font-black uppercase tracking-[0.1em] border bg-white/10 backdrop-blur-md text-white border-white/10"
+                    className="inline-flex items-center rounded-full px-2 py-0.5 text-[7px] font-black uppercase tracking-[0.1em] border bg-white/10 backdrop-blur-md text-white border-white/10"
                   >
                     {genre}
                   </span>
@@ -247,49 +250,52 @@ export default function DiscoverPage() {
             </div>
 
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100 pointer-events-none">
-              <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-5 rounded-full shadow-2xl">
-                <ChevronRight className="h-7 w-7 text-white" />
+              <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-4 rounded-full shadow-2xl">
+                <ChevronRight className="h-6 w-6 text-white" />
               </div>
             </div>
           </div>
 
-          {aiReason ? (
-            <div className="px-6 py-5 bg-primary/5 border-t border-primary/20">
-              <p className="text-[11px] font-bold text-primary leading-tight italic">
-                "{aiReason}"
-              </p>
-            </div>
-          ) : artist.vibes && artist.vibes.length > 0 && (
-            <div className="px-6 py-4 bg-card backdrop-blur-sm border-t border-border/50">
-              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-60">
-                {artist.vibes.slice(0, 3).join(' • ')}
-              </p>
-            </div>
-          )}
+          <div className="flex-1 flex flex-col justify-between">
+            {aiReason ? (
+              <div className="px-5 py-4 bg-primary/5 border-t border-primary/20 h-full flex items-center">
+                <p className="text-[10px] font-bold text-primary leading-tight italic">
+                  "{aiReason}"
+                </p>
+              </div>
+            ) : artist.vibes && artist.vibes.length > 0 && (
+              <div className="px-5 py-3 bg-card backdrop-blur-sm border-t border-border/50">
+                <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-60">
+                  {artist.vibes.slice(0, 2).join(' • ')}
+                </p>
+              </div>
+            )}
+          </div>
         </Link>
 
-        {/* Favorite Heart Button - Persistent */}
+        {/* Favorite Heart Button */}
         <button 
           onClick={(e) => {
             e.preventDefault();
+            e.stopPropagation();
             toggleFavorite(artist.id);
           }}
-          className={`absolute top-5 right-5 z-30 h-10 w-10 rounded-full flex items-center justify-center transition-all shadow-xl backdrop-blur-md border ${
+          className={`absolute top-4 right-4 z-30 h-9 w-9 rounded-full flex items-center justify-center transition-all shadow-xl backdrop-blur-md border ${
             isFave 
               ? 'bg-primary border-primary text-white scale-110' 
               : 'bg-black/40 border-white/20 text-white/60 hover:text-white hover:bg-black/60'
           }`}
         >
-          <Heart size={18} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-300" : ""} />
+          <Heart size={16} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-300" : ""} />
         </button>
       </div>
     );
   };
 
-  const progress = Math.round((favorites.size / allArtists.length) * 100);
+  const progress = Math.round((favorites.size / allArtists.length) * 100) || 0;
 
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-12">
+    <div className="container mx-auto max-w-7xl px-4 py-12 pb-32">
       <header className="mb-16 text-center">
         <div className="mx-auto mb-10 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-primary/10 shadow-2xl shadow-primary/10 ring-1 ring-primary/20">
           <Music className="h-10 w-10 text-primary" />
@@ -302,7 +308,7 @@ export default function DiscoverPage() {
         </p>
 
         {/* Lineup Progress Tracker */}
-        <div className="mt-12 max-w-md mx-auto">
+        <div className="mt-12 max-w-md mx-auto px-4">
           <div className="flex justify-between items-end mb-2 text-[10px] font-black uppercase tracking-widest text-muted-foreground">
             <span>Island Discovery</span>
             <span className="text-primary">{favorites.size} / {allArtists.length} Artists Saved</span>
@@ -374,8 +380,8 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      {/* Sticky Search & Mood Filter Bar */}
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-3xl md:top-16 border-b border-border/20">
+      {/* Sticky Filters Container */}
+      <div className="sticky top-0 z-40 -mx-4 mb-12 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-3xl md:top-16 border-b border-border/20 shadow-sm">
         <div className="max-w-7xl mx-auto w-full space-y-6">
           <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
             {/* Search Input */}
@@ -430,8 +436,8 @@ export default function DiscoverPage() {
             </div>
           </div>
 
-          {/* Vibe Filter Scroll */}
-          <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
+          {/* Vibe Filter Horizontal Scroll */}
+          <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
             <button 
               onClick={() => setSelectedVibe(null)}
               className={`px-5 py-2.5 rounded-full text-[9px] font-black uppercase tracking-widest whitespace-nowrap border transition-all ${!selectedVibe ? 'bg-primary border-primary text-white shadow-lg' : 'bg-muted/30 border-border text-muted-foreground hover:border-muted-foreground'}`}
@@ -451,15 +457,16 @@ export default function DiscoverPage() {
         </div>
       </div>
 
-      <div className="mt-16">
+      {/* Main Results Grid Area */}
+      <div className="min-h-[400px]">
         {viewMode === 'ai' && aiResult && (
-          <div className="space-y-16 mb-24">
-            <div className="bg-indigo-600/5 border border-indigo-500/20 p-10 rounded-[3.5rem] relative overflow-hidden">
+          <div className="space-y-16 mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="bg-indigo-600/5 border border-indigo-500/20 p-8 md:p-12 rounded-[3.5rem] relative overflow-hidden">
               <div className="absolute right-[-40px] top-[-40px] opacity-5 rotate-12">
                 <Wand2 size={240} className="text-indigo-500" />
               </div>
-              <div className="relative z-10 flex items-start gap-8">
-                <div className="bg-indigo-600 p-5 rounded-[2rem] text-white shadow-2xl">
+              <div className="relative z-10 flex flex-col md:flex-row items-start gap-8">
+                <div className="bg-indigo-600 p-5 rounded-[2rem] text-white shadow-2xl shrink-0">
                   <Wand2 className="h-10 w-10" />
                 </div>
                 <div className="flex-1">
@@ -472,7 +479,7 @@ export default function DiscoverPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
               {filteredArtists.map(artist => (
                 <ArtistCard key={artist.id} artist={artist} />
               ))}
@@ -490,11 +497,11 @@ export default function DiscoverPage() {
               const others = dayArtists.filter(a => !a.isHeadliner);
 
               return (
-                <section key={day}>
+                <section key={day} className="animate-in fade-in duration-500">
                   <div className="flex items-center gap-8 mb-12">
                     <h2 className="text-5xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
                     <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent" />
-                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] opacity-50">{dayArtists.length} items</span>
+                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] opacity-50">{dayArtists.length} acts</span>
                   </div>
 
                   {headliners.length > 0 && (
@@ -525,7 +532,7 @@ export default function DiscoverPage() {
               if (!countryArtists || countryArtists.length === 0) return null;
 
               return (
-                <section key={country}>
+                <section key={country} className="animate-in fade-in duration-500">
                   <div className="flex items-center gap-8 mb-12">
                     <div className="flex items-center gap-4">
                       <span className="text-5xl drop-shadow-lg" suppressHydrationWarning>{getFlagEmoji(country)}</span>
@@ -546,7 +553,7 @@ export default function DiscoverPage() {
         )}
 
         {(viewMode === 'discover' || viewMode === 'az' || viewMode === 'spotify') && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
             {filteredArtists.map(artist => (
               <ArtistCard key={artist.id} artist={artist} />
             ))}
@@ -554,6 +561,7 @@ export default function DiscoverPage() {
         )}
       </div>
 
+      {/* Empty State */}
       {filteredArtists.length === 0 && (
         <div className="py-40 text-center bg-muted/30 rounded-[4rem] border border-dashed border-border/50 max-w-4xl mx-auto">
           <div className="mx-auto mb-10 flex h-24 w-24 items-center justify-center rounded-full bg-muted shadow-inner opacity-40">
