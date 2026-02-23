@@ -176,7 +176,7 @@ export default function DiscoverPage() {
     }
   };
 
-  const ArtistCard = ({ artist }: { artist: typeof filteredArtists[0] }) => {
+  const ArtistCard = ({ artist, size = 'default' }: { artist: typeof filteredArtists[0], size?: 'large' | 'default' }) => {
     const isHeadliner = artist.isHeadliner;
     const aiReason = aiResult?.recommendations.find(r => r.artistId === artist.id)?.reason;
     const isFave = favorites.has(artist.id);
@@ -230,9 +230,9 @@ export default function DiscoverPage() {
                     {getFlagEmoji(artist.countryCode)}
                   </span>
                 )}
-                <h3 className={`font-black text-xl leading-[0.9] uppercase tracking-tighter transition-colors text-white truncate ${
-                  isHeadliner ? 'text-primary group-hover:text-white' : 'group-hover:text-primary'
-                }`}>
+                <h3 className={`font-black uppercase tracking-tighter transition-colors text-white truncate ${
+                  size === 'large' ? 'text-2xl leading-[0.8]' : 'text-xl leading-[0.9]'
+                } ${isHeadliner ? 'text-primary group-hover:text-white' : 'group-hover:text-primary'}`}>
                   {artist.artist}
                 </h3>
               </div>
@@ -457,7 +457,7 @@ export default function DiscoverPage() {
         </div>
       </div>
 
-      {/* Main Results Grid Area */}
+      {/* Main Results Grid Area - Optimized for 6 Columns on Desktop */}
       <div className="min-h-[400px]">
         {viewMode === 'ai' && aiResult && (
           <div className="space-y-16 mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
@@ -506,9 +506,9 @@ export default function DiscoverPage() {
 
                   {headliners.length > 0 && (
                     <div className="mb-12">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                         {headliners.map(artist => (
-                          <ArtistCard key={artist.id} artist={artist} />
+                          <ArtistCard key={artist.id} artist={artist} size="large" />
                         ))}
                       </div>
                     </div>
