@@ -14,7 +14,10 @@ import {
   Utensils, 
   Lock, 
   CheckCircle2,
-  Star
+  Star,
+  Navigation, 
+  Clock, 
+  Wand2
 } from 'lucide-react';
 
 interface Stamp {
@@ -29,15 +32,13 @@ interface Stamp {
 const STAMPS: Stamp[] = [
   { id: 's1', title: 'Main Stage Legend', icon: Star, description: 'Visit the Main Stage during a headliner set.', category: 'stage', color: 'text-yellow-500' },
   { id: 's2', title: 'Colosseum Raver', icon: Flame, description: 'Dance at the Colosseum for at least 1 hour.', category: 'stage', color: 'text-orange-500' },
-  { id: 's3', title: 'Hydration Hero', icon: Droplet, description: 'Log 5 water refills at the map stations.', category: 'utility', color: 'text-blue-500' },
+  { id: 's3', title: 'Water Finder', icon: Droplet, description: 'Locate 3 different water refill points on your map.', category: 'utility', color: 'text-blue-500' },
   { id: 's4', title: 'Global Gourmet', icon: Utensils, description: 'Eat at 3 different international stalls.', category: 'food', color: 'text-emerald-500' },
   { id: 's5', title: 'Art Garden Dreamer', icon: MapPin, description: 'Visit the Art Garden at midnight.', category: 'secret', color: 'text-purple-500' },
   { id: 's6', title: 'Bridge Crosser', icon: Navigation, description: 'Cross the K-Bridge at dawn.', category: 'secret', color: 'text-pink-500' },
   { id: 's7', title: 'Early Bird', icon: Clock, description: 'Be the first at a stage before 4 PM.', category: 'utility', color: 'text-cyan-500' },
   { id: 's8', title: 'Scout Master', icon: Wand2, description: 'Follow 3 AI Scout recommendations.', category: 'secret', color: 'text-indigo-500' },
 ];
-
-import { Navigation, Clock, Wand2 } from 'lucide-react';
 
 const STORAGE_KEY = 'sziget_passport_v1';
 

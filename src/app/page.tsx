@@ -24,7 +24,6 @@ import {
   Flame,
   ChevronRight
 } from 'lucide-react';
-import { HydrationTracker } from '@/components/tools/hydration-tracker';
 import { useEffect, useState, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
 
@@ -130,38 +129,32 @@ export default function Home() {
             The ultimate intelligence layer for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
           </Typography>
 
-          <Grid container spacing={3} sx={{ maxWidth: 900, mx: 'auto' }}>
-            <Grid item xs={12} sm={6}>
-              <HydrationTracker />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper sx={{ 
-                p: 3, 
-                height: '100%',
-                bgcolor: 'rgba(79, 70, 229, 0.05)', 
-                border: '1px solid rgba(79, 70, 229, 0.15)',
-                borderRadius: 6,
-                textAlign: 'left',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                gap: 1
-              }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <Newspaper size={16} className="text-indigo-500" />
-                  <Typography variant="caption" sx={{ fontWeight: 900, color: 'indigo.500', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
-                    Island Status
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.1rem' }}>
-                  Vibe: Electric. Dust: High.
+          <Container maxWidth="sm">
+            <Paper sx={{ 
+              p: 4, 
+              bgcolor: 'rgba(79, 70, 229, 0.05)', 
+              border: '1px solid rgba(79, 70, 229, 0.15)',
+              borderRadius: 6,
+              textAlign: 'left',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: 1
+            }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                <Newspaper size={16} className="text-indigo-500" />
+                <Typography variant="caption" sx={{ fontWeight: 900, color: 'indigo.500', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+                  Island Status
                 </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
-                  Colosseum peak expected at 02:00. <br/>All 12 water points are active and 100% free.
-                </Typography>
-              </Paper>
-            </Grid>
-          </Grid>
+              </Box>
+              <Typography variant="h6" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.2rem' }}>
+                Vibe: Electric. Dust: High.
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
+                Colosseum peak expected at 02:00. All 12 water points are active and 100% free. Remember to stay hydrated during peak sun hours.
+              </Typography>
+            </Paper>
+          </Container>
         </Container>
       </Box>
 

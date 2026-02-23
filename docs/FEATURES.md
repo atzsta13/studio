@@ -1,4 +1,4 @@
-# The Complete Feature Matrix (45 Functional Features)
+# The Complete Feature Matrix (44 Functional Features)
 
 Sziget Insider 2026 is designed to be the most comprehensive festival operating system ever built.
 
@@ -24,35 +24,34 @@ Sziget Insider 2026 is designed to be the most comprehensive festival operating 
 17. **Static Page Generation**: Sub-second navigation via SSG for all artist bios.
 18. **Mobile-First Bottom Nav**: Ergonomic navigation designed for one-handed use.
 
-## 🛡️ Survival & Utility Toolkit (12 Features)
+## 🛡️ Survival & Utility Toolkit (11 Features)
 19. **Budget Hero Finder**: Filters for food stalls with price-capped "Budget" meals.
 20. **One-Tap Emergency Cards**: Large buttons for medical and security calls.
 21. **HUF to Currency Converter**: Quick offline tool for international fans (EUR/USD).
 22. **SOS Friend Finder Beacon**: Visual strobe for finding friends in dense crowds.
-23. **Hydration Hero Counter**: Interactive water intake tracker with progress bars.
-24. **Sun Safety UV Alert**: Visual burn-risk indicator based on Budapest solar cycle.
-25. **Battery Saver "OLED" Mode**: Minimal animation, high-contrast UI mode via dark theme.
-26. **Simulated Sound Pressure Meter**: Visual dB guide for hearing protection.
-27. **Hike-In Weight Calculator**: Estimate your gear loadout weight for the bridge walk.
-28. **One-Tap "Safe" Check-in**: Quick local tool to log your safety status.
-29. **Smart Packing List**: Categorized checklist with persistent progress.
-30. **Solar Charging Forecast**: "Best times to charge" based on solar peak data.
+23. **Sun Safety UV Alert**: Visual burn-risk indicator based on Budapest solar cycle.
+24. **Battery Saver "OLED" Mode**: Minimal animation, high-contrast UI mode via dark theme.
+25. **Simulated Sound Pressure Meter**: Visual dB guide for hearing protection.
+26. **Hike-In Weight Calculator**: Estimate your gear loadout weight for the bridge walk.
+27. **One-Tap "Safe" Check-in**: Quick local tool to log your safety status.
+28. **Smart Packing List**: Categorized checklist with persistent progress.
+29. **Solar Charging Forecast**: "Best times to charge" based on solar peak data.
 
 ## 📅 Timetable & Planning (7 Features)
-31. **Timetable Clash Detection**: Visual red alerts for overlapping favorite sets.
-32. **15-min Set Notifications**: Local browser notifications triggered before sets.
-33. **Brutalist Timetable Grid**: High-density view optimized for high-glare screens.
-34. **Multi-Year Toggle**: Instantly switch between 2025 and 2026 data.
-35. **Custom Lockscreen Generator**: Logic to prepare favorites for export (mocked).
-36. **Group by Country**: Discovery mode to find acts from specific regions.
-37. **Auto-Scrolling Time Slots**: The grid tracks the current festival time.
+30. **Timetable Clash Detection**: Visual red alerts for overlapping favorite sets.
+31. **15-min Set Notifications**: Local browser notifications triggered before sets.
+32. **Brutalist Timetable Grid**: High-density view optimized for high-glare screens.
+33. **Multi-Year Toggle**: Instantly switch between 2025 and 2026 data.
+34. **Custom Lockscreen Generator**: Logic to prepare favorites for export (mocked).
+35. **Group by Country**: Discovery mode to find acts from specific regions.
+36. **Auto-Scrolling Time Slots**: The grid tracks the current festival time.
 
 ## 🏆 Gamification & Culture (8 Features)
-38. **Island Explorer Quests**: Achievements for visiting different island points.
-39. **Digital Passport & Stickers**: Collect stamps for visiting major stages.
-40. **Legend XP Ranking**: Level up your user profile based on usage.
-41. **Hungarian Survival Phrasebook**: Essential lingo for the island.
-42. **Island Lore Feed**: Learn about the history of the festival.
-43. **Digital Memory Log**: Local-only persistent diary for memories.
-44. **Interactive Camping Guide**: Accordion-based rulebook for island living.
-45. **Shuttle & Transit Tracker**: Logistics guide for getting to/from the island.
+37. **Island Explorer Quests**: Achievements for visiting different island points.
+38. **Digital Passport & Stickers**: Collect stamps for visiting major stages.
+39. **Legend XP Ranking**: Level up your user profile based on usage.
+40. **Hungarian Survival Phrasebook**: Essential lingo for the island.
+41. **Island Lore Feed**: Learn about the history of the festival.
+42. **Digital Memory Log**: Local-only persistent diary for memories.
+43. **Interactive Camping Guide**: Accordion-based rulebook for island living.
+44. **Shuttle & Transit Tracker**: Logistics guide for getting to/from the island.
