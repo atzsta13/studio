@@ -81,14 +81,12 @@ export default function ToolsPage() {
     <div className={`container mx-auto max-w-4xl px-4 py-16 pb-32 transition-colors duration-700 ${isFlashOn ? 'bg-white' : ''}`}>
       {isFlashOn ? (
         <div className="fixed inset-0 z-[1000] bg-white flex flex-col items-center justify-center p-10 animate-pulse">
-          <Button 
-            variant="outline" 
-            size="lg" 
+          <button 
             onClick={toggleFlash}
-            className="rounded-full h-40 w-40 border-[12px] border-black text-black font-black text-3xl uppercase shadow-2xl"
+            className="rounded-full h-40 w-40 border-[12px] border-black text-black font-black text-3xl uppercase shadow-2xl flex items-center justify-center bg-transparent"
           >
             OFF
-          </Button>
+          </button>
           <p className="mt-12 text-black font-black text-5xl text-center uppercase italic tracking-tighter leading-none">Find Me Here!</p>
         </div>
       ) : (
@@ -217,6 +215,10 @@ export default function ToolsPage() {
                   </div>
                 </Card>
               </div>
+              <Button onClick={toggleFlash} variant="destructive" className="w-full h-20 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-xl shadow-2xl gap-4">
+                <Zap size={24} />
+                SOS BEACON
+              </Button>
             </TabsContent>
 
             <TabsContent value="culture" className="mt-10">

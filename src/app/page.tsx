@@ -12,7 +12,6 @@ import {
   Button,
   Grid,
   Paper,
-  Fade,
 } from '@mui/material';
 import { 
   Map as MapIcon, 
@@ -23,15 +22,11 @@ import {
   Camera, 
   Newspaper,
   Flame,
-  ChevronRight,
-  Clock,
-  Navigation,
-  Zap
+  ChevronRight
 } from 'lucide-react';
 import { HydrationTracker } from '@/components/tools/hydration-tracker';
 import { useEffect, useState, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
-import { format } from 'date-fns';
 
 const features = [
   {
@@ -67,16 +62,12 @@ const features = [
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   
-  // Simulated Festival Clock (Wednesday at 8:00 PM)
-  const [simulatedTime] = useState(new Date('2026-08-12T20:00:00Z'));
-
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const nowPlaying = useMemo(() => {
-    // Basic logic to find what would be playing at the simulated time
-    // In a real scenario, this would filter by the current real time
+    // Simulated "Now Playing" for the Island Pulse feature
     return (lineup as any[]).filter(a => a.day === 'Wednesday').slice(0, 3);
   }, []);
 
