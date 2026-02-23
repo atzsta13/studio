@@ -5,7 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe, ChevronRight } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -166,13 +166,13 @@ export default function DiscoverPage() {
     return (
       <Link 
         href={`/artist/${artist.id}`}
-        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-card border-2 ${
+        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-card border ${
           isHeadliner
-            ? 'border-yellow-500/30 shadow-2xl shadow-yellow-500/10'
-            : 'border-border/50 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10'
+            ? 'border-primary/30 shadow-2xl shadow-primary/10'
+            : 'border-border/50 hover:border-primary/40 hover:shadow-xl'
         }`}
       >
-        <div className="relative aspect-[1/1] w-full overflow-hidden bg-muted">
+        <div className="relative aspect-square w-full overflow-hidden bg-muted">
           {artist.imageUrl ? (
             <img
               src={artist.imageUrl}
@@ -185,12 +185,12 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
 
           {artist.day && (
             <div className={`absolute top-4 right-4 rounded-full border px-3 py-1 text-[9px] font-black uppercase tracking-widest backdrop-blur-xl z-10 ${
               isHeadliner
-                ? 'bg-yellow-500 text-black border-yellow-400'
+                ? 'bg-primary text-primary-foreground border-primary/20'
                 : 'bg-black/60 text-white border-white/10'
             }`}>
               {artist.day}
@@ -210,8 +210,8 @@ export default function DiscoverPage() {
                   {getFlagEmoji(artist.countryCode)}
                 </span>
               )}
-              <h3 className={`font-black text-xl sm:text-2xl leading-tight uppercase tracking-tighter transition-colors ${
-                isHeadliner ? 'text-yellow-400' : 'text-white group-hover:text-primary'
+              <h3 className={`font-black text-xl sm:text-2xl leading-tight uppercase tracking-tighter transition-colors text-white ${
+                isHeadliner ? 'text-primary-foreground group-hover:text-white' : 'group-hover:text-primary'
               }`}>
                 {artist.artist}
               </h3>
@@ -221,7 +221,7 @@ export default function DiscoverPage() {
               {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                 <span
                   key={genre}
-                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/5 backdrop-blur-md text-white/80 border-white/10"
+                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/10 backdrop-blur-md text-white border-white/10"
                 >
                   {genre}
                 </span>
@@ -265,7 +265,7 @@ export default function DiscoverPage() {
             <button
               onClick={() => setActiveYear('2026')}
               className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2026'
-                ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
                 : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
@@ -274,7 +274,7 @@ export default function DiscoverPage() {
             <button
               onClick={() => setActiveYear('2025')}
               className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2025'
-                ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
                 : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
@@ -295,12 +295,12 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/50">
+      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/80 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/40 transition-colors">
         <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
-          <div className="inline-flex rounded-2xl bg-muted p-1.5 border border-border shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
+          <div className="inline-flex rounded-2xl bg-muted/50 p-1.5 border border-border/50 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Sparkles className="h-4 w-4" />
@@ -308,7 +308,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('az')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <SortAsc className="h-4 w-4" />
@@ -316,7 +316,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Calendar className="h-4 w-4" />
@@ -324,7 +324,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-country')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Globe className="h-4 w-4" />
@@ -348,7 +348,7 @@ export default function DiscoverPage() {
 
           <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border rounded-xl shadow-inner">
+              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border/50 rounded-xl shadow-inner transition-colors">
                 <SelectValue placeholder="ANY MOOD" />
               </SelectTrigger>
               <SelectContent className="bg-popover border-border">
@@ -360,7 +360,7 @@ export default function DiscoverPage() {
             </Select>
 
             <Select value={selectedGenre || 'all'} onValueChange={v => setSelectedGenre(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border rounded-xl shadow-inner">
+              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border/50 rounded-xl shadow-inner transition-colors">
                 <SelectValue placeholder="ANY GENRE" />
               </SelectTrigger>
               <SelectContent className="bg-popover border-border">
