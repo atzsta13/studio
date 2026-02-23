@@ -1,11 +1,10 @@
-
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe, Wand2, Loader2, X } from 'lucide-react';
+import { Music, Search, Calendar, SortAsc, Sparkles, ArrowRight, Globe, Wand2, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -139,18 +138,6 @@ export default function DiscoverPage() {
     });
 
     return { grouped, noDay: noDay.sort((a, b) => a.artist.localeCompare(b.artist)) };
-  }, [filteredArtists]);
-
-  const artistsByCountry = useMemo(() => {
-    const grouped: Record<string, typeof filteredArtists> = {};
-    filteredArtists.forEach(a => {
-      const country = a.countryCode || 'Unknown';
-      if (!grouped[country]) grouped[country] = [];
-      grouped[country].push(a);
-    });
-    
-    const sortedCountryNames = Object.keys(grouped).sort();
-    return { grouped, sortedCountryNames };
   }, [filteredArtists]);
 
   const handleAiScout = async () => {

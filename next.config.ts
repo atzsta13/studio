@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Aggressively transpile MUI and Emotion packages to prevent runtime 'call' errors in Next.js 15
+  // Aggressively transpile packages to prevent module factory/call errors in Next.js 15/16
   transpilePackages: [
     '@mui/material',
     '@mui/system',
@@ -12,7 +12,8 @@ const nextConfig: NextConfig = {
     '@mui/material-nextjs',
     '@emotion/react',
     '@emotion/styled',
-    '@emotion/cache'
+    '@emotion/cache',
+    'lucide-react'
   ],
   images: {
     remotePatterns: [

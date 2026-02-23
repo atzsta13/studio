@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -10,7 +9,6 @@ import {
   CardActionArea,
   CardContent,
   Avatar,
-  useTheme,
   Button,
   Grid,
   Paper,
@@ -18,7 +16,6 @@ import {
 import { 
   Map, 
   Wand2, 
-  ArrowRight, 
   Gavel, 
   Trophy, 
   Music, 
@@ -235,7 +232,7 @@ export default function Home() {
         <Grid container spacing={3} sx={{ mt: 1 }}>
           <Grid item xs={12} md={6}>
             <Card sx={{ bgcolor: 'rgba(255,238,0,0.03)', border: '1px dashed rgba(255,238,0,0.15)', borderRadius: 7 }}>
-              <CardActionArea href="/memories">
+              <CardActionArea href="/memories" sx={{ p: 0 }}>
                 <CardContent sx={{ p: 3.5, display: 'flex', alignItems: 'center', gap: 3 }}>
                   <Box sx={{ p: 2, bgcolor: 'rgba(255,238,0,0.08)', color: '#ffee00', borderRadius: '1.25rem' }}>
                     <Camera size={28} />
@@ -250,7 +247,7 @@ export default function Home() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Card sx={{ bgcolor: 'rgba(74, 222, 128, 0.03)', border: '1px dashed rgba(74, 222, 128, 0.15)', borderRadius: 7 }}>
-              <CardActionArea href="/quests">
+              <CardActionArea href="/quests" sx={{ p: 0 }}>
                 <CardContent sx={{ p: 3.5, display: 'flex', alignItems: 'center', gap: 3 }}>
                   <Box sx={{ p: 2, bgcolor: 'rgba(74, 222, 128, 0.08)', color: '#4ade80', borderRadius: '1.25rem' }}>
                     <Flame size={28} />
