@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -6,14 +7,15 @@ import { Music2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/config/nav';
 import { Button } from '@/components/ui/button';
+import { ModeToggle } from './mode-toggle';
 
 export default function Header() {
   const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 hidden w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 md:block">
-      <div className="container flex h-16 items-center">
-        <div className="mr-8 hidden md:flex">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center gap-2 group">
             <Music2 className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
             <span className="hidden font-bold sm:inline-block text-lg tracking-tight">
@@ -41,8 +43,8 @@ export default function Header() {
             })}
           </nav>
         </div>
-        <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
-          {/* Placeholder for potential future search/auth items */}
+        <div className="flex items-center gap-4">
+          <ModeToggle />
         </div>
       </div>
     </header>

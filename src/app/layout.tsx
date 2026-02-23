@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -6,6 +7,7 @@ import Header from '@/components/layout/header';
 import BottomNav from '@/components/layout/bottom-nav';
 import MuiRegistry from '@/components/mui-registry';
 import InstallPrompt from '@/components/install-prompt';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const APP_NAME = "Sziget Insider 2026";
 const APP_DEFAULT_TITLE = "Sziget Insider 2026";
@@ -39,23 +41,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Varela+Round&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
-        <MuiRegistry>
-          <PwaLoader />
-          <InstallPrompt />
-          <div className="relative flex min-h-screen w-full flex-col">
-            <Header />
-            <main className="flex-1 pb-20 md:pb-0">{children}</main>
-            <BottomNav />
-          </div>
-          <Toaster />
-        </MuiRegistry>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <MuiRegistry>
+            <PwaLoader />
+            <InstallPrompt />
+            <div className="relative flex min-h-screen w-full flex-col">
+              <Header />
+              <main className="flex-1 pb-20 md:pb-0">{children}</main>
+              <BottomNav />
+            </div>
+            <Toaster />
+          </MuiRegistry>
+        </ThemeProvider>
       </body>
     </html>
   );

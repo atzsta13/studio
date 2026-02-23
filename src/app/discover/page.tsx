@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -85,7 +86,6 @@ export default function DiscoverPage() {
     });
   }, [allArtists, selectedGenre, selectedVibe]);
 
-  // Group by day with headliners first
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
     const noDay: typeof filteredArtists = [];
@@ -110,7 +110,6 @@ export default function DiscoverPage() {
     return { grouped, noDay: noDay.sort((a, b) => a.artist.localeCompare(b.artist)) };
   }, [filteredArtists]);
 
-  // Group by country
   const artistsByCountry = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
     const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
@@ -167,13 +166,13 @@ export default function DiscoverPage() {
     return (
       <Link 
         href={`/artist/${artist.id}`}
-        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-zinc-900 border-2 ${
+        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-card border-2 ${
           isHeadliner
             ? 'border-yellow-500/30 shadow-2xl shadow-yellow-500/10'
-            : 'border-white/5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10'
+            : 'border-border/50 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10'
         }`}
       >
-        <div className="relative aspect-[1/1] w-full overflow-hidden bg-zinc-800">
+        <div className="relative aspect-[1/1] w-full overflow-hidden bg-muted">
           {artist.imageUrl ? (
             <img
               src={artist.imageUrl}
@@ -181,20 +180,18 @@ export default function DiscoverPage() {
               className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900">
-              <Music className="h-16 w-16 text-white/10" />
+            <div className="flex h-full w-full items-center justify-center bg-muted">
+              <Music className="h-16 w-16 text-muted-foreground/20" />
             </div>
           )}
 
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
 
-          {/* Labels */}
           {artist.day && (
             <div className={`absolute top-4 right-4 rounded-full border px-3 py-1 text-[9px] font-black uppercase tracking-widest backdrop-blur-xl z-10 ${
               isHeadliner
                 ? 'bg-yellow-500 text-black border-yellow-400'
-                : 'bg-black/60 text-white/90 border-white/10'
+                : 'bg-black/60 text-white border-white/10'
             }`}>
               {artist.day}
             </div>
@@ -206,7 +203,6 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          {/* Text Content */}
           <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
             <div className="flex items-center gap-2 mb-1.5">
               {isMounted && (
@@ -225,7 +221,7 @@ export default function DiscoverPage() {
               {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                 <span
                   key={genre}
-                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/5 backdrop-blur-md text-white/60 border-white/10"
+                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/5 backdrop-blur-md text-white/80 border-white/10"
                 >
                   {genre}
                 </span>
@@ -233,7 +229,6 @@ export default function DiscoverPage() {
             </div>
           </div>
 
-          {/* Hover View Indicator */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
             <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-full">
               <ArrowRight className="h-6 w-6 text-white" />
@@ -241,10 +236,9 @@ export default function DiscoverPage() {
           </div>
         </div>
 
-        {/* Footer Vibes (Minimal) */}
         {artist.vibes && artist.vibes.length > 0 && (
-          <div className="px-5 py-3 bg-zinc-950/50 backdrop-blur-sm border-t border-white/5">
-            <p className="text-[9px] font-black text-zinc-500 uppercase tracking-widest truncate">
+          <div className="px-5 py-3 bg-card backdrop-blur-sm border-t border-border/50">
+            <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate">
               {artist.vibes.slice(0, 3).join(' • ')}
             </p>
           </div>
@@ -259,20 +253,20 @@ export default function DiscoverPage() {
         <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-[3rem] bg-primary/10 shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
           <Music className="h-12 w-12 text-primary" />
         </div>
-        <h1 className="font-headline text-5xl font-black tracking-tighter text-white sm:text-7xl uppercase italic">
+        <h1 className="font-headline text-5xl font-black tracking-tighter text-foreground sm:text-7xl uppercase italic">
           Music <span className="text-primary">Finder</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-zinc-400 leading-relaxed">
+        <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed">
           The ultimate scouting tool for the Island of Freedom. Find your new favorite obsession.
         </p>
 
         <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8">
-          <div className="inline-flex rounded-2xl bg-zinc-900/50 p-2 border border-white/5 shadow-2xl backdrop-blur-xl">
+          <div className="inline-flex rounded-2xl bg-card p-2 border border-border shadow-2xl backdrop-blur-xl">
             <button
               onClick={() => setActiveYear('2026')}
               className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2026'
                 ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                : 'text-zinc-500 hover:text-white'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               2026
@@ -281,7 +275,7 @@ export default function DiscoverPage() {
               onClick={() => setActiveYear('2025')}
               className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2025'
                 ? 'bg-primary text-white shadow-lg shadow-primary/30'
-                : 'text-zinc-500 hover:text-white'
+                : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <History className="h-4 w-4" />
@@ -301,12 +295,12 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-white/5">
+      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/95 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/50">
         <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
-          <div className="inline-flex rounded-2xl bg-zinc-950 p-1.5 border border-white/5 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
+          <div className="inline-flex rounded-2xl bg-muted p-1.5 border border-border shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Sparkles className="h-4 w-4" />
@@ -314,7 +308,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('az')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <SortAsc className="h-4 w-4" />
@@ -322,7 +316,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Calendar className="h-4 w-4" />
@@ -330,7 +324,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-country')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-zinc-800 text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'
+              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-card text-foreground shadow-md' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Globe className="h-4 w-4" />
@@ -339,7 +333,7 @@ export default function DiscoverPage() {
             {isSpotifyConnected && (
               <button
                 onClick={() => setViewMode('spotify')}
-                className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-md' : 'text-zinc-500 hover:text-zinc-300'
+                className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-md' : 'text-muted-foreground hover:text-foreground'
                   }`}
               >
                 <div className="h-4 w-4 flex items-center justify-center">
@@ -354,10 +348,10 @@ export default function DiscoverPage() {
 
           <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-zinc-950 border-white/5 rounded-xl shadow-inner">
+              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border rounded-xl shadow-inner">
                 <SelectValue placeholder="ANY MOOD" />
               </SelectTrigger>
-              <SelectContent className="bg-zinc-950 border-white/10">
+              <SelectContent className="bg-popover border-border">
                 <SelectItem value="all">ANY MOOD</SelectItem>
                 {allVibeSet.map(vibe => (
                   <SelectItem key={vibe} value={vibe}>{vibe.toUpperCase()}</SelectItem>
@@ -366,10 +360,10 @@ export default function DiscoverPage() {
             </Select>
 
             <Select value={selectedGenre || 'all'} onValueChange={v => setSelectedGenre(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-zinc-950 border-white/5 rounded-xl shadow-inner">
+              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border rounded-xl shadow-inner">
                 <SelectValue placeholder="ANY GENRE" />
               </SelectTrigger>
-              <SelectContent className="bg-zinc-950 border-white/10">
+              <SelectContent className="bg-popover border-border">
                 <SelectItem value="all">ANY GENRE</SelectItem>
                 {allGenres.map(genre => (
                   <SelectItem key={genre} value={genre}>{genre.toUpperCase()}</SelectItem>
@@ -407,9 +401,9 @@ export default function DiscoverPage() {
               return (
                 <section key={day}>
                   <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">{day}</h2>
-                    <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{dayArtists.length} acts</span>
+                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
+                    <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{dayArtists.length} acts</span>
                   </div>
 
                   {headliners.length > 0 && (
@@ -436,9 +430,9 @@ export default function DiscoverPage() {
             {artistsByDay.noDay.length > 0 && (
               <section>
                 <div className="flex items-center gap-6 mb-10">
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-zinc-500">Day TBD</h2>
-                  <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                  <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
+                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-muted-foreground">Day TBD</h2>
+                  <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+                  <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
                   {artistsByDay.noDay.map(artist => (
@@ -459,7 +453,7 @@ export default function DiscoverPage() {
               return (
                 <section key={country}>
                   <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white flex items-center gap-4">
+                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-4">
                       {isMounted && (
                         <span className="drop-shadow-lg" suppressHydrationWarning>
                           {getFlagEmoji(firstArtist.countryCode)}
@@ -467,8 +461,8 @@ export default function DiscoverPage() {
                       )}
                       {country}
                     </h2>
-                    <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
-                    <span className="text-[11px] font-black text-zinc-500 uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
+                    <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
@@ -496,7 +490,7 @@ export default function DiscoverPage() {
               <section>
                 <div className="flex items-center gap-6 mb-10">
                   <Sparkles className="h-8 w-8 text-yellow-500" />
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Headliners</h2>
+                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Headliners</h2>
                   <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -510,7 +504,7 @@ export default function DiscoverPage() {
             <section>
               <div className="flex items-center gap-6 mb-10">
                 <Music className="h-8 w-8 text-primary" />
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Full Lineup</h2>
+                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Full Lineup</h2>
                 <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
@@ -531,7 +525,7 @@ export default function DiscoverPage() {
                 </svg>
               </div>
               <div>
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">Your Sziget Match</h2>
+                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Your Sziget Match</h2>
                 <p className="text-sm font-black text-[#1DB954] uppercase tracking-[0.3em] mt-2">Found {artistsSpotify.length} artists in your library</p>
               </div>
             </div>
@@ -542,12 +536,12 @@ export default function DiscoverPage() {
 
               if (artistsSpotify.length === 0) {
                 return (
-                  <div className="text-center py-32 bg-zinc-900/30 rounded-[4rem] border-2 border-dashed border-white/5 mx-auto max-w-2xl">
-                    <div className="mx-auto bg-zinc-800 rounded-full w-24 h-24 flex items-center justify-center mb-8">
-                      <Music className="h-12 w-12 text-white/20" />
+                  <div className="text-center py-32 bg-muted/30 rounded-[4rem] border-2 border-dashed border-border mx-auto max-w-2xl">
+                    <div className="mx-auto bg-muted rounded-full w-24 h-24 flex items-center justify-center mb-8">
+                      <Music className="h-12 w-12 text-muted-foreground/20" />
                     </div>
-                    <h3 className="text-3xl font-black uppercase italic text-white mb-4">No matches found</h3>
-                    <p className="text-zinc-500 text-lg font-medium px-12 leading-relaxed">
+                    <h3 className="text-3xl font-black uppercase italic text-foreground mb-4">No matches found</h3>
+                    <p className="text-muted-foreground text-lg font-medium px-12 leading-relaxed">
                       We checked your top tracks but couldn't find any Sziget 2026 artists yet. Keep listening and sync again later!
                     </p>
                   </div>
@@ -560,7 +554,7 @@ export default function DiscoverPage() {
                     <section>
                       <div className="flex items-center gap-6 mb-10">
                         <Sparkles className="h-8 w-8 text-yellow-500" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Matched Headliners</h3>
+                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Matched Headliners</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
                       </div>
                       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
@@ -575,7 +569,7 @@ export default function DiscoverPage() {
                     <section>
                       <div className="flex items-center gap-6 mb-10">
                         <Music className="h-8 w-8 text-[#1DB954]" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-white">Library Artists</h3>
+                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Library Artists</h3>
                         <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/30 to-transparent" />
                       </div>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
@@ -593,17 +587,17 @@ export default function DiscoverPage() {
       </div>
 
       {filteredArtists.length === 0 && (
-        <div className="py-40 text-center bg-zinc-900/20 rounded-[4rem] border border-white/5">
-          <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-zinc-800 shadow-inner">
-            <Search className="h-16 w-16 text-zinc-600" />
+        <div className="py-40 text-center bg-muted/20 rounded-[4rem] border border-border">
+          <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-muted shadow-inner">
+            <Search className="h-16 w-16 text-muted-foreground/40" />
           </div>
-          <h3 className="text-4xl font-black uppercase italic text-white">Dead Silence</h3>
-          <p className="mt-6 text-zinc-500 text-lg font-medium">
+          <h3 className="text-4xl font-black uppercase italic text-foreground">Dead Silence</h3>
+          <p className="mt-6 text-muted-foreground text-lg font-medium">
             Try loosening your filters to discover something new on the island.
           </p>
           <Button
             variant="outline"
-            className="mt-12 rounded-2xl px-12 h-14 font-black uppercase tracking-widest border-white/10 hover:bg-white/5 shadow-2xl"
+            className="mt-12 rounded-2xl px-12 h-14 font-black uppercase tracking-widest border-border hover:bg-muted shadow-2xl"
             onClick={() => {
               setSelectedGenre(null);
               setSelectedVibe(null);

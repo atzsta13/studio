@@ -1,13 +1,15 @@
+
 'use client';
 
 import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ReactNode, useMemo } from 'react';
+import { ReactNode, useMemo, useEffect, useState } from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { useTheme } from 'next-themes';
 
-const themeOptions = {
+const getThemeOptions = (mode: 'light' | 'dark') => ({
   palette: {
-    mode: 'dark' as const,
+    mode,
     primary: {
       main: '#ff0080',
       light: '#ff3399',
@@ -18,17 +20,17 @@ const themeOptions = {
       main: '#00f2ff',
       light: '#33f5ff',
       dark: '#00c2cc',
-      contrastText: '#000000',
+      contrastText: mode === 'dark' ? '#000000' : '#ffffff',
     },
     background: {
-      default: '#000000',
-      paper: '#0a0a0a',
+      default: mode === 'dark' ? '#000000' : '#ffffff',
+      paper: mode === 'dark' ? '#0a0a0a' : '#f9f9f9',
     },
     text: {
-      primary: '#ffffff',
-      secondary: 'rgba(255, 255, 255, 0.6)',
+      primary: mode === 'dark' ? '#ffffff' : '#000000',
+      secondary: mode === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
     },
-    divider: 'rgba(255, 255, 255, 0.08)',
+    divider: mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
   },
   typography: {
     fontFamily: '"Outfit", sans-serif',
@@ -50,7 +52,7 @@ const themeOptions = {
           fontWeight: 800,
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0 0 20px rgba(255, 0, 128, 0.2)',
+            boxShadow: mode === 'dark' ? '0 0 20px rgba(255, 0, 128, 0.2)' : '0 4px 12px rgba(255, 0, 128, 0.15)',
           },
         },
       },
@@ -59,23 +61,32 @@ const themeOptions = {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
         },
       },
     },
   },
-};
+});
 
 export default function MuiRegistry({ children }: { children: ReactNode }) {
-  const theme = useMemo(() => {
-    let t = createTheme(themeOptions);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const themeMode = mounted ? (resolvedTheme as 'light' | 'dark') : 'dark';
+
+  const muiTheme = useMemo(() => {
+    let t = createTheme(getThemeOptions(themeMode));
     t = responsiveFontSizes(t);
     return t;
-  }, []);
+  }, [themeMode]);
 
   return (
     <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={muiTheme}>
         <CssBaseline />
         {children}
       </ThemeProvider>
