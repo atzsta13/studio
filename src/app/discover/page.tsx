@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe } from 'lucide-react';
+import { Music, Search, History, Calendar, SortAsc, Sparkles, ArrowRight, Globe, Wand2, Loader2, X } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
@@ -15,6 +15,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from '@/components/ui/input';
+import { recommendArtists, type RecommendOutput } from '@/ai/flows/recommend-artists-flow';
 
 const allArtists2026 = (lineup as any[]).map(a => ({
   ...a,
@@ -42,7 +52,7 @@ const getFlagEmoji = (countryCode: string | undefined) => {
 
 const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify';
+type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
 export default function DiscoverPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
@@ -52,6 +62,12 @@ export default function DiscoverPage() {
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+
+  // AI Scout State
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [isAiLoading, setIsAiLoading] = useState(false);
+  const [aiResult, setAiResult] = useState<RecommendOutput | null>(null);
+  const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -76,6 +92,11 @@ export default function DiscoverPage() {
   }, [allArtists]);
 
   const filteredArtists = useMemo(() => {
+    if (viewMode === 'ai' && aiResult) {
+      const ids = aiResult.recommendations.map(r => r.artistId);
+      return allArtists.filter(a => ids.includes(a.id));
+    }
+
     return allArtists.filter(artist => {
       const matchesGenre =
         !selectedGenre || artist.genres?.includes(selectedGenre);
@@ -83,7 +104,7 @@ export default function DiscoverPage() {
         !selectedVibe || artist.vibes?.includes(selectedVibe);
       return matchesGenre && matchesVibe;
     });
-  }, [allArtists, selectedGenre, selectedVibe]);
+  }, [allArtists, selectedGenre, selectedVibe, viewMode, aiResult]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -109,58 +130,24 @@ export default function DiscoverPage() {
     return { grouped, noDay: noDay.sort((a, b) => a.artist.localeCompare(b.artist)) };
   }, [filteredArtists]);
 
-  const artistsByCountry = useMemo(() => {
-    const grouped: Record<string, typeof filteredArtists> = {};
-    const regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
-
-    filteredArtists.forEach(a => {
-      let countryName = 'International';
-      if (a.countryCode && a.countryCode !== 'Unknown') {
-        try {
-          const code = a.countryCode.toUpperCase() === 'UK' ? 'GB' : a.countryCode.toUpperCase();
-          countryName = regionNames.of(code) || countryName;
-        } catch (e) {
-          countryName = a.countryCode;
-        }
-      }
-
-      if (!grouped[countryName]) grouped[countryName] = [];
-      grouped[countryName].push(a);
-    });
-
-    Object.keys(grouped).forEach(country => {
-      grouped[country].sort((a, b) => {
-        if (a.isHeadliner && !b.isHeadliner) return -1;
-        if (!a.isHeadliner && b.isHeadliner) return 1;
-        return a.artist.localeCompare(b.artist);
-      });
-    });
-
-    const sortedCountryNames = Object.keys(grouped).sort((a, b) => {
-      if (a === 'International') return 1;
-      if (b === 'International') return -1;
-      return a.localeCompare(b);
-    });
-
-    return { grouped, sortedCountryNames };
-  }, [filteredArtists]);
-
-  const artistsAZ = useMemo(() => {
-    return [...filteredArtists].sort((a, b) => a.artist.localeCompare(b.artist));
-  }, [filteredArtists]);
-
-  const artistsDiscover = useMemo(() => {
-    const headliners = filteredArtists.filter(a => a.isHeadliner);
-    const others = filteredArtists.filter(a => !a.isHeadliner);
-    return [...headliners, ...others.sort((a, b) => a.artist.localeCompare(b.artist))];
-  }, [filteredArtists]);
-
-  const artistsSpotify = useMemo(() => {
-    return filteredArtists.filter(a => spotifyMatches.includes(a.id));
-  }, [filteredArtists, spotifyMatches]);
+  const handleAiScout = async () => {
+    if (!aiPrompt.trim()) return;
+    setIsAiLoading(true);
+    try {
+      const result = await recommendArtists({ prompt: aiPrompt });
+      setAiResult(result);
+      setViewMode('ai');
+      setIsAiDialogOpen(false);
+    } catch (error) {
+      console.error('AI Scout failed', error);
+    } finally {
+      setIsAiLoading(false);
+    }
+  };
 
   const ArtistCard = ({ artist }: { artist: typeof filteredArtists[0] }) => {
     const isHeadliner = artist.isHeadliner;
+    const aiReason = aiResult?.recommendations.find(r => r.artistId === artist.id)?.reason;
 
     return (
       <Link 
@@ -193,12 +180,6 @@ export default function DiscoverPage() {
                 : 'bg-black/60 text-white border-white/10'
             }`}>
               {artist.day}
-            </div>
-          )}
-
-          {isHeadliner && (
-            <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3 py-1 text-[9px] font-black uppercase tracking-widest text-black shadow-lg z-10">
-              STAR
             </div>
           )}
 
@@ -235,7 +216,13 @@ export default function DiscoverPage() {
           </div>
         </div>
 
-        {artist.vibes && artist.vibes.length > 0 && (
+        {aiReason ? (
+          <div className="px-5 py-4 bg-primary/5 border-t border-primary/20">
+            <p className="text-[10px] font-bold text-primary leading-tight italic">
+              "{{aiReason}}"
+            </p>
+          </div>
+        ) : artist.vibes && artist.vibes.length > 0 && (
           <div className="px-5 py-3 bg-card backdrop-blur-sm border-t border-border/50">
             <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate">
               {artist.vibes.slice(0, 3).join(' • ')}
@@ -282,7 +269,7 @@ export default function DiscoverPage() {
             </button>
           </div>
 
-          <div className="flex items-center relative z-10">
+          <div className="flex items-center gap-4 relative z-10">
             <SpotifyConnect onMatchesFound={(ids) => {
               setSpotifyMatches(ids);
               setIsSpotifyConnected(true);
@@ -290,6 +277,38 @@ export default function DiscoverPage() {
                 setViewMode('spotify');
               }
             }} />
+
+            <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="rounded-xl h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-widest gap-2">
+                  <Wand2 className="h-4 w-4" />
+                  AI Scout
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md bg-card border-indigo-500/20">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-black uppercase italic">The Sziget Scout</DialogTitle>
+                  <DialogDescription className="text-muted-foreground font-medium">
+                    Tell the Scout what mood you're in, and let the AI find your perfect stage matches.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <Input
+                    placeholder="e.g. I want something wild and electronic for a late night rave..."
+                    value={aiPrompt}
+                    onChange={(e) => setAiPrompt(e.target.value)}
+                    className="h-14 rounded-xl border-indigo-500/30 bg-background text-lg focus-visible:ring-indigo-500"
+                  />
+                  <Button 
+                    className="w-full h-14 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.2em]"
+                    onClick={handleAiScout}
+                    disabled={isAiLoading || !aiPrompt.trim()}
+                  >
+                    {isAiLoading ? <Loader2 className="h-6 w-6 animate-spin" /> : 'UNLEASH THE SCOUT'}
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </header>
@@ -343,6 +362,16 @@ export default function DiscoverPage() {
                 Matches
               </button>
             )}
+            {aiResult && (
+              <button
+                onClick={() => setViewMode('ai')}
+                className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'ai' ? 'bg-indigo-600 text-white shadow-md' : 'text-muted-foreground hover:text-foreground'
+                  }`}
+              >
+                <Wand2 className="h-4 w-4" />
+                Scout Result
+              </button>
+            )}
           </div>
 
           <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0">
@@ -370,13 +399,15 @@ export default function DiscoverPage() {
               </SelectContent>
             </Select>
 
-            {(selectedGenre || selectedVibe) && (
+            {(selectedGenre || selectedVibe || viewMode === 'ai') && (
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => {
                   setSelectedGenre(null);
                   setSelectedVibe(null);
+                  setViewMode('discover');
+                  setAiResult(null);
                 }}
                 className="h-12 text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary/10 rounded-xl px-6"
               >
@@ -388,6 +419,34 @@ export default function DiscoverPage() {
       </div>
 
       <div className="mt-12">
+        {viewMode === 'ai' && aiResult && (
+          <div className="space-y-12 mb-20">
+            <div className="bg-indigo-600/10 border border-indigo-500/20 p-8 rounded-[3rem] relative overflow-hidden">
+              <div className="absolute right-[-20px] top-[-20px] opacity-10 rotate-12">
+                <Wand2 size={160} className="text-indigo-500" />
+              </div>
+              <div className="relative z-10 flex items-start gap-6">
+                <div className="bg-indigo-600 p-4 rounded-3xl text-white shadow-xl">
+                  <Wand2 className="h-8 w-8" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-black uppercase italic text-foreground tracking-tighter">Scout Report</h2>
+                  <p className="text-indigo-500 font-bold uppercase tracking-widest text-sm mt-1">Based on: "{aiPrompt}"</p>
+                  <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-2xl font-medium">
+                    {aiResult.scoutMessage}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {filteredArtists.map(artist => (
+                <ArtistCard key={artist.id} artist={artist} />
+              ))}
+            </div>
+          </div>
+        )}
+
         {viewMode === 'by-day' && (
           <div className="space-y-20">
             {DAY_ORDER.map(day => {
@@ -443,145 +502,46 @@ export default function DiscoverPage() {
           </div>
         )}
 
-        {viewMode === 'by-country' && (
-          <div className="space-y-20">
-            {artistsByCountry.sortedCountryNames.map(country => {
-              const countryArtists = artistsByCountry.grouped[country];
-              const firstArtist = countryArtists[0];
+        {(viewMode === 'discover' || viewMode === 'az' || viewMode === 'by-country' || viewMode === 'spotify') && (
+          <>
+            {viewMode === 'by-country' ? (
+              <div className="space-y-20">
+                {artistsByCountry.sortedCountryNames.map(country => {
+                  const countryArtists = artistsByCountry.grouped[country];
+                  const firstArtist = countryArtists[0];
 
-              return (
-                <section key={country}>
-                  <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-4">
-                      {isMounted && (
-                        <span className="drop-shadow-lg" suppressHydrationWarning>
-                          {getFlagEmoji(firstArtist.countryCode)}
-                        </span>
-                      )}
-                      {country}
-                    </h2>
-                    <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
-                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
-                  </div>
+                  return (
+                    <section key={country}>
+                      <div className="flex items-center gap-6 mb-10">
+                        <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-4">
+                          {isMounted && (
+                            <span className="drop-shadow-lg" suppressHydrationWarning>
+                              {getFlagEmoji(firstArtist.countryCode)}
+                            </span>
+                          )}
+                          {country}
+                        </h2>
+                        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
+                        <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
+                      </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                    {countryArtists.map(artist => (
-                      <ArtistCard key={artist.id} artist={artist} />
-                    ))}
-                  </div>
-                </section>
-              );
-            })}
-          </div>
-        )}
-
-        {viewMode === 'az' && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-            {artistsAZ.map(artist => (
-              <ArtistCard key={artist.id} artist={artist} />
-            ))}
-          </div>
-        )}
-
-        {viewMode === 'discover' && (
-          <div className="space-y-20">
-            {artistsDiscover.filter(a => a.isHeadliner).length > 0 && (
-              <section>
-                <div className="flex items-center gap-6 mb-10">
-                  <Sparkles className="h-8 w-8 text-yellow-500" />
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Headliners</h2>
-                  <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
-                  {artistsDiscover.filter(a => a.isHeadliner).map(artist => (
-                    <ArtistCard key={artist.id} artist={artist} />
-                  ))}
-                </div>
-              </section>
-            )}
-
-            <section>
-              <div className="flex items-center gap-6 mb-10">
-                <Music className="h-8 w-8 text-primary" />
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Full Lineup</h2>
-                <div className="flex-1 h-px bg-gradient-to-r from-primary/30 to-transparent" />
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                        {countryArtists.map(artist => (
+                          <ArtistCard key={artist.id} artist={artist} />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
               </div>
+            ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                {artistsDiscover.filter(a => !a.isHeadliner).map(artist => (
+                {filteredArtists.map(artist => (
                   <ArtistCard key={artist.id} artist={artist} />
                 ))}
               </div>
-            </section>
-          </div>
-        )}
-
-        {viewMode === 'spotify' && (
-          <div className="space-y-12">
-            <div className="flex items-center gap-6 mb-12 bg-[#1DB954]/5 p-8 rounded-[3rem] border border-[#1DB954]/20">
-              <div className="bg-[#1DB954] p-5 rounded-[2rem] text-white shadow-2xl shadow-[#1DB954]/40">
-                <svg viewBox="0 0 24 24" className="h-10 w-10 fill-current">
-                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S16.627 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141 4.32-1.32 9.48-.6 13.26 1.74.42.24.6.84.48 1.08zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">Your Sziget Match</h2>
-                <p className="text-sm font-black text-[#1DB954] uppercase tracking-[0.3em] mt-2">Found {artistsSpotify.length} artists in your library</p>
-              </div>
-            </div>
-
-            {(() => {
-              const headliners = artistsSpotify.filter(a => a.isHeadliner);
-              const others = artistsSpotify.filter(a => !a.isHeadliner);
-
-              if (artistsSpotify.length === 0) {
-                return (
-                  <div className="text-center py-32 bg-muted/30 rounded-[4rem] border-2 border-dashed border-border mx-auto max-w-2xl">
-                    <div className="mx-auto bg-muted rounded-full w-24 h-24 flex items-center justify-center mb-8">
-                      <Music className="h-12 w-12 text-muted-foreground/20" />
-                    </div>
-                    <h3 className="text-3xl font-black uppercase italic text-foreground mb-4">No matches found</h3>
-                    <p className="text-muted-foreground text-lg font-medium px-12 leading-relaxed">
-                      We checked your top tracks but couldn't find any Sziget 2026 artists yet. Keep listening and sync again later!
-                    </p>
-                  </div>
-                );
-              }
-
-              return (
-                <div className="space-y-20">
-                  {headliners.length > 0 && (
-                    <section>
-                      <div className="flex items-center gap-6 mb-10">
-                        <Sparkles className="h-8 w-8 text-yellow-500" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Matched Headliners</h3>
-                        <div className="flex-1 h-px bg-gradient-to-r from-yellow-500/30 to-transparent" />
-                      </div>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
-                        {headliners.map(artist => (
-                          <ArtistCard key={artist.id} artist={artist} />
-                        ))}
-                      </div>
-                    </section>
-                  )}
-
-                  {others.length > 0 && (
-                    <section>
-                      <div className="flex items-center gap-6 mb-10">
-                        <Music className="h-8 w-8 text-[#1DB954]" />
-                        <h3 className="text-3xl font-black italic uppercase tracking-tighter text-foreground">Library Artists</h3>
-                        <div className="flex-1 h-px bg-gradient-to-r from-[#1DB954]/30 to-transparent" />
-                      </div>
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                        {others.map(artist => (
-                          <ArtistCard key={artist.id} artist={artist} />
-                        ))}
-                      </div>
-                    </section>
-                  )}
-                </div>
-              );
-            })()}
-          </div>
+            )}
+          </>
         )}
       </div>
 
@@ -600,6 +560,7 @@ export default function DiscoverPage() {
             onClick={() => {
               setSelectedGenre(null);
               setSelectedVibe(null);
+              setViewMode('discover');
             }}
           >
             Reset all filters

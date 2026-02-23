@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Music,
   Utensils,
@@ -11,7 +11,8 @@ import {
   X,
   History,
   Tent,
-  Zap
+  Zap,
+  Flame
 } from 'lucide-react';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
@@ -38,10 +39,19 @@ const stagePositions: Record<string, { x: number; y: number }> = {
 
 export default function MapPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
-  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util' | 'vibe'>('all');
   const [selectedPin, setSelectedPin] = useState<any>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
+  const [pulse, setPulse] = useState(0);
+
+  // Vibe Mode (Simulated Heatmap)
+  const [vibeMode, setVibeMode] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => setPulse(p => (p + 1) % 100), 2000);
+    return () => clearInterval(interval);
+  }, []);
 
   const currentLineup = useMemo(() => {
     return activeYear === '2026' ? lineup2026 : lineup2025;
@@ -50,10 +60,8 @@ export default function MapPage() {
   // Combine all map pins
   const allPins = useMemo(() => {
     const musicPins = Object.entries(stagePositions).map(([name, coords]) => {
-      // Find artist currently on stage (first one in data for now as a preview)
       const stageData = currentLineup.find(a => a.stage === name);
-      if (!stageData && activeYear === '2026') return null; // Only show relevant stages for the year
-      if (!stageData && activeYear === '2025' && !['Main Stage', 'Revolut Stage', 'Bolt Party Arena', 'Yettel Colosseum', 'The Club by Don Julio', 'Sziget Beach', 'The Buzz', 'dropYard', 'Jukebox', 'Lightstage'].some(s => s === name)) return null;
+      if (!stageData && activeYear === '2026') return null;
 
       return {
         id: `stage-${name}`,
@@ -63,7 +71,8 @@ export default function MapPage() {
         icon: Music,
         color: 'bg-primary',
         subType: undefined,
-        data: stageData
+        data: stageData,
+        vibeIntensity: name === 'Colosseum' || name === 'Bolt Party Arena' ? 0.8 : 0.4
       };
     }).filter(Boolean);
 
@@ -96,6 +105,7 @@ export default function MapPage() {
 
   const filteredPins = allPins.filter(pin => {
     if (hydrationMode) return pin?.subType === 'water';
+    if (vibeMode) return pin?.type === 'music';
     return activeCategory === 'all' || pin?.type === activeCategory;
   });
 
@@ -139,14 +149,20 @@ export default function MapPage() {
         <div className="flex flex-wrap gap-2 rounded-2xl bg-black/40 p-2 backdrop-blur-xl border border-white/10">
           <Button
             size="sm"
-            variant={activeCategory === 'all' ? 'default' : 'ghost'}
-            onClick={() => setActiveCategory('all')}
+            variant={activeCategory === 'all' && !vibeMode ? 'default' : 'ghost'}
+            onClick={() => { setActiveCategory('all'); setVibeMode(false); }}
             className="rounded-xl h-9 px-4"
           >All</Button>
           <Button
             size="sm"
-            variant={activeCategory === 'music' ? 'default' : 'ghost'}
-            onClick={() => setActiveCategory('music')}
+            variant={vibeMode ? 'default' : 'ghost'}
+            onClick={() => { setVibeMode(true); setActiveCategory('music'); }}
+            className={`rounded-xl h-9 px-4 gap-2 ${vibeMode ? 'bg-orange-600' : 'text-orange-400 hover:text-orange-300'}`}
+          ><Flame className="h-4 w-4" /> Vibe</Button>
+          <Button
+            size="sm"
+            variant={activeCategory === 'music' && !vibeMode ? 'default' : 'ghost'}
+            onClick={() => { setActiveCategory('music'); setVibeMode(false); }}
             className="rounded-xl h-9 px-4 gap-2"
           ><Music className="h-4 w-4" /> Music</Button>
           <Button
@@ -224,6 +240,25 @@ export default function MapPage() {
           <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,#1e3a8a_0%,transparent_70%)] opacity-30" />
 
+            {/* Vibe Layer */}
+            {vibeMode && (
+              <div className="absolute inset-0 pointer-events-none transition-opacity duration-1000">
+                {allPins.filter(p => p.type === 'music').map(p => (
+                  <div 
+                    key={`vibe-${p.id}`}
+                    className="absolute rounded-full blur-[40px] opacity-40 animate-pulse bg-orange-500"
+                    style={{ 
+                      left: `${p.x}%`, 
+                      top: `${p.y}%`, 
+                      width: `${(p.vibeIntensity || 0.5) * 200}px`, 
+                      height: `${(p.vibeIntensity || 0.5) * 200}px`,
+                      transform: 'translate(-50%, -50%)'
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
             <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path
                 d="M20,10 Q50,0 80,15 T90,50 T70,90 T30,85 T10,50 Z"
@@ -246,7 +281,8 @@ export default function MapPage() {
                   key={pin.id}
                   className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all hover:z-20 
                       ${hydrationMode && pin.subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.8)]' : 'p-2 ring-4 ring-black/50 hover:scale-125'} 
-                      ${!hydrationMode && pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}`}
+                      ${!hydrationMode && pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}
+                      ${vibeMode && pin.type === 'music' ? 'ring-orange-500 scale-110 shadow-[0_0_20px_orange]' : ''}`}
                   style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
                   onClick={() => setSelectedPin(pin)}
                 >
@@ -327,10 +363,10 @@ export default function MapPage() {
         </div>
       )}
 
-      {hydrationMode && (
+      {vibeMode && (
         <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center animate-pulse pointer-events-none">
-          <div className="rounded-full bg-blue-600/90 px-6 py-2 text-sm font-black uppercase tracking-widest text-white shadow-[0_0_30px_rgba(59,130,246,0.6)] backdrop-blur-md border border-blue-400/50">
-            Hydration Mode Active
+          <div className="rounded-full bg-orange-600/90 px-6 py-2 text-sm font-black uppercase tracking-widest text-white shadow-[0_0_30px_orange] backdrop-blur-md border border-orange-400/50">
+            Vibe Heatmap Active
           </div>
         </div>
       )}
