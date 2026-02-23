@@ -5,7 +5,15 @@ import { format } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Calendar, Clock, ChevronLeft, Building, Music, Sparkles, UserPlus } from 'lucide-react';
+import { 
+  Calendar, 
+  Clock, 
+  ChevronLeft, 
+  Building, 
+  Sparkles, 
+  UserPlus,
+  Heart
+} from 'lucide-react';
 import {
   SiSpotify,
   SiApplemusic,
@@ -16,6 +24,7 @@ import {
   SiTiktok
 } from 'react-icons/si';
 import { FaGlobe } from 'react-icons/fa6';
+import { FavoriteButton } from '@/components/artist/favorite-button';
 
 const allArtists: LineupItem[] = lineup as LineupItem[];
 
@@ -74,25 +83,26 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
   const spotifyArtistId = artist.socials?.spotify?.split('/artist/')[1]?.split('?')[0];
 
   return (
-    <div className="container mx-auto max-w-4xl px-4 py-8">
-      <div className="mb-6">
-        <Button asChild variant="ghost">
+    <div className="container mx-auto max-w-4xl px-4 py-8 pb-32">
+      <div className="mb-6 flex justify-between items-center">
+        <Button asChild variant="ghost" className="rounded-xl">
           <Link href="/discover" className="hover:text-primary transition-colors">
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Finder
           </Link>
         </Button>
+        <FavoriteButton artistId={artist.id} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         <div className="lg:col-span-5">
           {artist.imageUrl && (
-            <div className="overflow-hidden rounded-2xl bg-muted shadow-xl mb-6">
+            <div className="overflow-hidden rounded-[2.5rem] bg-muted shadow-xl mb-6 border border-border/50">
               <img src={artist.imageUrl} alt={artist.artist} className="w-full h-auto object-cover aspect-square" />
             </div>
           )}
 
-          <div className="rounded-2xl border bg-card p-6 shadow-sm space-y-4">
+          <div className="rounded-[2rem] border bg-card p-6 shadow-sm space-y-4">
             <div className="flex items-center gap-3">
               <Calendar className="h-5 w-5 text-primary" />
               <div><p className="text-[10px] font-black uppercase text-muted-foreground">Day</p><p className="font-semibold">{artist.day || 'TBD'}</p></div>
@@ -110,91 +120,96 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
 
         <div className="lg:col-span-7">
           <header className="mb-6">
-            <h1 className="font-headline text-4xl font-black tracking-tight flex items-center gap-3 mb-2 uppercase italic">
-              <span suppressHydrationWarning>{getFlagEmoji(artist.countryCode)}</span>
+            <h1 className="font-headline text-4xl font-black tracking-tight flex items-center gap-3 mb-2 uppercase italic leading-none">
+              <span suppressHydrationWarning className="drop-shadow-lg">{getFlagEmoji(artist.countryCode)}</span>
               <span>{artist.artist}</span>
             </h1>
             <div className="flex flex-wrap gap-2 mb-6">
               {artist.genres?.filter(g => g !== 'MUSIC').map(genre => (
-                <Badge key={genre} variant="secondary" className="px-3 font-black text-[10px] uppercase tracking-widest">{genre}</Badge>
+                <Badge key={genre} variant="secondary" className="px-3 py-1 font-black text-[10px] uppercase tracking-widest rounded-full">{genre}</Badge>
               ))}
             </div>
           </header>
 
           <article className="prose prose-invert max-w-none mb-8">
-            <p className="text-muted-foreground leading-relaxed text-lg">
-              {artist.description || "No description available for this artist yet."}
+            <p className="text-muted-foreground leading-relaxed text-lg font-medium opacity-90">
+              {artist.description || "No description available for this artist yet. Stay tuned for the scout report."}
             </p>
           </article>
 
           {/* AI Setlist Predictor Feature */}
-          <div className="mb-8 p-6 rounded-2xl bg-indigo-600/5 border border-indigo-500/20">
-            <div className="flex items-center gap-2 mb-3 text-indigo-500 font-black uppercase tracking-widest text-xs">
-              <Sparkles size={16} />
-              AI Setlist Predictor
+          <div className="mb-8 p-8 rounded-[2.5rem] bg-indigo-600/5 border border-indigo-500/20 relative overflow-hidden group">
+            <div className="absolute right-[-20px] top-[-20px] opacity-5 rotate-12 group-hover:scale-110 transition-transform">
+              <Sparkles size={120} />
             </div>
-            <p className="text-sm text-muted-foreground italic leading-snug">
-              Expect a high-energy transition between 40-60 mins in. Predictive logic suggests 3 unreleased tracks and a heavy emphasis on their latest {artist.genres?.[0]} era.
-            </p>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-4 text-indigo-500 font-black uppercase tracking-widest text-[10px]">
+                <Sparkles size={14} />
+                AI Setlist Predictor
+              </div>
+              <p className="text-sm text-muted-foreground italic leading-relaxed font-medium">
+                Predictive logic based on current tour vibes suggests a high-energy transition between 40-60 mins in. Expect at least 3 unreleased tracks and a heavy emphasis on their latest {artist.genres?.[0] || 'alternative'} era.
+              </p>
+            </div>
           </div>
 
-          {socialLinks.length > 0 && (
-            <div className="mb-8 flex flex-wrap gap-4">
-              {socialLinks.map(link => (
-                <Button asChild variant="outline" size="icon" key={link.platform} className="h-12 w-12 rounded-2xl hover:bg-primary hover:text-white transition-all">
-                  <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.platform}>
-                    <link.icon className="h-6 w-6" />
-                  </a>
-                </Button>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap gap-4 mb-8">
+            {socialLinks.map(link => (
+              <Button asChild variant="outline" size="icon" key={link.platform} className="h-12 w-12 rounded-2xl hover:bg-primary hover:text-white transition-all border-border shadow-sm">
+                <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.platform}>
+                  <link.icon className="h-5 w-5" />
+                </a>
+              </Button>
+            ))}
+          </div>
 
-          <Button asChild size="lg" className="w-full sm:w-auto rounded-xl shadow-lg shadow-primary/20 font-black uppercase tracking-widest">
-            <Link href={`/timetable?day=${artist.day || ''}`}>View Full Schedule</Link>
+          <Button asChild size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-xl shadow-primary/20 font-black uppercase tracking-widest text-sm">
+            <Link href={`/timetable?day=${artist.day || ''}`}>Add to My Timetable</Link>
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t pt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-border/50 pt-12">
         <section>
-          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Vibe Radar</h3>
+          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Vibe Radar</h3>
           <div className="flex flex-wrap gap-3 mb-12">
             {artist.vibes?.map(vibe => (
-              <Badge key={vibe} variant="outline" className="px-4 py-2 border-primary/30 text-primary font-bold uppercase tracking-widest text-[10px]">
+              <Badge key={vibe} variant="outline" className="px-5 py-2.5 border-primary/30 text-primary font-black uppercase tracking-widest text-[9px] rounded-full">
                 {vibe}
               </Badge>
-            )) || <p className="text-muted-foreground">Scouting vibes...</p>}
+            )) || <p className="text-muted-foreground font-medium">Scouting vibes...</p>}
           </div>
 
-          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
+          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
           <div className="grid grid-cols-2 gap-4">
             {similar.map(a => (
               <Link key={a.id} href={`/artist/${a.id}`} className="group block">
-                <div className="aspect-square rounded-2xl bg-muted overflow-hidden mb-2 relative">
-                  <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <UserPlus className="text-white h-6 w-6" />
+                <div className="aspect-square rounded-[2rem] bg-muted overflow-hidden mb-3 relative border border-border/50 shadow-md">
+                  <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                    <UserPlus className="text-white h-8 w-8" />
                   </div>
                 </div>
-                <p className="font-black uppercase italic text-[10px] tracking-tight truncate">{a.artist}</p>
+                <p className="font-black uppercase italic text-[10px] tracking-tight truncate px-2">{a.artist}</p>
               </Link>
             ))}
           </div>
         </section>
 
         <section>
-          <h3 className="mb-6 text-2xl font-black uppercase italic tracking-tighter">Listen</h3>
+          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Island Listen</h3>
           {spotifyArtistId ? (
-            <iframe
-              src={`https://open.spotify.com/embed/artist/${spotifyArtistId}?utm_source=generator&theme=0`}
-              width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
-              className="rounded-2xl shadow-xl bg-muted"
-            ></iframe>
+            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-muted border border-border/50">
+              <iframe
+                src={`https://open.spotify.com/embed/artist/${spotifyArtistId}?utm_source=generator&theme=0`}
+                width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
+                className="opacity-95"
+              ></iframe>
+            </div>
           ) : (
-            <div className="flex aspect-video w-full flex-col items-center justify-center rounded-2xl bg-muted border border-dashed text-center p-8">
-              <SiSpotify className="h-12 w-12 text-muted-foreground/20 mb-4" />
-              <p className="text-muted-foreground font-black uppercase text-[10px] tracking-widest">Spotify ID Not Linked</p>
+            <div className="flex aspect-video w-full flex-col items-center justify-center rounded-[2.5rem] bg-muted border border-dashed border-border text-center p-12">
+              <SiSpotify className="h-16 w-16 text-muted-foreground/10 mb-6" />
+              <p className="text-muted-foreground font-black uppercase text-[10px] tracking-widest opacity-60">Spotify ID Not Linked for this Artist</p>
             </div>
           )}
         </section>
