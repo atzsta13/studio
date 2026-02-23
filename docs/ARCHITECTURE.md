@@ -1,34 +1,26 @@
-# Architecture Deep Dive
+# 🏗️ Architecture Deep Dive
 
-This project is built for **Performance**, **Offline Reliability**, and **AI Integration**.
+Sziget Insider 2026 is built for **Performance**, **Offline Reliability**, and **AI Integration**.
 
-## 1. AI Scouting (Genkit)
-The "AI Scout" uses **Genkit** with the `gemini-2.5-flash` model. 
-- **Input**: User's natural language mood (e.g., "I want a wild late-night rave").
-- **Context**: The flow injects a subset of `lineup.json` (artist, genres, vibes, and short bios).
-- **Output**: Structured JSON containing 3-5 artist IDs and "Scout Reasons".
-- **File**: `src/ai/flows/recommend-artists-flow.ts`
+## 1. The Engine
+- **Framework**: Next.js 16.1.6 (App Router).
+- **UI Logic**: React 19.
+- **Styling**: Hybrid approach using **Tailwind CSS 4.0** for layout/utility and **MUI 6** for complex dashboard components and the Timetable grid.
+- **Theme Engine**: `next-themes` synchronized with MUI's Palette system via `src/components/mui-registry.tsx`.
 
-## 2. Spotify Match Engine
-We use a privacy-first matching logic:
-- Users authenticate with Spotify (`user-library-read`).
-- The API route fetches the user's top/saved tracks.
-- Matching happens by comparing Spotify Artist IDs (extracted from the `socials.spotify` field in our data).
-- Matches are persisted in local state to highlight acts in the "Discover" view.
+## 2. Data Strategy (Offline-First)
+- **Static Content**: All festival metadata (Lineup, Food, POIs) is stored in `src/data/*.json`.
+- **User State**: All user-generated data (Favorites, Memories, Quest Progress, GPS Coordinates) is stored strictly in `localStorage`. 
+- **Privacy**: No user data ever leaves the device, making it 100% private and 100% functional without a network signal.
 
-## 3. UI Sync (Tailwind 4 + MUI 6)
-We maintain a unified theme across two disparate systems:
-- **Tailwind 4**: Used for layout, utility spacing, and glass-morphism.
-- **MUI 6**: Used for complex components like the Timetable grid and Home cards.
-- **Synchronization**: `src/components/mui-registry.tsx` reads the `next-themes` state and updates the MUI palette dynamically.
+## 3. AI Intelligence (Genkit)
+The "AI Scout" and "Setlist Predictor" use **Genkit** with the `gemini-2.5-flash` model.
+- **Flows**: Encapsulated in `src/ai/flows/`.
+- **Context Injection**: Lineup data is injected into prompts to keep the AI grounded in the actual 2026 schedule.
 
-## 4. Timetable Logic
-The grid is a custom CSS Grid implementation:
-- **Rows**: Represent 15-minute intervals.
-- **Columns**: Represent Stages.
-- **Clash Detection**: `use-favorites.ts` calculates overlapping time ranges across favorited items and returns a `conflicts` Set of IDs.
+## 4. Navigation & UX
+- **Mobile-First**: Ergonomic bottom navigation designed for one-handed use in crowds.
+- **Tactical UI**: High-contrast "OLED" modes and large touch targets for use in direct sunlight.
 
-## 5. Offline Strategy
-- **Data**: All core festival data is stored in `src/data/*.json`.
-- **Media**: Remote images are optimized via `next/image` patterns.
-- **Logic**: User state (Favorites, Quests, Packing List) is purely local via `localStorage`.
+## 5. Deployment
+The app is designed to be deployed as a static-heavy SSR/ISR hybrid, ensuring that artist pages are pre-rendered for maximum speed while AI features remain dynamic via Server Actions.
