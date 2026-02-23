@@ -1,67 +1,48 @@
-# Sziget Insider 2026
+# Sziget Insider 2026 🎪
 
-This is your unofficial, offline-first companion app for the Sziget Festival 2026. Built with Next.js 15 and designed for the best festival experience.
+This is the ultimate, unofficial, offline-first companion app for the Sziget Festival 2026. Built with a "bleeding-edge" stack and designed to be the standout app of the festival season.
 
-## ✨ Features
+## 🚀 Vision
+Sziget Insider isn't just a static schedule; it's an AI-powered festival curator and survival toolkit. It bridges the gap between digital convenience and the raw energy of the Island of Freedom.
 
-*   **Offline-First Experience**: Designed to work even with unreliable island internet.
-*   **Full Festival Schedule**: Browse the lineup by day and stage with ease.
-*   **Favorites & Conflict-detection**: Heart your favorite artists and get warned about overlapping sets.
-*   **Food & Drink Finder**: Searchable directory of food stalls and bars (Vegan/GF filters included).
-*   **Survival Guide**: Essential tips, rules, and emergency contacts at your fingertips.
-*   **Interactive Map**: Navigate the island with our built-in map.
-*   **Smart Packing Checklist**: Don't forget your essentials.
+## ✨ Standout Features
+- **AI Scout (Genkit)**: Natural language discovery agent.
+- **Spotify Match**: Direct integration to find lineup artists you already love.
+- **Vibe Heatmap**: Simulated real-time energy visualization on the map.
+- **GPS Tent Finder**: Navigate back to your camp without a signal.
+- **Budget Hero**: Highlighted official low-price food options.
+- **Clash Detection**: Visual red alerts for overlapping favorite sets.
+- *...and 19 more. See [docs/FEATURES.md](docs/FEATURES.md)*
 
-## 🚀 Getting Started
+## 🛠 Tech Stack
+- **Engine**: Next.js 16.1.6 (Latest Stable)
+- **UI Logic**: React 19
+- **Styling**: Tailwind CSS 4.0 & MUI 6
+- **AI**: Genkit (Gemini 2.5 Flash)
+- **Persistence**: LocalStorage (Privacy-first / Offline-first)
+- **Icons**: Lucide React & React Icons
 
+## 📁 Project Structure
+```text
+src/
+├── app/           # Next.js App Router (Pages & API)
+├── ai/            # Genkit flows and AI prompt logic
+├── components/    # Atomic UI and composite modules
+├── data/          # JSON data (Lineup, Food, POI)
+├── hooks/         # Custom React hooks (Favorites, Mobile detection)
+├── lib/           # Utility functions & API clients
+└── scripts/       # Data management & Scrapers
+```
+
+## 📖 Documentation
+- [Architecture Deep Dive](docs/ARCHITECTURE.md) - How the engine works.
+- [Feature Matrix](docs/FEATURES.md) - Details on the 25 core features.
+- [Data Maintenance](docs/MAINTENANCE.md) - How to update lineup and vendors.
+- [Prompt History](prompts.md) - Context log for LLM iterations.
+
+## 🏃 Quick Start
 ```bash
 npm install
 npm run dev
 ```
-
-Open [http://localhost:9002](http://localhost:9002) in your browser.
-
-## 🎪 Lineup Data Management
-
-When Sziget announces new artists:
-
-```bash
-npm run lineup:update
-```
-
-This scrapes the Sziget website, cleans the data, adds country codes, generates vibes, and shows a summary.
-
-**Full documentation:** [docs/LINEUP.md](docs/LINEUP.md)
-
-### Quick Commands
-
-| Command | Description |
-|---------|-------------|
-| `npm run lineup:update` | Full update pipeline (scrape → clean → vibes → show) |
-| `npm run lineup:scrape` | Scrape new artists from Sziget website |
-| `npm run lineup:clean` | Dedupe, fix encoding, add countries |
-| `npm run lineup:vibes` | Generate vibe tags |
-| `npm run lineup:show` | Display lineup summary |
-
-## 🛠 Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/) 15.2
-- **Styling**: Tailwind CSS 4.0 / Shadcn UI / MUI 6
-- **Icons**: Lucide React
-- **Data**: Local JSON (`src/data/lineup.json`)
-- **Scraping**: Puppeteer (Node.js)
-
-## 📁 Project Structure
-
-```
-src/
-├── app/           # Next.js pages
-├── components/    # React components
-├── data/          # JSON data files
-│   └── lineup.json   # 🎯 Single source of truth for lineup
-├── scripts/       # Lineup management scripts
-│   ├── scrape_all_artists.js
-│   ├── clean_lineup.js
-│   └── show_lineup.js
-└── ...
-```
+Open [http://localhost:9002](http://localhost:9002).

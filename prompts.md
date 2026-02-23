@@ -1,13 +1,15 @@
-# Prompt History & Key Decisions
+# Context Log & Iteration History
 
-This file tracks the important prompts and decisions made during the development of the Sziget Insider app.
+This file tracks major logic shifts to help LLMs maintain project context.
 
-1.  **GitHub Integration**: User asked how to add the code to GitHub. I provided the command-line steps but explained I cannot perform the actions directly as I don't have access to external accounts or the user's local machine.
+- **Iteration 1**: Initial scaffolding with Next.js 15.
+- **Iteration 2**: Migration to **Next.js 16.1.6** and **Tailwind 4.0**.
+- **Iteration 3**: Redesign of Artist Cards to remove redundant buttons and use a "Gallery" feel.
+- **Iteration 4**: Implementation of the **Standout 25** feature set (AI Scout, Spotify Match, Quests, etc.).
+- **Iteration 5**: Full Light/Dark mode implementation with `next-themes` and MUI 6 sync.
+- **Iteration 6**: Comprehensive documentation overhaul for LLM context.
 
-2.  **Initial Feature Scope**: User requested to update the README and define next tasks.
-
-3.  **Data Storage Decision**: User clarified that the app should **only save data locally** on the device. There should be **no user accounts or cloud syncing**. Project files (`README.md`, `docs/backend.json`) were updated to reflect this decision.
-
-4.  **Data Scraping**: User asked to crawl the official Sziget website for the artist lineup. I explained that I cannot access external websites. The lineup data will need to be provided manually.
-
-5.  **Prompt History**: User asked for the conversation history to be saved. I explained that the history is part of the chat interface for context, but I cannot export it. I've created this file as a manual log.
+### Key Architectural Constraints:
+- **No Cloud Database**: All user data MUST stay in `localStorage`.
+- **Offline First**: All critical guides and maps MUST work without a network.
+- **Latest Tech**: Always prefer the most recent stable versions of Next.js, React, and Tailwind.
