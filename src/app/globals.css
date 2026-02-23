@@ -6,7 +6,7 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 242 42% 7%;
-    --card: 0 0% 98%;
+    --card: 0 0% 100%;
     --card-foreground: 242 42% 7%;
     --popover: 0 0% 100%;
     --popover-foreground: 242 42% 7%;
@@ -14,37 +14,37 @@
     --primary-foreground: 0 0% 100%;
     --secondary: 194 100% 50%;
     --secondary-foreground: 242 42% 10%;
-    --muted: 242 42% 95%;
-    --muted-foreground: 242 42% 40%;
+    --muted: 242 42% 96%;
+    --muted-foreground: 242 20% 45%;
     --accent: 314 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 100% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 242 42% 90%;
-    --input: 242 42% 90%;
+    --border: 242 20% 92%;
+    --input: 242 20% 92%;
     --ring: 314 100% 45%;
-    --radius: 1rem;
+    --radius: 1.25rem;
   }
 
   .dark {
-    --background: 242 42% 7%;
+    --background: 242 42% 4%;
     --foreground: 0 0% 100%;
-    --card: 242 42% 12%;
+    --card: 242 42% 7%;
     --card-foreground: 0 0% 100%;
-    --popover: 242 42% 12%;
+    --popover: 242 42% 8%;
     --popover-foreground: 0 0% 100%;
     --primary: 314 100% 45%;
     --primary-foreground: 0 0% 100%;
     --secondary: 194 100% 50%;
     --secondary-foreground: 242 42% 10%;
-    --muted: 242 42% 20%;
-    --muted-foreground: 242 42% 70%;
+    --muted: 242 42% 12%;
+    --muted-foreground: 242 20% 70%;
     --accent: 314 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 100% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 242 42% 25%;
-    --input: 242 42% 20%;
+    --border: 242 20% 18%;
+    --input: 242 20% 18%;
     --ring: 314 100% 45%;
   }
 }
@@ -58,14 +58,22 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .glass {
+    @apply backdrop-blur-xl bg-background/80 border-border/50;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground selection:bg-primary/30;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline tracking-tighter;
   }
 }

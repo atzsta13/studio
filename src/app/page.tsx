@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -13,50 +14,47 @@ import {
   Button,
   Grid,
   Paper,
-  Chip
 } from '@mui/material';
 import { 
   Map, 
   Wand2, 
   ArrowRight, 
-  Sparkles, 
   Gavel, 
   Trophy, 
   Music, 
   Camera, 
-  Zap, 
   Newspaper,
-  Sun,
-  Flame
+  Flame,
+  ArrowUpRight
 } from 'lucide-react';
 import { HydrationTracker } from '@/components/tools/hydration-tracker';
 import { useEffect, useState } from 'react';
 
 const features = [
   {
-    title: 'Discover Artists',
-    description: 'Lineup scouting & AI matching',
+    title: 'Discovery',
+    description: 'AI Scouting & Lineup',
     href: '/discover',
     icon: Wand2,
     color: '#ffee00',
   },
   {
-    title: 'Interactive Map',
-    description: 'Find utilities & vibe peaks',
+    title: 'Tactical Map',
+    description: 'Find Water & Vibes',
     href: '/map',
     icon: Map,
     color: '#00c3ff',
   },
   {
-    title: 'Survival Toolkit',
-    description: 'SOS, HUF Converter & Phrasebook',
+    title: 'Toolkit',
+    description: 'SOS & Survival Gear',
     href: '/tools',
     icon: Gavel,
     color: '#4ade80',
   },
   {
-    title: 'Island Passport',
-    description: 'Collect stamps & earn rewards',
+    title: 'Passport',
+    description: 'Collect Island Stamps',
     href: '/passport',
     icon: Trophy,
     color: '#e6007e',
@@ -64,7 +62,6 @@ const features = [
 ];
 
 export default function Home() {
-  const theme = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -77,26 +74,26 @@ export default function Home() {
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', pb: 12 }}>
       {/* Hero Section */}
       <Box sx={{
-        pt: { xs: 8, md: 12 },
-        pb: { xs: 6, md: 10 },
+        pt: { xs: 6, md: 10 },
+        pb: { xs: 6, md: 8 },
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'radial-gradient(circle at 50% -20%, rgba(230,0,126,0.15) 0%, transparent 60%)'
+        background: 'radial-gradient(circle at 50% -20%, rgba(230,0,126,0.1) 0%, transparent 70%)'
       }}>
-        <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
+        <Container maxWidth="md">
           <Avatar
             sx={{
-              width: 80,
-              height: 80,
-              bgcolor: 'rgba(230,0,126,0.1)',
+              width: 64,
+              height: 64,
+              bgcolor: 'rgba(230,0,126,0.05)',
               mx: 'auto',
               mb: 3,
-              border: '2px solid rgba(230,0,126,0.3)',
-              boxShadow: '0 0 40px rgba(230,0,126,0.2)'
+              border: '1px solid rgba(230,0,126,0.2)',
+              boxShadow: '0 0 30px rgba(230,0,126,0.1)'
             }}
           >
-            <Music size={40} color="#e6007e" />
+            <Music size={32} color="#e6007e" />
           </Avatar>
 
           <Typography
@@ -105,9 +102,9 @@ export default function Home() {
               fontWeight: 900,
               color: 'text.primary',
               mb: 1,
-              letterSpacing: '-0.04em',
+              letterSpacing: '-0.05em',
               lineHeight: 1,
-              fontSize: { xs: '3rem', md: '5rem' },
+              fontSize: { xs: '3.5rem', md: '6rem' },
               textTransform: 'uppercase',
               fontStyle: 'italic'
             }}
@@ -119,65 +116,45 @@ export default function Home() {
             variant="h5"
             sx={{
               color: 'text.secondary',
-              mb: 4,
+              mb: 5,
               fontWeight: 500,
-              maxWidth: 600,
+              maxWidth: 500,
               mx: 'auto',
               lineHeight: 1.4,
               fontSize: { xs: '1rem', md: '1.25rem' }
             }}
           >
-            Ultimate offline-first companion for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
+            Tactical companion for the <span style={{ color: '#ffee00', fontWeight: 800 }}>Island of Freedom</span>. 
           </Typography>
 
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap', mb: 6 }}>
-            <Link href="/discover" style={{ textDecoration: 'none' }}>
-              <Button
-                variant="contained"
-                size="large"
-                disableElevation
-                endIcon={<ArrowRight size={20} />}
-                sx={{
-                  height: 56,
-                  px: 4,
-                  borderRadius: 4,
-                  boxShadow: '0 12px 24px rgba(230,0,126,0.3)',
-                  background: 'linear-gradient(45deg, #e6007e, #ff0080)',
-                }}
-              >
-                Start Scouting
-              </Button>
-            </Link>
-          </Box>
-
-          <Grid container spacing={3} sx={{ maxWidth: 800, mx: 'auto' }}>
+          <Grid container spacing={3} sx={{ maxWidth: 850, mx: 'auto' }}>
             <Grid item xs={12} sm={6}>
               <HydrationTracker />
             </Grid>
             <Grid item xs={12} sm={6}>
-              {/* Feature 1: AI Daily Newsfeed (Island Morning Report) */}
               <Paper sx={{ 
                 p: 3, 
                 height: '100%',
-                bgcolor: 'rgba(79, 70, 229, 0.1)', 
-                border: '1px solid rgba(79, 70, 229, 0.2)',
-                borderRadius: 4,
+                bgcolor: 'rgba(79, 70, 229, 0.05)', 
+                border: '1px solid rgba(79, 70, 229, 0.15)',
+                borderRadius: 6,
                 textAlign: 'left',
                 display: 'flex',
                 flexDirection: 'column',
+                justifyContent: 'center',
                 gap: 1
               }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                  <Newspaper size={18} className="text-indigo-500" />
-                  <Typography variant="caption" sx={{ fontWeight: 900, color: 'indigo.500', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  <Newspaper size={16} className="text-indigo-500" />
+                  <Typography variant="caption" sx={{ fontWeight: 900, color: 'indigo.500', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
                     Island Status
                   </Typography>
                 </Box>
-                <Typography variant="body2" sx={{ fontWeight: 800, color: 'text.primary' }}>
-                  Dust Level: High. Vibe: Electric.
+                <Typography variant="body1" sx={{ fontWeight: 800, color: 'text.primary', fontSize: '1.1rem' }}>
+                  Vibe: Electric. Dust: High.
                 </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                  Secret Colosseum set rumored for 02:00. Stay hydrated near Main Stage.
+                <Typography variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.5 }}>
+                  Colosseum peak expected at 02:00. <br/>All water points are active.
                 </Typography>
               </Paper>
             </Grid>
@@ -187,16 +164,23 @@ export default function Home() {
 
       {/* Feature Grid Section */}
       <Container maxWidth="lg">
-        <Box sx={{ mb: 6, textAlign: { xs: 'center', md: 'left' } }}>
-          <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.2em' }}>
-            Mission Control
-          </Typography>
-          <Typography variant="h4" sx={{ fontWeight: 900, mt: 1, textTransform: 'uppercase' }}>
-            Explore the Island
-          </Typography>
+        <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <Box>
+            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.3em' }}>
+              Mission Control
+            </Typography>
+            <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic' }}>
+              Operations
+            </Typography>
+          </Box>
+          <Link href="/timetable" style={{ textDecoration: 'none' }}>
+            <Button size="small" endIcon={<ArrowUpRight size={14} />} sx={{ color: 'text.secondary', fontWeight: 700 }}>
+              Full Schedule
+            </Button>
+          </Link>
         </Box>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={3}>
           {features.map((feature) => (
             <Grid key={feature.title} item xs={12} sm={6} md={3}>
               <Card
@@ -204,39 +188,39 @@ export default function Home() {
                   height: '100%',
                   bgcolor: 'background.paper',
                   backgroundImage: 'none',
-                  borderRadius: 5,
+                  borderRadius: 6,
                   border: '1px solid rgba(255,255,255,0.05)',
-                  transition: 'all 0.3s ease',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   '&:hover': {
-                    transform: 'translateY(-8px)',
+                    transform: 'translateY(-6px)',
                     borderColor: feature.color,
-                    boxShadow: `0 20px 40px -10px ${feature.color}20`,
+                    boxShadow: `0 30px 60px -12px ${feature.color}15`,
                   }
                 }}
               >
                 <Link href={feature.href} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <CardActionArea sx={{ height: '100%' }}>
-                    <CardContent sx={{ textAlign: 'center', py: 4 }}>
+                    <CardContent sx={{ textAlign: 'center', py: 5 }}>
                       <Box
                         sx={{
-                          width: 64,
-                          height: 64,
-                          borderRadius: 4,
-                          bgcolor: `${feature.color}15`,
+                          width: 56,
+                          height: 56,
+                          borderRadius: '1.25rem',
+                          bgcolor: `${feature.color}10`,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           mx: 'auto',
-                          mb: 3,
+                          mb: 2.5,
                           color: feature.color,
                         }}
                       >
-                        <feature.icon size={32} />
+                        <feature.icon size={28} />
                       </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1, textTransform: 'uppercase', fontSize: '1rem' }}>
+                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 0.5, textTransform: 'uppercase', fontSize: '0.9rem', letterSpacing: '0.05em' }}>
                         {feature.title}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block' }}>
                         {feature.description}
                       </Typography>
                     </CardContent>
@@ -247,33 +231,33 @@ export default function Home() {
           ))}
         </Grid>
 
-        {/* Dynamic Context Cards */}
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        {/* Tactical Row */}
+        <Grid container spacing={3} sx={{ mt: 1 }}>
           <Grid item xs={12} md={6}>
-            <Card sx={{ bgcolor: 'rgba(255,238,0,0.05)', border: '1px dashed rgba(255,238,0,0.2)', borderRadius: 6 }}>
+            <Card sx={{ bgcolor: 'rgba(255,238,0,0.03)', border: '1px dashed rgba(255,238,0,0.15)', borderRadius: 7 }}>
               <CardActionArea href="/memories">
-                <CardContent sx={{ p: 4, display: 'flex', alignItems: 'center', gap: 3 }}>
-                  <Box sx={{ p: 2, bgcolor: 'rgba(255,238,0,0.1)', color: '#ffee00', borderRadius: '50%' }}>
-                    <Camera size={32} />
+                <CardContent sx={{ p: 3.5, display: 'flex', alignItems: 'center', gap: 3 }}>
+                  <Box sx={{ p: 2, bgcolor: 'rgba(255,238,0,0.08)', color: '#ffee00', borderRadius: '1.25rem' }}>
+                    <Camera size={28} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase' }}>Digital Memory Log</Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>Document your best festival moments. Purely local & private.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Memory Log</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>Private local-only diary for your best moments.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Card sx={{ bgcolor: 'rgba(74, 222, 128, 0.05)', border: '1px dashed rgba(74, 222, 128, 0.2)', borderRadius: 6 }}>
+            <Card sx={{ bgcolor: 'rgba(74, 222, 128, 0.03)', border: '1px dashed rgba(74, 222, 128, 0.15)', borderRadius: 7 }}>
               <CardActionArea href="/quests">
-                <CardContent sx={{ p: 4, display: 'flex', alignItems: 'center', gap: 3 }}>
-                  <Box sx={{ p: 2, bgcolor: 'rgba(74, 222, 128, 0.1)', color: '#4ade80', borderRadius: '50%' }}>
-                    <Flame size={32} />
+                <CardContent sx={{ p: 3.5, display: 'flex', alignItems: 'center', gap: 3 }}>
+                  <Box sx={{ p: 2, bgcolor: 'rgba(74, 222, 128, 0.08)', color: '#4ade80', borderRadius: '1.25rem' }}>
+                    <Flame size={28} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase' }}>Daily Quests</Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>3 active challenges today. Earn XP and Island Lore.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1rem' }}>Active Quests</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>3 challenges available. Earn Island XP.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>

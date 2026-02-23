@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -174,10 +175,10 @@ export default function DiscoverPage() {
     return (
       <Link 
         href={`/artist/${artist.id}`}
-        className={`group relative flex flex-col overflow-hidden rounded-[2rem] transition-all duration-500 bg-card border ${
+        className={`group relative flex flex-col overflow-hidden rounded-[2.5rem] transition-all duration-500 bg-card border ${
           isHeadliner
-            ? 'border-primary/30 shadow-2xl shadow-primary/10'
-            : 'border-border/50 hover:border-primary/40 hover:shadow-xl'
+            ? 'border-primary/40 shadow-2xl shadow-primary/5'
+            : 'border-border/50 hover:border-primary/40 hover:shadow-2xl'
         }`}
       >
         <div className="relative aspect-square w-full overflow-hidden bg-muted">
@@ -193,10 +194,10 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 transition-opacity group-hover:opacity-90" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
 
           {artist.day && (
-            <div className={`absolute top-4 right-4 rounded-full border px-3 py-1 text-[9px] font-black uppercase tracking-widest backdrop-blur-xl z-10 ${
+            <div className={`absolute top-5 right-5 rounded-full border px-3 py-1 text-[9px] font-black uppercase tracking-widest backdrop-blur-xl z-10 ${
               isHeadliner
                 ? 'bg-primary text-primary-foreground border-primary/20'
                 : 'bg-black/60 text-white border-white/10'
@@ -205,15 +206,15 @@ export default function DiscoverPage() {
             </div>
           )}
 
-          <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-            <div className="flex items-center gap-2 mb-1.5">
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+            <div className="flex items-center gap-2 mb-2">
               {isMounted && (
                 <span className="text-xl drop-shadow-lg" suppressHydrationWarning>
                   {getFlagEmoji(artist.countryCode)}
                 </span>
               )}
-              <h3 className={`font-black text-xl sm:text-2xl leading-tight uppercase tracking-tighter transition-colors text-white ${
-                isHeadliner ? 'text-primary-foreground group-hover:text-white' : 'group-hover:text-primary'
+              <h3 className={`font-black text-2xl sm:text-3xl leading-[0.9] uppercase tracking-tighter transition-colors text-white ${
+                isHeadliner ? 'text-primary group-hover:text-white' : 'group-hover:text-primary'
               }`}>
                 {artist.artist}
               </h3>
@@ -223,7 +224,7 @@ export default function DiscoverPage() {
               {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                 <span
                   key={genre}
-                  className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-widest border bg-white/10 backdrop-blur-md text-white border-white/10"
+                  className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[8px] font-black uppercase tracking-[0.1em] border bg-white/10 backdrop-blur-md text-white border-white/10"
                 >
                   {genre}
                 </span>
@@ -231,22 +232,22 @@ export default function DiscoverPage() {
             </div>
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-            <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-full">
-              <ArrowRight className="h-6 w-6 text-white" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100">
+            <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-5 rounded-full shadow-2xl">
+              <ArrowRight className="h-7 w-7 text-white" />
             </div>
           </div>
         </div>
 
         {aiReason ? (
-          <div className="px-5 py-4 bg-primary/5 border-t border-primary/20">
-            <p className="text-[10px] font-bold text-primary leading-tight italic">
+          <div className="px-6 py-5 bg-primary/5 border-t border-primary/20">
+            <p className="text-[11px] font-bold text-primary leading-tight italic">
               "{aiReason}"
             </p>
           </div>
         ) : artist.vibes && artist.vibes.length > 0 && (
-          <div className="px-5 py-3 bg-card backdrop-blur-sm border-t border-border/50">
-            <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate">
+          <div className="px-6 py-4 bg-card backdrop-blur-sm border-t border-border/50">
+            <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-60">
               {artist.vibes.slice(0, 3).join(' • ')}
             </p>
           </div>
@@ -257,23 +258,23 @@ export default function DiscoverPage() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-12">
-      <header className="mb-16 text-center">
-        <div className="mx-auto mb-8 flex h-24 w-24 items-center justify-center rounded-[3rem] bg-primary/10 shadow-2xl shadow-primary/20 ring-1 ring-primary/20">
-          <Music className="h-12 w-12 text-primary" />
+      <header className="mb-20 text-center">
+        <div className="mx-auto mb-10 flex h-20 w-20 items-center justify-center rounded-[2rem] bg-primary/10 shadow-2xl shadow-primary/10 ring-1 ring-primary/20">
+          <Music className="h-10 w-10 text-primary" />
         </div>
-        <h1 className="font-headline text-5xl font-black tracking-tighter text-foreground sm:text-7xl uppercase italic">
+        <h1 className="font-headline text-6xl font-black tracking-tighter text-foreground sm:text-8xl uppercase italic leading-[0.8]">
           Music <span className="text-primary">Finder</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed">
-          The ultimate scouting tool for the Island of Freedom. Find your new favorite obsession.
+        <p className="mx-auto mt-8 max-w-xl text-lg font-medium text-muted-foreground leading-relaxed opacity-80">
+          Personalized discovery for the Island of Freedom.
         </p>
 
-        <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-8">
-          <div className="inline-flex rounded-2xl bg-card p-2 border border-border shadow-2xl backdrop-blur-xl">
+        <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
+          <div className="inline-flex rounded-2xl bg-muted/50 p-1.5 border border-border shadow-inner backdrop-blur-xl">
             <button
               onClick={() => setActiveYear('2026')}
-              className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2026'
-                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+              className={`flex items-center gap-3 rounded-xl px-10 py-3.5 text-xs font-black tracking-widest transition-all ${activeYear === '2026'
+                ? 'bg-background text-foreground shadow-xl border border-border'
                 : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
@@ -281,52 +282,49 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setActiveYear('2025')}
-              className={`flex items-center gap-3 rounded-xl px-8 py-3 text-sm font-black tracking-widest transition-all ${activeYear === '2025'
-                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/30'
+              className={`flex items-center gap-3 rounded-xl px-10 py-3.5 text-xs font-black tracking-widest transition-all ${activeYear === '2025'
+                ? 'bg-background text-foreground shadow-xl border border-border'
                 : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
-              <History className="h-4 w-4" />
               2025
             </button>
           </div>
 
-          <div className="flex items-center gap-4 relative z-10">
+          <div className="flex items-center gap-4">
             <SpotifyConnect onMatchesFound={(ids) => {
               setSpotifyMatches(ids);
               setIsSpotifyConnected(true);
-              if (ids.length > 0) {
-                setViewMode('spotify');
-              }
+              if (ids.length > 0) setViewMode('spotify');
             }} />
 
             <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
               <DialogTrigger asChild>
-                <Button className="rounded-xl h-12 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-widest gap-2">
-                  <Wand2 className="h-4 w-4" />
+                <Button className="rounded-2xl h-14 px-8 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-widest gap-3 shadow-xl shadow-indigo-500/20 border-none transition-transform hover:scale-105 active:scale-95">
+                  <Wand2 className="h-5 w-5" />
                   AI Scout
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-card border-indigo-500/20">
+              <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3rem]">
                 <DialogHeader>
-                  <DialogTitle className="text-2xl font-black uppercase italic">The Sziget Scout</DialogTitle>
-                  <DialogDescription className="text-muted-foreground font-medium">
-                    Tell the Scout what mood you're in, and let the AI find your perfect stage matches.
+                  <DialogTitle className="text-3xl font-black uppercase italic">The Scout</DialogTitle>
+                  <DialogDescription className="text-muted-foreground font-medium text-base">
+                    Describe your perfect festival vibe.
                   </DialogDescription>
                 </DialogHeader>
-                <div className="space-y-4 py-4">
+                <div className="space-y-4 py-6">
                   <Input
-                    placeholder="e.g. I want something wild and electronic for a late night rave..."
+                    placeholder="e.g. late night hard techno rave..."
                     value={aiPrompt}
                     onChange={(e) => setAiPrompt(e.target.value)}
-                    className="h-14 rounded-xl border-indigo-500/30 bg-background text-lg focus-visible:ring-indigo-500"
+                    className="h-16 rounded-2xl border-border bg-muted/50 text-xl font-bold focus-visible:ring-indigo-500"
                   />
                   <Button 
-                    className="w-full h-14 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.2em]"
+                    className="w-full h-16 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.2em] text-lg shadow-2xl"
                     onClick={handleAiScout}
                     disabled={isAiLoading || !aiPrompt.trim()}
                   >
-                    {isAiLoading ? <Loader2 className="h-6 w-6 animate-spin" /> : 'UNLEASH THE SCOUT'}
+                    {isAiLoading ? <Loader2 className="h-7 w-7 animate-spin" /> : 'UNLEASH'}
                   </Button>
                 </div>
               </DialogContent>
@@ -335,12 +333,12 @@ export default function DiscoverPage() {
         </div>
       </header>
 
-      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/90 px-4 pb-8 pt-6 backdrop-blur-xl md:top-16 border-b border-border/40 transition-colors">
-        <div className="flex flex-col gap-6 lg:flex-row justify-between items-center">
+      <div className="sticky top-0 z-30 -mx-4 space-y-6 bg-background/90 px-4 pb-8 pt-6 backdrop-blur-2xl md:top-16 border-b border-border/40">
+        <div className="flex flex-col gap-6 lg:flex-row justify-between items-center max-w-7xl mx-auto w-full">
           <div className="inline-flex rounded-2xl bg-muted/50 p-1.5 border border-border/50 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
             <button
               onClick={() => setViewMode('discover')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-6 py-3 text-[10px] font-black tracking-[0.15em] uppercase transition-all whitespace-nowrap ${viewMode === 'discover' ? 'bg-background text-foreground shadow-md border border-border' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Sparkles className="h-4 w-4" />
@@ -348,7 +346,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('az')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-6 py-3 text-[10px] font-black tracking-[0.15em] uppercase transition-all whitespace-nowrap ${viewMode === 'az' ? 'bg-background text-foreground shadow-md border border-border' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <SortAsc className="h-4 w-4" />
@@ -356,7 +354,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-day')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-6 py-3 text-[10px] font-black tracking-[0.15em] uppercase transition-all whitespace-nowrap ${viewMode === 'by-day' ? 'bg-background text-foreground shadow-md border border-border' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Calendar className="h-4 w-4" />
@@ -364,7 +362,7 @@ export default function DiscoverPage() {
             </button>
             <button
               onClick={() => setViewMode('by-country')}
-              className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-background text-foreground shadow-sm border border-border/50' : 'text-muted-foreground hover:text-foreground'
+              className={`flex items-center gap-2.5 rounded-xl px-6 py-3 text-[10px] font-black tracking-[0.15em] uppercase transition-all whitespace-nowrap ${viewMode === 'by-country' ? 'bg-background text-foreground shadow-md border border-border' : 'text-muted-foreground hover:text-foreground'
                 }`}
             >
               <Globe className="h-4 w-4" />
@@ -373,7 +371,7 @@ export default function DiscoverPage() {
             {isSpotifyConnected && (
               <button
                 onClick={() => setViewMode('spotify')}
-                className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-md' : 'text-muted-foreground hover:text-foreground'
+                className={`flex items-center gap-2.5 rounded-xl px-6 py-3 text-[10px] font-black tracking-[0.15em] uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-md' : 'text-muted-foreground hover:text-foreground'
                   }`}
               >
                 <div className="h-4 w-4 flex items-center justify-center">
@@ -384,24 +382,14 @@ export default function DiscoverPage() {
                 Matches
               </button>
             )}
-            {aiResult && (
-              <button
-                onClick={() => setViewMode('ai')}
-                className={`flex items-center gap-2.5 rounded-xl px-5 py-2.5 text-[11px] font-black tracking-widest uppercase transition-all whitespace-nowrap ${viewMode === 'ai' ? 'bg-indigo-600 text-white shadow-md' : 'text-muted-foreground hover:text-foreground'
-                  }`}
-              >
-                <Wand2 className="h-4 w-4" />
-                Scout Result
-              </button>
-            )}
           </div>
 
-          <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0">
+          <div className="flex flex-wrap gap-4 w-full lg:w-auto shrink-0 justify-end">
             <Select value={selectedVibe || 'all'} onValueChange={v => setSelectedVibe(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border/50 rounded-xl shadow-inner transition-colors">
+              <SelectTrigger className="h-14 w-full sm:w-[180px] text-[10px] font-black uppercase tracking-widest bg-muted/30 border-border/50 rounded-2xl transition-all hover:bg-muted/50">
                 <SelectValue placeholder="ANY MOOD" />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border">
+              <SelectContent className="rounded-2xl border-border bg-popover shadow-2xl">
                 <SelectItem value="all">ANY MOOD</SelectItem>
                 {allVibeSet.map(vibe => (
                   <SelectItem key={vibe} value={vibe}>{vibe.toUpperCase()}</SelectItem>
@@ -410,58 +398,42 @@ export default function DiscoverPage() {
             </Select>
 
             <Select value={selectedGenre || 'all'} onValueChange={v => setSelectedGenre(v === 'all' ? null : v)}>
-              <SelectTrigger className="h-12 w-full sm:w-[180px] text-[11px] font-black uppercase tracking-widest bg-card border-border/50 rounded-xl shadow-inner transition-colors">
+              <SelectTrigger className="h-14 w-full sm:w-[180px] text-[10px] font-black uppercase tracking-widest bg-muted/30 border-border/50 rounded-2xl transition-all hover:bg-muted/50">
                 <SelectValue placeholder="ANY GENRE" />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border">
+              <SelectContent className="rounded-2xl border-border bg-popover shadow-2xl">
                 <SelectItem value="all">ANY GENRE</SelectItem>
                 {allGenres.map(genre => (
                   <SelectItem key={genre} value={genre}>{genre.toUpperCase()}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
-
-            {(selectedGenre || selectedVibe || viewMode === 'ai') && (
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => {
-                  setSelectedGenre(null);
-                  setSelectedVibe(null);
-                  setViewMode('discover');
-                  setAiResult(null);
-                }}
-                className="h-12 text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary/10 rounded-xl px-6"
-              >
-                Clear all
-              </Button>
-            )}
           </div>
         </div>
       </div>
 
-      <div className="mt-12">
+      <div className="mt-16">
         {viewMode === 'ai' && aiResult && (
-          <div className="space-y-12 mb-20">
-            <div className="bg-indigo-600/10 border border-indigo-500/20 p-8 rounded-[3rem] relative overflow-hidden">
-              <div className="absolute right-[-20px] top-[-20px] opacity-10 rotate-12">
-                <Wand2 size={160} className="text-indigo-500" />
+          <div className="space-y-16 mb-24">
+            <div className="bg-indigo-600/5 border border-indigo-500/20 p-10 rounded-[3.5rem] relative overflow-hidden">
+              <div className="absolute right-[-40px] top-[-40px] opacity-5 rotate-12">
+                <Wand2 size={240} className="text-indigo-500" />
               </div>
-              <div className="relative z-10 flex items-start gap-6">
-                <div className="bg-indigo-600 p-4 rounded-3xl text-white shadow-xl">
-                  <Wand2 className="h-8 w-8" />
+              <div className="relative z-10 flex items-start gap-8">
+                <div className="bg-indigo-600 p-5 rounded-[2rem] text-white shadow-2xl">
+                  <Wand2 className="h-10 w-10" />
                 </div>
-                <div>
-                  <h2 className="text-3xl font-black uppercase italic text-foreground tracking-tighter">Scout Report</h2>
-                  <p className="text-indigo-500 font-bold uppercase tracking-widest text-sm mt-1">Based on: "{aiPrompt}"</p>
-                  <p className="mt-4 text-muted-foreground text-lg leading-relaxed max-w-2xl font-medium">
+                <div className="flex-1">
+                  <h2 className="text-4xl font-black uppercase italic text-foreground tracking-tighter">Scout Analysis</h2>
+                  <p className="text-indigo-500 font-bold uppercase tracking-[0.2em] text-sm mt-2">Mood: "{aiPrompt}"</p>
+                  <p className="mt-6 text-muted-foreground text-xl leading-relaxed max-w-3xl font-medium opacity-90">
                     {aiResult.scoutMessage}
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
               {filteredArtists.map(artist => (
                 <ArtistCard key={artist.id} artist={artist} />
               ))}
@@ -470,7 +442,7 @@ export default function DiscoverPage() {
         )}
 
         {viewMode === 'by-day' && (
-          <div className="space-y-20">
+          <div className="space-y-24">
             {DAY_ORDER.map(day => {
               const dayArtists = artistsByDay.grouped[day];
               if (!dayArtists || dayArtists.length === 0) return null;
@@ -480,15 +452,15 @@ export default function DiscoverPage() {
 
               return (
                 <section key={day}>
-                  <div className="flex items-center gap-6 mb-10">
-                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
-                    <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
-                    <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{dayArtists.length} acts</span>
+                  <div className="flex items-center gap-8 mb-12">
+                    <h2 className="text-5xl font-black italic uppercase tracking-tighter text-foreground">{day}</h2>
+                    <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent" />
+                    <span className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.4em] opacity-50">{dayArtists.length} items</span>
                   </div>
 
                   {headliners.length > 0 && (
-                    <div className="mb-10">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+                    <div className="mb-12">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
                         {headliners.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} />
                         ))}
@@ -497,7 +469,7 @@ export default function DiscoverPage() {
                   )}
 
                   {others.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
                       {others.map(artist => (
                         <ArtistCard key={artist.id} artist={artist} />
                       ))}
@@ -506,86 +478,37 @@ export default function DiscoverPage() {
                 </section>
               );
             })}
-
-            {artistsByDay.noDay.length > 0 && (
-              <section>
-                <div className="flex items-center gap-6 mb-10">
-                  <h2 className="text-4xl font-black italic uppercase tracking-tighter text-muted-foreground">Day TBD</h2>
-                  <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
-                  <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{artistsByDay.noDay.length} acts</span>
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                  {artistsByDay.noDay.map(artist => (
-                    <ArtistCard key={artist.id} artist={artist} />
-                  ))}
-                </div>
-              </section>
-            )}
           </div>
         )}
 
         {(viewMode === 'discover' || viewMode === 'az' || viewMode === 'by-country' || viewMode === 'spotify') && (
-          <>
-            {viewMode === 'by-country' ? (
-              <div className="space-y-20">
-                {artistsByCountry.sortedCountryNames.map(country => {
-                  const countryArtists = artistsByCountry.grouped[country];
-                  const firstArtist = countryArtists[0];
-
-                  return (
-                    <section key={country}>
-                      <div className="flex items-center gap-6 mb-10">
-                        <h2 className="text-4xl font-black italic uppercase tracking-tighter text-foreground flex items-center gap-4">
-                          {isMounted && (
-                            <span className="drop-shadow-lg" suppressHydrationWarning>
-                              {getFlagEmoji(firstArtist.countryCode)}
-                            </span>
-                          )}
-                          {country}
-                        </h2>
-                        <div className="flex-1 h-px bg-gradient-to-r from-border to-transparent" />
-                        <span className="text-[11px] font-black text-muted-foreground uppercase tracking-[0.3em]">{countryArtists.length} acts</span>
-                      </div>
-
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                        {countryArtists.map(artist => (
-                          <ArtistCard key={artist.id} artist={artist} />
-                        ))}
-                      </div>
-                    </section>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
-                {filteredArtists.map(artist => (
-                  <ArtistCard key={artist.id} artist={artist} />
-                ))}
-              </div>
-            )}
-          </>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+            {filteredArtists.map(artist => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))}
+          </div>
         )}
       </div>
 
       {filteredArtists.length === 0 && (
-        <div className="py-40 text-center bg-muted/20 rounded-[4rem] border border-border">
-          <div className="mx-auto mb-8 flex h-32 w-32 items-center justify-center rounded-full bg-muted shadow-inner">
-            <Search className="h-16 w-16 text-muted-foreground/40" />
+        <div className="py-40 text-center bg-muted/30 rounded-[4rem] border border-dashed border-border/50 max-w-4xl mx-auto">
+          <div className="mx-auto mb-10 flex h-24 w-24 items-center justify-center rounded-full bg-muted shadow-inner opacity-40">
+            <Search className="h-12 w-12 text-muted-foreground" />
           </div>
-          <h3 className="text-4xl font-black uppercase italic text-foreground">Dead Silence</h3>
-          <p className="mt-6 text-muted-foreground text-lg font-medium">
-            Try loosening your filters to discover something new on the island.
+          <h3 className="text-4xl font-black uppercase italic text-foreground tracking-tighter">Zero Matches</h3>
+          <p className="mt-6 text-muted-foreground text-xl font-medium max-w-sm mx-auto opacity-70 leading-relaxed">
+            Your filters are too strict. Loosen up to find the magic.
           </p>
           <Button
             variant="outline"
-            className="mt-12 rounded-2xl px-12 h-14 font-black uppercase tracking-widest border-border hover:bg-muted shadow-2xl"
+            className="mt-12 rounded-[1.5rem] px-12 h-16 font-black uppercase tracking-[0.2em] border-border text-sm hover:bg-muted shadow-2xl"
             onClick={() => {
               setSelectedGenre(null);
               setSelectedVibe(null);
               setViewMode('discover');
             }}
           >
-            Reset all filters
+            Reset Filters
           </Button>
         </div>
       )}
