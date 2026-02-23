@@ -11,7 +11,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 hidden w-full border-b border-border/40 bg-background/95 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 md:block transition-colors">
+    <header className="sticky top-0 z-50 hidden w-full border-b border-border/40 bg-background/95 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/90 md:block transition-all shadow-sm">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center gap-2 group">
@@ -34,7 +34,7 @@ export default function Header() {
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute -bottom-[21px] left-0 w-full h-[2px] bg-primary rounded-t-full shadow-[0_0_8px_rgba(230,0,126,0.4)]" />
+                    <span className="absolute -bottom-[21px] left-0 w-full h-[2.5px] bg-primary rounded-t-full shadow-[0_0_12px_rgba(230,0,126,0.5)]" />
                   )}
                 </Link>
               );
