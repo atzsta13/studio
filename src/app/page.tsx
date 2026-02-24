@@ -1,20 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Box,
-  Typography,
-  Container,
-  Card,
-  CardActionArea,
-  CardContent,
-  Button,
-  Grid,
-  Paper,
-  Stack,
-  alpha,
-  useTheme
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid2';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+import { alpha, useTheme } from '@mui/material/styles';
 import { 
   Map as MapIcon, 
   Wand2, 
@@ -83,7 +80,9 @@ export default function Home() {
         pb: { xs: 8, md: 12 },
         textAlign: 'center',
         position: 'relative',
-        background: 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.12) 0%, transparent 70%)'
+        background: theme.palette.mode === 'dark' 
+          ? 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.12) 0%, transparent 70%)'
+          : 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.05) 0%, transparent 70%)'
       }}>
         <Container maxWidth="md">
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
@@ -130,7 +129,7 @@ export default function Home() {
               letterSpacing: '-0.02em'
             }}
           >
-            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900 }}>Island of Freedom</span>. 
+            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900, textShadow: theme.palette.mode === 'light' ? '0 0 1px rgba(0,0,0,0.1)' : 'none' }}>Island of Freedom</span>. 
           </Typography>
 
           <Container maxWidth="sm">
@@ -144,7 +143,7 @@ export default function Home() {
               display: 'flex',
               flexDirection: 'column',
               gap: 2,
-              boxShadow: '0 40px 80px rgba(0,0,0,0.3)',
+              boxShadow: theme.palette.mode === 'dark' ? '0 40px 80px rgba(0,0,0,0.3)' : '0 20px 40px rgba(0,0,0,0.05)',
               transition: 'all 0.5s ease',
               '&:hover': {
                 borderColor: alpha(theme.palette.primary.main, 0.3),
@@ -185,7 +184,7 @@ export default function Home() {
         </Box>
         <Grid container spacing={4}>
           {nowPlaying.map((artist, idx) => (
-            <Grid item key={artist.id} xs={12} md={4}>
+            <Grid key={artist.id} size={{ xs: 12, md: 4 }}>
               <Card sx={{ 
                 bgcolor: alpha(theme.palette.background.paper, 0.02), 
                 borderRadius: '2.5rem', 
@@ -199,7 +198,7 @@ export default function Home() {
                   bgcolor: alpha(theme.palette.background.paper, 0.04)
                 }
               }}>
-                <CardActionArea href={`/artist/${artist.id}`}>
+                <CardActionArea component={Link} href={`/artist/${artist.id}`}>
                   <Box sx={{ p: 4, display: 'flex', gap: 4, alignItems: 'center' }}>
                     <Box sx={{ 
                       width: 100, 
@@ -264,7 +263,7 @@ export default function Home() {
 
         <Grid container spacing={4}>
           {features.map((feature) => (
-            <Grid key={feature.title} item xs={12} sm={6} md={3}>
+            <Grid key={feature.title} size={{ xs: 12, sm: 6, md: 3 }}>
               <Card
                 sx={{
                   height: '100%',
@@ -282,37 +281,35 @@ export default function Home() {
                   }
                 }}
               >
-                <Link href={feature.href} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <CardActionArea sx={{ height: '100%' }}>
-                    <CardContent sx={{ textAlign: 'center', py: 8 }}>
-                      <Box
-                        sx={{
-                          width: 88,
-                          height: 88,
-                          borderRadius: '2.5rem',
-                          bgcolor: alpha(feature.color, 0.1),
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          mx: 'auto',
-                          mb: 4,
-                          color: feature.color,
-                          boxShadow: `0 20px 40px ${alpha(feature.color, 0.1)}`,
-                          transition: 'all 0.5s ease',
-                          '& svg': { strokeWidth: 2.5 }
-                        }}
-                      >
-                        <feature.icon size={40} />
-                      </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, textTransform: 'uppercase', fontSize: '1.25rem', fontStyle: 'italic', letterSpacing: '-0.02em' }}>
-                        {feature.title}
-                      </Typography>
-                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block', fontSize: '0.9rem', opacity: 0.6 }}>
-                        {feature.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Link>
+                <CardActionArea component={Link} href={feature.href} sx={{ height: '100%' }}>
+                  <CardContent sx={{ textAlign: 'center', py: 8 }}>
+                    <Box
+                      sx={{
+                        width: 88,
+                        height: 88,
+                        borderRadius: '2.5rem',
+                        bgcolor: alpha(feature.color, 0.1),
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mx: 'auto',
+                        mb: 4,
+                        color: feature.color,
+                        boxShadow: `0 20px 40px ${alpha(feature.color, 0.1)}`,
+                        transition: 'all 0.5s ease',
+                        '& svg': { strokeWidth: 2.5 }
+                      }}
+                    >
+                      <feature.icon size={40} />
+                    </Box>
+                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, textTransform: 'uppercase', fontSize: '1.25rem', fontStyle: 'italic', letterSpacing: '-0.02em' }}>
+                      {feature.title}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block', fontSize: '0.9rem', opacity: 0.6 }}>
+                      {feature.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             </Grid>
           ))}
@@ -320,7 +317,7 @@ export default function Home() {
 
         {/* Strategic Tactical Sections */}
         <Grid container spacing={4} sx={{ mt: 6 }}>
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card sx={{ 
               bgcolor: alpha('#ffee00', 0.01), 
               border: `1px dashed ${alpha('#ffee00', 0.15)}`, 
@@ -331,7 +328,7 @@ export default function Home() {
                 borderColor: '#ffee00'
               }
             }}>
-              <CardActionArea href="/memories" sx={{ p: 0 }}>
+              <CardActionArea component={Link} href="/memories" sx={{ p: 0 }}>
                 <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
                     p: 3, 
@@ -350,7 +347,7 @@ export default function Home() {
               </CardActionArea>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Card sx={{ 
               bgcolor: alpha('#ff0080', 0.01), 
               border: `1px dashed ${alpha('#ff0080', 0.15)}`, 
@@ -361,7 +358,7 @@ export default function Home() {
                 borderColor: '#ff0080'
               }
             }}>
-              <CardActionArea href="/quests" sx={{ p: 0 }}>
+              <CardActionArea component={Link} href="/quests" sx={{ p: 0 }}>
                 <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
                     p: 3, 

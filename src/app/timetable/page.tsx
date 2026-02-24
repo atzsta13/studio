@@ -5,16 +5,16 @@ import TimetableView from '@/components/timetable/timetable-view';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
 import { History, Calendar } from 'lucide-react';
-import {
-  Box,
-  Typography,
-  Container,
-  Button
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
 
 export default function TimetablePage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [mounted, setMounted] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -27,14 +27,22 @@ export default function TimetablePage() {
   if (!mounted) return null;
 
   return (
-    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: '#000' }}>
-      <Box sx={{ pt: 8, pb: 6, textAlign: 'center', background: 'linear-gradient(to bottom, #0a0a0a, #000)' }}>
+    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
+      <Box sx={{ 
+        pt: 8, 
+        pb: 6, 
+        textAlign: 'center', 
+        background: theme.palette.mode === 'dark' 
+          ? 'linear-gradient(to bottom, #0a0a0a, #000)' 
+          : 'linear-gradient(to bottom, #ffffff, #f8f8f8)',
+        borderBottom: `1px solid ${theme.palette.divider}`
+      }}>
         <Container maxWidth="md">
           <Typography
             variant="h2"
             sx={{
               fontWeight: 900,
-              color: '#fff',
+              color: 'text.primary',
               letterSpacing: '-0.07em',
               mb: 4,
               textTransform: 'uppercase',
@@ -59,7 +67,7 @@ export default function TimetablePage() {
                 letterSpacing: '0.2em',
                 bgcolor: activeYear === '2026' ? 'primary.main' : 'transparent',
                 borderColor: activeYear === '2026' ? 'primary.main' : 'rgba(255,255,255,0.1)',
-                color: '#fff',
+                color: activeYear === '2026' ? '#fff' : 'text.primary',
                 '&:hover': { 
                   bgcolor: activeYear === '2026' ? 'primary.dark' : 'rgba(255,255,255,0.05)',
                   borderColor: 'primary.main'
@@ -80,7 +88,7 @@ export default function TimetablePage() {
                 letterSpacing: '0.2em',
                 bgcolor: activeYear === '2025' ? 'primary.main' : 'transparent',
                 borderColor: activeYear === '2025' ? 'primary.main' : 'rgba(255,255,255,0.1)',
-                color: '#fff',
+                color: activeYear === '2025' ? '#fff' : 'text.primary',
                 '&:hover': { 
                   bgcolor: activeYear === '2025' ? 'primary.dark' : 'rgba(255,255,255,0.05)',
                   borderColor: 'primary.main'
