@@ -9,6 +9,11 @@ import { navItems } from '@/config/nav';
 export default function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const activeIndex = React.useMemo(() => {
     const idx = navItems.findIndex(item =>
@@ -17,6 +22,8 @@ export default function BottomNav() {
     );
     return idx === -1 ? 0 : idx;
   }, [pathname]);
+
+  if (!mounted) return null;
 
   return (
     <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -28,8 +35,10 @@ export default function BottomNav() {
           left: 0,
           right: 0,
           zIndex: 1000,
-          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          backgroundColor: '#000',
+          borderTop: '1px solid rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'background.default',
+          backdropFilter: 'blur(40px)',
+          backgroundImage: 'none',
           pb: 'env(safe-area-inset-bottom)',
         }}
       >
@@ -40,41 +49,42 @@ export default function BottomNav() {
             router.push(navItems[newValue].href);
           }}
           sx={{
-            height: 64,
+            height: 72,
             backgroundColor: 'transparent',
             '& .MuiBottomNavigationAction-root': {
               minWidth: 'auto',
-              padding: '8px 0',
-              color: 'rgba(255, 255, 255, 0.3)',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              padding: '12px 0',
+              color: 'text.secondary',
+              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
             },
             '& .Mui-selected': {
               color: 'primary.main',
               '& .MuiBottomNavigationAction-label': {
                 fontWeight: 900,
-                fontSize: '0.65rem',
-                letterSpacing: '0.1em',
-                transform: 'translateY(-2px)',
+                fontSize: '0.6rem',
+                letterSpacing: '0.15em',
+                transform: 'translateY(-4px)',
               },
               '& .MuiBottomNavigationAction-iconWrapper': {
-                transform: 'translateY(-2px)',
-                filter: 'drop-shadow(0 0 8px rgba(255, 0, 128, 0.5))',
+                transform: 'translateY(-4px) scale(1.1)',
+                filter: 'drop-shadow(0 0 12px rgba(255, 0, 128, 0.4))',
               }
             },
             '& .MuiBottomNavigationAction-label': {
-              fontSize: '0.6rem',
+              fontSize: '0.55rem',
               fontWeight: 800,
-              marginTop: '2px',
+              marginTop: '4px',
+              textTransform: 'uppercase',
             }
           }}
         >
           {navItems.map((item) => (
             <BottomNavigationAction
               key={item.href}
-              label={item.label.toUpperCase()} // Keep uppercase style for mobile
+              label={item.label}
               icon={
                 <Box className="MuiBottomNavigationAction-iconWrapper" sx={{ transition: 'all 0.3s ease' }}>
-                  <Icon name={item.icon} size={20} />
+                  <Icon name={item.icon} size={22} />
                 </Box>
               }
             />
