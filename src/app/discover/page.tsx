@@ -186,7 +186,7 @@ export default function DiscoverPage() {
       <div className="relative group h-full">
         <Link 
           href={`/artist/${artist.id}`}
-          className={`relative flex flex-col h-full overflow-hidden rounded-[2.5rem] transition-all duration-500 bg-card border ${
+          className={`relative flex flex-col h-full overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] transition-all duration-500 bg-card border ${
             isHeadliner
               ? 'border-primary/40 shadow-2xl shadow-primary/5'
               : 'border-border/50 hover:border-primary/40 hover:shadow-2xl'
@@ -208,30 +208,30 @@ export default function DiscoverPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 transition-opacity group-hover:opacity-95" />
 
             {/* Status Badges */}
-            <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
-              <div className="flex flex-col gap-1.5">
+            <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex justify-between items-start z-20">
+              <div className="flex flex-col gap-1">
                 {artist.day && (
-                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[7px] font-black uppercase tracking-widest backdrop-blur-xl px-2 py-0.5">
+                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[6px] sm:text-[7px] font-black uppercase tracking-widest backdrop-blur-xl px-1.5 py-0.5 sm:px-2">
                     {artist.day}
                   </Badge>
                 )}
                 {hasConflict && isFave && (
-                  <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-2 py-0.5 text-[7px] font-black">
+                  <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-1.5 py-0.5 text-[6px] sm:text-[7px] font-black">
                     <AlertTriangle size={8} /> CLASH
                   </Badge>
                 )}
               </div>
             </div>
 
-            <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-              <div className="flex items-center gap-2 mb-1.5">
+            <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-5 z-10">
+              <div className="flex items-center gap-1.5 mb-1">
                 {isMounted && (
-                  <span className="text-lg drop-shadow-lg" suppressHydrationWarning>
+                  <span className="text-sm sm:text-lg drop-shadow-lg" suppressHydrationWarning>
                     {getFlagEmoji(artist.countryCode)}
                   </span>
                 )}
-                <h3 className={`font-black uppercase tracking-tighter transition-colors text-white truncate ${
-                  size === 'large' ? 'text-2xl leading-[0.8]' : 'text-xl leading-[0.9]'
+                <h3 className={`font-black uppercase tracking-tighter transition-colors text-white line-clamp-2 ${
+                  size === 'large' ? 'text-xl sm:text-2xl leading-[0.8]' : 'text-lg sm:text-xl leading-[0.9]'
                 } ${isHeadliner ? 'text-primary group-hover:text-white' : 'group-hover:text-primary'}`}>
                   {artist.artist}
                 </h3>
@@ -241,7 +241,7 @@ export default function DiscoverPage() {
                 {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
                   <span
                     key={genre}
-                    className="inline-flex items-center rounded-full px-2 py-0.5 text-[7px] font-black uppercase tracking-[0.1em] border bg-white/10 backdrop-blur-md text-white border-white/10"
+                    className="inline-flex items-center rounded-full px-1.5 py-0.5 text-[6px] sm:text-[7px] font-black uppercase tracking-[0.1em] border bg-white/10 backdrop-blur-md text-white border-white/10"
                   >
                     {genre}
                   </span>
@@ -250,22 +250,22 @@ export default function DiscoverPage() {
             </div>
 
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-90 group-hover:scale-100 pointer-events-none">
-              <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-4 rounded-full shadow-2xl">
-                <ChevronRight className="h-6 w-6 text-white" />
+              <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-3 sm:p-4 rounded-full shadow-2xl">
+                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
             </div>
           </div>
 
           <div className="flex-1 flex flex-col justify-between">
             {aiReason ? (
-              <div className="px-5 py-4 bg-primary/5 border-t border-primary/20 h-full flex items-center">
-                <p className="text-[10px] font-bold text-primary leading-tight italic">
+              <div className="px-4 py-3 sm:px-5 sm:py-4 bg-primary/5 border-t border-primary/20 h-full flex items-center">
+                <p className="text-[9px] sm:text-[10px] font-bold text-primary leading-tight italic">
                   "{aiReason}"
                 </p>
               </div>
             ) : artist.vibes && artist.vibes.length > 0 && (
-              <div className="px-5 py-3 bg-card backdrop-blur-sm border-t border-border/50">
-                <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-60">
+              <div className="px-4 py-2 sm:px-5 sm:py-3 bg-card backdrop-blur-sm border-t border-border/50">
+                <p className="text-[8px] sm:text-[9px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-60">
                   {artist.vibes.slice(0, 2).join(' • ')}
                 </p>
               </div>
@@ -280,13 +280,13 @@ export default function DiscoverPage() {
             e.stopPropagation();
             toggleFavorite(artist.id);
           }}
-          className={`absolute top-4 right-4 z-30 h-9 w-9 rounded-full flex items-center justify-center transition-all shadow-xl backdrop-blur-md border ${
+          className={`absolute top-3 right-3 sm:top-4 sm:right-4 z-30 h-8 w-8 sm:h-9 sm:w-9 rounded-full flex items-center justify-center transition-all shadow-xl backdrop-blur-md border ${
             isFave 
               ? 'bg-primary border-primary text-white scale-110' 
               : 'bg-black/40 border-white/20 text-white/60 hover:text-white hover:bg-black/60'
           }`}
         >
-          <Heart size={16} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-300" : ""} />
+          <Heart size={14} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-300" : ""} />
         </button>
       </div>
     );
@@ -479,7 +479,7 @@ export default function DiscoverPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
               {filteredArtists.map(artist => (
                 <ArtistCard key={artist.id} artist={artist} />
               ))}
@@ -506,7 +506,7 @@ export default function DiscoverPage() {
 
                   {headliners.length > 0 && (
                     <div className="mb-12">
-                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8">
                         {headliners.map(artist => (
                           <ArtistCard key={artist.id} artist={artist} size="large" />
                         ))}
@@ -514,7 +514,7 @@ export default function DiscoverPage() {
                     </div>
                   )}
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
                     {others.map(artist => (
                       <ArtistCard key={artist.id} artist={artist} />
                     ))}
@@ -541,7 +541,7 @@ export default function DiscoverPage() {
                     <div className="flex-1 h-px bg-gradient-to-r from-border/50 to-transparent" />
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6">
                     {countryArtists.map(artist => (
                       <ArtistCard key={artist.id} artist={artist} />
                     ))}
@@ -553,7 +553,7 @@ export default function DiscoverPage() {
         )}
 
         {(viewMode === 'discover' || viewMode === 'az' || viewMode === 'spotify') && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6 animate-in fade-in slide-in-from-bottom-2 duration-500">
             {filteredArtists.map(artist => (
               <ArtistCard key={artist.id} artist={artist} />
             ))}
