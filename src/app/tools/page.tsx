@@ -27,12 +27,10 @@ export default function ToolsPage() {
   const [isFlashOn, setIsFlashOn] = useState(false);
   const [showQr, setShowQr] = useState(false);
   
-  // Hike-In Weight Calculator State
   const [bagWeight, setWeight] = useState(8);
   const tentWeight = 2.5;
   const waterWeight = 2;
 
-  // Safe Check-in state
   const [lastCheckIn, setLastCheckIn] = useState<string | null>(null);
 
   useEffect(() => {
@@ -79,71 +77,71 @@ export default function ToolsPage() {
   const totalLoad = (tentWeight + bagWeight + waterWeight).toFixed(1);
 
   return (
-    <div className={`container mx-auto max-w-4xl px-4 py-16 pb-32 transition-colors duration-700 ${isFlashOn ? 'bg-white' : ''}`}>
+    <div className={`container mx-auto max-w-5xl px-4 py-20 pb-32 transition-colors duration-1000 ${isFlashOn ? 'bg-white' : ''}`}>
       {isFlashOn ? (
         <div className="fixed inset-0 z-[1000] bg-white flex flex-col items-center justify-center p-10 animate-pulse">
           <button 
             onClick={toggleFlash}
-            className="rounded-full h-40 w-40 border-[12px] border-black text-black font-black text-3xl uppercase shadow-2xl flex items-center justify-center bg-transparent"
+            className="rounded-full h-56 w-56 border-[16px] border-black text-black font-black text-5xl uppercase shadow-2xl flex items-center justify-center bg-transparent transition-transform hover:scale-110 active:scale-95"
           >
             OFF
           </button>
-          <p className="mt-12 text-black font-black text-5xl text-center uppercase italic tracking-tighter leading-none">Find Me Here!</p>
+          <p className="mt-16 text-black font-black text-7xl text-center uppercase italic tracking-tighter leading-none">Find Me!</p>
         </div>
       ) : (
         <>
-          <PageHeader 
-            title="Survival Toolkit"
-            description="High-performance utilities for the Island of Freedom. Zero signal required."
-          />
+          <div className="mb-20">
+            <PageHeader 
+              title="Survival Toolkit"
+              description="Elite tactical utilities for the Island of Freedom. No signal required."
+            />
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Currency Converter */}
-            <Card className="bg-card border-border shadow-xl overflow-hidden rounded-[2.5rem]">
-              <CardHeader className="bg-emerald-500/5 border-b border-emerald-500/10 px-8 py-6">
-                <CardTitle className="flex items-center gap-3 text-emerald-600 text-xl font-black uppercase italic tracking-tight">
-                  <Coins size={24} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
+              <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
+                <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
+                  <Coins size={32} />
                   HUF Converter
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8">
-                <div className="space-y-6">
+              <CardContent className="p-10">
+                <div className="space-y-8">
                   <div>
-                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground mb-2 block">Forints (HUF)</label>
+                    <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">Forints (HUF)</label>
                     <Input 
                       type="number" 
                       value={hufAmount} 
                       onChange={(e) => setHufAmount(e.target.value)}
-                      className="h-16 text-3xl font-black bg-muted/50 border-none rounded-2xl px-6"
+                      className="h-20 text-4xl font-black bg-muted/20 border-none rounded-[1.5rem] px-8 shadow-inner"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-5 rounded-2xl bg-background border border-border shadow-inner">
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">EURO</p>
-                      <p className="text-3xl font-black tracking-tighter">€{convertHuf(hufAmount).eur}</p>
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
+                      <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">EURO</p>
+                      <p className="text-4xl font-black tracking-tighter">€{convertHuf(hufAmount).eur}</p>
                     </div>
-                    <div className="p-5 rounded-2xl bg-background border border-border shadow-inner">
-                      <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">USD</p>
-                      <p className="text-3xl font-black tracking-tighter">${convertHuf(hufAmount).usd}</p>
+                    <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
+                      <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">USD</p>
+                      <p className="text-4xl font-black tracking-tighter">${convertHuf(hufAmount).usd}</p>
                     </div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Peer-to-Peer Share Widget */}
-            <Card className="bg-card border-border shadow-xl overflow-hidden rounded-[2.5rem]">
-              <CardHeader className="bg-blue-500/5 border-b border-blue-500/10 px-8 py-6">
-                <CardTitle className="flex items-center gap-3 text-blue-600 text-xl font-black uppercase italic tracking-tight">
-                  <Share2 size={24} />
+            <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
+              <CardHeader className="bg-blue-500/10 border-b border-blue-500/10 px-10 py-8">
+                <CardTitle className="flex items-center gap-4 text-blue-500 text-2xl font-black uppercase italic tracking-tighter">
+                  <Share2 size={32} />
                   QR Spot Share
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-8 flex flex-col items-center justify-center text-center">
+              <CardContent className="p-10 flex flex-col items-center justify-center text-center">
                 {showQr ? (
-                  <div className="space-y-4">
-                    <div className="bg-white p-4 rounded-3xl shadow-inner border">
-                      <svg width="160" height="160" viewBox="0 0 160 160" className="mx-auto">
+                  <div className="space-y-6">
+                    <div className="bg-white p-6 rounded-[2.5rem] shadow-inner border border-black/10">
+                      <svg width="200" height="200" viewBox="0 0 160 160" className="mx-auto">
                         <rect width="160" height="160" fill="white" />
                         <rect x="20" y="20" width="40" height="40" fill="black" />
                         <rect x="100" y="20" width="40" height="40" fill="black" />
@@ -156,15 +154,15 @@ export default function ToolsPage() {
                         <rect x="130" y="130" width="10" height="10" fill="black" />
                       </svg>
                     </div>
-                    <p className="text-xs font-bold uppercase text-muted-foreground">SCAN TO FIND ME</p>
-                    <Button variant="ghost" onClick={() => setShowQr(false)} className="text-[10px] uppercase font-black">Close</Button>
+                    <p className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground">SCAN TO FIND ME</p>
+                    <Button variant="ghost" onClick={() => setShowQr(false)} className="text-[11px] uppercase font-black tracking-widest">Close Radar</Button>
                   </div>
                 ) : (
                   <>
-                    <p className="text-sm font-medium text-muted-foreground mb-8 max-w-xs leading-relaxed">Generate a local QR code for your tent coordinates. Your friend scans it to save it instantly.</p>
+                    <p className="text-lg font-medium text-muted-foreground mb-10 max-w-sm leading-relaxed italic opacity-80">Generate a local coordinate QR. Friends scan to save your tent instantly.</p>
                     <Button 
                       onClick={handleGenerateShareCode}
-                      className="w-full h-20 rounded-[1.5rem] bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-[0.25em] text-lg shadow-2xl shadow-blue-500/30 transition-transform active:scale-95"
+                      className="w-full h-24 rounded-[2rem] bg-blue-600 hover:bg-blue-700 text-white font-black uppercase tracking-[0.3em] text-xl shadow-2xl shadow-blue-500/30 transition-all hover:scale-105 active:scale-95"
                     >
                       GENERATE QR
                     </Button>
@@ -175,64 +173,65 @@ export default function ToolsPage() {
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 rounded-[1.5rem] bg-muted/50 p-1.5 h-16 border border-border/50">
-              <TabsTrigger value="survival" className="rounded-xl font-black text-[10px] uppercase tracking-widest transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg">Tactical</TabsTrigger>
-              <TabsTrigger value="culture" className="rounded-xl font-black text-[10px] uppercase tracking-widest transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg">Culture</TabsTrigger>
-              <TabsTrigger value="safety" className="rounded-xl font-black text-[10px] uppercase tracking-widest transition-all data-[state=active]:bg-background data-[state=active]:shadow-lg">Safety</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-3 rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12">
+              <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Tactical</TabsTrigger>
+              <TabsTrigger value="culture" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Culture</TabsTrigger>
+              <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Safety</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="survival" className="mt-10 space-y-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg relative overflow-hidden group">
-                  <div className="absolute right-[-10px] top-[-10px] opacity-5 group-hover:scale-110 transition-transform">
-                    <Sun size={120} />
+            <TabsContent value="survival" className="space-y-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl relative overflow-hidden group backdrop-blur-3xl">
+                  <div className="absolute right-[-20px] top-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-1000">
+                    <Sun size={160} />
                   </div>
-                  <div className="flex items-start gap-6 relative z-10">
-                    <div className="p-4 rounded-2xl bg-orange-500/10 text-orange-500 shadow-inner">
-                      <Sun size={32} />
+                  <div className="flex items-start gap-8 relative z-10">
+                    <div className="p-5 rounded-[2rem] bg-orange-500/10 text-orange-500 shadow-inner">
+                      <Sun size={40} />
                     </div>
                     <div>
-                      <h4 className="font-black text-xl mb-2 uppercase italic tracking-tight">UV Forecast</h4>
-                      <p className="text-sm font-medium text-muted-foreground leading-relaxed">
+                      <h4 className="font-black text-2xl mb-3 uppercase italic tracking-tighter">UV Forecast</h4>
+                      <p className="text-base font-medium text-muted-foreground leading-relaxed opacity-80">
                         Index: <span className="text-orange-500 font-black">HIGH (8)</span>. <br/>
-                        Reapply sunscreen every 2h. Peak burn: 11:00-15:00.
+                        Peak burn: 11:00 - 15:00. <br/>
+                        Reapply sunscreen now.
                       </p>
                     </div>
                   </div>
                 </Card>
 
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg">
-                  <div className="flex items-start gap-6">
-                    <div className="p-4 rounded-2xl bg-emerald-500/10 text-emerald-500 shadow-inner">
-                      <Weight size={32} />
+                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                  <div className="flex items-start gap-8">
+                    <div className="p-5 rounded-[2rem] bg-emerald-500/10 text-emerald-500 shadow-inner">
+                      <Weight size={40} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-black text-xl mb-2 uppercase italic tracking-tight">Gear Loadout</h4>
-                      <div className="space-y-3 mt-3">
-                        <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground opacity-60">Total Estimated: {totalLoad}kg</p>
-                        <div className="flex gap-2">
-                          <Button size="sm" variant="secondary" className="h-9 text-[10px] font-black rounded-xl flex-1 uppercase tracking-widest" onClick={() => setWeight(w => w + 1)}>+1kg</Button>
-                          <Button size="sm" variant="ghost" className="h-9 text-[10px] font-black rounded-xl uppercase tracking-widest" onClick={() => setWeight(8)}>Reset</Button>
+                      <h4 className="font-black text-2xl mb-4 uppercase italic tracking-tighter">Gear Loadout</h4>
+                      <div className="space-y-4 mt-4">
+                        <p className="text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">Total Weight: {totalLoad}kg</p>
+                        <div className="flex gap-3">
+                          <Button size="sm" variant="secondary" className="h-12 text-[11px] font-black rounded-[1.2rem] flex-1 uppercase tracking-[0.2em]" onClick={() => setWeight(w => w + 1)}>+1kg</Button>
+                          <Button size="sm" variant="ghost" className="h-12 text-[11px] font-black rounded-[1.2rem] uppercase tracking-[0.2em]" onClick={() => setWeight(8)}>Reset</Button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </Card>
               </div>
-              <Button onClick={toggleFlash} variant="destructive" className="w-full h-20 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-xl shadow-2xl gap-4">
-                <Zap size={24} />
+              <Button onClick={toggleFlash} variant="destructive" className="w-full h-24 rounded-[2.5rem] font-black uppercase tracking-[0.4em] text-2xl shadow-2xl gap-6 transition-all hover:scale-[1.02] active:scale-95">
+                <Zap size={32} />
                 SOS BEACON
               </Button>
             </TabsContent>
 
-            <TabsContent value="culture" className="mt-10 space-y-8">
-              <div className="flex items-center gap-4 mb-2">
-                <Languages className="text-primary h-6 w-6" />
-                <h3 className="text-2xl font-black uppercase italic tracking-tighter">Hungarian Survival</h3>
+            <TabsContent value="culture" className="space-y-10">
+              <div className="flex items-center gap-6 mb-4">
+                <Languages className="text-primary h-8 w-8" />
+                <h3 className="text-4xl font-black uppercase italic tracking-tighter">Hungarian Survival</h3>
               </div>
-              <Card className="border-border rounded-[2.5rem] overflow-hidden shadow-2xl">
+              <Card className="bg-card/50 border-white/5 rounded-[4rem] overflow-hidden shadow-2xl backdrop-blur-3xl">
                 <CardContent className="p-0">
-                  <div className="divide-y divide-border/50">
+                  <div className="divide-y divide-white/5">
                     {[
                       { h: 'Szia', e: 'Hello / Bye', p: 'See-ya' },
                       { h: 'Köszönöm', e: 'Thank you', p: 'Kuh-suh-num' },
@@ -241,14 +240,14 @@ export default function ToolsPage() {
                       { h: 'Egészségedre!', e: 'Cheers!', p: 'Ag-esh-shay-ge-dre' },
                       { h: 'Segítség!', e: 'Help!', p: 'She-geet-shaig!' },
                     ].map((item) => (
-                      <div key={item.h} className="p-6 flex items-center justify-between hover:bg-muted/30 transition-colors group">
+                      <div key={item.h} className="p-8 flex items-center justify-between hover:bg-white/5 transition-all duration-500 group">
                         <div>
-                          <p className="text-2xl font-black text-primary uppercase italic tracking-tighter leading-none mb-1">{item.h}</p>
-                          <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">{item.e}</p>
+                          <p className="text-3xl font-black text-primary uppercase italic tracking-tighter leading-none mb-2 group-hover:scale-105 transition-transform">{item.h}</p>
+                          <p className="text-[11px] font-black text-muted-foreground/60 uppercase tracking-[0.3em]">{item.e}</p>
                         </div>
                         <div className="text-right">
-                          <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest mb-1 opacity-40">Phonetic</p>
-                          <p className="text-sm font-bold italic text-foreground">{item.p}</p>
+                          <p className="text-[10px] font-black text-muted-foreground/40 uppercase tracking-[0.2em] mb-1">Phonetic</p>
+                          <p className="text-lg font-bold italic text-foreground opacity-80">{item.p}</p>
                         </div>
                       </div>
                     ))}
@@ -257,69 +256,71 @@ export default function ToolsPage() {
               </Card>
             </TabsContent>
 
-            <TabsContent value="safety" className="mt-10 space-y-8">
-              <div className="grid grid-cols-1 gap-6">
-                <Card className="p-10 bg-indigo-600 text-white border-none shadow-2xl shadow-indigo-500/20 rounded-[3rem] relative overflow-hidden">
-                  <div className="absolute right-[-20px] top-[-20px] opacity-10 rotate-12">
-                    <ShieldCheck size={180} />
+            <TabsContent value="safety" className="space-y-10">
+              <div className="grid grid-cols-1 gap-10">
+                <Card className="p-12 bg-indigo-600 text-white border-none shadow-2xl shadow-indigo-500/30 rounded-[4rem] relative overflow-hidden">
+                  <div className="absolute right-[-40px] top-[-40px] opacity-10 rotate-12">
+                    <ShieldCheck size={240} />
                   </div>
                   <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center gap-4">
-                        <div className="bg-white/20 p-3 rounded-2xl">
-                          <ShieldCheck size={32} />
+                    <div className="flex items-center justify-between mb-10">
+                      <div className="flex items-center gap-6">
+                        <div className="bg-white/20 p-4 rounded-[2rem] shadow-inner">
+                          <ShieldCheck size={48} />
                         </div>
-                        <h4 className="font-black uppercase italic tracking-tighter text-3xl">Safe Check-In</h4>
+                        <h4 className="font-black uppercase italic tracking-tighter text-4xl">Safe Check-In</h4>
                       </div>
-                      {lastCheckIn && <div className="text-[10px] font-black uppercase bg-black/20 px-4 py-2 rounded-full backdrop-blur-md">Last: {lastCheckIn}</div>}
+                      {lastCheckIn && <div className="text-[11px] font-black uppercase tracking-[0.3em] bg-black/20 px-6 py-3 rounded-full backdrop-blur-3xl border border-white/10">Last: {lastCheckIn}</div>}
                     </div>
-                    <p className="text-lg font-medium opacity-90 mb-8 max-w-md leading-relaxed">Instantly log your safety status during intense sets. This data is stored strictly on your device.</p>
+                    <p className="text-2xl font-medium opacity-90 mb-12 max-w-lg leading-relaxed italic">Instantly log your safety status during sets. Data stays 100% private on your device.</p>
                     <Button 
                       onClick={handleSafeCheckIn}
-                      className="w-full h-20 rounded-[1.5rem] bg-white text-indigo-600 font-black uppercase tracking-[0.25em] text-xl hover:bg-white/90 shadow-2xl transition-transform active:scale-95"
+                      className="w-full h-24 rounded-[2rem] bg-white text-indigo-600 font-black uppercase tracking-[0.4em] text-2xl hover:bg-white/90 shadow-2xl transition-all hover:scale-105 active:scale-95"
                     >
                       I AM SAFE
                     </Button>
                   </div>
                 </Card>
 
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg">
-                  <div className="flex items-center gap-6 mb-6">
-                    <div className="p-4 rounded-2xl bg-red-500/10 text-red-500 shadow-inner">
-                      <Ear size={32} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
+                        <Ear size={40} />
+                      </div>
+                      <h4 className="font-black text-2xl uppercase italic tracking-tighter">Audio Monitor</h4>
                     </div>
-                    <h4 className="font-black text-xl uppercase italic tracking-tight">Audio Safety Monitor</h4>
-                  </div>
-                  <div className="h-6 bg-muted rounded-full overflow-hidden mb-4 shadow-inner">
-                    <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500" />
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-xs font-black uppercase tracking-widest text-muted-foreground opacity-60">Est. Exposure: 102dB</p>
-                    <p className="text-[10px] font-black text-red-500 uppercase tracking-widest bg-red-500/10 px-3 py-1 rounded-full">Wear Earplugs</p>
-                  </div>
-                </Card>
+                    <div className="h-10 bg-muted/20 rounded-full overflow-hidden mb-6 shadow-inner p-1">
+                      <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500 rounded-full" />
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
+                      <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
+                    </div>
+                  </Card>
 
-                <Card className="p-8 bg-card border-border rounded-[2.5rem] shadow-lg group">
-                  <div className="flex items-center gap-6 mb-4">
-                    <div className="p-4 rounded-2xl bg-yellow-500/10 text-yellow-500 shadow-inner">
-                      <FileText size={32} />
+                  <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                    <div className="flex items-center gap-6 mb-6">
+                      <div className="p-5 rounded-[2rem] bg-yellow-500/10 text-yellow-500 shadow-inner">
+                        <FileText size={40} />
+                      </div>
+                      <h4 className="font-black text-2xl uppercase italic tracking-tighter">Lost Item Helper</h4>
                     </div>
-                    <h4 className="font-black text-xl uppercase italic tracking-tight">Lost Item Helper</h4>
-                  </div>
-                  <p className="text-sm font-medium text-muted-foreground mb-6 leading-relaxed max-w-md">Prepare the required technical metadata for official Sziget security or Police reports.</p>
-                  <Button 
-                    variant="outline" 
-                    className="w-full h-14 rounded-2xl border-border hover:bg-muted font-black uppercase tracking-widest text-xs"
-                    onClick={() => {
-                      toast({
-                        title: "METADATA READY",
-                        description: "Check your local 'Memories' log for the report template.",
-                      });
-                    }}
-                  >
-                    Generate Report Template
-                  </Button>
-                </Card>
+                    <p className="text-lg font-medium text-muted-foreground mb-8 leading-relaxed italic opacity-80">Prepare tech metadata for official Sziget security or Police reports.</p>
+                    <Button 
+                      variant="outline" 
+                      className="w-full h-16 rounded-[1.5rem] border-white/10 hover:bg-white/5 font-black uppercase tracking-[0.2em] text-[11px]"
+                      onClick={() => {
+                        toast({
+                          title: "METADATA READY",
+                          description: "Check your local 'Memories' log for the report template.",
+                        });
+                      }}
+                    >
+                      Generate Report Template
+                    </Button>
+                  </Card>
+                </div>
               </div>
             </TabsContent>
           </Tabs>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { createTheme, ThemeProvider, responsiveFontSizes } from '@mui/material/styles';
@@ -24,36 +23,46 @@ const getThemeOptions = (mode: 'light' | 'dark') => ({
     },
     background: {
       default: mode === 'dark' ? '#000000' : '#ffffff',
-      paper: mode === 'dark' ? '#0a0a0a' : '#f9f9f9',
+      paper: mode === 'dark' ? '#050505' : '#fcfcfc',
     },
     text: {
       primary: mode === 'dark' ? '#ffffff' : '#000000',
-      secondary: mode === 'dark' ? 'rgba(255, 255, 255, 0.6)' : 'rgba(0, 0, 0, 0.6)',
+      secondary: mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
     },
-    divider: mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+    divider: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)',
   },
   typography: {
-    fontFamily: '"Outfit", sans-serif',
-    h1: { fontWeight: 900, letterSpacing: '-0.04em' },
-    h2: { fontWeight: 900, letterSpacing: '-0.03em' },
-    h3: { fontWeight: 800, letterSpacing: '-0.02em' },
-    button: { fontWeight: 800, textTransform: 'uppercase' as const, letterSpacing: '0.05em' },
-    caption: { fontWeight: 600, letterSpacing: '0.02em' },
+    fontFamily: '"Outfit", "Varela Round", sans-serif',
+    h1: { fontWeight: 900, letterSpacing: '-0.05em' },
+    h2: { fontWeight: 900, letterSpacing: '-0.04em' },
+    h3: { fontWeight: 900, letterSpacing: '-0.03em' },
+    h4: { fontWeight: 900, letterSpacing: '-0.02em' },
+    button: { fontWeight: 900, textTransform: 'uppercase' as const, letterSpacing: '0.15em' },
+    caption: { fontWeight: 700, letterSpacing: '0.05em' },
   },
   shape: {
-    borderRadius: 12,
+    borderRadius: 24,
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          padding: '8px 20px',
-          fontWeight: 800,
+          borderRadius: 16,
+          padding: '12px 28px',
+          fontWeight: 900,
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: mode === 'dark' ? '0 0 20px rgba(255, 0, 128, 0.2)' : '0 4px 12px rgba(255, 0, 128, 0.15)',
+            boxShadow: mode === 'dark' ? '0 0 30px rgba(255, 0, 128, 0.3)' : '0 10px 30px rgba(255, 0, 128, 0.2)',
           },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          backgroundImage: 'none',
+          border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
         },
       },
     },
@@ -61,7 +70,7 @@ const getThemeOptions = (mode: 'light' | 'dark') => ({
       styleOverrides: {
         root: {
           backgroundImage: 'none',
-          border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid rgba(0, 0, 0, 0.05)',
+          border: mode === 'dark' ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid rgba(0, 0, 0, 0.05)',
         },
       },
     },
@@ -69,7 +78,7 @@ const getThemeOptions = (mode: 'light' | 'dark') => ({
 });
 
 export default function MuiRegistry({ children }: { children: ReactNode }) {
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
