@@ -1,15 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import {
+  Box,
+  Typography,
+  Container,
+  Card,
+  CardActionArea,
+  CardContent,
+  Button,
+  Grid,
+  Paper,
+  Stack,
+  alpha,
+  useTheme
+} from '@mui/material';
 import { 
   Map as MapIcon, 
   Wand2, 
@@ -58,6 +63,7 @@ const features = [
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const theme = useTheme();
   
   useEffect(() => {
     setMounted(true);
@@ -84,10 +90,10 @@ export default function Home() {
             <Box sx={{ 
               p: 2.5, 
               borderRadius: '2.5rem', 
-              bgcolor: 'rgba(255,0,128,0.03)', 
-              border: '1px solid rgba(255,0,128,0.1)',
+              bgcolor: alpha(theme.palette.primary.main, 0.03), 
+              border: `1px solid ${alpha(theme.palette.primary.main, 0.1)}`,
               backdropFilter: 'blur(20px)',
-              boxShadow: '0 20px 40px rgba(255,0,128,0.05)'
+              boxShadow: `0 20px 40px ${alpha(theme.palette.primary.main, 0.05)}`
             }}>
               <Music size={44} color="#ff0080" strokeWidth={2.5} />
             </Box>
@@ -130,9 +136,9 @@ export default function Home() {
           <Container maxWidth="sm">
             <Paper sx={{ 
               p: 4, 
-              bgcolor: 'rgba(255, 255, 255, 0.01)', 
+              bgcolor: alpha(theme.palette.background.paper, 0.01), 
               backdropFilter: 'blur(60px)',
-              border: '1px solid rgba(255, 255, 255, 0.06)',
+              border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
               borderRadius: '3rem',
               textAlign: 'left',
               display: 'flex',
@@ -141,7 +147,7 @@ export default function Home() {
               boxShadow: '0 40px 80px rgba(0,0,0,0.3)',
               transition: 'all 0.5s ease',
               '&:hover': {
-                borderColor: 'rgba(255,0,128,0.2)',
+                borderColor: alpha(theme.palette.primary.main, 0.3),
                 transform: 'translateY(-4px)'
               }
             }}>
@@ -181,16 +187,16 @@ export default function Home() {
           {nowPlaying.map((artist, idx) => (
             <Grid item key={artist.id} xs={12} md={4}>
               <Card sx={{ 
-                bgcolor: 'rgba(255,255,255,0.02)', 
+                bgcolor: alpha(theme.palette.background.paper, 0.02), 
                 borderRadius: '2.5rem', 
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.04)',
+                border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
                 transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                 '&:hover': {
                   transform: 'scale(1.03) translateY(-8px)',
                   borderColor: 'primary.main',
-                  boxShadow: '0 30px 60px rgba(255,0,128,0.15)',
-                  bgcolor: 'rgba(255,255,255,0.04)'
+                  boxShadow: `0 30px 60px ${alpha(theme.palette.primary.main, 0.15)}`,
+                  bgcolor: alpha(theme.palette.background.paper, 0.04)
                 }
               }}>
                 <CardActionArea href={`/artist/${artist.id}`}>
@@ -240,13 +246,13 @@ export default function Home() {
               endIcon={<LayoutGrid size={20} />} 
               sx={{ 
                 borderRadius: '1.5rem', 
-                bgcolor: 'rgba(255,255,255,0.03)', 
+                bgcolor: alpha(theme.palette.background.paper, 0.03), 
                 color: 'text.primary',
                 px: 5,
                 height: '4.5rem',
-                border: '1px solid rgba(255,255,255,0.05)',
+                border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
                 '&:hover': {
-                  bgcolor: 'rgba(255,255,255,0.08)',
+                  bgcolor: alpha(theme.palette.background.paper, 0.08),
                   borderColor: 'primary.main'
                 }
               }}
@@ -262,17 +268,17 @@ export default function Home() {
               <Card
                 sx={{
                   height: '100%',
-                  bgcolor: 'rgba(255,255,255,0.01)',
+                  bgcolor: alpha(theme.palette.background.paper, 0.01),
                   backgroundImage: 'none',
                   borderRadius: '3rem',
-                  border: '1px solid rgba(255,255,255,0.04)',
+                  border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
                   transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
                   overflow: 'hidden',
                   '&:hover': {
                     transform: 'translateY(-16px)',
                     borderColor: feature.color,
-                    bgcolor: 'rgba(255,255,255,0.03)',
-                    boxShadow: `0 50px 100px -20px ${feature.color}25`,
+                    bgcolor: alpha(theme.palette.background.paper, 0.03),
+                    boxShadow: `0 50px 100px -20px ${alpha(feature.color, 0.25)}`,
                   }
                 }}
               >
@@ -284,14 +290,14 @@ export default function Home() {
                           width: 88,
                           height: 88,
                           borderRadius: '2.5rem',
-                          bgcolor: `${feature.color}10`,
+                          bgcolor: alpha(feature.color, 0.1),
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           mx: 'auto',
                           mb: 4,
                           color: feature.color,
-                          boxShadow: `0 20px 40px ${feature.color}10`,
+                          boxShadow: `0 20px 40px ${alpha(feature.color, 0.1)}`,
                           transition: 'all 0.5s ease',
                           '& svg': { strokeWidth: 2.5 }
                         }}
@@ -316,12 +322,12 @@ export default function Home() {
         <Grid container spacing={4} sx={{ mt: 6 }}>
           <Grid item xs={12} md={6}>
             <Card sx={{ 
-              bgcolor: 'rgba(255,238,0,0.01)', 
-              border: '1px dashed rgba(255,238,0,0.15)', 
+              bgcolor: alpha('#ffee00', 0.01), 
+              border: `1px dashed ${alpha('#ffee00', 0.15)}`, 
               borderRadius: '3.5rem',
               transition: 'all 0.4s ease',
               '&:hover': { 
-                bgcolor: 'rgba(255,238,0,0.03)',
+                bgcolor: alpha('#ffee00', 0.03),
                 borderColor: '#ffee00'
               }
             }}>
@@ -329,7 +335,7 @@ export default function Home() {
                 <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
                     p: 3, 
-                    bgcolor: 'rgba(255,238,0,0.08)', 
+                    bgcolor: alpha('#ffee00', 0.08), 
                     color: '#ffee00', 
                     borderRadius: '2rem',
                     boxShadow: '0 15px 30px rgba(255,238,0,0.05)'
@@ -346,12 +352,12 @@ export default function Home() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Card sx={{ 
-              bgcolor: 'rgba(255,0,128,0.01)', 
-              border: '1px dashed rgba(255,0,128,0.15)', 
+              bgcolor: alpha('#ff0080', 0.01), 
+              border: `1px dashed ${alpha('#ff0080', 0.15)}`, 
               borderRadius: '3.5rem',
               transition: 'all 0.4s ease',
               '&:hover': { 
-                bgcolor: 'rgba(255,0,128,0.03)',
+                bgcolor: alpha('#ff0080', 0.03),
                 borderColor: '#ff0080'
               }
             }}>
@@ -359,7 +365,7 @@ export default function Home() {
                 <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
                     p: 3, 
-                    bgcolor: 'rgba(255,0,128,0.08)', 
+                    bgcolor: alpha('#ff0080', 0.08), 
                     color: '#ff0080', 
                     borderRadius: '2rem',
                     boxShadow: '0 15px 30px rgba(255,0,128,0.05)'

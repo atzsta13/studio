@@ -1,21 +1,30 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import TimetableView from '@/components/timetable/timetable-view';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
 import { History, Calendar } from 'lucide-react';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+import {
+  Box,
+  Typography,
+  Container,
+  Button
+} from '@mui/material';
 
 export default function TimetablePage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const currentLineup = useMemo(() => {
     return activeYear === '2026' ? (lineup2026 as any) : (lineup2025 as any);
   }, [activeYear]);
+
+  if (!mounted) return null;
 
   return (
     <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: '#000' }}>
