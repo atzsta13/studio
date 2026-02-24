@@ -1,22 +1,18 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Box,
-  Typography,
-  Container,
-  Card,
-  CardActionArea,
-  CardContent,
-  Avatar,
-  Button,
-  Grid,
-  Paper,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 import { 
   Map as MapIcon, 
   Wand2, 
-  Gavel, 
   Trophy, 
   Music, 
   Camera, 
@@ -75,24 +71,25 @@ export default function Home() {
 
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', pb: 12, overflowX: 'hidden' }}>
-      {/* Hero Section */}
+      {/* Cinematic Hero */}
       <Box sx={{
-        pt: { xs: 8, md: 12 },
-        pb: { xs: 6, md: 10 },
+        pt: { xs: 10, md: 16 },
+        pb: { xs: 8, md: 12 },
         textAlign: 'center',
         position: 'relative',
-        background: 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.15) 0%, transparent 60%)'
+        background: 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.12) 0%, transparent 70%)'
       }}>
         <Container maxWidth="md">
-          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
             <Box sx={{ 
-              p: 2, 
-              borderRadius: '2rem', 
-              bgcolor: 'rgba(255,0,128,0.05)', 
+              p: 2.5, 
+              borderRadius: '2.5rem', 
+              bgcolor: 'rgba(255,0,128,0.03)', 
               border: '1px solid rgba(255,0,128,0.1)',
-              boxShadow: '0 20px 40px rgba(255,0,128,0.1)'
+              backdropFilter: 'blur(20px)',
+              boxShadow: '0 20px 40px rgba(255,0,128,0.05)'
             }}>
-              <Music size={40} color="#ff0080" />
+              <Music size={44} color="#ff0080" strokeWidth={2.5} />
             </Box>
           </Box>
 
@@ -101,13 +98,13 @@ export default function Home() {
             sx={{
               fontWeight: 900,
               color: 'text.primary',
-              mb: 2,
-              letterSpacing: '-0.06em',
-              lineHeight: 0.85,
-              fontSize: { xs: '4.5rem', md: '8rem' },
+              mb: 3,
+              letterSpacing: '-0.07em',
+              lineHeight: 0.8,
+              fontSize: { xs: '5rem', md: '9rem' },
               textTransform: 'uppercase',
               fontStyle: 'italic',
-              textShadow: '0 10px 30px rgba(0,0,0,0.1)'
+              filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.1))'
             }}
           >
             Sziget <span style={{ color: '#ff0080' }}>Insider</span>
@@ -117,41 +114,47 @@ export default function Home() {
             variant="h5"
             sx={{
               color: 'text.secondary',
-              mb: 6,
+              mb: 8,
               fontWeight: 600,
-              maxWidth: 600,
+              maxWidth: 640,
               mx: 'auto',
-              lineHeight: 1.2,
-              fontSize: { xs: '1.1rem', md: '1.5rem' },
-              opacity: 0.8
+              lineHeight: 1.1,
+              fontSize: { xs: '1.2rem', md: '1.75rem' },
+              opacity: 0.7,
+              letterSpacing: '-0.02em'
             }}
           >
-            Ultimate intelligence for the <span style={{ color: '#ffee00', fontWeight: 900 }}>Island of Freedom</span>. 
+            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900 }}>Island of Freedom</span>. 
           </Typography>
 
           <Container maxWidth="sm">
             <Paper sx={{ 
               p: 4, 
-              bgcolor: 'rgba(255, 255, 255, 0.02)', 
-              backdropFilter: 'blur(40px)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              borderRadius: '2.5rem',
+              bgcolor: 'rgba(255, 255, 255, 0.01)', 
+              backdropFilter: 'blur(60px)',
+              border: '1px solid rgba(255, 255, 255, 0.06)',
+              borderRadius: '3rem',
               textAlign: 'left',
               display: 'flex',
               flexDirection: 'column',
-              gap: 1.5,
-              boxShadow: '0 30px 60px rgba(0,0,0,0.2)'
+              gap: 2,
+              boxShadow: '0 40px 80px rgba(0,0,0,0.3)',
+              transition: 'all 0.5s ease',
+              '&:hover': {
+                borderColor: 'rgba(255,0,128,0.2)',
+                transform: 'translateY(-4px)'
+              }
             }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                <Newspaper size={18} color="#ff0080" />
-                <Typography variant="caption" sx={{ fontWeight: 900, color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                <Newspaper size={20} color="#ff0080" />
+                <Typography variant="caption" sx={{ fontWeight: 900, color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.7rem' }}>
                   Island Status
                 </Typography>
               </Box>
-              <Typography variant="h6" sx={{ fontWeight: 900, color: 'text.primary', fontSize: '1.4rem', fontStyle: 'italic' }}>
+              <Typography variant="h6" sx={{ fontWeight: 900, color: 'text.primary', fontSize: '1.6rem', fontStyle: 'italic', lineHeight: 1 }}>
                 Vibe: Electric. Dust: High.
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.6, fontSize: '0.95rem', fontWeight: 500 }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.5, fontSize: '1rem', fontWeight: 500, opacity: 0.8 }}>
                 Colosseum peak at 02:00. All water points active. Reapply sunscreen; UV index is peaking.
               </Typography>
             </Paper>
@@ -160,56 +163,58 @@ export default function Home() {
       </Box>
 
       {/* Now Playing Pulse Widget */}
-      <Container maxWidth="lg" sx={{ mt: 8, mb: 10 }}>
-        <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', gap: 2.5 }}>
+      <Container maxWidth="lg" sx={{ mt: 10, mb: 12 }}>
+        <Box sx={{ mb: 6, display: 'flex', alignItems: 'center', gap: 3 }}>
           <Box sx={{ 
-            width: 14, 
-            height: 14, 
+            width: 16, 
+            height: 16, 
             borderRadius: '50%', 
             bgcolor: '#ff0080', 
-            boxShadow: '0 0 20px #ff0080',
-            animation: 'pulse 1.5s infinite' 
+            boxShadow: '0 0 30px #ff0080',
+            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' 
           }} />
-          <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', letterSpacing: '-0.02em' }}>
-            Island Pulse: <span style={{ opacity: 0.3 }}>Now Playing</span>
+          <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', letterSpacing: '-0.04em', fontSize: '2.5rem' }}>
+            Island Pulse: <span style={{ opacity: 0.2 }}>Now Playing</span>
           </Typography>
         </Box>
-        <Grid container spacing={3}>
+        <Grid container spacing={4}>
           {nowPlaying.map((artist, idx) => (
             <Grid item key={artist.id} xs={12} md={4}>
               <Card sx={{ 
-                bgcolor: 'rgba(255,255,255,0.03)', 
-                borderRadius: '2rem', 
+                bgcolor: 'rgba(255,255,255,0.02)', 
+                borderRadius: '2.5rem', 
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.05)',
-                transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                border: '1px solid rgba(255,255,255,0.04)',
+                transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
                 '&:hover': {
-                  transform: 'scale(1.02)',
+                  transform: 'scale(1.03) translateY(-8px)',
                   borderColor: 'primary.main',
-                  boxShadow: '0 20px 40px rgba(255,0,128,0.1)'
+                  boxShadow: '0 30px 60px rgba(255,0,128,0.15)',
+                  bgcolor: 'rgba(255,255,255,0.04)'
                 }
               }}>
                 <CardActionArea href={`/artist/${artist.id}`}>
-                  <Box sx={{ p: 3, display: 'flex', gap: 3, alignItems: 'center' }}>
+                  <Box sx={{ p: 4, display: 'flex', gap: 4, alignItems: 'center' }}>
                     <Box sx={{ 
-                      width: 80, 
-                      height: 80, 
-                      borderRadius: '1.5rem', 
+                      width: 100, 
+                      height: 100, 
+                      borderRadius: '2rem', 
                       backgroundImage: `url(${artist.imageUrl})`, 
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
-                      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
+                      boxShadow: '0 15px 30px rgba(0,0,0,0.4)',
+                      flexShrink: 0
                     }} />
                     <Box sx={{ flex: 1, minWidth: 0 }}>
-                      <Typography noWrap sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.2rem', fontStyle: 'italic' }}>{artist.artist}</Typography>
-                      <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 900, textTransform: 'uppercase', display: 'block', letterSpacing: '0.1em' }}>
+                      <Typography noWrap sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5, letterSpacing: '-0.02em' }}>{artist.artist}</Typography>
+                      <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 900, textTransform: 'uppercase', display: 'block', letterSpacing: '0.15em', mb: 0.5 }}>
                         {artist.stage || 'Main Stage'}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '0.8rem' }}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '0.85rem', opacity: 0.6 }}>
                         Set: {idx * 15 + 10}m elapsed
                       </Typography>
                     </Box>
-                    <ChevronRight size={20} color="rgba(255,255,255,0.2)" />
+                    <ChevronRight size={24} color="rgba(255,255,255,0.15)" />
                   </Box>
                 </CardActionArea>
               </Card>
@@ -220,24 +225,30 @@ export default function Home() {
 
       {/* Mission Control Operations */}
       <Container maxWidth="lg">
-        <Box sx={{ mb: 5, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <Box sx={{ mb: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <Box>
-            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.4em', mb: 1, display: 'block' }}>
+            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.5em', mb: 1.5, display: 'block', fontSize: '0.75rem' }}>
               Mission Control
             </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic' }}>
+            <Typography variant="h3" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', fontSize: '3.5rem', letterSpacing: '-0.05em' }}>
               Operations
             </Typography>
           </Box>
           <Link href="/timetable" style={{ textDecoration: 'none' }}>
             <Button 
               size="large" 
-              endIcon={<LayoutGrid size={18} />} 
+              endIcon={<LayoutGrid size={20} />} 
               sx={{ 
-                borderRadius: '1rem', 
-                bgcolor: 'rgba(255,255,255,0.05)', 
+                borderRadius: '1.5rem', 
+                bgcolor: 'rgba(255,255,255,0.03)', 
                 color: 'text.primary',
-                px: 4
+                px: 5,
+                height: '4.5rem',
+                border: '1px solid rgba(255,255,255,0.05)',
+                '&:hover': {
+                  bgcolor: 'rgba(255,255,255,0.08)',
+                  borderColor: 'primary.main'
+                }
               }}
             >
               Grid View
@@ -251,43 +262,46 @@ export default function Home() {
               <Card
                 sx={{
                   height: '100%',
-                  bgcolor: 'rgba(255,255,255,0.02)',
+                  bgcolor: 'rgba(255,255,255,0.01)',
                   backgroundImage: 'none',
-                  borderRadius: '2.5rem',
-                  border: '1px solid rgba(255,255,255,0.05)',
-                  transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                  borderRadius: '3rem',
+                  border: '1px solid rgba(255,255,255,0.04)',
+                  transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
+                  overflow: 'hidden',
                   '&:hover': {
-                    transform: 'translateY(-12px)',
+                    transform: 'translateY(-16px)',
                     borderColor: feature.color,
-                    bgcolor: 'rgba(255,255,255,0.04)',
-                    boxShadow: `0 40px 80px -15px ${feature.color}30`,
+                    bgcolor: 'rgba(255,255,255,0.03)',
+                    boxShadow: `0 50px 100px -20px ${feature.color}25`,
                   }
                 }}
               >
                 <Link href={feature.href} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <CardActionArea sx={{ height: '100%' }}>
-                    <CardContent sx={{ textAlign: 'center', py: 6 }}>
+                    <CardContent sx={{ textAlign: 'center', py: 8 }}>
                       <Box
                         sx={{
-                          width: 72,
-                          height: 72,
-                          borderRadius: '2rem',
-                          bgcolor: `${feature.color}15`,
+                          width: 88,
+                          height: 88,
+                          borderRadius: '2.5rem',
+                          bgcolor: `${feature.color}10`,
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           mx: 'auto',
-                          mb: 3,
+                          mb: 4,
                           color: feature.color,
-                          boxShadow: `0 10px 20px ${feature.color}15`
+                          boxShadow: `0 20px 40px ${feature.color}10`,
+                          transition: 'all 0.5s ease',
+                          '& svg': { strokeWidth: 2.5 }
                         }}
                       >
-                        <feature.icon size={32} strokeWidth={2.5} />
+                        <feature.icon size={40} />
                       </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1, textTransform: 'uppercase', fontSize: '1.1rem', fontStyle: 'italic' }}>
+                      <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, textTransform: 'uppercase', fontSize: '1.25rem', fontStyle: 'italic', letterSpacing: '-0.02em' }}>
                         {feature.title}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block', fontSize: '0.85rem' }}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block', fontSize: '0.9rem', opacity: 0.6 }}>
                         {feature.description}
                       </Typography>
                     </CardContent>
@@ -298,30 +312,33 @@ export default function Home() {
           ))}
         </Grid>
 
-        {/* Tactical Tactical Sections */}
-        <Grid container spacing={4} sx={{ mt: 4 }}>
+        {/* Strategic Tactical Sections */}
+        <Grid container spacing={4} sx={{ mt: 6 }}>
           <Grid item xs={12} md={6}>
             <Card sx={{ 
-              bgcolor: 'rgba(255,238,0,0.02)', 
-              border: '1px dashed rgba(255,238,0,0.2)', 
-              borderRadius: '3rem',
-              transition: 'all 0.3s ease',
-              '&:hover': { bgcolor: 'rgba(255,238,0,0.05)' }
+              bgcolor: 'rgba(255,238,0,0.01)', 
+              border: '1px dashed rgba(255,238,0,0.15)', 
+              borderRadius: '3.5rem',
+              transition: 'all 0.4s ease',
+              '&:hover': { 
+                bgcolor: 'rgba(255,238,0,0.03)',
+                borderColor: '#ffee00'
+              }
             }}>
               <CardActionArea href="/memories" sx={{ p: 0 }}>
-                <CardContent sx={{ p: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
-                    p: 2.5, 
-                    bgcolor: 'rgba(255,238,0,0.1)', 
+                    p: 3, 
+                    bgcolor: 'rgba(255,238,0,0.08)', 
                     color: '#ffee00', 
-                    borderRadius: '1.5rem',
-                    boxShadow: '0 10px 20px rgba(255,238,0,0.1)'
+                    borderRadius: '2rem',
+                    boxShadow: '0 15px 30px rgba(255,238,0,0.05)'
                   }}>
-                    <Camera size={32} />
+                    <Camera size={40} strokeWidth={2.5} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.2rem', fontStyle: 'italic' }}>Memory Log</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '0.9rem' }}>Capture the magic. Private & Offline.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Memory Log</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Capture the magic. Private & Offline.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
@@ -329,26 +346,29 @@ export default function Home() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Card sx={{ 
-              bgcolor: 'rgba(255,0,128,0.02)', 
-              border: '1px dashed rgba(255,0,128,0.2)', 
-              borderRadius: '3rem',
-              transition: 'all 0.3s ease',
-              '&:hover': { bgcolor: 'rgba(255,0,128,0.05)' }
+              bgcolor: 'rgba(255,0,128,0.01)', 
+              border: '1px dashed rgba(255,0,128,0.15)', 
+              borderRadius: '3.5rem',
+              transition: 'all 0.4s ease',
+              '&:hover': { 
+                bgcolor: 'rgba(255,0,128,0.03)',
+                borderColor: '#ff0080'
+              }
             }}>
               <CardActionArea href="/quests" sx={{ p: 0 }}>
-                <CardContent sx={{ p: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                   <Box sx={{ 
-                    p: 2.5, 
-                    bgcolor: 'rgba(255,0,128,0.1)', 
+                    p: 3, 
+                    bgcolor: 'rgba(255,0,128,0.08)', 
                     color: '#ff0080', 
-                    borderRadius: '1.5rem',
-                    boxShadow: '0 10px 20px rgba(255,0,128,0.1)'
+                    borderRadius: '2rem',
+                    boxShadow: '0 15px 30px rgba(255,0,128,0.05)'
                   }}>
-                    <Flame size={32} />
+                    <Flame size={40} strokeWidth={2.5} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.2rem', fontStyle: 'italic' }}>Island Quests</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '0.9rem' }}>Earn Legend XP and unlock Stamps.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Island Quests</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Earn Legend XP and unlock Stamps.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
@@ -361,7 +381,7 @@ export default function Home() {
       <style jsx global>{`
         @keyframes pulse {
           0% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 rgba(255,0,128,0.4); }
-          50% { opacity: 0.6; transform: scale(1.2); box-shadow: 0 0 20px rgba(255,0,128,0.6); }
+          50% { opacity: 0.4; transform: scale(1.15); box-shadow: 0 0 40px rgba(255,0,128,0.6); }
           100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 rgba(255,0,128,0.4); }
         }
       `}</style>

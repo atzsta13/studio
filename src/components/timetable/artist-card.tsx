@@ -1,4 +1,6 @@
-import { Box, Typography, IconButton } from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 import { Heart, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
@@ -27,17 +29,18 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         flexDirection: 'column',
         justifyContent: isSmall ? 'center' : 'space-between',
         p: 1.5,
-        borderRadius: 0.5,
+        borderRadius: '0.75rem',
         bgcolor: '#0a0a0a',
-        border: '1px solid rgba(255,255,255,0.05)',
-        borderLeft: isFavorite ? '3px solid #ff0080' : isConflicting ? '3px solid #ef4444' : '1px solid rgba(255,255,255,0.05)',
-        transition: 'all 0.1s ease',
+        border: '1px solid rgba(255,255,255,0.06)',
+        borderLeft: isFavorite ? '4px solid #ff0080' : isConflicting ? '4px solid #ef4444' : '1px solid rgba(255,255,255,0.06)',
+        transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
-        boxShadow: isFavorite ? '0 0 15px rgba(255,0,128,0.1)' : 'none',
+        boxShadow: isFavorite ? '0 10px 30px rgba(255,0,128,0.15)' : 'none',
         '&:hover': {
-          bgcolor: '#111',
-          borderColor: 'rgba(255,255,255,0.2)',
+          bgcolor: '#141414',
+          borderColor: isFavorite ? '#ff0080' : 'rgba(255,255,255,0.2)',
           zIndex: 50,
+          transform: 'scale(1.02)'
         },
       }}
     >
@@ -50,13 +53,14 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
             sx={{
               color: '#fff',
               fontWeight: 900,
-              fontSize: isSmall ? '0.75rem' : '0.9rem',
+              fontSize: isSmall ? '0.8rem' : '1rem',
               lineHeight: 1,
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.03em',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
               textTransform: 'uppercase',
+              fontStyle: 'italic'
             }}
           >
             {artist.artist}
@@ -64,10 +68,11 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
           <Typography
             sx={{
               color: 'rgba(255,255,255,0.4)',
-              fontSize: '0.65rem',
-              fontWeight: 700,
-              fontFamily: 'monospace',
+              fontSize: '0.7rem',
+              fontWeight: 800,
+              fontFamily: '"Outfit", sans-serif',
               mt: 0.5,
+              letterSpacing: '0.05em'
             }}
           >
             {startTime}
@@ -76,12 +81,12 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
 
         <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
           {isFavorite && (
-            <Heart size={14} fill="#ff0080" color="#ff0080" style={{ marginTop: 2 }} />
+            <Heart size={16} fill="#ff0080" color="#ff0080" style={{ marginTop: 2 }} />
           )}
           {!isSmall && (
             <Link href={`/map?stage=${encodeURIComponent(artist.stage)}`} style={{ textDecoration: 'none' }}>
               <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: '#00f2ff' } }}>
-                <MapPin size={12} />
+                <MapPin size={14} />
               </IconButton>
             </Link>
           )}
@@ -91,11 +96,12 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
       {!isSmall && artist.genres?.[0] && (
         <Typography
           sx={{
-            fontSize: '0.55rem',
+            fontSize: '0.65rem',
             fontWeight: 900,
             color: isFavorite ? '#ff0080' : '#00f2ff',
-            letterSpacing: '0.1em',
+            letterSpacing: '0.2em',
             mt: 'auto',
+            opacity: 0.8
           }}
         >
           {artist.genres[0].toUpperCase()}
