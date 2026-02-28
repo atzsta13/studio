@@ -4,17 +4,17 @@ import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
-import { 
-  Music, 
-  Search, 
-  Calendar, 
-  SortAsc, 
-  Sparkles, 
-  Globe, 
-  Wand2, 
-  Loader2, 
-  ChevronRight, 
-  Heart, 
+import {
+  Music,
+  Search,
+  Calendar,
+  SortAsc,
+  Sparkles,
+  Globe,
+  Wand2,
+  Loader2,
+  ChevronRight,
+  Heart,
   AlertTriangle,
   X,
   LayoutGrid
@@ -122,11 +122,11 @@ export default function DiscoverPage() {
     return base.filter(artist => {
       const matchesGenre = !selectedGenre || artist.genres?.includes(selectedGenre);
       const matchesVibe = !selectedVibe || artist.vibes?.includes(selectedVibe);
-      const matchesSearch = !searchQuery || 
+      const matchesSearch = !searchQuery ||
         artist.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
         artist.genres?.some(g => g.toLowerCase().includes(searchQuery.toLowerCase())) ||
         artist.description?.toLowerCase().includes(searchQuery.toLowerCase());
-      
+
       return matchesGenre && matchesVibe && matchesSearch;
     });
   }, [allArtists, selectedGenre, selectedVibe, viewMode, aiResult, spotifyMatches, searchQuery]);
@@ -174,13 +174,12 @@ export default function DiscoverPage() {
 
     return (
       <div className="relative group h-full">
-        <Link 
+        <Link
           href={`/artist/${artist.id}`}
-          className={`relative flex flex-col h-full overflow-hidden rounded-[2.5rem] transition-all duration-700 bg-card border ${
-            isHeadliner
-              ? 'border-primary/40 shadow-2xl shadow-primary/10 scale-[1.02]'
-              : 'border-white/5 hover:border-primary/40 hover:shadow-2xl'
-          }`}
+          className={`relative flex flex-col h-full overflow-hidden rounded-[2.5rem] transition-all duration-700 bg-card border ${isHeadliner
+            ? 'border-primary/40 shadow-2xl shadow-primary/10 scale-[1.02]'
+            : 'border-white/5 hover:border-primary/40 hover:shadow-2xl'
+            }`}
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted shrink-0">
             {artist.imageUrl ? (
@@ -219,9 +218,8 @@ export default function DiscoverPage() {
                     {getFlagEmoji(artist.countryCode)}
                   </span>
                 )}
-                <h3 className={`font-black uppercase tracking-tighter transition-all duration-500 text-white line-clamp-2 italic ${
-                  size === 'large' ? 'text-3xl leading-[0.85]' : 'text-2xl leading-[0.9]'
-                } ${isHeadliner ? 'text-primary group-hover:text-white group-hover:text-glow' : 'group-hover:text-primary'}`}>
+                <h3 className={`font-black uppercase tracking-tighter text-balance transition-all duration-500 text-white italic ${size === 'large' ? 'text-[1.6rem] md:text-[2rem] leading-[0.85]' : 'text-[1.4rem] md:text-[1.8rem] leading-[0.9]'
+                  } ${isHeadliner ? 'text-primary group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,0,128,0.8)]' : 'group-hover:text-primary'}`}>
                   {artist.artist}
                 </h3>
               </div>
@@ -262,17 +260,16 @@ export default function DiscoverPage() {
           </div>
         </Link>
 
-        <button 
+        <button
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
             toggleFavorite(artist.id);
           }}
-          className={`absolute top-4 right-4 z-30 h-11 w-11 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl backdrop-blur-3xl border ${
-            isFave 
-              ? 'bg-primary border-primary text-white scale-110' 
-              : 'bg-black/40 border-white/10 text-white/40 hover:text-white hover:bg-black/60'
-          }`}
+          className={`absolute top-4 right-4 z-30 h-11 w-11 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl backdrop-blur-3xl border ${isFave
+            ? 'bg-primary border-primary text-white scale-110'
+            : 'bg-black/40 border-white/10 text-white/40 hover:text-white hover:bg-black/60'
+            }`}
         >
           <Heart size={18} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-500" : ""} />
         </button>
@@ -305,13 +302,13 @@ export default function DiscoverPage() {
         </div>
 
         <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8">
-          <div className="inline-flex rounded-[2rem] bg-muted/30 p-2 border border-white/5 shadow-2xl backdrop-blur-3xl">
+          <div className="inline-flex rounded-[2rem] bg-muted/40 p-2 border border-white/5 shadow-2xl backdrop-blur-3xl">
             {['2026', '2025'].map(year => (
               <button
                 key={year}
                 onClick={() => setActiveYear(year as '2025' | '2026')}
-                className={`flex items-center gap-3 rounded-[1.5rem] px-12 py-4 text-xs font-black tracking-[0.2em] transition-all duration-500 ${activeYear === year
-                  ? 'bg-background text-foreground shadow-2xl border border-white/10 scale-105'
+                className={`flex items-center justify-center rounded-[1.5rem] px-10 py-3.5 text-xs font-black tracking-[0.2em] transition-all duration-300 ${activeYear === year
+                  ? 'bg-background text-foreground shadow-lg border border-white/10'
                   : 'text-muted-foreground hover:text-foreground'
                   }`}
               >
@@ -348,7 +345,7 @@ export default function DiscoverPage() {
                     onChange={(e) => setAiPrompt(e.target.value)}
                     className="h-20 rounded-[1.5rem] border-white/10 bg-muted/20 text-xl font-bold focus-visible:ring-indigo-500"
                   />
-                  <Button 
+                  <Button
                     className="w-full h-20 rounded-[1.5rem] bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.3em] text-xl shadow-2xl"
                     onClick={handleAiScout}
                     disabled={isAiLoading || !aiPrompt.trim()}
@@ -367,14 +364,14 @@ export default function DiscoverPage() {
           <div className="flex flex-col gap-8 lg:flex-row justify-between items-center">
             <div className="relative w-full lg:max-w-md">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground/40" />
-              <Input 
-                placeholder="Search artists, bios, or vibes..." 
+              <Input
+                placeholder="Search artists, bios, or vibes..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="h-16 pl-14 pr-14 rounded-[1.5rem] bg-muted/20 border-white/5 text-base font-bold focus-visible:ring-primary shadow-inner"
               />
               {searchQuery && (
-                <button 
+                <button
                   onClick={() => setSearchQuery('')}
                   className="absolute right-5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                 >
@@ -411,14 +408,14 @@ export default function DiscoverPage() {
           </div>
 
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
-            <button 
+            <button
               onClick={() => setSelectedVibe(null)}
               className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap border transition-all duration-500 ${!selectedVibe ? 'bg-primary border-primary text-white shadow-2xl scale-105' : 'bg-muted/20 border-white/5 text-muted-foreground hover:border-muted-foreground'}`}
             >
               ALL MOODS
             </button>
             {allVibeSet.map(vibe => (
-              <button 
+              <button
                 key={vibe}
                 onClick={() => setSelectedVibe(vibe === selectedVibe ? null : vibe)}
                 className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap border transition-all duration-500 ${selectedVibe === vibe ? 'bg-primary border-primary text-white shadow-2xl scale-105' : 'bg-muted/20 border-white/5 text-muted-foreground hover:border-muted-foreground'}`}

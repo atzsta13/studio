@@ -30,28 +30,28 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         justifyContent: isSmall ? 'center' : 'space-between',
         p: 1.5,
         borderRadius: '0.75rem',
-        bgcolor: '#0a0a0a',
+        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : '#0a0a0a',
         border: '1px solid rgba(255,255,255,0.06)',
-        borderLeft: isFavorite ? '4px solid #ff0080' : isConflicting ? '4px solid #ef4444' : '1px solid rgba(255,255,255,0.06)',
+        borderLeft: isConflicting ? '4px solid #ef4444' : isFavorite ? '4px solid #ff0080' : '1px solid rgba(255,255,255,0.06)',
         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
-        boxShadow: isFavorite ? '0 10px 30px rgba(255,0,128,0.15)' : 'none',
+        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isFavorite ? '0 10px 30px rgba(255,0,128,0.15)' : 'none',
         '&:hover': {
-          bgcolor: '#141414',
-          borderColor: isFavorite ? '#ff0080' : 'rgba(255,255,255,0.2)',
+          bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : '#141414',
+          borderColor: isConflicting ? '#ef4444' : isFavorite ? '#ff0080' : 'rgba(255,255,255,0.2)',
           zIndex: 50,
           transform: 'scale(1.02)'
         },
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <Box 
+        <Box
           onClick={onToggleFavorite}
           sx={{ flex: 1, minWidth: 0, cursor: 'pointer' }}
         >
           <Typography
             sx={{
-              color: '#fff',
+              color: isConflicting ? '#ef4444' : '#fff',
               fontWeight: 900,
               fontSize: isSmall ? '0.8rem' : '1rem',
               lineHeight: 1,
@@ -67,7 +67,7 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
           </Typography>
           <Typography
             sx={{
-              color: 'rgba(255,255,255,0.4)',
+              color: isConflicting ? 'rgba(239, 68, 68, 0.8)' : 'rgba(255,255,255,0.4)',
               fontSize: '0.7rem',
               fontWeight: 800,
               fontFamily: '"Outfit", sans-serif',
@@ -75,7 +75,7 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
               letterSpacing: '0.05em'
             }}
           >
-            {startTime}
+            {startTime} {isConflicting && "(!)"}
           </Typography>
         </Box>
 

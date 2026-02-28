@@ -5,12 +5,12 @@ import { format } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { 
-  Calendar, 
-  Clock, 
-  ChevronLeft, 
-  Building, 
-  Sparkles, 
+import {
+  Calendar,
+  Clock,
+  ChevronLeft,
+  Building,
+  Sparkles,
   UserPlus,
   Heart
 } from 'lucide-react';
@@ -26,7 +26,7 @@ import {
 import { FaGlobe } from 'react-icons/fa6';
 import { FavoriteButton } from '@/components/artist/favorite-button';
 
-const allArtists: LineupItem[] = lineup as LineupItem[];
+const allArtists: LineupItem[] = lineup as unknown as LineupItem[];
 
 export async function generateStaticParams() {
   return allArtists.map((artist) => ({
@@ -137,21 +137,7 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
             </p>
           </article>
 
-          {/* AI Setlist Predictor Feature */}
-          <div className="mb-8 p-8 rounded-[2.5rem] bg-indigo-600/5 border border-indigo-500/20 relative overflow-hidden group">
-            <div className="absolute right-[-20px] top-[-20px] opacity-5 rotate-12 group-hover:scale-110 transition-transform">
-              <Sparkles size={120} />
-            </div>
-            <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-4 text-indigo-500 font-black uppercase tracking-widest text-[10px]">
-                <Sparkles size={14} />
-                AI Setlist Predictor
-              </div>
-              <p className="text-sm text-muted-foreground italic leading-relaxed font-medium">
-                Predictive logic based on current tour vibes suggests a high-energy transition between 40-60 mins in. Expect at least 3 unreleased tracks and a heavy emphasis on their latest {artist.genres?.[0] || 'alternative'} era.
-              </p>
-            </div>
-          </div>
+
 
           <div className="flex flex-wrap gap-4 mb-8">
             {socialLinks.map(link => (

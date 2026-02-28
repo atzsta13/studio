@@ -5,17 +5,14 @@ This is the ultimate, unofficial, offline-first companion app for the Sziget Fes
 ## 🚀 Mission
 To empower every "Szitizen" with an intelligent survival and discovery engine that works anywhere—even with zero signal. No cloud database, no tracking, 100% privacy.
 
-## ✨ The "Elite 50" Features
+## ✨ The "Elite 33" Features
 - **🧠 AI Scout (Genkit)**: Natural language discovery agent powered by Gemini 2.5.
 - **🎵 Spotify Match Engine**: Sync your library to find acts you already love on the lineup.
 - **📍 GPS Tent Finder**: Navigate back to camp with offline GPS and bearing logic.
-- **🔥 Vibe Heatmap & Density**: Real-time energy and crowd visualization on the map.
 - **📅 Clash Detection**: Visual alerts for overlapping favorite sets in your grid.
-- **🛡️ Survival Toolkit**: SOS Beacon, Currency Converter, UV Safety, and Safe Check-In.
-- **🇭🇺 Hungarian Survival**: Integrated phrasebook for navigating local interactions.
-- **🏆 Island Quests & Passport**: Gamified exploration with digital stamps and achievements.
-- **📔 Memory Log**: A private, local-only festival diary for your best moments.
-- **📲 QR Spot Share**: Generate offline QR codes to share your location with friends.
+- **🛡️ Survival Toolkit**: SOS Beacon, Currency Converter, UV Safety, and Emergency Dials.
+- **🏆 Island Passport & XP**: Gamified progression leveling up your profile via local engagement logging.
+- **🍔 Budget Hero Finder**: Quickly filter to official, price-capped budget meals across the island.
 
 ## 🛠 Tech Stack
 - **Engine**: Next.js 16.1.6 (Latest Stable)
@@ -24,12 +21,14 @@ To empower every "Szitizen" with an intelligent survival and discovery engine th
 - **AI**: Genkit (Gemini 2.5 Flash)
 - **Persistence**: LocalStorage (Privacy-first / Offline-first)
 
-## 📖 Documentation
+## 📖 Documentation & Agent Protocol
+- [🤖 Agent Rules](agent.md) - Strict guardrails and philosophy for AI agents configuring this repo.
+- [🎨 UI & Design Guide](docs/UI_GUIDE.md) - Specs on our Brutalist OLED neon aesthetic.
 - [🎯 The Mission](docs/MISSION.md) - Our North Star.
 - [🏗️ Architecture](docs/ARCHITECTURE.md) - How the engine works.
 - [🚀 Deployment](docs/DEPLOYMENT.md) - How to go live.
 - [🛠️ Development](docs/DEVELOPMENT.md) - Tech stack and conventions.
-- [🌟 Feature Matrix](docs/FEATURES.md) - Details on all 50 core features.
+- [🌟 Feature Matrix](docs/FEATURES.md) - Details on all 33 core features.
 
 ## 🏃 Quick Start
 ```bash

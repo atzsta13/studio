@@ -5,18 +5,18 @@ import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Trophy, 
-  MapPin, 
-  Music, 
-  Flame, 
-  Droplet, 
-  Utensils, 
-  Lock, 
+import {
+  Trophy,
+  MapPin,
+  Music,
+  Flame,
+  Droplet,
+  Utensils,
+  Lock,
   CheckCircle2,
   Star,
-  Navigation, 
-  Clock, 
+  Navigation,
+  Clock,
   Wand2
 } from 'lucide-react';
 
@@ -42,21 +42,57 @@ const STAMPS: Stamp[] = [
 
 const STORAGE_KEY = 'sziget_passport_v1';
 
+const RANKS = [
+  { title: 'Tourist', minXP: 0 },
+  { title: 'Island Explorer', minXP: 200 },
+  { title: 'Szitizen', minXP: 500 },
+  { title: 'Main Stage Hero', minXP: 1000 },
+  { title: 'Sziget Legend', minXP: 2000 },
+];
+
 export default function PassportPage() {
   const [unlocked, setUnlocked] = useState<string[]>([]);
+  const [favoritesCount, setFavoritesCount] = useState(0);
+  const [packingCount, setPackingCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setUnlocked(JSON.parse(saved));
+    // Load Stamps
+    const savedStamps = localStorage.getItem(STORAGE_KEY);
+    if (savedStamps) setUnlocked(JSON.parse(savedStamps));
+
+    // Load Favorites Count
+    try {
+      const favs = localStorage.getItem('sziget-2026-favorites');
+      if (favs) setFavoritesCount(JSON.parse(favs).length);
+    } catch (e) { }
+
+    // Load Packing List Count
+    try {
+      const packedItems = Object.keys(localStorage).filter(k => k.startsWith('sziget-packed-'));
+      setPackingCount(packedItems.length);
+    } catch (e) { }
+
     setIsLoaded(true);
   }, []);
 
+  const totalXP = (unlocked.length * 50) + (favoritesCount * 10) + (packingCount * 2);
+
+  const currentRankIndex = [...RANKS].reverse().findIndex(r => totalXP >= r.minXP);
+  const currentRank = RANKS[RANKS.length - 1 - currentRankIndex] || RANKS[0];
+  const nextRank = RANKS[RANKS.length - currentRankIndex] || null;
+
+  let xpProgress = 100;
+  if (nextRank) {
+    const range = nextRank.minXP - currentRank.minXP;
+    const currentProgress = totalXP - currentRank.minXP;
+    xpProgress = Math.round((currentProgress / range) * 100);
+  }
+
   const toggleStamp = (id: string) => {
-    setUnlocked(prev => 
+    setUnlocked(prev =>
       prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
     );
-    // Persist
     const updated = unlocked.includes(id) ? unlocked.filter(s => s !== id) : [...unlocked, id];
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
   };
@@ -67,9 +103,9 @@ export default function PassportPage() {
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 pb-32">
-      <PageHeader 
-        title="Island Passport"
-        description="Collect digital stamps as you explore the Island of Freedom. Can you unlock the legendary Sziget Citizen badge?"
+      <PageHeader
+        title="Island Passport & XP"
+        description="Collect stamps, favorite artists, and unlock your ultimate Sziget Legend rank."
       />
 
       <div className="mb-12">
@@ -80,7 +116,7 @@ export default function PassportPage() {
           <CardContent className="p-8 relative z-10">
             <div className="flex justify-between items-end mb-6">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] opacity-80 mb-2">Completion Status</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] opacity-80 mb-2">Stamp Status</p>
                 <h3 className="text-5xl font-black italic uppercase tracking-tighter">{progress}%</h3>
               </div>
               <div className="text-right">
@@ -88,9 +124,6 @@ export default function PassportPage() {
               </div>
             </div>
             <Progress value={progress} className="h-3 bg-white/20" />
-            <p className="mt-6 text-sm font-medium opacity-90 leading-relaxed max-w-md">
-              Each stamp earned increases your "Szitizen" rank. Unlock all 8 to receive a secret AI scouting report.
-            </p>
           </CardContent>
         </Card>
       </div>
@@ -104,11 +137,10 @@ export default function PassportPage() {
             <button
               key={stamp.id}
               onClick={() => toggleStamp(stamp.id)}
-              className={`group relative aspect-square flex flex-col items-center justify-center p-4 rounded-[2rem] border-2 transition-all duration-500 ${
-                isDone 
-                  ? 'bg-card border-primary shadow-xl shadow-primary/10 rotate-[-2deg]' 
+              className={`group relative aspect-square flex flex-col items-center justify-center p-4 rounded-[2rem] border-2 transition-all duration-500 ${isDone
+                  ? 'bg-card border-primary shadow-xl shadow-primary/10 rotate-[-2deg]'
                   : 'bg-muted/30 border-border/50 hover:border-border grayscale opacity-60'
-              }`}
+                }`}
             >
               <div className={`mb-3 p-4 rounded-full transition-all duration-500 ${isDone ? `bg-white shadow-inner ${stamp.color}` : 'bg-muted text-muted-foreground'}`}>
                 {isDone ? <Icon size={32} /> : <Lock size={24} />}
@@ -116,14 +148,13 @@ export default function PassportPage() {
               <h4 className={`text-[10px] font-black uppercase tracking-widest text-center leading-tight ${isDone ? 'text-foreground' : 'text-muted-foreground'}`}>
                 {stamp.title}
               </h4>
-              
+
               {isDone && (
                 <div className="absolute top-2 right-2 text-primary animate-in zoom-in duration-300">
                   <CheckCircle2 size={16} />
                 </div>
               )}
 
-              {/* Hover Tooltip (Simulated) */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/90 text-white rounded-[2rem] p-4 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none text-[10px] font-bold text-center leading-relaxed">
                 {stamp.description}
               </div>
@@ -132,11 +163,46 @@ export default function PassportPage() {
         })}
       </div>
 
-      <div className="mt-16 text-center">
-        <div className="inline-flex flex-col items-center gap-4 p-8 rounded-[3rem] bg-card border border-dashed border-border/50">
-          <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-1 text-[10px] font-black uppercase tracking-widest">Next Rank Unlocks at 5 Stamps</Badge>
-          <h3 className="text-2xl font-black uppercase italic tracking-tighter">Island Explorer</h3>
-          <p className="text-xs text-muted-foreground font-medium max-w-xs leading-relaxed">Keep exploring! The most valuable stamps are hidden in the furthest corners of the island.</p>
+      <div className="mt-16 bg-card border border-border/50 rounded-[3rem] p-10 relative overflow-hidden shadow-2xl">
+        <div className="absolute top-[-40px] left-[50%] -translate-x-1/2 opacity-5 blur-[100px] bg-primary w-80 h-80 rounded-full pointer-events-none" />
+        <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
+          <div className="flex h-32 w-32 items-center justify-center rounded-full bg-primary/10 border-4 border-primary/20 shadow-inner">
+            <Trophy className="h-16 w-16 text-primary" />
+          </div>
+          <div className="flex-1 w-full text-center md:text-left">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-4">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground mb-2">Current Title</p>
+                <h3 className="text-4xl font-black uppercase italic tracking-tighter text-foreground">{currentRank.title}</h3>
+              </div>
+              <div className="mt-4 md:mt-0">
+                <p className="text-5xl font-black uppercase italic tracking-tighter text-primary">{totalXP} <span className="text-2xl text-muted-foreground">XP</span></p>
+              </div>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <div className="flex justify-between text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+                <span>Level Progress</span>
+                {nextRank ? <span>Next: {nextRank.title} ({nextRank.minXP} XP)</span> : <span>MAX LEVEL</span>}
+              </div>
+              <Progress value={xpProgress} className="h-4 bg-muted/30" />
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 text-center mt-8 pt-8 border-t border-white/5">
+              <div>
+                <p className="text-3xl font-black">{unlocked.length}</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Stamps (+50 XP/ea)</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black">{favoritesCount}</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Favorites (+10 XP/ea)</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black">{packingCount}</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Packed (+2 XP/ea)</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

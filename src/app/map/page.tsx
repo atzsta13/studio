@@ -12,8 +12,7 @@ import {
   History,
   Zap,
   Flame,
-  Users,
-  Share2
+  Users
 } from 'lucide-react';
 import lineup2026 from '@/data/lineup.json';
 import lineup2025 from '@/data/lineup_2025.json';
@@ -40,12 +39,10 @@ const stagePositions: Record<string, { x: number; y: number }> = {
 
 export default function MapPage() {
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
-  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util' | 'vibe' | 'density'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util'>('all');
   const [selectedPin, setSelectedPin] = useState<any>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
-  const [vibeMode, setVibeMode] = useState(false);
-  const [densityMode, setDensityMode] = useState(false);
 
   const currentLineup = useMemo(() => {
     return activeYear === '2026' ? lineup2026 : lineup2025;
@@ -64,9 +61,7 @@ export default function MapPage() {
         ...coords,
         icon: Music,
         color: 'bg-primary',
-        data: stageData,
-        vibeIntensity: isColosseum ? 0.9 : isMain ? 0.7 : 0.4,
-        density: isMain ? 0.85 : isColosseum ? 0.95 : 0.3
+        data: stageData
       };
     });
 
@@ -97,19 +92,11 @@ export default function MapPage() {
   }, [currentLineup, activeYear]);
 
   const filteredPins = allPins.filter(pin => {
-    if (hydrationMode) return pin?.subType === 'water';
-    if (vibeMode) return pin?.type === 'music';
-    if (densityMode) return pin?.type === 'music';
+    if (hydrationMode) return (pin as any)?.subType === 'water';
     return activeCategory === 'all' || pin?.type === activeCategory;
   });
 
-  const handleShareSpot = () => {
-    const code = Math.random().toString(36).substring(7).toUpperCase();
-    toast({
-      title: "SPOT CODE GENERATED",
-      description: `Share this code with friends: SZ-${code}`,
-    });
-  };
+
 
   return (
     <div className="relative flex h-[calc(100vh-64px)] w-full flex-col overflow-hidden bg-zinc-950">
@@ -131,10 +118,9 @@ export default function MapPage() {
 
         {/* Filter Chips */}
         <div className="flex flex-wrap gap-2 rounded-2xl bg-black/40 p-2 backdrop-blur-xl border border-white/10">
-          <Button size="sm" variant={!vibeMode && !densityMode && activeCategory === 'all' ? 'default' : 'ghost'} onClick={() => { setActiveCategory('all'); setVibeMode(false); setDensityMode(false); }} className="rounded-xl h-9 px-4">All</Button>
-          <Button size="sm" variant={vibeMode ? 'default' : 'ghost'} onClick={() => { setVibeMode(true); setDensityMode(false); }} className={`rounded-xl h-9 px-4 gap-2 ${vibeMode ? 'bg-orange-600' : 'text-orange-400'}`}><Flame className="h-4 w-4" /> Vibe</Button>
-          <Button size="sm" variant={densityMode ? 'default' : 'ghost'} onClick={() => { setDensityMode(true); setVibeMode(false); }} className={`rounded-xl h-9 px-4 gap-2 ${densityMode ? 'bg-indigo-600' : 'text-indigo-400'}`}><Users className="h-4 w-4" /> Density</Button>
-          <Button size="sm" variant={activeCategory === 'food' ? 'default' : 'ghost'} onClick={() => { setActiveCategory('food'); setVibeMode(false); setDensityMode(false); }} className="rounded-xl h-9 px-4 gap-2 text-emerald-400"><Utensils className="h-4 w-4" /> Food</Button>
+          <Button size="sm" variant={activeCategory === 'all' ? 'default' : 'ghost'} onClick={() => setActiveCategory('all')} className="rounded-xl h-9 px-4">All</Button>
+          <Button size="sm" variant={activeCategory === 'music' ? 'default' : 'ghost'} onClick={() => setActiveCategory('music')} className="rounded-xl h-9 px-4 gap-2 text-primary"><Music className="h-4 w-4" /> Stages</Button>
+          <Button size="sm" variant={activeCategory === 'food' ? 'default' : 'ghost'} onClick={() => setActiveCategory('food')} className="rounded-xl h-9 px-4 gap-2 text-emerald-400"><Utensils className="h-4 w-4" /> Food</Button>
         </div>
       </div>
 
@@ -142,7 +128,6 @@ export default function MapPage() {
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
         <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${hydrationMode ? 'bg-blue-500 border-blue-300' : 'bg-black/60 border-white/20'}`} onClick={() => setHydrationMode(!hydrationMode)}><Droplet className={`h-6 w-6 ${hydrationMode ? 'text-white' : 'text-blue-400'} `} /></Button>
         <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${showTools ? 'bg-emerald-600 border-emerald-400' : 'bg-black/60 border-white/20'}`} onClick={() => { setShowTools(!showTools); setSelectedPin(null); }}><Zap className={`h-6 w-6 ${showTools ? 'text-white' : 'text-yellow-400'} `} /></Button>
-        <Button size="icon" className="h-12 w-12 rounded-full shadow-2xl border-2 bg-black/60 border-white/20" onClick={handleShareSpot}><Share2 className="h-6 w-6 text-white" /></Button>
       </div>
 
       {/* Tools Overlay */}
@@ -162,28 +147,8 @@ export default function MapPage() {
       <div className="relative flex-1">
         <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode ? 'scale-110' : ''}`}>
           <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
-            
-            {/* Density Radar Layers */}
-            {densityMode && (
-              <div className="absolute inset-0 pointer-events-none">
-                {allPins.filter(p => p.type === 'music').map(p => (
-                  <div key={`density-${p.id}`} className="absolute rounded-full blur-[20px] opacity-30 bg-indigo-500 animate-pulse"
-                    style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${(p.density || 0.5) * 150}px`, height: `${(p.density || 0.5) * 150}px`, transform: 'translate(-50%, -50%)' }}
-                  />
-                ))}
-              </div>
-            )}
 
-            {/* Vibe Heatmap Layers */}
-            {vibeMode && (
-              <div className="absolute inset-0 pointer-events-none">
-                {allPins.filter(p => p.type === 'music').map(p => (
-                  <div key={`vibe-${p.id}`} className="absolute rounded-full blur-[40px] opacity-40 bg-orange-500 animate-bounce"
-                    style={{ left: `${p.x}%`, top: `${p.y}%`, width: `${(p.vibeIntensity || 0.5) * 200}px`, height: `${(p.vibeIntensity || 0.5) * 200}px`, transform: 'translate(-50%, -50%)', animationDuration: '3s' }}
-                  />
-                ))}
-              </div>
-            )}
+
 
             <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <path d="M20,10 Q50,0 80,15 T90,50 T70,90 T30,85 T10,50 Z" fill={hydrationMode ? "#0f172a" : "#18181b"} stroke={hydrationMode ? "#1e40af" : "#27272a"} strokeWidth="0.5" />
@@ -196,7 +161,7 @@ export default function MapPage() {
                 <button
                   key={pin.id}
                   className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all 
-                      ${hydrationMode && pin.subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500' : 'p-2 ring-4 ring-black/50 hover:scale-125'} 
+                      ${hydrationMode && (pin as any).subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500' : 'p-2 ring-4 ring-black/50 hover:scale-125'} 
                       ${!hydrationMode && pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}`}
                   style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
                   onClick={() => setSelectedPin(pin)}
@@ -218,7 +183,6 @@ export default function MapPage() {
               {selectedPin.type === 'music' && (
                 <div className="space-y-3 mt-4">
                   <Badge variant="secondary" className="bg-primary/20 text-primary">Live Now: {selectedPin.data?.artist || 'TBA'}</Badge>
-                  {densityMode && <p className="text-[10px] font-black uppercase text-indigo-400">Crowd Estimate: 85% Capacity</p>}
                   <Button asChild className="w-full rounded-xl"><Link href={selectedPin.data?.id ? `/artist/${selectedPin.data.id}` : '/timetable'}>Set Details</Link></Button>
                 </div>
               )}

@@ -12,17 +12,18 @@ import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { alpha, useTheme } from '@mui/material/styles';
-import { 
-  Map as MapIcon, 
-  Wand2, 
-  Trophy, 
-  Music, 
-  Camera, 
+import {
+  Map as MapIcon,
+  Wand2,
+  Trophy,
+  Music,
+  Camera,
   Newspaper,
   Flame,
   ChevronRight,
   Zap,
-  LayoutGrid
+  LayoutGrid,
+  Utensils
 } from 'lucide-react';
 import { useEffect, useState, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
@@ -61,7 +62,7 @@ const features = [
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const theme = useTheme();
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -80,16 +81,16 @@ export default function Home() {
         pb: { xs: 8, md: 12 },
         textAlign: 'center',
         position: 'relative',
-        background: theme.palette.mode === 'dark' 
+        background: theme.palette.mode === 'dark'
           ? 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.12) 0%, transparent 70%)'
           : 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.05) 0%, transparent 70%)'
       }}>
         <Container maxWidth="md">
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
-            <Box sx={{ 
-              p: 2.5, 
-              borderRadius: '2.5rem', 
-              bgcolor: alpha(theme.palette.primary.main, 0.03), 
+            <Box sx={{
+              p: 2.5,
+              borderRadius: '2.5rem',
+              bgcolor: alpha(theme.palette.primary.main, 0.03),
               border: `1px solid ${alpha(theme.palette.primary.main, 0.1)}`,
               backdropFilter: 'blur(20px)',
               boxShadow: `0 20px 40px ${alpha(theme.palette.primary.main, 0.05)}`
@@ -129,13 +130,13 @@ export default function Home() {
               letterSpacing: '-0.02em'
             }}
           >
-            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900, textShadow: theme.palette.mode === 'light' ? '0 0 1px rgba(0,0,0,0.1)' : 'none' }}>Island of Freedom</span>. 
+            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900, textShadow: theme.palette.mode === 'light' ? '0 0 1px rgba(0,0,0,0.1)' : 'none' }}>Island of Freedom</span>.
           </Typography>
 
           <Container maxWidth="sm">
-            <Paper sx={{ 
-              p: 4, 
-              bgcolor: alpha(theme.palette.background.paper, 0.01), 
+            <Paper sx={{
+              p: 4,
+              bgcolor: alpha(theme.palette.background.paper, 0.01),
               backdropFilter: 'blur(60px)',
               border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
               borderRadius: '3rem',
@@ -170,13 +171,13 @@ export default function Home() {
       {/* Now Playing Pulse Widget */}
       <Container maxWidth="lg" sx={{ mt: 10, mb: 12 }}>
         <Box sx={{ mb: 6, display: 'flex', alignItems: 'center', gap: 3 }}>
-          <Box sx={{ 
-            width: 16, 
-            height: 16, 
-            borderRadius: '50%', 
-            bgcolor: '#ff0080', 
+          <Box sx={{
+            width: 16,
+            height: 16,
+            borderRadius: '50%',
+            bgcolor: '#ff0080',
             boxShadow: '0 0 30px #ff0080',
-            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' 
+            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           }} />
           <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', letterSpacing: '-0.04em', fontSize: '2.5rem' }}>
             Island Pulse: <span style={{ opacity: 0.2 }}>Now Playing</span>
@@ -185,9 +186,9 @@ export default function Home() {
         <Grid container spacing={4}>
           {nowPlaying.map((artist, idx) => (
             <Grid key={artist.id} size={{ xs: 12, md: 4 }}>
-              <Card sx={{ 
-                bgcolor: alpha(theme.palette.background.paper, 0.02), 
-                borderRadius: '2.5rem', 
+              <Card sx={{
+                bgcolor: alpha(theme.palette.background.paper, 0.02),
+                borderRadius: '2.5rem',
                 overflow: 'hidden',
                 border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
                 transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
@@ -200,11 +201,11 @@ export default function Home() {
               }}>
                 <CardActionArea component={Link} href={`/artist/${artist.id}`}>
                   <Box sx={{ p: 4, display: 'flex', gap: 4, alignItems: 'center' }}>
-                    <Box sx={{ 
-                      width: 100, 
-                      height: 100, 
-                      borderRadius: '2rem', 
-                      backgroundImage: `url(${artist.imageUrl})`, 
+                    <Box sx={{
+                      width: 100,
+                      height: 100,
+                      borderRadius: '2rem',
+                      backgroundImage: `url(${artist.imageUrl})`,
                       backgroundSize: 'cover',
                       backgroundPosition: 'center',
                       boxShadow: '0 15px 30px rgba(0,0,0,0.4)',
@@ -240,12 +241,12 @@ export default function Home() {
             </Typography>
           </Box>
           <Link href="/timetable" style={{ textDecoration: 'none' }}>
-            <Button 
-              size="large" 
-              endIcon={<LayoutGrid size={20} />} 
-              sx={{ 
-                borderRadius: '1.5rem', 
-                bgcolor: alpha(theme.palette.background.paper, 0.03), 
+            <Button
+              size="large"
+              endIcon={<LayoutGrid size={20} />}
+              sx={{
+                borderRadius: '1.5rem',
+                bgcolor: alpha(theme.palette.background.paper, 0.03),
                 color: 'text.primary',
                 px: 5,
                 height: '4.5rem',
@@ -316,62 +317,32 @@ export default function Home() {
         </Grid>
 
         {/* Strategic Tactical Sections */}
-        <Grid container spacing={4} sx={{ mt: 6 }}>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Card sx={{ 
-              bgcolor: alpha('#ffee00', 0.01), 
-              border: `1px dashed ${alpha('#ffee00', 0.15)}`, 
+        <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>
+          <Grid size={{ xs: 12, md: 8 }}>
+            <Card sx={{
+              bgcolor: alpha('#4ade80', 0.01),
+              border: `1px dashed ${alpha('#4ade80', 0.15)}`,
               borderRadius: '3.5rem',
               transition: 'all 0.4s ease',
-              '&:hover': { 
-                bgcolor: alpha('#ffee00', 0.03),
-                borderColor: '#ffee00'
+              '&:hover': {
+                bgcolor: alpha('#4ade80', 0.03),
+                borderColor: '#4ade80'
               }
             }}>
-              <CardActionArea component={Link} href="/memories" sx={{ p: 0 }}>
+              <CardActionArea component={Link} href="/food" sx={{ p: 0 }}>
                 <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
-                  <Box sx={{ 
-                    p: 3, 
-                    bgcolor: alpha('#ffee00', 0.08), 
-                    color: '#ffee00', 
+                  <Box sx={{
+                    p: 3,
+                    bgcolor: alpha('#4ade80', 0.08),
+                    color: '#4ade80',
                     borderRadius: '2rem',
-                    boxShadow: '0 15px 30px rgba(255,238,0,0.05)'
+                    boxShadow: '0 15px 30px rgba(74,222,128,0.05)'
                   }}>
-                    <Camera size={40} strokeWidth={2.5} />
+                    <Utensils size={40} strokeWidth={2.5} />
                   </Box>
                   <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Memory Log</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Capture the magic. Private & Offline.</Typography>
-                  </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <Card sx={{ 
-              bgcolor: alpha('#ff0080', 0.01), 
-              border: `1px dashed ${alpha('#ff0080', 0.15)}`, 
-              borderRadius: '3.5rem',
-              transition: 'all 0.4s ease',
-              '&:hover': { 
-                bgcolor: alpha('#ff0080', 0.03),
-                borderColor: '#ff0080'
-              }
-            }}>
-              <CardActionArea component={Link} href="/quests" sx={{ p: 0 }}>
-                <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
-                  <Box sx={{ 
-                    p: 3, 
-                    bgcolor: alpha('#ff0080', 0.08), 
-                    color: '#ff0080', 
-                    borderRadius: '2rem',
-                    boxShadow: '0 15px 30px rgba(255,0,128,0.05)'
-                  }}>
-                    <Flame size={40} strokeWidth={2.5} />
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Island Quests</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Earn Legend XP and unlock Stamps.</Typography>
+                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Food Finder</Typography>
+                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Filter for the best budget meals.</Typography>
                   </Box>
                 </CardContent>
               </CardActionArea>
