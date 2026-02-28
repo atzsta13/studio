@@ -7,6 +7,8 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -28,12 +30,17 @@ import com.example.szigerinsider2026.ui.theme.AcidYellow
 import com.example.szigerinsider2026.ui.theme.CardBackground
 import com.example.szigerinsider2026.ui.theme.MutedBackground
 import com.example.szigerinsider2026.ui.theme.TextMuted
+import com.example.szigerinsider2026.ui.home.HomeScreen
+import com.example.szigerinsider2026.ui.discover.DiscoverScreen
+import com.example.szigerinsider2026.ui.map.MapScreen
+import com.example.szigerinsider2026.ui.passport.PassportScreen
+import com.example.szigerinsider2026.ui.tools.ToolsScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
     object Discover : Screen("discover", "ARTISTS", Icons.Filled.Search)
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn)
-    object Guide : Screen("guide", "GUIDE", Icons.Filled.DateRange)
+    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents)
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
 }
 
@@ -41,7 +48,7 @@ val bottomNavItems = listOf(
     Screen.Home,
     Screen.Discover,
     Screen.Map,
-    Screen.Guide,
+    Screen.Passport,
     Screen.Tools
 )
 
@@ -60,24 +67,19 @@ fun AppNavigation() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) {
-                // Placeholder for Home View
-                Text("HOME VIEW", color = MaterialTheme.colorScheme.onBackground)
+                HomeScreen()
             }
             composable(Screen.Discover.route) {
-                // Placeholder for Discover View
-                Text("DISCOVER VIEW", color = MaterialTheme.colorScheme.onBackground)
+                DiscoverScreen()
             }
             composable(Screen.Map.route) {
-                // Placeholder for Map View
-                Text("MAP VIEW", color = MaterialTheme.colorScheme.onBackground)
+                MapScreen()
             }
-            composable(Screen.Guide.route) {
-                // Placeholder for Guide View
-                Text("GUIDE VIEW", color = MaterialTheme.colorScheme.onBackground)
+            composable(Screen.Passport.route) {
+                PassportScreen()
             }
             composable(Screen.Tools.route) {
-                // Placeholder for Tools View
-                Text("TOOLS VIEW", color = MaterialTheme.colorScheme.onBackground)
+                ToolsScreen()
             }
         }
     }

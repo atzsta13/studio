@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -59,6 +60,12 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.navigation:navigation-compose:2.8.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    implementation(libs.room.ktx)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.material.icons.extended)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
