@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.EmojiEvents
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -35,6 +34,10 @@ import com.example.szigerinsider2026.ui.discover.DiscoverScreen
 import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
+import com.example.szigerinsider2026.ui.splash.SplashScreen
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.core.tween
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
@@ -56,16 +59,26 @@ val bottomNavItems = listOf(
 fun AppNavigation() {
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
     Scaffold(
         bottomBar = {
-            FluidBottomNavigation(navController = navController)
+            if (currentRoute != "splash") {
+                FluidBottomNavigation(navController = navController)
+            }
         }
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
-            modifier = Modifier.padding(innerPadding)
+            startDestination = "splash",
+            modifier = Modifier.padding(innerPadding),
+            enterTransition = { fadeIn(animationSpec = tween(500)) },
+            exitTransition = { fadeOut(animationSpec = tween(500)) }
         ) {
+            composable("splash") {
+                SplashScreen(navController)
+            }
             composable(Screen.Home.route) {
                 HomeScreen()
             }

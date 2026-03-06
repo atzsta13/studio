@@ -25,6 +25,11 @@ import com.example.szigerinsider2026.data.repository.FoodRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.POIRepository
 import com.example.szigerinsider2026.ui.theme.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 sealed class MapPin(
     val id: String,
@@ -42,62 +47,45 @@ sealed class MapPin(
 @Composable
 fun MapScreen() {
     val context = LocalContext.current
-    val lineupRepo = remember { LineupRepository(context) }
-    val foodRepo = remember { FoodRepository(context) }
-    val poiRepo = remember { POIRepository(context) }
-
-    var selectedCategory by remember { mutableStateOf("all") }
-    var hydrationMode by remember { mutableStateOf(false) }
-    var pins by remember { mutableStateOf<List<MapPin>>(emptyList()) }
-    var selectedPin by remember { mutableStateOf<MapPin?>(null) }
-
-    val stagePositions = mapOf(
-        "Main Stage" to MapCoords(42, 48),
-        "Revolut Stage" to MapCoords(28, 38),
-        "Colosseum" to MapCoords(35, 22),
-        "Bolt Party Arena" to MapCoords(22, 55),
-        "A38 Stage" to MapCoords(12, 42),
-        "World Music Stage" to MapCoords(62, 72)
+    val viewModel: MapViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return MapViewModel(
+                    POIRepository(context),
+                    FoodRepository(context)
+                ) as T
+            }
+        }
     )
 
-    LaunchedEffect(Unit) {
-        val lineup = lineupRepo.getLineup()
-        val food = foodRepo.getFoodVendors()
-        val pois = poiRepo.getPOIs()
+    val activeCategory by viewModel.activeCategory.collectAsStateWithLifecycle()
+    val filteredPois by viewModel.filteredPois.collectAsStateWithLifecycle()
+    var selectedPin by remember { mutableStateOf<MapPin?>(null) }
 
-        val stagePins = stagePositions.map { (name, coords) -> 
-            MapPin.Stage("stage-$name", name, coords)
-        }
-        val foodPins = food.map { f -> 
-            MapPin.Food(f.id, f.name, f.mapCoords ?: MapCoords(0, 0))
-        }
-        val poiPins = pois.map { p -> 
-            val icon = when(p.type) {
-                "water" -> Icons.Default.WaterDrop
-                "first-aid" -> Icons.Default.Healing
-                "toilet" -> Icons.Default.Wc
-                else -> Icons.Default.Info
-            }
-            val color = when(p.type) {
-                "water" -> CyanPulse
-                "first-aid" -> Color.Red
-                else -> AcidYellow
-            }
-            MapPin.POI(p.id, p.name, p.mapCoords ?: MapCoords(0, 0), icon, color, p.type)
-        }
-
-        pins = stagePins + foodPins + poiPins
-    }
-
-    val filteredPins = remember(pins, selectedCategory, hydrationMode) {
-        pins.filter { pin ->
-            if (hydrationMode) {
-                pin is MapPin.POI && pin.subType == "water"
-            } else {
-                selectedCategory == "all" || pin.type == selectedCategory
+    val pins = remember(filteredPois) {
+        filteredPois.map { p ->
+            when(p.type) {
+                "stage" -> MapPin.Stage(p.id, p.name, p.mapCoords ?: MapCoords(0, 0))
+                "food" -> MapPin.Food(p.id, p.name, p.mapCoords ?: MapCoords(0, 0))
+                else -> {
+                    val icon = when(p.type) {
+                        "water" -> Icons.Default.WaterDrop
+                        "first-aid" -> Icons.Default.Healing
+                        "toilet" -> Icons.Default.Wc
+                        else -> Icons.Default.Info
+                    }
+                    val color = when(p.type) {
+                        "water" -> CyanPulse
+                        "first-aid" -> Color.Red
+                        else -> AcidYellow
+                    }
+                    MapPin.POI(p.id, p.name, p.mapCoords ?: MapCoords(0, 0), icon, color, p.type)
+                }
             }
         }
     }
+
+    val hydrationMode = activeCategory == "water"
 
     Box(modifier = Modifier.fillMaxSize().background(OLEDBlack)) {
         // Visual Map Area
@@ -116,7 +104,7 @@ fun MapScreen() {
                     .border(2.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(60.dp))
             ) {
                 // Pins
-                filteredPins.forEach { pin ->
+                pins.forEach { pin ->
                     Box(
                         modifier = Modifier
                             .offset(
@@ -161,15 +149,18 @@ fun MapScreen() {
 
             // Categories
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                CategoryChip("ALL", selectedCategory == "all") { selectedCategory = "all"; hydrationMode = false }
-                CategoryChip("STAGES", selectedCategory == "music") { selectedCategory = "music"; hydrationMode = false }
-                CategoryChip("FOOD", selectedCategory == "food") { selectedCategory = "food"; hydrationMode = false }
+                CategoryChip("ALL", activeCategory == "all") { viewModel.selectCategory("all") }
+                CategoryChip("STAGES", activeCategory == "music") { viewModel.selectCategory("music") }
+                CategoryChip("FOOD", activeCategory == "food") { viewModel.selectCategory("food") }
             }
         }
 
         // Hydration FAB
         FloatingActionButton(
-            onClick = { hydrationMode = !hydrationMode },
+            onClick = {
+                if (hydrationMode) viewModel.selectCategory("all")
+                else viewModel.selectCategory("water")
+            },
             modifier = Modifier
                 .padding(24.dp)
                 .align(Alignment.TopEnd)

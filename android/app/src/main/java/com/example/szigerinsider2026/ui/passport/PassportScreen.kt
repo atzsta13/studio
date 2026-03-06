@@ -3,13 +3,11 @@ package com.example.szigerinsider2026.ui.passport
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
-import androidx.compose.animation.zoomIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.GridItemOffsets
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
@@ -35,6 +33,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.ui.theme.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.szigerinsider2026.data.local.AppDatabase
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 data class Stamp(
     val id: String,
@@ -58,19 +62,23 @@ val STAMPS = listOf(
 
 @Composable
 fun PassportScreen() {
-    // In a real app, we'd use a ViewModel and collect from Room
-    var unlockedStamps by remember { mutableStateOf(setOf<String>()) }
-    val progress = (unlockedStamps.size.toFloat() / STAMPS.size.toFloat() * 100).toInt()
-    val totalXP = unlockedStamps.size * 50
-    
-    val currentRank = when {
-        totalXP >= 2000 -> "Sziget Legend"
-        totalXP >= 1000 -> "Main Stage Hero"
-        totalXP >= 500 -> "Szitizen"
-        totalXP >= 200 -> "Island Explorer"
-        else -> "Tourist"
-    }
+    val context = LocalContext.current
+    val viewModel: PassportViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                val db = AppDatabase.getDatabase(context)
+                @Suppress("UNCHECKED_CAST")
+                return PassportViewModel(db.userDao()) as T
+            }
+        }
+    )
 
+    val userProgress by viewModel.userProgress.collectAsStateWithLifecycle()
+    val unlockedStamps = userProgress.stampsCollected.toSet()
+    val progress = (unlockedStamps.size.toFloat() / STAMPS.size.toFloat() * 100).toInt()
+    val totalXP = userProgress.legendXp
+    val currentRank = userProgress.currentRank
+    
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier
@@ -177,11 +185,7 @@ fun PassportScreen() {
                         shape = RoundedCornerShape(24.dp)
                     )
                     .clickable {
-                        unlockedStamps = if (isUnlocked) {
-                            unlockedStamps - stamp.id
-                        } else {
-                            unlockedStamps + stamp.id
-                        }
+                        viewModel.toggleStamp(stamp.id)
                     },
                 contentAlignment = Alignment.Center
             ) {
