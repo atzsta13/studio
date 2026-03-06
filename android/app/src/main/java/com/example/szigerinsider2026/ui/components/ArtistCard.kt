@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.utils.getMood
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
 @Composable
@@ -168,20 +169,32 @@ fun ArtistCard(
 
         // Bottom Vibe Section (Subtle Muted Area)
         if (artist.vibes.isNotEmpty()) {
+            val mood = getMood(artist)
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(MutedBackground.copy(alpha = 0.3f))
                     .padding(horizontal = 20.dp, vertical = 12.dp)
             ) {
-                Text(
-                    text = artist.vibes.take(2).joinToString(" • ").uppercase(),
-                    style = BrutalistTypography.labelSmall,
-                    color = TextMuted.copy(alpha = 0.6f),
-                    fontSize = 9.sp,
-                    letterSpacing = 2.sp,
-                    maxLines = 1
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(8.dp)
+                            .clip(CircleShape)
+                            .background(mood.color)
+                    )
+                    Text(
+                        text = mood.label + " • " + artist.vibes.first().uppercase(),
+                        style = BrutalistTypography.labelSmall,
+                        color = TextMuted.copy(alpha = 0.6f),
+                        fontSize = 9.sp,
+                        letterSpacing = 2.sp,
+                        maxLines = 1
+                    )
+                }
             }
         }
     }

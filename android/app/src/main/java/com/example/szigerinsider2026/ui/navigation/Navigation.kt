@@ -1,6 +1,11 @@
 package com.example.szigerinsider2026.ui.navigation
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
@@ -17,7 +22,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -49,8 +57,8 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
 
 val bottomNavItems = listOf(
     Screen.Home,
-    Screen.Discover,
     Screen.Map,
+    Screen.Discover,
     Screen.Passport,
     Screen.Tools
 )
@@ -113,40 +121,52 @@ fun FluidBottomNavigation(navController: NavHostController) {
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = rememberHapticManager()
 
-    NavigationBar(
-        containerColor = CardBackground,
-        contentColor = AcidYellow
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+            .padding(horizontal = 16.dp, vertical = 10.dp)
     ) {
-        bottomNavItems.forEach { screen ->
-            val isSelected = currentRoute == screen.route
-            NavigationBarItem(
-                icon = { Icon(screen.icon, contentDescription = screen.label) },
-                label = {
-                    Text(
-                        screen.label,
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal
-                    )
-                },
-                selected = isSelected,
-                onClick = {
-                    if (!isSelected) {
-                        haptic.lightTap()
-                        navController.navigate(screen.route) {
-                            popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            launchSingleTop = true
-                            restoreState = true
+        NavigationBar(
+            modifier = Modifier
+                .clip(RoundedCornerShape(28.dp))
+                .border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(28.dp)),
+            containerColor = CardBackground,
+            contentColor = AcidYellow,
+            tonalElevation = 0.dp,
+            windowInsets = androidx.compose.foundation.layout.WindowInsets(0)
+        ) {
+            bottomNavItems.forEach { screen ->
+                val isSelected = currentRoute == screen.route
+                NavigationBarItem(
+                    icon = { Icon(screen.icon, contentDescription = screen.label) },
+                    label = {
+                        Text(
+                            screen.label,
+                            style = MaterialTheme.typography.labelSmall,
+                            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal
+                        )
+                    },
+                    selected = isSelected,
+                    onClick = {
+                        if (!isSelected) {
+                            haptic.lightTap()
+                            navController.navigate(screen.route) {
+                                popUpTo(navController.graph.startDestinationId) { saveState = true }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
                         }
-                    }
-                },
-                colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = MaterialTheme.colorScheme.background,
-                    selectedTextColor = AcidYellow,
-                    indicatorColor = AcidYellow,
-                    unselectedIconColor = TextMuted,
-                    unselectedTextColor = TextMuted
+                    },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = MaterialTheme.colorScheme.background,
+                        selectedTextColor = AcidYellow,
+                        indicatorColor = AcidYellow,
+                        unselectedIconColor = TextMuted,
+                        unselectedTextColor = TextMuted
+                    )
                 )
-            )
+            }
         }
     }
 }
