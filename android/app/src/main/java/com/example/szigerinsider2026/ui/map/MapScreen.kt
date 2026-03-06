@@ -25,6 +25,7 @@ import com.example.szigerinsider2026.data.repository.FoodRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.POIRepository
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.animation.AnimatedVisibility
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.ViewModel
@@ -58,6 +59,7 @@ fun MapScreen() {
         }
     )
 
+    val haptic = rememberHapticManager()
     val activeCategory by viewModel.activeCategory.collectAsStateWithLifecycle()
     val filteredPois by viewModel.filteredPois.collectAsStateWithLifecycle()
     var selectedPin by remember { mutableStateOf<MapPin?>(null) }
@@ -115,7 +117,7 @@ fun MapScreen() {
                             .clip(CircleShape)
                             .background(if (selectedPin == pin) Color.White else pin.color)
                             .border(2.dp, Color.Black.copy(alpha = 0.5f), CircleShape)
-                            .clickable { selectedPin = pin },
+                            .clickable { haptic.mediumTap(); selectedPin = pin },
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -208,11 +210,12 @@ fun MapScreen() {
 
 @Composable
 fun CategoryChip(text: String, isSelected: Boolean, onClick: () -> Unit) {
+    val haptic = rememberHapticManager()
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(12.dp))
             .background(if (isSelected) AcidYellow else CardBackground)
-            .clickable { onClick() }
+            .clickable { haptic.lightTap(); onClick() }
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Text(

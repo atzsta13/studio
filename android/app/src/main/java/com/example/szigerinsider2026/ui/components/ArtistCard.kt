@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
 @Composable
 fun ArtistCard(
@@ -32,6 +33,7 @@ fun ArtistCard(
     onToggleFavorite: (String) -> Unit = {},
     onClick: (String) -> Unit = {}
 ) {
+    val haptic = rememberHapticManager()
     // Premium Neon Brutalist Container
     Column(
         modifier = modifier
@@ -43,7 +45,7 @@ fun ArtistCard(
                 color = if (artist.isHeadliner) PrimaryMagenta.copy(alpha = 0.4f) else Color.White.copy(alpha = 0.05f),
                 shape = RoundedCornerShape(32.dp)
             )
-            .clickable { onClick(artist.id) }
+            .clickable { haptic.lightTap(); onClick(artist.id) }
     ) {
         // Upper Visual Section (4:5 Aspect Ratio)
         Box(
@@ -98,27 +100,30 @@ fun ArtistCard(
                 }
             }
 
-            // Overlays: Favorite Heart (Top Right)
+            // Overlays: Favorite Star (Top Right)
             Box(
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(16.dp)
                     .size(44.dp)
                     .clip(CircleShape)
-                    .background(if (isFavorite) PrimaryMagenta else Color.Black.copy(alpha = 0.4f))
+                    .background(Color.Black.copy(alpha = 0.6f))
                     .border(
                         1.dp,
                         if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.1f),
                         CircleShape
                     )
-                    .clickable { onToggleFavorite(artist.id) },
+                    .clickable {
+                        if (isFavorite) haptic.mediumTap() else haptic.favoriteTap()
+                        onToggleFavorite(artist.id)
+                    },
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                    imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
                     contentDescription = "Toggle Favorite",
-                    tint = Color.White,
-                    modifier = Modifier.size(18.dp)
+                    tint = if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.6f),
+                    modifier = Modifier.size(24.dp)
                 )
             }
 

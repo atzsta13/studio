@@ -63,16 +63,26 @@ Key versions: AGP 8.13.2, Kotlin 2.0.21, compileSdk 35, minSdk 26.
 
 **MVVM** with a Repository layer. No Hilt/DI — dependencies are manually constructed.
 
-- **Navigation**: `ui/navigation/Navigation.kt` — bottom nav with 5 tabs: Home, Discover (Artists), Map, Passport, Tools. App starts on a `SplashScreen` then routes to `HomeScreen`.
+- **Navigation**: `ui/navigation/Navigation.kt` — bottom nav with 5 tabs + artist detail. Routes: `splash → home`, `discover`, `map`, `passport`, `tools`, `artist/{artistId}`. Bottom nav hidden on splash and artist detail screens.
 - **Data layer**:
   - `data/model/` — Kotlin data classes (`Artist`, `POI`, `FoodVendor`, `MapCoords`)
   - `data/repository/` — `LineupRepository` reads bundled JSON assets; `POIRepository` and `FoodRepository` for map/food data
-  - `data/local/` — Room database (`AppDatabase`, v1) with two entities: `UserProgress` (XP, rank, stamps) and `FavoriteArtist`. Accessed via `UserDao`. Database is a singleton obtained via `AppDatabase.getDatabase(context)`.
-- **ViewModels**: Located alongside their screens in `ui/<screen>/`. Currently: `ArtistViewModel`, `DiscoverViewModel`, `MapViewModel`, `PassportViewModel`.
-- **Theme**: Brutalist dark aesthetic. Colors defined in `ui/theme/Color.kt` — `OLEDBlack`, `AcidYellow`, `PrimaryMagenta`, `CardBackground`, `ToxicGreen`, `CyanPulse`.
+  - `data/local/` — Room database (`AppDatabase`, v1) with two entities: `UserProgress` (XP, rank, stamps) and `FavoriteArtist`. Accessed via `UserDao`. Singleton via `AppDatabase.getDatabase(context)`.
+- **Screens**:
+  - `ui/home/` — Island Pulse feed (Wednesday headliners from JSON)
+  - `ui/discover/` — Artist grid with 4 filter rows (sort: headliners/A-Z, day, genre, vibe), collapsing header on scroll. `DiscoverViewModel` + `ArtistViewModel`.
+  - `ui/artist/` — `ArtistDetailScreen` — full hero image, meta pills, genres, vibes, bio, tappable social links
+  - `ui/map/` — POI map with category filter (stages/food/water). `MapViewModel`.
+  - `ui/passport/` — Stamp collection + XP/rank, persisted in Room. `PassportViewModel`.
+  - `ui/tools/` — Currency converter (HUF→EUR/USD), SOS beacon, emergency contacts
+  - `ui/splash/` — Brutalist entrance screen
+- **Haptics**: `ui/utils/HapticManager.kt` — `lightTap()`, `mediumTap()`, `favoriteTap()`, `successBurst()`. Use `rememberHapticManager()` in any composable. Wired to all interactive elements.
+- **Theme**: Brutalist dark aesthetic. Colors in `ui/theme/Color.kt` — `OLEDBlack`, `AcidYellow`, `PrimaryMagenta`, `CardBackground`, `ToxicGreen`, `CyanPulse`.
 
 ### Key conventions
 
-- `fallbackToDestructiveMigration()` is set on the Room database — schema changes will wipe local data.
-- When adding a new screen, import it in `Navigation.kt` and add a `composable()` entry in `NavHost`.
-- The `Converters.kt` type converter handles `List<String>` serialization for Room.
+- `fallbackToDestructiveMigration()` is set on Room — schema changes wipe local data. Increment `version` in `@Database` annotation when changing entities.
+- The Kotlin serialization plugin (`kotlin-serialization`) is applied in `build.gradle.kts` — required for `@Serializable` to work at runtime.
+- When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`.
+- ViewModels use manual factory pattern (`ViewModelProvider.Factory`) — no Hilt.
+- `Converters.kt` handles `List<String>` ↔ JSON for Room.

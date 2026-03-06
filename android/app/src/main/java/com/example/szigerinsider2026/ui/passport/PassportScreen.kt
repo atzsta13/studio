@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.ViewModel
@@ -73,6 +74,7 @@ fun PassportScreen() {
         }
     )
 
+    val haptic = rememberHapticManager()
     val userProgress by viewModel.userProgress.collectAsStateWithLifecycle()
     val unlockedStamps = userProgress.stampsCollected.toSet()
     val progress = (unlockedStamps.size.toFloat() / STAMPS.size.toFloat() * 100).toInt()
@@ -185,6 +187,7 @@ fun PassportScreen() {
                         shape = RoundedCornerShape(24.dp)
                     )
                     .clickable {
+                        if (isUnlocked) haptic.mediumTap() else haptic.successBurst()
                         viewModel.toggleStamp(stamp.id)
                     },
                 contentAlignment = Alignment.Center

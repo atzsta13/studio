@@ -3,7 +3,6 @@ package com.example.szigerinsider2026.ui.navigation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
@@ -27,7 +26,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.szigerinsider2026.ui.theme.AcidYellow
 import com.example.szigerinsider2026.ui.theme.CardBackground
-import com.example.szigerinsider2026.ui.theme.MutedBackground
 import com.example.szigerinsider2026.ui.theme.TextMuted
 import com.example.szigerinsider2026.ui.home.HomeScreen
 import com.example.szigerinsider2026.ui.discover.DiscoverScreen
@@ -35,6 +33,8 @@ import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
 import com.example.szigerinsider2026.ui.splash.SplashScreen
+import com.example.szigerinsider2026.ui.artist.ArtistDetailScreen
+import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.tween
@@ -62,9 +62,11 @@ fun AppNavigation() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
+    val showBottomBar = currentRoute != "splash" && currentRoute?.startsWith("artist/") != true
+
     Scaffold(
         bottomBar = {
-            if (currentRoute != "splash") {
+            if (showBottomBar) {
                 FluidBottomNavigation(navController = navController)
             }
         }
@@ -73,8 +75,8 @@ fun AppNavigation() {
             navController = navController,
             startDestination = "splash",
             modifier = Modifier.padding(innerPadding),
-            enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }
+            enterTransition = { fadeIn(animationSpec = tween(300)) },
+            exitTransition = { fadeOut(animationSpec = tween(200)) }
         ) {
             composable("splash") {
                 SplashScreen(navController)
@@ -83,7 +85,7 @@ fun AppNavigation() {
                 HomeScreen()
             }
             composable(Screen.Discover.route) {
-                DiscoverScreen()
+                DiscoverScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
             }
             composable(Screen.Map.route) {
                 MapScreen()
@@ -94,6 +96,13 @@ fun AppNavigation() {
             composable(Screen.Tools.route) {
                 ToolsScreen()
             }
+            composable("artist/{artistId}") { backStackEntry ->
+                val artistId = backStackEntry.arguments?.getString("artistId") ?: return@composable
+                ArtistDetailScreen(
+                    artistId = artistId,
+                    onBack = { navController.popBackStack() }
+                )
+            }
         }
     }
 }
@@ -102,6 +111,7 @@ fun AppNavigation() {
 fun FluidBottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val haptic = rememberHapticManager()
 
     NavigationBar(
         containerColor = CardBackground,
@@ -121,6 +131,7 @@ fun FluidBottomNavigation(navController: NavHostController) {
                 selected = isSelected,
                 onClick = {
                     if (!isSelected) {
+                        haptic.lightTap()
                         navController.navigate(screen.route) {
                             popUpTo(navController.graph.startDestinationId) { saveState = true }
                             launchSingleTop = true
