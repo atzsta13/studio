@@ -1,47 +1,79 @@
-# Sziget Insider 2026: Android Port Migration State
-
-This document captures the current state of the native Android port for the next autonomous agent to pick up.
-
-## 🏁 Current Milestone: Phase 2 - Refining & Hardening
-The foundational UI and data structures are mostly in place. We are currently fixing inter-system dependencies and starting the unified build process.
-
-## 🏗️ Project Structure (Native Android)
-- **UI Architecture**: Jetpack Compose using a "Neon Brutalism" custom theme (`ui/theme/`).
-- **Navigation**: Centrally managed in `ui/navigation/Navigation.kt`. Includes a `SplashScreen` and a `FluidBottomNavigation`.
-- **Data Layer**:
-    - **Room Database**: `AppDatabase.kt` manages user progress and favorite artists.
-    - **Repositories**: `LineupRepository`, `POIRepository`, and `FoodRepository` parse local JSON assets from the `assets/` directory (Offline-First).
-- **ViewModels**: Added for Passport, Discover, Map, and Artist logic to separate state from UI.
-
-## ✅ Completed (Needs Final Build Verification)
-- [x] Initial Native Scaffold with Material 3.
-- [x] Brutalist Design Tokens (Colors, Typography).
-- [x] Bottom Navigation with 5 tabs (Home, Discover, Map, Passport, Tools).
-- [x] Asset logic for Lineup, POI, and Food data.
-- [x] Splash Screen implementation with transitions.
-- [x] ViewModels for Core Screens.
-- [x] Room Entity/DAO setup for persistence.
-
-## 🚧 Pending / Next Steps
-1. **Unified Compilation Verification**:
-    - Run `./gradlew app:assembleDebug` in the `/android` directory.
-    - **Note**: This command is slow and prone to timing out in remote environments. Monitor the output carefully.
-    - Resolve any remaining "Unresolved Reference" errors (likely imports for new ViewModels or Extended Material Icons).
-2. **Feature Deep-Link Verification**:
-    - Connect `ArtistCard` "Favorite" action to `ArtistViewModel`.
-    - Ensure `PassportScreen` accurately reflects the Room database state for stamps.
-    - Verify `MapScreen` filtration logic across POI categories (Stages, Water, Food).
-3. **UI Polish**:
-    - Finalize "Neon" entrance/exit transitions between screens.
-    - Review `HomeScreen` "Island Pulse" (Now Playing) logic for real-time accuracy.
-4. **Hardware Integrations (Future)**:
-    - Native Android SOS Flashlight control.
-    - Offline notification triggers for scheduled artists.
-
-## ⚠️ Important Environment Notes
-- **Gradle Builds**: Run them sparingly and one at a time. They lock the file system.
-- **Offline-First**: DO NOT ADD NETWORK LIBRARIES. Everything must come from `assets/*.json` or `Room`.
-- **Dependencies**: New dependencies (Coil, Lifecycle Compose, Material Icons Extended) have been added to `libs.versions.toml`.
+# 🗂️ Sziget Insider 2026: Comprehensive Migration & State Manifest
+**Target Platform:** Native Android (Jetpack Compose)
+**Date:** 2026-03-06
+**Status:** Phase 2 (Hardening & Data Reification)
 
 ---
-*Signed by Antigravity (Phase 1 Architect).*
+
+## 🏛️ System Architecture Overview
+
+### 1. UI Framework: Neon Brutalism (Jetpack Compose)
+The UI is built on a custom design system mapped from the original Next.js web application.
+- **Theme**: `ui.theme.Theme.kt` forces a persistent dark mode (OLED Black).
+- **Core Colors**: `AcidYellow`, `PrimaryMagenta`, `ToxicGreen`, `CyanPulse` (Atomic OLED palette).
+- **Typography**: Heavily stylized `BrutalistTypography` using extra-bold weights and italicized headers.
+- **Navigation**: `ui.navigation.Navigation.kt` manages a 5-tab scaffold + a SplashScreen.
+  - *Home* (Strategic Radar)
+  - *Discover* (Music Finder)
+  - *Map* (Tactical POI)
+  - *Passport* (Legend XP / Gamification)
+  - *Tools* (Survival Toolkit)
+
+### 2. Data Strategy: Offline-First & Reactive
+The app operates strictly without internet access, fulfilling the "Survival Toolkit" requirement.
+- **Local Assets**: JSON files (`lineup.json`, `poi.json`, `food.json`) are parsed from `assets/` using `kotlinx.serialization`.
+- **Persistence (Room Database)**:
+  - `AppDatabase.kt`: The central database instance.
+  - `UserDao.kt`: Handles CRUD for user progress and favorites.
+  - `UserProgress.kt`: Stores XP, current Rank, and a list of collected Stamps.
+  - `FavoriteArtist.kt`: Stores favorited artist IDs.
+- **Repositories**: Singleton repositories (`LineupRepository`, `POIRepository`) manage the abstraction between local JSON and the UI.
+- **ViewModels**: Every major screen now has a corresponding `ViewModel` (e.g., `DiscoverViewModel`, `PassportViewModel`) providing reactive `StateFlow` streams.
+
+---
+
+## 🏗️ Detailed Component Status
+
+| Module | Location | Status | Notes |
+| :--- | :--- | :--- | :--- |
+| **Main Activity** | `MainActivity.kt` | ✅ Done | Roots the AppNavigation. |
+| **Splash Screen** | `ui.splash.SplashScreen` | ✅ Done | Brutalist entrance with 2s delay transition. |
+| **Home Screen** | `ui.home.HomeScreen` | ✅ Done | Includes "Island Pulse" (Now Playing) logic. |
+| **Discover Grid** | `ui.discover.DiscoverScreen` | ✅ Done | Filtering by "Vibes" implemented in ViewModel. |
+| **Tactical Map** | `ui.map.MapScreen` | 🚧 Partial | UI is high-fidelity; POI filtering logic is wired but needs verification. |
+| **Passport** | `ui.passport.PassportScreen` | ✅ Done | XP/Rank logic linked to Room via `PassportViewModel`. |
+| **Survival Tools** | `ui.tools.ToolsScreen` | ✅ Done | Currency converter (EUR/USD/HUF) + SOS Beacon. |
+| **Database** | `data.local.*` | ✅ Done | Entities, DAOs, and TypeConverters for Lists are complete. |
+
+---
+
+## 🛠️ Build & Dependency Configuration
+The project uses **Version Catalogs** (`libs.versions.toml`). Key dependencies recently added/updated:
+- **Navigation**: `androidx.navigation:navigation-compose:2.8.0`
+- **Room**: `androidx.room:room-runtime:2.6.1` (with KSP compiler)
+- **Serialization**: `kotlinx-serialization-json:1.6.3`
+- **Image Loading**: `io.coil-kt:coil-compose:2.6.0`
+- **Lifecycle**: `androidx.lifecycle:lifecycle-runtime-compose:2.8.4`
+- **Extended Icons**: `androidx.compose.material:material-icons-extended:1.6.8`
+
+---
+
+## 🚦 Critical Hand-off Instructions for Next Agent
+
+### 1. The Build Verification (The "Grand Sync")
+The sub-agents have finished writing the logic, but the **entire app needs a clean compilation**.
+- **Run**: `cd android && ./gradlew app:assembleDebug`
+- **Expectation**: There might be minor import conflicts in `Navigation.kt` or `ToolsScreen.kt` regarding Extended Material Icons. Fix these immediately by explicitly importing the icons in the file header rather than using wildcards (`*`).
+
+### 2. Logic Verification Tasks
+- **Verify**: Does clicking a "Stamp" in `PassportScreen` write to the Room DB?
+- **Verify**: Does the `DiscoverScreen` correctly filter by vibe?
+- **Verify**: Does the `ArtistCard` favoriting state persist after minimizing/reopening?
+
+### 3. Constraints
+- **NO NETWORK**: Never add Retrofit or Ktor.
+- **NO TAILWIND**: This is a native Android project. Use standard Compose `Modifier` and the custom design tokens.
+- **PERFORMANCE**: Beware that `./gradlew` is slow in this environment. Do not run parallel builds.
+
+---
+*Documented by Antigravity Core.*
