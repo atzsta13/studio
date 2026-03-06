@@ -5,6 +5,15 @@
 
 ---
 
+## 🕰️ Project Evolution & Context
+Sziget Insider 2026 has undergone a major architectural evolution to reach its current native state:
+
+1.  **Stage 1: The Firebase Era**: Originally conceived as a web application utilizing **Firebase Studio** for real-time cloud data and authentication.
+2.  **Stage 2: The Local Web implementation**: Transitioned to a **Next.js** App Router architecture. During this phase, the project pivoted to a **Local-First** model, moving away from cloud dependencies to ensure the app functions perfectly in high-density, low-connectivity festival environments.
+3.  **Stage 3: The Native Android Port (Current)**: The project is now being fully ported to **Native Android (Kotlin + Jetpack Compose)**. This move provides deeper hardware integration (Flashlight/SOS) and superior performance while strictly maintaining the "Offline-First" philosophy established in the web reference.
+
+---
+
 ## 🏛️ System Architecture Overview
 
 ### 1. UI Framework: Neon Brutalism (Jetpack Compose)
