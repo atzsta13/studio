@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -16,9 +17,15 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -69,6 +76,7 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
     val selectedDay by discoverViewModel.selectedDay.collectAsStateWithLifecycle()
     val selectedGenre by discoverViewModel.selectedGenre.collectAsStateWithLifecycle()
     val selectedVibe by discoverViewModel.selectedVibe.collectAsStateWithLifecycle()
+    val searchQuery by discoverViewModel.searchQuery.collectAsStateWithLifecycle()
     val isLoading by discoverViewModel.isLoading.collectAsStateWithLifecycle()
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
 
@@ -114,6 +122,46 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
                     color = Color.White.copy(alpha = 0.5f),
                     modifier = Modifier.padding(top = 6.dp, bottom = 4.dp)
                 )
+            }
+        }
+
+        // Search bar
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .clip(RoundedCornerShape(20.dp))
+                .background(Color.White.copy(alpha = 0.06f))
+                .border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(20.dp))
+                .padding(horizontal = 16.dp, vertical = 12.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Search, contentDescription = null, tint = TextMuted, modifier = Modifier.size(18.dp))
+                Spacer(modifier = Modifier.width(10.dp))
+                BasicTextField(
+                    value = searchQuery,
+                    onValueChange = { discoverViewModel.setSearchQuery(it) },
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                    textStyle = TextStyle(color = Color.White, fontSize = 14.sp),
+                    decorationBox = { inner ->
+                        if (searchQuery.isEmpty()) {
+                            Text("Search artists…", color = TextMuted, fontSize = 14.sp)
+                        }
+                        inner()
+                    },
+                    modifier = Modifier.weight(1f)
+                )
+                if (searchQuery.isNotEmpty()) {
+                    Icon(
+                        Icons.Filled.Close,
+                        contentDescription = "Clear",
+                        tint = TextMuted,
+                        modifier = Modifier
+                            .size(18.dp)
+                            .clickable { discoverViewModel.setSearchQuery("") }
+                    )
+                }
             }
         }
 

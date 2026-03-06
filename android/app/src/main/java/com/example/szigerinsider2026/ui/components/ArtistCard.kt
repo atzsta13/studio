@@ -11,12 +11,20 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,9 +43,17 @@ fun ArtistCard(
     onClick: (String) -> Unit = {}
 ) {
     val haptic = rememberHapticManager()
-    // Premium Neon Brutalist Container
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.96f else 1f,
+        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessHigh),
+        label = "cardScale"
+    )
+
     Column(
         modifier = modifier
+            .graphicsLayer(scaleX = scale, scaleY = scale)
             .fillMaxWidth()
             .clip(RoundedCornerShape(32.dp))
             .background(CardBackground)
@@ -46,7 +62,7 @@ fun ArtistCard(
                 color = if (artist.isHeadliner) PrimaryMagenta.copy(alpha = 0.4f) else Color.White.copy(alpha = 0.05f),
                 shape = RoundedCornerShape(32.dp)
             )
-            .clickable { haptic.lightTap(); onClick(artist.id) }
+            .clickable(interactionSource = interactionSource, indication = null) { haptic.lightTap(); onClick(artist.id) }
     ) {
         // Upper Visual Section (4:5 Aspect Ratio)
         Box(

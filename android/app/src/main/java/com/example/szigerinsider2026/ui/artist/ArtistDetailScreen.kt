@@ -225,12 +225,23 @@ fun ArtistDetailScreen(
                         SectionBlock(title = "LINKS") {
                             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 links.forEach { (name, url) ->
+                                    val platformColor = when (name) {
+                                        "Spotify" -> Color(0xFF1DB954)
+                                        "Instagram" -> Color(0xFFE1306C)
+                                        "YouTube" -> Color(0xFFFF0000)
+                                        "X / Twitter" -> Color(0xFFFFFFFF)
+                                        "TikTok" -> Color(0xFFEE1D52)
+                                        "Apple Music" -> Color(0xFFFC3C44)
+                                        "SoundCloud" -> Color(0xFFFF5500)
+                                        "Facebook" -> Color(0xFF1877F2)
+                                        else -> TextMuted
+                                    }
                                     Box(
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .clip(RoundedCornerShape(16.dp))
-                                            .background(CardBackground)
-                                            .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(16.dp))
+                                            .background(platformColor.copy(alpha = 0.08f))
+                                            .border(1.dp, platformColor.copy(alpha = 0.2f), RoundedCornerShape(16.dp))
                                             .clickable {
                                                 haptic.lightTap()
                                                 runCatching {
@@ -239,7 +250,7 @@ fun ArtistDetailScreen(
                                             }
                                             .padding(horizontal = 20.dp, vertical = 16.dp)
                                     ) {
-                                        Text(name.uppercase(), style = BrutalistTypography.labelSmall, color = TextPrimary, letterSpacing = 1.5.sp)
+                                        Text(name.uppercase(), style = BrutalistTypography.labelSmall, color = platformColor, letterSpacing = 1.5.sp)
                                     }
                                 }
                             }
