@@ -1,6 +1,9 @@
 package com.example.szigerinsider2026.ui.passport
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
@@ -27,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -175,9 +179,15 @@ fun PassportScreen() {
         // Stamp Grid
         items(STAMPS) { stamp ->
             val isUnlocked = unlockedStamps.contains(stamp.id)
-            
+            val stampScale by animateFloatAsState(
+                targetValue = if (isUnlocked) 1f else 0.95f,
+                animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMedium),
+                label = "stampScale_${stamp.id}"
+            )
+
             Box(
                 modifier = Modifier
+                    .graphicsLayer(scaleX = stampScale, scaleY = stampScale)
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(24.dp))
                     .background(if (isUnlocked) CardBackground else MutedBackground.copy(alpha = 0.3f))

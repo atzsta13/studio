@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.model.Artist
@@ -67,7 +68,7 @@ private fun calcCountdown(): CountdownState {
 }
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController? = null) {
     val context = LocalContext.current
     val repository = remember { LineupRepository(context) }
     val db = remember { AppDatabase.getDatabase(context) }
@@ -295,8 +296,8 @@ fun HomeScreen() {
                     .padding(bottom = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f))
-                QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, PrimaryMagenta, Modifier.weight(1f))
+                QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
+                QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, PrimaryMagenta, Modifier.weight(1f)) { navController?.navigate("passport") }
             }
         }
         item {
@@ -307,8 +308,8 @@ fun HomeScreen() {
                     .padding(bottom = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                QuickNavCard("TOOLS", Icons.Default.Build, ToxicGreen, Modifier.weight(1f))
-                QuickNavCard("SCHEDULE", Icons.Default.Schedule, AcidYellow, Modifier.weight(1f))
+                QuickNavCard("TOOLS", Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
+                QuickNavCard("SCHEDULE", Icons.Default.Schedule, AcidYellow, Modifier.weight(1f)) { navController?.navigate("schedule") }
             }
         }
     }
@@ -472,13 +473,14 @@ private fun IslandPulseRow(artist: Artist) {
 }
 
 @Composable
-private fun QuickNavCard(label: String, icon: ImageVector, color: Color, modifier: Modifier = Modifier) {
+private fun QuickNavCard(label: String, icon: ImageVector, color: Color, modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
     Box(
         modifier = modifier
             .height(80.dp)
             .clip(RoundedCornerShape(20.dp))
             .background(color.copy(alpha = 0.08f))
             .border(1.dp, color.copy(alpha = 0.2f), RoundedCornerShape(20.dp))
+            .clickable(onClick = onClick)
             .padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {

@@ -42,6 +42,7 @@ import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
 import com.example.szigerinsider2026.ui.splash.SplashScreen
 import com.example.szigerinsider2026.ui.artist.ArtistDetailScreen
+import com.example.szigerinsider2026.ui.schedule.ScheduleScreen
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -70,7 +71,7 @@ fun AppNavigation() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val showBottomBar = currentRoute != "splash" && currentRoute?.startsWith("artist/") != true
+    val showBottomBar = currentRoute != "splash" && currentRoute?.startsWith("artist/") != true && currentRoute != "schedule"
 
     Scaffold(
         bottomBar = {
@@ -90,7 +91,7 @@ fun AppNavigation() {
                 SplashScreen(navController)
             }
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(navController = navController)
             }
             composable(Screen.Discover.route) {
                 DiscoverScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
@@ -103,6 +104,9 @@ fun AppNavigation() {
             }
             composable(Screen.Tools.route) {
                 ToolsScreen()
+            }
+            composable("schedule") {
+                ScheduleScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
             }
             composable("artist/{artistId}") { backStackEntry ->
                 val artistId = backStackEntry.arguments?.getString("artistId") ?: return@composable
