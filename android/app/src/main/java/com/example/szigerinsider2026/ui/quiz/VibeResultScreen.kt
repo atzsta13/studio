@@ -85,7 +85,7 @@ fun VibeResultScreen(navController: NavController, quizViewModel: VibeQuizViewMo
                 onFavorite = {
                     scope.launch {
                         haptic.favoriteTap()
-                        userDao.addFavorite(FavoriteArtist(artistId = artist.id))
+                        userDao.addFavorite(FavoriteArtist(artistId = artist.id, timestamp = System.currentTimeMillis()))
                     }
                 }
             )
@@ -109,7 +109,7 @@ fun VibeResultScreen(navController: NavController, quizViewModel: VibeQuizViewMo
                             haptic.successBurst()
                             scope.launch {
                                 results.forEach { artist ->
-                                    userDao.addFavorite(FavoriteArtist(artistId = artist.id))
+                                    userDao.addFavorite(FavoriteArtist(artistId = artist.id, timestamp = System.currentTimeMillis()))
                                 }
                             }
                         }

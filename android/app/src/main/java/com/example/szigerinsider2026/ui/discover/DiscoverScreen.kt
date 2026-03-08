@@ -374,8 +374,6 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
         }
     }
 
-    } // end Column
-
     // Serendipity FAB
     ExtendedFloatingActionButton(
         onClick = {
