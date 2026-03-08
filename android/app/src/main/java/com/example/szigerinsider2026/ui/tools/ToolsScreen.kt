@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.theme.*
 import androidx.navigation.NavController
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
@@ -230,8 +231,8 @@ fun TabItem(text: String, isSelected: Boolean, onClick: () -> Unit, modifier: Mo
 @Composable
 fun HufConverterCard(hufAmount: String, onAmountChange: (String) -> Unit) {
     val hufValue = hufAmount.toFloatOrNull() ?: 0f
-    val eurValue = String.format(Locale.US, "%.2f", hufValue * 0.0025f)
-    val usdValue = String.format(Locale.US, "%.2f", hufValue * 0.0027f)
+    val eurValue = String.format(Locale.US, "%.2f", hufValue / FestivalConfig.EUR_RATE.toFloat())
+    val usdValue = String.format(Locale.US, "%.2f", hufValue / FestivalConfig.USD_RATE.toFloat())
 
     Card(
         colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
@@ -248,7 +249,7 @@ fun HufConverterCard(hufAmount: String, onAmountChange: (String) -> Unit) {
                 Icon(Icons.Default.CurrencyExchange, contentDescription = null, tint = ToxicGreen, modifier = Modifier.size(28.dp))
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = "HUF CONVERTER",
+                    text = "${FestivalConfig.LOCAL_CURRENCY_CODE} CONVERTER",
                     color = ToxicGreen,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Black,
@@ -258,7 +259,7 @@ fun HufConverterCard(hufAmount: String, onAmountChange: (String) -> Unit) {
             }
 
             Text(
-                text = "FORINTS (HUF)",
+                text = "${FestivalConfig.LOCAL_CURRENCY_NAME.uppercase()} (${FestivalConfig.LOCAL_CURRENCY_CODE})",
                 color = TextMuted.copy(alpha = 0.6f),
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Black,

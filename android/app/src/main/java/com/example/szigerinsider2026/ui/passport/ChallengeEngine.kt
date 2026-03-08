@@ -1,11 +1,8 @@
 package com.example.szigerinsider2026.ui.passport
 
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.data.local.FavoriteArtist
 import com.example.szigerinsider2026.data.model.Artist
-
-private val DAY_ORDER = listOf(
-    "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"
-)
 
 data class Challenge(
     val id: String,
@@ -56,7 +53,7 @@ object ChallengeEngine {
             ),
             Challenge(
                 "full_week", "FULL WEEK WARRIOR", "Have at least 1 favorite for every festival day", 200, "📅",
-                DAY_ORDER.all { day -> favArtists.any { it.day == day } }
+                FestivalConfig.DAYS.all { day -> favArtists.any { it.day == day } }
             )
         )
 

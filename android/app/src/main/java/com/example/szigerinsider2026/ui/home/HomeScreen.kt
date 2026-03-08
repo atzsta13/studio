@@ -55,32 +55,11 @@ import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import kotlinx.coroutines.delay
 import java.util.Calendar
 import java.util.TimeZone
-
-// Maps festival day names to their Calendar.DAY_OF_YEAR index (Aug 6 = day 1, etc.)
-private val FESTIVAL_DAY_NAMES = listOf(
-    "Wednesday",  // Aug 6
-    "Thursday",   // Aug 7
-    "Friday",     // Aug 8
-    "Saturday",   // Aug 9
-    "Sunday",     // Aug 10
-    "Monday",     // Aug 11
-    "Tuesday"     // Aug 12
-)
-
-// Maps day name -> calendar month/day (month is 0-indexed: August = 7)
-private val FESTIVAL_DAY_DATES: Map<String, Pair<Int, Int>> = mapOf(
-    "Wednesday" to (Calendar.AUGUST to 6),
-    "Thursday"  to (Calendar.AUGUST to 7),
-    "Friday"    to (Calendar.AUGUST to 8),
-    "Saturday"  to (Calendar.AUGUST to 9),
-    "Sunday"    to (Calendar.AUGUST to 10),
-    "Monday"    to (Calendar.AUGUST to 11),
-    "Tuesday"   to (Calendar.AUGUST to 12)
-)
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 private val FESTIVAL_START_MS: Long by lazy {
-    Calendar.getInstance(TimeZone.getTimeZone("Europe/Budapest")).apply {
-        set(2026, Calendar.AUGUST, 6, 12, 0, 0)
+    Calendar.getInstance(TimeZone.getTimeZone(FestivalConfig.TIMEZONE)).apply {
+        set(FestivalConfig.START_YEAR, FestivalConfig.CALENDAR_START_MONTH, FestivalConfig.START_DAY, 12, 0, 0)
         set(Calendar.MILLISECOND, 0)
     }.timeInMillis
 }
@@ -108,15 +87,12 @@ private fun getFestivalDay(): String {
     val month = now.get(Calendar.MONTH)   // 0-indexed
     val dom = now.get(Calendar.DAY_OF_MONTH)
 
-    // Before festival year or before August in 2026
-    if (year < 2026 || (year == 2026 && month < Calendar.AUGUST)) return "Wednesday"
-    // After festival year
-    if (year > 2026 || (year == 2026 && month > Calendar.AUGUST)) return "Tuesday"
-    // We're in August 2026 — check day
+    if (year < FestivalConfig.START_YEAR || (year == FestivalConfig.START_YEAR && month < FestivalConfig.CALENDAR_START_MONTH)) return FestivalConfig.DAYS.first()
+    if (year > FestivalConfig.START_YEAR || (year == FestivalConfig.START_YEAR && month > FestivalConfig.CALENDAR_START_MONTH)) return FestivalConfig.DAYS.last()
     return when {
-        dom < 6  -> "Wednesday"
-        dom > 12 -> "Tuesday"
-        else -> FESTIVAL_DAY_NAMES[dom - 6]  // dom 6 -> index 0 = "Wednesday", etc.
+        dom < FestivalConfig.START_DAY -> FestivalConfig.DAYS.first()
+        dom > FestivalConfig.END_DAY   -> FestivalConfig.DAYS.last()
+        else -> FestivalConfig.DAYS[dom - FestivalConfig.START_DAY]
     }
 }
 
@@ -128,17 +104,16 @@ private fun isArtistLive(artist: Artist): Boolean {
     val startTime = artist.startTime ?: return false
     val endTime = artist.endTime ?: return false
 
-    val festDate = FESTIVAL_DAY_DATES[day] ?: return false
+    val festDate = FestivalConfig.DAY_CALENDAR_DATES[day] ?: return false
 
-    val now = Calendar.getInstance(TimeZone.getTimeZone("Europe/Budapest"))
+    val now = Calendar.getInstance(TimeZone.getTimeZone(FestivalConfig.TIMEZONE))
     val year = now.get(Calendar.YEAR)
     val month = now.get(Calendar.MONTH)
     val dom = now.get(Calendar.DAY_OF_MONTH)
     val currentHour = now.get(Calendar.HOUR_OF_DAY)
     val currentMin = now.get(Calendar.MINUTE)
 
-    // Check if today matches the artist's festival day
-    if (year != 2026 || month != festDate.first || dom != festDate.second) return false
+    if (year != FestivalConfig.START_YEAR || month != festDate.first || dom != festDate.second) return false
 
     // Parse "HH:MM" strings
     return try {
@@ -287,7 +262,7 @@ fun HomeScreen(navController: NavController? = null) {
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Aug 6 – 11, Budapest",
+                        text = FestivalConfig.DATE_DISPLAY,
                         color = Color.White.copy(alpha = 0.6f),
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium

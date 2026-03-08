@@ -48,30 +48,20 @@ import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
-// ─── Constants ───────────────────────────────────────────────────────────────
+// ─── Constants (from FestivalConfig) ─────────────────────────────────────────
 
-private val DAY_ORDER = listOf(
-    "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"
-)
-private val DAY_LABELS = mapOf(
-    "Wednesday" to "WED", "Thursday" to "THU", "Friday" to "FRI",
-    "Saturday" to "SAT", "Sunday" to "SUN", "Monday" to "MON", "Tuesday" to "TUE"
-)
+private val DAY_ORDER  = FestivalConfig.DAYS
+private val DAY_LABELS = FestivalConfig.DAY_LABELS
 
-/** Festival calendar dates for 2026. */
-private val DAY_TO_DATE: Map<String, LocalDate> = mapOf(
-    "Wednesday" to LocalDate.of(2026, 8, 6),
-    "Thursday"  to LocalDate.of(2026, 8, 7),
-    "Friday"    to LocalDate.of(2026, 8, 8),
-    "Saturday"  to LocalDate.of(2026, 8, 9),
-    "Sunday"    to LocalDate.of(2026, 8, 10),
-    "Monday"    to LocalDate.of(2026, 8, 11),
-    "Tuesday"   to LocalDate.of(2026, 8, 12)
-)
+private val DAY_TO_DATE: Map<String, LocalDate> = FestivalConfig.DAYS
+    .mapIndexed { i, day ->
+        day to LocalDate.of(FestivalConfig.START_YEAR, FestivalConfig.START_MONTH, FestivalConfig.START_DAY + i)
+    }.toMap()
 
-private val FESTIVAL_START = LocalDate.of(2026, 8, 6)
-private val FESTIVAL_END   = LocalDate.of(2026, 8, 12)
+private val FESTIVAL_START = LocalDate.of(FestivalConfig.START_YEAR, FestivalConfig.START_MONTH, FestivalConfig.START_DAY)
+private val FESTIVAL_END   = LocalDate.of(FestivalConfig.START_YEAR, FestivalConfig.END_MONTH,   FestivalConfig.END_DAY)
 
 private val ClashBannerBg     = Color(0xFF2A0A00)
 private val ClashBannerBorder = Color(0xFFFF4500)
@@ -256,7 +246,7 @@ fun ScheduleScreen(
                     lineHeight = 34.sp
                 )
                 Text(
-                    text = "Aug 6 – 11 · Budapest · Óbudai-sziget",
+                    text = FestivalConfig.DATE_VENUE_DISPLAY,
                     color = TextMuted,
                     fontSize = 13.sp,
                     modifier = Modifier.padding(top = 2.dp)
