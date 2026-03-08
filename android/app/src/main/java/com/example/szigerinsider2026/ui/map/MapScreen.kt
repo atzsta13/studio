@@ -1,5 +1,10 @@
 package com.example.szigerinsider2026.ui.map
 
+import androidx.compose.animation.core.InfiniteRepeatableSpec
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -14,15 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.data.model.MapCoords
 import com.example.szigerinsider2026.data.repository.FoodRepository
-import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.POIRepository
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
@@ -89,6 +91,37 @@ fun MapScreen() {
 
     val hydrationMode = activeCategory == "water"
 
+    // Task 2 — infinite pulse animation for water pins
+    val infiniteTransition = rememberInfiniteTransition(label = "water_pulse")
+    val waterPulseAlpha by infiniteTransition.animateFloat(
+        initialValue = 0.5f,
+        targetValue = 1f,
+        animationSpec = InfiniteRepeatableSpec(
+            animation = tween(800),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "water_alpha"
+    )
+
+    // Task 3 — nearest water station
+    val nearestWater = remember(filteredPois, activeCategory) {
+        if (activeCategory != "water") return@remember null
+        filteredPois
+            .filter { it.type == "water" }
+            .minByOrNull { p ->
+                val dx = (p.mapCoords?.x ?: 50) - 50
+                val dy = (p.mapCoords?.y ?: 50) - 50
+                dx * dx + dy * dy
+            }
+    }
+    val nearestWaterDistance = remember(nearestWater) {
+        nearestWater?.mapCoords?.let { c ->
+            val dx = c.x - 50
+            val dy = c.y - 50
+            kotlin.math.sqrt((dx * dx + dy * dy).toDouble()).toInt()
+        }
+    }
+
     Box(modifier = Modifier.fillMaxSize().background(OLEDBlack)) {
         // Visual Map Area
         Box(
@@ -96,8 +129,8 @@ fun MapScreen() {
                 .fillMaxSize()
                 .padding(bottom = 80.dp) // Bottom Navigation offset
         ) {
-            // Tactical Island Shape Facade
-            Box(
+            // Task 1 — BoxWithConstraints for proper coordinate scaling
+            BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(32.dp)
@@ -105,15 +138,25 @@ fun MapScreen() {
                     .background(MutedBackground.copy(alpha = 0.2f))
                     .border(2.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(60.dp))
             ) {
-                // Pins
+                val mapWidth = maxWidth
+                val mapHeight = maxHeight
                 pins.forEach { pin ->
+                    val xFraction = pin.coords.x / 100f
+                    val yFraction = pin.coords.y / 100f
+                    // Task 2 — per-pin alpha based on hydration mode
+                    val pinAlpha = when {
+                        hydrationMode && pin.type == "water" -> waterPulseAlpha
+                        hydrationMode -> 0.2f
+                        else -> 1f
+                    }
                     Box(
                         modifier = Modifier
                             .offset(
-                                x = (pin.coords.x.toFloat() / 100f * 1000f).dp, // Dummy scaling
-                                y = (pin.coords.y.toFloat() / 100f * 1000f).dp
+                                x = mapWidth * xFraction - 20.dp,
+                                y = mapHeight * yFraction - 20.dp
                             )
                             .size(if (selectedPin == pin) 48.dp else 40.dp)
+                            .graphicsLayer { alpha = pinAlpha }
                             .clip(CircleShape)
                             .background(if (selectedPin == pin) Color.White else pin.color)
                             .border(2.dp, Color.Black.copy(alpha = 0.5f), CircleShape)
@@ -154,6 +197,29 @@ fun MapScreen() {
                 CategoryChip("ALL", activeCategory == "all") { viewModel.selectCategory("all") }
                 CategoryChip("STAGES", activeCategory == "music") { viewModel.selectCategory("music") }
                 CategoryChip("FOOD", activeCategory == "food") { viewModel.selectCategory("food") }
+            }
+
+            // Task 3 — nearest water indicator
+            AnimatedVisibility(visible = nearestWater != null) {
+                nearestWater?.let { poi ->
+                    Column(modifier = Modifier.padding(top = 16.dp)) {
+                        Text(
+                            text = "NEAREST WATER",
+                            style = BrutalistTypography.labelSmall,
+                            color = CyanPulse
+                        )
+                        Text(
+                            text = poi.name.uppercase(),
+                            style = BrutalistTypography.titleLarge,
+                            color = TextPrimary
+                        )
+                        Text(
+                            text = "~${nearestWaterDistance} steps from center",
+                            style = BrutalistTypography.labelSmall,
+                            color = TextMuted
+                        )
+                    }
+                }
             }
         }
 

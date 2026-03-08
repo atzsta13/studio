@@ -27,4 +27,13 @@ interface UserDao {
 
     @Query("SELECT EXISTS(SELECT 1 FROM favorite_artists WHERE artistId = :artistId)")
     fun isFavorite(artistId: String): Flow<Boolean>
+
+    @Query("UPDATE user_progress SET legendXp = :xp WHERE id = 1")
+    suspend fun updateXP(xp: Int)
+
+    @Query("UPDATE user_progress SET completedChallengeIds = :ids WHERE id = 1")
+    suspend fun updateCompletedChallenges(ids: String)
+
+    @Query("UPDATE user_progress SET quizCompleted = 1 WHERE id = 1")
+    suspend fun markQuizCompleted()
 }

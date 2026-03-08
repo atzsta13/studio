@@ -40,6 +40,7 @@ import com.example.szigerinsider2026.ui.discover.DiscoverScreen
 import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
+import com.example.szigerinsider2026.ui.tools.SurvivalGuideScreen
 import com.example.szigerinsider2026.ui.splash.SplashScreen
 import com.example.szigerinsider2026.ui.artist.ArtistDetailScreen
 import com.example.szigerinsider2026.ui.schedule.ScheduleScreen
@@ -47,6 +48,14 @@ import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.tween
+import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.szigerinsider2026.data.repository.LineupRepository
+import com.example.szigerinsider2026.ui.quiz.VibeQuizScreen
+import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
+import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
@@ -67,11 +76,20 @@ val bottomNavItems = listOf(
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
+    val context = LocalContext.current
+    val quizViewModel: VibeQuizViewModel = viewModel(
+        factory = VibeQuizViewModel.Factory(LineupRepository(context))
+    )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    val showBottomBar = currentRoute != "splash" && currentRoute?.startsWith("artist/") != true && currentRoute != "schedule"
+    val showBottomBar = currentRoute != "splash"
+        && currentRoute?.startsWith("artist/") != true
+        && currentRoute != "schedule"
+        && currentRoute != "guide"
+        && currentRoute != "vibe_quiz"
+        && currentRoute != "vibe_results"
 
     Scaffold(
         bottomBar = {
@@ -94,7 +112,10 @@ fun AppNavigation() {
                 HomeScreen(navController = navController)
             }
             composable(Screen.Discover.route) {
-                DiscoverScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
+                DiscoverScreen(
+                    onArtistClick = { id -> navController.navigate("artist/$id") },
+                    navController = navController
+                )
             }
             composable(Screen.Map.route) {
                 MapScreen()
@@ -103,7 +124,10 @@ fun AppNavigation() {
                 PassportScreen()
             }
             composable(Screen.Tools.route) {
-                ToolsScreen()
+                ToolsScreen(navController = navController)
+            }
+            composable("guide") {
+                SurvivalGuideScreen(navController)
             }
             composable("schedule") {
                 ScheduleScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
@@ -112,8 +136,15 @@ fun AppNavigation() {
                 val artistId = backStackEntry.arguments?.getString("artistId") ?: return@composable
                 ArtistDetailScreen(
                     artistId = artistId,
-                    onBack = { navController.popBackStack() }
+                    onBack = { navController.popBackStack() },
+                    onArtistNavigate = { id -> navController.navigate("artist/$id") }
                 )
+            }
+            composable("vibe_quiz") {
+                VibeQuizScreen(navController = navController, quizViewModel = quizViewModel)
+            }
+            composable("vibe_results") {
+                VibeResultScreen(navController = navController, quizViewModel = quizViewModel)
             }
         }
     }

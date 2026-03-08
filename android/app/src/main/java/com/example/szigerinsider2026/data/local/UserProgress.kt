@@ -9,5 +9,7 @@ data class UserProgress(
     val id: Int = 1,
     val legendXp: Int = 0,
     val stampsCollected: List<String> = emptyList(),
-    val currentRank: String = "Tourist"
+    val currentRank: String = "Tourist",
+    val completedChallengeIds: String = "",
+    val quizCompleted: Boolean = false
 )

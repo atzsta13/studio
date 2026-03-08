@@ -1,41 +1,106 @@
-# Sziget Insider 2026 🎪
+# Sziget Insider 2026
 
-This is the ultimate, unofficial, offline-first companion app for the Sziget Festival 2026. Built with a bleeding-edge stack and designed to be the standout "Intelligence Layer" of the festival.
+Unofficial, offline-first festival companion app for [Sziget Festival 2026](https://szigetfestival.com) (Budapest, Aug 6–12).
 
-## 🚀 Mission
-To empower every "Szitizen" with an intelligent survival and discovery engine that works anywhere—even with zero signal. No cloud database, no tracking, 100% privacy.
+Two parallel codebases sharing the same lineup data:
 
-## ✨ The "Elite 33" Features
-- **🧠 AI Scout (Genkit)**: Natural language discovery agent powered by Gemini 2.5.
-- **🎵 Spotify Match Engine**: Sync your library to find acts you already love on the lineup.
-- **📍 GPS Tent Finder**: Navigate back to camp with offline GPS and bearing logic.
-- **📅 Clash Detection**: Visual alerts for overlapping favorite sets in your grid.
-- **🛡️ Survival Toolkit**: SOS Beacon, Currency Converter, UV Safety, and Emergency Dials.
-- **🏆 Island Passport & XP**: Gamified progression leveling up your profile via local engagement logging.
-- **🍔 Budget Hero Finder**: Quickly filter to official, price-capped budget meals across the island.
+| Platform | Stack | Location |
+|----------|-------|----------|
+| **Web** | Next.js 16 / React 19 / Tailwind CSS 4 | repo root |
+| **Android** | Jetpack Compose / Kotlin / Room | `android/` |
 
-## 🛠 Tech Stack
-- **Engine**: Next.js 16.1.6 (Latest Stable)
-- **UI Logic**: React 19
-- **Styling**: Tailwind CSS 4.0 & ShadCN UI + MUI 6
-- **AI**: Genkit (Gemini 2.5 Flash)
-- **Persistence**: LocalStorage (Privacy-first / Offline-first)
+---
 
-## 📖 Documentation & Agent Protocol
-- [🤖 Agent Rules](agent.md) - Strict guardrails and philosophy for AI agents configuring this repo.
-- [🎨 UI & Design Guide](docs/UI_GUIDE.md) - Specs on our Brutalist OLED neon aesthetic.
-- [🎯 The Mission](docs/MISSION.md) - Our North Star.
-- [🏗️ Architecture](docs/ARCHITECTURE.md) - How the engine works.
-- [🚀 Deployment](docs/DEPLOYMENT.md) - How to go live.
-- [🛠️ Development](docs/DEVELOPMENT.md) - Tech stack and conventions.
-- [🌟 Feature Matrix](docs/FEATURES.md) - Details on all 33 core features.
+## What this app does
 
-## 🏃 Quick Start
+- **Artist discovery** — browse, search, and filter 80 artists by genre, vibe, day, and country
+- **Vibe DNA Quiz** — 5-step mood quiz that curates a personal artist shortlist
+- **Personal lineup planner** — favorite artists, organize by festival day
+- **Tactical map** — water stations, food vendors, and stage locations
+- **Island Passport** — gamified stamp collection + XP rank system with challenges
+- **Survival toolkit** — HUF currency converter, SOS beacon, emergency contacts, Hungarian phrases
+- **Festival survival guide** — transport, camping rules, money tips, connectivity
+
+**Not yet available** (data not published by Sziget yet): stage assignments, set times, confirmed food vendors. These fields exist in the data model (`stage`, `startTime`, `endTime` are `null` for all artists) and the UI is designed to receive them without a rewrite.
+
+---
+
+## Data
+
+`src/data/lineup.json` is the single source of truth — **80 artists**, synced to `android/app/src/main/assets/lineup.json`.
+
+Key data availability:
+- Name, image, country, genres: **100%** of artists
+- Vibes (mood tags): **100%** (backfilled via `scripts/backfill-vibes.mjs` for artists without hand-curated tags)
+- Festival day: **~53%** of artists
+- Stage, start time, end time: **0%** — not yet published by Sziget
+
+See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for full data schema.
+
+---
+
+## Web — Quick Start
+
 ```bash
 npm install
-npm run build
-npm run dev
-```
-Open [http://localhost:9002](http://localhost:9002).
+npm run dev          # Dev server → http://localhost:9002
+npm run build        # Production build
+npm run lint
+npm run typecheck
 
-*Note: Requires `GOOGLE_GENAI_API_KEY` in `.env` for AI features.*
+# AI features (Genkit)
+npm run genkit:dev   # Required for AI recommendation flow
+```
+
+**Required environment variables** (`.env.local`):
+```
+GOOGLE_GENAI_API_KEY=   # Google AI Studio — required for AI artist recommendations
+SPOTIFY_CLIENT_ID=      # Spotify Developer Dashboard — optional, for Spotify match
+SPOTIFY_CLIENT_SECRET=  # Spotify Developer Dashboard — optional
+NEXT_PUBLIC_BASE_URL=   # Your deployment URL
+```
+
+---
+
+## Android — Quick Start
+
+Open `android/` in Android Studio, or from the `android/` directory:
+
+```bash
+./gradlew assembleDebug          # Build debug APK
+./gradlew test                   # Unit tests
+```
+
+Minimum SDK: 26. Target/Compile SDK: 35. No emulator setup needed for most features — all data is bundled.
+
+See [`android/README.md`](android/README.md) for full Android developer guide.
+
+---
+
+## Lineup data pipeline (web)
+
+```bash
+npm run lineup:update   # Full pipeline: scrape → clean → vibes → show
+npm run lineup:scrape   # Fetch from Sziget website (Puppeteer)
+npm run lineup:clean    # Dedup, fix encoding, extract days, add country codes
+npm run lineup:vibes    # Generate vibe tags from genres
+npm run lineup:show     # Print summary stats
+
+node scripts/backfill-vibes.mjs  # Fill vibes for artists missing tags (genre-based inference)
+```
+
+After updating `src/data/lineup.json`, manually copy to `android/app/src/main/assets/lineup.json`.
+
+---
+
+## Documentation
+
+| Doc | What it covers |
+|-----|---------------|
+| [`CLAUDE.md`](CLAUDE.md) | Instructions for AI agents working in this repo |
+| [`android/README.md`](android/README.md) | Android architecture, patterns, screen inventory |
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | Full dual-platform architecture deep dive |
+| [`docs/FEATURES.md`](docs/FEATURES.md) | What's built, what's planned, what awaits data |
+| [`docs/UI_GUIDE.md`](docs/UI_GUIDE.md) | Design system: colors, typography, component rules |
+| [`docs/PHASE_3_PLAN.md`](docs/PHASE_3_PLAN.md) | Current development roadmap |
+| [`docs/PHASE_3_AGENT_MANIFEST.md`](docs/PHASE_3_AGENT_MANIFEST.md) | Atomic agent task specs |

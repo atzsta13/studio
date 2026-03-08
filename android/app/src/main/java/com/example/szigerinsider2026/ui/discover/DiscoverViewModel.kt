@@ -16,13 +16,16 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     private val _selectedVibe = MutableStateFlow<String?>(null)
     private val _searchQuery = MutableStateFlow("")
     private val _isLoading = MutableStateFlow(true)
+    private val _countryFilter = MutableStateFlow<String?>(null)
 
+    val allArtists: StateFlow<List<Artist>> = _allArtists.asStateFlow()
     val sortMode = _sortMode.asStateFlow()
     val selectedDay = _selectedDay.asStateFlow()
     val selectedGenre = _selectedGenre.asStateFlow()
     val selectedVibe = _selectedVibe.asStateFlow()
     val searchQuery = _searchQuery.asStateFlow()
     val isLoading = _isLoading.asStateFlow()
+    val countryFilter: StateFlow<String?> = _countryFilter.asStateFlow()
 
     private val dayOrder = listOf("Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday")
 
@@ -47,9 +50,11 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
 
     val filteredArtists: StateFlow<List<Artist>> = combine(
         combine(_allArtists, _sortMode, _selectedDay) { artists, sort, day -> Triple(artists, sort, day) },
-        combine(_selectedGenre, _selectedVibe, _searchQuery) { genre, vibe, query -> Triple(genre, vibe, query) }
-    ) { (artists, sort, day), (genre, vibe, query) ->
+        combine(_selectedGenre, _selectedVibe, _searchQuery) { genre, vibe, query -> Triple(genre, vibe, query) },
+        _countryFilter
+    ) { (artists, sort, day), (genre, vibe, query), country ->
         var result = artists
+        country?.let { c -> result = result.filter { it.countryCode == c } }
         day?.let { d -> result = result.filter { it.day?.equals(d, ignoreCase = true) == true } }
         genre?.let { g -> result = result.filter { it.genres.any { gen -> gen.equals(g, ignoreCase = true) } } }
         vibe?.let { v -> result = result.filter { it.vibes.any { vi -> vi.equals(v, ignoreCase = true) } } }
@@ -76,9 +81,34 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
         }
     }
 
+    fun refresh() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            try {
+                _allArtists.value = repository.getLineup()
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
+
     fun setSortMode(mode: String) { _sortMode.value = mode }
     fun selectDay(day: String?) { _selectedDay.value = day }
     fun selectGenre(genre: String?) { _selectedGenre.value = genre }
     fun selectVibe(vibe: String?) { _selectedVibe.value = vibe }
     fun setSearchQuery(query: String) { _searchQuery.value = query }
+    fun setCountryFilter(code: String?) { _countryFilter.value = code }
+
+    private val _serendipityHistory = mutableSetOf<String>()
+
+    fun getRandomUnfavoritedArtist(allArtistsList: List<Artist>, favoritedIds: Set<String>): Artist? {
+        if (allArtistsList.isEmpty()) return null
+        val pool = allArtistsList
+            .filter { it.id !in favoritedIds && it.id !in _serendipityHistory }
+            .ifEmpty { allArtistsList.filter { it.id !in favoritedIds } }
+            .ifEmpty { allArtistsList }
+        val pick = pool.random()
+        _serendipityHistory.add(pick.id)
+        return pick
+    }
 }

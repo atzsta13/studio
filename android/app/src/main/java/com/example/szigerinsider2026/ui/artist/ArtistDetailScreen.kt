@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -47,14 +48,29 @@ import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
+private fun findSimilarArtists(current: Artist, all: List<Artist>): List<Pair<Artist, Int>> {
+    return all
+        .filter { it.id != current.id }
+        .map { candidate ->
+            val sharedGenres = current.genres.intersect(candidate.genres.toSet()).size
+            val sharedVibes = current.vibes.intersect(candidate.vibes.toSet()).size
+            Pair(candidate, sharedGenres * 2 + sharedVibes)
+        }
+        .filter { it.second > 0 }
+        .sortedByDescending { it.second }
+        .take(5)
+}
+
 @Composable
 fun ArtistDetailScreen(
     artistId: String,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onArtistNavigate: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     var artist by remember { mutableStateOf<Artist?>(null) }
+    var allArtists by remember { mutableStateOf<List<Artist>>(emptyList()) }
 
     val artistViewModel: ArtistViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -68,10 +84,17 @@ fun ArtistDetailScreen(
     val isFavorite = favoriteArtistIds.contains(artistId)
 
     LaunchedEffect(artistId) {
-        artist = LineupRepository(context).getLineup().find { it.id == artistId }
+        val lineup = LineupRepository(context).getLineup()
+        artist = lineup.find { it.id == artistId }
+        allArtists = lineup
     }
 
     artist?.let { a ->
+        val similarArtists = remember(a, allArtists) {
+            if (allArtists.isEmpty()) emptyList()
+            else findSimilarArtists(a, allArtists)
+        }
+
         LazyColumn(modifier = Modifier.fillMaxSize().background(OLEDBlack)) {
 
             // Hero
@@ -259,6 +282,34 @@ fun ArtistDetailScreen(
                 }
             }
 
+            // More Like This
+            if (similarArtists.isNotEmpty()) {
+                item {
+                    Spacer(modifier = Modifier.height(32.dp))
+                    Text(
+                        text = "MORE LIKE THIS",
+                        color = TextMuted,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 2.sp,
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp)
+                    )
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        contentPadding = PaddingValues(horizontal = 20.dp)
+                    ) {
+                        items(similarArtists, key = { it.first.id }) { (similar, sharedCount) ->
+                            SimilarArtistCard(
+                                artist = similar,
+                                sharedCount = sharedCount,
+                                onClick = { onArtistNavigate(similar.id) }
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(24.dp))
+                }
+            }
+
             item { Spacer(modifier = Modifier.height(100.dp)) }
         }
     } ?: Box(modifier = Modifier.fillMaxSize().background(OLEDBlack), contentAlignment = Alignment.Center) {
@@ -303,5 +354,52 @@ private fun TagPill(text: String, bg: Color, textColor: Color, borderColor: Colo
             .padding(horizontal = 14.dp, vertical = 6.dp)
     ) {
         Text(text.uppercase(), style = BrutalistTypography.labelSmall, color = textColor, fontSize = 11.sp)
+    }
+}
+
+@Composable
+private fun SimilarArtistCard(
+    artist: Artist,
+    sharedCount: Int,
+    onClick: () -> Unit
+) {
+    val haptic = rememberHapticManager()
+    Box(
+        modifier = Modifier
+            .width(110.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(CardBackground)
+            .border(1.dp, Color.White.copy(alpha = 0.06f), RoundedCornerShape(16.dp))
+            .clickable { haptic.mediumTap(); onClick() }
+    ) {
+        Column {
+            AsyncImage(
+                model = artist.imageUrl,
+                contentDescription = artist.artist,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(110.dp)
+                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Column(modifier = Modifier.padding(8.dp)) {
+                Text(
+                    text = artist.artist,
+                    color = TextPrimary,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Black,
+                    maxLines = 2,
+                    lineHeight = 14.sp
+                )
+                Text(
+                    text = "$sharedCount SHARED",
+                    color = AcidYellow,
+                    fontSize = 9.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 0.5.sp,
+                    modifier = Modifier.padding(top = 2.dp)
+                )
+            }
+        }
     }
 }

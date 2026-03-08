@@ -1,26 +1,182 @@
-# 🏗️ Architecture Deep Dive
+# Architecture
 
-Sziget Insider 2026 is built for **Performance**, **Offline Reliability**, and **AI Integration**.
+Sziget Insider 2026 is two independent apps sharing one data source.
 
-## 1. The Engine
-- **Framework**: Next.js 16.1.6 (App Router).
-- **UI Logic**: React 19.
-- **Styling**: Hybrid approach using **Tailwind CSS 4.0** for layout/utility and **MUI 6** for complex dashboard components and the Timetable grid.
-- **Theme Engine**: `next-themes` synchronized with MUI's Palette system via `src/components/mui-registry.tsx`.
+```
+src/data/lineup.json  ←── single source of truth (80 artists)
+       │
+       ├──→  Web (Next.js)     reads at build time / server components
+       └──→  Android (Compose) bundled as assets/lineup.json
+```
 
-## 2. Data Strategy (Offline-First)
-- **Static Content**: All festival metadata (Lineup, Food, POIs) is stored in `src/data/*.json`.
-- **User State**: All user-generated data (Favorites, Memories, Quest Progress, GPS Coordinates) is stored strictly in `localStorage`. 
-- **Privacy**: No user data ever leaves the device, making it 100% private and 100% functional without a network signal.
+Neither runtime calls the other. Data sync is manual: edit `src/data/lineup.json`, run the pipeline, copy the output to `android/app/src/main/assets/lineup.json`.
 
-## 3. AI Intelligence (Genkit)
-The "AI Scout" and "Setlist Predictor" use **Genkit** with the `gemini-2.5-flash` model.
-- **Flows**: Encapsulated in `src/ai/flows/`.
-- **Context Injection**: Lineup data is injected into prompts to keep the AI grounded in the actual 2026 schedule.
+---
 
-## 4. Navigation & UX
-- **Mobile-First**: Ergonomic bottom navigation designed for one-handed use in crowds.
-- **Tactical UI**: High-contrast "OLED" modes and large touch targets for use in direct sunlight.
+## Web (Next.js 16)
 
-## 5. Deployment
-The app is designed to be deployed as a static-heavy SSR/ISR hybrid, ensuring that artist pages are pre-rendered for maximum speed while AI features remain dynamic via Server Actions.
+### Request lifecycle
+```
+Browser request
+  → Next.js App Router (src/app/)
+  → Server Component reads src/data/lineup.json directly (no API call)
+  → Renders HTML + hydrates React 19 on client
+  → Client state (favorites) persisted in localStorage
+```
+
+### Directory map
+
+| Path | Purpose |
+|------|---------|
+| `src/app/` | All routes (App Router). Each folder = one route segment. |
+| `src/app/api/` | API routes: Spotify OAuth (`auth/spotify/`), AI match (`spotify/matches`) |
+| `src/ai/` | Genkit configuration and flows |
+| `src/ai/flows/recommend-artists-flow.ts` | Main AI flow: mood prompt → up to 5 artist matches |
+| `src/ai/genkit.ts` | Genkit instance with `googleai/gemini-2.5-flash` |
+| `src/components/` | Shared React components |
+| `src/data/` | JSON data files — do not put logic here |
+| `src/data/lineup.json` | **Primary source of truth** for all lineup data |
+| `src/hooks/` | Client-side hooks (favorites, hydration state) |
+| `src/lib/firebase.ts` | Firebase config (favorites persistence, optional) |
+| `src/lib/spotify.ts` | Spotify OAuth helpers |
+| `src/types/index.ts` | Shared TypeScript interfaces: `LineupItem`, `MapPin` |
+| `scripts/` | Data pipeline scripts (Node.js, run via npm scripts) |
+
+### AI (Genkit)
+The AI recommendation flow (`src/ai/flows/recommend-artists-flow.ts`) works by:
+1. Accepting a free-text mood/preference string from the user
+2. Injecting the full `lineup.json` array as context into the Gemini prompt
+3. Returning up to 5 artist IDs with justifications
+
+The flow does **not** call external music APIs — it reasons purely from the lineup data (genres, vibes, descriptions). Requires `GOOGLE_GENAI_API_KEY`.
+
+### Data persistence
+Web app uses `localStorage` for all user state. No database, no accounts. Keys:
+- Favorites stored as a set of artist IDs
+- The Firebase integration (`src/lib/firebase.ts`) is optional and can be used as an alternative persistence layer
+
+### Key routes
+| Route | Type | Notes |
+|-------|------|-------|
+| `/` | Server Component | Home — countdown, headliners, mood |
+| `/discover` | Client Component | Artist grid, filters, search |
+| `/artist/[id]` | Server Component | Static at build time for all 80 artists |
+| `/map` | Client Component | POI map |
+| `/timetable` | Client Component | Schedule grid (times TBD when data available) |
+| `/passport` | Client Component | Stamps + XP |
+| `/tools` | Client Component | Converter, SOS, packing list |
+| `/api/auth/spotify/` | API Route | OAuth start |
+| `/api/auth/spotify/callback` | API Route | OAuth callback |
+| `/api/spotify/matches` | API Route | Match Spotify library against lineup |
+
+---
+
+## Android (Jetpack Compose)
+
+### MVVM layers
+```
+Composable (UI)
+    ↓ collectAsStateWithLifecycle()
+ViewModel (state + business logic)
+    ↓ suspend functions
+Repository (data access)
+    ↓
+Assets (JSON via context.assets) + Room DB (SQLite)
+```
+
+### Data flow for artist browsing
+```
+LineupRepository.getArtists()       # reads lineup.json from assets
+    → DiscoverViewModel             # applies filters: day, genre, vibe, country, search
+    → StateFlow<List<Artist>>
+    → DiscoverScreen                # renders filtered list via LazyVerticalGrid
+    → ArtistCard                    # individual artist card with favorite toggle
+    → ArtistViewModel.toggleFavorite()  # writes FavoriteArtist to Room
+```
+
+### Data flow for user progress
+```
+UserDao.getUserProgress()           # Room Flow<UserProgress?>
+    → PassportViewModel             # collect + combine with favorites
+    → ChallengeEngine.evaluate()    # pure function: List<Challenge>
+    → awards XP for new completions
+    → UserDao.updateXP() + updateCompletedChallenges()
+    → PassportScreen                # renders stamps tab + challenges tab
+```
+
+### Room Database (version 2)
+Two entities only:
+- `UserProgress` — singleton row (id=1), XP, rank, stamps, challenge IDs, quiz flag
+- `FavoriteArtist` — one row per favorited artist, keyed by `artistId`
+
+Accessed via `UserDao`. Database singleton at `AppDatabase.getDatabase(context)`.
+
+`Converters.kt` handles `List<String>` ↔ JSON string for Room columns.
+
+**`fallbackToDestructiveMigration()`** is active — schema changes wipe data in dev builds. Increment `version` in `@Database` annotation for every entity change.
+
+### Repositories
+| Repository | Asset | Returns |
+|-----------|-------|---------|
+| `LineupRepository` | `lineup.json` / `lineup_2025.json` | `List<Artist>` |
+| `POIRepository` | `poi.json` | `List<POI>` |
+| `FoodRepository` | `food.json` | `List<FoodVendor>` |
+
+All repositories: coroutine-based, `Dispatchers.IO`, graceful empty-list on failure.
+
+### Navigation (Navigation.kt)
+Single `NavHost` in `AppNavigation()`. Bottom bar rendered by `FluidBottomNavigation` — hidden on splash, artist detail, schedule, quiz, and guide routes.
+
+See `android/README.md` for the full route table.
+
+---
+
+## Shared data schema
+
+### Artist (lineup.json)
+
+```typescript
+{
+  id: string,              // "1" through "80" — stable identifier
+  artist: string,          // Display name (may contain Unicode)
+  countryCode: string,     // ISO 3166-1 alpha-2, e.g. "GB", "FR"
+  day: string | null,      // "Wednesday"–"Tuesday" (Aug 6–12). null = unscheduled
+  stage: null,             // NOT YET AVAILABLE — always null
+  startTime: null,         // NOT YET AVAILABLE — always null
+  endTime: null,           // NOT YET AVAILABLE — always null
+  genres: string[],        // 2–8 genres, e.g. ["TECHNO", "ELECTRONIC"]
+  vibes: string[],         // mood tags, e.g. ["Dance", "Hard", "Rave"] — 100% populated
+  imageUrl: string,        // CDN URL (appmiral.com), 1440px width
+  description: string,     // Artist bio — present for 75/80 artists
+  szigetUrl: string,       // Link to artist page on szigetfestival.com
+  isHeadliner: boolean,    // true for 6 artists
+  socials: {
+    website?: string, facebook?: string, instagram?: string,
+    x?: string, twitter?: string, tiktok?: string,
+    youtube?: string, spotify?: string, appleMusic?: string, soundcloud?: string
+  }
+}
+```
+
+**Coverage notes for feature planning:**
+- `day` is populated for ~53% of artists (42/80). Features that group by day will have an "UNSCHEDULED" bucket.
+- `stage`/`startTime`/`endTime` are always `null`. Do not build UI that assumes these exist.
+- `vibes` is now 100% — the backfill script (`scripts/backfill-vibes.mjs`) infers vibes from genres for artists that had none.
+
+### POI (poi.json)
+8 points of interest. Types: `water`, `toilet`, `first-aid`, `camping`. Coords: `{x, y}` normalized 0–100.
+
+### FoodVendor (food.json)
+10 placeholder vendors. Fields: name, cuisine, tags, priceRange, budgetOption, budgetPrice, mapCoords. **Not real 2026 data yet.**
+
+---
+
+## What is NOT in this codebase
+
+- No backend server
+- No real-time data (no WebSockets, no polling)
+- No user accounts or authentication (web: localStorage; Android: Room local only)
+- No GPS / geolocation (Android map uses normalized abstract coordinates)
+- No push notifications (yet — WorkManager integration planned)
+- No Spotify integration on Android (web only)
+- No stage/schedule data (Sziget hasn't published it yet)

@@ -10,6 +10,15 @@ Sziget Insider 2026 is a festival companion app with two parallel codebases:
 
 Both share the same lineup data: `src/data/lineup.json` is the single source of truth. The Android app bundles it as an asset at `android/app/src/main/assets/lineup.json`.
 
+**Data availability note:** `stage`, `startTime`, and `endTime` are `null` for all 80 artists — Sziget has not published schedule data yet. Do not build UI that assumes these fields exist. Vibes are 100% populated (backfilled via `scripts/backfill-vibes.mjs`).
+
+**Detailed docs:**
+- `android/README.md` — Android architecture, patterns, full screen/route inventory
+- `docs/ARCHITECTURE.md` — dual-platform architecture, data schema, what is NOT in this codebase
+- `docs/FEATURES.md` — honest build status (✅ built / 🚧 in progress / ⏳ awaiting data / ❌ not built)
+- `docs/UI_GUIDE.md` — color tokens, typography rules, haptic patterns, checklist for new screens
+- `docs/PHASE_3_PLAN.md` — current development roadmap with feature specs
+
 ---
 
 ## Web (Next.js)
@@ -81,7 +90,7 @@ Key versions: AGP 8.13.2, Kotlin 2.0.21, compileSdk 35, minSdk 26.
 
 ### Key conventions
 
-- `fallbackToDestructiveMigration()` is set on Room — schema changes wipe local data. Increment `version` in `@Database` annotation when changing entities.
+- `fallbackToDestructiveMigration()` is set on Room — schema changes wipe local data. Increment `version` in `@Database` annotation when changing entities. **Current version: 2.**
 - The Kotlin serialization plugin (`kotlin-serialization`) is applied in `build.gradle.kts` — required for `@Serializable` to work at runtime.
 - When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`.
 - ViewModels use manual factory pattern (`ViewModelProvider.Factory`) — no Hilt.

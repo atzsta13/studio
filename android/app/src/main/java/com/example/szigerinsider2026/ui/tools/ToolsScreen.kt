@@ -33,11 +33,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.ui.theme.*
+import androidx.navigation.NavController
+import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ToolsScreen() {
+fun ToolsScreen(navController: NavController) {
+    val haptic = rememberHapticManager()
     val context = LocalContext.current
     var hufAmount by remember { mutableStateOf("1000") }
     var selectedTab by remember { mutableIntStateOf(0) } // 0: Tactical, 1: Safety
@@ -147,6 +150,47 @@ fun ToolsScreen() {
                             containerColor = Color(0xFF2563EB),
                             icon = Icons.Default.MedicalServices
                         )
+                    }
+                }
+            }
+
+            // Survival Guide navigation card
+            item {
+                Spacer(modifier = Modifier.height(16.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(CardBackground)
+                        .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                        .clickable { haptic.mediumTap(); navController.navigate("guide") }
+                        .padding(20.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("♻️", fontSize = 32.sp)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(
+                                "SURVIVAL GUIDE",
+                                color = TextPrimary,
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Black,
+                                letterSpacing = 0.5.sp
+                            )
+                            Text(
+                                "Camping · Phrases · Money · Safety",
+                                color = TextMuted,
+                                fontSize = 13.sp
+                            )
+                            Text(
+                                "84 TIPS FOR ISLAND SURVIVAL",
+                                color = ToxicGreen,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Black,
+                                letterSpacing = 1.sp,
+                                modifier = Modifier.padding(top = 4.dp)
+                            )
+                        }
                     }
                 }
             }

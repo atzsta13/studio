@@ -20,14 +20,18 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,7 +50,7 @@ import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
 @Composable
-fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
+fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavController? = null) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     val db = remember { AppDatabase.getDatabase(context) }
@@ -79,12 +83,19 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
     val searchQuery by discoverViewModel.searchQuery.collectAsStateWithLifecycle()
     val isLoading by discoverViewModel.isLoading.collectAsStateWithLifecycle()
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
+    val countryFilter by discoverViewModel.countryFilter.collectAsStateWithLifecycle()
+    val allArtists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
+
+    var showCountrySheet by remember { mutableStateOf(false) }
+    var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
+    val favoritedIds = remember(favoriteArtistIds) { favoriteArtistIds }
 
     val gridState = rememberLazyGridState()
     val isHeaderVisible by remember {
         derivedStateOf { gridState.firstVisibleItemIndex == 0 }
     }
 
+    Box(modifier = Modifier.fillMaxSize()) {
     Column(
         modifier = Modifier.fillMaxSize().background(OLEDBlack)
     ) {
@@ -112,9 +123,32 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
                     Icon(Icons.Filled.Star, contentDescription = null, tint = PrimaryMagenta, modifier = Modifier.size(28.dp))
                 }
                 Spacer(modifier = Modifier.height(12.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     Text("MUSIC ", style = BrutalistTypography.headlineLarge, color = Color.White)
                     Text("FINDER", style = BrutalistTypography.headlineLarge, color = PrimaryMagenta)
+                    IconButton(
+                        onClick = {
+                            haptic.lightTap()
+                            navController?.navigate("vibe_quiz")
+                        }
+                    ) {
+                        Icon(
+                            Icons.Filled.AutoAwesome,
+                            contentDescription = "Vibe Quiz",
+                            tint = PrimaryMagenta,
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                    IconButton(onClick = { haptic.lightTap(); showCountrySheet = true }) {
+                        Icon(
+                            Icons.Default.Public,
+                            contentDescription = "Country Explorer",
+                            tint = CyanPulse
+                        )
+                    }
                 }
                 Text(
                     text = "Curate your personal journey.",
@@ -267,6 +301,39 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
             }
         }
 
+        // Active country filter chip
+        if (countryFilter != null) {
+            Row(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(CyanPulse.copy(alpha = 0.15f))
+                        .border(1.dp, CyanPulse.copy(alpha = 0.4f), RoundedCornerShape(20.dp))
+                        .padding(horizontal = 12.dp, vertical = 6.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text("🌍", fontSize = 14.sp)
+                        Text(
+                            text = countryFilter!!.uppercase(),
+                            color = CyanPulse,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                        Text(
+                            text = "×",
+                            color = CyanPulse,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Black,
+                            modifier = Modifier.clickable { haptic.lightTap(); discoverViewModel.setCountryFilter(null) }
+                        )
+                    }
+                }
+            }
+        }
+
         // Result count
         if (!isLoading) {
             Text(
@@ -305,6 +372,50 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}) {
                 }
             }
         }
+    }
+
+    } // end Column
+
+    // Serendipity FAB
+    ExtendedFloatingActionButton(
+        onClick = {
+            haptic.mediumTap()
+            val all = discoverViewModel.allArtists.value
+            serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(all, favoritedIds)
+        },
+        modifier = Modifier
+            .align(Alignment.BottomEnd)
+            .padding(bottom = 100.dp, end = 20.dp),
+        containerColor = CardBackground,
+        contentColor = PrimaryMagenta,
+        icon = { Icon(Icons.Default.Shuffle, contentDescription = null) },
+        text = { Text("SURPRISE ME", fontWeight = FontWeight.Black, fontSize = 11.sp) }
+    )
+
+    } // end Box
+
+    if (showCountrySheet) {
+        CountryExplorerSheet(
+            artists = allArtists,
+            activeCountryFilter = countryFilter,
+            onCountrySelected = { code -> discoverViewModel.setCountryFilter(code) },
+            onDismiss = { showCountrySheet = false }
+        )
+    }
+
+    serendipityArtist?.let { artist ->
+        SerendipityScreen(
+            artist = artist,
+            onExplore = {
+                serendipityArtist = null
+                navController?.navigate("artist/${artist.id}")
+            },
+            onSpinAgain = {
+                val all = discoverViewModel.allArtists.value
+                serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(all, favoritedIds)
+            },
+            onDismiss = { serendipityArtist = null }
+        )
     }
 }
 

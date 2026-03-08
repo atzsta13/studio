@@ -1,52 +1,208 @@
-# UI & Design System Guide (Sziget Insider 2026)
+# UI & Design System Guide
 
-## Philosophy: Neon Brutalism & Tactical OLED
-Sziget Insider is a survival tool. It is designed to be used in the harshest festival conditions: blinding sunlight, complete darkness, mud, and dense crowds. The UI relies on high-contrast "OLED" modes, large touch targets, minimal borders, and vibrant neon accents to command attention.
+## Philosophy: Neon Brutalism
 
-## 1. Core Color Palette
-- **Backgrounds**: 
-  - Primary Base: `hsl(240, 10%, 4%)` (Deep OLED Black)
-  - Cards/Overlays: `hsl(240, 5%, 8%)` with Tailwind's `backdrop-blur-3xl`
-  - Subtle Muted: `hsl(240, 5%, 15%)`
-- **Neon Accents** (Used for calls to action, active states, and glowing effects):
-  - **Sziget Magenta**: `hsl(330, 100%, 50%)` -> Tailwind: `#ff0080` (Primary Action Color)
-  - **Acid Yellow**: `#ffee00` (Warnings / Highlight Text / Stars)
-  - **Toxic Green**: `#4ade80` (Success / Money / Budget)
-  - **Cyan Pulse**: `#00c3ff` (Hydration / Medical Links)
-- **Text & Typography Colors**:
-  - Primary Text: Pure White (`#ffffff`) or `text-foreground`
-  - Muted Text: `hsl(240, 5%, 65%)` (`text-muted-foreground`) used for descriptions, stages, and timestamps.
+Sziget Insider is a survival tool used in extreme festival conditions: direct sunlight, total darkness, loud crowds, and low battery. The design makes one deliberate trade-off — **readability and tap-ability over subtlety**.
 
-## 2. Typography Rules
-- **Base Fonts**: Standard sans-serif system stack configured via Next/Google Fonts (`Inter`, `Outfit`, or `Varela Round`).
-- **Styling Conventions**:
-  - **Headlines (`h1`, `h2`, `CardTitle`)**: MUST be **uppercase, bold/black-weight, and italicized** (`font-black uppercase italic tracking-tighter`). This evokes speed, energy, and importance. Example: `Island Passport`.
-  - **Overlines / Tiny Labels**: Use tiny text with massive letter spacing (`text-[10px] uppercase tracking-widest` or `tracking-[0.2em]`).
-  - **Readability**: Body copy should be legible in the sun (`text-base leading-relaxed opacity-90`).
+Core principles:
+- **OLED black everywhere** — saves battery, maximises contrast
+- **Neon accents sparingly** — one or two per screen, never decorative
+- **Touch targets are large** — minimum 48×48dp / 48×48px; most CTA buttons are full-width
+- **Uppercase italic headlines** — fast to scan, high energy
+- **No shadows** — use thin white borders (5–8% opacity) for depth instead
 
-## 3. Form & Shape (Components)
-- **Massive Tap Targets**:
-  - In a festival pit, you cannot tap a 12px box. Buttons must be `h-16`, `h-20`, or massive width `w-full`. 
-  - Borders should be highly rounded (`rounded-[2rem]`, `rounded-[2.5rem]`, `rounded-full`) to look deeply native and smooth, minimizing jagged edges.
-- **Glassmorphism & Depth**:
-  - Almost every `<Card>` uses `shadow-2xl` and `bg-card/50 backdrop-blur-3xl border border-white/5`. 
-  - Active states get a subtle colored glow (e.g., `shadow-primary/20 hover:border-primary/50`).
-- **Micro-Animations**:
-  - Use `group` utilities on parent wrappers heavily.
-  - Standard interaction: `transition-all duration-500 hover:scale-[1.02] active:scale-95`.
-  - On icons: `group-hover:scale-110`. Wait to see it bounce when tapped.
+---
 
-## 4. Layout Architecture
-- **Ergonomics via Bottom Navigation**:
-  - Top navigation bars are obsolete for heavy field use. 
-  - `BottomNav` is persistent across all mobile views for effortless one-handed thumb interaction.
-- **Grid Density**:
-  - Give elements breathing room (`gap-6`, `gap-10`).
-  - A dense layout should only be used in the Brutalist `Timetable` grid, where seeing conflicts requires strict structural rigidity.
+## Android Design System
 
-## Summary Checklist for New Pages
-- [ ] Is the background Pitch/OLED black?
-- [ ] Are headers `uppercase italic font-black`?
-- [ ] Are interactive states scaling (`active:scale-95`)?
-- [ ] Is there proper whitespace (`container py-12 pb-32`)?
-- [ ] Can it be navigated with one hand while holding a drink in the other?
+### Color tokens (`ui/theme/Color.kt`)
+
+```kotlin
+// Backgrounds
+val OLEDBlack       = Color(0xFF000000)  // All screen backgrounds
+val CardBackground  = Color(0xFF111111)  // Cards, bottom nav, chips
+val MutedBackground = Color(0xFF262626)  // Subtle dividers, empty states
+
+// Neon accents
+val AcidYellow      = Color(0xFFFFEE00)  // Primary CTA, active state, XP, selected chip
+val PrimaryMagenta  = Color(0xFFFF0080)  // Favorites, Vibe Quiz, hearts
+val ToxicGreen      = Color(0xFF4ADE80)  // Success, money, Survival Guide
+val CyanPulse       = Color(0xFF00C3FF)  // Hydration, water, medical
+
+// Text
+val TextPrimary     = Color.White
+val TextMuted       = Color(0xFFA0A0A0)  // ~63% white — labels, secondary info
+```
+
+**Rules:**
+- Screen background is always `OLEDBlack`. Never use `CardBackground` as a background.
+- Use one accent color per "zone" — e.g., passport = AcidYellow, favorites = PrimaryMagenta, water = CyanPulse.
+- Active/selected chip: `AcidYellow` background + `Color.Black` text.
+- Unselected chip: `CardBackground` background + `TextPrimary` text.
+- Cards use `border(1.dp, Color.White.copy(alpha = 0.06f), ...)` for subtle depth.
+
+### Typography (`BrutalistTypography` in `ui/theme/Type.kt`)
+
+```kotlin
+// Headlines — always uppercase, black weight, italic
+Text(
+    text = "ISLAND RADAR",
+    fontWeight = FontWeight.Black,
+    fontStyle = FontStyle.Italic,
+    letterSpacing = (-1).sp,
+    lineHeight = 38.sp
+)
+
+// Overline / label — uppercase, wide tracking
+Text(
+    text = "TACTICAL NAVIGATION",
+    fontSize = 11.sp,
+    fontWeight = FontWeight.Bold,
+    letterSpacing = 2.sp,
+    color = TextMuted
+)
+
+// Body — legible, not styled
+Text(
+    text = artistBio,
+    fontSize = 14.sp,
+    lineHeight = 22.sp,
+    color = TextMuted
+)
+```
+
+### Shapes
+- Cards: `RoundedCornerShape(16.dp)` to `RoundedCornerShape(20.dp)`
+- Chips: `RoundedCornerShape(12.dp)`
+- Bottom nav: `RoundedCornerShape(28.dp)`
+- Circular elements (pins, avatars): `CircleShape`
+
+### Haptics — required on all interactive elements
+
+Use `rememberHapticManager()` from `ui/utils/HapticManager.kt`:
+
+```kotlin
+val haptic = rememberHapticManager()
+
+// Use the appropriate intensity:
+haptic.lightTap()       // Chip, nav tab, minor toggle, back button
+haptic.mediumTap()      // Card tap, filter confirm, dialog open
+haptic.favoriteTap()    // Star/heart toggle for artists
+haptic.successBurst()   // Challenge completion, bulk save, quiz done
+```
+
+**If a composable has any `clickable {}` or button, it must have a haptic call.** No exceptions.
+
+### Animation patterns
+
+**State transitions:**
+```kotlin
+// Color state change (e.g., chip selection)
+val bgColor by animateColorAsState(
+    targetValue = if (selected) AcidYellow else CardBackground,
+    animationSpec = tween(200)
+)
+
+// Show/hide sections
+AnimatedVisibility(
+    visible = isExpanded,
+    enter = fadeIn(tween(200)) + expandVertically(tween(200)),
+    exit = fadeOut(tween(150)) + shrinkVertically(tween(150))
+)
+```
+
+**Infinite animations (use sparingly — only for "live" indicators):**
+```kotlin
+val infiniteTransition = rememberInfiniteTransition(label = "pulse")
+val alpha by infiniteTransition.animateFloat(
+    initialValue = 0.4f,
+    targetValue = 1f,
+    animationSpec = InfiniteRepeatableSpec(tween(800), RepeatMode.Reverse),
+    label = "alpha"
+)
+```
+
+### Checklist for new screens
+
+- [ ] Background: `Modifier.background(OLEDBlack)`
+- [ ] Headline: uppercase + `FontWeight.Black` + `FontStyle.Italic`
+- [ ] All clickable elements call `haptic.*Tap()`
+- [ ] Content padding bottom: `120.dp` minimum (clears the floating bottom nav)
+- [ ] Cards use `CardBackground` + thin white border
+- [ ] Active/selected states use `AcidYellow`
+- [ ] Navigation back button with `Icons.AutoMirrored.Filled.ArrowBack`
+- [ ] `LazyColumn`/`LazyVerticalGrid` for any list > 5 items
+
+---
+
+## Web Design System
+
+### Color palette (Tailwind CSS 4 / CSS variables)
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| Background | `hsl(240, 10%, 4%)` | All page backgrounds |
+| Card | `hsl(240, 5%, 8%)` | Card surfaces |
+| Muted | `hsl(240, 5%, 15%)` | Dividers, empty states |
+| Sziget Magenta | `#ff0080` | Primary action, favorites |
+| Acid Yellow | `#ffee00` | Highlights, warnings, stars |
+| Toxic Green | `#4ade80` | Success, money, budget |
+| Cyan Pulse | `#00c3ff` | Hydration, medical |
+| Text Primary | `#ffffff` | |
+| Text Muted | `hsl(240, 5%, 65%)` | Descriptions, metadata |
+
+### Typography rules (Tailwind classes)
+
+```
+Headlines:    font-black uppercase italic tracking-tighter
+Overlines:    text-[10px] uppercase tracking-[0.2em] text-muted-foreground
+Body:         text-base leading-relaxed
+```
+
+### Component conventions
+
+**Cards:**
+```
+bg-card/50 backdrop-blur-3xl border border-white/5 shadow-2xl rounded-[2rem]
+```
+
+**Buttons:**
+```
+h-16 w-full rounded-[2rem]  ← minimum for CTA buttons
+active:scale-95 transition-all duration-200  ← required interaction state
+```
+
+**Hover states:**
+```
+hover:scale-[1.02] hover:border-primary/50  ← on cards
+group-hover:scale-110  ← on icons within a group wrapper
+```
+
+### Navigation
+
+Bottom navigation is canonical — top nav bars are not used for primary navigation. The `BottomNav` component is persistent across all mobile views.
+
+### Checklist for new web pages
+
+- [ ] Background: pitch/OLED black (`bg-background`)
+- [ ] Headers: `uppercase italic font-black tracking-tighter`
+- [ ] Interactive states: `active:scale-95` on any button or card
+- [ ] Container padding: `py-12 pb-32` (clears bottom nav)
+- [ ] Card style: `bg-card/50 backdrop-blur-3xl border border-white/5`
+- [ ] Usable one-handed while holding a drink
+
+---
+
+## Cross-platform consistency
+
+Both platforms share the same aesthetic vocabulary. When implementing a feature on one platform, the other should look recognisably similar:
+
+| Concept | Web | Android |
+|---------|-----|---------|
+| Primary action | `#ff0080` (Magenta) | `PrimaryMagenta` |
+| Selected state | Acid Yellow highlight | `AcidYellow` background |
+| Card surface | `bg-card/50` | `CardBackground` |
+| Screen background | `bg-background` | `OLEDBlack` |
+| Body text | `text-muted-foreground` | `TextMuted` |
+| Success | `#4ade80` | `ToxicGreen` |
+| Water/hydration | `#00c3ff` | `CyanPulse` |

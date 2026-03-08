@@ -1,11 +1,8 @@
 package com.example.szigerinsider2026.ui.passport
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -44,6 +41,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.szigerinsider2026.data.local.AppDatabase
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.szigerinsider2026.data.repository.LineupRepository
 
 data class Stamp(
     val id: String,
@@ -80,223 +78,273 @@ fun PassportScreen() {
 
     val haptic = rememberHapticManager()
     val userProgress by viewModel.userProgress.collectAsStateWithLifecycle()
+    val challenges by viewModel.challenges.collectAsStateWithLifecycle()
     val unlockedStamps = userProgress.stampsCollected.toSet()
     val progress = (unlockedStamps.size.toFloat() / STAMPS.size.toFloat() * 100).toInt()
     val totalXP = userProgress.legendXp
     val currentRank = userProgress.currentRank
-    
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
+
+    var selectedTab by remember { mutableIntStateOf(0) }
+    val tabTitles = listOf("STAMPS", "CHALLENGES")
+
+    // Load artists and evaluate challenges once on launch
+    LaunchedEffect(Unit) {
+        val repo = LineupRepository(context)
+        val allArtists = repo.getLineup()
+        viewModel.evaluateChallenges(allArtists)
+    }
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(OLEDBlack)
-            .padding(horizontal = 16.dp),
-        contentPadding = PaddingValues(top = 32.dp, bottom = 100.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Header
-        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
-            Column {
-                Text(
-                    text = "ISLAND PASSPORT",
-                    style = BrutalistTypography.headlineLarge,
-                    modifier = Modifier.padding(bottom = 8.dp)
+        // Passport header
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .padding(top = 32.dp, bottom = 8.dp)
+        ) {
+            Text(
+                text = "ISLAND PASSPORT",
+                style = BrutalistTypography.headlineLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = "Collect stamps, level up, and become a Sziget Legend.",
+                color = TextMuted,
+                fontSize = 16.sp,
+                lineHeight = 22.sp,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
+
+        // Tab row
+        TabRow(
+            selectedTabIndex = selectedTab,
+            containerColor = CardBackground,
+            contentColor = AcidYellow,
+            indicator = { tabPositions ->
+                TabRowDefaults.SecondaryIndicator(
+                    modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTab]),
+                    color = AcidYellow
                 )
-                Text(
-                    text = "Collect stamps, level up, and become a Sziget Legend.",
-                    color = TextMuted,
-                    fontSize = 16.sp,
-                    lineHeight = 22.sp,
-                    modifier = Modifier.padding(bottom = 32.dp)
+            }
+        ) {
+            tabTitles.forEachIndexed { index, title ->
+                Tab(
+                    selected = selectedTab == index,
+                    onClick = { haptic.lightTap(); selectedTab = index },
+                    text = {
+                        Text(title, fontWeight = FontWeight.Black, fontSize = 12.sp, letterSpacing = 1.sp)
+                    }
                 )
             }
         }
 
-        // Progress Card
-        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 16.dp),
-                shape = RoundedCornerShape(32.dp),
-                colors = CardDefaults.cardColors(containerColor = Color.Transparent)
-            ) {
-                Box(
+        when (selectedTab) {
+            0 -> {
+                // STAMPS tab — existing grid content
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .background(
-                            brush = Brush.linearGradient(
-                                colors = listOf(Color(0xFF6366F1), PrimaryMagenta)
-                            )
-                        )
-                        .padding(24.dp)
+                        .fillMaxSize()
+                        .padding(horizontal = 16.dp),
+                    contentPadding = PaddingValues(top = 16.dp, bottom = 100.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Column {
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.Bottom
-                        ) {
-                            Column {
-                                Text(
-                                    text = "LEVEL STATUS",
-                                    color = Color.White.copy(alpha = 0.7f),
-                                    fontSize = 10.sp,
-                                    fontWeight = FontWeight.Black,
-                                    letterSpacing = 2.sp
-                                )
-                                Text(
-                                    text = "$progress%",
-                                    color = Color.White,
-                                    fontSize = 48.sp,
-                                    fontWeight = FontWeight.Black,
-                                    fontStyle = FontStyle.Italic
-                                )
-                            }
-                            Text(
-                                text = "${unlockedStamps.size} / ${STAMPS.size} STAMPS",
-                                color = Color.White,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-                        Spacer(modifier = Modifier.height(16.dp))
-                        LinearProgressIndicator(
-                            progress = progress / 100f,
+                    // Progress Card
+                    item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
+                        Card(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(8.dp)
-                                .clip(RoundedCornerShape(100)),
-                            color = Color.White,
-                            trackColor = Color.White.copy(alpha = 0.2f)
+                                .padding(bottom = 16.dp),
+                            shape = RoundedCornerShape(32.dp),
+                            colors = CardDefaults.cardColors(containerColor = Color.Transparent)
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .background(
+                                        brush = Brush.linearGradient(
+                                            colors = listOf(Color(0xFF6366F1), PrimaryMagenta)
+                                        )
+                                    )
+                                    .padding(24.dp)
+                            ) {
+                                Column {
+                                    Row(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.Bottom
+                                    ) {
+                                        Column {
+                                            Text(
+                                                text = "LEVEL STATUS",
+                                                color = Color.White.copy(alpha = 0.7f),
+                                                fontSize = 10.sp,
+                                                fontWeight = FontWeight.Black,
+                                                letterSpacing = 2.sp
+                                            )
+                                            Text(
+                                                text = "$progress%",
+                                                color = Color.White,
+                                                fontSize = 48.sp,
+                                                fontWeight = FontWeight.Black,
+                                                fontStyle = FontStyle.Italic
+                                            )
+                                        }
+                                        Text(
+                                            text = "${unlockedStamps.size} / ${STAMPS.size} STAMPS",
+                                            color = Color.White,
+                                            fontSize = 12.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                    Spacer(modifier = Modifier.height(16.dp))
+                                    LinearProgressIndicator(
+                                        progress = progress / 100f,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(8.dp)
+                                            .clip(RoundedCornerShape(100)),
+                                        color = Color.White,
+                                        trackColor = Color.White.copy(alpha = 0.2f)
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    // Stamp Grid
+                    items(STAMPS) { stamp ->
+                        val isUnlocked = unlockedStamps.contains(stamp.id)
+                        val stampScale by animateFloatAsState(
+                            targetValue = if (isUnlocked) 1f else 0.95f,
+                            animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMedium),
+                            label = "stampScale_${stamp.id}"
                         )
+
+                        Box(
+                            modifier = Modifier
+                                .graphicsLayer(scaleX = stampScale, scaleY = stampScale)
+                                .aspectRatio(1f)
+                                .clip(RoundedCornerShape(24.dp))
+                                .background(if (isUnlocked) CardBackground else MutedBackground.copy(alpha = 0.3f))
+                                .border(
+                                    width = 2.dp,
+                                    color = if (isUnlocked) PrimaryMagenta else Color.White.copy(alpha = 0.05f),
+                                    shape = RoundedCornerShape(24.dp)
+                                )
+                                .clickable {
+                                    if (isUnlocked) haptic.mediumTap() else haptic.successBurst()
+                                    viewModel.toggleStamp(stamp.id)
+                                },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.padding(12.dp)
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(56.dp)
+                                        .clip(CircleShape)
+                                        .background(if (isUnlocked) Color.White else Color.White.copy(alpha = 0.05f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = if (isUnlocked) stamp.icon else Icons.Default.Lock,
+                                        contentDescription = stamp.title,
+                                        tint = if (isUnlocked) stamp.color else TextMuted,
+                                        modifier = Modifier.size(if (isUnlocked) 32.dp else 24.dp)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(12.dp))
+                                Text(
+                                    text = stamp.title.uppercase(),
+                                    style = BrutalistTypography.labelSmall,
+                                    color = if (isUnlocked) TextPrimary else TextMuted,
+                                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                                    lineHeight = 12.sp
+                                )
+                            }
+
+                            if (isUnlocked) {
+                                Icon(
+                                    imageVector = Icons.Default.CheckCircle,
+                                    contentDescription = "Unlocked",
+                                    tint = PrimaryMagenta,
+                                    modifier = Modifier
+                                        .align(Alignment.TopEnd)
+                                        .padding(12.dp)
+                                        .size(16.dp)
+                                )
+                            }
+                        }
+                    }
+
+                    // Rank Card
+                    item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
+                        Card(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 16.dp),
+                            shape = RoundedCornerShape(32.dp),
+                            colors = CardDefaults.cardColors(containerColor = CardBackground),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f))
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(24.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(80.dp)
+                                        .clip(CircleShape)
+                                        .background(PrimaryMagenta.copy(alpha = 0.1f))
+                                        .border(2.dp, PrimaryMagenta.copy(alpha = 0.2f), CircleShape),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.EmojiEvents,
+                                        contentDescription = "Rank",
+                                        tint = PrimaryMagenta,
+                                        modifier = Modifier.size(40.dp)
+                                    )
+                                }
+                                Spacer(modifier = Modifier.width(20.dp))
+                                Column {
+                                    Text(
+                                        text = "CURRENT RANK",
+                                        color = TextMuted,
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Black,
+                                        letterSpacing = 2.sp
+                                    )
+                                    Text(
+                                        text = currentRank.uppercase(),
+                                        style = BrutalistTypography.titleLarge,
+                                        color = Color.White
+                                    )
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(
+                                        text = "$totalXP XP",
+                                        color = PrimaryMagenta,
+                                        fontSize = 24.sp,
+                                        fontWeight = FontWeight.Black,
+                                        fontStyle = FontStyle.Italic
+                                    )
+                                }
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        // Stamp Grid
-        items(STAMPS) { stamp ->
-            val isUnlocked = unlockedStamps.contains(stamp.id)
-            val stampScale by animateFloatAsState(
-                targetValue = if (isUnlocked) 1f else 0.95f,
-                animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMedium),
-                label = "stampScale_${stamp.id}"
-            )
-
-            Box(
-                modifier = Modifier
-                    .graphicsLayer(scaleX = stampScale, scaleY = stampScale)
-                    .aspectRatio(1f)
-                    .clip(RoundedCornerShape(24.dp))
-                    .background(if (isUnlocked) CardBackground else MutedBackground.copy(alpha = 0.3f))
-                    .border(
-                        width = 2.dp,
-                        color = if (isUnlocked) PrimaryMagenta else Color.White.copy(alpha = 0.05f),
-                        shape = RoundedCornerShape(24.dp)
-                    )
-                    .clickable {
-                        if (isUnlocked) haptic.mediumTap() else haptic.successBurst()
-                        viewModel.toggleStamp(stamp.id)
-                    },
-                contentAlignment = Alignment.Center
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(12.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(56.dp)
-                            .clip(CircleShape)
-                            .background(if (isUnlocked) Color.White else Color.White.copy(alpha = 0.05f)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = if (isUnlocked) stamp.icon else Icons.Default.Lock,
-                            contentDescription = stamp.title,
-                            tint = if (isUnlocked) stamp.color else TextMuted,
-                            modifier = Modifier.size(if (isUnlocked) 32.dp else 24.dp)
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Text(
-                        text = stamp.title.uppercase(),
-                        style = BrutalistTypography.labelSmall,
-                        color = if (isUnlocked) TextPrimary else TextMuted,
-                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                        lineHeight = 12.sp
-                    )
-                }
-
-                if (isUnlocked) {
-                    Icon(
-                        imageVector = Icons.Default.CheckCircle,
-                        contentDescription = "Unlocked",
-                        tint = PrimaryMagenta,
-                        modifier = Modifier
-                            .align(Alignment.TopEnd)
-                            .padding(12.dp)
-                            .size(16.dp)
-                    )
-                }
-            }
-        }
-
-        // Rank Card
-        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                shape = RoundedCornerShape(32.dp),
-                colors = CardDefaults.cardColors(containerColor = CardBackground),
-                border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f))
-            ) {
-                Row(
-                    modifier = Modifier.padding(24.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(80.dp)
-                            .clip(CircleShape)
-                            .background(PrimaryMagenta.copy(alpha = 0.1f))
-                            .border(2.dp, PrimaryMagenta.copy(alpha = 0.2f), CircleShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.EmojiEvents,
-                            contentDescription = "Rank",
-                            tint = PrimaryMagenta,
-                            modifier = Modifier.size(40.dp)
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Column {
-                        Text(
-                            text = "CURRENT RANK",
-                            color = TextMuted,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 2.sp
-                        )
-                        Text(
-                            text = currentRank.uppercase(),
-                            style = BrutalistTypography.titleLarge,
-                            color = Color.White
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "$totalXP XP",
-                            color = PrimaryMagenta,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Black,
-                            fontStyle = FontStyle.Italic
-                        )
-                    }
-                }
+            1 -> {
+                ChallengeListComposable(challenges)
             }
         }
     }

@@ -11,6 +11,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -23,10 +25,12 @@ fun SplashScreen(navController: NavController) {
     var showSziget by remember { mutableStateOf(false) }
     var showInsider by remember { mutableStateOf(false) }
     var showBadge by remember { mutableStateOf(false) }
+    val hapticFeedback = LocalHapticFeedback.current
 
     LaunchedEffect(Unit) {
         delay(80)
         showSziget = true
+        hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
         delay(180)
         showInsider = true
         delay(280)
