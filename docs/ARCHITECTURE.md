@@ -29,7 +29,7 @@ Browser request
 | Path | Purpose |
 |------|---------|
 | `src/app/` | All routes (App Router). Each folder = one route segment. |
-| `src/app/api/` | API routes: Spotify OAuth (`auth/spotify/`), AI match (`spotify/matches`) |
+| `src/app/api/` | API routes: Spotify OAuth (`auth/spotify/`), Spotify match (`spotify/matches`), Spotify playlist builder (`spotify/build-playlist`), weather proxy (`weather/`) |
 | `src/ai/` | Genkit configuration and flows |
 | `src/ai/flows/recommend-artists-flow.ts` | Main AI flow: mood prompt → up to 5 artist matches |
 | `src/ai/genkit.ts` | Genkit instance with `googleai/gemini-2.5-flash` |
@@ -59,15 +59,19 @@ Web app uses `localStorage` for all user state. No database, no accounts. Keys:
 | Route | Type | Notes |
 |-------|------|-------|
 | `/` | Server Component | Home — countdown, headliners, mood |
-| `/discover` | Client Component | Artist grid, filters, search |
-| `/artist/[id]` | Server Component | Static at build time for all 80 artists |
+| `/discover` | Client Component | Artist grid, filters, search, Spotify matcher + playlist builder |
+| `/artist/[id]` | Server Component | Static at build time for all 80 artists. Includes Spotify iframe embed. |
 | `/map` | Client Component | POI map |
 | `/timetable` | Client Component | Schedule grid (times TBD when data available) |
-| `/passport` | Client Component | Stamps + XP |
-| `/tools` | Client Component | Converter, SOS, packing list |
+| `/passport` | Client Component | Stamps + XP + link to highlights |
+| `/highlights` | Client Component | Post-festival wrap — top genres/vibes, favorites, share |
+| `/food` | Client Component | Food vendor list with dietary filters |
+| `/tools` | Client Component | Converter, weather forecast, SOS, packing list |
 | `/api/auth/spotify/` | API Route | OAuth start |
 | `/api/auth/spotify/callback` | API Route | OAuth callback |
 | `/api/spotify/matches` | API Route | Match Spotify library against lineup |
+| `/api/spotify/build-playlist` | API Route | POST — create playlist from matched artist IDs |
+| `/api/weather` | API Route | Proxy for Open-Meteo Budapest forecast, 30-min cache |
 
 ---
 
@@ -116,16 +120,17 @@ Accessed via `UserDao`. Database singleton at `AppDatabase.getDatabase(context)`
 **`fallbackToDestructiveMigration()`** is active — schema changes wipe data in dev builds. Increment `version` in `@Database` annotation for every entity change.
 
 ### Repositories
-| Repository | Asset | Returns |
-|-----------|-------|---------|
-| `LineupRepository` | `lineup.json` / `lineup_2025.json` | `List<Artist>` |
-| `POIRepository` | `poi.json` | `List<POI>` |
-| `FoodRepository` | `food.json` | `List<FoodVendor>` |
+| Repository | Source | Returns |
+|-----------|--------|---------|
+| `LineupRepository` | `lineup.json` / `lineup_2025.json` (assets) | `List<Artist>` |
+| `POIRepository` | `poi.json` (assets) | `List<POI>` |
+| `FoodRepository` | `food.json` (assets) | `List<FoodVendor>` |
+| `WeatherRepository` | Open-Meteo API (network) | `WeatherData` |
 
-All repositories: coroutine-based, `Dispatchers.IO`, graceful empty-list on failure.
+All repositories: coroutine-based, `Dispatchers.IO`, graceful empty-list / fallback on failure. `WeatherRepository` has a 30-minute in-memory cache.
 
 ### Navigation (Navigation.kt)
-Single `NavHost` in `AppNavigation()`. Bottom bar rendered by `FluidBottomNavigation` — hidden on splash, artist detail, schedule, quiz, and guide routes.
+Single `NavHost` in `AppNavigation()`. Bottom bar rendered by `FluidBottomNavigation` — hidden on splash, artist detail, schedule, quiz, guide, food, and highlights routes.
 
 See `android/README.md` for the full route table.
 
@@ -176,7 +181,7 @@ See `android/README.md` for the full route table.
 - No backend server
 - No real-time data (no WebSockets, no polling)
 - No user accounts or authentication (web: localStorage; Android: Room local only)
-- No GPS / geolocation (Android map uses normalized abstract coordinates)
-- No push notifications (yet — WorkManager integration planned)
-- No Spotify integration on Android (web only)
+- No GPS-based map positioning — Android map uses normalized abstract coordinates (0–100). `TentFinderCard` does use GPS but only to mark a saved location, not to position on the map.
+- No push notifications (WorkManager integration planned)
+- No Spotify OAuth on Android — the web has a full OAuth flow; Android only has a WebView embed for the artist Spotify player
 - No stage/schedule data (Sziget hasn't published it yet)

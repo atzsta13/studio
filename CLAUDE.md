@@ -15,9 +15,9 @@ Both share the same lineup data: `src/data/lineup.json` is the single source of 
 **Detailed docs:**
 - `android/README.md` — Android architecture, patterns, full screen/route inventory
 - `docs/ARCHITECTURE.md` — dual-platform architecture, data schema, what is NOT in this codebase
-- `docs/FEATURES.md` — honest build status (✅ built / 🚧 in progress / ⏳ awaiting data / ❌ not built)
+- `docs/FEATURES.md` — honest build status (✅ built / ⏳ awaiting data / ❌ not built)
 - `docs/UI_GUIDE.md` — color tokens, typography rules, haptic patterns, checklist for new screens
-- `docs/PHASE_3_PLAN.md` — current development roadmap with feature specs
+- `docs/PHASE_3_PLAN.md` — Phase 3 historical roadmap (largely complete)
 
 ---
 
@@ -44,13 +44,18 @@ npm run lineup:show     # Print summary
 
 ### Architecture
 
-- **App Router**: Pages live in `src/app/`. Routes: `/`, `/discover`, `/artist/[id]`, `/map`, `/timetable`, `/passport`, `/food`, `/tools`, `/packing-list`, `/guide`.
+- **App Router**: Pages live in `src/app/`. Routes: `/`, `/discover`, `/artist/[id]`, `/map`, `/timetable`, `/passport`, `/food`, `/tools`, `/packing-list`, `/guide`, `/highlights`.
 - **UI**: Tailwind CSS v4, Radix UI primitives, `lucide-react` icons, MUI components.
 - **Data**: `src/data/lineup.json` is imported directly by server components and the AI flow. No database — all lineup data is static JSON.
 - **Types**: Shared interfaces in `src/types/index.ts` — `LineupItem` and `MapPin`.
 - **AI**: Genkit with `googleai/gemini-2.5-flash` (`src/ai/genkit.ts`). The artist recommendation flow is in `src/ai/flows/recommend-artists-flow.ts` — it takes a mood/preference prompt and returns up to 5 artist matches using the full lineup as context.
 - **Firebase**: Configured in `src/lib/firebase.ts` (used for favorites persistence).
-- **Spotify**: OAuth flow at `src/app/api/auth/spotify/` with a matching endpoint at `/api/spotify/matches`.
+- **Spotify**: OAuth flow at `src/app/api/auth/spotify/`. Endpoints:
+  - `/api/spotify/matches` — scans user's saved tracks against lineup
+  - `/api/spotify/build-playlist` — POST, creates a Spotify playlist from matched artist IDs (top 3 tracks each)
+  - Scopes: `user-library-read playlist-modify-private playlist-modify-public`
+- **Weather**: `/api/weather` — proxies Open-Meteo (free, no API key) for Budapest. 30-min server-side cache. Returns 7-day forecast + `rainAlert` boolean.
+- **Offline**: `public/sw.js` is the PWA service worker. Caches app shell (navigation network-first), static assets (cache-first), and `/api/weather` (stale-while-revalidate). Registered via `PwaLoader` component.
 
 ---
 
@@ -72,26 +77,32 @@ Key versions: AGP 8.13.2, Kotlin 2.0.21, compileSdk 35, minSdk 26.
 
 **MVVM** with a Repository layer. No Hilt/DI — dependencies are manually constructed.
 
-- **Navigation**: `ui/navigation/Navigation.kt` — bottom nav with 5 tabs + artist detail. Routes: `splash → home`, `discover`, `map`, `passport`, `tools`, `artist/{artistId}`. Bottom nav hidden on splash and artist detail screens.
+- **Navigation**: `ui/navigation/Navigation.kt` — bottom nav with 5 tabs + detail screens. Bottom nav is hidden on: `splash`, `artist/{id}`, `schedule`, `guide`, `vibe_quiz`, `vibe_results`, `highlights`, `food`.
 - **Data layer**:
-  - `data/model/` — Kotlin data classes (`Artist`, `POI`, `FoodVendor`, `MapCoords`)
-  - `data/repository/` — `LineupRepository` reads bundled JSON assets; `POIRepository` and `FoodRepository` for map/food data
-  - `data/local/` — Room database (`AppDatabase`, v1) with two entities: `UserProgress` (XP, rank, stamps) and `FavoriteArtist`. Accessed via `UserDao`. Singleton via `AppDatabase.getDatabase(context)`.
+  - `data/model/` — Kotlin data classes (`Artist`, `POI`, `FoodVendor`, `MapCoords`, `WeatherData`, `DailyForecast`)
+  - `data/repository/` — `LineupRepository` (lineup.json), `POIRepository` (poi.json), `FoodRepository` (food.json), `WeatherRepository` (Open-Meteo API, 30-min cache)
+  - `data/local/` — Room database (`AppDatabase`, v2) with two entities: `UserProgress` (legendXp, currentRank, stampsCollected, completedChallengeIds, quizCompleted) and `FavoriteArtist`. Accessed via `UserDao`. Singleton via `AppDatabase.getDatabase(context)`.
 - **Screens**:
   - `ui/home/` — Island Pulse feed (Wednesday headliners from JSON)
-  - `ui/discover/` — Artist grid with 4 filter rows (sort: headliners/A-Z, day, genre, vibe), collapsing header on scroll. `DiscoverViewModel` + `ArtistViewModel`.
-  - `ui/artist/` — `ArtistDetailScreen` — full hero image, meta pills, genres, vibes, bio, tappable social links
-  - `ui/map/` — POI map with category filter (stages/food/water). `MapViewModel`.
-  - `ui/passport/` — Stamp collection + XP/rank, persisted in Room. `PassportViewModel`.
-  - `ui/tools/` — Currency converter (HUF→EUR/USD), SOS beacon, emergency contacts
+  - `ui/discover/` — Artist grid with 4 filter rows (sort: headliners/A-Z, day, genre, vibe), collapsing header. `DiscoverViewModel` + `ArtistViewModel`.
+  - `ui/artist/` — `ArtistDetailScreen` — hero image, meta pills, genres, vibes, bio, social links, Spotify WebView embed ("Island Listen"), "More Like This"
+  - `ui/map/` — Tactical dot map with category filter (ALL/STAGES/FOOD/WATER). "SEE ALL VENDORS →" button appears when FOOD chip is active. `MapViewModel`.
+  - `ui/food/` — `FoodScreen` + `FoodViewModel` — food vendor list with search, category chips (Food/Drink), dietary chips (VEGAN / GLUTEN-FREE / BUDGET HERO). Accessed from Map FOOD chip.
+  - `ui/passport/` — Stamp collection + XP/rank + challenges, persisted in Room. "MY HIGHLIGHTS →" button. `PassportViewModel`.
+  - `ui/highlights/` — `HighlightsScreen` + `HighlightsViewModel` — post-festival wrap: rank/XP/stamps stats, top genres/vibes, favorite artist list, share sheet.
+  - `ui/tools/` — `ToolsScreen` (driven by `ToolsViewModel`): live weather card, tent finder with GPS, HUF converter, SOS beacon, emergency contacts. `WeatherCard.kt`, `TentFinderCard.kt`.
+  - `ui/quiz/` — Vibe DNA quiz flow
   - `ui/splash/` — Brutalist entrance screen
-- **Haptics**: `ui/utils/HapticManager.kt` — `lightTap()`, `mediumTap()`, `favoriteTap()`, `successBurst()`. Use `rememberHapticManager()` in any composable. Wired to all interactive elements.
+  - `widget/` — `SzigetWidget` + `SzigetWidgetReceiver` — Glance home screen widget showing rank, XP, and favorite count.
+- **Haptics**: `ui/utils/HapticManager.kt` — `lightTap()`, `mediumTap()`, `favoriteTap()`, `successBurst()`. Use `rememberHapticManager()` in any composable. Required on all interactive elements.
 - **Theme**: Brutalist dark aesthetic. Colors in `ui/theme/Color.kt` — `OLEDBlack`, `AcidYellow`, `PrimaryMagenta`, `CardBackground`, `ToxicGreen`, `CyanPulse`.
 
 ### Key conventions
 
 - `fallbackToDestructiveMigration()` is set on Room — schema changes wipe local data. Increment `version` in `@Database` annotation when changing entities. **Current version: 2.**
-- The Kotlin serialization plugin (`kotlin-serialization`) is applied in `build.gradle.kts` — required for `@Serializable` to work at runtime.
-- When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`.
+- The Kotlin serialization plugin (`kotlin-serialization`) is applied in `build.gradle.kts` — required for `@Serializable` to work at runtime. Always use `Json { ignoreUnknownKeys = true }` when deserializing.
+- When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`, add route to `showBottomBar` exclusion if it should hide the nav.
 - ViewModels use manual factory pattern (`ViewModelProvider.Factory`) — no Hilt.
 - `Converters.kt` handles `List<String>` ↔ JSON for Room.
+- Location permission (`ACCESS_FINE_LOCATION`) is declared in the manifest — needed by `TentFinderCard`.
+- Glance widget dependencies: `glance-appwidget:1.1.0` + `glance-material3:1.1.0`.

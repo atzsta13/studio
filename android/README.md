@@ -35,27 +35,32 @@ Assets (JSON) + Room DB (SQLite)
 android/app/src/main/java/com/example/szigerinsider2026/
 │
 ├── data/
+│   ├── config/
+│   │   └── FestivalConfig.kt           # Currency rates, festival constants
 │   ├── content/
 │   │   └── SurvivalGuideContent.kt     # Hardcoded guide sections (no network)
 │   ├── local/
 │   │   ├── AppDatabase.kt              # Room DB singleton, version 2
 │   │   ├── Converters.kt               # List<String> ↔ JSON for Room
-│   │   ├── FavoriteArtist.kt           # Entity: artistId, timestamp, mustSee, priority
+│   │   ├── FavoriteArtist.kt           # Entity: artistId, timestamp
 │   │   ├── UserDao.kt                  # All Room queries
-│   │   └── UserProgress.kt             # Entity: XP, rank, stamps, completedChallengeIds
+│   │   └── UserProgress.kt             # Entity: legendXp, currentRank, stampsCollected, completedChallengeIds, quizCompleted
 │   ├── model/
 │   │   ├── Artist.kt                   # @Serializable — mirrors lineup.json schema
+│   │   ├── DailyForecast.kt            # Weather forecast day (part of WeatherData)
 │   │   ├── FoodVendor.kt               # @Serializable — mirrors food.json schema
 │   │   ├── MapCoords.kt                # {x: Int, y: Int} normalized 0–100
-│   │   └── POI.kt                      # @Serializable — mirrors poi.json schema
+│   │   ├── POI.kt                      # @Serializable — mirrors poi.json schema
+│   │   └── WeatherData.kt              # WeatherData(daily, rainAlert) + DailyForecast
 │   └── repository/
 │       ├── FoodRepository.kt           # Loads food.json from assets
 │       ├── LineupRepository.kt         # Loads lineup.json (or lineup_2025.json)
-│       └── POIRepository.kt            # Loads poi.json from assets
+│       ├── POIRepository.kt            # Loads poi.json from assets
+│       └── WeatherRepository.kt        # Open-Meteo API fetch, 30-min in-memory cache
 │
 ├── ui/
 │   ├── artist/
-│   │   └── ArtistDetailScreen.kt       # Full hero screen, socials, "more like this"
+│   │   └── ArtistDetailScreen.kt       # Hero, socials, Spotify WebView embed, "more like this"
 │   ├── components/
 │   │   └── ArtistCard.kt               # Reusable card used in Discover + Quiz results
 │   ├── discover/
@@ -63,18 +68,24 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   ├── DiscoverScreen.kt           # Artist grid, 4 filter rows, collapsing header
 │   │   ├── DiscoverViewModel.kt        # Filter state, search, country filter
 │   │   └── CountryExplorerSheet.kt     # Bottom sheet: artists grouped by country
+│   ├── food/
+│   │   ├── FoodScreen.kt               # Vendor list: search, category + dietary FilterChips
+│   │   └── FoodViewModel.kt            # Combines allVendors + searchQuery + category + tags flows
+│   ├── highlights/
+│   │   ├── HighlightsScreen.kt         # Post-festival wrap: rank, XP, top genres/vibes, artist list, share
+│   │   └── HighlightsViewModel.kt      # Joins Room favorites + lineup JSON, computes summary
 │   ├── home/
 │   │   ├── HomeScreen.kt               # Countdown, headliners, quick nav, mood feed
 │   │   └── LineupDiffSheet.kt          # 2025 vs 2026 comparison sheet
 │   ├── map/
-│   │   ├── MapScreen.kt                # Tactical dot map with BoxWithConstraints scaling
+│   │   ├── MapScreen.kt                # Tactical dot map; "SEE ALL VENDORS →" when FOOD active
 │   │   └── MapViewModel.kt             # POI/food loading, category filter
 │   ├── navigation/
 │   │   └── Navigation.kt               # NavHost + bottom bar, all routes defined here
 │   ├── passport/
 │   │   ├── ChallengeEngine.kt          # Pure function: favorites + artists → List<Challenge>
 │   │   ├── ChallengeListScreen.kt      # Embeddable challenge card list
-│   │   ├── PassportScreen.kt           # Tabs: STAMPS / CHALLENGES
+│   │   ├── PassportScreen.kt           # Tabs: STAMPS / CHALLENGES + "MY HIGHLIGHTS →" button
 │   │   └── PassportViewModel.kt        # Loads progress, evaluates challenges, awards XP
 │   ├── quiz/
 │   │   ├── VibeQuizScreen.kt           # 5-step mood quiz
@@ -90,9 +101,16 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   └── Type.kt                     # BrutalistTypography
 │   ├── tools/
 │   │   ├── SurvivalGuideScreen.kt      # Collapsible guide sections, phrase clipboard copy
-│   │   └── ToolsScreen.kt              # HUF converter, SOS beacon, emergency contacts
+│   │   ├── TentFinderCard.kt           # GPS tent marker, SharedPreferences, compass bearing
+│   │   ├── ToolsScreen.kt              # HUF converter, WeatherCard, TentFinderCard, SOS, emergency
+│   │   ├── ToolsViewModel.kt           # Loads weather via WeatherRepository
+│   │   └── WeatherCard.kt              # 5-day forecast strip + animated rain alert banner
 │   └── utils/
 │       └── HapticManager.kt            # lightTap / mediumTap / favoriteTap / successBurst
+│
+├── widget/
+│   ├── SzigetWidget.kt                 # Glance widget: rank, XP, favorites count, tap-to-open
+│   └── SzigetWidgetReceiver.kt         # GlanceAppWidgetReceiver
 │
 └── MainActivity.kt
 ```
@@ -113,21 +131,23 @@ android/app/src/main/assets/
 
 All routes are defined in `ui/navigation/Navigation.kt`.
 
-| Route | Screen | Bottom bar? |
-|-------|--------|-------------|
-| `splash` | `SplashScreen` | No |
-| `home` | `HomeScreen` | Yes |
-| `discover` | `DiscoverScreen` | Yes |
-| `map` | `MapScreen` | Yes |
-| `passport` | `PassportScreen` | Yes |
-| `tools` | `ToolsScreen` | Yes |
-| `schedule` | `ScheduleScreen` | No |
-| `artist/{artistId}` | `ArtistDetailScreen` | No |
-| `vibe_quiz` | `VibeQuizScreen` | No |
-| `vibe_results` | `VibeResultScreen` | No |
-| `guide` | `SurvivalGuideScreen` | No |
+| Route | Screen | Bottom bar? | Entry point |
+|-------|--------|-------------|-------------|
+| `splash` | `SplashScreen` | No | App launch |
+| `home` | `HomeScreen` | Yes | Bottom nav |
+| `discover` | `DiscoverScreen` | Yes | Bottom nav |
+| `map` | `MapScreen` | Yes | Bottom nav |
+| `passport` | `PassportScreen` | Yes | Bottom nav |
+| `tools` | `ToolsScreen` | Yes | Bottom nav |
+| `schedule` | `ScheduleScreen` | No | HomeScreen card |
+| `artist/{artistId}` | `ArtistDetailScreen` | No | Discover / Home / Similar artists |
+| `vibe_quiz` | `VibeQuizScreen` | No | Discover screen |
+| `vibe_results` | `VibeResultScreen` | No | After quiz |
+| `guide` | `SurvivalGuideScreen` | No | Tools screen card |
+| `food` | `FoodScreen` | No | Map → FOOD chip → "SEE ALL VENDORS →" |
+| `highlights` | `HighlightsScreen` | No | Passport screen → "MY HIGHLIGHTS →" |
 
-Bottom bar is hidden when `currentRoute` is `splash`, starts with `artist/`, or is in the explicit exclusion list in `showBottomBar`.
+Bottom bar visibility is controlled by `showBottomBar` in `Navigation.kt`. Any new full-screen route that replaces a tab should be added to the exclusion list.
 
 ---
 
@@ -141,9 +161,9 @@ Entities:
 | Column | Type | Notes |
 |--------|------|-------|
 | `id` | Int | Always 1 (singleton row) |
-| `totalXP` | Int | Accumulated XP |
-| `currentRank` | String | e.g. `"ISLAND SCOUT"` |
-| `unlockedStamps` | String | JSON array of stamp IDs |
+| `legendXp` | Int | Accumulated XP |
+| `currentRank` | String | e.g. `"Tourist"`, `"Island Scout"`, `"Legend"` |
+| `stampsCollected` | List\<String\> | Stamp IDs — stored as JSON via `Converters.kt` |
 | `completedChallengeIds` | String | Comma-separated challenge IDs |
 | `quizCompleted` | Boolean | True after first Vibe Quiz completion |
 
