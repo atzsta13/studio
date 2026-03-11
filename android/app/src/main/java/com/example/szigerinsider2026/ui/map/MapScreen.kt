@@ -33,6 +33,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 
 sealed class MapPin(
     val id: String,
@@ -48,7 +49,7 @@ sealed class MapPin(
 }
 
 @Composable
-fun MapScreen() {
+fun MapScreen(navController: NavController? = null) {
     val context = LocalContext.current
     val viewModel: MapViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -197,6 +198,25 @@ fun MapScreen() {
                 CategoryChip("ALL", activeCategory == "all") { viewModel.selectCategory("all") }
                 CategoryChip("STAGES", activeCategory == "music") { viewModel.selectCategory("music") }
                 CategoryChip("FOOD", activeCategory == "food") { viewModel.selectCategory("food") }
+            }
+
+            // Food list shortcut when food filter is active
+            AnimatedVisibility(visible = activeCategory == "food" && navController != null) {
+                Box(
+                    modifier = Modifier
+                        .padding(top = 12.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(ToxicGreen.copy(alpha = 0.12f))
+                        .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(12.dp))
+                        .clickable { haptic.lightTap(); navController?.navigate("food") }
+                        .padding(horizontal = 16.dp, vertical = 10.dp)
+                ) {
+                    androidx.compose.material3.Text(
+                        text = "SEE ALL VENDORS →",
+                        style = BrutalistTypography.labelSmall,
+                        color = ToxicGreen
+                    )
+                }
             }
 
             // Task 3 — nearest water indicator

@@ -19,6 +19,8 @@ import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
@@ -43,6 +45,9 @@ import java.util.Locale
 fun ToolsScreen(navController: NavController) {
     val haptic = rememberHapticManager()
     val context = LocalContext.current
+    val vm: ToolsViewModel = viewModel()
+    val weather by vm.weather.collectAsStateWithLifecycle()
+    val isLoadingWeather by vm.isLoadingWeather.collectAsStateWithLifecycle()
     var hufAmount by remember { mutableStateOf("1000") }
     var selectedTab by remember { mutableIntStateOf(0) } // 0: Tactical, 1: Safety
     var isFlashOn by remember { mutableStateOf(false) }
@@ -119,13 +124,15 @@ fun ToolsScreen(navController: NavController) {
                 // TACTICAL TAB
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                        SurvivalCard(
-                            title = "UV FORECAST",
-                            value = "HIGH (8)",
-                            description = "Peak burn: 11:00 - 15:00. Reapply sunscreen now.",
-                            icon = Icons.Default.WbSunny,
-                            accentColor = Color(0xFFF97316)
-                        )
+                        if (isLoadingWeather) {
+                            Box(modifier = Modifier.fillMaxWidth().height(120.dp), contentAlignment = Alignment.Center) {
+                                CircularProgressIndicator(color = com.example.szigerinsider2026.ui.theme.CyanPulse, modifier = Modifier.size(32.dp))
+                            }
+                        } else {
+                            weather?.let { WeatherCard(it) }
+                        }
+
+                        TentFinderCard()
 
                         SOSBeaconButton(onClick = { isFlashOn = true })
                     }

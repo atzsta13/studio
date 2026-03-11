@@ -43,6 +43,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.szigerinsider2026.data.local.AppDatabase
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.szigerinsider2026.data.repository.LineupRepository
+import androidx.navigation.NavController
 
 data class Stamp(
     val id: String,
@@ -65,7 +66,7 @@ val STAMPS = listOf(
 )
 
 @Composable
-fun PassportScreen() {
+fun PassportScreen(navController: NavController? = null) {
     val context = LocalContext.current
     val viewModel: PassportViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -117,8 +118,18 @@ fun PassportScreen() {
                 color = TextMuted,
                 fontSize = 16.sp,
                 lineHeight = 22.sp,
-                modifier = Modifier.padding(bottom = 16.dp)
+                modifier = Modifier.padding(bottom = 12.dp)
             )
+            navController?.let { nav ->
+                androidx.compose.material3.OutlinedButton(
+                    onClick = { haptic.lightTap(); nav.navigate("highlights") },
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, PrimaryMagenta.copy(alpha = 0.4f))
+                ) {
+                    Text("MY HIGHLIGHTS →", color = PrimaryMagenta, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+                }
+            }
         }
 
         // Tab row

@@ -56,6 +56,8 @@ import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.quiz.VibeQuizScreen
 import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
 import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
+import com.example.szigerinsider2026.ui.food.FoodScreen
+import com.example.szigerinsider2026.ui.highlights.HighlightsScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
@@ -90,6 +92,8 @@ fun AppNavigation() {
         && currentRoute != "guide"
         && currentRoute != "vibe_quiz"
         && currentRoute != "vibe_results"
+        && currentRoute != "highlights"
+        && currentRoute != "food"
 
     Scaffold(
         bottomBar = {
@@ -118,10 +122,10 @@ fun AppNavigation() {
                 )
             }
             composable(Screen.Map.route) {
-                MapScreen()
+                MapScreen(navController = navController)
             }
             composable(Screen.Passport.route) {
-                PassportScreen()
+                PassportScreen(navController = navController)
             }
             composable(Screen.Tools.route) {
                 ToolsScreen(navController = navController)
@@ -145,6 +149,12 @@ fun AppNavigation() {
             }
             composable("vibe_results") {
                 VibeResultScreen(navController = navController, quizViewModel = quizViewModel)
+            }
+            composable("food") {
+                FoodScreen()
+            }
+            composable("highlights") {
+                HighlightsScreen(onBack = { navController.popBackStack() })
             }
         }
     }

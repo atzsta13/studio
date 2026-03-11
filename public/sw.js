@@ -36,8 +36,22 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. API CHECK: Don't cache API calls (keep data fresh)
+  // 3. API CHECK: Cache weather (stale-while-revalidate), skip all other API calls
   if (url.pathname.startsWith('/api/')) {
+    if (url.pathname === '/api/weather') {
+      event.respondWith(
+        caches.match(request).then((cached) => {
+          const networkFetch = fetch(request).then((response) => {
+            if (response && response.status === 200) {
+              const clone = response.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+            }
+            return response;
+          }).catch(() => cached);
+          return cached || networkFetch;
+        })
+      );
+    }
     return;
   }
 

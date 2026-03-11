@@ -4,10 +4,9 @@ Honest, current-state inventory. Features are marked by actual build status, not
 
 **Legend:**
 - ✅ Built and wired — exists in production code
-- 🚧 In progress — partially built or in current sprint (Phase 3)
-- 📋 Planned — specced in Phase 3 docs, not yet built
+- 🚧 In progress — partially built or in current sprint
 - ⏳ Awaiting data — designed, blocked on Sziget publishing schedule/venue data
-- ❌ Not built — was mentioned in early docs, deprioritized
+- ❌ Not built — was mentioned in early docs, deprioritised
 
 ---
 
@@ -16,20 +15,22 @@ Honest, current-state inventory. Features are marked by actual build status, not
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
 | Artist grid / list | ✅ | ✅ | 80 artists |
-| Search (fuzzy name/genre) | ✅ | ✅ | Real-time filter |
+| Search (fuzzy name/genre/bio) | ✅ | ✅ | Real-time filter |
 | Filter by festival day | ✅ | ✅ | ~53% of artists have a day |
 | Filter by genre | ✅ | ✅ | |
-| Filter by vibe/mood | ✅ | ✅ | 100% coverage after backfill |
+| Filter by vibe / mood | ✅ | ✅ | 100% coverage after backfill |
 | Filter by headliner | ✅ | ✅ | 6 headliners |
-| Filter by country | ❌ | 🚧 | Android: CountryExplorerSheet in Phase 3 |
 | Sort A–Z / headliners first | ✅ | ✅ | |
 | Artist detail page | ✅ | ✅ | Bio, genres, vibes, socials, image |
-| "More Like This" (similar artists) | ❌ | 🚧 | Android: Phase 3 Agent C |
-| Vibe DNA Quiz | ❌ | 🚧 | Android: Phase 3 Agent B (in progress) |
-| 2025 vs 2026 lineup diff | ❌ | 🚧 | Android: Phase 3 Agent D |
-| "Serendipity" random discovery | ❌ | 📋 | Android: Phase 3 Agent D |
-| AI natural language recommendations | ✅ | ❌ | Web only — requires Gemini API key |
-| Spotify match engine | ✅ | ❌ | Web only — OAuth flow |
+| In-app music preview (Spotify embed) | ✅ | ✅ | Web: iframe; Android: WebView |
+| "More Like This" (similar artists) | ✅ | ✅ | Genre/vibe crossmatch |
+| AI natural language recommendations | ✅ | ❌ | Web only — Genkit + Gemini 2.5 Flash |
+| Spotify match engine | ✅ | ❌ | Web only — OAuth flow, scans saved tracks |
+| Spotify playlist auto-builder | ✅ | ❌ | Web: POST /api/spotify/build-playlist, top-3 tracks per artist |
+| Vibe DNA Quiz | ❌ | ✅ | Android only |
+| "Serendipity" random discovery | ❌ | ✅ | Android: SerendipityScreen |
+| Country explorer | ✅ | ✅ | Web: by-country view; Android: CountryExplorerSheet |
+| 2025 vs 2026 lineup diff | ✅ | ❌ | Web: year toggle on Discover |
 
 ---
 
@@ -37,12 +38,12 @@ Honest, current-state inventory. Features are marked by actual build status, not
 
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
-| Day-based artist schedule | 🚧 | ✅ | Android: day tabs, no times |
+| Day-based artist browse | ✅ | ✅ | Day filter on both platforms |
 | Stage/time timetable grid | ⏳ | ⏳ | Data not published by Sziget yet |
-| Clash detection | ⏳ | ⏳ | Logic built in Android; no time data to run it on |
-| Personal lineup planner / favorites by day | ❌ | 📋 | Phase 3: MyLineupScreen |
-| Shareable lineup card (image export) | ❌ | 📋 | Phase 3: LineupCardExporter |
-| Set reminders / notifications | ❌ | 📋 | Requires time data + WorkManager |
+| Clash detection | ⏳ | ⏳ | Blocked on time data |
+| Personal lineup planner | ❌ | ❌ | Phase 3 backlog |
+| Shareable lineup card | ❌ | ❌ | Phase 3 backlog |
+| Set reminders / notifications | ❌ | ❌ | Requires time data + WorkManager |
 
 ---
 
@@ -50,14 +51,26 @@ Honest, current-state inventory. Features are marked by actual build status, not
 
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
-| POI map (water, toilets, first aid) | ✅ | ✅ | 8 POIs |
+| POI map (stages, water, toilets, first aid) | ✅ | ✅ | Placeholder coordinates |
 | Category filter | ✅ | ✅ | ALL / STAGES / FOOD / WATER |
 | Hydration mode (water-only highlight) | ✅ | ✅ | Android: pulsing cyan animation |
-| Nearest water station indicator | ❌ | ✅ | Android: Phase 3 Agent A |
-| Proper coordinate scaling | ✅ | ✅ | Android: fixed in Phase 3 Agent A |
-| Real venue/stage locations | ⏳ | ⏳ | Awaiting Sziget map data |
-| GPS / real-time positioning | ❌ | ❌ | Not planned — no georeferenced map |
-| Food vendor map | 🚧 | 🚧 | Placeholder data only |
+| Nearest water station indicator | ❌ | ✅ | Android only |
+| "Mark my tent" GPS pin | ✅ | ✅ | Web: localStorage + compass; Android: SharedPreferences + bearing arrow |
+| Real venue / stage coordinates | ⏳ | ⏳ | Awaiting Sziget map data |
+
+---
+
+## Food & Drink
+
+| Feature | Web | Android | Notes |
+|---------|-----|---------|-------|
+| Food vendor browser | ✅ | ✅ | Web: /food; Android: FoodScreen (accessed from Map → FOOD chip) |
+| Search by name / cuisine | ✅ | ✅ | |
+| Category filter (Food / Drink) | ✅ | ✅ | |
+| Dietary filter (Vegan, Gluten-Free) | ✅ | ✅ | Filters vendor.tags array |
+| Budget Hero filter | ✅ | ✅ | Vendors with budgetOption set |
+| Dietary tag pills on vendor cards | ✅ | ✅ | |
+| Real 2026 vendor data | ⏳ | ⏳ | Placeholder data in food.json |
 
 ---
 
@@ -65,11 +78,11 @@ Honest, current-state inventory. Features are marked by actual build status, not
 
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
-| Stamp collection | ✅ | ✅ | Predefined stamps |
+| Stamp collection | ✅ | ✅ | 8 predefined stamps |
 | XP / rank system | ✅ | ✅ | Room-persisted on Android |
-| Challenge system | ❌ | ✅ | Android: Phase 3 Agent E — 7 challenges |
-| Favoriting artists | ✅ | ✅ | Room-persisted on Android |
-| Must-see artist marking | ❌ | 📋 | Phase 3: MyLineupScreen DB extension |
+| Challenge system | ❌ | ✅ | Android: 7 challenges |
+| Favoriting artists | ✅ | ✅ | Room-persisted on Android; Firebase on Web |
+| Post-festival highlights wrap | ✅ | ✅ | Web: /highlights; Android: HighlightsScreen (via Passport) |
 
 ---
 
@@ -77,50 +90,55 @@ Honest, current-state inventory. Features are marked by actual build status, not
 
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
-| HUF currency converter | ✅ | ✅ | Hardcoded rate — update manually |
-| SOS strobe beacon | ❌ | ✅ | Android: full-screen flash overlay |
-| Emergency contacts (dials) | ❌ | ✅ | Android: 112, medical, security |
-| Festival survival guide | ❌ | ✅ | Android: Phase 3 Agent E — 8 sections |
-| Hungarian phrase clipboard | ❌ | ✅ | Android: tap to copy + haptic + snackbar |
-| Packing list | ❌ | ❌ | Was in early design; deprioritized |
-| UV safety indicator | ❌ | ❌ | Deprioritized |
-| Sound meter | ❌ | ❌ | Deprioritized |
+| HUF currency converter | ✅ | ✅ | Hardcoded rate — update manually pre-festival |
+| SOS strobe beacon | ✅ | ✅ | Both: full-screen flash overlay |
+| Emergency contacts (dial) | ✅ | ✅ | 112 security, 104 medical |
+| Weather forecast (7-day) | ✅ | ✅ | Open-Meteo API, Budapest coords, 30-min cache |
+| Rain alert | ✅ | ✅ | Triggers if any next-24h hour >60% precipitation |
+| Festival survival guide | ✅ | ✅ | Web: /guide subpages; Android: SurvivalGuideScreen |
+| Hungarian phrase clipboard | ❌ | ✅ | Android only |
+| Packing list | ✅ | ❌ | Web only |
 
 ---
 
-## Cross-cutting
+## Technical & Platform
 
 | Feature | Web | Android | Notes |
 |---------|-----|---------|-------|
-| Offline-first | ✅ | ✅ | All data bundled; images need connection |
-| Brutalist dark UI | ✅ | ✅ | OLEDBlack, neon accents |
+| Offline-first (PWA service worker) | ✅ | ✅ | Web: sw.js caches app shell + assets + weather; Android: all data bundled |
+| Brutalist dark OLED UI | ✅ | ✅ | OLEDBlack, AcidYellow, PrimaryMagenta, ToxicGreen, CyanPulse |
 | Haptic feedback | ❌ | ✅ | Android: HapticManager on all interactions |
 | Animated splash screen | ❌ | ✅ | |
 | Page transitions (fade) | ❌ | ✅ | NavHost enter/exit transitions |
-| Country flag emoji rendering | ✅ | ✅ | |
-
----
-
-## Planned but not yet specced
-
-Features that have been discussed but have no implementation spec yet:
-
-- **Spotify integration on Android** — OAuth, match Spotify library against lineup
-- **Push notifications** — day-of reminders for headliners (WorkManager)
-- **Friend sync / shared wishlists** — requires a backend; out of scope currently
-- **Web → Android feature parity pass** — bring Android-only features (guide, quiz, challenges) to web
+| Home screen widget | ❌ | ✅ | Android: Glance widget — rank, XP, favorites count |
+| Country flag emoji | ✅ | ✅ | |
+| PWA install prompt | ✅ | ❌ | Web only |
 
 ---
 
 ## Data dependencies
 
-Some features cannot be built until Sziget publishes official data:
+Some features cannot be fully built until Sziget publishes official data:
 
 | Blocked feature | Missing data | Where to add when available |
-|----------------|-------------|---------------------------|
-| Full timetable | `stage`, `startTime`, `endTime` per artist | `src/data/lineup.json` → sync to Android assets |
-| Clash detection (real) | Same as above | ScheduleScreen already has the logic |
-| Real food map | 2026 food vendor list with locations | `android/app/src/main/assets/food.json` |
-| Stage-specific map pins | Stage coordinates | `android/app/src/main/assets/poi.json` |
+|----------------|-------------|----------------------------|
+| Full timetable grid | `stage`, `startTime`, `endTime` per artist | `src/data/lineup.json` → sync to `android/app/src/main/assets/lineup.json` |
+| Clash detection (live) | Same as above | Logic stubbed in ScheduleScreen |
+| Real food vendor map | 2026 vendor list with map coordinates | `src/data/food.json` → sync to Android assets |
+| Real stage map pins | Stage coordinates for Óbudai-sziget | `src/data/poi.json` → sync to Android assets |
+| Home screen widget "now playing" | Time data | Update `SzigetWidget.kt` when available |
 
-See [`docs/PHASE_3_PLAN.md`](PHASE_3_PLAN.md) for the full implementation roadmap.
+---
+
+## Planned / backlog
+
+Features not yet built, prioritised from `FEATURES.md` in the repo root:
+
+- **Clash detection** (#3) — logic ready, awaiting schedule data
+- **Personal schedule builder** (#7) — time-slotted plan, different from favourites
+- **"Now playing" live indicator** (#10) — which acts are on right now
+- **Spotify Android integration** — match library against lineup
+- **Push notifications** — day-of reminders (WorkManager + FCM)
+- **Friend sync / shared wishlists** — requires a backend
+- **Accessibility map** (#141) — wheelchair routes, accessible toilets
+- **Multi-language support** (#159) — English + Hungarian minimum

@@ -2,6 +2,7 @@ package com.example.szigerinsider2026.ui.artist
 
 import android.content.Intent
 import android.net.Uri
+import android.webkit.WebView
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
@@ -33,6 +34,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -278,6 +280,31 @@ fun ArtistDetailScreen(
                                 }
                             }
                         }
+                    }
+                }
+            }
+
+            // Island Listen — Spotify embed
+            val spotifyId = a.socials?.spotify
+                ?.split("/artist/")?.getOrNull(1)
+                ?.split("?")?.firstOrNull()
+            if (spotifyId != null) {
+                item {
+                    SectionBlock(title = "ISLAND LISTEN") {
+                        AndroidView(
+                            factory = { ctx ->
+                                WebView(ctx).apply {
+                                    settings.javaScriptEnabled = true
+                                    settings.domStorageEnabled = true
+                                    settings.mediaPlaybackRequiresUserGesture = false
+                                    loadUrl("https://open.spotify.com/embed/artist/$spotifyId?utm_source=generator&theme=0")
+                                }
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(380.dp)
+                                .clip(RoundedCornerShape(32.dp))
+                        )
                     }
                 }
             }

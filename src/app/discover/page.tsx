@@ -35,6 +35,7 @@ import { recommendArtists, type RecommendOutput } from '@/ai/flows/recommend-art
 import { useFavorites } from '@/hooks/use-favorites';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
 
 const allArtists2026 = (lineup as any[]).map(a => ({
   ...a,
@@ -323,6 +324,9 @@ export default function DiscoverPage() {
               setIsSpotifyConnected(true);
               if (ids.length > 0) setViewMode('spotify');
             }} />
+            {isSpotifyConnected && spotifyMatches.length > 0 && (
+              <PlaylistBuilder matchedArtistIds={spotifyMatches} />
+            )}
 
             <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
               <DialogTrigger asChild>

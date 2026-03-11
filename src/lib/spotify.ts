@@ -2,7 +2,7 @@
 export const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID || 'd27e168c2c3746f7a22c075ce1a49dc2';
 export const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 export const REDIRECT_URI = 'http://127.0.0.1:9002/api/auth/spotify/callback';
-export const SCOPES = 'user-library-read';
+export const SCOPES = 'user-library-read playlist-modify-private playlist-modify-public';
 
 export const getAuthUrl = () => {
     const params = new URLSearchParams({

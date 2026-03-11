@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -107,6 +108,14 @@ export default function PassportPage() {
         title="Island Passport & XP"
         description="Collect stamps, favorite artists, and unlock your ultimate Sziget Legend rank."
       />
+      <div className="mb-8">
+        <Link
+          href="/highlights"
+          className="inline-flex items-center gap-3 px-8 py-4 rounded-[1.5rem] border border-primary/30 text-primary font-black uppercase text-[11px] tracking-widest bg-primary/5 hover:bg-primary/10 transition-all hover:scale-105"
+        >
+          ✨ View My 2026 Highlights →
+        </Link>
+      </div>
 
       <div className="mb-12">
         <Card className="bg-gradient-to-br from-indigo-600 to-primary text-white border-none shadow-2xl shadow-indigo-500/20 overflow-hidden relative">

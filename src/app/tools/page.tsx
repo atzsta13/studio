@@ -14,7 +14,6 @@ import {
   FileText,
   Phone,
   ShieldAlert,
-  Weight,
   ShieldCheck,
   QrCode,
   MapPin,
@@ -22,6 +21,7 @@ import {
   Languages
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { WeatherWidget } from '@/components/tools/weather-widget';
 
 export default function ToolsPage() {
   const { toast } = useToast();
@@ -111,6 +111,7 @@ export default function ToolsPage() {
             </TabsList>
 
             <TabsContent value="survival" className="space-y-10">
+              <WeatherWidget />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl relative overflow-hidden group backdrop-blur-3xl">
                   <div className="absolute right-[-20px] top-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-1000">
