@@ -163,7 +163,19 @@ fun AppNavigation() {
                     artistId = artistId,
                     onBack = { navController.popBackStack() },
                     onArtistNavigate = { id -> navController.navigate("artist/$id") },
-                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling }
+                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
+                    onGenreClick = { genre ->
+                        DiscoverViewModel.pendingGenreFilter = genre
+                        navController.navigate(Screen.Discover.route) {
+                            popUpTo(Screen.Discover.route) { inclusive = true }
+                        }
+                    },
+                    onVibeClick = { vibe ->
+                        DiscoverViewModel.pendingVibeFilter = vibe
+                        navController.navigate(Screen.Discover.route) {
+                            popUpTo(Screen.Discover.route) { inclusive = true }
+                        }
+                    }
                 )
             }
             composable("vibe_quiz") {

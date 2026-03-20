@@ -75,7 +75,9 @@ fun ArtistDetailScreen(
     artistId: String,
     onBack: () -> Unit,
     onArtistNavigate: (String) -> Unit = {},
-    onScrollStateChanged: (Boolean) -> Unit = {}
+    onScrollStateChanged: (Boolean) -> Unit = {},
+    onGenreClick: (String) -> Unit = {},
+    onVibeClick: (String) -> Unit = {}
 ) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
@@ -253,26 +255,50 @@ fun ArtistDetailScreen(
                 }
             }
 
-            // Genres
+            // Genres (clickable)
             if (a.genres.filter { it != "MUSIC" }.isNotEmpty()) {
                 item {
                     SectionBlock(title = "GENRES") {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             a.genres.filter { it != "MUSIC" }.forEach { genre ->
-                                TagPill(genre, MutedBackground, TextPrimary)
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(100))
+                                        .background(MutedBackground)
+                                        .border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(100))
+                                        .clickable {
+                                            haptic.lightTap()
+                                            onGenreClick(genre)
+                                        }
+                                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                                ) {
+                                    Text(genre.uppercase(), style = BrutalistTypography.labelSmall, color = TextPrimary, fontSize = 11.sp)
+                                }
                             }
                         }
                     }
                 }
             }
 
-            // Vibes
+            // Vibes (clickable)
             if (a.vibes.isNotEmpty()) {
                 item {
                     SectionBlock(title = "VIBES") {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             a.vibes.forEach { vibe ->
-                                TagPill(vibe, PrimaryMagenta.copy(alpha = 0.1f), PrimaryMagenta, PrimaryMagenta.copy(alpha = 0.25f))
+                                Box(
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(100))
+                                        .background(PrimaryMagenta.copy(alpha = 0.1f))
+                                        .border(1.dp, PrimaryMagenta.copy(alpha = 0.25f), RoundedCornerShape(100))
+                                        .clickable {
+                                            haptic.mediumTap()
+                                            onVibeClick(vibe)
+                                        }
+                                        .padding(horizontal = 14.dp, vertical = 6.dp)
+                                ) {
+                                    Text(vibe.uppercase(), style = BrutalistTypography.labelSmall, color = PrimaryMagenta, fontSize = 11.sp)
+                                }
                             }
                         }
                     }
