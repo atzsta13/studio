@@ -478,16 +478,46 @@ fun DiscoverScreen(
             }
         }
 
-        // Result count
+        // Header: Result count + Surprise Me button
         if (!isLoading) {
-            Text(
-                text = "${filteredArtists.size} ARTISTS",
-                style = BrutalistTypography.labelSmall,
-                color = TextMuted,
-                fontSize = 10.sp,
-                letterSpacing = 2.sp,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "${filteredArtists.size} ARTISTS",
+                    style = BrutalistTypography.labelSmall,
+                    color = TextMuted,
+                    fontSize = 10.sp,
+                    letterSpacing = 2.sp
+                )
+                Button(
+                    onClick = {
+                        haptic.mediumTap()
+                        val all = discoverViewModel.allArtists.value
+                        serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(all, favoritedIds)
+                    },
+                    modifier = Modifier.height(32.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = PrimaryMagenta,
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp)
+                ) {
+                    Icon(Icons.Filled.Shuffle, contentDescription = null, modifier = Modifier.size(14.sp.value.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "SURPRISE",
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 0.5.sp
+                    )
+                }
+            }
         }
 
         if (isLoading) {
@@ -517,22 +547,6 @@ fun DiscoverScreen(
             }
         }
     }
-
-    // Serendipity FAB
-    ExtendedFloatingActionButton(
-        onClick = {
-            haptic.mediumTap()
-            val all = discoverViewModel.allArtists.value
-            serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(all, favoritedIds)
-        },
-        modifier = Modifier
-            .align(Alignment.BottomEnd)
-            .padding(bottom = 100.dp, end = 20.dp),
-        containerColor = CardBackground,
-        contentColor = PrimaryMagenta,
-        icon = { Icon(Icons.Default.Shuffle, contentDescription = null) },
-        text = { Text("SURPRISE ME", fontWeight = FontWeight.Black, fontSize = 11.sp) }
-    )
 
     } // end Box
 
