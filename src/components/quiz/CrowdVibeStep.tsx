@@ -1,3 +1,4 @@
+import { useHaptic } from '@/hooks/useHaptic';
 import { CrowdVibeOption } from '@/types';
 import { QuizOptionCard } from './QuizOptionCard';
 
@@ -7,6 +8,12 @@ interface CrowdVibeStepProps {
 }
 
 export function CrowdVibeStep({ selected, onSelect }: CrowdVibeStepProps) {
+  const haptic = useHaptic();
+
+  const handleSelect = (vibe: CrowdVibeOption) => {
+    haptic.mediumTap();
+    onSelect(vibe);
+  };
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -21,28 +28,28 @@ export function CrowdVibeStep({ selected, onSelect }: CrowdVibeStepProps) {
           emoji="💃"
           description="Rhythmic and synchronized"
           selected={selected === 'DANCE_FLOOR'}
-          onClick={() => onSelect('DANCE_FLOOR')}
+          onClick={() => handleSelect('DANCE_FLOOR')}
         />
         <QuizOptionCard
           label="Mosh Pit"
           emoji="👊"
           description="Raw energy, uncontrolled"
           selected={selected === 'MOSH_PIT'}
-          onClick={() => onSelect('MOSH_PIT')}
+          onClick={() => handleSelect('MOSH_PIT')}
         />
         <QuizOptionCard
           label="Festival Field"
           emoji="🌾"
           description="Spread out, vibing together"
           selected={selected === 'FESTIVAL_FIELD'}
-          onClick={() => onSelect('FESTIVAL_FIELD')}
+          onClick={() => handleSelect('FESTIVAL_FIELD')}
         />
         <QuizOptionCard
           label="Intimate Stage"
           emoji="🎤"
           description="Close, personal connection"
           selected={selected === 'INTIMATE_STAGE'}
-          onClick={() => onSelect('INTIMATE_STAGE')}
+          onClick={() => handleSelect('INTIMATE_STAGE')}
         />
       </div>
     </div>

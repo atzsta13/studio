@@ -4,18 +4,21 @@ import { useState } from 'react';
 import { SiSpotify } from 'react-icons/si';
 import { ExternalLink, Loader2, ListMusic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useHaptic } from '@/hooks/useHaptic';
 
 interface PlaylistBuilderProps {
     matchedArtistIds: string[];
 }
 
 export function PlaylistBuilder({ matchedArtistIds }: PlaylistBuilderProps) {
+    const haptic = useHaptic();
     const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
     const [playlistUrl, setPlaylistUrl] = useState<string | null>(null);
     const [trackCount, setTrackCount] = useState(0);
     const [errorMsg, setErrorMsg] = useState('');
 
     const build = async () => {
+        haptic.mediumTap();
         setStatus('loading');
         setErrorMsg('');
         try {
@@ -104,7 +107,10 @@ export function PlaylistBuilder({ matchedArtistIds }: PlaylistBuilderProps) {
                     )}
                     <Button
                         variant="ghost"
-                        onClick={() => setStatus('idle')}
+                        onClick={() => {
+                            haptic.lightTap();
+                            setStatus('idle');
+                        }}
                         className="font-black uppercase tracking-wider text-xs h-10"
                     >
                         Try Again

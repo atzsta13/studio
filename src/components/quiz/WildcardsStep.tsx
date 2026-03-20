@@ -1,3 +1,4 @@
+import { useHaptic } from '@/hooks/useHaptic';
 import { QuizOptionCard } from './QuizOptionCard';
 
 interface WildcardsStepProps {
@@ -6,6 +7,12 @@ interface WildcardsStepProps {
 }
 
 export function WildcardsStep({ selected, onSelect }: WildcardsStepProps) {
+  const haptic = useHaptic();
+
+  const handleSelect = (wildcards: boolean) => {
+    haptic.mediumTap();
+    onSelect(wildcards);
+  };
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -22,14 +29,14 @@ export function WildcardsStep({ selected, onSelect }: WildcardsStepProps) {
           emoji="🎲"
           description="Unlock hidden gems"
           selected={selected === true}
-          onClick={() => onSelect(true)}
+          onClick={() => handleSelect(true)}
         />
         <QuizOptionCard
           label="Keep It Safe"
           emoji="🛡️"
           description="Stick to my taste"
           selected={selected === false}
-          onClick={() => onSelect(false)}
+          onClick={() => handleSelect(false)}
         />
       </div>
     </div>

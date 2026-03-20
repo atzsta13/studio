@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { LineupItem } from '@/types';
 import { useVibeQuiz } from '@/hooks/useVibeQuiz';
+import { useHaptic } from '@/hooks/useHaptic';
 import { EnergyStep } from './EnergyStep';
 import { GenreStep } from './GenreStep';
 import { CrowdVibeStep } from './CrowdVibeStep';
@@ -25,6 +26,7 @@ const STEPS = [
 ];
 
 export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
+  const haptic = useHaptic();
   const {
     state,
     results,
@@ -66,6 +68,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
   };
 
   const handleComplete = () => {
+    haptic.successBurst();
     computeResults();
     setShowResults(true);
   };
@@ -73,6 +76,16 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
   const handleRetake = () => {
     setShowResults(false);
     reset();
+  };
+
+  const handlePrevStep = () => {
+    haptic.lightTap();
+    prevStep();
+  };
+
+  const handleNextStep = () => {
+    haptic.mediumTap();
+    nextStep();
   };
 
   return (
@@ -93,6 +106,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
             <button
               key={i}
               onClick={() => {
+                haptic.lightTap();
                 if (i < state.step) prevStep();
                 while (state.step < i) nextStep();
               }}
@@ -144,7 +158,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
           <div className="flex gap-4">
             {state.step > 0 && (
               <button
-                onClick={prevStep}
+                onClick={handlePrevStep}
                 className="flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] border border-[#333333] rounded-lg hover:border-[#FFED4E] transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -154,7 +168,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
             <div className="flex-1" />
             {state.step < 4 ? (
               <button
-                onClick={nextStep}
+                onClick={handleNextStep}
                 disabled={!canProceed()}
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
                   canProceed()

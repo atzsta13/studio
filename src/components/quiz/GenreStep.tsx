@@ -1,3 +1,4 @@
+import { useHaptic } from '@/hooks/useHaptic';
 import { GenreOption } from '@/types';
 import { QuizOptionCard } from './QuizOptionCard';
 
@@ -18,6 +19,13 @@ const GENRES: { genre: GenreOption; emoji: string; label: string }[] = [
 ];
 
 export function GenreStep({ selected, onToggle }: GenreStepProps) {
+  const haptic = useHaptic();
+
+  const handleToggle = (genre: GenreOption) => {
+    haptic.mediumTap();
+    onToggle(genre);
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -35,7 +43,7 @@ export function GenreStep({ selected, onToggle }: GenreStepProps) {
             label={label}
             emoji={emoji}
             selected={selected.has(genre)}
-            onClick={() => onToggle(genre)}
+            onClick={() => handleToggle(genre)}
           />
         ))}
       </div>

@@ -1,3 +1,4 @@
+import { useHaptic } from '@/hooks/useHaptic';
 import { MoodTagOption } from '@/types';
 import { QuizOptionCard } from './QuizOptionCard';
 
@@ -7,6 +8,12 @@ interface MoodTagStepProps {
 }
 
 export function MoodTagStep({ selected, onSelect }: MoodTagStepProps) {
+  const haptic = useHaptic();
+
+  const handleSelect = (mood: MoodTagOption) => {
+    haptic.mediumTap();
+    onSelect(mood);
+  };
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -20,31 +27,31 @@ export function MoodTagStep({ selected, onSelect }: MoodTagStepProps) {
           label="Euphoric"
           emoji="😍"
           selected={selected === 'EUPHORIC'}
-          onClick={() => onSelect('EUPHORIC')}
+          onClick={() => handleSelect('EUPHORIC')}
         />
         <QuizOptionCard
           label="Dark"
           emoji="🌑"
           selected={selected === 'DARK'}
-          onClick={() => onSelect('DARK')}
+          onClick={() => handleSelect('DARK')}
         />
         <QuizOptionCard
           label="Nostalgic"
           emoji="📼"
           selected={selected === 'NOSTALGIC'}
-          onClick={() => onSelect('NOSTALGIC')}
+          onClick={() => handleSelect('NOSTALGIC')}
         />
         <QuizOptionCard
           label="Fresh"
           emoji="🌊"
           selected={selected === 'FRESH'}
-          onClick={() => onSelect('FRESH')}
+          onClick={() => handleSelect('FRESH')}
         />
         <QuizOptionCard
           label="Hard"
           emoji="⚔️"
           selected={selected === 'HARD'}
-          onClick={() => onSelect('HARD')}
+          onClick={() => handleSelect('HARD')}
         />
       </div>
     </div>

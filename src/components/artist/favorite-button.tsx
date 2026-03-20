@@ -1,6 +1,7 @@
 'use client';
 
 import { useFavorites, type FavoriteTier } from '@/hooks/use-favorites';
+import { useHaptic } from '@/hooks/useHaptic';
 import { useEffect, useState, useCallback } from 'react';
 
 interface FavoriteButtonProps {
@@ -29,6 +30,7 @@ function saveSeenIds(ids: Set<string>) {
 
 export function FavoriteButton({ artistId }: FavoriteButtonProps) {
   const { getFavoriteTier, addFavorite, removeFavorite, isFavorite } = useFavorites([]);
+  const haptic = useHaptic();
   const [mounted, setMounted] = useState(false);
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
@@ -39,6 +41,7 @@ export function FavoriteButton({ artistId }: FavoriteButtonProps) {
 
   const handleTierClick = useCallback(
     (tier: FavoriteTier) => {
+      haptic.mediumTap();
       const currentTier = getFavoriteTier(artistId);
       if (currentTier === tier) {
         // Clicking the active tier removes the favorite
@@ -48,10 +51,11 @@ export function FavoriteButton({ artistId }: FavoriteButtonProps) {
         addFavorite(artistId, tier);
       }
     },
-    [artistId, getFavoriteTier, addFavorite, removeFavorite]
+    [artistId, getFavoriteTier, addFavorite, removeFavorite, haptic]
   );
 
   const toggleSeen = useCallback(() => {
+    haptic.lightTap();
     setSeenIds(prev => {
       const updated = new Set(prev);
       if (updated.has(artistId)) {
@@ -62,7 +66,7 @@ export function FavoriteButton({ artistId }: FavoriteButtonProps) {
       saveSeenIds(updated);
       return updated;
     });
-  }, [artistId]);
+  }, [artistId, haptic]);
 
   if (!mounted) {
     return (

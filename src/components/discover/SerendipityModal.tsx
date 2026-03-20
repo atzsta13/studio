@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LineupItem } from '@/types';
 import { Heart, ChevronRight, X } from 'lucide-react';
+import { useHaptic } from '@/hooks/useHaptic';
 
 interface SerendipityModalProps {
   artist: LineupItem | null;
@@ -24,13 +25,30 @@ export function SerendipityModal({
   isFavorite,
   onToggleFavorite,
 }: SerendipityModalProps) {
+  const haptic = useHaptic();
   const [isSpinning, setIsSpinning] = useState(true);
 
   const handleSpinAgain = () => {
+    haptic.successBurst();
     setIsSpinning(true);
     setTimeout(() => {
       onSpinAgain();
     }, 1500);
+  };
+
+  const handleClose = () => {
+    haptic.lightTap();
+    onClose();
+  };
+
+  const handleExplore = () => {
+    haptic.mediumTap();
+    onExplore();
+  };
+
+  const handleToggleFavorite = (artistId: string) => {
+    haptic.favoriteTap();
+    onToggleFavorite?.(artistId);
   };
 
   return (
@@ -124,7 +142,7 @@ export function SerendipityModal({
 
                   {/* Close button */}
                   <button
-                    onClick={onClose}
+                    onClick={handleClose}
                     className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-black/80 rounded-full transition-colors z-10"
                   >
                     <X className="w-5 h-5 text-white" />
@@ -172,7 +190,7 @@ export function SerendipityModal({
                   <div className="pt-4 space-y-3">
                     <Link
                       href={`/artist/${artist.id}`}
-                      onClick={onExplore}
+                      onClick={handleExplore}
                       className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#FFED4E] hover:bg-white text-black font-black uppercase tracking-wider rounded-lg transition-colors"
                     >
                       Explore
@@ -188,7 +206,7 @@ export function SerendipityModal({
 
                     {onToggleFavorite && (
                       <button
-                        onClick={() => onToggleFavorite(artist.id)}
+                        onClick={() => handleToggleFavorite(artist.id)}
                         className={`w-full px-6 py-2 rounded-lg font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 ${
                           isFavorite
                             ? 'bg-[#FF00FF] text-white hover:bg-[#FF33FF]'

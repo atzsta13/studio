@@ -40,6 +40,7 @@ import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
 import { SerendipityModal } from '@/components/discover/SerendipityModal';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
+import { useHaptic } from '@/hooks/useHaptic';
 
 // Hard-coded hidden gem artist IDs — non-headliners with unusual/diverse vibes
 const HIDDEN_GEM_IDS = ['1', '4', '5', '47', '57', '70'];
@@ -84,6 +85,7 @@ const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Su
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
 export default function DiscoverPage() {
+  const haptic = useHaptic();
   const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
@@ -180,6 +182,7 @@ export default function DiscoverPage() {
   }, [filteredArtists]);
 
   const handleSurpriseMe = () => {
+    haptic.successBurst();
     const artist = getRandomUnfavoritedArtist(
       allArtists,
       allFavoriteIds,
@@ -211,6 +214,7 @@ export default function DiscoverPage() {
 
   const handleAiScout = async () => {
     if (!aiPrompt.trim()) return;
+    haptic.mediumTap();
     setIsAiLoading(true);
     try {
       const result = await recommendArtists({ prompt: aiPrompt });
@@ -222,6 +226,16 @@ export default function DiscoverPage() {
     } finally {
       setIsAiLoading(false);
     }
+  };
+
+  const handleViewModeChange = (mode: ViewMode) => {
+    haptic.lightTap();
+    setViewMode(mode);
+  };
+
+  const handleVibeSelect = (vibe: string | null) => {
+    haptic.lightTap();
+    setSelectedVibe(vibe);
   };
 
   const ArtistCard = ({ artist, size = 'default' }: { artist: typeof filteredArtists[0], size?: 'large' | 'default' }) => {
@@ -483,7 +497,7 @@ export default function DiscoverPage() {
               ].map(mode => (
                 <button
                   key={mode.id}
-                  onClick={() => setViewMode(mode.id as ViewMode)}
+                  onClick={() => handleViewModeChange(mode.id as ViewMode)}
                   className={`flex items-center gap-3 rounded-[1.2rem] px-8 py-4 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap ${viewMode === mode.id ? 'bg-background text-foreground shadow-2xl border border-white/10 scale-105' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   <mode.icon className="h-4 w-4" />
@@ -492,7 +506,7 @@ export default function DiscoverPage() {
               ))}
               {isSpotifyConnected && (
                 <button
-                  onClick={() => setViewMode('spotify')}
+                  onClick={() => handleViewModeChange('spotify')}
                   className={`flex items-center gap-3 rounded-[1.2rem] px-8 py-4 text-[11px] font-black tracking-[0.2em] uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-2xl' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   Matches
@@ -503,7 +517,7 @@ export default function DiscoverPage() {
 
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
             <button
-              onClick={() => setSelectedVibe(null)}
+              onClick={() => handleVibeSelect(null)}
               className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap border transition-all duration-500 ${!selectedVibe ? 'bg-primary border-primary text-white shadow-2xl scale-105' : 'bg-muted/20 border-white/5 text-muted-foreground hover:border-muted-foreground'}`}
             >
               ALL MOODS
@@ -511,7 +525,7 @@ export default function DiscoverPage() {
             {allVibeSet.map(vibe => (
               <button
                 key={vibe}
-                onClick={() => setSelectedVibe(vibe === selectedVibe ? null : vibe)}
+                onClick={() => handleVibeSelect(vibe === selectedVibe ? null : vibe)}
                 className={`px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap border transition-all duration-500 ${selectedVibe === vibe ? 'bg-primary border-primary text-white shadow-2xl scale-105' : 'bg-muted/20 border-white/5 text-muted-foreground hover:border-muted-foreground'}`}
               >
                 {vibe}

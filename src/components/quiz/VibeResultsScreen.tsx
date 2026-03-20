@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { LineupItem } from '@/types';
 import { Heart, ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
+import { useHaptic } from '@/hooks/useHaptic';
 
 interface VibeResultsScreenProps {
   results: LineupItem[];
@@ -19,9 +20,11 @@ export function VibeResultsScreen({
   onFavorite,
   onSaveAll,
 }: VibeResultsScreenProps) {
+  const haptic = useHaptic();
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
 
   const handleToggleFavorite = (id: string) => {
+    haptic.favoriteTap();
     const newFavorites = new Set(favorites);
     if (newFavorites.has(id)) {
       newFavorites.delete(id);
@@ -33,10 +36,16 @@ export function VibeResultsScreen({
   };
 
   const handleSaveAll = () => {
+    haptic.successBurst();
     results.forEach((artist) => {
       onFavorite(artist.id);
     });
     onSaveAll(results.map((a) => a.id));
+  };
+
+  const handleRetake = () => {
+    haptic.lightTap();
+    onRetake();
   };
 
   return (
@@ -137,7 +146,7 @@ export function VibeResultsScreen({
             Save All as Favorites
           </button>
           <button
-            onClick={onRetake}
+            onClick={handleRetake}
             className="flex-1 px-6 py-3 bg-[#1a1a1a] border border-[#333333] text-white font-semibold rounded-lg hover:border-[#FFED4E] transition-colors uppercase tracking-wide"
           >
             Retake Quiz

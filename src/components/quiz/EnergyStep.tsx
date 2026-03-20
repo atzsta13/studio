@@ -1,3 +1,4 @@
+import { useHaptic } from '@/hooks/useHaptic';
 import { EnergyLevel } from '@/types';
 import { QuizOptionCard } from './QuizOptionCard';
 
@@ -7,6 +8,12 @@ interface EnergyStepProps {
 }
 
 export function EnergyStep({ selected, onSelect }: EnergyStepProps) {
+  const haptic = useHaptic();
+
+  const handleSelect = (energy: EnergyLevel) => {
+    haptic.mediumTap();
+    onSelect(energy);
+  };
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -21,21 +28,21 @@ export function EnergyStep({ selected, onSelect }: EnergyStepProps) {
           emoji="🧊"
           description="Relaxed vibes"
           selected={selected === 'CHILL'}
-          onClick={() => onSelect('CHILL')}
+          onClick={() => handleSelect('CHILL')}
         />
         <QuizOptionCard
           label="Balanced"
           emoji="⚡"
           description="Mix of everything"
           selected={selected === 'BALANCED'}
-          onClick={() => onSelect('BALANCED')}
+          onClick={() => handleSelect('BALANCED')}
         />
         <QuizOptionCard
           label="Unhinged"
           emoji="🔥"
           description="All in, chaos"
           selected={selected === 'UNHINGED'}
-          onClick={() => onSelect('UNHINGED')}
+          onClick={() => handleSelect('UNHINGED')}
         />
       </div>
     </div>
