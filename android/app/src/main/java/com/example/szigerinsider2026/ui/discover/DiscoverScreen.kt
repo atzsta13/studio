@@ -56,10 +56,15 @@ import android.content.Intent
 import android.net.Uri
 
 @Composable
-fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavController? = null) {
+fun DiscoverScreen(
+    onArtistClick: (String) -> Unit = {},
+    navController: NavController? = null,
+    onScrollStateChanged: (Boolean) -> Unit = {}
+) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     val db = remember { AppDatabase.getDatabase(context) }
+    val gridState = rememberLazyGridState()
 
     val discoverViewModel: DiscoverViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -107,6 +112,10 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
     var spotifyCodeVerifier by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(gridState.isScrollInProgress) {
+        onScrollStateChanged(gridState.isScrollInProgress)
+    }
     val favoritedIds = remember(favoriteArtistIds) { favoriteArtistIds }
 
     val gridState = rememberLazyGridState()

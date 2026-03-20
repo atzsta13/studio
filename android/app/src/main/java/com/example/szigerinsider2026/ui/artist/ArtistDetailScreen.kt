@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -73,12 +74,14 @@ private fun findSimilarArtists(current: Artist, all: List<Artist>): List<Pair<Ar
 fun ArtistDetailScreen(
     artistId: String,
     onBack: () -> Unit,
-    onArtistNavigate: (String) -> Unit = {}
+    onArtistNavigate: (String) -> Unit = {},
+    onScrollStateChanged: (Boolean) -> Unit = {}
 ) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     var artist by remember { mutableStateOf<Artist?>(null) }
     var allArtists by remember { mutableStateOf<List<Artist>>(emptyList()) }
+    val scrollState = androidx.compose.foundation.lazy.rememberLazyListState()
 
     val artistViewModel: ArtistViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
@@ -109,13 +112,20 @@ fun ArtistDetailScreen(
         allArtists = lineup
     }
 
+    LaunchedEffect(scrollState.isScrollInProgress) {
+        onScrollStateChanged(scrollState.isScrollInProgress)
+    }
+
     artist?.let { a ->
         val similarArtists = remember(a, allArtists) {
             if (allArtists.isEmpty()) emptyList()
             else findSimilarArtists(a, allArtists)
         }
 
-        LazyColumn(modifier = Modifier.fillMaxSize().background(OLEDBlack)) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().background(OLEDBlack),
+            state = scrollState
+        ) {
 
             // Hero
             item {

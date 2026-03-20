@@ -47,7 +47,12 @@ import com.example.szigerinsider2026.ui.schedule.ScheduleScreen
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.core.tween
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -83,6 +88,7 @@ fun AppNavigation() {
     val quizViewModel: VibeQuizViewModel = viewModel(
         factory = VibeQuizViewModel.Factory(LineupRepository(context))
     )
+    val showBottomNavBar = remember { mutableStateOf(true) }
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -100,7 +106,19 @@ fun AppNavigation() {
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
-                FluidBottomNavigation(navController = navController)
+                AnimatedVisibility(
+                    visible = showBottomNavBar.value,
+                    enter = slideInVertically(
+                        initialOffsetY = { it },
+                        animationSpec = tween(300)
+                    ),
+                    exit = slideOutVertically(
+                        targetOffsetY = { it },
+                        animationSpec = tween(300)
+                    )
+                ) {
+                    FluidBottomNavigation(navController = navController)
+                }
             }
         }
     ) { innerPadding ->
@@ -120,7 +138,8 @@ fun AppNavigation() {
             composable(Screen.Discover.route) {
                 DiscoverScreen(
                     onArtistClick = { id -> navController.navigate("artist/$id") },
-                    navController = navController
+                    navController = navController,
+                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling }
                 )
             }
             composable(Screen.Map.route) {
@@ -143,7 +162,8 @@ fun AppNavigation() {
                 ArtistDetailScreen(
                     artistId = artistId,
                     onBack = { navController.popBackStack() },
-                    onArtistNavigate = { id -> navController.navigate("artist/$id") }
+                    onArtistNavigate = { id -> navController.navigate("artist/$id") },
+                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling }
                 )
             }
             composable("vibe_quiz") {
