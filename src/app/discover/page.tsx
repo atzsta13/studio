@@ -38,6 +38,8 @@ import { useFavorites } from '@/hooks/use-favorites';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
+import { SerendipityModal } from '@/components/discover/SerendipityModal';
+import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 
 // Hard-coded hidden gem artist IDs — non-headliners with unusual/diverse vibes
 const HIDDEN_GEM_IDS = ['1', '4', '5', '47', '57', '70'];
@@ -103,6 +105,9 @@ export default function DiscoverPage() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState<RecommendOutput | null>(null);
   const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
+
+  const [serendipityArtist, setSerendipityArtist] = useState<LineupItem | null>(null);
+  const [serendipityHistory, setSerendipityHistory] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     setIsMounted(true);
@@ -175,10 +180,33 @@ export default function DiscoverPage() {
   }, [filteredArtists]);
 
   const handleSurpriseMe = () => {
-    const unfavorited = allArtists.filter(a => !allFavoriteIds.has(a.id));
-    const pool = unfavorited.length > 0 ? unfavorited : allArtists;
-    const pick = pool[Math.floor(Math.random() * pool.length)];
-    if (pick) router.push(`/artist/${pick.id}`);
+    const artist = getRandomUnfavoritedArtist(
+      allArtists,
+      allFavoriteIds,
+      serendipityHistory
+    );
+    if (artist) {
+      setSerendipityArtist(artist);
+    }
+  };
+
+  const handleSerendipitySpinAgain = () => {
+    const artist = getRandomUnfavoritedArtist(
+      allArtists,
+      allFavoriteIds,
+      serendipityHistory
+    );
+    if (artist) {
+      setSerendipityArtist(artist);
+    }
+  };
+
+  const handleSerendipityClose = () => {
+    setSerendipityArtist(null);
+  };
+
+  const handleSerendipityExplore = () => {
+    setSerendipityArtist(null);
   };
 
   const handleAiScout = async () => {
@@ -687,6 +715,15 @@ export default function DiscoverPage() {
           </Button>
         </div>
       )}
+
+      <SerendipityModal
+        artist={serendipityArtist}
+        onSpinAgain={handleSerendipitySpinAgain}
+        onClose={handleSerendipityClose}
+        onExplore={handleSerendipityExplore}
+        isFavorite={serendipityArtist ? isFavorite(serendipityArtist.id) : false}
+        onToggleFavorite={(artistId) => toggleFavorite(artistId, 'interested')}
+      />
     </div>
   );
 }
