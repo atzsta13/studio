@@ -345,32 +345,46 @@ fun ArtistDetailScreen(
                 }
             }
 
-            // Island Listen — Spotify embed
-            val spotifyId = a.socials?.spotify
-                ?.split("/artist/")?.getOrNull(1)
-                ?.split("?")?.firstOrNull()
-            if (spotifyId != null) {
+            // Island Listen — Spotify open button (per Spotify official mobile guidelines)
+            a.socials?.spotify?.let { spotifyUrl ->
                 item {
                     SectionBlock(title = "ISLAND LISTEN") {
-                        AndroidView(
-                            factory = { ctx ->
-                                WebView(ctx).apply {
-                                    settings.apply {
-                                        javaScriptEnabled = true
-                                        domStorageEnabled = true
-                                        mediaPlaybackRequiresUserGesture = false
-                                        mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-                                        userAgentString = userAgentString.replace("; wv", "")
-                                    }
-                                    setBackgroundColor(android.graphics.Color.TRANSPARENT)
-                                    loadUrl("https://open.spotify.com/embed/artist/$spotifyId?utm_source=generator")
+                        Button(
+                            onClick = {
+                                haptic.successBurst()
+                                runCatching {
+                                    context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(spotifyUrl)))
                                 }
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(350.dp)
-                                .clip(RoundedCornerShape(16.dp))
-                        )
+                                .height(56.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFF1DB954),
+                                contentColor = Color.White
+                            ),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Center,
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Star,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp),
+                                    tint = Color.White
+                                )
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Text(
+                                    text = "LISTEN ON SPOTIFY",
+                                    fontWeight = FontWeight.Black,
+                                    fontSize = 14.sp,
+                                    letterSpacing = 1.sp
+                                )
+                            }
+                        }
                     }
                 }
             }
