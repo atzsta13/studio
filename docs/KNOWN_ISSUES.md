@@ -1,6 +1,6 @@
 # Known Issues & Tech Debt Log
 
-**Last updated:** 2026-03-20
+**Last updated:** 2026-03-20 (reviewed 2026-03-20 post-sprint)
 **Format:** Severity (Critical/High/Medium/Low) + Status (Open/Workaround/Accepted)
 
 ---
@@ -498,6 +498,24 @@ export async function middleware(request: NextRequest) {
 **Severity:** 🟢 Low
 **Status:** ✅ Fixed (commit abc123)
 **Details:** Widget displayed "null" when user had 0 favorites
+
+---
+
+### Issue #15: DiscoverViewModel Pending Filter via Companion Object
+
+**Severity:** 🟢 Low
+**Status:** ⏳ Accepted (works, minor architectural smell)
+**File:** `ui/discover/DiscoverViewModel.kt`
+
+**Context:**
+Genre/vibe tag clicks on ArtistDetailScreen navigate back to Discover and apply a filter. The filter value is passed via a static companion object (`pendingGenreFilter`, `pendingVibeFilter`) rather than a proper navigation argument or shared ViewModel.
+
+**Risk:**
+- If ViewModel is recreated unexpectedly, filter could be missed
+- Not testable in isolation
+
+**Fix (when time allows):**
+Use `savedStateHandle` in DiscoverViewModel or pass filter as a navigation argument.
 
 ---
 

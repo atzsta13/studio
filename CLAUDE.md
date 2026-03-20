@@ -82,18 +82,21 @@ Key versions: AGP 8.13.2, Kotlin 2.0.21, compileSdk 35, minSdk 26.
   - `data/model/` — Kotlin data classes (`Artist`, `POI`, `FoodVendor`, `MapCoords`, `WeatherData`, `DailyForecast`)
   - `data/repository/` — `LineupRepository` (lineup.json), `POIRepository` (poi.json), `FoodRepository` (food.json), `WeatherRepository` (Open-Meteo API, 30-min cache)
   - `data/local/` — Room database (`AppDatabase`, v2) with two entities: `UserProgress` (legendXp, currentRank, stampsCollected, completedChallengeIds, quizCompleted) and `FavoriteArtist`. Accessed via `UserDao`. Singleton via `AppDatabase.getDatabase(context)`.
+- **Navigation**: Bottom nav is **scroll-aware** — hides when scrolling down, reappears on scroll up (Material Design 3). Filter header in Discover also collapses on scroll.
 - **Screens**:
   - `ui/home/` — Island Pulse feed (Wednesday headliners from JSON)
-  - `ui/discover/` — Artist grid with 4 filter rows (sort: headliners/A-Z, day, genre, vibe), collapsing header. `DiscoverViewModel` + `ArtistViewModel`.
-  - `ui/artist/` — `ArtistDetailScreen` — hero image, meta pills, genres, vibes, bio, social links, Spotify WebView embed ("Island Listen"), "More Like This"
+  - `ui/discover/` — Artist grid with 4 filter rows (sort: headliners/A-Z, day, genre, vibe), collapsing header on scroll. "SURPRISE" button in sticky header triggers Serendipity modal. `DiscoverViewModel` + `ArtistViewModel` + `SpotifyViewModel`. `SerendipityScreen.kt` for random artist discovery.
+  - `ui/artist/` — `ArtistDetailScreen` — hero image, meta pills, genres (clickable → filter Discover), vibes (clickable → filter Discover), bio, social links, Spotify embed ("Island Listen"), "Saw This Set" toggle, "More Like This" carousel. Genre/vibe tags navigate back to Discover with filter applied.
   - `ui/map/` — Tactical dot map with category filter (ALL/STAGES/FOOD/WATER). "SEE ALL VENDORS →" button appears when FOOD chip is active. `MapViewModel`.
   - `ui/food/` — `FoodScreen` + `FoodViewModel` — food vendor list with search, category chips (Food/Drink), dietary chips (VEGAN / GLUTEN-FREE / BUDGET HERO). Accessed from Map FOOD chip.
   - `ui/passport/` — Stamp collection + XP/rank + challenges, persisted in Room. "MY HIGHLIGHTS →" button. `PassportViewModel`.
   - `ui/highlights/` — `HighlightsScreen` + `HighlightsViewModel` — post-festival wrap: rank/XP/stamps stats, top genres/vibes, favorite artist list, share sheet.
   - `ui/tools/` — `ToolsScreen` (driven by `ToolsViewModel`): live weather card, tent finder with GPS, HUF converter, SOS beacon, emergency contacts. `WeatherCard.kt`, `TentFinderCard.kt`.
-  - `ui/quiz/` — Vibe DNA quiz flow
+  - `ui/quiz/` — Vibe DNA quiz flow (`VibeQuizScreen` + `VibeResultScreen`)
   - `ui/splash/` — Brutalist entrance screen
   - `widget/` — `SzigetWidget` + `SzigetWidgetReceiver` — Glance home screen widget showing rank, XP, and favorite count.
+- **Spotify (Android)**: PKCE OAuth flow in `data/repository/SpotifyRepository.kt`. Deep link: `sziget://spotify-callback`. Token stored in SharedPreferences. `SpotifyViewModel` manages auth state + matched artist IDs. Discover screen shows "N MATCHES" chip + "SHOW ONLY" toggle.
+- **Bottom bar hidden on**: `splash`, `artist/{id}`, `schedule`, `guide`, `vibe_quiz`, `vibe_results`, `highlights`, `food`, `packing_list`.
 - **Haptics**: `ui/utils/HapticManager.kt` — `lightTap()`, `mediumTap()`, `favoriteTap()`, `successBurst()`. Use `rememberHapticManager()` in any composable. Required on all interactive elements.
 - **Theme**: Brutalist dark aesthetic. Colors in `ui/theme/Color.kt` — `OLEDBlack`, `AcidYellow`, `PrimaryMagenta`, `CardBackground`, `ToxicGreen`, `CyanPulse`.
 
@@ -101,8 +104,9 @@ Key versions: AGP 8.13.2, Kotlin 2.0.21, compileSdk 35, minSdk 26.
 
 - `fallbackToDestructiveMigration()` is set on Room — schema changes wipe local data. Increment `version` in `@Database` annotation when changing entities. **Current version: 2.**
 - The Kotlin serialization plugin (`kotlin-serialization`) is applied in `build.gradle.kts` — required for `@Serializable` to work at runtime. Always use `Json { ignoreUnknownKeys = true }` when deserializing.
-- When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`, add route to `showBottomBar` exclusion if it should hide the nav.
+- When adding a new screen: create the file, import it in `Navigation.kt`, add a `composable()` entry, add haptic feedback via `rememberHapticManager()`, add route to `showBottomBar` exclusion if it should hide the nav, add `onScrollStateChanged` callback if screen is scrollable.
 - ViewModels use manual factory pattern (`ViewModelProvider.Factory`) — no Hilt.
 - `Converters.kt` handles `List<String>` ↔ JSON for Room.
 - Location permission (`ACCESS_FINE_LOCATION`) is declared in the manifest — needed by `TentFinderCard`.
 - Glance widget dependencies: `glance-appwidget:1.1.0` + `glance-material3:1.1.0`.
+- `DiscoverViewModel.pendingGenreFilter` / `pendingVibeFilter` — static fields for carrying filter state from ArtistDetailScreen back to Discover. Set before navigating, cleared in `init`.
