@@ -171,52 +171,45 @@ fun FluidBottomNavigation(navController: NavHostController) {
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = rememberHapticManager()
 
-    Box(
+    NavigationBar(
         modifier = Modifier
             .fillMaxWidth()
-            .navigationBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 10.dp)
+            .navigationBarsPadding(),
+        containerColor = CardBackground,
+        contentColor = AcidYellow,
+        tonalElevation = 3.dp,
+        windowInsets = androidx.compose.foundation.layout.WindowInsets(0)
     ) {
-        NavigationBar(
-            modifier = Modifier
-                .clip(RoundedCornerShape(28.dp))
-                .border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(28.dp)),
-            containerColor = CardBackground,
-            contentColor = AcidYellow,
-            tonalElevation = 0.dp,
-            windowInsets = androidx.compose.foundation.layout.WindowInsets(0)
-        ) {
-            bottomNavItems.forEach { screen ->
-                val isSelected = currentRoute == screen.route
-                NavigationBarItem(
-                    icon = { Icon(screen.icon, contentDescription = screen.label) },
-                    label = {
-                        Text(
-                            screen.label,
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal
-                        )
-                    },
-                    selected = isSelected,
-                    onClick = {
-                        if (!isSelected) {
-                            haptic.lightTap()
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        }
-                    },
-                    colors = NavigationBarItemDefaults.colors(
-                        selectedIconColor = MaterialTheme.colorScheme.background,
-                        selectedTextColor = AcidYellow,
-                        indicatorColor = AcidYellow,
-                        unselectedIconColor = TextMuted,
-                        unselectedTextColor = TextMuted
+        bottomNavItems.forEach { screen ->
+            val isSelected = currentRoute == screen.route
+            NavigationBarItem(
+                icon = { Icon(screen.icon, contentDescription = screen.label) },
+                label = {
+                    Text(
+                        screen.label,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal
                     )
+                },
+                selected = isSelected,
+                onClick = {
+                    if (!isSelected) {
+                        haptic.lightTap()
+                        navController.navigate(screen.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    }
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    selectedIconColor = AcidYellow,
+                    selectedTextColor = AcidYellow,
+                    indicatorColor = AcidYellow.copy(alpha = 0.12f),
+                    unselectedIconColor = TextMuted,
+                    unselectedTextColor = TextMuted
                 )
-            }
+            )
         }
     }
 }
