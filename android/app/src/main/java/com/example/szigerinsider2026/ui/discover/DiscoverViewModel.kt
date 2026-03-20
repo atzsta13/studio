@@ -17,6 +17,7 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     private val _searchQuery = MutableStateFlow("")
     private val _isLoading = MutableStateFlow(true)
     private val _countryFilter = MutableStateFlow<String?>(null)
+    private val _selectedYear = MutableStateFlow("2026")
 
     val allArtists: StateFlow<List<Artist>> = _allArtists.asStateFlow()
     val sortMode = _sortMode.asStateFlow()
@@ -26,6 +27,7 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     val searchQuery = _searchQuery.asStateFlow()
     val isLoading = _isLoading.asStateFlow()
     val countryFilter: StateFlow<String?> = _countryFilter.asStateFlow()
+    val selectedYear: StateFlow<String> = _selectedYear.asStateFlow()
 
     private val dayOrder = listOf("Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday")
 
@@ -74,7 +76,7 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                _allArtists.value = repository.getLineup()
+                _allArtists.value = repository.getLineup(_selectedYear.value)
             } finally {
                 _isLoading.value = false
             }
@@ -85,7 +87,7 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                _allArtists.value = repository.getLineup()
+                _allArtists.value = repository.getLineup(_selectedYear.value)
             } finally {
                 _isLoading.value = false
             }
@@ -98,6 +100,10 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     fun selectVibe(vibe: String?) { _selectedVibe.value = vibe }
     fun setSearchQuery(query: String) { _searchQuery.value = query }
     fun setCountryFilter(code: String?) { _countryFilter.value = code }
+    fun setYear(year: String) {
+        _selectedYear.value = year
+        loadArtists()
+    }
 
     private val _serendipityHistory = mutableSetOf<String>()
 

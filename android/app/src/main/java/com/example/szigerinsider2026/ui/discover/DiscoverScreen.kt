@@ -85,6 +85,7 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
     val countryFilter by discoverViewModel.countryFilter.collectAsStateWithLifecycle()
     val allArtists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
+    val selectedYear by discoverViewModel.selectedYear.collectAsStateWithLifecycle()
 
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
@@ -219,6 +220,30 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
                     isSelected = sortMode == "az",
                     selectedColor = AcidYellow,
                     onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") }
+                )
+            }
+        }
+
+        // Year toggle row
+        LazyRow(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            item {
+                FilterChip(
+                    text = "2025",
+                    isSelected = selectedYear == "2025",
+                    selectedColor = CyanPulse,
+                    onClick = { haptic.lightTap(); discoverViewModel.setYear("2025") }
+                )
+            }
+            item {
+                FilterChip(
+                    text = "2026",
+                    isSelected = selectedYear == "2026",
+                    selectedColor = CyanPulse,
+                    onClick = { haptic.lightTap(); discoverViewModel.setYear("2026") }
                 )
             }
         }
