@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [UserProgress::class, FavoriteArtist::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 @androidx.room.TypeConverters(Converters::class)

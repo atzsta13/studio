@@ -89,7 +89,15 @@ fun ArtistDetailScreen(
         }
     )
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
+    val mustSeeArtistIds by artistViewModel.mustSeeArtistIds.collectAsStateWithLifecycle()
+    val interestedArtistIds by artistViewModel.interestedArtistIds.collectAsStateWithLifecycle()
+
     val isFavorite = favoriteArtistIds.contains(artistId)
+    val currentTier = when {
+        mustSeeArtistIds.contains(artistId) -> "must_see"
+        interestedArtistIds.contains(artistId) -> "interested"
+        else -> null
+    }
 
     var isSeen by remember {
         mutableStateOf(getSeenArtistIds(context).contains(artistId))
@@ -143,7 +151,7 @@ fun ArtistDetailScreen(
                     ) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = Color.White, modifier = Modifier.size(22.dp))
                     }
-                    // Favorite
+                    // Favorite (tiered: None → Interested → Must See → None)
                     Box(
                         modifier = Modifier
                             .align(Alignment.TopEnd)
@@ -151,17 +159,50 @@ fun ArtistDetailScreen(
                             .size(44.dp)
                             .clip(CircleShape)
                             .background(Color.Black.copy(alpha = 0.55f))
-                            .border(1.dp, if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.12f), CircleShape)
+                            .border(
+                                1.dp,
+                                when (currentTier) {
+                                    "must_see" -> PrimaryMagenta
+                                    "interested" -> CyanPulse
+                                    else -> Color.White.copy(alpha = 0.12f)
+                                },
+                                CircleShape
+                            )
                             .clickable {
-                                if (isFavorite) haptic.mediumTap() else haptic.favoriteTap()
-                                artistViewModel.toggleFavorite(a.id)
+                                // Cycle through tiers: None → Interested → Must See → None
+                                when (currentTier) {
+                                    null -> {
+                                        haptic.favoriteTap()
+                                        artistViewModel.setFavoriteTier(a.id, "interested")
+                                    }
+                                    "interested" -> {
+                                        haptic.successBurst()
+                                        artistViewModel.setFavoriteTier(a.id, "must_see")
+                                    }
+                                    "must_see" -> {
+                                        haptic.lightTap()
+                                        artistViewModel.removeFavorite(a.id)
+                                    }
+                                }
                             },
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
-                            contentDescription = "Favorite",
-                            tint = if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.6f),
+                            imageVector = when (currentTier) {
+                                "must_see" -> Icons.Filled.Star
+                                "interested" -> Icons.Outlined.Star
+                                else -> Icons.Outlined.StarBorder
+                            },
+                            contentDescription = when (currentTier) {
+                                "must_see" -> "Must See"
+                                "interested" -> "Interested"
+                                else -> "Add to Favorites"
+                            },
+                            tint = when (currentTier) {
+                                "must_see" -> PrimaryMagenta
+                                "interested" -> CyanPulse
+                                else -> Color.White.copy(alpha = 0.6f)
+                            },
                             modifier = Modifier.size(24.dp)
                         )
                     }

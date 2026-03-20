@@ -13,10 +13,14 @@ data class HighlightsSummary(
     val rank: String,
     val xp: Int,
     val favoriteCount: Int,
+    val mustSeeCount: Int,
+    val interestedCount: Int,
     val topGenres: List<String>,
     val topVibes: List<String>,
     val stampsCount: Int,
-    val favoriteNames: List<String>
+    val favoriteNames: List<String>,
+    val mustSeeNames: List<String>,
+    val interestedNames: List<String>
 )
 
 class HighlightsViewModel(
@@ -34,6 +38,11 @@ class HighlightsViewModel(
                 val artistMap = lineup.associateBy { it.id }
                 val favArtists = favorites.mapNotNull { artistMap[it.artistId] }
 
+                val mustSeeFavorites = favorites.filter { it.tier == "must_see" }
+                val interestedFavorites = favorites.filter { it.tier == "interested" }
+                val mustSeeArtists = mustSeeFavorites.mapNotNull { artistMap[it.artistId] }
+                val interestedArtists = interestedFavorites.mapNotNull { artistMap[it.artistId] }
+
                 val genreCount = mutableMapOf<String, Int>()
                 val vibeCount = mutableMapOf<String, Int>()
                 favArtists.forEach { a ->
@@ -45,10 +54,14 @@ class HighlightsViewModel(
                     rank = progress?.currentRank ?: "Tourist",
                     xp = progress?.legendXp ?: 0,
                     favoriteCount = favorites.size,
+                    mustSeeCount = mustSeeFavorites.size,
+                    interestedCount = interestedFavorites.size,
                     topGenres = genreCount.entries.sortedByDescending { it.value }.take(4).map { it.key },
                     topVibes = vibeCount.entries.sortedByDescending { it.value }.take(4).map { it.key },
                     stampsCount = progress?.stampsCollected?.size ?: 0,
-                    favoriteNames = favArtists.map { it.artist }.take(10)
+                    favoriteNames = favArtists.map { it.artist }.take(10),
+                    mustSeeNames = mustSeeArtists.map { it.artist }.take(10),
+                    interestedNames = interestedArtists.map { it.artist }.take(10)
                 )
             }.collect { _summary.value = it }
         }

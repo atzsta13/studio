@@ -80,16 +80,35 @@ fun HighlightsScreen(onBack: () -> Unit) {
                 item {
                     Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)) {
                         Text("YOUR LINEUP", color = TextMuted, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp, modifier = Modifier.padding(bottom = 12.dp))
-                        s.favoriteNames.forEach { name ->
-                            Text(
-                                name.uppercase(),
-                                color = TextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Black,
-                                fontStyle = FontStyle.Italic, letterSpacing = (-1).sp, lineHeight = 28.sp,
-                                modifier = Modifier.padding(vertical = 2.dp)
-                            )
+
+                        // Must See tier
+                        if (s.mustSeeNames.isNotEmpty()) {
+                            Text("⭐ MUST SEE (${s.mustSeeCount})", color = PrimaryMagenta, fontSize = 10.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(bottom = 8.dp, top = 8.dp))
+                            s.mustSeeNames.forEach { name ->
+                                Text(
+                                    name.uppercase(),
+                                    color = TextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Black,
+                                    fontStyle = FontStyle.Italic, letterSpacing = (-1).sp, lineHeight = 28.sp,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                            }
                         }
+
+                        // Interested tier
+                        if (s.interestedNames.isNotEmpty()) {
+                            Text("💙 INTERESTED (${s.interestedCount})", color = CyanPulse, fontSize = 10.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(bottom = 8.dp, top = 12.dp))
+                            s.interestedNames.forEach { name ->
+                                Text(
+                                    name.uppercase(),
+                                    color = TextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Black,
+                                    fontStyle = FontStyle.Italic, letterSpacing = (-1).sp, lineHeight = 28.sp,
+                                    modifier = Modifier.padding(vertical = 2.dp)
+                                )
+                            }
+                        }
+
                         if (s.favoriteCount > 10) {
-                            Text("+${s.favoriteCount - 10} MORE", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 4.dp))
+                            Text("+${s.favoriteCount - 10} MORE", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 12.dp))
                         }
                     }
                 }
@@ -104,12 +123,16 @@ fun HighlightsScreen(onBack: () -> Unit) {
                             append("🎪 My Sziget 2026 Highlights\n\n")
                             append("🏆 Rank: ${s.rank}\n")
                             append("⚡ XP: ${s.xp}\n")
-                            append("❤️ Saved: ${s.favoriteCount} artists\n")
+                            append("❤️ Saved: ${s.favoriteCount} artists (⭐ ${s.mustSeeCount} Must See, 💙 ${s.interestedCount} Interested)\n")
                             if (s.topGenres.isNotEmpty()) append("🎵 Genres: ${s.topGenres.joinToString(", ")}\n")
                             if (s.topVibes.isNotEmpty()) append("✨ Vibes: ${s.topVibes.joinToString(", ")}\n")
-                            if (s.favoriteNames.isNotEmpty()) {
-                                append("\n🎤 My lineup:\n")
-                                s.favoriteNames.take(5).forEach { append("• $it\n") }
+                            if (s.mustSeeNames.isNotEmpty()) {
+                                append("\n⭐ Must See:\n")
+                                s.mustSeeNames.take(5).forEach { append("• $it\n") }
+                            }
+                            if (s.interestedNames.isNotEmpty()) {
+                                append("\n💙 Interested:\n")
+                                s.interestedNames.take(5).forEach { append("• $it\n") }
                             }
                             append("\n#SzigetFestival #Sziget2026")
                         }

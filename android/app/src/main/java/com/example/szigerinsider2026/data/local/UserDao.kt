@@ -28,6 +28,18 @@ interface UserDao {
     @Query("SELECT EXISTS(SELECT 1 FROM favorite_artists WHERE artistId = :artistId)")
     fun isFavorite(artistId: String): Flow<Boolean>
 
+    @Query("SELECT * FROM favorite_artists WHERE tier = 'must_see' ORDER BY timestamp DESC")
+    fun getMustSeeArtists(): Flow<List<FavoriteArtist>>
+
+    @Query("SELECT * FROM favorite_artists WHERE tier = 'interested' ORDER BY timestamp DESC")
+    fun getInterestedArtists(): Flow<List<FavoriteArtist>>
+
+    @Query("SELECT tier FROM favorite_artists WHERE artistId = :artistId")
+    fun getFavoriteTier(artistId: String): Flow<String?>
+
+    @Query("UPDATE favorite_artists SET tier = :tier WHERE artistId = :artistId")
+    suspend fun updateFavoriteTier(artistId: String, tier: String)
+
     @Query("UPDATE user_progress SET legendXp = :xp WHERE id = 1")
     suspend fun updateXP(xp: Int)
 

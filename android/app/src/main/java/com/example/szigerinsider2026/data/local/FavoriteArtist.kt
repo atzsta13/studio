@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class FavoriteArtist(
     @PrimaryKey
     val artistId: String,
-    val timestamp: Long
+    val timestamp: Long,
+    val tier: String = "interested" // "must_see" | "interested"
 )
