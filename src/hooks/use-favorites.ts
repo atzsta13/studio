@@ -3,42 +3,106 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { LineupItem } from '@/types';
 
-const FAVORITES_KEY = 'sziget-2026-favorites';
+const FAVORITES_KEY_V1 = 'sziget-2026-favorites';
+const FAVORITES_KEY_V2 = 'sziget-2026-favorites-v2';
+
+export type FavoriteTier = 'must_see' | 'interested';
+
+function loadTieredFavorites(): Record<string, FavoriteTier> {
+  try {
+    const v2Raw = localStorage.getItem(FAVORITES_KEY_V2);
+    if (v2Raw) {
+      return JSON.parse(v2Raw) as Record<string, FavoriteTier>;
+    }
+
+    // Migration: treat all v1 favorites as "must_see"
+    const v1Raw = localStorage.getItem(FAVORITES_KEY_V1);
+    if (v1Raw) {
+      const v1Ids: string[] = JSON.parse(v1Raw);
+      const migrated: Record<string, FavoriteTier> = {};
+      v1Ids.forEach(id => { migrated[id] = 'must_see'; });
+      localStorage.setItem(FAVORITES_KEY_V2, JSON.stringify(migrated));
+      return migrated;
+    }
+  } catch (error) {
+    console.error('Failed to load favorites from localStorage', error);
+  }
+  return {};
+}
+
+function saveTieredFavorites(data: Record<string, FavoriteTier>) {
+  try {
+    localStorage.setItem(FAVORITES_KEY_V2, JSON.stringify(data));
+  } catch (error) {
+    console.error('Failed to save favorites to localStorage', error);
+  }
+}
 
 export const useFavorites = (lineup: LineupItem[] = []) => {
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const [tieredFavorites, setTieredFavorites] = useState<Record<string, FavoriteTier>>({});
   const [conflicts, setConflicts] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    try {
-      const storedFavorites = localStorage.getItem(FAVORITES_KEY);
-      if (storedFavorites) {
-        setFavorites(new Set(JSON.parse(storedFavorites)));
-      }
-    } catch (error) {
-      console.error("Failed to load favorites from localStorage", error);
-    }
+    setTieredFavorites(loadTieredFavorites());
   }, []);
 
-  const toggleFavorite = useCallback((artistId: string) => {
-    setFavorites(prevFavorites => {
-      const newFavorites = new Set(prevFavorites);
-      if (newFavorites.has(artistId)) {
-        newFavorites.delete(artistId);
-      } else {
-        newFavorites.add(artistId);
-      }
-      try {
-        localStorage.setItem(FAVORITES_KEY, JSON.stringify(Array.from(newFavorites)));
-      } catch (error) {
-        console.error("Failed to save favorites to localStorage", error);
-      }
-      return newFavorites;
+  const addFavorite = useCallback((id: string, tier: FavoriteTier) => {
+    setTieredFavorites(prev => {
+      const updated = { ...prev, [id]: tier };
+      saveTieredFavorites(updated);
+      return updated;
     });
   }, []);
 
+  const removeFavorite = useCallback((id: string) => {
+    setTieredFavorites(prev => {
+      const updated = { ...prev };
+      delete updated[id];
+      saveTieredFavorites(updated);
+      return updated;
+    });
+  }, []);
+
+  const getFavoriteTier = useCallback(
+    (id: string): FavoriteTier | null => tieredFavorites[id] ?? null,
+    [tieredFavorites]
+  );
+
+  const isFavorite = useCallback(
+    (id: string): boolean => id in tieredFavorites,
+    [tieredFavorites]
+  );
+
+  const toggleFavorite = useCallback((artistId: string, tier: FavoriteTier = 'interested') => {
+    setTieredFavorites(prev => {
+      const updated = { ...prev };
+      if (artistId in updated) {
+        delete updated[artistId];
+      } else {
+        updated[artistId] = tier;
+      }
+      saveTieredFavorites(updated);
+      return updated;
+    });
+  }, []);
+
+  // Derived sets
+  const favorites = new Set(Object.keys(tieredFavorites));
+  const allFavoriteIds = favorites;
+  const mustSeeIds = new Set(
+    Object.entries(tieredFavorites)
+      .filter(([, tier]) => tier === 'must_see')
+      .map(([id]) => id)
+  );
+  const interestedIds = new Set(
+    Object.entries(tieredFavorites)
+      .filter(([, tier]) => tier === 'interested')
+      .map(([id]) => id)
+  );
+
+  // Conflict detection
   useEffect(() => {
-    const favoritesWithDetails = lineup.filter(item => favorites.has(item.id));
+    const favoritesWithDetails = lineup.filter(item => isFavorite(item.id));
     const newConflicts = new Set<string>();
 
     if (favoritesWithDetails.length < 2) {
@@ -46,7 +110,9 @@ export const useFavorites = (lineup: LineupItem[] = []) => {
       return;
     }
 
-    favoritesWithDetails.sort((a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime());
+    favoritesWithDetails.sort(
+      (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+    );
 
     for (let i = 0; i < favoritesWithDetails.length; i++) {
       for (let j = i + 1; j < favoritesWithDetails.length; j++) {
@@ -65,7 +131,18 @@ export const useFavorites = (lineup: LineupItem[] = []) => {
       }
     }
     setConflicts(newConflicts);
-  }, [favorites, lineup]);
+  }, [tieredFavorites, lineup, isFavorite]);
 
-  return { favorites, toggleFavorite, conflicts };
+  return {
+    favorites,
+    allFavoriteIds,
+    mustSeeIds,
+    interestedIds,
+    toggleFavorite,
+    addFavorite,
+    removeFavorite,
+    getFavoriteTier,
+    isFavorite,
+    conflicts,
+  };
 };

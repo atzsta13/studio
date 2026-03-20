@@ -10,6 +10,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,8 +24,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -49,6 +53,8 @@ import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.getSeenArtistIds
+import com.example.szigerinsider2026.ui.utils.toggleSeenArtist
 
 private fun findSimilarArtists(current: Artist, all: List<Artist>): List<Pair<Artist, Int>> {
     return all
@@ -84,6 +90,10 @@ fun ArtistDetailScreen(
     )
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
     val isFavorite = favoriteArtistIds.contains(artistId)
+
+    var isSeen by remember {
+        mutableStateOf(getSeenArtistIds(context).contains(artistId))
+    }
 
     LaunchedEffect(artistId) {
         val lineup = LineupRepository(context).getLineup()
@@ -305,6 +315,64 @@ fun ArtistDetailScreen(
                                 .height(380.dp)
                                 .clip(RoundedCornerShape(32.dp))
                         )
+                    }
+                }
+            }
+
+            // SAW THIS SET toggle
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp, vertical = 12.dp)
+                ) {
+                    if (isSeen) {
+                        Button(
+                            onClick = {
+                                haptic.lightTap()
+                                isSeen = toggleSeenArtist(context, a.id)
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(52.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = ToxicGreen,
+                                contentColor = Color.Black
+                            ),
+                            shape = RoundedCornerShape(16.dp)
+                        ) {
+                            Text(
+                                text = "✓ SAW THIS SET",
+                                fontWeight = FontWeight.Black,
+                                fontSize = 14.sp,
+                                letterSpacing = 1.5.sp,
+                                color = Color.Black
+                            )
+                        }
+                    } else {
+                        OutlinedButton(
+                            onClick = {
+                                haptic.successBurst()
+                                isSeen = toggleSeenArtist(context, a.id)
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(52.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                containerColor = CardBackground,
+                                contentColor = AcidYellow
+                            ),
+                            border = BorderStroke(1.dp, AcidYellow.copy(alpha = 0.5f)),
+                            shape = RoundedCornerShape(16.dp)
+                        ) {
+                            Text(
+                                text = "SAW THIS SET?",
+                                fontWeight = FontWeight.Black,
+                                fontSize = 14.sp,
+                                letterSpacing = 1.5.sp,
+                                color = AcidYellow
+                            )
+                        }
                     }
                 }
             }

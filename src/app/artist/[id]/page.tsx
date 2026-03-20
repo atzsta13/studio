@@ -12,7 +12,6 @@ import {
   Building,
   Sparkles,
   UserPlus,
-  Heart
 } from 'lucide-react';
 import {
   SiSpotify,
@@ -91,7 +90,6 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
             Back to Finder
           </Link>
         </Button>
-        <FavoriteButton artistId={artist.id} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
@@ -147,6 +145,11 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
                 </a>
               </Button>
             ))}
+          </div>
+
+          {/* Two-tier favorites + saw this set */}
+          <div className="mb-8">
+            <FavoriteButton artistId={artist.id} />
           </div>
 
           <Button asChild size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-xl shadow-primary/20 font-black uppercase tracking-widest text-sm">

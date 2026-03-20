@@ -17,9 +17,11 @@ import {
   Heart,
   AlertTriangle,
   X,
-  LayoutGrid
+  LayoutGrid,
+  Shuffle,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
 import {
@@ -36,6 +38,20 @@ import { useFavorites } from '@/hooks/use-favorites';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
+
+// Hard-coded hidden gem artist IDs — non-headliners with unusual/diverse vibes
+const HIDDEN_GEM_IDS = ['1', '4', '5', '47', '57', '70'];
+
+const SEEN_KEY = 'sziget-2026-seen';
+
+function loadSeenIds(): Set<string> {
+  try {
+    const raw = typeof window !== 'undefined' ? localStorage.getItem(SEEN_KEY) : null;
+    if (raw) return new Set(JSON.parse(raw) as string[]);
+  } catch { /* ignore */ }
+  return new Set();
+}
+
 
 const allArtists2026 = (lineup as any[]).map(a => ({
   ...a,
@@ -75,7 +91,13 @@ export default function DiscoverPage() {
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const { favorites, toggleFavorite, conflicts } = useFavorites(activeYear === '2026' ? allArtists2026 : allArtists2025);
+  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(activeYear === '2026' ? allArtists2026 : allArtists2025);
+  const router = useRouter();
+  const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    setSeenIds(loadSeenIds());
+  }, []);
 
   const [aiPrompt, setAiPrompt] = useState('');
   const [isAiLoading, setIsAiLoading] = useState(false);
@@ -152,6 +174,13 @@ export default function DiscoverPage() {
     return grouped;
   }, [filteredArtists]);
 
+  const handleSurpriseMe = () => {
+    const unfavorited = allArtists.filter(a => !allFavoriteIds.has(a.id));
+    const pool = unfavorited.length > 0 ? unfavorited : allArtists;
+    const pick = pool[Math.floor(Math.random() * pool.length)];
+    if (pick) router.push(`/artist/${pick.id}`);
+  };
+
   const handleAiScout = async () => {
     if (!aiPrompt.trim()) return;
     setIsAiLoading(true);
@@ -171,7 +200,10 @@ export default function DiscoverPage() {
     const isHeadliner = artist.isHeadliner;
     const aiReason = aiResult?.recommendations.find(r => r.artistId === artist.id)?.reason;
     const isFave = favorites.has(artist.id);
+    const isMustSee = mustSeeIds.has(artist.id);
+    const isInterested = interestedIds.has(artist.id);
     const hasConflict = conflicts.has(artist.id);
+    const isSeen = isMounted && seenIds.has(artist.id);
 
     return (
       <div className="relative group h-full">
@@ -210,6 +242,19 @@ export default function DiscoverPage() {
                   </Badge>
                 )}
               </div>
+              {isMounted && (
+                <div className="flex flex-col gap-1.5 items-end">
+                  {isMustSee && (
+                    <span className="text-sm drop-shadow-[0_0_8px_rgba(250,255,0,0.9)]" title="Must See">⭐</span>
+                  )}
+                  {isInterested && (
+                    <span className="text-sm drop-shadow-[0_0_8px_rgba(0,229,255,0.9)]" title="Interested">🔖</span>
+                  )}
+                  {isSeen && (
+                    <span className="bg-[#39FF14] text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">SEEN</span>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
@@ -265,14 +310,17 @@ export default function DiscoverPage() {
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            toggleFavorite(artist.id);
+            toggleFavorite(artist.id, isMustSee ? 'must_see' : 'interested');
           }}
-          className={`absolute top-4 right-4 z-30 h-11 w-11 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl backdrop-blur-3xl border ${isFave
-            ? 'bg-primary border-primary text-white scale-110'
-            : 'bg-black/40 border-white/10 text-white/40 hover:text-white hover:bg-black/60'
-            }`}
+          className={`absolute top-4 right-4 z-30 h-11 w-11 rounded-full flex items-center justify-center transition-all duration-500 shadow-2xl backdrop-blur-3xl border ${
+            isMustSee
+              ? 'opacity-0 pointer-events-none'
+              : isInterested
+              ? 'opacity-0 pointer-events-none'
+              : 'bg-black/40 border-white/10 text-white/40 hover:text-white hover:bg-black/60'
+          }`}
         >
-          <Heart size={18} fill={isFave ? "white" : "none"} className={isFave ? "animate-in zoom-in duration-500" : ""} />
+          <Heart size={18} fill="none" />
         </button>
       </div>
     );
@@ -318,7 +366,7 @@ export default function DiscoverPage() {
             ))}
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 flex-wrap justify-center">
             <SpotifyConnect onMatchesFound={(ids) => {
               setSpotifyMatches(ids);
               setIsSpotifyConnected(true);
@@ -327,6 +375,15 @@ export default function DiscoverPage() {
             {isSpotifyConnected && spotifyMatches.length > 0 && (
               <PlaylistBuilder matchedArtistIds={spotifyMatches} />
             )}
+
+            {/* Surprise Me */}
+            <button
+              onClick={handleSurpriseMe}
+              className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#f5e642] hover:bg-[#faff00] text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#f5e642]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <Shuffle className="h-6 w-6" />
+              SURPRISE ME
+            </button>
 
             <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
               <DialogTrigger asChild>
@@ -430,6 +487,74 @@ export default function DiscoverPage() {
           </div>
         </div>
       </div>
+
+      {/* Hidden Gems section — curated non-headliners with unusual vibes */}
+      {activeYear === '2026' && (() => {
+        const gems = HIDDEN_GEM_IDS
+          .map(id => allArtists2026.find(a => a.id === id))
+          .filter((a): a is typeof allArtists2026[0] => a !== undefined);
+        if (gems.length === 0) return null;
+        return (
+          <section className="mb-20">
+            <div className="flex items-center gap-6 mb-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#39FF14]">
+                HIDDEN GEMS
+              </p>
+              <div className="flex-1 h-px bg-gradient-to-r from-[#39FF14]/20 to-transparent" />
+              <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/30">
+                ARTISTS YOU MIGHT MISS
+              </p>
+            </div>
+            <div className="flex gap-5 overflow-x-auto no-scrollbar pb-4">
+              {gems.map(artist => (
+                <Link
+                  key={artist.id}
+                  href={`/artist/${artist.id}`}
+                  className="shrink-0 w-40 group block"
+                >
+                  <div className="relative w-40 h-52 rounded-[2rem] overflow-hidden bg-muted border-2 border-[#39FF14]/30 group-hover:border-[#39FF14]/80 transition-all duration-500 shadow-[0_0_16px_rgba(57,255,20,0.1)] group-hover:shadow-[0_0_24px_rgba(57,255,20,0.25)] mb-3">
+                    {artist.imageUrl ? (
+                      <img
+                        src={artist.imageUrl}
+                        alt={artist.artist}
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <Music className="h-10 w-10 text-muted-foreground/10" />
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <span className="bg-[#39FF14] text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">GEM</span>
+                    </div>
+                    <div className="absolute bottom-3 left-3 right-3">
+                      {isMounted && artist.countryCode && (
+                        <span className="text-base drop-shadow-lg" suppressHydrationWarning>
+                          {getFlagEmoji(artist.countryCode)}
+                        </span>
+                      )}
+                      <p className="font-black uppercase italic text-white text-[11px] leading-tight tracking-tight truncate mt-0.5">
+                        {artist.artist}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-1 px-1">
+                    {artist.vibes.slice(0, 2).map(vibe => (
+                      <span
+                        key={vibe}
+                        className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.1em] border bg-[#39FF14]/5 text-[#39FF14] border-[#39FF14]/20"
+                      >
+                        {vibe}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       <div className="min-h-[600px]">
         {viewMode === 'ai' && aiResult && (

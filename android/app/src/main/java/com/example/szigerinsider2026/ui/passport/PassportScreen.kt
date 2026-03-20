@@ -73,7 +73,7 @@ fun PassportScreen(navController: NavController? = null) {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 val db = AppDatabase.getDatabase(context)
                 @Suppress("UNCHECKED_CAST")
-                return PassportViewModel(db.userDao()) as T
+                return PassportViewModel(db.userDao(), context) as T
             }
         }
     )
@@ -81,13 +81,15 @@ fun PassportScreen(navController: NavController? = null) {
     val haptic = rememberHapticManager()
     val userProgress by viewModel.userProgress.collectAsStateWithLifecycle()
     val challenges by viewModel.challenges.collectAsStateWithLifecycle()
+    val achievements by viewModel.achievements.collectAsStateWithLifecycle()
+    val actsSeenCount by viewModel.actsSeen.collectAsStateWithLifecycle()
     val unlockedStamps = userProgress.stampsCollected.toSet()
     val progress = (unlockedStamps.size.toFloat() / STAMPS.size.toFloat() * 100).toInt()
     val totalXP = userProgress.legendXp
     val currentRank = userProgress.currentRank
 
     var selectedTab by remember { mutableIntStateOf(0) }
-    val tabTitles = listOf("STAMPS", "CHALLENGES")
+    val tabTitles = listOf("STAMPS", "CHALLENGES", "ACHIEVEMENTS")
 
     // Load artists and evaluate challenges once on launch
     LaunchedEffect(Unit) {
@@ -118,8 +120,28 @@ fun PassportScreen(navController: NavController? = null) {
                 color = TextMuted,
                 fontSize = 16.sp,
                 lineHeight = 22.sp,
-                modifier = Modifier.padding(bottom = 12.dp)
+                modifier = Modifier.padding(bottom = 8.dp)
             )
+            // Acts Seen stat
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(bottom = 8.dp)
+            ) {
+                Text(
+                    text = "ACTS SEEN: ",
+                    color = TextMuted,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 1.5.sp
+                )
+                Text(
+                    text = "$actsSeenCount",
+                    color = ToxicGreen,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 1.5.sp
+                )
+            }
             navController?.let { nav ->
                 androidx.compose.material3.OutlinedButton(
                     onClick = { haptic.lightTap(); nav.navigate("highlights") },
@@ -163,7 +185,7 @@ fun PassportScreen(navController: NavController? = null) {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(horizontal = 16.dp),
-                    contentPadding = PaddingValues(top = 16.dp, bottom = 100.dp),
+                    contentPadding = PaddingValues(top = 16.dp, bottom = 120.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
@@ -358,6 +380,100 @@ fun PassportScreen(navController: NavController? = null) {
             1 -> {
                 ChallengeListComposable(challenges)
             }
+            2 -> {
+                BadgeGrid(achievements = achievements)
+            }
+        }
+    }
+}
+
+@Composable
+private fun BadgeGrid(achievements: List<AchievementBadge>) {
+    val unlockedCount = achievements.count { it.unlocked }
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        contentPadding = PaddingValues(top = 16.dp, bottom = 120.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        // Header — full-width "X / 6 UNLOCKED"
+        item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
+            Text(
+                text = "$unlockedCount / ${achievements.size} UNLOCKED",
+                color = AcidYellow,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Black,
+                letterSpacing = 2.sp,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+        }
+
+        items(achievements, key = { it.id }) { badge ->
+            BadgeCard(badge = badge)
+        }
+    }
+}
+
+@Composable
+private fun BadgeCard(badge: AchievementBadge) {
+    val haptic = rememberHapticManager()
+    val shape = RoundedCornerShape(16.dp)
+    val borderMod = if (badge.unlocked)
+        Modifier.border(1.dp, AcidYellow, shape)
+    else
+        Modifier
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(CardBackground)
+            .then(borderMod)
+            .graphicsLayer(alpha = if (badge.unlocked) 1f else 0.4f)
+            .clickable { haptic.lightTap() }
+            .padding(12.dp)
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            // Icon: emoji when unlocked, lock icon when locked
+            if (badge.unlocked) {
+                Text(
+                    text = badge.emoji,
+                    fontSize = 28.sp
+                )
+            } else {
+                Icon(
+                    imageVector = Icons.Default.Lock,
+                    contentDescription = "Locked",
+                    tint = TextMuted,
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+            Text(
+                text = badge.title,
+                color = if (badge.unlocked) TextPrimary else TextMuted,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Black,
+                letterSpacing = 0.5.sp,
+                maxLines = 1
+            )
+            Text(
+                text = badge.description,
+                color = Color(0xFF888888),
+                fontSize = 10.sp,
+                lineHeight = 13.sp,
+                maxLines = 2
+            )
+            Text(
+                text = if (badge.unlocked) "UNLOCKED" else "LOCKED",
+                color = if (badge.unlocked) ToxicGreen else Color(0xFF666666),
+                fontSize = 9.sp,
+                fontWeight = FontWeight.Black,
+                letterSpacing = 1.sp
+            )
         }
     }
 }

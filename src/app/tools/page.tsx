@@ -22,6 +22,8 @@ import {
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { WeatherWidget } from '@/components/tools/weather-widget';
+import { HungarianPhrases } from '@/components/tools/hungarian-phrases';
+import { CampsiteChecklist } from '@/components/tools/campsite-checklist';
 
 export default function ToolsPage() {
   const { toast } = useToast();
@@ -105,9 +107,11 @@ export default function ToolsPage() {
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12">
+            <TabsList className="grid w-full grid-cols-4 rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12">
               <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Tactical</TabsTrigger>
               <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Safety</TabsTrigger>
+              <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
+              <TabsTrigger value="camp" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Camp</TabsTrigger>
             </TabsList>
 
             <TabsContent value="survival" className="space-y-10">
@@ -220,6 +224,24 @@ export default function ToolsPage() {
                     </div>
                   </div>
                 </Card>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="phrases" className="space-y-10">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">
+                  Essential Hungarian for the Island
+                </p>
+                <HungarianPhrases />
+              </div>
+            </TabsContent>
+
+            <TabsContent value="camp" className="space-y-10">
+              <div>
+                <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">
+                  Campsite Readiness Checklist
+                </p>
+                <CampsiteChecklist />
               </div>
             </TabsContent>
           </Tabs>

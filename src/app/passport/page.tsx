@@ -20,6 +20,7 @@ import {
   Clock,
   Wand2
 } from 'lucide-react';
+import { AchievementBadges } from '@/components/passport/achievement-badges';
 
 interface Stamp {
   id: string;
@@ -55,6 +56,7 @@ export default function PassportPage() {
   const [unlocked, setUnlocked] = useState<string[]>([]);
   const [favoritesCount, setFavoritesCount] = useState(0);
   const [packingCount, setPackingCount] = useState(0);
+  const [actsSeenCount, setActsSeenCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -72,6 +74,12 @@ export default function PassportPage() {
     try {
       const packedItems = Object.keys(localStorage).filter(k => k.startsWith('sziget-packed-'));
       setPackingCount(packedItems.length);
+    } catch (e) { }
+
+    // Load Acts Seen Count
+    try {
+      const seen = localStorage.getItem('sziget-2026-seen');
+      if (seen) setActsSeenCount(JSON.parse(seen).length);
     } catch (e) { }
 
     setIsLoaded(true);
@@ -197,7 +205,7 @@ export default function PassportPage() {
               <Progress value={xpProgress} className="h-4 bg-muted/30" />
             </div>
 
-            <div className="grid grid-cols-3 gap-4 text-center mt-8 pt-8 border-t border-white/5">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mt-8 pt-8 border-t border-white/5">
               <div>
                 <p className="text-3xl font-black">{unlocked.length}</p>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Stamps (+50 XP/ea)</p>
@@ -210,10 +218,16 @@ export default function PassportPage() {
                 <p className="text-3xl font-black">{packingCount}</p>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Packed (+2 XP/ea)</p>
               </div>
+              <div>
+                <p className="text-3xl font-black" style={{ color: '#FAFF00' }}>{actsSeenCount}</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Acts Seen</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <AchievementBadges />
     </div>
   );
 }

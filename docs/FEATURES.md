@@ -81,7 +81,11 @@ Honest, current-state inventory. Features are marked by actual build status, not
 | Stamp collection | ✅ | ✅ | 8 predefined stamps |
 | XP / rank system | ✅ | ✅ | Room-persisted on Android |
 | Challenge system | ❌ | ✅ | Android: 7 challenges |
-| Favoriting artists | ✅ | ✅ | Room-persisted on Android; Firebase on Web |
+| Favoriting artists | ✅ | ✅ | Room-persisted on Android; localStorage on Web (v2: tiered must_see/interested) |
+| Tiered favorites (Must See / Interested) | ✅ | ❌ | Web only — two-tier buttons on artist detail |
+| "Mark as seen" for artists | ✅ | ✅ | Web: artist detail FavoriteButton; Android: SeenArtistsHelper (SharedPrefs) |
+| Achievement badges | ✅ | ❌ | Web only — 6 badges on Passport page (Loyal Fan, World Citizen, etc.) |
+| Festival countdown | ✅ | ✅ | Web: home page; Android: ToolsScreen tactical tab (live, 1s tick) |
 | Post-festival highlights wrap | ✅ | ✅ | Web: /highlights; Android: HighlightsScreen (via Passport) |
 
 ---
@@ -96,8 +100,8 @@ Honest, current-state inventory. Features are marked by actual build status, not
 | Weather forecast (7-day) | ✅ | ✅ | Open-Meteo API, Budapest coords, 30-min cache |
 | Rain alert | ✅ | ✅ | Triggers if any next-24h hour >60% precipitation |
 | Festival survival guide | ✅ | ✅ | Web: /guide subpages; Android: SurvivalGuideScreen |
-| Hungarian phrase clipboard | ❌ | ✅ | Android only |
-| Packing list | ✅ | ❌ | Web only |
+| Hungarian phrase clipboard | ✅ | ✅ | Web: Phrases tab in Toolkit; Android: ToolsScreen |
+| Packing list | ✅ | ✅ | Web: /packing-list; Android: PackingListScreen (via ToolsScreen) |
 
 ---
 

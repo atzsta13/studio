@@ -124,6 +124,8 @@ fun ToolsScreen(navController: NavController) {
                 // TACTICAL TAB
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
+                        FestivalCountdownCard()
+
                         if (isLoadingWeather) {
                             Box(modifier = Modifier.fillMaxWidth().height(120.dp), contentAlignment = Alignment.Center) {
                                 CircularProgressIndicator(color = com.example.szigerinsider2026.ui.theme.CyanPulse, modifier = Modifier.size(32.dp))
@@ -133,6 +135,43 @@ fun ToolsScreen(navController: NavController) {
                         }
 
                         TentFinderCard()
+
+                        // Packing List navigation card
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(CardBackground)
+                                .border(1.dp, AcidYellow, RoundedCornerShape(20.dp))
+                                .clickable { haptic.mediumTap(); navController.navigate("packing_list") }
+                                .padding(20.dp)
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text("\uD83D\uDCE6", fontSize = 32.sp)
+                                Spacer(modifier = Modifier.width(16.dp))
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        "PACKING LIST",
+                                        color = TextPrimary,
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Black,
+                                        letterSpacing = 0.5.sp
+                                    )
+                                    Text(
+                                        "CHECK YOUR GEAR BEFORE YOU GO",
+                                        color = TextMuted,
+                                        fontSize = 12.sp,
+                                        letterSpacing = 0.5.sp
+                                    )
+                                }
+                                Icon(
+                                    Icons.Default.ChevronRight,
+                                    contentDescription = null,
+                                    tint = AcidYellow,
+                                    modifier = Modifier.size(24.dp)
+                                )
+                            }
+                        }
 
                         SOSBeaconButton(onClick = { isFlashOn = true })
                     }

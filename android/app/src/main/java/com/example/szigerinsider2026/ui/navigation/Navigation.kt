@@ -58,6 +58,7 @@ import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
 import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
 import com.example.szigerinsider2026.ui.food.FoodScreen
 import com.example.szigerinsider2026.ui.highlights.HighlightsScreen
+import com.example.szigerinsider2026.ui.packing.PackingListScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
@@ -94,6 +95,7 @@ fun AppNavigation() {
         && currentRoute != "vibe_results"
         && currentRoute != "highlights"
         && currentRoute != "food"
+        && currentRoute != "packing_list"
 
     Scaffold(
         bottomBar = {
@@ -155,6 +157,9 @@ fun AppNavigation() {
             }
             composable("highlights") {
                 HighlightsScreen(onBack = { navController.popBackStack() })
+            }
+            composable("packing_list") {
+                PackingListScreen(navController)
             }
         }
     }

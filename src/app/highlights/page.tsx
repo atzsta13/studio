@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
 import type { LineupItem } from '@/types';
-import { Share2, Star, Music, Sparkles } from 'lucide-react';
+import { Share2, Star, Music, Sparkles, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useFavorites } from '@/hooks/use-favorites';
 
@@ -12,7 +12,19 @@ const allArtists = lineup as unknown as (LineupItem & { vibes?: string[] })[];
 export default function HighlightsPage() {
     const { favorites } = useFavorites(allArtists);
     const [isMounted, setIsMounted] = useState(false);
-    useEffect(() => setIsMounted(true), []);
+    const [actsSeenCount, setActsSeenCount] = useState(0);
+    useEffect(() => {
+        setIsMounted(true);
+        try {
+            const raw = localStorage.getItem('sziget-2026-seen');
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) setActsSeenCount(parsed.length);
+            }
+        } catch {
+            // ignore
+        }
+    }, []);
 
     const favArtists = useMemo(
         () => allArtists.filter((a) => favorites.has(a.id)),
@@ -26,6 +38,15 @@ export default function HighlightsPage() {
         );
         return [...count.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([g]) => g);
     }, [favArtists]);
+
+    const uniqueGenreCount = useMemo(() => {
+        const genres = new Set(
+            favArtists.flatMap((a) => (a.genres ?? []).filter((g) => g !== 'MUSIC'))
+        );
+        return genres.size;
+    }, [favArtists]);
+
+    const genreDiversityScore = Math.min(100, uniqueGenreCount * 10);
 
     const topVibes = useMemo(() => {
         const count = new Map<string, number>();
@@ -61,11 +82,21 @@ export default function HighlightsPage() {
                 <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-2">My Sziget</p>
                 <h1 className="font-headline text-8xl font-black tracking-tighter italic uppercase leading-none text-primary mb-1">2026</h1>
                 <h2 className="font-headline text-5xl font-black tracking-tighter italic uppercase leading-none mb-8">Highlights</h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     <StatCard icon={Music} label="Artists Saved" value={`${favArtists.length}`} color="text-primary" bg="bg-primary/10" />
                     <StatCard icon={Sparkles} label="Top Genres" value={`${topGenres.length}`} color="text-cyan-400" bg="bg-cyan-500/10" />
+                    <StatCard icon={Eye} label="Acts Seen" value={`${actsSeenCount}`} color="text-yellow-400" bg="bg-yellow-500/10" />
                 </div>
             </div>
+
+            {favArtists.length > 0 && (
+                <GenreDnaCard
+                    score={genreDiversityScore}
+                    uniqueGenreCount={uniqueGenreCount}
+                    artistCount={favArtists.length}
+                    topGenres={topGenres.slice(0, 3)}
+                />
+            )}
 
             {topGenres.length > 0 && (
                 <Section title="Top Genres">
@@ -141,6 +172,65 @@ function Section({ title, children }: { title: string; children: React.ReactNode
         <section className="mb-12">
             <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">{title}</h3>
             {children}
+        </section>
+    );
+}
+
+function GenreDnaCard({ score, uniqueGenreCount, artistCount, topGenres }: {
+    score: number;
+    uniqueGenreCount: number;
+    artistCount: number;
+    topGenres: string[];
+}) {
+    return (
+        <section className="mb-12">
+            <div
+                className="rounded-[2.5rem] p-8 border"
+                style={{ backgroundColor: '#0A0A0A', borderColor: 'rgba(250,255,0,0.2)' }}
+            >
+                <p className="text-[11px] font-black uppercase tracking-[0.4em] mb-6"
+                    style={{ color: 'rgba(250,255,0,0.6)' }}>
+                    Genre DNA
+                </p>
+
+                <div className="flex items-end justify-between mb-3">
+                    <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground/60">
+                        Genre Diversity Score
+                    </p>
+                    <p className="text-4xl font-black tracking-tighter" style={{ color: '#FAFF00' }}>
+                        {score}
+                    </p>
+                </div>
+
+                <div className="w-full rounded-full overflow-hidden mb-4" style={{ height: '10px', backgroundColor: 'rgba(255,255,255,0.08)' }}>
+                    <div
+                        className="h-full rounded-full transition-all duration-700"
+                        style={{ width: `${score}%`, backgroundColor: '#FAFF00' }}
+                    />
+                </div>
+
+                <p className="text-[11px] font-bold text-muted-foreground/60 uppercase tracking-widest mb-6">
+                    You&apos;ve explored {uniqueGenreCount} genre{uniqueGenreCount !== 1 ? 's' : ''} across {artistCount} artist{artistCount !== 1 ? 's' : ''}
+                </p>
+
+                {topGenres.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                        {topGenres.map((g) => (
+                            <span
+                                key={g}
+                                className="px-4 py-1.5 rounded-full font-black uppercase text-[10px] tracking-widest"
+                                style={{
+                                    backgroundColor: 'rgba(250,255,0,0.1)',
+                                    color: '#FAFF00',
+                                    border: '1px solid rgba(250,255,0,0.3)',
+                                }}
+                            >
+                                {g}
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </div>
         </section>
     );
 }

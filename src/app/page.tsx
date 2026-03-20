@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
+import { FestivalCountdown } from '@/components/home/festival-countdown';
 
 const features = [
   {
@@ -167,6 +168,11 @@ export default function Home() {
           </Container>
         </Container>
       </Box>
+
+      {/* Festival Countdown */}
+      <Container maxWidth="sm" sx={{ mt: -2, mb: 8 }}>
+        <FestivalCountdown />
+      </Container>
 
       {/* Now Playing Pulse Widget */}
       <Container maxWidth="lg" sx={{ mt: 10, mb: 12 }}>
