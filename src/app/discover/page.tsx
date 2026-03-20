@@ -385,6 +385,11 @@ export default function DiscoverPage() {
               SURPRISE ME
             </button>
 
+            <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#FF00FF] hover:bg-[#FF33FF] text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#FF00FF]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+              <Sparkles className="h-6 w-6" />
+              Vibe Quiz
+            </Link>
+
             <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
               <DialogTrigger asChild>
                 <button className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
