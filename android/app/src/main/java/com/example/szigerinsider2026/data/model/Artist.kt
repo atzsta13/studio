@@ -18,7 +18,12 @@ data class Artist(
     val imageUrl: String? = null,
     val vibes: List<String> = emptyList(),
     val isHeadliner: Boolean = false
-)
+) {
+    val spotifyId: String?
+        get() = socials?.spotify
+            ?.split("/artist/")?.getOrNull(1)
+            ?.split("?")?.firstOrNull()
+}
 
 @Serializable
 data class Socials(

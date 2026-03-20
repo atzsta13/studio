@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material3.*
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
@@ -39,15 +40,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.repository.LineupRepository
+import com.example.szigerinsider2026.data.repository.SpotifyRepository
 import com.example.szigerinsider2026.ui.components.ArtistCard
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 
 @Composable
 fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavController? = null) {
@@ -71,6 +77,14 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
             }
         }
     )
+    val spotifyViewModel: SpotifyViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return SpotifyViewModel(SpotifyRepository(context)) as T
+            }
+        }
+    )
 
     val filteredArtists by discoverViewModel.filteredArtists.collectAsStateWithLifecycle()
     val availableDays by discoverViewModel.availableDays.collectAsStateWithLifecycle()
@@ -86,14 +100,34 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
     val countryFilter by discoverViewModel.countryFilter.collectAsStateWithLifecycle()
     val allArtists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
     val selectedYear by discoverViewModel.selectedYear.collectAsStateWithLifecycle()
+    val spotifyAuthState by spotifyViewModel.authState.collectAsStateWithLifecycle()
+    val spotifyMatchedIds by spotifyViewModel.matchedArtistIds.collectAsStateWithLifecycle()
+    val showSpotifyOnly by discoverViewModel.showSpotifyOnly.collectAsStateWithLifecycle()
 
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
+    var spotifyCodeVerifier by remember { mutableStateOf<String?>(null) }
     val favoritedIds = remember(favoriteArtistIds) { favoriteArtistIds }
 
     val gridState = rememberLazyGridState()
     val isHeaderVisible by remember {
         derivedStateOf { gridState.firstVisibleItemIndex == 0 }
+    }
+
+    LaunchedEffect(spotifyMatchedIds) {
+        discoverViewModel.updateSpotifyMatches(spotifyMatchedIds)
+    }
+
+    LaunchedEffect(spotifyAuthState) {
+        if (spotifyAuthState is SpotifyAuthState.Connected && spotifyCodeVerifier != null) {
+            // Check for pending code in SharedPreferences
+            val prefs = context.getSharedPreferences("spotify_callback", Context.MODE_PRIVATE)
+            val code = prefs.getString("pending_code", null)
+            if (code != null) {
+                spotifyViewModel.handleCallback(code, spotifyCodeVerifier!!, allArtists)
+                prefs.edit().remove("pending_code").apply()
+            }
+        }
     }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -321,6 +355,83 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
                         isSelected = selectedVibe == vibe,
                         selectedColor = PrimaryMagenta,
                         onClick = { haptic.lightTap(); discoverViewModel.selectVibe(if (selectedVibe == vibe) null else vibe) }
+                    )
+                }
+            }
+        }
+
+        // Spotify sync section
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            when (spotifyAuthState) {
+                SpotifyAuthState.Idle -> {
+                    Button(
+                        onClick = {
+                            haptic.lightTap()
+                            val (authUrl, verifier) = spotifyViewModel.startAuth()
+                            spotifyCodeVerifier = verifier
+                            runCatching {
+                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(authUrl)))
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth().height(40.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = AcidYellow),
+                        contentPadding = PaddingValues(0.dp)
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(Icons.Outlined.MusicNote, contentDescription = null, tint = OLEDBlack, modifier = Modifier.size(16.dp))
+                            Text("SYNC SPOTIFY LIBRARY", style = BrutalistTypography.labelSmall, color = OLEDBlack, fontSize = 10.sp)
+                        }
+                    }
+                }
+                SpotifyAuthState.Loading -> {
+                    Box(modifier = Modifier.fillMaxWidth().height(40.dp), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(modifier = Modifier.size(20.dp), color = AcidYellow)
+                    }
+                }
+                is SpotifyAuthState.Connected -> {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(20.dp))
+                                .background(AcidYellow.copy(alpha = 0.15f))
+                                .border(1.dp, AcidYellow.copy(alpha = 0.4f), RoundedCornerShape(20.dp))
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
+                        ) {
+                            Text(
+                                text = "${spotifyMatchedIds.size} MATCHES",
+                                color = AcidYellow,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Black
+                            )
+                        }
+                        FilterChip(
+                            text = if (showSpotifyOnly) "HIDE ONLY" else "SHOW ONLY",
+                            isSelected = showSpotifyOnly,
+                            selectedColor = AcidYellow,
+                            onClick = { haptic.lightTap(); discoverViewModel.setShowSpotifyOnly(!showSpotifyOnly) }
+                        )
+                        IconButton(onClick = { haptic.lightTap(); spotifyViewModel.disconnect(); discoverViewModel.clearSpotifyMatches() }, modifier = Modifier.size(32.dp)) {
+                            Text("✕", color = Color.White.copy(alpha = 0.5f), fontSize = 16.sp)
+                        }
+                    }
+                }
+                is SpotifyAuthState.Error -> {
+                    Text(
+                        text = (spotifyAuthState as SpotifyAuthState.Error).message,
+                        color = Color.Red,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(8.dp)
                     )
                 }
             }

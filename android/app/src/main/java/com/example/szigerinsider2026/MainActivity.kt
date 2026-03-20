@@ -1,5 +1,6 @@
 package com.example.szigerinsider2026
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -27,6 +28,27 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     AppNavigation()
+                }
+            }
+        }
+    }
+
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        handleSpotifyCallback(intent.data)
+    }
+
+    private fun handleSpotifyCallback(uri: Uri?) {
+        if (uri?.scheme == "sziget" && uri.host == "spotify-callback") {
+            val code = uri.getQueryParameter("code")
+            val error = uri.getQueryParameter("error")
+
+            if (code != null) {
+                // Store code and verifier for later processing in SpotifyViewModel
+                val prefs = getSharedPreferences("spotify_callback", MODE_PRIVATE)
+                prefs.edit().apply {
+                    putString("pending_code", code)
+                    apply()
                 }
             }
         }

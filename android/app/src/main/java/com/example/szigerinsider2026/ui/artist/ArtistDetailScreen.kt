@@ -190,7 +190,7 @@ fun ArtistDetailScreen(
                         Icon(
                             imageVector = when (currentTier) {
                                 "must_see" -> Icons.Filled.Star
-                                "interested" -> Icons.Outlined.Star
+                                "interested" -> Icons.Filled.Star
                                 else -> Icons.Outlined.StarBorder
                             },
                             contentDescription = when (currentTier) {

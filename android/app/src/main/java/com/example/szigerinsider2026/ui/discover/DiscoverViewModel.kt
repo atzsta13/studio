@@ -28,6 +28,8 @@ class DiscoverViewModel(
     private val _selectedYear = MutableStateFlow("2026")
     private val _aiRecommendations = MutableStateFlow<AiRecommendationResult?>(null)
     private val _aiLoading = MutableStateFlow(false)
+    private val _spotifyMatchedIds = MutableStateFlow<Set<String>>(emptySet())
+    private val _showSpotifyOnly = MutableStateFlow(false)
 
     val allArtists: StateFlow<List<Artist>> = _allArtists.asStateFlow()
     val sortMode = _sortMode.asStateFlow()
@@ -40,6 +42,8 @@ class DiscoverViewModel(
     val selectedYear: StateFlow<String> = _selectedYear.asStateFlow()
     val aiRecommendations: StateFlow<AiRecommendationResult?> = _aiRecommendations.asStateFlow()
     val aiLoading: StateFlow<Boolean> = _aiLoading.asStateFlow()
+    val spotifyMatchedIds: StateFlow<Set<String>> = _spotifyMatchedIds.asStateFlow()
+    val showSpotifyOnly: StateFlow<Boolean> = _showSpotifyOnly.asStateFlow()
 
     private val dayOrder = listOf("Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday")
 
@@ -65,8 +69,8 @@ class DiscoverViewModel(
     val filteredArtists: StateFlow<List<Artist>> = combine(
         combine(_allArtists, _sortMode, _selectedDay) { artists, sort, day -> Triple(artists, sort, day) },
         combine(_selectedGenre, _selectedVibe, _searchQuery) { genre, vibe, query -> Triple(genre, vibe, query) },
-        _countryFilter
-    ) { (artists, sort, day), (genre, vibe, query), country ->
+        combine(_countryFilter, _spotifyMatchedIds, _showSpotifyOnly) { country, spotify, showOnly -> Triple(country, spotify, showOnly) }
+    ) { (artists, sort, day), (genre, vibe, query), (country, spotify, showOnly) ->
         var result = artists
         country?.let { c -> result = result.filter { it.countryCode == c } }
         day?.let { d -> result = result.filter { it.day?.equals(d, ignoreCase = true) == true } }
@@ -74,6 +78,9 @@ class DiscoverViewModel(
         vibe?.let { v -> result = result.filter { it.vibes.any { vi -> vi.equals(v, ignoreCase = true) } } }
         if (query.isNotBlank()) {
             result = result.filter { it.artist.contains(query.trim(), ignoreCase = true) }
+        }
+        if (showOnly && spotify.isNotEmpty()) {
+            result = result.filter { it.spotifyId in spotify }
         }
         when (sort) {
             "headliners" -> result.sortedWith(compareByDescending<Artist> { it.isHeadliner }.thenBy { it.artist })
@@ -132,6 +139,19 @@ class DiscoverViewModel(
 
     fun clearAiRecommendations() {
         _aiRecommendations.value = null
+    }
+
+    fun updateSpotifyMatches(matchedIds: Set<String>) {
+        _spotifyMatchedIds.value = matchedIds
+    }
+
+    fun setShowSpotifyOnly(show: Boolean) {
+        _showSpotifyOnly.value = show
+    }
+
+    fun clearSpotifyMatches() {
+        _spotifyMatchedIds.value = emptySet()
+        _showSpotifyOnly.value = false
     }
 
     private val _serendipityHistory = mutableSetOf<String>()
