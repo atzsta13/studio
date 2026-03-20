@@ -355,16 +355,21 @@ fun ArtistDetailScreen(
                         AndroidView(
                             factory = { ctx ->
                                 WebView(ctx).apply {
-                                    settings.javaScriptEnabled = true
-                                    settings.domStorageEnabled = true
-                                    settings.mediaPlaybackRequiresUserGesture = false
-                                    loadUrl("https://open.spotify.com/embed/artist/$spotifyId?utm_source=generator&theme=0")
+                                    settings.apply {
+                                        javaScriptEnabled = true
+                                        domStorageEnabled = true
+                                        mediaPlaybackRequiresUserGesture = false
+                                        mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+                                        userAgentString = userAgentString.replace("; wv", "")
+                                    }
+                                    setBackgroundColor(android.graphics.Color.TRANSPARENT)
+                                    loadUrl("https://open.spotify.com/embed/artist/$spotifyId?utm_source=generator")
                                 }
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(380.dp)
-                                .clip(RoundedCornerShape(32.dp))
+                                .height(350.dp)
+                                .clip(RoundedCornerShape(16.dp))
                         )
                     }
                 }
