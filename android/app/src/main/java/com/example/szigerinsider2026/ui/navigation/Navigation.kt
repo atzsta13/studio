@@ -37,6 +37,7 @@ import com.example.szigerinsider2026.ui.theme.CardBackground
 import com.example.szigerinsider2026.ui.theme.TextMuted
 import com.example.szigerinsider2026.ui.home.HomeScreen
 import com.example.szigerinsider2026.ui.discover.DiscoverScreen
+import com.example.szigerinsider2026.ui.discover.DiscoverViewModel
 import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
