@@ -2,12 +2,20 @@ package com.example.szigerinsider2026.ui.discover
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import android.content.Context
 import com.example.szigerinsider2026.data.model.Artist
+import com.example.szigerinsider2026.data.model.AiRecommendationResult
 import com.example.szigerinsider2026.data.repository.LineupRepository
+import com.example.szigerinsider2026.data.repository.AiRecommendationRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() {
+class DiscoverViewModel(
+    private val repository: LineupRepository,
+    private val context: Context? = null
+) : ViewModel() {
+
+    private val aiRepository = context?.let { AiRecommendationRepository(it) }
 
     private val _allArtists = MutableStateFlow<List<Artist>>(emptyList())
     private val _sortMode = MutableStateFlow("headliners") // "headliners" | "az"
@@ -18,6 +26,8 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     private val _isLoading = MutableStateFlow(true)
     private val _countryFilter = MutableStateFlow<String?>(null)
     private val _selectedYear = MutableStateFlow("2026")
+    private val _aiRecommendations = MutableStateFlow<AiRecommendationResult?>(null)
+    private val _aiLoading = MutableStateFlow(false)
 
     val allArtists: StateFlow<List<Artist>> = _allArtists.asStateFlow()
     val sortMode = _sortMode.asStateFlow()
@@ -28,6 +38,8 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     val isLoading = _isLoading.asStateFlow()
     val countryFilter: StateFlow<String?> = _countryFilter.asStateFlow()
     val selectedYear: StateFlow<String> = _selectedYear.asStateFlow()
+    val aiRecommendations: StateFlow<AiRecommendationResult?> = _aiRecommendations.asStateFlow()
+    val aiLoading: StateFlow<Boolean> = _aiLoading.asStateFlow()
 
     private val dayOrder = listOf("Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday")
 
@@ -103,6 +115,23 @@ class DiscoverViewModel(private val repository: LineupRepository) : ViewModel() 
     fun setYear(year: String) {
         _selectedYear.value = year
         loadArtists()
+    }
+
+    fun fetchAiRecommendations(prompt: String) {
+        viewModelScope.launch {
+            if (aiRepository == null) return@launch
+            _aiLoading.value = true
+            try {
+                val result = aiRepository.getRecommendations(prompt)
+                _aiRecommendations.value = result
+            } finally {
+                _aiLoading.value = false
+            }
+        }
+    }
+
+    fun clearAiRecommendations() {
+        _aiRecommendations.value = null
     }
 
     private val _serendipityHistory = mutableSetOf<String>()

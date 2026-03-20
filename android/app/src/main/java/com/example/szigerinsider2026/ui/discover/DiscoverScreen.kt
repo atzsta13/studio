@@ -59,7 +59,7 @@ fun DiscoverScreen(onArtistClick: (String) -> Unit = {}, navController: NavContr
         factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return DiscoverViewModel(LineupRepository(context)) as T
+                return DiscoverViewModel(LineupRepository(context), context) as T
             }
         }
     )
