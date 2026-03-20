@@ -242,128 +242,143 @@ fun DiscoverScreen(
             }
         }
 
-        // Sort mode row
-        LazyRow(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        // Collapsing filter header (hides on scroll down, shows on scroll up)
+        AnimatedVisibility(
+            visible = !gridState.isScrollInProgress,
+            enter = slideInVertically(
+                initialOffsetY = { -it },
+                animationSpec = tween(300)
+            ),
+            exit = slideOutVertically(
+                targetOffsetY = { -it },
+                animationSpec = tween(300)
+            )
         ) {
-            item {
-                FilterChip(
-                    text = "HEADLINERS FIRST",
-                    isSelected = sortMode == "headliners",
-                    selectedColor = AcidYellow,
-                    onClick = { haptic.lightTap(); discoverViewModel.setSortMode("headliners") }
-                )
-            }
-            item {
-                FilterChip(
-                    text = "A – Z",
-                    isSelected = sortMode == "az",
-                    selectedColor = AcidYellow,
-                    onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") }
-                )
-            }
-        }
+            Column(modifier = Modifier.fillMaxWidth()) {
+                // Sort mode row
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    item {
+                        FilterChip(
+                            text = "HEADLINERS FIRST",
+                            isSelected = sortMode == "headliners",
+                            selectedColor = AcidYellow,
+                            onClick = { haptic.lightTap(); discoverViewModel.setSortMode("headliners") }
+                        )
+                    }
+                    item {
+                        FilterChip(
+                            text = "A – Z",
+                            isSelected = sortMode == "az",
+                            selectedColor = AcidYellow,
+                            onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") }
+                        )
+                    }
+                }
 
-        // Year toggle row
-        LazyRow(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            item {
-                FilterChip(
-                    text = "2025",
-                    isSelected = selectedYear == "2025",
-                    selectedColor = CyanPulse,
-                    onClick = { haptic.lightTap(); discoverViewModel.setYear("2025") }
-                )
-            }
-            item {
-                FilterChip(
-                    text = "2026",
-                    isSelected = selectedYear == "2026",
-                    selectedColor = CyanPulse,
-                    onClick = { haptic.lightTap(); discoverViewModel.setYear("2026") }
-                )
-            }
-        }
+                // Year toggle row
+                LazyRow(
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    item {
+                        FilterChip(
+                            text = "2025",
+                            isSelected = selectedYear == "2025",
+                            selectedColor = CyanPulse,
+                            onClick = { haptic.lightTap(); discoverViewModel.setYear("2025") }
+                        )
+                    }
+                    item {
+                        FilterChip(
+                            text = "2026",
+                            isSelected = selectedYear == "2026",
+                            selectedColor = CyanPulse,
+                            onClick = { haptic.lightTap(); discoverViewModel.setYear("2026") }
+                        )
+                    }
+                }
 
-        // Day filter row
-        if (availableDays.isNotEmpty()) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                item {
-                    FilterChip(
-                        text = "ALL DAYS",
-                        isSelected = selectedDay == null,
-                        selectedColor = CyanPulse,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectDay(null) }
-                    )
+                // Day filter row
+                if (availableDays.isNotEmpty()) {
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        item {
+                            FilterChip(
+                                text = "ALL DAYS",
+                                isSelected = selectedDay == null,
+                                selectedColor = CyanPulse,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(null) }
+                            )
+                        }
+                        items(availableDays) { day ->
+                            FilterChip(
+                                text = day.take(3).uppercase(),
+                                isSelected = selectedDay == day,
+                                selectedColor = CyanPulse,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(day) }
+                            )
+                        }
+                    }
                 }
-                items(availableDays) { day ->
-                    FilterChip(
-                        text = day.take(3).uppercase(),
-                        isSelected = selectedDay == day,
-                        selectedColor = CyanPulse,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectDay(day) }
-                    )
-                }
-            }
-        }
 
-        // Genre filter row
-        if (availableGenres.isNotEmpty()) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                item {
-                    FilterChip(
-                        text = "ALL GENRES",
-                        isSelected = selectedGenre == null,
-                        selectedColor = ToxicGreen,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectGenre(null) }
-                    )
+                // Genre filter row
+                if (availableGenres.isNotEmpty()) {
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 4.dp),
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        item {
+                            FilterChip(
+                                text = "ALL GENRES",
+                                isSelected = selectedGenre == null,
+                                selectedColor = ToxicGreen,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(null) }
+                            )
+                        }
+                        items(availableGenres) { genre ->
+                            FilterChip(
+                                text = genre,
+                                isSelected = selectedGenre == genre,
+                                selectedColor = ToxicGreen,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(if (selectedGenre == genre) null else genre) }
+                            )
+                        }
+                    }
                 }
-                items(availableGenres) { genre ->
-                    FilterChip(
-                        text = genre,
-                        isSelected = selectedGenre == genre,
-                        selectedColor = ToxicGreen,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectGenre(if (selectedGenre == genre) null else genre) }
-                    )
-                }
-            }
-        }
 
-        // Vibe filter row
-        if (availableVibes.isNotEmpty()) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                item {
-                    FilterChip(
-                        text = "ALL VIBES",
-                        isSelected = selectedVibe == null,
-                        selectedColor = PrimaryMagenta,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectVibe(null) }
-                    )
-                }
-                items(availableVibes) { vibe ->
-                    FilterChip(
-                        text = vibe,
-                        isSelected = selectedVibe == vibe,
-                        selectedColor = PrimaryMagenta,
-                        onClick = { haptic.lightTap(); discoverViewModel.selectVibe(if (selectedVibe == vibe) null else vibe) }
-                    )
+                // Vibe filter row
+                if (availableVibes.isNotEmpty()) {
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        item {
+                            FilterChip(
+                                text = "ALL VIBES",
+                                isSelected = selectedVibe == null,
+                                selectedColor = PrimaryMagenta,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectVibe(null) }
+                            )
+                        }
+                        items(availableVibes) { vibe ->
+                            FilterChip(
+                                text = vibe,
+                                isSelected = selectedVibe == vibe,
+                                selectedColor = PrimaryMagenta,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectVibe(if (selectedVibe == vibe) null else vibe) }
+                            )
+                        }
+                    }
                 }
             }
         }
