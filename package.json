@@ -14,7 +14,8 @@
     "lineup:clean": "node src/scripts/clean_lineup.js",
     "lineup:show": "node src/scripts/show_lineup.js",
     "lineup:vibes": "node update_vibes.js",
-    "lineup:update": "npm run lineup:scrape && npm run lineup:clean && npm run lineup:vibes && npm run lineup:show"
+    "lineup:sync-android": "cp src/data/*.json android/app/src/main/assets/",
+    "lineup:update": "npm run lineup:scrape && npm run lineup:clean && npm run lineup:vibes && npm run lineup:sync-android && npm run lineup:show"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

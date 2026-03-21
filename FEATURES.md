@@ -21,18 +21,18 @@ Removed: live streaming (rights/bandwidth), privacy-invasive social tracking, dr
 | # | Feature | Tier | Status | Notes |
 |---|---------|------|--------|-------|
 | 1 | Full artist lineup browser | S | [x] | |
-| 2 | Timeline/grid schedule view | S | [x] | ScheduleScreen exists |
-| 3 | Clash detection — warns when two saved acts overlap | S | [ ] | Glastonbury's most-praised feature |
-| 4 | Offline schedule access (no internet needed) | S | [ ] | Connectivity dies with 100k people in one field |
+| 2 | Timeline/grid schedule view | S | [x] | GRID 2.0: 2D Drag, Zoom, Pinned Headers |
+| 3 | Clash detection — warns when two saved acts overlap | S | [x] | Glastonbury's most-praised feature |
+| 4 | Offline schedule access (no internet needed) | S | [x] | Connectivity dies with 100k people in one field |
 | 5 | Push notifications before a saved set starts | S | [ ] | "You have 15 mins before Bicep on Main Stage" |
 | 6 | Real-time cancellation / set change alerts | S | [ ] | Critical trust feature |
-| 7 | Personal schedule builder — pick your acts | S | [ ] | Different from favourites — this is a time-slotted plan |
+| 7 | Personal schedule builder — pick your acts | S | [x] | Choose from GRID or LIST |
 | 8 | Day-by-day schedule filter | S | [x] | |
-| 9 | Stage filter on schedule | S | [ ] | |
-| 10 | "Now playing" live indicator | S | [ ] | Which acts are on RIGHT NOW |
+| 9 | Stage filter on schedule | S | [x] | Grid is sorted by Stage by default |
+| 10 | "Now playing" live indicator | S | [x] | Pulsing ToxicGreen badge on card |
 | 11 | "Up next" home screen card | A | [ ] | Coachella's lock screen widget was widely praised |
 | 12 | Two-tier favouriting: "Must See" vs "Interested" | A | [ ] | Single most requested Glastonbury missing feature |
-| 13 | Share your schedule with friends | A | [ ] | |
+| 13 | Share your schedule with friends | A | [x] | Peer-to-Peer 'Squad Link' (QR) |
 | 14 | Lock screen widget (iOS Live Activities / Android widget) | A | [ ] | Coachella does this, users love it |
 | 15 | Auto-detect time zone and convert stage times | B | [ ] | For international visitors |
 | 16 | "I saw this" check-in per set | B | [ ] | Powers post-festival wrap |
@@ -116,7 +116,7 @@ Removed: live streaming (rights/bandwidth), privacy-invasive social tracking, dr
 | 73 | Group schedule — merge yours with friends' | A | [ ] | Glastonbury 2025. Core social loop |
 | 74 | Group schedule voting (friends vote on acts) | A | [ ] | Festival Dust — unique, viral feature |
 | 75 | "I'm at Stage X" one-tap status update | A | [ ] | Solves the core "where are you?" problem |
-| 76 | QR code to instantly add friends in-app | A | [ ] | SXSW does this |
+| 76 | QR code to instantly add friends in-app | A | [x] | Peer-to-Peer Squad scanning |
 | 77 | "Friends going to this set" indicator | A | [ ] | |
 | 78 | Share artist/set card to WhatsApp/Instagram | A | [ ] | Viral growth loop |
 | 79 | Share your schedule as an image | A | [ ] | |
@@ -210,7 +210,7 @@ Removed: live streaming (rights/bandwidth), privacy-invasive social tracking, dr
 | # | Feature | Tier | Status | Notes |
 |---|---------|------|--------|-------|
 | 141 | Accessibility map (wheelchair routes, accessible toilets) | A | [ ] | Underserved, sets you apart |
-| 142 | Font size / contrast accessibility settings | A | [ ] | R&L got criticized for bad typography |
+| 142 | Font size / contrast accessibility settings | A | [x] | Full scaling support for nav/cards |
 | 143 | Screen reader support (proper a11y labels) | A | [ ] | |
 | 144 | Sign language interpretation schedule | B | [ ] | |
 | 145 | Sensory-friendly / low-stimulation area locations | B | [ ] | |

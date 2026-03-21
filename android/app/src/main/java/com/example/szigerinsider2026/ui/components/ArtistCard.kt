@@ -41,6 +41,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.style.TextOverflow
 import coil.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
@@ -246,7 +247,10 @@ fun ArtistCard(
                         text = artist.artist.uppercase(),
                         style = BrutalistTypography.titleLarge,
                         color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
-                        modifier = Modifier.padding(bottom = 4.dp)
+                        modifier = Modifier.padding(bottom = 4.dp),
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        lineHeight = 24.sp
                     )
 
                     // Genre Pills
@@ -299,7 +303,8 @@ fun ArtistCard(
                             color = TextMuted.copy(alpha = 0.6f),
                             fontSize = 9.sp,
                             letterSpacing = 2.sp,
-                            maxLines = 1
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
                 }

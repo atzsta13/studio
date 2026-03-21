@@ -115,6 +115,8 @@ const HEADLINERS = [
     'bring me the horizon',
     'florence + the machine',
     'lewis capaldi',
+    'jorja smith (party set)',
+    'skepta',
     'sombr',
     'twenty one pilots',
     'zara larsson',
@@ -227,6 +229,21 @@ function cleanLineup() {
         console.log(`   ⚠️  Missing: ${missingCountries.join(', ')}`);
     }
     console.log('');
+
+    // Step 4.5: Normalize country codes
+    console.log('🌍 Normalizing country codes...');
+    merged.forEach(a => {
+        if (a.countryCode) {
+            const code = a.countryCode.trim().toUpperCase();
+            if (code === 'UK' || code === 'SCO' || code === 'WAL' || code === 'ENG') {
+                a.countryCode = 'GB';
+            } else if (code === 'USA') {
+                a.countryCode = 'US';
+            } else {
+                a.countryCode = code;
+            }
+        }
+    });
 
     // Step 5: Mark headliners
     console.log('5️⃣  Marking headliners...');

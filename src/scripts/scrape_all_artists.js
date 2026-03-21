@@ -174,6 +174,16 @@ async function scrapeAllArtists() {
                     console.log(`  🏷️ Genres: ${genres.join(', ')}`);
                 }
 
+                // --- Country Code ---
+                const countryCode = await page.evaluate(() => {
+                    const el = document.querySelector('.ArtistSingleHeader__country');
+                    return el ? el.innerText.trim().toUpperCase() : null;
+                });
+                if (countryCode) {
+                    artist.countryCode = countryCode;
+                    console.log(`  🌍 Country: ${countryCode}`);
+                }
+
                 // --- Description (expand if needed) ---
                 try {
                     const moreBtn = await page.$('.ArtistSingleBody__content__description__more');

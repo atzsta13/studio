@@ -1,14 +1,13 @@
 package com.example.szigerinsider2026.ui.navigation
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Event
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -22,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -51,6 +51,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -64,17 +65,18 @@ import com.example.szigerinsider2026.ui.packing.PackingListScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
-    object Discover : Screen("discover", "ARTISTS", Icons.Filled.Search)
+    object Discover : Screen("discover", "BROWSE", Icons.Filled.Search)
+    object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event)
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn)
-    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents)
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
+    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents) // Keep route for links, but remove from bar
 }
 
 val bottomNavItems = listOf(
     Screen.Home,
     Screen.Map,
     Screen.Discover,
-    Screen.Passport,
+    Screen.Schedule,
     Screen.Tools
 )
 
@@ -92,7 +94,6 @@ fun AppNavigation() {
 
     val showBottomBar = currentRoute != "splash"
         && currentRoute?.startsWith("artist/") != true
-        && currentRoute != "schedule"
         && currentRoute != "guide"
         && currentRoute != "vibe_quiz"
         && currentRoute != "vibe_results"
@@ -211,16 +212,24 @@ fun FluidBottomNavigation(navController: NavHostController) {
     ) {
         bottomNavItems.forEach { screen ->
             val isSelected = currentRoute == screen.route
+            val fontScale = LocalConfiguration.current.fontScale
+            val labelFontSize = if (fontScale > 1.2f) 8.sp else 10.sp
+
             NavigationBarItem(
-                icon = { Icon(screen.icon, contentDescription = screen.label) },
+                icon = { Icon(screen.icon, contentDescription = screen.label, modifier = Modifier.size(22.dp)) },
                 label = {
                     Text(
                         screen.label,
                         style = MaterialTheme.typography.labelSmall,
-                        fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal
+                        fontSize = labelFontSize,
+                        fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal,
+                        maxLines = 1,
+                        overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
+                        letterSpacing = if (fontScale > 1.2f) (-0.5).sp else 0.sp
                     )
                 },
                 selected = isSelected,
+                alwaysShowLabel = true,
                 onClick = {
                     if (!isSelected) {
                         haptic.lightTap()

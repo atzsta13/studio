@@ -2,16 +2,15 @@
   {
     "id": "1",
     "artist": "¥øu$uk€ ¥uk1mat$u",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "17:00",
+    "endTime": "18:15",
     "countryCode": "JP",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "WEDNESDAY",
       "BREAKBEAT"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2071969-%C2%A5%C3%B8u%24uk%E2%82%AC-%C2%A5uk1mat%24u?from=%2F",
@@ -27,23 +26,120 @@
       "soundcloud": "https://soundcloud.com/yousukeyukimatsu"
     },
     "description": "Versatility barely describes Japanese DJ ¥ØU$UK€ ¥UK1MAT$U, your favourite DJ’s favourite DJ. Raised in Osaka, he refined his craft while working construction. A 2014 invite to DJ Nobu’s Future Terror changed everything. In 2016 he launched Zone Unknown and, after a brain cancer diagnosis and surgery, went full-time. Tokyo-based since 2020, his CDJ mastery fuses any genre seamlessly, earning global acclaim, Berghain sets, the Midnight is Comin’ compilation, and viral ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594558_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/1.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
     "id": "2",
+    "artist": "2manydjs (Dj Set)",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "17:00",
+    "endTime": "18:15",
+    "countryCode": "BE",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "ELECTRO-HOUSE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078746-2manydjs-(dj-set)?from=%2F",
+    "socials": {
+      "website": "https://www.2manydjs.com/",
+      "facebook": "https://www.facebook.com/2manydjs",
+      "instagram": "https://www.instagram.com/2manydjs",
+      "x": "https://x.com/2manydjstour",
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@playlist",
+      "spotify": "https://open.spotify.com/artist/5bppICntghQ2YaiMPjk8l3",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/curator/2manydjs-dj-mixes/1635607101"
+    },
+    "description": "2manydjs is the legendary DJ project of Belgian brothers David and Stephen Dewaele, known from the band Soulwax. The duo became world-renowned for their genre-blurring DJ sets that fuse rock ’n’ roll energy with electronic club culture. Their groundbreaking 2002 mix album As Heard on Radio Soulwax Pt.2 marked a new era for live DJ mixes and became a defining moment for mashup culture. Since then, 2manydjs have performed at ...",
+    "imageUrl": "file:///android_asset/artists/2.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "3",
+    "artist": "6363",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "17:00",
+    "endTime": "18:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079572-6363?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/6363gege",
+      "instagram": "https://www.instagram.com/gegeyoyo",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@63hatharom",
+      "youtube": "https://www.youtube.com/channel/UCGgvNw5g3NRDlzrduRovjwA",
+      "spotify": "https://open.spotify.com/artist/6dglJzfnBc11OgGSZE0SVl",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/sk/artist/6363/1531945942"
+    },
+    "description": "These are not numbers, but letters. And it’s no longer just an MC, but a full band. 6363 now takes over the stage יחד with his musical accomplices, delivering not only a rhetorical experience but a rich musical one for fans of his underground hits. Driving 4/4 rhythms, ear-soothing melancholic moments, wild jumping, and spoken word all come together in one powerful package.",
+    "imageUrl": "file:///android_asset/artists/3.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "4",
+    "artist": "Alizade",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "19:00",
+    "endTime": "20:15",
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079528-alizade?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/asyaalizaude",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCmU10Y8VTOkWu9NCEkoKuEw",
+      "spotify": "https://open.spotify.com/artist/1EPZusBDP8yewhsaKtwktz",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/eg/artist/alizade/1488491288",
+      "soundcloud": "https://soundcloud.com/asyaalizade"
+    },
+    "description": "Azerbaijan born Netherlands based Alizade is one of the most distinctive voices to emerge from Turkey’s new wave of rap artists. She transforms her personal stories into anthems of self-expression and rebellion through blending sharp lyricism with bold visuals. Since her breakout with viral tracks like strong following for her unapologetic attitude and visual storytelling that pushes boundaries. Alizade represents a new generation redefining femininity, fame, and freedom in contemporary ...",
+    "imageUrl": "file:///android_asset/artists/4.png",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "5",
     "artist": "Alt Blk Era",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "17:00",
+    "endTime": "18:15",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -64,7 +160,7 @@
       "spotify": "https://open.spotify.com/artist/4FNR2qdCVKGAep4alfgt25",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/gb/artist/alt-blk-era/1592491437"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577128_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/5.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -79,12 +175,81 @@
     "isHeadliner": false
   },
   {
-    "id": "3",
-    "artist": "Analog Balaton",
+    "id": "6",
+    "artist": "Altin Gun",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "19:00",
+    "endTime": "20:15",
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079529-altin-gun?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/altingunband",
+      "instagram": "https://www.instagram.com/altingunband",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UChEZ2psKMV0dei91gpDtI_A",
+      "spotify": "https://open.spotify.com/artist/37PL04N8kBWWW69jdrMMWT",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/alt%C4%B1n-g%C3%BCn/1230077237"
+    },
+    "description": "Altın Gün are an Amsterdam-based psychedelic quintet at the forefront of the Turkish-inspired groove revival since 2018. Their sound blends Anatolian folk traditions with funk, psychedelia, and modern electronics. Their fifth album, Garip, pays heartfelt tribute to Neşet Ertaş, bringing their roots to the forefront. Their music feels both nostalgic and fresh, while their live performances channel a hypnotic, vibrant energy that bridges past and present.",
+    "imageUrl": "file:///android_asset/artists/6.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "7",
+    "artist": "Ana Frango Eletrico",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
+    "countryCode": "BR",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "ELECTRONIC"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078750-ana-frango-eletrico?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/ana.farago.2025",
+      "instagram": "https://www.instagram.com/anafrangoeletrico",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCALZ6tkkhtHNej4dxWW9f7Q",
+      "spotify": "https://open.spotify.com/artist/7uvxsk688pwnBNA62cTKS1",
+      "appleMusic": null,
+      "soundcloud": "https://soundcloud.com/anafrangoeletrico"
+    },
+    "description": "Ana Frango Elétrico is a singer-songwriter, multi-instrumentalist, producer, and visual artist. Hailing from Rio de Janeiro’s vibrant independent scene, award-winning she is known for her genre-bending sound that defies easy labels. Her music expertly fuses Brazilian traditions—like bossa nova, MPB, samba, and Tropicália—with a modern mix of indie pop, funk, post-punk, and jazz. The result is a style that is both playful and sophisticated. Her spectacular concerts are wild and ...",
+    "imageUrl": "file:///android_asset/artists/7.jpeg",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Dance",
+      "Rave"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "8",
+    "artist": "Analog Balaton",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "19:00",
+    "endTime": "20:15",
     "countryCode": "HU",
     "genres": [
       "MUSIC",
@@ -104,22 +269,22 @@
       "soundcloud": "https://soundcloud.com/analog_balaton"
     },
     "description": "Analog Balaton, formed by Aba Zsuffa and Ákos Vörös in Budapest in 2017, are among Hungary’s most exciting electronic acts. Blending acoustic guitars with dark, pulsating electronics, they built a following through sold-out shows before releasing music. Their 2021 debut Lent earned critical acclaim for its raw, lyrical intimacy. Followed by the Csússz le EP, major awards, and the album Repedés, the duo continue to evolve while selling out ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594563_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/8.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Feel-good",
-      "Anthemic"
+      "Rave",
+      "Unique",
+      "Live Band"
     ],
     "isHeadliner": false
   },
   {
-    "id": "4",
+    "id": "9",
     "artist": "Anetha",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "Revolver Stage",
+    "day": "Saturday",
+    "startTime": "16:00",
+    "endTime": "17:15",
     "countryCode": "FR",
     "genres": [
       "MUSIC",
@@ -140,23 +305,21 @@
       "soundcloud": "https://soundcloud.com/anethamusic"
     },
     "description": "ANETHA IS A FRENCH ARTIST, DJ, PRODUCER, LABEL MANAGER, TALENT AGENCY CO-FOUNDER AND A TRAINED ARCHITECT.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594569_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/9.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Weird"
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "5",
+    "id": "10",
     "artist": "Anna",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "17:30",
+    "endTime": "18:45",
     "countryCode": "BR",
     "genres": [
       "MUSIC",
@@ -176,7 +339,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/anna/1354964026",
       "soundcloud": "https://soundcloud.com/dj_anna"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577123_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/10.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -185,12 +348,12 @@
     "isHeadliner": false
   },
   {
-    "id": "6",
+    "id": "11",
     "artist": "Annisokay",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "Revolver Stage",
+    "day": "Friday",
+    "startTime": "16:00",
+    "endTime": "17:15",
     "countryCode": "DE",
     "genres": [
       "MUSIC",
@@ -210,22 +373,23 @@
       "soundcloud": "https://soundcloud.com/annisokay"
     },
     "description": "ANNISOKAY are a pioneering force in modern European metalcore. Across five acclaimed albums and relentless touring, they’ve built a devoted global following. Having performed in over 20 countries—including the USA, Japan, Russia, and across mainland Europe and the UK—the band are known for their tireless work ethic. Following the momentum of their 2024 Bleed Out Tour with Within Temptation, ANNISOKAY will embark on their biggest European headline tour to date ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594573_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/11.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Hard"
+      "Moshpit",
+      "Aggressive"
     ],
     "isHeadliner": false
   },
   {
-    "id": "7",
+    "id": "12",
     "artist": "Antony Szmierek",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "UK",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "INDIE",
@@ -244,7 +408,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/antony-szmierek/1526061771",
       "soundcloud": "https://soundcloud.com/antonyszmierek"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577137_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/12.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -254,18 +418,17 @@
     "isHeadliner": false
   },
   {
-    "id": "8",
+    "id": "13",
     "artist": "Argy",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "19:00",
+    "endTime": "20:15",
     "countryCode": "GR",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "WEDNESDAY",
       "MELODIC TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2069921-argy?from=%2F",
@@ -281,30 +444,28 @@
       "soundcloud": "https://soundcloud.com/argyofficial"
     },
     "description": "Argy stands as a singular force in modern electronic music, where sound, image, and identity merge into one iconic vision. Born in Rhodes and trained in London, he first shaped minimal techno with 2005’s Love Dose, later redefining his path through Ketuvim and the viral Tataki. His cinematic New World universe and NEWORLD II expanded his reach beyond genre, amassing hundreds of millions of streams and Gold records. ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594576_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/13.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "9",
+    "id": "14",
     "artist": "Ashnikko",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "19:00",
+    "endTime": "20:15",
     "countryCode": "US",
     "genres": [
       "MUSIC",
       "POP",
       "HIP-HOP",
       "ELECTROPOP",
-      "ALT POP",
-      "WEDNESDAY"
+      "ALT POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065315-ashnikko",
     "socials": {
@@ -318,7 +479,7 @@
       "x": "https://x.com/ashnikko"
     },
     "description": "Ashnikko (Ashton Nicole Casey) is an American rapper, singer-songwriter, and producer currently based in London. She grew up in Greensboro, North Carolina, then moved with her family to Estonia and later to Riga, Latvia during her teenage years. She released her first track, KROKODIL, in 2016, followed by her debut EP Sass Pancakes in 2017. Her next EPs, Unlikeable (2018) and Hi It’s Me (2019), continued to build her audience. ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/80/thumb_5579811_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/14.jpeg",
     "vibes": [
       "Wild",
       "Dance",
@@ -327,13 +488,13 @@
     "isHeadliner": false
   },
   {
-    "id": "10",
+    "id": "15",
     "artist": "Avralize",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "NL",
+    "countryCode": "DE",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -351,21 +512,56 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/de/artist/avralize/1625061405"
     },
     "description": "AVRALIZE fuse multiple worlds into a high-impact blend of vibe, technique, and raw creativity. Hailing from southern Germany, the four-piece balance crushing deathcore breakdowns with provoking guitar riffs, massive production, and grooves built to move bodies as much as minds. Guided by the idea of “perception through sound,” their music uses futuristic textures and immersive melodies to pull listeners into distant, otherworldly realms—brutal, hypnotic, and unmistakably their own.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594580_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/15.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Hard"
+      "Moshpit",
+      "Aggressive"
     ],
     "isHeadliner": false
   },
   {
-    "id": "11",
+    "id": "16",
+    "artist": "Aws",
+    "stage": "Revolver Stage",
+    "day": "Friday",
+    "startTime": "17:30",
+    "endTime": "18:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "METALCORE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074034-aws?from=%2F",
+    "socials": {
+      "website": "https://www.awsofficial.com/",
+      "facebook": "https://www.facebook.com/awszenekar",
+      "instagram": "https://www.instagram.com/awsofficial",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@aws_zenekar",
+      "youtube": "https://www.youtube.com/channel/UCpVH3AFcRbAri5OAUsYRZDw",
+      "spotify": "https://open.spotify.com/artist/2I5ZkGFj7RYeIBjV4dFlWn",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/aws/859538906"
+    },
+    "description": "Formed in 2006 as a high school band, AWS has become one of Hungary’s most popular modern metal acts. The original lineup of high school friends—Bence Brucker, Dániel Kökényes, Örs Siklósi and Áron Veress—was joined in 2016 by Soma Schiszler on bass. In 2018, the band gained international attention after winning Hungary’s national selection show A Dal and representing the country at the Eurovision Song Contest in Lisbon. Their rapid ...",
+    "imageUrl": "file:///android_asset/artists/16.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Moshpit",
+      "Aggressive"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "17",
     "artist": "Baby Lasagna",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "16:00",
+    "endTime": "17:15",
     "countryCode": "HR",
     "genres": [
       "MUSIC",
@@ -385,7 +581,7 @@
       "spotify": "https://open.spotify.com/artist/1ncWEkB4AQh1rxC8ObpBoH",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/baby-lasagna/1712556063"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580982_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/17.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -398,13 +594,13 @@
     "isHeadliner": false
   },
   {
-    "id": "12",
+    "id": "18",
     "artist": "Bad Nerves",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "16:00",
+    "endTime": "17:15",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -423,7 +619,7 @@
       "soundcloud": "https://soundcloud.com/badnerves",
       "x": "https://x.com/badbadnerves"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/77/thumb_5576971_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/18.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -433,18 +629,17 @@
     "isHeadliner": false
   },
   {
-    "id": "13",
+    "id": "19",
     "artist": "Bbno$",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "20:30",
+    "endTime": "21:45",
     "countryCode": "CA",
     "genres": [
       "MUSIC",
       "HIP-HOP",
-      "RAP",
-      "SATURDAY"
+      "RAP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064842-bbno%24",
     "socials": {
@@ -458,7 +653,7 @@
       "x": "https://x.com/bbnomula"
     },
     "description": "Hailed by Rolling Stone as “A Viral Pioneer”, bbno$ is no stranger to producing addictive hooks, having released the first ever TikTok thit, ‘Lalala’ with Y2K in 2019, which has gone 10x Platinum across the globe. Unlike a lot of his counterparts who's fame stemmed from a \"TikTok hit\", bbno$'s fame was no \"flash in the pan\" and his artistry quickly came to be respected in 2021 when he recreated ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577125_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/19.jpeg",
     "vibes": [
       "Flow",
       "Party"
@@ -466,19 +661,50 @@
     "isHeadliner": false
   },
   {
-    "id": "14",
-    "artist": "Beton.Hofi",
-    "stage": null,
+    "id": "20",
+    "artist": "Belga",
+    "stage": "Revolver Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "19:00",
+    "endTime": "20:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074008-belga?from=%2F",
+    "socials": {
+      "website": "https://www.belga.hu/menu",
+      "facebook": "https://www.facebook.com/belgaofficial",
+      "instagram": "https://www.instagram.com/belgahivatalos",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@belgahivatalos",
+      "spotify": "https://open.spotify.com/artist/7HhjcR2DpkXelO9wMrmrir",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/b%C3%ABlga/305295115"
+    },
+    "description": "Bëlga was formed in 1998 and has been performing लगातार ever since. To date, they have released 14 studio albums, one live album, two remix albums, a karaoke DVD, and numerous music videos. The members of Bëlga are DJ Titusz, Még5, Bauxit, and Tokyo, joined by DJ Marvin and MC Fedora. Their music is for everyone from ages 0 to 100.Bëlga has performed on the main stages of all major ...",
+    "imageUrl": "file:///android_asset/artists/20.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "21",
+    "artist": "Beton.Hofi",
+    "stage": "Revolver Stage",
+    "day": "Friday",
+    "startTime": "20:30",
+    "endTime": "21:45",
     "countryCode": "HU",
     "genres": [
       "MUSIC",
       "HIP-HOP",
       "TRAP",
-      "RAP",
-      "FRIDAY"
+      "RAP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2071957-beton.hofi?from=%2F",
     "socials": {
@@ -493,23 +719,21 @@
       "soundcloud": "https://soundcloud.com/betonhofi"
     },
     "description": "Beton.Hofi is a generational phenomenon. His genre-crossing sound and raw honesty have made him a symbol of contemporary Hungarian music. He has been one of the leading figures of Hungarian rap since 2021.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594583_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/21.jpeg",
     "vibes": [
-      "Party",
-      "Anthemic",
-      "Sing-along",
-      "Hard"
+      "Flow",
+      "Party"
     ],
     "isHeadliner": false
   },
   {
-    "id": "15",
+    "id": "22",
     "artist": "Biffy Clyro",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "17:30",
+    "endTime": "18:45",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -528,7 +752,7 @@
       "x": "https://x.com/BiffyClyro"
     },
     "description": "Biffy Clyro are one of the UK's most successful rock bands, they have released 3 UK number 1 albums to date and performed numerous headline sets at the likes of Reading & Leeds, Download, TRNSMT and Isle of Wight.\n\nTheir highly anticipated new album ‘Futique’ is set to release on 26th September, featuring new single ‘A Little Love’, which debuted as Hottest Record in the world on BBC Radio One. ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581804_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/22.jpeg",
     "vibes": [
       "Anthemic",
       "Moshpit",
@@ -537,12 +761,12 @@
     "isHeadliner": false
   },
   {
-    "id": "16",
+    "id": "23",
     "artist": "Biia",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "22:00",
+    "endTime": "23:15",
     "countryCode": "PT",
     "genres": [
       "MUSIC",
@@ -562,7 +786,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/biia/1453017087",
       "soundcloud": "https://soundcloud.com/biiamusic"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577093_performance_1080.jpeg",
+    "imageUrl": "file:///android_asset/artists/23.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -571,18 +795,145 @@
     "isHeadliner": false
   },
   {
-    "id": "17",
-    "artist": "Boys Noize",
-    "stage": null,
+    "id": "24",
+    "artist": "Black Country, New Road",
+    "stage": "Revolver Stage",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "17:30",
+    "endTime": "18:45",
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078740-black-country%2C-new-road?from=%2F",
+    "socials": {
+      "website": "https://blackcountrynewroad.com/",
+      "facebook": "https://www.facebook.com/BlackCountryNewRoad",
+      "instagram": "https://www.instagram.com/blackcountrynewroad",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@blackcountrynewroad",
+      "youtube": "https://www.youtube.com/channel/UCLTa27Tr5QqHx9G53H8jdFQ",
+      "spotify": "https://open.spotify.com/artist/3PP6ghmOlDl2jaKaH0avUN",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/black-country-new-road/1449884900"
+    },
+    "description": "Few contemporary bands reinvent themselves as consistently as Black Country, New Road. From their Mercury Prize-nominated debut For the First Time to the chart-topping Ants From Up There, the band has continuously explored new musical territory. After vocalist Isaac Wood departed, they returned with a new set of songs captured on Live at Bush Hall. On their third studio album, the band once again rebuilds its sound, ...",
+    "imageUrl": "file:///android_asset/artists/24.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "25",
+    "artist": "Blahalousiana",
+    "stage": "Revolver Stage",
+    "day": "Saturday",
+    "startTime": "22:00",
+    "endTime": "23:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "POP",
+      "ALT POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074022-blahalousiana?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/blahalouisiana",
+      "instagram": "https://www.instagram.com/blahalouisiana",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@blahalouisianaofficial",
+      "youtube": "https://www.youtube.com/channel/UCaCQaQnmd5oKvfKan6OwarA",
+      "spotify": "https://open.spotify.com/artist/0W2LWS5PPbVl0f6prrMcoP",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/blahalouisiana/761561486"
+    },
+    "description": "Now in their 12th year, Blahalouisiana started out as a club favorite and has since become a main stage act at Hungary’s biggest festivals. Blending beat-rock and soul-pop, the band was the most-played Hungarian act on MR2 Petőfi Radio in 2023. They received the Junior Artisjus Award in 2019 and won the Fonogram Award in 2022 in the “Modern Pop-Rock” category. Their fifth studio album, Sötét Villám, was released ...",
+    "imageUrl": "file:///android_asset/artists/25.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "26",
+    "artist": "Bohemian Betyars X Parno Graszt",
+    "stage": "Revolver Stage",
+    "day": "Wednesday",
+    "startTime": "19:00",
+    "endTime": "20:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "FOLK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074085-bohemian-betyars-x-parno-graszt?from=%2F",
+    "socials": {
+      "website": "https://www.bohemianbetyars.hu/",
+      "facebook": "https://www.facebook.com/bohemianbetyars",
+      "instagram": "https://www.instagram.com/parnograszt",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCo30sHM4PH_E0VLPgu2nGbQ",
+      "spotify": "https://open.spotify.com/artist/5hBCfYFEDK8otrksMYuzoL",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/parno-graszt/269642961"
+    },
+    "description": "The collaboration between Bohemian Betyars and Parno Graszt has become one of the most exciting musical fusions on the Hungarian scene in recent years. The meeting of speed-folk-punk energy and traditional Roma folk music creates a unique, dynamic, and authentic sound that appeals to both lovers of tradition and fans of contemporary music. From their very first meeting, there was an undeniable chemistry between the two bands, which quickly grew ...",
+    "imageUrl": "file:///android_asset/artists/26.jpeg",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "27",
+    "artist": "Bongor",
+    "stage": "Revolver Stage",
+    "day": "Thursday",
+    "startTime": "19:00",
+    "endTime": "20:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079561-bongor?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/bongorovics",
+      "instagram": "https://www.instagram.com/bongorofficial",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@bongorofficial",
+      "youtube": "https://www.youtube.com/@bongor",
+      "spotify": "https://open.spotify.com/artist/5HWC7PRwfVezYNVGggeCYD",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/bongor/1464125831"
+    },
+    "description": "bongor has been active in the experimental rap scene since 2017. His lyrics are often socially critical and frequently reflect on deeper existential questions as well as mental health.\nThanks to their striking, cinematic visual style, his music videos have won awards at the Hungarian Music Video Awards three times. Over the years, he has become a defining figure of the Hungarian festival and club scene. His concerts combine rap, ...",
+    "imageUrl": "file:///android_asset/artists/27.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "28",
+    "artist": "Boys Noize",
+    "stage": "Revolver Stage",
+    "day": "Thursday",
+    "startTime": "20:30",
+    "endTime": "21:45",
     "countryCode": "DE",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "THURSDAY",
       "ELECTRO-HOUSE"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068362-boys-noize?from=%2F",
@@ -598,29 +949,62 @@
       "soundcloud": "https://soundcloud.com/boysnoize"
     },
     "description": "BOYS NOIZE (Alex Ridha) is a German-Iraqi DJ, producer, and innovator who has pushed techno, house, and electro beyond convention while staying rooted in underground culture. His genre-spanning career includes collaborations with A$AP Rocky, Lady Gaga, Frank Ocean, and Skrillex, film scoring alongside Trent Reznor, and remixes for Daft Punk and Depeche Mode. Known for high-energy 140+ bpm productions and relentless creativity, he continues to shape electronic music globally. In ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587841_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/28.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Feel-good",
-      "Party"
+      "Hard",
+      "Groovy"
     ],
     "isHeadliner": false
   },
   {
-    "id": "18",
-    "artist": "Bring Me The Horizon",
-    "stage": null,
+    "id": "29",
+    "artist": "Bratri",
+    "stage": "Revolver Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "23:30",
+    "endTime": "00:45",
+    "countryCode": "CZ",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "MELODIC HOUSE",
+      "MELODIC TECHNO"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079558-bratri?from=%2F",
+    "socials": {
+      "website": "http://bratri.live/",
+      "facebook": "https://www.facebook.com/bratriveseli",
+      "instagram": "https://www.instagram.com/bratri_official",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/brat%C5%99i/1254573651",
+      "soundcloud": "https://soundcloud.com/bratri"
+    },
+    "description": "Bratři is an electronic live act formed by twin brothers Jiří and Ondřej from Prague. Their music blends the energy of dance electronics, hypnotic grooves, and melodic layers with elements of techno and ambient. On stage, they create a powerful symbiosis between live drums, played by Jiří, and analog and modular synthesizers, performed by Ondřej. The result is an intense, organic, and deeply emotional musical experience.\nSince their formation in ...",
+    "imageUrl": "file:///android_asset/artists/29.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Groovy",
+      "Hard"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "30",
+    "artist": "Bring Me The Horizon",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "21:30",
+    "endTime": "23:00",
     "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
-      "FRIDAY",
       "METAL"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2069922-bring-me-the-horizon?from=%2F",
@@ -636,22 +1020,23 @@
       "soundcloud": "https://soundcloud.com/bring-me-the-horizon"
     },
     "description": "BRIT award winning, Grammy-nominated, multi-platinum-selling group Bring Me The Horizon are one of the most successful rock bands on the planet, selling over 7.2 million albums globally to date. They have toured the world multiple times, playing sold-out shows in over 50 countries to over 3 million fans since 2021 alone. They are revered festival headliners across the globe, headlining Reading and Leeds in 2025 and 2022, Download in 2023 ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594602_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/30.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Hard"
+      "Moshpit",
+      "Aggressive"
     ],
     "isHeadliner": true
   },
   {
-    "id": "19",
+    "id": "31",
     "artist": "Brooke Combe",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "23:30",
+    "endTime": "00:45",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "INDIE",
@@ -669,7 +1054,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/gb/artist/brooke-combe/1444637732",
       "x": "https://x.com/brookecombe"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577104_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/31.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -679,13 +1064,108 @@
     "isHeadliner": false
   },
   {
-    "id": "20",
+    "id": "32",
+    "artist": "Bunt.",
+    "stage": "The Colosseum",
+    "day": "Friday",
+    "startTime": "21:00",
+    "endTime": "22:15",
+    "countryCode": "DE",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HOUSE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078742-bunt.?from=%2F",
+    "socials": {
+      "website": "https://www.buntmusic.com/",
+      "facebook": "https://www.facebook.com/buntmusic",
+      "instagram": "https://www.instagram.com/buntmusic",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@bunt",
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/2CpLIMBoE2ZzyY3ZBCRZ7j",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/bunt/1436090348"
+    },
+    "description": "BUNT.’s journey is not a story of overnight success but one of persistence and dedication. For more than a decade he quietly developed his sound until January 2023, when his track Clouds became a global breakthrough. The song debuted on the Billboard Hot Electronic Songs Chart and has since amassed more than 275 million streams, establishing him as one of dance music’s most exciting new artists.\nBefore his breakthrough, BUNT. ...",
+    "imageUrl": "file:///android_asset/artists/32.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "33",
+    "artist": "Byealex Es A Slepp",
+    "stage": "Revolver Stage",
+    "day": "Thursday",
+    "startTime": "22:00",
+    "endTime": "23:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2073609-byealex-es-a-slepp?from=%2F",
+    "socials": {
+      "website": "https://byealexesaslepp.com/",
+      "facebook": "https://www.facebook.com/byealexmusic",
+      "instagram": "https://www.instagram.com/byealexittvan",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@itsbyealexbitch",
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/2dmFGufs1lJpgKnb5NyPNS",
+      "appleMusic": null
+    },
+    "description": "Alex and his band, ByeAlex és a Slepp (Márta Alex, Dávid Schnellbach, Balázs Fekete, Zoltán G. Tóth, András Poór), sold out the Budapest Arena in 2024 after already conquering the main stages of most major festivals and filling Budapest Park multiple times. Their latest releases have already reached millions of views: the uniquely atmospheric Csokko, the beautifully melancholic Vajon (Hogy halok meg?), as well as Valamiben and Széltoló ...",
+    "imageUrl": "file:///android_asset/artists/33.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "34",
+    "artist": "Calle Mambo",
+    "stage": null,
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "CL",
+    "genres": [
+      "MUSIC",
+      "FOLK",
+      "FLAMENCO-RUMBA"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079220-calle-mambo?from=%2F",
+    "socials": {
+      "website": "https://www.callemambooficial.com/en/",
+      "facebook": "https://www.facebook.com/Calle-Mambo",
+      "instagram": "https://www.instagram.com/callemambo_oficial",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCrLvK8W5H7pZcOHD5qsZxXA",
+      "spotify": "https://open.spotify.com/artist/4Lp86mLjZ9OehWXVPEQtlN",
+      "appleMusic": null
+    },
+    "description": "With 13 years of career, three albums to their name, and international tours that have brought them to prestigious stages (Quai Branly, Mela Festival, Fuerteventura en Música, Festival du Bout du Monde, Fiest’A Sète, Sfinks Festival…), Calle Mambo has established as one of the committed bands leading the renewal of Latin music.\nTheir strength lies in rich and bold compositions that blend around ten traditional Latin American instruments (charango, tiple, ...",
+    "imageUrl": "file:///android_asset/artists/34.jpeg",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "35",
     "artist": "Cassia",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "UK",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "INDIE"
@@ -703,7 +1183,7 @@
       "soundcloud": "https://soundcloud.com/wearecassia",
       "x": "https://x.com/wearecassia"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/80/thumb_5579838_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/35.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric"
@@ -711,19 +1191,50 @@
     "isHeadliner": false
   },
   {
-    "id": "21",
-    "artist": "Charlotte Cardin",
-    "stage": null,
+    "id": "36",
+    "artist": "Chadia",
+    "stage": "Revolver Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "20:30",
+    "endTime": "21:45",
+    "countryCode": "IT",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079222-chadia?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/chadiaarodriguez",
+      "instagram": "https://www.instagram.com/chadiaarodriguez",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCudat1nyqlB5JD3NkyGsBKQ",
+      "spotify": "https://open.spotify.com/artist/4nXNT34X5GQ8yTBttXtbY6",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/chadia-rodriguez/1370355140"
+    },
+    "description": "Chadia Rodriguez is an Italian rapper and singer-songwriter, born in Almería (Spain) on November 6, 1998, and raised in Turin. Charismatic and outspoken, she has become one of the most recognizable female voices in the Italian urban scene thanks to a provocative style, explicit lyrics, and a powerful image that blends female empowerment, sensuality, and street attitude. Chadia moves between rap, trap, and urban pop with a raw, unfiltered language. ...",
+    "imageUrl": "file:///android_asset/artists/36.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "37",
+    "artist": "Charlotte Cardin",
+    "stage": "Revolver Stage",
+    "day": "Wednesday",
+    "startTime": "22:00",
+    "endTime": "23:15",
     "countryCode": "CA",
     "genres": [
       "MUSIC",
       "INDIE",
       "POP",
-      "ALT POP",
-      "SATURDAY"
+      "ALT POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064816-charlotte-cardin",
     "description": "Born in Montreal and based in Paris, Charlotte Cardin shines on the global stage with striking authenticity and emotional depth. Named Billboard’s Global Woman of the Year in 2025, the Canadian singer-songwriter has amassed over a billion streams worldwide and performed on renowned stages from Bonnaroo to Festival d’Été de Québec to Les Vieilles Charrues, earning praise from Harper’s BAZAAR, W Magazine, TF1, and Le Parisien. In late 2024, following ...",
@@ -738,7 +1249,7 @@
       "soundcloud": "https://soundcloud.com/charlottecardin",
       "x": "https://x.com/Charlottecardin"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577351_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/37.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -748,17 +1259,16 @@
     "isHeadliner": false
   },
   {
-    "id": "22",
+    "id": "38",
     "artist": "Chet Faker",
-    "stage": null,
+    "stage": "Revolver Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "23:30",
+    "endTime": "00:45",
     "countryCode": "AU",
     "genres": [
       "MUSIC",
-      "INDIE",
-      "WEDNESDAY"
+      "INDIE"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2071960-chet-faker?from=%2F",
     "socials": {
@@ -773,18 +1283,49 @@
       "soundcloud": "https://soundcloud.com/chetfaker"
     },
     "description": "Chet Faker first captured global attention with his haunting 2011 cover of Blackstreet’s “No Diggity,” followed by the acclaimed Lockjaw EP with Flume and his platinum-selling debut Built On Glass, earning multiple ARIA Awards. Since then, he has released a critically praised discography, including 2021’s Hotel Surrender and work as Nick Murphy, while touring worldwide and selling out headline shows. His new album A Love For Strangers arrives 13 ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594603_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/38.jpeg",
     "vibes": [
-      "Feel-good",
-      "Nostalgic"
+      "Chill",
+      "Atmospheric"
     ],
     "isHeadliner": false
   },
   {
-    "id": "23",
+    "id": "39",
+    "artist": "Co Lee",
+    "stage": "Revolver Stage",
+    "day": "Thursday",
+    "startTime": "23:30",
+    "endTime": "00:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074033-co-lee?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/coleeofficial",
+      "instagram": "https://www.instagram.com/c0_lee",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@ccoolee",
+      "youtube": "https://www.youtube.com/channel/UCfMoeQW4tnaBaaeXmU2W7Yw",
+      "spotify": "https://open.spotify.com/artist/7AFCBet5F4Pocp1il3bxv0",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/co-lee/1477315364"
+    },
+    "description": "With his relentless honesty and visceral on-stage genius, Co Lee has, over the past few years, become one of the most essential and influential figures of the Hungarian music scene. Each concert translates his exceptionally diverse discography into a unique live experience defined by unparalleled musicality. His innovative linguistic, musical, and production choices—for instance, presenting his latest album, Gadara, while standing atop a mountain built inside Müpa’s Grand Hall—continually expand ...",
+    "imageUrl": "file:///android_asset/artists/39.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "40",
     "artist": "Coco & Breezy",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
     "countryCode": "US",
@@ -806,22 +1347,53 @@
       "soundcloud": "https://soundcloud.com/cocoandbreezy"
     },
     "description": "Coco & Breezy are Producers & DJs and the fiercely stylish twins behind their multifaceted brand. Their musical journey was influenced by their family and grew into a deep passion for dance music culture. Post moving to New York to launch their eyewear company, C&B submerged themselves into changing the face of dance music and what it means to be a technically accomplished Afro-Latina women DJs and producers.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587819_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/40.jpeg",
     "vibes": [
       "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "41",
+    "artist": "Curtisy",
+    "stage": "The Colosseum",
+    "day": "Friday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "IE",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "ALT-JAZZ"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079218-curtisy?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/itscurtisy",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@itscurtisy",
+      "youtube": "https://www.youtube.com/channel/UCEtRgM8az9AUY0FhH7bFi9w",
+      "spotify": "https://open.spotify.com/artist/5VMnilBpX9s4C1HBnTCX35",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/gb/artist/curtisy/1501488685"
+    },
+    "description": "Curtisy’s ascent feels like the natural next chapter in Ireland’s ongoing cultural purple patch. His trajectory has been swift but deliberate: an RTÉ Choice Prize nomination for his debut album “What Was The Question”, a BBC Radio 1Xtra debut with Caskkid, a widely-circulated Dazed profile that labelled him “one of the best rappers to ever come out of Ireland,” and a growing catalogue that doubles as a personal diary — ...",
+    "imageUrl": "file:///android_asset/artists/41.jpeg",
+    "vibes": [
       "Flow",
-      "Feel-good",
       "Party"
     ],
     "isHeadliner": false
   },
   {
-    "id": "24",
+    "id": "42",
     "artist": "De'wayne",
-    "stage": null,
+    "stage": "The Colosseum",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "21:00",
+    "endTime": "22:15",
     "countryCode": "US",
     "genres": [
       "MUSIC",
@@ -842,7 +1414,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/dewayne/1113740182",
       "x": "https://x.com/yeahdewaynehere"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577031_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/42.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -856,18 +1428,52 @@
     "isHeadliner": false
   },
   {
-    "id": "25",
-    "artist": "Dijon",
-    "stage": null,
+    "id": "43",
+    "artist": "Deki Alem",
+    "stage": "The Colosseum",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "SE",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079533-deki-alem?from=%2F",
+    "socials": {
+      "website": "https://www.dekialem.com/",
+      "facebook": null,
+      "instagram": "https://www.instagram.com/dekialem",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCf2bYyCLLQUGwyevD7LZHPA",
+      "spotify": "https://open.spotify.com/artist/2AK3F4tVjxYuqSGefozy52",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/deki-alem/1612434564",
+      "soundcloud": "https://soundcloud.com/dekialem"
+    },
+    "description": "Pushing the boundaries of modern music with relentless energy and a distinctive sound, Deki Alem fuses raw intensity with rich, playful soundscapes. Blending drum and bass, dance, trip-hop, and rap into a style uniquely their own, they deliver an experience that is as unpredictable as it is powerful.\nTheir recently released album Forget In Mass has been met with critical acclaim, praised by voices like Anthony Fantano – “they're bringing ...",
+    "imageUrl": "file:///android_asset/artists/43.jpeg",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "44",
+    "artist": "Dijon",
+    "stage": "The Colosseum",
+    "day": "Thursday",
+    "startTime": "00:00",
+    "endTime": "01:15",
     "countryCode": "US",
     "genres": [
       "MUSIC",
       "INDIE",
-      "ALTERNATIVE",
-      "TUESDAY"
+      "ALTERNATIVE"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064846-dijon",
     "socials": {
@@ -881,7 +1487,7 @@
       "x": "https://x.com/dijondijon_"
     },
     "description": "Dijon Duenas (simply known as Dijon) is an American alternative/R&B singer-songwriter and producer, also known as the former vocalist of the R&B duo Abhi//Dijon. After the duo released two projects respectively in 2015 and 2016, Dijon began to step into his own in 2017, releasing a string of solo singles, including \"Skin\" and \"Nico's Red Truck\". His debut EP Sci Fi 1 was released in 2019 under the Warner-supported label ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577140_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/44.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -891,17 +1497,16 @@
     "isHeadliner": false
   },
   {
-    "id": "26",
+    "id": "45",
     "artist": "Dimension",
-    "stage": null,
+    "stage": "The Colosseum",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "21:00",
+    "endTime": "22:15",
     "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "SATURDAY",
       "DNB"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068361-dimension?from=%2F",
@@ -917,28 +1522,27 @@
       "soundcloud": "https://soundcloud.com/dimension_uk"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594607_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/45.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "High Energy"
+      "Rave",
+      "High Energy",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "27",
+    "id": "46",
     "artist": "Dixon",
-    "stage": null,
+    "stage": "The Colosseum",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "01:30",
+    "endTime": "02:45",
     "countryCode": "DE",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "THURSDAY",
       "DEEP-HOUSE",
       "MELODIC TECHNO"
     ],
@@ -955,29 +1559,26 @@
       "soundcloud": "https://soundcloud.com/DIXON"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594608_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/46.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Feel-good",
-      "Party"
+      "Hard",
+      "Groovy"
     ],
     "isHeadliner": false
   },
   {
-    "id": "28",
+    "id": "47",
     "artist": "Dom Dolla",
-    "stage": null,
+    "stage": "The Colosseum",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "00:00",
+    "endTime": "01:15",
     "countryCode": "AU",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "THURSDAY",
       "TECH-HOUSE"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065311-dom-dolla",
@@ -993,7 +1594,7 @@
       "x": "https://twitter.com/domdolla"
     },
     "description": "Grammy nominated DJ, producer & songwriter, DOM DOLLA, is experiencing a meteoric rise, his signature style of house music is connecting with global audiences, and he is recognised as one of the most exciting producers in electronic music. Dom discovered house music when his Mother handed him a copy of Basement Jaxx’ 2001 album ‘Rooty\". In his late teen’s Dom spent weekends hosting pub‐discos & djing at parties whilst working ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/80/thumb_5579847_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/47.jpeg",
     "vibes": [
       "Banger",
       "Dance",
@@ -1002,13 +1603,78 @@
     "isHeadliner": false
   },
   {
-    "id": "29",
-    "artist": "Elefant",
-    "stage": null,
-    "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "id": "48",
+    "artist": "Dressed Like Boys",
+    "stage": "The Colosseum",
+    "day": "Saturday",
+    "startTime": "22:30",
+    "endTime": "23:45",
     "countryCode": "BE",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079190-dressed-like-boys?from=%2F",
+    "socials": {
+      "website": "https://www.dressedlikeboys.com/",
+      "facebook": "https://www.facebook.com/dressedlikeboysmusic",
+      "instagram": "https://www.instagram.com/dressedlikeboys",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCYpeyAu4VwGwXOk-rrwVXYg",
+      "spotify": null,
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/dressed-like-boys/1731374856"
+    },
+    "description": "Jelle Denturck is the singer and frontman of DIRK., a popular Belgian indie band that – in his ownwords – ‘has been making a fair amount of noise these past few years’. But in fact he thinks he’s a real softie, with a record collection full of melancholic indie pop and rock music: Bowie, Beatles, Lou Reed, Elton John, Nina Simone, Anohni & The Johnsons, Sufjan Stevens, Perfume Genius, Wilco, ...",
+    "imageUrl": "file:///android_asset/artists/48.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Sing-along",
+      "Feel-good",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "49",
+    "artist": "Duckshell",
+    "stage": "The Colosseum",
+    "day": "Saturday",
+    "startTime": "00:00",
+    "endTime": "01:15",
+    "countryCode": "HU",
+    "genres": [
+      "FOLK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079273-duckshell?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/DuckShellOfficial",
+      "instagram": "https://www.instagram.com/duckshellofficial",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCs24WYNc1l1W1xFA9xTJXxw",
+      "spotify": "https://open.spotify.com/artist/0UwipkMBTtmv6dORNlafC9",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/duckshell/1480425092"
+    },
+    "description": "The band was founded by high school friends who later connected with underground musicians from Budapest through encounters in the nightlife scene. Their music is genre-defying and uncompromising: influenced by their two Brazilian members and their Hungarian roots, their sound primarily draws from the musical axis between South America and the Balkans, while also incorporating elements from many other styles to create a unique sonic identity.\nThey bring explosive energy ...",
+    "imageUrl": "file:///android_asset/artists/49.jpeg",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "50",
+    "artist": "Elefant",
+    "stage": "The Colosseum",
+    "day": "Friday",
+    "startTime": "01:30",
+    "endTime": "02:45",
+    "countryCode": "HU",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -1028,7 +1694,7 @@
       "spotify": "https://open.spotify.com/artist/5XXDBFhkTp168rjq9IjAE3",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/elef%C3%A1nt/927579435"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581840_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/50.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -1040,13 +1706,189 @@
     "isHeadliner": false
   },
   {
-    "id": "30",
+    "id": "51",
+    "artist": "Emma Nolde",
+    "stage": "The Colosseum",
+    "day": "Wednesday",
+    "startTime": "21:00",
+    "endTime": "22:15",
+    "countryCode": "IT",
+    "genres": [
+      "MUSIC",
+      "ALT POP",
+      "INDIE POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079571-emma-nolde?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/emmanoldee",
+      "instagram": "https://www.instagram.com/emmanlde",
+      "x": "https://x.com/emmanolde",
+      "tiktok": "https://www.tiktok.com/@emmanolde",
+      "youtube": "https://www.youtube.com/@playlist",
+      "spotify": "https://open.spotify.com/artist/5Ti3nqsUZsSrsk3qcOADjK",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/it/artist/emma-nolde/1519198613",
+      "soundcloud": "https://soundcloud.com/emmanolde"
+    },
+    "description": "Emma Nolde is a highly talented singer-songwriter and musician. She finds her fullest expression in live performance—being on stage is her true craft. She loves poetry.\nShe has released three albums, and with her latest, NUOVOSPAZIOTEMPO, she received widespread acclaim from both audiences and critics, becoming a finalist at the Targhe Tenco for the second time (2020 for Best Debut Album; 2025 for Best Overall Album), despite being only ...",
+    "imageUrl": "file:///android_asset/artists/51.png",
+    "vibes": [
+      "Sing-along",
+      "Feel-good",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "52",
+    "artist": "Esti Kornel",
+    "stage": "The Colosseum",
+    "day": "Saturday",
+    "startTime": "01:30",
+    "endTime": "02:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2073892-esti-kornel?from=%2F",
+    "socials": {
+      "website": "https://www.estikornelband.hu/",
+      "facebook": "https://www.facebook.com/estikornelzenekar",
+      "instagram": "https://www.instagram.com/estikornelzenekar",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@estikornelzenekar",
+      "youtube": "https://www.youtube.com/@estikornelzenekar",
+      "spotify": "https://open.spotify.com/artist/6CKGpi9bhf2T7bapMfXl5m",
+      "appleMusic": "https://music.apple.com/us/artist/https://itunes.apple.com/hu/artist/esti-korn%C3%A9l/876382252"
+    },
+    "description": "Celebrating their 20th anniversary in 2026, Esti Kornél has released seven studio albums to date, as well as a compilation album featuring re-orchestrated songs accompanied by a one-hour film. Alongside their sold-out concerts in Budapest, they are regular performers at clubs across the country and at major festivals. In 2021, they marked their 15th anniversary with two shows at the Akvárium Klub’s NagyHall. In spring 2022, they released their sixth ...",
+    "imageUrl": "file:///android_asset/artists/52.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "53",
+    "artist": "Evening Elephants",
+    "stage": "The Colosseum",
+    "day": "Saturday",
+    "startTime": "03:00",
+    "endTime": "04:15",
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE ROCK",
+      "DREAM-POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079541-evening-elephants?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/eveningelephants",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@eveningelephants",
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/4mvJqW3HQswIu7RmvcAQUy",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/evening-elephants/1655904238",
+      "soundcloud": "https://soundcloud.com/eveningelephants"
+    },
+    "description": "Evening Elephants is the creative partnership between North Carolina-born vocalist Sam Boggs and Southern California producer and drummer Brandon “B” Leslie. Blending irresistible pop hooks with punk-like intensity, the duo first met at a backyard party in Los Angeles in 2021 and quickly began creating music together. Their breakout releases—including the Evening Demos EP and singles like “Life Is Swell” and “Snow On The Bluff”—have collected over 20 million streams. ...",
+    "imageUrl": "file:///android_asset/artists/53.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Chill",
+      "Atmospheric",
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "54",
+    "artist": "Faeda",
+    "stage": "IBIZA Soul",
+    "day": "Saturday",
+    "startTime": "14:00",
+    "endTime": "15:15",
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "INDIE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079559-faeda?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/FAEDAbanduk",
+      "instagram": "https://www.instagram.com/faedabanduk",
+      "x": "https://x.com/faedabanduk",
+      "tiktok": "https://www.tiktok.com/@faedabanduk",
+      "youtube": "https://www.youtube.com/channel/UCloWxOuSzS26MTMU-UCGtcQ",
+      "spotify": "https://open.spotify.com/artist/5fC6wqfNjhmkVh6cYB4Gru",
+      "appleMusic": null,
+      "soundcloud": "https://soundcloud.com/faedaband"
+    },
+    "description": "FAEDA are a four-piece indie rock band from Thurso, the northernmost town in the UK, deep in the Scottish Highlands. Fronted by Robbie McNicol, with Sam Cowan (drums), Cole Cummings (bass) and Jamie Mackay (guitar), the band delivers explosive live shows driven by raw energy and powerful melodies.\nThey have quickly built a reputation for captivating crowds, sharing stages with artists such as Sam Fender, The View, The Lottery Winners, ...",
+    "imageUrl": "file:///android_asset/artists/54.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "55",
+    "artist": "Fcukers",
+    "stage": "The Colosseum",
+    "day": "Thursday",
+    "startTime": "03:00",
+    "endTime": "04:15",
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "ELECTRONIC"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078733-fcukers?from=%2F",
+    "socials": {
+      "website": "https://www.fcukers.net/",
+      "facebook": "https://www.facebook.com/fcukerssss",
+      "instagram": "https://www.instagram.com/fcukers__",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC3LrEJlr7JKuaxoVkfzwf2g",
+      "spotify": "https://open.spotify.com/artist/3UtzOHYm3lQALkKzVD4wyO",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/fcukers/1679474991"
+    },
+    "description": "fcukers’ explosive ascendance began downtown in New York City, and in just three years the band amassed millions of streams while performing at major festivals including Glastonbury, Primavera, Lollapalooza and Coachella, as well as arena shows supporting LCD Soundsystem and Tame Impala. Formed by Shanny Wise and Jackson Walker Lewis, the project blends a wide range of influences, collaging dub, UK garage, trip hop and 2000s hip hop with modern ...",
+    "imageUrl": "file:///android_asset/artists/55.jpeg",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Dance",
+      "Rave"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "56",
     "artist": "Florence + The Machine",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "UK",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -1054,8 +1896,7 @@
       "POP",
       "POP-ROCK",
       "INDIE ROCK",
-      "INDIE POP",
-      "THURSDAY"
+      "INDIE POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064800-florence-%2B-the-machine",
     "socials": {
@@ -1069,7 +1910,7 @@
       "x": "https://x.com/florencemachine"
     },
     "description": "Florence Welch - also known as Florence + The Machine - has released her sixth studio album Everybody Scream.\n\nThe album’s title track Everybody Scream was written and produced by Florence Welch over the past two years with a close-knit circle of collaborators including Mark Bowen of IDLES, who appears in the video for the single, Aaron Dessner and Mitski.\n\nAfter needing lifesaving surgery on the Dance Fever Tour, Florence’s ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581803_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/56.jpeg",
     "vibes": [
       "Ethereal",
       "Sing-along",
@@ -1078,18 +1919,17 @@
     "isHeadliner": true
   },
   {
-    "id": "31",
+    "id": "57",
     "artist": "Funk Tribu",
-    "stage": null,
+    "stage": "IBIZA Soul",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "ES",
+    "startTime": "15:30",
+    "endTime": "16:45",
+    "countryCode": "CO",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "TECHNO",
-      "SATURDAY"
+      "TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068353-funk-tribu?from=%2F",
     "socials": {
@@ -1104,22 +1944,21 @@
       "soundcloud": "https://soundcloud.com/funktribumusic"
     },
     "description": "Colombian-born, Berlin-based DJ and producer Funk Tribu has become a defining figure in modern electronic music, blending classic trance emotion with contemporary club energy. In 2025, he launched TRIBE, a label uniting music, identity, and creative vision, and celebrated a homecoming with two sold-out Bogotá arena shows and official City Council recognition. Known for heart-driven, groove-filled sets, Funk Tribu continues shaping the global dancefloor and refocuses on creation in ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587818_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/57.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "32",
+    "id": "58",
     "artist": "Giant Rooks",
-    "stage": null,
+    "stage": "IBIZA Soul",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "17:00",
+    "endTime": "18:15",
     "countryCode": "DE",
     "genres": [
       "MUSIC",
@@ -1140,7 +1979,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/de/artist/giant-rooks/1181446985",
       "x": "https://x.com/giantrooksmusic"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577377_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/58.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -1152,13 +1991,13 @@
     "isHeadliner": false
   },
   {
-    "id": "33",
+    "id": "59",
     "artist": "Golden Hours",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "NL",
+    "stage": "The Colosseum",
+    "day": "Wednesday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "DE",
     "genres": [
       "MUSIC",
       "POP"
@@ -1176,21 +2015,54 @@
       "soundcloud": "https://soundcloud.com/golden_hours"
     },
     "description": "Golden Hours, based in Berlin and Brussels, are a band of seasoned musicians with roots in acts like Gang Of Four, The Brian Jonestown Massacre, and Tricky. Their new album Beyond Wires, written and recorded across both cities, blends fuzz, noise, and strong melodies, even embracing electrical interference as part of its sound. With dual lead vocals, interwoven guitars, and a tight yet explosive rhythm section, the band crafts ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594609_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/59.jpeg",
     "vibes": [
       "Sing-along",
-      "Feel-good",
-      "Party"
+      "Feel-good"
     ],
     "isHeadliner": false
   },
   {
-    "id": "34",
+    "id": "60",
+    "artist": "Haai",
+    "stage": "The Colosseum",
+    "day": "Wednesday",
+    "startTime": "00:00",
+    "endTime": "01:15",
+    "countryCode": "AU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079217-haai?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/HAAiDJ",
+      "instagram": "https://www.instagram.com/haaihaaihaai",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCeMRNaq85Rzx3XVDiNxABIw",
+      "spotify": "https://open.spotify.com/artist/0re0kalL0YyUUUSzFBCClC",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/haai/1253187522",
+      "soundcloud": "https://soundcloud.com/haai-2"
+    },
+    "description": "HAAi is known for her dynamic, tempo-shifting DJ sets. In 2024 HAAi played over 100 shows across five continents, 30 countries, and 91 cities. She took to the biggest stages at festivals, such as Glastonbury, Sonar, and EDC Las Vegas, while also delivering sets at local parties including Japan’s Rainbow Disco Club, Berlin’s RSO and Paris’ Iconic Rex Club, where she performed a year-long residency. In-between, HAAi was playing b2b’s ...",
+    "imageUrl": "file:///android_asset/artists/60.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Hard"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "61",
     "artist": "Health",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "The Colosseum",
+    "day": "Wednesday",
+    "startTime": "01:30",
+    "endTime": "02:45",
     "countryCode": "US",
     "genres": [
       "MUSIC",
@@ -1209,7 +2081,7 @@
       "soundcloud": "https://soundcloud.com/healthnoise"
     },
     "description": "HEALTH’s RAT WARS is the band’s most intense and emotionally exposed album to date, blending brutal industrial aggression with personal vulnerability and dark humor. Drawing from their long, unconventional career and pandemic-era collaborations, the record pushes the boundaries between metal, electronic and pop while speaking directly to a young, online-driven subculture. Fierce, ambitious and uncompromising, RAT WARS stands as HEALTH’s boldest statement yet on the chaos of contemporary life.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594615_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/61.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic"
@@ -1217,18 +2089,181 @@
     "isHeadliner": false
   },
   {
-    "id": "35",
-    "artist": "Indira Paganotto",
-    "stage": null,
+    "id": "62",
+    "artist": "House Of Circus Carnivale Royale",
+    "stage": "The Colosseum",
+    "day": "Friday",
+    "startTime": "03:00",
+    "endTime": "04:15",
+    "countryCode": "NL",
+    "genres": [
+      "CIRCUS",
+      "DRAG"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2075855-house-of-circus---carnivale-royale?from=%2F",
+    "socials": {
+      "website": "https://szigetfestival.com/en/user140930566",
+      "facebook": null,
+      "instagram": "https://www.instagram.com/houseofcircus",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@houseofcircus",
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null
+    },
+    "description": "Welcome to Carnivale Royale, A Queer Cabaret for all to enjoy, a sensual night full of surprises. This is an invitation to come together without prejudice, a celebration of who we truly are and a home for both artists and audiences to be unapologetically themselves.\nTrue to the House of Circus motto: Be who you want to be, wear what you want to wear, love who you want to love. ...",
+    "imageUrl": "file:///android_asset/artists/62.jpeg",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "63",
+    "artist": "I Patagarri",
+    "stage": "IBIZA Soul",
+    "day": "Thursday",
+    "startTime": "14:00",
+    "endTime": "15:15",
+    "countryCode": "IT",
+    "genres": [
+      "MUSIC",
+      "RAP",
+      "INDIE POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079573-i-patagarri?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/ipatagarri",
+      "instagram": "https://www.instagram.com/i.patagarri",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@i.patagarri",
+      "youtube": "https://www.youtube.com/channel/UCl_DW_CCR4tmGW2jb1KwmHw",
+      "spotify": "https://open.spotify.com/artist/26s0whgMUU9b7vvgbJZqic",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/i-patagarri/1729506111"
+    },
+    "description": "The Milanese band, with its joyful and engaging gypsy jazz, creates a contrast between the desire to escape everyday life and the harsh realities faced while pursuing their musical dream. Their song “CARAVAN,” featured on X Factor Mixtape 2024, is a cry for freedom—an invitation to take control of one’s life without fear of living on the margins, if necessary.\nThe caravan represents a refuge, a symbol of resistance ...",
+    "imageUrl": "file:///android_asset/artists/63.jpeg",
+    "vibes": [
+      "Flow",
+      "Party",
+      "Sing-along",
+      "Feel-good",
+      "Chill",
+      "Atmospheric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "64",
+    "artist": "Idiotape",
+    "stage": "IBIZA Soul",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "18:30",
+    "endTime": "19:45",
+    "countryCode": "KR",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "ELECTROPOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079543-idiotape?from=%2F",
+    "socials": {
+      "website": "http://idiotape.com/",
+      "facebook": "https://www.facebook.com/IDIOTAPE",
+      "instagram": "https://www.instagram.com/idiotapeofficial",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCH4qSQBQ6qlvqQfnxTp6UoA",
+      "spotify": "https://open.spotify.com/artist/0OmQCkk1rR3DJ0Y2NRxp6Z",
+      "appleMusic": null,
+      "soundcloud": "https://soundcloud.com/IDIOTAPE"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/64.png",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "65",
+    "artist": "Ikkimel",
+    "stage": "The Colosseum",
+    "day": "Wednesday",
+    "startTime": "03:00",
+    "endTime": "04:15",
+    "countryCode": "DE",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079532-ikkimel?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/ikkimel42",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCB3ZjRaAlknXi3mVx_YDrTQ",
+      "spotify": "https://open.spotify.com/artist/0CzoJbqBbtBNLArLyAFDPn",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/ikkimel/1595090263"
+    },
+    "description": "Cheeky, sassy, ​​and party-loving – that's how Ikkimel from Tempelhof presents herself, the exaggerated personification of the bad company the Roman Catholic Church has always warned against. As West Berlin's \"best horse in the stable,\" she rides through the capital's nightlife with a big mouth, skimpy outfits, and a sore nose, behaving like Pippi Longstocking on party drugs. Her single \"KETA & KRAWALL,\" released on September 29, 2023, and celebrated ...",
+    "imageUrl": "file:///android_asset/artists/65.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "66",
+    "artist": "Illbucks",
+    "stage": "IBIZA Soul",
+    "day": "Thursday",
+    "startTime": "15:30",
+    "endTime": "16:45",
+    "countryCode": "TN",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079570-illbucks?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/illbucks_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC333-GEyVtQ4Jf6cMHEucrg",
+      "spotify": "https://open.spotify.com/artist/1eIVlfVOLuTlaUKyaJLfMC",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/illbucks/1537865576?l=ru"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/66.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "67",
+    "artist": "Indira Paganotto",
+    "stage": "IBIZA Soul",
+    "day": "Saturday",
+    "startTime": "20:00",
+    "endTime": "21:15",
     "countryCode": "ES",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "TECHNO",
-      "TUESDAY"
+      "TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064818-indira-paganotto",
     "socials": {
@@ -1243,7 +2278,7 @@
       "soundcloud": "https://soundcloud.com/indirapaganotto"
     },
     "description": "Born in 1992, today Indira Paganotto is one of Spain’s most prominent figures in the world of music. Her sets are full of energy and undeniable danceability. In the last 13 years she has changed the dance music industry, being the driving force behind a new sound, psy-techno. At the age of just 17 she signed a total of 3 vinyl releases to Ian Pooley’s label Pooled Music, after he ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577096_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/67.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -1252,12 +2287,42 @@
     "isHeadliner": false
   },
   {
-    "id": "36",
-    "artist": "Ivan & The Parazol",
+    "id": "68",
+    "artist": "Irie Maffia",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "REGGAE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074083-irie-maffia?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/iriemaffia",
+      "instagram": "https://www.instagram.com/iriemaffia",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@IrieMaffia",
+      "spotify": "https://open.spotify.com/artist/1Wd1nIQmdmG3BV27KjoMZ6",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/irie-maffia/305294581"
+    },
+    "description": "Irie Maffia is a true supergroup made up of some of Hungary’s most colorful musical personalities. Among its front figures is Sena, of Ghanaian origin, who portrayed Mary in a performance held during the Pope’s visit, appeared in the revived version of the rock opera István, a király, and performed duets at Gábor Presser’s sold-out Arena concert. Columbo’s distinctive voice may also be familiar from the band Brains, while ...",
+    "imageUrl": "file:///android_asset/artists/68.jpeg",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "69",
+    "artist": "Ivan & The Parazol",
+    "stage": "IBIZA Soul",
+    "day": "Wednesday",
+    "startTime": "14:00",
+    "endTime": "15:15",
     "countryCode": "HU",
     "genres": [
       "MUSIC",
@@ -1277,16 +2342,49 @@
       "soundcloud": "https://soundcloud.com/ivanandtheparazol"
     },
     "description": "Ivan & The Parazol, the MTV EMA-winning alternative rock band from Budapest, is in their Golden Era with their most original album yet: Belle Époque. With massive stadium rock- esque choruses, razor sharp grooves, and powerful riffs homageing the Golden Age of guitar music, this record marks the moment of truth: they truly found themselves and their unique sound. Their single Breeze made history as the first Hungarian track from ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594620_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/69.jpeg",
     "vibes": [
-      "Feel-good",
-      "Nostalgic",
-      "Anthemic"
+      "Chill",
+      "Atmospheric",
+      "Unique",
+      "Live Band"
     ],
     "isHeadliner": false
   },
   {
-    "id": "37",
+    "id": "70",
+    "artist": "Jazzbois",
+    "stage": "IBIZA Soul",
+    "day": "Wednesday",
+    "startTime": "15:30",
+    "endTime": "16:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "ALT-JAZZ"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079193-jazzbois?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/jazzbois",
+      "instagram": "https://www.instagram.com/jazzbois",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCg2_GgRDbXbiZt6z86X78IA",
+      "spotify": "https://open.spotify.com/artist/0jq1z5MQSlFtvpbnLzeEul",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/jazzbois/1481330688"
+    },
+    "description": "Jazzbois is a jazz-hiphop fusion trio from Budapest, Hungary. Their studio albums and live shows are all equally heavily rooted in improvisation and momentary self expression, each performance is absolutely unique and daring. The debut album \"Jazzbois Goes Blunt\" had a strong impact on both the jazz and hip-hop scene and had countless air plays on stations like Soulection Radio, KCRW, BBC 2, BBC 6, Worldwide FM… Their latest album ...",
+    "imageUrl": "file:///android_asset/artists/70.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "71",
     "artist": "Jazzy",
     "stage": null,
     "day": "Tuesday",
@@ -1310,7 +2408,7 @@
       "spotify": "https://open.spotify.com/artist/7zAAwgV5Wqmvpb4GzvlRkP",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/jazzy/1519246472"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580022_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/71.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -1319,12 +2417,12 @@
     "isHeadliner": false
   },
   {
-    "id": "38",
+    "id": "72",
     "artist": "John Coffey",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "IBIZA Soul",
+    "day": "Thursday",
+    "startTime": "17:00",
+    "endTime": "18:15",
     "countryCode": "NL",
     "genres": [
       "MUSIC",
@@ -1344,22 +2442,22 @@
       "soundcloud": "https://soundcloud.com/johncoffeymusic"
     },
     "description": "John Coffey, made up of David Achter de Molen, Alfred van Luttikhuizen, Christoffer van Teijlingen, Richard van Luttikhuizen, and Carsten Brunsveld, are a Dutch punk-rock powerhouse known for high-octane energy on stage. After pausing in 2016, they returned in 2023 with new songs, sold-out shows, a comeback album, and their own festival, Coffey Fest. Fierce, urgent, and socially engaged, John Coffey channels chaos, community, and activism both on and off ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594624_performance_1080.jpeg",
+    "imageUrl": "file:///android_asset/artists/72.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Hard",
-      "Rave"
+      "Moshpit",
+      "Rebellious"
     ],
     "isHeadliner": false
   },
   {
-    "id": "39",
+    "id": "73",
     "artist": "Joris Voorn",
-    "stage": null,
+    "stage": "IBIZA Soul",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "17:00",
+    "endTime": "18:15",
     "countryCode": "NL",
     "genres": [
       "MUSIC",
@@ -1380,7 +2478,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/joris-voorn/121949655",
       "soundcloud": "https://soundcloud.com/joris-voorn"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577028_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/73.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -1390,12 +2488,43 @@
     "isHeadliner": false
   },
   {
-    "id": "40",
+    "id": "74",
+    "artist": "Jorja Smith (Party Set)",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "21:30",
+    "endTime": "23:00",
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078520-jorja-smith-(party-set)?from=%2F",
+    "socials": {
+      "website": "https://jorjasmith.com/",
+      "facebook": "https://www.facebook.com/jorjasmithmusic",
+      "instagram": "https://www.instagram.com/jorjasmith_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCHA6dVPvxRdLQ5Uu-uX3MLw",
+      "spotify": "https://open.spotify.com/artist/1CoZyIx7UvdxT5c8UkMzHd",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/jorja-smith/1088331223"
+    },
+    "description": "Jorja Smith is a British singer-songwriter known for her soulful voice and emotionally rich songwriting. She broke through with “Blue Lights” and her 2018 debut album Lost & Found, earning a Mercury Prize nomination and the BRIT Critics’ Choice Award. Her music blends R&B, soul, and alternative influences, while her collaborations with artists like Stormzy, Kendrick Lamar, Burna Boy, Drake, and Childish Gambino highlight her versatility. In 2023, she ...",
+    "imageUrl": "file:///android_asset/artists/74.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": true
+  },
+  {
+    "id": "75",
     "artist": "Karen Dio",
-    "stage": null,
+    "stage": "IBIZA Soul",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "18:30",
+    "endTime": "19:45",
     "countryCode": "BR",
     "genres": [
       "MUSIC",
@@ -1416,7 +2545,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/karen-di%C3%B3/1288070224",
       "x": "https://x.com/karendioxx"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580023_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/75.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -1430,12 +2559,43 @@
     "isHeadliner": false
   },
   {
-    "id": "41",
+    "id": "76",
+    "artist": "Killakikitt",
+    "stage": "Bolt Stage",
+    "day": "Saturday",
+    "startTime": "15:00",
+    "endTime": "16:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079719-killakikitt?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/killakikittbudapest",
+      "instagram": "https://www.instagram.com/killakikittbudapest",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCmNe0v7sloHC2ZacgA8s5vQ",
+      "spotify": "https://open.spotify.com/artist/0hSFlp1k8zBeRq1EFeRv78",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/killakikitt/497044783"
+    },
+    "description": "Killakikitt — AZA and Tirpa — represent the pure, no-frills essence of Hungarian rap.\nStraight-talking lyrics, razor-sharp rhymes, and head-nodding beats define their sound.\nTheir digital streams reach hundreds of millions.\nThe group is known for consistent international collaborations, having worked with artists such as Onyx, Slaine (La Coka Nostra), Snak The Ripper, Merkules, and the Snowgoons production collective.\nOver the years, Killakikitt has proven itself as a support act ...",
+    "imageUrl": "file:///android_asset/artists/76.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "77",
     "artist": "Kim Dracula",
-    "stage": null,
+    "stage": "IBIZA Soul",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "14:00",
+    "endTime": "15:15",
     "countryCode": "AU",
     "genres": [
       "MUSIC",
@@ -1455,7 +2615,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/kim-dracula/1515996704",
       "x": "https://x.com/kimdrac"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580024_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/77.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -1467,12 +2627,80 @@
     "isHeadliner": false
   },
   {
-    "id": "42",
-    "artist": "Kolibri",
+    "id": "78",
+    "artist": "Kispal Es A Borz",
+    "stage": "IBIZA Soul",
+    "day": "Wednesday",
+    "startTime": "18:30",
+    "endTime": "19:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074080-kispal-es-a-borz?from=%2F",
+    "socials": {
+      "website": "https://kispalesaborz.hu/",
+      "facebook": "https://www.facebook.com/kispalesaborz",
+      "instagram": "https://www.instagram.com/kispalesaborz_zenekar",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCYto64Cny67p01kPaOtytqA",
+      "spotify": "https://open.spotify.com/artist/71buZyotrHSZMVkSTcDY8c",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/kisp%C3%A1l-%C3%A9s-a-borz/321395552"
+    },
+    "description": "Kispál és a Borz keeps charging ahead in 2026! One of the most influential alternative bands of the past decades announced their reunion in 2022, and in 2023 Lovasi and his bandmates released a brand-new album titled Beszorult mondat. Their highly successful nationwide and Western European tour in 2024 was followed by a spectacular arena show: the band closed the year with a massive “house party” at the MVM ...",
+    "imageUrl": "file:///android_asset/artists/78.png",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "79",
+    "artist": "Koikoi",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
+    "countryCode": "RS",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079545-koikoi?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/koikoiband",
+      "instagram": "https://www.instagram.com/koikoi_band",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCMgU7NxsP7spDUrm0K9VcWw",
+      "spotify": "https://open.spotify.com/artist/7CIVTl9EMOgKsw8I5ShVNV",
+      "appleMusic": null
+    },
+    "description": "KOIKOI is a Belgrade-based band that blends raw energy, emotional depth, and genre-defying music, bridging indie rock, electronica, and post-punk. With their debut album \"Pozivi u stranu/Calls aside\", they achieved remarkable success, performing over 130 concerts across 16 European countries and laying the foundation for their growing international recognition. They were nominated for the Music Moves Europe Award 2023 at Eurosonic, where they also performed at the renowned Vera Club. ...",
+    "imageUrl": "file:///android_asset/artists/79.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "80",
+    "artist": "Kolibri",
+    "stage": "IBIZA Soul",
+    "day": "Thursday",
+    "startTime": "20:00",
+    "endTime": "21:15",
     "countryCode": "HU",
     "genres": [
       "MUSIC",
@@ -1492,22 +2720,23 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/kolibri/1629616001"
     },
     "description": "Kolibri is the stage name of András Bognár, a rising force in the Hungarian pop and festival scene. Blending alternative/indie with electronic textures, his introspective Hungarian-language songs create intimate, melancholic worlds. His 2023 debut Nagyon Jó, Nagyon Rossz, Nagyon Jó earned critical acclaim and sold-out shows, followed by collaborations with Hundred Sinsel, the Wavy collective, and the 2024 Ballagás EP. Now a three-piece band, Kolibri released their second album Rúnák ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594664_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/80.jpeg",
     "vibes": [
-      "Feel-good",
-      "Nostalgic",
-      "Anthemic"
+      "Chill",
+      "Atmospheric",
+      "Unique",
+      "Live Band"
     ],
     "isHeadliner": false
   },
   {
-    "id": "43",
+    "id": "81",
     "artist": "Lambrini Girls",
-    "stage": null,
+    "stage": "Bolt Stage",
     "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "16:30",
+    "endTime": "17:45",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -1525,7 +2754,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/lambrini-girls/1541291393",
       "x": "https://x.com/Lambrini_Girls"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577153_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/81.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -1535,13 +2764,47 @@
     "isHeadliner": false
   },
   {
-    "id": "44",
+    "id": "82",
+    "artist": "Lazarvs",
+    "stage": "IBIZA Soul",
+    "day": "Friday",
+    "startTime": "15:30",
+    "endTime": "16:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "METAL"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074006-lazarvs?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/lazarvsofficial",
+      "instagram": "https://www.instagram.com/lazarvsofficial",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@lazarvs.official666",
+      "youtube": "https://www.youtube.com/channel/UCSi10_qfLexqMETxrOSEv6g",
+      "spotify": "https://open.spotify.com/artist/4Lv7GWBva4MV9cRePSuIy8",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/lazarvs/939694282"
+    },
+    "description": "Budapest based three-piece LAZARVS carve out their unique tones of heavy riffs alongside charismatic vocals fronted by guitarist and songwriter Aron Andras. Serving authentically aggressive and raw energetic live shows, LAZARVS have built a formidable name for themselves in the Hungarian music scene not only appearing at almost every rock music festival in the country but also drawing over 3000 punters to their headline album release hometown show at Budapest ...",
+    "imageUrl": "file:///android_asset/artists/82.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Moshpit",
+      "Aggressive"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "83",
     "artist": "Leap",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "IE",
+    "stage": "Bolt Stage",
+    "day": "Thursday",
+    "startTime": "15:00",
+    "endTime": "16:15",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
@@ -1561,28 +2824,29 @@
       "soundcloud": "https://soundcloud.com/leaptheband"
     },
     "description": "LEAP is a whirlwind of rock and roll extremes, blending heavy riffs, beats, electronica, and anthemic pop with Jacky’s distinctive vocals, exploring London’s underbelly and personal struggles with mental health. Over the past two years, the band sold 50,000+ tickets across the UK and Europe, with debut USA headline dates set for March 2026. Backed by strong editorial support and a passionate international fanbase, LEAP is building toward their debut ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594669_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/83.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Feel-good",
-      "Nostalgic"
+      "Chill",
+      "Atmospheric",
+      "Unique",
+      "Live Band"
     ],
     "isHeadliner": false
   },
   {
-    "id": "45",
+    "id": "84",
     "artist": "Lewis Capaldi",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "21:30",
+    "endTime": "23:00",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ROCK",
-      "POP",
-      "THURSDAY"
+      "POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064849-lewis-capaldi",
     "socials": {
@@ -1596,7 +2860,7 @@
       "x": "https://x.com/lewiscapaldi"
     },
     "description": "Global superstar Lewis Capaldi returns with ‘Almost’ - a soaring, full-band anthem marking his third new single since his comeback. The track arrives ahead of his newly announced EP Survive - out November 14th. Arriving hot on the heels of a critically-lauded return to touring after almost 2 years away, and latest success ‘Something In The Heavens’, his tenth UK Top 10 single, ‘Almost’ is a raw and intimate exploration ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577157_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/84.jpeg",
     "vibes": [
       "Emotional",
       "Sing-along",
@@ -1605,18 +2869,49 @@
     "isHeadliner": true
   },
   {
-    "id": "46",
+    "id": "85",
+    "artist": "Libra",
+    "stage": "IBIZA Soul",
+    "day": "Wednesday",
+    "startTime": "20:00",
+    "endTime": "21:15",
+    "countryCode": "PT",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2080197-libra?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/thefuckinglibra",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCKcwPbrlu83e2akq-35q5yg",
+      "spotify": "https://open.spotify.com/artist/58oCcA2IXrVg5ZEN3Hywpq",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/libra/676161464"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/85.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "86",
     "artist": "Loyle Carner",
-    "stage": null,
+    "stage": "Bolt Stage",
     "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "16:30",
+    "endTime": "17:45",
     "countryCode": "GB",
     "genres": [
       "MUSIC",
       "HIP-HOP",
       "RAP",
-      "THURSDAY",
       "JAZZ"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068359-loyle-carner?from=%2F",
@@ -1632,18 +2927,80 @@
       "soundcloud": "https://soundcloud.com/loyle-carner"
     },
     "description": "Loyle Carner’s fourth album, hopefully !, marks a bold evolution shaped by fatherhood, artistic growth, and collaboration with a live band. Following a breakthrough in spring 2024, he embraced singing alongside rap, creating emotionally honest, genre-fluid songs. Influenced by his family and collaborators—including Benjamin Zephaniah—the record blends intimacy, optimism, and experimentation, showcasing Carner fully as a singer, rapper, poet, and writer.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587838_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/86.jpeg",
     "vibes": [
-      "Party",
-      "Anthemic",
-      "Sing-along",
-      "Chill",
-      "Flow"
+      "Flow",
+      "Party"
     ],
     "isHeadliner": false
   },
   {
-    "id": "47",
+    "id": "87",
+    "artist": "Luke Black",
+    "stage": "IBIZA Soul",
+    "day": "Friday",
+    "startTime": "17:00",
+    "endTime": "18:15",
+    "countryCode": "RS",
+    "genres": [
+      "MUSIC",
+      "POP",
+      "ELECTROPOP",
+      "ALT POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079560-luke-black?from=%2F",
+    "socials": {
+      "website": "https://lukeblackmusic.com/",
+      "facebook": "https://www.facebook.com/lukeblackmusic",
+      "instagram": "https://www.instagram.com/lukeblackmusic",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@lukeblackmusic",
+      "youtube": "https://www.youtube.com/channel/UCI6MBR153O7g5TZ5lKF7DvQ",
+      "spotify": "https://open.spotify.com/artist/3sPiEqLcANa5kAp5RnEHNq",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/luke-black/973303307"
+    },
+    "description": "Luke Black merges theatricality and melancholy into bold, genre-bending art-pop. Born in Serbia and based in London, he builds immersive sonic worlds where cinematic scale collides with industrial pop grit and electronic intensity. His debut album Chainsaws in Paradise (May 2024) introduced a surreal, emotionally charged vision and drew international attention following his breakout as Serbia’s representative at Eurovision 2023, earning coverage from NME, BBC, and The New York Times. ...",
+    "imageUrl": "file:///android_asset/artists/87.png",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "88",
+    "artist": "Majka",
+    "stage": "Bolt Stage",
+    "day": "Thursday",
+    "startTime": "18:00",
+    "endTime": "19:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074024-majka?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/majkahivatalos",
+      "instagram": "https://www.instagram.com/majesz187",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCAkIKrbQEG6dj4JafdCHSAA",
+      "spotify": "https://open.spotify.com/artist/0D8reSG6hzc5KEQWZPYGFB",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/majka/470227069"
+    },
+    "description": "Majka (Péter Majoros) is a Fonogram Award-winning Hungarian rapper, songwriter, and television host. With his band, he has filled the country’s largest arenas and concert venues on numerous occasions. For many years, he has been a headlining performer at major summer music festivals. According to Forbes’ latest ranking, he is Hungary’s most valuable celebrity. In 2026, Majka returns to Sziget with a spectacular live show!",
+    "imageUrl": "file:///android_asset/artists/88.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "89",
     "artist": "Makrohang",
     "stage": null,
     "day": "Tuesday",
@@ -1667,7 +3024,7 @@
       "spotify": "https://open.spotify.com/artist/2wJqtskPv8w80vzRU7zkqr",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/makrohang/993711157"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580975_performance_1080.jpeg",
+    "imageUrl": "file:///android_asset/artists/89.jpeg",
     "vibes": [
       "Moshpit",
       "Aggressive"
@@ -1675,13 +3032,75 @@
     "isHeadliner": false
   },
   {
-    "id": "48",
-    "artist": "Mehringer",
+    "id": "90",
+    "artist": "Manuel",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "AT",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074082-manuel?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/manuelhivatalos",
+      "instagram": "https://www.instagram.com/manuelsingx",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCiiJ1QzlM2iF0-d0txodmBg",
+      "spotify": "https://open.spotify.com/artist/1O4dvMoyQSIClCii6DSai8",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/manuel/1486563086"
+    },
+    "description": "Manuel is one of the most successful and influential Hungarian artists of today. With his raw honesty and generation-defining songs, he quickly rose to the forefront of the Hungarian music scene. He began his musical journey in Budapest’s 10th district and gained nationwide recognition through X-Faktor, where his distinctive voice and strong character immediately captured a wide audience. In 2023, he released his debut album Idegen, which has ...",
+    "imageUrl": "file:///android_asset/artists/90.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "91",
+    "artist": "Max Baby",
+    "stage": "Bolt Stage",
+    "day": "Thursday",
+    "startTime": "19:30",
+    "endTime": "20:45",
+    "countryCode": "FR",
+    "genres": [
+      "MUSIC",
+      "ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079183-max-baby?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/people",
+      "instagram": "https://www.instagram.com/maxrbaby",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCK0OBAVXVp4n6UN0QWxkiMg",
+      "spotify": "https://open.spotify.com/artist/0ofOICmdTikzuZtaYALygA",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/max-baby/1478720620"
+    },
+    "description": "Max Baby is a self-taught multi-instrumentalist and producer who creates instinct-driven, genre-blurring music. Raised near Bourges, he began making music at a young age, learning through experimentation rather than formal training. Experiencing synesthesia, he perceives sound as colour and texture, shaping immersive, atmospheric compositions.\nHis debut EP OUT OF CONTROL, INTO THE WALL introduced a raw, instrument-focused sound, while BREAK expanded into a darker blend of indie, alternative rock, and ...",
+    "imageUrl": "file:///android_asset/artists/91.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "92",
+    "artist": "Mehringer",
+    "stage": null,
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
     "genres": [
       "MUSIC",
       "POP"
@@ -1699,22 +3118,149 @@
       "soundcloud": "https://soundcloud.com/mehringer"
     },
     "description": "Mehringer is a Fonogram Award–nominated artist and a leading figure in Hungary’s new wave pop scene. Breaking through in 2025 with SZAR AZ ÉLET, he has sold out clubs, become a festival regular, and will headline his first solo show on July 16, 2026. With over 80 million streams, 240,000+ monthly Spotify listeners, and trending YouTube releases, Mehringer—collaborating closely with producer Illés Ferenc—continues to expand his influence ahead of ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594671_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/92.jpeg",
     "vibes": [
       "Sing-along",
-      "Feel-good",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "93",
+    "artist": "Melina",
+    "stage": "Bolt Stage",
+    "day": "Wednesday",
+    "startTime": "15:00",
+    "endTime": "16:15",
+    "countryCode": "GR",
+    "genres": [
+      "MUSIC",
+      "FOLK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079192-melina?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/melina.vlachos",
+      "instagram": "https://www.instagram.com/melinavlachos",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@melina_vlachos",
+      "youtube": "https://www.youtube.com/channel/UClNlxJLw8Uo_ggo44w_MtSA",
+      "spotify": "https://open.spotify.com/artist/5iN415WqxCRmmNQRnzAwOD",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/m%C3%A9lina-vlachos/1497952163"
+    },
+    "description": "Melina was born into a family where the oral transmission of traditional music holds a central place. Of Greek origin, she carries this heritage through her voice, rich in melismatic ornamentation and emotional depth.\nShe trained extensively in singing and oud at the Conservatory of Oriental Music in Gennevilliers, and continued studying traditional music in Greece.\nAfter this period of research and learning, Melina launched her own musical project: a ...",
+    "imageUrl": "file:///android_asset/artists/93.png",
+    "vibes": [
+      "Explore"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "94",
+    "artist": "Mikee Mykanic",
+    "stage": "Bolt Stage",
+    "day": "Saturday",
+    "startTime": "18:00",
+    "endTime": "19:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079714-mikee-mykanic?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/mikeemykanic",
+      "instagram": "https://www.instagram.com/mikeemykanic",
+      "x": "https://x.com/",
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCQRp-4OnDpw23nFdK_G8kJg",
+      "spotify": "https://open.spotify.com/artist/5PjhmqjtE8y3WeS96xSmQu",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/mikee-mykanic/633812742"
+    },
+    "description": "Mikee Mykanic came from the future. You recognize his voice and his syllabic rhyme schemes—stretching from six to infinity—from the very first second, whether you like it or not. He’s a genre of his own, from another star system. His lyrics never exist on just one dimension; his sharp, layered punchlines hit like gamma radiation, knocking you out.",
+    "imageUrl": "file:///android_asset/artists/94.jpeg",
+    "vibes": [
+      "Flow",
       "Party"
     ],
     "isHeadliner": false
   },
   {
-    "id": "49",
-    "artist": "Naika",
+    "id": "95",
+    "artist": "Mirror Glimpse",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "FR",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074031-mirror-glimpse?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/mirrorglimpse",
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCXRi7-5zSN7z5JNeu7aMm1Q",
+      "spotify": "https://open.spotify.com/artist/6ugNgaIlOKz7Sy8wlEQDif",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/mirror-glimpse/1559200232",
+      "soundcloud": "https://soundcloud.com/mirrorglimpse"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/95.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "96",
+    "artist": "Missio",
+    "stage": "Bolt Stage",
+    "day": "Saturday",
+    "startTime": "19:30",
+    "endTime": "20:45",
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079535-missio?from=%2F",
+    "socials": {
+      "website": "https://www.missiomusic.com/",
+      "facebook": "https://www.facebook.com/MissioMusic",
+      "instagram": "https://www.instagram.com/missiomusic",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@missiomusic",
+      "spotify": "https://open.spotify.com/artist/2HOMW1liAxI3URnEq95SMS",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/missio/1228281701"
+    },
+    "description": "Austin duo MISSIO—Matthew Brue and David Butler—fearlessly break the rules as they fuse elements of rock, electronic, indie, and hip-hop into an unmatched and uncompromising hybrid. They tie seemingly disparate threads together with honest and heartfelt lyrics meant to both provoke and inspire. Following the 2023-2024 Cinco EP series, the pair present their most definitive and dynamic vision with their full-length double-album, I Am Cinco [Nettwerk]. It collates five moods— ...",
+    "imageUrl": "file:///android_asset/artists/96.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "97",
+    "artist": "Naika",
+    "stage": "IBIZA Soul",
+    "day": "Friday",
+    "startTime": "18:30",
+    "endTime": "19:45",
+    "countryCode": "US",
     "genres": [
       "MUSIC",
       "POP"
@@ -1731,21 +3277,88 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/na%C3%AFka/552351691"
     },
     "description": "Naïka is a fast-rising French-Haitian singer-songwriter whose music reflects her global upbringing across the Caribbean, South Pacific, Kenya, France, South Africa, and the USA. Identifying as a “Third Culture Kid,” she fuses world influences with pop, R&B, and soul. An independent artist with three EPs—Lost in Paradïse Pt. 1 (2020), Pt. 2 (2021), and TRANSITIONS (2022)—she has over 2 million fans and 165 million streams. Her breakout single Sauce ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594676_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/97.jpeg",
     "vibes": [
       "Sing-along",
-      "Feel-good",
-      "Party"
+      "Feel-good"
     ],
     "isHeadliner": false
   },
   {
-    "id": "50",
+    "id": "98",
+    "artist": "Natascha Polke",
+    "stage": "Bolt Stage",
+    "day": "Thursday",
+    "startTime": "21:00",
+    "endTime": "22:15",
+    "countryCode": "CH",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "ELECTRONIC",
+      "DEEP-HOUSE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079188-natascha-polke?from=%2F",
+    "socials": {
+      "website": "https://www.nataschapolke.com/",
+      "facebook": "https://www.facebook.com/nataschapolke.ch",
+      "instagram": "https://www.instagram.com/nataschapolke.ch",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCefh27lpoU0OaUYj6V81tFQ",
+      "spotify": "https://open.spotify.com/artist/5FLN3H4PiuUQMmFzGmcQ96",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/natascha-polk%C3%A9/1069306764"
+    },
+    "description": "Natascha Polké is a Swiss musician and producer known for blending indie songwriting with emotional, melodic house. Based in Zurich, she has built an international presence with releases on labels like Anjunadeep, PIAS, and Universal Music. Her live shows have taken her across Europe, North America, and Asia — from supporting Kiasmos and Christian Löffler on tour to playing festivals like Fusion, Zürich Openair, ADE, and a standout Cercle show ...",
+    "imageUrl": "file:///android_asset/artists/98.jpeg",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "99",
+    "artist": "Natasha Bedingfield",
+    "stage": "Bolt Stage",
+    "day": "Wednesday",
+    "startTime": "16:30",
+    "endTime": "17:45",
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "POP",
+      "DANCE-POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078749-natasha-bedingfield?from=%2F",
+    "socials": {
+      "website": "https://www.natashabedingfield.com/",
+      "facebook": "https://www.facebook.com/natashabedingfield",
+      "instagram": "https://www.instagram.com/natashabedingfield",
+      "x": "https://x.com/Natashabdnfield",
+      "tiktok": "https://www.tiktok.com/@natashabedingfield",
+      "youtube": "https://www.youtube.com/channel/UC6LWtQeSl8ga-EYM2R9GMvg",
+      "spotify": "https://open.spotify.com/artist/7o95ZoZt5ZYn31e9z1Hc0a",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/natasha-bedingfield/17768486"
+    },
+    "description": "Natasha Bedingfield rose to global fame in the early 2000s with her empowering anthem “Unwritten,” a Grammy-nominated hit that became a defining pop classic and cultural staple. Around its 20th anniversary, the song experienced a major revival, going viral on TikTok and re-entering the charts after being featured in the hit rom-com Anyone But You, eventually reaching the Billboard Global 200.\nOther hits such as “Pocketful of Sunshine,” “Love ...",
+    "imageUrl": "file:///android_asset/artists/99.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "100",
     "artist": "Nation Of Language",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "IBIZA Soul",
+    "day": "Friday",
+    "startTime": "20:00",
+    "endTime": "21:15",
     "countryCode": "US",
     "genres": [
       "MUSIC",
@@ -1765,27 +3378,26 @@
       "soundcloud": "https://soundcloud.com/nationoflanguage"
     },
     "description": "Nation of Language’s fourth album, Dance Called Memory, blends synth-driven sounds with raw human emotion, exploring grief, loss, and the fragility of relationships. Frontman Ian Richard Devaney channels personal experiences—like his godfather’s death and the struggles of caretaking—into deeply empathetic songs. Collaborating again with producer Nick Millhiser, the band experiments with textures from My Bloody Valentine-style drum samples to early-2000s electronic percussion, creating a warm, unvarnished synthpop sound. At ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594678_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/100.jpeg",
     "vibes": [
-      "Feel-good",
-      "Nostalgic",
+      "Chill",
+      "Atmospheric",
       "Sing-along",
-      "Party"
+      "Feel-good"
     ],
     "isHeadliner": false
   },
   {
-    "id": "51",
+    "id": "101",
     "artist": "Nia Archives",
-    "stage": null,
+    "stage": "Bolt Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "15:00",
+    "endTime": "16:15",
     "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "FRIDAY",
       "HOUSE",
       "DNB"
     ],
@@ -1797,30 +3409,91 @@
       "x": "https://x.com/archives_nia",
       "tiktok": null,
       "youtube": "https://www.youtube.com/channel/UCM-JuQra1k2UBoDG2z_7EvA",
-      "spotify": null,
+      "spotify": "https://open.spotify.com/artist/7BMR0fwtEvzGtK4rNGdoiQ",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/gh/artist/nia-archives/1515978311",
       "soundcloud": "https://soundcloud.com/nia-archives"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587827_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/101.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Feel-good",
-      "Party",
-      "Hard",
-      "High Energy"
+      "Rave",
+      "Groovy",
+      "High Energy",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "52",
+    "id": "102",
+    "artist": "Night Tapes",
+    "stage": "Bolt Stage",
+    "day": "Thursday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079191-night-tapes?from=%2F",
+    "socials": {
+      "website": "https://nighttapesmusic.net/pages/home",
+      "facebook": "https://www.facebook.com/nighttapesband",
+      "instagram": "https://www.instagram.com/nighttapesmusic",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@wearenighttapes",
+      "youtube": "https://www.youtube.com/channel/UCioo1pJKTjeou1VBEXc_bPQ",
+      "spotify": "https://open.spotify.com/artist/5APEQlUaQ5K70LgPqAdTuU",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/night-tapes/1476057311"
+    },
+    "description": "Night Tapes’ debut album portals//polarities is a deeply immersive, genre-blurring journey shaped by place and emotion. Created by London trio Iiris Vesik, Max Doohan, and Sam Richards, the album weaves global field recordings—from Estonian swamps to Mexican mountains—into dreamy, electronic soundscapes. Originally recording quietly in a shared house, the group embraced their constraints, crafting music that became time capsules of their surroundings. Their process blends traditional instruments with laptop production, ...",
+    "imageUrl": "file:///android_asset/artists/102.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "103",
+    "artist": "Nks",
+    "stage": "Bolt Stage",
+    "day": "Saturday",
+    "startTime": "21:00",
+    "endTime": "22:15",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079716-nks?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/nkskriminal",
+      "instagram": "https://www.instagram.com/nksofficial",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCWIw0_jOks0IcDpUTSziiOw",
+      "spotify": "https://open.spotify.com/artist/6fXPelw8Z7kOBY0waHAdwO",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/nks/338985700"
+    },
+    "description": "NKS, also known as Nem Közölt Sáv, is a legendary duo in the Hungarian underground rap scene. To this day, NKS remains a key reference point for the new generation of artists: the music of Turan Khan and Zenki Mefisto, as well as the Kriminal Beats label and the Idő Urai collective, have clearly inspired much of today’s Hungarian hip-hop scene.",
+    "imageUrl": "file:///android_asset/artists/103.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "104",
     "artist": "Olympe",
     "stage": null,
-    "day": null,
+    "day": "Thursday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "FR",
+    "countryCode": "IT",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
@@ -1840,22 +3513,21 @@
       "soundcloud": "https://soundcloud.com/olympe_ofc"
     },
     "description": "Olympe is an Italian-born DJ and producer whose hypnotic sets fuse deep melodies with driving energy across Dance, Garage, Tech-House, Techno, and House. A classically trained pianist, she has earned residencies in Milan and performed at top international clubs. With releases on labels like Just This and Tomorrowland Music, her 2024 EP The Voice of the Night and 2025 single I Can Never Stop showcase her evolving sound, cementing her ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594683_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/104.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "53",
+    "id": "105",
     "artist": "Oskar Med K",
-    "stage": null,
+    "stage": "Bolt Stage",
     "day": "Wednesday",
-    "startTime": null,
-    "endTime": null,
+    "startTime": "18:00",
+    "endTime": "19:15",
     "countryCode": "NO",
     "genres": [
       "MUSIC",
@@ -1875,7 +3547,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/oskar-med-k/1671429234",
       "soundcloud": "https://soundcloud.com/oskarmedkmedk"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580025_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/105.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -1884,7 +3556,41 @@
     "isHeadliner": false
   },
   {
-    "id": "54",
+    "id": "106",
+    "artist": "Pal Utcai Fiuk",
+    "stage": "Bolt Stage",
+    "day": "Saturday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074025-pal-utcai-fiuk?from=%2F",
+    "socials": {
+      "website": "https://xn--plutcaifik-s4a22a.hu/",
+      "facebook": "https://www.facebook.com/palutcaifiuk",
+      "instagram": "https://www.instagram.com/palutcaifiukzenekar",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCu3XMSgEo4kTNz9rFgoyhUQ",
+      "spotify": null,
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/p%C3%A1l-utcai-fi%C3%BAk/40998310"
+    },
+    "description": "Formed in the 1980s, Pál Utcai Fiúk is one of Hungary’s longest-running alternative rock bands. They began as a garage band, teaching themselves to play, and following the political changes of the early 1990s, they started touring regularly and releasing albums one after another. Their most recent record, Igazán ez minden, was released in 2019, with a new album planned for 2026. Their enduring popularity is largely due to ...",
+    "imageUrl": "file:///android_asset/artists/106.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "107",
     "artist": "Pan Pot",
     "stage": null,
     "day": "Thursday",
@@ -1910,7 +3616,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/pan-pot/211291988",
       "soundcloud": "https://soundcloud.com/pan-pot"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577109_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/107.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -1920,7 +3626,7 @@
     "isHeadliner": false
   },
   {
-    "id": "55",
+    "id": "108",
     "artist": "Parcels",
     "stage": null,
     "day": "Thursday",
@@ -1931,8 +3637,7 @@
       "MUSIC",
       "ROCK",
       "INDIE",
-      "POP",
-      "THURSDAY"
+      "POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068363-parcels?from=%2F",
     "socials": {
@@ -1947,25 +3652,25 @@
       "soundcloud": "https://soundcloud.com/parcels-music"
     },
     "description": "Formed in Byron Bay, Australia, in 2014, Parcels now split their time between Australia and Berlin. The band—Louie Swain (keys), Patrick Hetherington (keys/guitar), Noah Hill (bass), Anatole “Toto” Serret (drums), and Jules Crommelin (guitar)—has surpassed a billion streams. Their third album, LOVED (2025), featuring tracks like “Yougotmefeeling” and “Sorry,” received critical acclaim, and their globally praised live shows sold out arenas across Europe, North America, and Australia. Parcels continue to ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/92/thumb_5591455_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/108.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Feel-good",
-      "Nostalgic",
+      "Chill",
+      "Atmospheric",
       "Sing-along",
-      "Party"
+      "Feel-good"
     ],
     "isHeadliner": false
   },
   {
-    "id": "56",
+    "id": "109",
     "artist": "Paris Paloma",
-    "stage": null,
+    "stage": "Bolt Stage",
     "day": "Friday",
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "UK",
+    "startTime": "16:30",
+    "endTime": "17:45",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "INDIE",
@@ -1983,7 +3688,7 @@
       "spotify": "https://open.spotify.com/artist/2EXpthNgSeTDeX8nGwxppp",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/paris-paloma/1530898376"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577097_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/109.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -1993,10 +3698,43 @@
     "isHeadliner": false
   },
   {
-    "id": "57",
+    "id": "110",
+    "artist": "Peggy Gou",
+    "stage": "Bolt Stage",
+    "day": "Friday",
+    "startTime": "18:00",
+    "endTime": "19:15",
+    "countryCode": "KR",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079180-peggy-gou?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/peggygoupeggygou",
+      "instagram": "https://www.instagram.com/peggygou_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCWd5yMFDEuSCWzTM4xuA1fg",
+      "spotify": "https://open.spotify.com/artist/2mLA48B366zkELXYx7hcDN",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/peggy-gou/1068912248"
+    },
+    "description": "There has never been a figure in contemporary pop culture quite like Peggy Gou. The South Korean-born producer, DJ and creative force has become one of the most influential artists in electronic music, seamlessly balancing underground credibility with global mainstream reach. After studying at the London College of Fashion, she relocated to Berlin in 2014, where she developed her emotionally charged, dancefloor-driven sound. Her debut album I Hear You propelled ...",
+    "imageUrl": "file:///android_asset/artists/110.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Hard"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "111",
     "artist": "Perturbator",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
     "countryCode": "FR",
@@ -2017,26 +3755,161 @@
       "soundcloud": "https://soundcloud.com/perturbator"
     },
     "description": "Perturbator, the alias of James Kent, is a visionary force in retro-electronic music, redefining synthwave with dark, dystopian intensity. Since 2012, releases like Night Driving Avenger, TERROR 404, and I Am the Night established him as a genre-defining artist, with subsequent albums Dangerous Days (2014) and The Uncanny Valley (2016) pushing darker, cinematic boundaries. Moving beyond neon nostalgia with New Model (2017) and Lustful Sacraments, Kent explores ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594685_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/111.jpeg",
     "vibes": [
       "Dance",
-      "Flow"
+      "Rave"
     ],
     "isHeadliner": false
   },
   {
-    "id": "58",
+    "id": "112",
+    "artist": "Peterfy Bori & Love Band",
+    "stage": "Bolt Stage",
+    "day": "Wednesday",
+    "startTime": "19:30",
+    "endTime": "20:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "POP-ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074030-peterfy-bori-%26-love-band?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/peterfybori",
+      "instagram": "https://www.instagram.com/peterfybori",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@peterfyboriloveband",
+      "youtube": "https://www.youtube.com/channel/UCyaTgjHC-B3lDVkuPNJdtBw",
+      "spotify": "https://open.spotify.com/artist/1rRAJF3FBwQsGx4twrUqiC",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/p%C3%A9terfy-bori-love-band/327269348"
+    },
+    "description": "Singer and actress Bori Péterfy began her career in the early 1990s in Budapest, where she was an active figure in the flourishing alternative theatre scene before later becoming a member of the National Theatre. Her musical journey started in 2007 with Péterfy Bori & Love Band, a project conceived by Ambrus Tövisházi, and their breakthrough song “Hajolj bele a hajamba,” which brought nationwide recognition to both Bori and the ...",
+    "imageUrl": "file:///android_asset/artists/112.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "113",
+    "artist": "Platon Karataev",
+    "stage": null,
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074029-platon-karataev?from=%2F",
+    "socials": {
+      "website": "https://platonkarataev.com/",
+      "facebook": "https://www.facebook.com/platonkrtv",
+      "instagram": "https://www.instagram.com/platonkrtv",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@platonkrtv",
+      "youtube": "https://www.youtube.com/channel/UCksKc1KIb4vHmiHAX3JoiAA",
+      "spotify": "https://open.spotify.com/artist/1ekcGfPOk3wgHb4viyPQab",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/platon-karataev/1171092604",
+      "soundcloud": "https://soundcloud.com/platonkarataev"
+    },
+    "description": "Named after a character by Leo Tolstoy, the Budapest-based band was formed in 2016. In Hungary, they have played sold-out shows at venues such as Akvárium, Müpa and A38, while internationally they have performed at festivals including Roadburn, Reeperbahn, Eurosonic and Liverpool Sound City. Their debut album, For Her (2017), placed the band on the international map, and their songs have since been streamed millions of times worldwide. With their ...",
+    "imageUrl": "file:///android_asset/artists/113.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "114",
+    "artist": "Pogany Indulo",
+    "stage": "Bolt Stage",
+    "day": "Friday",
+    "startTime": "19:30",
+    "endTime": "20:45",
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "TRAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074010-pogany-indulo?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/people",
+      "instagram": "https://www.instagram.com/kistetu_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCDlbTcBIV1L_YEg4QmW_zdg",
+      "spotify": "https://open.spotify.com/artist/7JOS2dpikWR1qxVZfLbKju",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/pog%C3%A1ny-indul%C3%B3/1612084456",
+      "soundcloud": "https://soundcloud.com/poganyindulo"
+    },
+    "description": "Pogány Induló is one of the defining figures of the Hungarian rap scene, often described as the raw voice of his generation and an artist who has successfully brought the glory of old-school rap back into the spotlight. He broke through in 2022 with Zártosztály, and since then, together with the ASAN Budapest label and his longtime collaborator Ótvar Pestis, he has been performing sold-out shows across the country ...",
+    "imageUrl": "file:///android_asset/artists/114.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "115",
+    "artist": "Quimby",
+    "stage": null,
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074084-quimby?from=%2F",
+    "socials": {
+      "website": "https://quimby.hu/",
+      "facebook": "https://www.facebook.com/Quimby.hu",
+      "instagram": "https://www.instagram.com/quimby_band",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/3ZPq4IH5ZDJKwx5dBQQhBO",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/quimby/219655507"
+    },
+    "description": "More than three decades have passed since Quimby broke free from their rehearsal room in Dunaújváros, first conquering Budapest’s nightlife and then systematically captivating not only Hungary but the rest of Europe as well. The six-piece band — Tibor Kiss (vocals, guitar), Livius Varga (percussion, backing vocals), Szilárd Balanyi (keyboards, backing vocals), Dódi Kárpáti (trumpet, vocals), Ferenc Mikuli (bass guitar), and Ferenc Gerdesits (drums) — has left an indelible mark ...",
+    "imageUrl": "file:///android_asset/artists/115.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "116",
     "artist": "Richie Hawtin",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "CA",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "TECHNO",
-      "THURSDAY"
+      "TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2069918-richie-hawtin?from=%2F",
     "socials": {
@@ -2051,22 +3924,21 @@
       "soundcloud": "https://soundcloud.com/RICHIEHAWTIN"
     },
     "description": "Richie Hawtin is a pioneering electronic musician, DJ, and innovator whose work spans music, technology, and contemporary art. Born in the UK and raised in Canada, he co-founded Plus 8 Records, MINUS Records, and Beatport, and is renowned as Plastikman for shaping techno and minimal electronic music since the early 1990s. Known for immersive experiences like ENTER. in Ibiza and collaborations with artists from Anish Kapoor to Raf Simons, Hawtin ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594688_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/116.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "59",
+    "id": "117",
     "artist": "Rose Gray",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
+    "stage": "Bolt Stage",
+    "day": "Friday",
+    "startTime": "21:00",
+    "endTime": "22:15",
     "countryCode": "GB",
     "genres": [
       "MUSIC",
@@ -2087,19 +3959,50 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/rose-gray/1487826227"
     },
     "description": "Rose Gray’s debut album Louder, Please captures the feeling of one perfect night out—euphoric, emotional, and transformative. Blending maximalist club music with heartfelt pop, the London-based singer, songwriter, and DJ tells stories of love, loss, freedom, and self-discovery, inspired by icons like Robyn, Kylie Minogue, and Madonna. Shaped by her journey through London’s club culture and years in the pop industry, the album balances hedonistic highs with vulnerable moments, presenting ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587822_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/117.jpeg",
     "vibes": [
       "Sing-along",
       "Feel-good",
-      "Party",
       "Dance",
-      "Hard",
-      "Rave"
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "60",
+    "id": "118",
+    "artist": "Rossi.",
+    "stage": null,
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECH-HOUSE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079179-rossi.?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/rossidotdj",
+      "instagram": "https://www.instagram.com/rossi.dj_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@DJRossi",
+      "spotify": "https://open.spotify.com/artist/7itMGcVGRKS43LcTQvJitf",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/rossi/1619129376"
+    },
+    "description": "Rossi. is one of London’s most exciting DJs and producers, making waves on the global tech-house scene with his distinctive sound and high-energy performances. He has played major venues and parties including Hï Ibiza, Space Miami, The Warehouse Project, Circoloco and Music On. Alongside his DJ career, he runs the ROSSI.HOME//GRXWN brand, record label and party series, which has grown into a sold-out movement across the UK, Ibiza and Miami. ...",
+    "imageUrl": "file:///android_asset/artists/118.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "119",
     "artist": "Sara Landry",
     "stage": null,
     "day": "Tuesday",
@@ -2110,7 +4013,6 @@
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "TUESDAY",
       "HARD TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068357-sara-landry?from=%2F",
@@ -2126,23 +4028,22 @@
       "soundcloud": "https://soundcloud.com/sara-landry-dj"
     },
     "description": "Sara Landry is a leading force in hard techno, known for her dark, high-energy sound and ritualistic, feminine aesthetic. A self-taught DJ, producer, and founder of the HEKATE label, she has rapidly risen to global prominence with viral performances, sold-out tours, and major festival appearances, including Tomorrowland. Often called the “High Priestess of Hard Techno,” Landry blends underground intensity with spiritual, immersive experiences while championing inclusivity and innovation in electronic ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587832_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/119.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "61",
+    "id": "120",
     "artist": "Sef",
     "stage": null,
-    "day": null,
+    "day": "Thursday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "HU",
+    "countryCode": "NL",
     "genres": [
       "MUSIC",
       "HIP-HOP",
@@ -2161,24 +4062,53 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/sef/128199545"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594689_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/120.jpeg",
     "vibes": [
-      "Party",
-      "Anthemic",
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "121",
+    "artist": "Sigrid",
+    "stage": "Bolt Stage",
+    "day": "Friday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "NO",
+    "genres": [
+      "MUSIC",
+      "POP",
+      "SCANDI-POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078518-sigrid?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/thisissigrid",
+      "instagram": "https://www.instagram.com/sigrid",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCLG7twDweqlHpyv0EDOjrgw",
+      "spotify": "https://open.spotify.com/artist/4TrraAsitQKl821DQY42cZ",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/sigrid/1206070304"
+    },
+    "description": "Norwegian pop star, Sigrid released her third studio album, There’s Always More That I Could Say, on 24 October 2025 via Island / EMI. The record explores the highs and lows of love with raw honesty, combining Sigrid’s powerful vocals with soaring pop choruses.\nRecent singles include “Two Years,” “Fort Knox,” and “Jellyfish,” marking a creative reset after she stepped back from the pressures of “content culture” in 2024. ...",
+    "imageUrl": "file:///android_asset/artists/121.jpeg",
+    "vibes": [
       "Sing-along",
-      "Dance",
       "Feel-good"
     ],
     "isHeadliner": false
   },
   {
-    "id": "62",
+    "id": "122",
     "artist": "Sim0ne",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "UK",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
@@ -2198,7 +4128,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/sim0ne/1662628227",
       "soundcloud": "https://soundcloud.com/sim0nelovesu"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580976_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/122.jpeg",
     "vibes": [
       "Dance",
       "Rave",
@@ -2208,7 +4138,7 @@
     "isHeadliner": false
   },
   {
-    "id": "63",
+    "id": "123",
     "artist": "Sisi",
     "stage": null,
     "day": "Tuesday",
@@ -2232,7 +4162,7 @@
       "spotify": "https://open.spotify.com/artist/6DM0KWyDnsqdKIfFvk6d8f",
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/sisi/1637624080"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577103_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/123.jpeg",
     "vibes": [
       "Flow",
       "Party"
@@ -2240,12 +4170,45 @@
     "isHeadliner": false
   },
   {
-    "id": "64",
-    "artist": "Ski Aggu",
+    "id": "124",
+    "artist": "Skepta",
     "stage": null,
-    "day": "Wednesday",
+    "day": "Friday",
     "startTime": null,
     "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079544-skepta?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/SkeptaOfficial",
+      "instagram": "https://www.instagram.com/skepta",
+      "x": "https://x.com/Skepta",
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCcfVrE3mmeQZ_RN3u5cUECA",
+      "spotify": "https://open.spotify.com/artist/2p1fiYHYiXz9qi0JJyxBzN",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/tm/artist/skepta/167376669",
+      "soundcloud": "https://soundcloud.com/skepta"
+    },
+    "description": "One of the most important influences in the global rap scene, multi award-winning artist Skepta has established himself as a multifaceted force, leaving an indelible mark on the worlds of business, film, fashion, and music. Through his journey, he has not only defined the sound of a generation but also become one of the most influential figures in contemporary music.\nSkepta's early recordings established him as a force to be ...",
+    "imageUrl": "file:///android_asset/artists/124.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": true
+  },
+  {
+    "id": "125",
+    "artist": "Ski Aggu",
+    "stage": "Bolt Stage",
+    "day": "Wednesday",
+    "startTime": "21:00",
+    "endTime": "22:15",
     "countryCode": "DE",
     "genres": [
       "MUSIC",
@@ -2265,7 +4228,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/ski-aggu/1538538452",
       "soundcloud": "https://soundcloud.com/ski-aggu"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577107_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/125.jpeg",
     "vibes": [
       "Flow",
       "Party"
@@ -2273,12 +4236,46 @@
     "isHeadliner": false
   },
   {
-    "id": "65",
-    "artist": "Sombr",
+    "id": "126",
+    "artist": "Soft Loft",
     "stage": null,
-    "day": "Thursday",
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
+    "countryCode": "CH",
+    "genres": [
+      "MUSIC",
+      "INDIE",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079563-soft-loft?from=%2F",
+    "socials": {
+      "website": "https://softloftmusic.com/",
+      "facebook": "https://www.facebook.com/softloftmusic",
+      "instagram": "https://www.instagram.com/softloftsoftloft",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCpranm6w1h3WpSkvBVGjxZQ",
+      "spotify": "https://open.spotify.com/artist/2AeL43nXvfqW3WrV9sDh5t",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/soft-loft/1671153297"
+    },
+    "description": "Soft Loft is a Switzerland-based collective fronted by singer and songwriter Jorina Stamm, creating emotionally open indie music that blends ecstasy and melancholy. Their sound—playfully described as “indie-something-something”—moves effortlessly between intimate club shows and large festival stages, building a space where vulnerability and connection are at the center.\nWithin a short time, they self-released the EP In Case You Still Get Lonely and the album The Party And The Mess, ...",
+    "imageUrl": "file:///android_asset/artists/126.jpeg",
+    "vibes": [
+      "Chill",
+      "Atmospheric",
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "127",
+    "artist": "Sombr",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "21:30",
+    "endTime": "23:00",
     "countryCode": "US",
     "genres": [
       "MUSIC",
@@ -2287,7 +4284,6 @@
       "ALTERNATIVE",
       "ALT POP",
       "INDIE ROCK",
-      "TUESDAY",
       "ALTERNATIVE ROCK"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064847-sombr",
@@ -2303,7 +4299,7 @@
       "soundcloud": "https://soundcloud.com/sombrsongs"
     },
     "description": "A New York City-native raised on the Lower East Side, sombr—born Shane Boose—started making music in his bedroom while studying classical music as a student at the prestigious public school, LaGuardia High School. His breakout hit “Caroline” (2022) took the internet by storm, and he has since released a series of EPs and singles - all self-written and co-produced by the artist himself - that has propelled him to 500 ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577150_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/127.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
@@ -2317,7 +4313,40 @@
     "isHeadliner": true
   },
   {
-    "id": "66",
+    "id": "128",
+    "artist": "Soulwax",
+    "stage": null,
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "BE",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "ELECTRO-HOUSE"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078741-soulwax?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/soulwax",
+      "instagram": "https://www.instagram.com/soulwaxofficial",
+      "x": "https://x.com/soulwax",
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC9RzO7phej8T2Bj0YtpkSyA",
+      "spotify": "https://open.spotify.com/artist/43mWhBXSflupNLuNjM5vff",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/soulwax/15159081"
+    },
+    "description": "Soulwax is the electronic rock project led by Belgian brothers David and Stephen Dewaele, active since 1995 and widely regarded as one of the most innovative acts in alternative and electronic music. Known for constantly pushing genre boundaries, the band blends electronic production with live instrumentation and experimental sound design. Albums such as Nite Versions and the award-winning FROM DEEWEE marked important milestones in modern electronic music.\nSoulwax is also ...",
+    "imageUrl": "file:///android_asset/artists/128.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "129",
     "artist": "Sub Focus",
     "stage": null,
     "day": "Saturday",
@@ -2327,7 +4356,6 @@
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "SATURDAY",
       "DNB"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068360-sub-focus?from=%2F",
@@ -2343,23 +4371,23 @@
       "soundcloud": "https://soundcloud.com/subfocus"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594690_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/129.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "High Energy"
+      "Rave",
+      "High Energy",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "67",
+    "id": "130",
     "artist": "Swimming Paul",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "DE",
+    "stage": "Bolt Stage",
+    "day": "Wednesday",
+    "startTime": "22:30",
+    "endTime": "23:45",
+    "countryCode": "FR",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
@@ -2379,22 +4407,20 @@
       "soundcloud": "https://soundcloud.com/swimmingpaul_music"
     },
     "description": "Swimming Paul is a French DJ and producer from Paris whose musical journey began in London. Emerging in 2023, his early singles, including Fading, earned BBC Radio 1 support from Pete Tong, Danny Howard, and Jess Iszatt. He steadily built a devoted fanbase, releasing music every 4–6 weeks and debuting his album Smiling Through The Pain in June 2024. Known for high-energy, emotional sets, he collaborated with Tiësto on ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/96/thumb_5595696_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/130.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Feel-good",
-      "Party"
+      "Hard",
+      "Groovy"
     ],
     "isHeadliner": false
   },
   {
-    "id": "68",
+    "id": "131",
     "artist": "Sylvie Kreusch",
     "stage": null,
-    "day": null,
+    "day": "Thursday",
     "startTime": null,
     "endTime": null,
     "countryCode": "BE",
@@ -2416,20 +4442,20 @@
       "soundcloud": "https://soundcloud.com/sylviekreusch"
     },
     "description": "Ghent-based artist Sylvie Kreusch is rapidly rising as one of the most impressive and electrifying performers in Europe. `Her trail-blazing music and visuals already turned many heads in the fields of music, film and fashion. Kreusch is known for her brutal, expressive lyricism and keen ear for both experimental and pop stylistics. During the past decade, Kreusch made her first waves playing in Belgium with art rockers Soldier’s Heart and ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594696_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/131.jpeg",
     "vibes": [
       "Sing-along",
       "Feel-good",
-      "Party",
-      "Nostalgic"
+      "Chill",
+      "Atmospheric"
     ],
     "isHeadliner": false
   },
   {
-    "id": "69",
+    "id": "132",
     "artist": "Syreeta",
     "stage": null,
-    "day": null,
+    "day": "Tuesday",
     "startTime": null,
     "endTime": null,
     "countryCode": "GB",
@@ -2447,24 +4473,87 @@
       "x": "https://x.com/syreetamusic",
       "tiktok": null,
       "youtube": null,
-      "spotify": "https://open.spotify.com/artist/594LqcHtMvKoR0URmSiYJB",
+      "spotify": "https://open.spotify.com/artist/6NLeKpbb77Bgp6hPZjf6KJ",
       "appleMusic": null,
       "soundcloud": "https://soundcloud.com/syreetamusic"
     },
     "description": "SYREETA is a fearless, genre-defying British DJ and producer whose global career continues to soar. Known for her eclectic house and techno sets, she has performed at top clubs and festivals worldwide, including Coachella, Time Warp, and Ibiza’s DC10, and shared stages with major artists like Carl Cox, Honey Dijon, and Marco Carola. In 2024, she won Beatport’s People’s Choice Award and was named Carl Cox’s DJ/Producer of the Year, ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594700_performance_1080.jpeg",
+    "imageUrl": "file:///android_asset/artists/132.jpeg",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Feel-good",
-      "Party"
+      "Hard",
+      "Groovy"
     ],
     "isHeadliner": false
   },
   {
-    "id": "70",
+    "id": "133",
+    "artist": "Sziami Es A Vendegek & Agi Es Fiuk",
+    "stage": null,
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074023-sziami-es-a-vendegek-%26-agi-es-fiuk?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/mullerpetersziami",
+      "instagram": "https://www.instagram.com/muller.peter.sziami",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@M",
+      "spotify": "https://open.spotify.com/artist/5oBVs6mrUqWzF6fGjpwZ9s",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/m%C3%BCller-p%C3%A9ter-szi%C3%A1mi/330672726"
+    },
+    "description": "Ági és fiúk was founded in 1986 as one of the successor bands to Kontroll Csoport. From the very first Diáksziget, they were regular performers at the iconic Bahia Stage. Since 1994, alternative diva Ági Bárdos Deák’s постоян songwriting partner has been guitarist Szilveszter Antal. Over the decades, the band has performed in numerous line-ups; the current formation features drummer Zsolt Neményi, bassist Gábor Horváth, and saxophonists Zsolt Varga and ...",
+    "imageUrl": "file:///android_asset/artists/133.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Unique",
+      "Live Band"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "134",
+    "artist": "Tankcsapda",
+    "stage": null,
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2074081-tankcsapda?from=%2F",
+    "socials": {
+      "website": "https://www.tankcsapda.hu/",
+      "facebook": "https://www.facebook.com/Tankcsapda",
+      "instagram": "https://www.instagram.com/tankcsapda",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC_rLpMHDjikJV206B2wVXIA",
+      "spotify": "https://open.spotify.com/artist/3QbmGjx9VYiu3fpG8NjIZI",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/tankcsapda/285212840"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/134.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "135",
     "artist": "Tash Sultana",
     "stage": null,
     "day": "Tuesday",
@@ -2475,8 +4564,7 @@
       "MUSIC",
       "ROCK",
       "INDIE",
-      "HIP-HOP",
-      "WEDNESDAY"
+      "HIP-HOP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064844-tash-sultana",
     "description": "Renowned multi-instrumentalist, singer, songwriter, and producer Tash Sultana is making their long-awaited return to the EU/UK in March 2026. These will be Tash’s first shows in the region since 2023, and they’re back by high demand, marking the biggest headline performances of their career in this market to date. The Return to the Roots EU/UK 2026 Tour follows the release of Tash’s most recent body of work and promises fans ...",
@@ -2491,7 +4579,7 @@
       "soundcloud": "https://soundcloud.com/tash-sultana",
       "x": "https://x.com/tashsultanaa"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577136_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/135.jpeg",
     "vibes": [
       "Loop-master",
       "Trippy",
@@ -2500,7 +4588,73 @@
     "isHeadliner": false
   },
   {
-    "id": "71",
+    "id": "136",
+    "artist": "Teen Mortgage",
+    "stage": null,
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ROCK",
+      "GARAGE ROCK"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079542-teen-mortgage?from=%2F",
+    "socials": {
+      "website": "https://www.teenmortgageband.com/",
+      "facebook": "https://www.facebook.com/TeenMortgage",
+      "instagram": "https://www.instagram.com/teen_mortgage",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC2WJ2CwnAkMh14EY5HHD2LQ",
+      "spotify": "https://open.spotify.com/artist/4SX1RwkM82CQll2eoV9HaP",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/teen-mortgage/1225603761",
+      "soundcloud": "https://soundcloud.com/teen_mortgage"
+    },
+    "description": "Washington DC’s Teen Mortgage climbed from the city’s primordial punk soup in 2017 after guitarist/vocalist James Guile relocated to the nation's capital from Liverpool, UK and by a stroke of luck was quickly able to find hard hitting drummer Ed Barkauskas via a desperate craigslist post. As a two piece they stood out - crossbreeding east coast hardcore aggression and garage/surf sleaze with a focus on pop sensibility. This sonic ...",
+    "imageUrl": "file:///android_asset/artists/136.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "137",
+    "artist": "The Zawose Queens",
+    "stage": null,
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "TZ",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "FOLK",
+      "WAGOGO"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079221-the-zawose-queens?from=%2F",
+    "socials": {
+      "website": "https://www.thezawosequeens.com/",
+      "facebook": "https://www.facebook.com/people",
+      "instagram": "https://www.instagram.com/zawosequeens",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCw_1FFqzxzwhjdW4cu0sV-Q",
+      "spotify": "https://open.spotify.com/artist/5e8d20rB9aHyqFJLHlu4QI",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/the-zawose-queens/1734684071"
+    },
+    "description": "There is spirit and fire in the music of The Zawose Queens. There's the vibrations of the ancestors, coming through on traditional instruments — soaring chizeze fiddle, buzzing illimba thumb piano, ngoma drums that chatter and thunder — and voices that go deep, high and out there. There's the connection to nature, to ceremony and ritual, in their dance-inspired fusion, their blend of the organic, harmonic and modern-day electronic. ...",
+    "imageUrl": "file:///android_asset/artists/137.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "138",
     "artist": "Tomora",
     "stage": null,
     "day": "Wednesday",
@@ -2510,8 +4664,7 @@
     "genres": [
       "MUSIC",
       "INDIE",
-      "ELECTRONIC",
-      "WEDNESDAY"
+      "ELECTRONIC"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064840-tomora",
     "description": "TOMORA, the new duo featuring The Chemical Brothers’ Tom Rowlands and AURORA, have released their debut single “RING THE ALARM,” out now via Capitol Records. It arrives alongside a BBC Radio 1 premiere with Jack Saunders and an official music video directed by Adam Smith, a visual that compliments the track’s fun and chaotic nature. Until now, TOMORA’s identity was unknown, with their presence on next year’s festival lineups for ...",
@@ -2526,7 +4679,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/gb/artist/tomora/1852575872",
       "soundcloud": "https://soundcloud.com/tomoraofficial"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580979_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/138.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",
@@ -2536,13 +4689,13 @@
     "isHeadliner": false
   },
   {
-    "id": "72",
+    "id": "139",
     "artist": "Tripolism",
     "stage": null,
-    "day": null,
+    "day": "Wednesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "DE",
+    "countryCode": "DK",
     "genres": [
       "MUSIC",
       "INDIE",
@@ -2563,31 +4716,29 @@
       "soundcloud": "https://soundcloud.com/tripolism"
     },
     "description": "Tripolism, a Danish trio from Copenhagen, blend house, disco, and techno into a distinct, immersive sound. They broke through in 2023 with Dope Dance, crowned Pete Tong’s Essential New Tune and later a Top 5 track of the year. Their debut album Absolute Dope (2024, Ultra Records) cemented their rising international profile, while official remixes like Lola’s Theme (#1 on Beatport) and collaborations such as Sunrise and Groove On ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594707_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/139.jpeg",
     "vibes": [
-      "Feel-good",
-      "Nostalgic",
+      "Chill",
+      "Atmospheric",
       "Dance",
-      "Flow",
-      "Hard",
       "Rave",
-      "Party"
+      "Hard",
+      "Groovy"
     ],
     "isHeadliner": false
   },
   {
-    "id": "73",
+    "id": "140",
     "artist": "Trym",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "NO",
+    "countryCode": "FR",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "TECHNO",
-      "TUESDAY"
+      "TECHNO"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068358-trym?from=%2F",
     "socials": {
@@ -2602,17 +4753,16 @@
       "soundcloud": "https://soundcloud.com/trymofficial"
     },
     "description": "TRYM, born Martin Drack in 1997, is a French DJ and producer who has rapidly become one of the most prominent figures in the modern techno scene. Known for his unique sound that blends HardDance and HardTrance, Trym delivers high-energy sets that captivate audiences worldwide.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/96/thumb_5595144_performance_960.png",
+    "imageUrl": "file:///android_asset/artists/140.png",
     "vibes": [
       "Dance",
-      "Flow",
-      "Hard",
-      "Rave"
+      "Rave",
+      "Hard"
     ],
     "isHeadliner": false
   },
   {
-    "id": "74",
+    "id": "141",
     "artist": "Twenty One Pilots",
     "stage": null,
     "day": "Friday",
@@ -2625,8 +4775,7 @@
       "INDIE",
       "POP",
       "ALTERNATIVE",
-      "INDIE POP",
-      "WEDNESDAY"
+      "INDIE POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064850-twenty-one-pilots",
     "socials": {
@@ -2640,7 +4789,7 @@
       "x": "https://twitter.com/twentyonepilots"
     },
     "description": "Grammy-Award winning band, Twenty One Pilots, have shifted music and culture as an incomparable creative force and with an ever-evolving vision. The Columbus, OH duo—Tyler Joseph and Josh Dun— have tallied over 33 billion global streams and counting, sold north of three million tickets worldwide, notched dozens of multi-Platinum certifications, and even claimed a spot in the Guinness® Book of World Records. In historic fashion, their quadruple-Platinum breakout LP, Blurryface, ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577159_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/141.jpeg",
     "vibes": [
       "High Energy",
       "Moshpit",
@@ -2649,18 +4798,17 @@
     "isHeadliner": true
   },
   {
-    "id": "75",
+    "id": "142",
     "artist": "Underworld",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
-    "countryCode": "UK",
+    "countryCode": "GB",
     "genres": [
       "MUSIC",
       "ELECTRONIC",
       "TECHNO",
-      "TUESDAY",
       "HOUSE"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065313-underworld",
@@ -2675,7 +4823,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/underworld/996876",
       "x": "https://x.com/underworldlive"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580030_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/142.jpeg",
     "vibes": [
       "Legendary",
       "Rave",
@@ -2684,7 +4832,7 @@
     "isHeadliner": false
   },
   {
-    "id": "76",
+    "id": "143",
     "artist": "Vintage Culture",
     "stage": null,
     "day": "Tuesday",
@@ -2694,7 +4842,6 @@
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "TUESDAY",
       "HOUSE",
       "TECH-HOUSE"
     ],
@@ -2711,17 +4858,48 @@
       "soundcloud": "https://soundcloud.com/vintageculturemusic"
     },
     "description": "Vintage Culture is a Brazilian electronic music powerhouse, rising from a small town to over 1.5 billion Spotify streams and multiple Diamond, Platinum, and Gold certifications. His 2024 debut album Promised Land featured collaborations with The Temper Trap and Maverick Sabre, alongside remix contributions from Solomun and Camelphat. Known for residencies at Hï Ibiza and Wynn Las Vegas, he also launched Vintage Is A Festival, selling out stadiums across ...",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/96/thumb_5595068_performance_960.png",
+    "imageUrl": "file:///android_asset/artists/143.png",
     "vibes": [
       "Dance",
+      "Rave",
+      "Groovy"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "144",
+    "artist": "Wavy",
+    "stage": null,
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079574-wavy?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/wavybudapest",
+      "instagram": "https://www.instagram.com/wavybudapest",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UChw_Fo-qIFDRyXIf6WH1uwA",
+      "spotify": "https://open.spotify.com/artist/6yhyLqCUsp3DMQDRRb6iEq",
+      "appleMusic": null,
+      "soundcloud": "https://soundcloud.com/wavybudapest"
+    },
+    "description": "WAVY is a Budapest-based music and art collective founded in January 2022. The 19-member group—comprising rappers, DJs, producers, visual artists, and creatives—operates at the intersection of alternative and experimental hip-hop, lo-fi, garage, and house. Their motto “Lo and Slo” reflects their philosophy of slow, organic growth within Hungary’s music and creative scene.\nTheir debut album BABEL surpassed 2 million Spotify streams and was named one of the best debut releases ...",
+    "imageUrl": "file:///android_asset/artists/144.jpeg",
+    "vibes": [
       "Flow",
-      "Feel-good",
       "Party"
     ],
     "isHeadliner": false
   },
   {
-    "id": "77",
+    "id": "145",
     "artist": "Whomadewho (Hybrid Dj Set)",
     "stage": null,
     "day": "Wednesday",
@@ -2730,8 +4908,7 @@
     "countryCode": "DK",
     "genres": [
       "MUSIC",
-      "ELECTRONIC",
-      "WEDNESDAY"
+      "ELECTRONIC"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2069919-whomadewho-(hybrid-dj-set)?from=%2F",
     "socials": {
@@ -2746,15 +4923,47 @@
       "soundcloud": "https://soundcloud.com/whomadewho"
     },
     "description": "WhoMadeWho, the Danish trio of Tomas Høffding, Tomas Barfod, and Jeppe Kjellberg, blend rock, jazz, and electronic music into a distinctive, emotionally charged sound. With eight albums, singles, and remixes for Kompakt, Innervisions, and Life & Death, they’ve forged a unique creative identity. 2024 saw Kiss & Forget, Beatport’s DJ Award, and headline shows in Copenhagen, Berlin, and Paris, cementing their global electronic music influence.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594717_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/145.jpeg",
     "vibes": [
       "Dance",
-      "Flow"
+      "Rave"
     ],
     "isHeadliner": false
   },
   {
-    "id": "78",
+    "id": "146",
+    "artist": "Wild Wild Women",
+    "stage": null,
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "IN",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079557-wild-wild-women?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/wildwildwomen_",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/@wildwildwomen",
+      "spotify": "https://open.spotify.com/artist/6pcnYS4spI2T6ON68zSseP",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/in/artist/wild-wild-women/1556311542"
+    },
+    "description": "WILD WILD WOMEN (WWW) is India's first all-female hip-hop collective, a revolutionary, multi-disciplinary ensemble hailing from Mumbai. Founded in 2021 by rappers Krantinaari (Ashwini Hiremath), HashtagPreeti (Preeti N Sutar), MC Mahila (Shruti Raut), JQueen (Jacquilin Lucas), and Pratika (Pratika E. Prabhune), the collective is celebrated for flipping the script on the male-dominated Indian hip-hop scene.\nTheir sound is a powerful fusion of English, Hindi, Marathi, Tamil, and Kannada lyrics, tackling ...",
+    "imageUrl": "file:///android_asset/artists/146.jpeg",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "147",
     "artist": "Wolf Alice",
     "stage": null,
     "day": "Tuesday",
@@ -2767,7 +4976,6 @@
       "INDIE",
       "ALTERNATIVE",
       "INDIE ROCK",
-      "TUESDAY",
       "ALTERNATIVE ROCK"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068364-wolf-alice?from=%2F",
@@ -2782,17 +4990,84 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/wolf-alice/589384117"
     },
     "description": "North London quartet Wolf Alice emerged in 2013 with My Love Is Cool and the Grammy-nominated “Moaning Lisa Smile.” Visions Of A Life (2018) won the Mercury Prize, followed by 2022’s UK #1 Blue Weekend and a Brit Award for Best Group. Their fourth album, The Clearing (2025), recorded with Greg Kurstin, delivers confident, timeless pop/rock songs, cementing their cultural and musical significance.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587842_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/147.jpeg",
     "vibes": [
       "High Energy",
       "Anthemic",
-      "Feel-good",
-      "Nostalgic"
+      "Chill",
+      "Atmospheric",
+      "Unique",
+      "Live Band"
     ],
     "isHeadliner": false
   },
   {
-    "id": "79",
+    "id": "148",
+    "artist": "Yarima",
+    "stage": null,
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "UA",
+    "genres": [
+      "MUSIC",
+      "POP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079562-yarima?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/la.yarima",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCVBwqg2Er7O1VAFPZHjNQ4A",
+      "spotify": "https://open.spotify.com/artist/1nZ0jfkEdCujq7nFxlk9Uc",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/ca/artist/yarima/1566317879",
+      "soundcloud": "https://soundcloud.com/yarima"
+    },
+    "description": "YARIMA is one of the most distinctive new voices in the Ukrainian R&B and neo-soul scene. Her music blends soulful vocals with sleek R&B production, exploring themes of introspection, vulnerability, and self-discovery.\nShe first gained attention after winning Pepsi Music Star in 2020, initially working with THE HARDKISS as producers before developing her own artistic identity and moving toward a deeper, more emotional R&B sound. Her debut EP Цикл (Cycle), ...",
+    "imageUrl": "file:///android_asset/artists/148.jpeg",
+    "vibes": [
+      "Sing-along",
+      "Feel-good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "149",
+    "artist": "Yt",
+    "stage": null,
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "HIP-HOP",
+      "RAP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079526-yt?from=%2F",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/tolafolaa",
+      "x": "https://x.com/tolafolaa",
+      "tiktok": "https://www.tiktok.com/@tolafolaa",
+      "youtube": "https://www.youtube.com/channel/UCHXa16Lp1-jxQ4qCA3wtrPg",
+      "spotify": "https://open.spotify.com/artist/0YsYhESxyHC1kuMm9Mbm3C",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/yt/1555092926",
+      "soundcloud": "https://soundcloud.com/tolafolaa"
+    },
+    "description": "YT has been making music since the age of 14, steadily building a loyal fanbase over the past nine years. His breakthrough came in 2023 with the SoundCloud tape #SWAGRENAISSANCE, where he introduced his signature sound built on energetic jerk beats with a distinct British flair. Known for catchy autotune melodies, witty punchlines, and playful lyricism, YT quickly became a standout name in the underground scene. In 2024 his viral ...",
+    "imageUrl": "file:///android_asset/artists/149.png",
+    "vibes": [
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "150",
     "artist": "Zara Larsson",
     "stage": null,
     "day": "Tuesday",
@@ -2801,8 +5076,7 @@
     "countryCode": "SE",
     "genres": [
       "MUSIC",
-      "POP",
-      "TUESDAY"
+      "POP"
     ],
     "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2071958-zara-larsson?from=%2F",
     "socials": {
@@ -2817,16 +5091,49 @@
       "soundcloud": "https://soundcloud.com/zaralarssonofficial"
     },
     "description": "Midnight Sun is Zara Larsson’s fourth international studio album, created with a close-knit team led by longtime collaborator MNEK. The album captures confidence, vulnerability, and artistic growth, drawing inspiration from Swedish summer nights where the sun never sets. Blending pop bangers with introspective tracks, it reflects Zara’s journey, ambition, self-acceptance, and evolving perspective at 27. She describes it as her most authentic work yet—fun, honest, emotional, and unmistakably her.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/95/thumb_5594724_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/150.jpeg",
     "vibes": [
       "Sing-along",
-      "Feel-good",
-      "Party"
+      "Feel-good"
     ],
     "isHeadliner": true
   },
   {
-    "id": "80",
+    "id": "151",
+    "artist": "Zep",
+    "stage": null,
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HIP-HOP"
+    ],
+    "szigetUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2079189-zep?from=%2F",
+    "socials": {
+      "website": "https://www.whatszep.com/",
+      "facebook": "https://www.facebook.com/whatszep",
+      "instagram": "https://www.instagram.com/whatszep",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCK1buCc8Qin_YJG5JBZt2Vg",
+      "spotify": "https://open.spotify.com/artist/72OZwUYL9lvmwBvvsstpIV",
+      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/zep/1582892045"
+    },
+    "description": null,
+    "imageUrl": "file:///android_asset/artists/151.jpeg",
+    "vibes": [
+      "Dance",
+      "Rave",
+      "Flow",
+      "Party"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "152",
     "artist": "Zimmer90",
     "stage": null,
     "day": "Thursday",
@@ -2851,7 +5158,7 @@
       "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/hu/artist/zimmer90/1500576149",
       "soundcloud": "https://soundcloud.com/zimmer90"
     },
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580027_performance_1440.jpeg",
+    "imageUrl": "file:///android_asset/artists/152.jpeg",
     "vibes": [
       "Chill",
       "Atmospheric",

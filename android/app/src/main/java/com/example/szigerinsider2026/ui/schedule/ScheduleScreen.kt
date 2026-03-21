@@ -1,5 +1,7 @@
 package com.example.szigerinsider2026.ui.schedule
 
+import androidx.compose.foundation.ScrollState
+
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.InfiniteRepeatableSpec
@@ -11,6 +13,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -23,6 +27,9 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,6 +40,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
@@ -44,6 +52,8 @@ import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
+import coil.compose.AsyncImage
+import androidx.compose.ui.layout.ContentScale
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import java.time.LocalDate
 import java.time.LocalTime
@@ -133,8 +143,9 @@ private fun isNowPlaying(artist: Artist): Boolean {
 
 // ─── Screen ──────────────────────────────────────────────────────────────────
 
-private enum class ScheduleTab { ALL, MY_LINEUP }
+private enum class ScheduleTab { GRID, BY_TIME, MY_LINEUP }
 
+@androidx.compose.material3.ExperimentalMaterial3Api
 @Composable
 fun ScheduleScreen(
     onArtistClick: (String) -> Unit = {},
@@ -158,19 +169,26 @@ fun ScheduleScreen(
     }
 
     val availableDays = remember(allArtists) {
-        allArtists.mapNotNull { it.day }.distinct()
+        val days = allArtists.mapNotNull { it.day }.distinct()
             .sortedBy { DAY_ORDER.indexOf(it).let { i -> if (i == -1) 99 else i } }
+        listOf("WEEK") + days
     }
 
-    var selectedDay by remember(availableDays) { mutableStateOf(availableDays.firstOrNull() ?: "") }
-    var activeTab  by remember { mutableStateOf(ScheduleTab.ALL) }
+    var selectedDay by remember(availableDays) { mutableStateOf(availableDays.firstOrNull() ?: "WEEK") }
+    var activeTab  by remember { mutableStateOf(ScheduleTab.GRID) }
+    var artistForDetail by remember { mutableStateOf<Artist?>(null) }
+    
+    // Squad State (Peer Favorites)
+    var squadFavoriteIds by remember { mutableStateOf<Set<String>>(emptySet()) }
+    var showShareQR      by remember { mutableStateOf(false) }
+    var showScanner      by remember { mutableStateOf(false) }
 
     // ── ALL tab data ─────────────────────────────────────────────────────────
     val dayArtists = remember(allArtists, selectedDay) {
         allArtists
-            .filter { it.day?.equals(selectedDay, ignoreCase = true) == true }
+            .filter { selectedDay == "WEEK" || it.day?.equals(selectedDay, ignoreCase = true) == true }
             .sortedWith(
-                compareByDescending<Artist> { it.isHeadliner }
+                compareBy<Artist> { DAY_ORDER.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
                     .thenBy { it.startTime ?: "99:99" }
                     .thenBy { it.artist }
             )
@@ -207,89 +225,86 @@ fun ScheduleScreen(
             .background(OLEDBlack)
     ) {
         // ── Header ────────────────────────────────────────────────────────────
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
-                .padding(top = 20.dp, bottom = 12.dp)
+                .padding(top = 20.dp, bottom = 12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Back button — floats top-left
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .clip(CircleShape)
-                    .background(CardBackground)
-                    .border(1.dp, Color.White.copy(alpha = 0.10f), CircleShape)
-                    .clickable { haptic.lightTap(); onBack() },
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
-                    tint = Color.White,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-
-            // Title — centred in box
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "SCHEDULE",
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Black,
-                    fontStyle = FontStyle.Italic,
-                    color = Color.White,
-                    letterSpacing = (-1.5).sp,
-                    lineHeight = 34.sp
-                )
-                Text(
-                    text = FestivalConfig.DATE_VENUE_DISPLAY,
-                    color = TextMuted,
-                    fontSize = 13.sp,
-                    modifier = Modifier.padding(top = 2.dp)
-                )
-            }
+            Text(
+                text = "TIMETABLE",
+                fontSize = 36.sp,
+                fontWeight = FontWeight.Black,
+                fontStyle = FontStyle.Italic,
+                color = Color.White,
+                letterSpacing = (-1.5).sp,
+                lineHeight = 34.sp
+            )
+            Text(
+                text = FestivalConfig.DATE_VENUE_DISPLAY,
+                color = TextMuted,
+                fontSize = 13.sp,
+                modifier = Modifier.padding(top = 2.dp)
+            )
         }
 
-        // ── Day tabs ─────────────────────────────────────────────────────────
-        LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.padding(bottom = 10.dp)
+        // ── Day selector ─────────────────────────────────────────────────────────
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 12.dp)
+                .background(CardBackground.copy(alpha = 0.4f))
+                .padding(vertical = 12.dp)
         ) {
-            items(availableDays) { day ->
-                val isSelected = day == selectedDay && activeTab == ScheduleTab.ALL
-                val bgColor by animateColorAsState(
-                    targetValue = if (isSelected) AcidYellow else Color.White.copy(alpha = 0.05f),
-                    animationSpec = tween(200),
-                    label = "dayTab"
-                )
-                val textColor by animateColorAsState(
-                    targetValue = if (isSelected) Color.Black else TextMuted,
-                    animationSpec = tween(200),
-                    label = "dayTabText"
-                )
-                Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(bgColor)
-                        .clickable {
-                            haptic.lightTap()
-                            selectedDay = day
-                            activeTab = ScheduleTab.ALL
-                        }
-                        .padding(horizontal = 18.dp, vertical = 10.dp)
-                ) {
-                    Text(
-                        text = DAY_LABELS[day] ?: day.take(3).uppercase(),
-                        fontWeight = FontWeight.Black,
-                        color = textColor,
-                        fontSize = 12.sp,
-                        letterSpacing = 1.sp
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                items(availableDays) { day ->
+                    val isSelected = (day == selectedDay && activeTab == ScheduleTab.GRID)
+                    val isWeekTab  = day == "WEEK"
+                    
+                    val bgColor by animateColorAsState(
+                        targetValue = if (isSelected) {
+                            if (isWeekTab) AcidYellow else Color.White
+                        } else {
+                            Color.White.copy(alpha = 0.04f)
+                        },
+                        animationSpec = tween(200),
+                        label = "dayTab"
                     )
+                    val textColor by animateColorAsState(
+                        targetValue = if (isSelected) Color.Black else TextMuted,
+                        animationSpec = tween(200),
+                        label = "dayTabText"
+                    )
+                    
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(bgColor)
+                            .border(
+                                1.dp, 
+                                if (isSelected) Color.Transparent else Color.White.copy(alpha = 0.05f), 
+                                RoundedCornerShape(12.dp)
+                            )
+                            .clickable {
+                                haptic.lightTap()
+                                selectedDay = day
+                                activeTab = ScheduleTab.GRID
+                            }
+                            .padding(horizontal = 16.dp, vertical = 10.dp)
+                    ) {
+                        Text(
+                            text = if (isWeekTab) "FULL WEEK" else (DAY_LABELS[day] ?: day.take(3).uppercase()),
+                            fontWeight = FontWeight.Black,
+                            color = textColor,
+                            fontSize = 11.sp,
+                            letterSpacing = 1.sp
+                        )
+                    }
                 }
             }
         }
@@ -306,42 +321,43 @@ fun ScheduleScreen(
 
         // ── Content ──────────────────────────────────────────────────────────
         when (activeTab) {
-            ScheduleTab.ALL -> {
-                // Artist count label
-                Text(
-                    text = "${dayArtists.size} ARTISTS · $selectedDay".uppercase(),
-                    color = TextMuted,
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 2.sp,
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 4.dp)
+            ScheduleTab.GRID -> {
+                TimetableGrid(
+                    dayArtists = dayArtists,
+                    selectedDay = selectedDay,
+                    favoriteIds = favoriteIds,
+                    squadIds = squadFavoriteIds,
+                    onArtistClick = { id -> 
+                        artistForDetail = allArtists.find { it.id == id }
+                    },
+                    onToggleFavorite = { id ->
+                        artistViewModel.toggleFavorite(id)
+                    }
                 )
-
+            }
+            ScheduleTab.BY_TIME -> {
                 LazyColumn(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    byStage.forEach { (stage, artists) ->
-                        item(key = "header_$stage") {
-                            StageHeader(stage = stage)
-                        }
-                        items(artists, key = { it.id }) { artist ->
-                            ScheduleRow(
-                                artist = artist,
-                                isFavorite = favoriteIds.contains(artist.id),
-                                onToggleFavorite = { artistViewModel.toggleFavorite(artist.id) },
-                                onClick = { onArtistClick(artist.id) },
-                                hapticTap = { haptic.lightTap() },
-                                showClashBadge = false,
-                                showDayBadge = false
-                            )
-                        }
+                    items(dayArtists) { artist ->
+                        ScheduleRow(
+                            artist = artist,
+                            isFavorite = favoriteIds.contains(artist.id),
+                            inSquad = squadFavoriteIds.contains(artist.id),
+                            onToggleFavorite = {
+                                artistViewModel.toggleFavorite(artist.id)
+                                haptic.lightTap()
+                            },
+                            onClick = { artistForDetail = artist },
+                            hapticTap = { haptic.lightTap() },
+                            showClashBadge = false,
+                            showDayBadge = false
+                        )
                     }
-                    item { Spacer(modifier = Modifier.height(100.dp)) }
                 }
             }
-
             ScheduleTab.MY_LINEUP -> {
                 if (favoriteArtists.isEmpty()) {
                     // Empty state
@@ -382,6 +398,50 @@ fun ScheduleScreen(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier.fillMaxSize()
                     ) {
+                        if (favoriteArtists.isNotEmpty()) {
+                            item(key = "squad_actions") {
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(bottom = 12.dp),
+                                    horizontalArrangement = Arrangement.End,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .background(CyanPulse.copy(alpha = 0.15f))
+                                            .clickable { showScanner = true }
+                                            .padding(horizontal = 14.dp, vertical = 10.dp)
+                                    ) {
+                                        Text(
+                                            text = "SCAN SQUAD",
+                                            fontWeight = FontWeight.Black,
+                                            color = CyanPulse,
+                                            fontSize = 11.sp,
+                                            letterSpacing = 1.sp
+                                        )
+                                    }
+                                    Spacer(modifier = Modifier.width(10.dp))
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .background(PrimaryMagenta.copy(alpha = 0.15f))
+                                            .clickable { showShareQR = true }
+                                            .padding(horizontal = 14.dp, vertical = 10.dp)
+                                    ) {
+                                        Text(
+                                            text = "SHARE SQUAD QR",
+                                            fontWeight = FontWeight.Black,
+                                            color = PrimaryMagenta,
+                                            fontSize = 11.sp,
+                                            letterSpacing = 1.sp
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
                         // Clash banner
                         if (clashes.isNotEmpty()) {
                             item(key = "clash_banner") {
@@ -398,11 +458,15 @@ fun ScheduleScreen(
                             items(artists, key = { it.id }) { artist ->
                                 ScheduleRow(
                                     artist = artist,
-                                    isFavorite = favoriteIds.contains(artist.id),
-                                    onToggleFavorite = { artistViewModel.toggleFavorite(artist.id) },
-                                    onClick = { onArtistClick(artist.id) },
+                                    isFavorite = true,
+                                    inSquad = squadFavoriteIds.contains(artist.id),
+                                    onToggleFavorite = {
+                                        artistViewModel.toggleFavorite(artist.id)
+                                        haptic.lightTap()
+                                    },
+                                    onClick = { artistForDetail = artist },
                                     hapticTap = { haptic.lightTap() },
-                                    showClashBadge = clashedArtistIds.contains(artist.id),
+                                    showClashBadge = clashes.any { it.a.id == artist.id || it.b.id == artist.id },
                                     showDayBadge = true
                                 )
                             }
@@ -413,6 +477,25 @@ fun ScheduleScreen(
                 }
             }
         }
+    }
+
+    if (showShareQR) {
+        SquadQRDialog(
+            favoriteIds = favoriteIds,
+            onDismiss = { showShareQR = false }
+        )
+    }
+
+    artistForDetail?.let { artist ->
+        ArtistDetailSheet(
+            artist = artist,
+            isFavorite = favoriteIds.contains(artist.id),
+            onToggleFavorite = {
+                artistViewModel.toggleFavorite(artist.id)
+                haptic.lightTap()
+            },
+            onDismiss = { artistForDetail = null }
+        )
     }
 }
 
@@ -432,7 +515,7 @@ private fun ScheduleTabToggle(
             .padding(4.dp)
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            listOf(ScheduleTab.ALL to "ALL", ScheduleTab.MY_LINEUP to "MY LINEUP").forEach { (tab, label) ->
+            listOf(ScheduleTab.GRID to "GRID", ScheduleTab.BY_TIME to "BY TIME", ScheduleTab.MY_LINEUP to "MY LINEUP").forEach { (tab, label) ->
                 val isActive = activeTab == tab
                 val bgColor by animateColorAsState(
                     targetValue = if (isActive) PrimaryMagenta else Color.Transparent,
@@ -526,61 +609,249 @@ private fun DayHeader(day: String) {
     }
 }
 
-// ─── Clash banner ─────────────────────────────────────────────────────────────
+// ─── Timetable Grid ───────────────────────────────────────────────────────────
+
+private const val START_HOUR = 13 // 1:00 PM
+private const val END_HOUR   = 28 // 4:00 AM (Next Day)
 
 @Composable
-private fun ClashBanner(clashes: List<ClashPair>) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = ClashBannerBg),
-        border = androidx.compose.foundation.BorderStroke(1.dp, ClashBannerBorder.copy(alpha = 0.50f))
+fun TimetableGrid(
+    dayArtists: List<Artist>,
+    selectedDay: String,
+    favoriteIds: Set<String>,
+    squadIds: Set<String> = emptySet(),
+    onArtistClick: (String) -> Unit,
+    onToggleFavorite: (String) -> Unit
+) {
+    val haptic = rememberHapticManager()
+    val byStage = remember(dayArtists) {
+        dayArtists.groupBy { it.stage ?: "Other" }.entries
+            .sortedBy { if (it.key.contains("main", ignoreCase = true)) 0 else 1 }
+    }
+
+    // 2D Scroll & Zoom State
+    var offsetX by remember { mutableStateOf(0f) }
+    var offsetY by remember { mutableStateOf(0f) }
+    val tabs = listOf("GRID", "BY TIME", "MY LINEUP")
+    var selectedTab by remember { mutableStateOf("GRID") }
+    var zoom    by remember { mutableStateOf(1f) }
+
+    val baseHourWidth = 180f
+    val hourWidth = baseHourWidth * zoom
+    val trackHeight = 100f
+
+    fun getX(time: String?): Float {
+        if (time == null) return 0f
+        val parts = time.split(":")
+        if (parts.size < 2) return 0f
+        val h = parts[0].toInt()
+        val m = parts[1].toInt()
+        val normalizedH = if (h < 10) h + 24 else h
+        val offsetMinutes = (normalizedH - START_HOUR) * 60 + m
+        return (offsetMinutes / 60f) * hourWidth
+    }
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .pointerInput(Unit) {
+               detectTransformGestures { _, pan, zoomAmount, _ ->
+                   zoom = (zoom * zoomAmount).coerceIn(0.5f, 2.5f)
+                   offsetX += pan.x
+                   offsetY += pan.y
+               }
+            }
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.LocalFireDepartment,
-                    contentDescription = null,
-                    tint = ClashBannerBorder,
-                    modifier = Modifier.size(18.dp)
-                )
-                Text(
-                    text = "${clashes.size} CLASH${if (clashes.size > 1) "ES" else ""} DETECTED",
-                    fontWeight = FontWeight.Black,
-                    fontStyle = FontStyle.Italic,
-                    color = ClashBannerBorder,
-                    fontSize = 13.sp,
-                    letterSpacing = 0.5.sp
+        // ─── Main Content (Artists + Lines) ──────────────────────────────────
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer {
+                    translationX = offsetX
+                    translationY = offsetY
+                }
+        ) {
+            // Hour Lines
+            (START_HOUR..END_HOUR).forEach { h ->
+                val x = (h - START_HOUR) * hourWidth
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(1.dp)
+                        .absoluteOffset(x = x.dp)
+                        .background(Color.White.copy(alpha = 0.05f))
                 )
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            clashes.forEach { clash ->
-                val dayLabel = DAY_LABELS[clash.a.day] ?: clash.a.day?.take(3)?.uppercase() ?: ""
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(4.dp)
-                            .clip(CircleShape)
-                            .background(ClashBannerBorder.copy(alpha = 0.6f))
+            // Artist Blocks
+            byStage.forEachIndexed { stageIndex, entry ->
+                val trackY = stageIndex * trackHeight + 40 // Offset for time header
+                entry.value.forEach { artist ->
+                    val x = getX(artist.startTime)
+                    val endX = getX(artist.endTime)
+                    val width = (endX - x).coerceAtLeast(60f)
+                    
+                    ArtistBlock(
+                        artist = artist,
+                        x = x,
+                        y = trackY,
+                        width = width,
+                        height = trackHeight - 8,
+                        isFavorite = favoriteIds.contains(artist.id),
+                        inSquad = squadIds.contains(artist.id),
+                        onArtistClick = onArtistClick,
+                        haptic = haptic
                     )
+                }
+            }
+        }
+
+        // ─── FLOATING HEADERS ───────────────────────────────────────────────
+
+        // Time Bar (Top)
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(40.dp)
+                .background(MutedBackground.copy(alpha = 0.95f))
+        ) {
+            Box(modifier = Modifier.graphicsLayer { translationX = offsetX }) {
+                (START_HOUR..END_HOUR).forEach { h ->
+                    val x = (h - START_HOUR) * hourWidth
                     Text(
-                        text = "${clash.a.artist.uppercase()} vs ${clash.b.artist.uppercase()} · $dayLabel",
-                        color = Color.White.copy(alpha = 0.80f),
+                        text = if (h >= 24) "${h-24}:00" else "$h:00",
+                        color = TextMuted,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.2.sp
+                        modifier = Modifier.absoluteOffset(x = (x + 8).dp, y = 14.dp)
                     )
+                }
+            }
+        }
+
+        // Stage Labels (Left)
+        Box(
+            modifier = Modifier
+                .fillMaxHeight()
+                .padding(top = 40.dp)
+                .width(80.dp)
+        ) {
+            Box(modifier = Modifier.graphicsLayer { translationY = offsetY }) {
+                byStage.forEachIndexed { index, entry ->
+                    val y = index * trackHeight
+                    Box(
+                        modifier = Modifier
+                            .absoluteOffset(y = y.dp)
+                            .size(width = 80.dp, height = trackHeight.dp)
+                            .background(MutedBackground.copy(alpha = 0.9f))
+                            .border(1.dp, Color.White.copy(alpha = 0.05f))
+                            .padding(4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = entry.key.uppercase(),
+                            color = Color.White,
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Black,
+                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                            lineHeight = 11.sp
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ArtistBlock(
+    artist: Artist,
+    x: Float,
+    y: Float,
+    width: Float,
+    height: Float,
+    isFavorite: Boolean,
+    inSquad: Boolean,
+    onArtistClick: (String) -> Unit,
+    haptic: com.example.szigerinsider2026.ui.utils.HapticManager
+) {
+    Box(
+        modifier = Modifier
+            .absoluteOffset(x = x.dp, y = y.dp)
+            .width(width.dp)
+            .height(height.dp)
+            .padding(4.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(CardBackground)
+            .border(
+                1.dp,
+                when {
+                    isFavorite -> AcidYellow.copy(alpha = 0.5f)
+                    inSquad    -> CyanPulse.copy(alpha = 0.5f)
+                    else       -> Color.White.copy(alpha = 0.08f)
+                },
+                RoundedCornerShape(12.dp)
+            )
+            .clickable { haptic.lightTap(); onArtistClick(artist.id) }
+            .padding(8.dp)
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // Artist Image
+            if (artist.imageUrl != null) {
+                AsyncImage(
+                    model = artist.imageUrl,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(CircleShape)
+                        .background(Color.White.copy(alpha = 0.05f)),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+            } else if (artist.genres?.isNotEmpty() == true) {
+                 // Fallback genre icon
+                 Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(CircleShape)
+                        .background(PrimaryMagenta.copy(alpha = 0.1f)),
+                    contentAlignment = Alignment.Center
+                 ) {
+                     Text(artist.artist.take(1), color = PrimaryMagenta, fontWeight = FontWeight.Bold)
+                 }
+                 Spacer(modifier = Modifier.width(10.dp))
+            }
+
+            Column {
+                Text(
+                    text = artist.artist.uppercase(),
+                    color = when {
+                        artist.isHeadliner -> PrimaryMagenta
+                        inSquad && !isFavorite -> CyanPulse
+                        else -> Color.White
+                    },
+                    fontWeight = FontWeight.Black,
+                    fontSize = 11.sp,
+                    maxLines = 1,
+                    letterSpacing = (-0.2).sp
+                )
+                Text(
+                    text = "${artist.startTime} - ${artist.endTime}",
+                    color = TextMuted,
+                    fontSize = 9.sp
+                )
+                if (isFavorite || inSquad) {
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (isFavorite) {
+                            Text("★", color = AcidYellow, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        }
+                        if (inSquad) {
+                            Text("👥", color = CyanPulse, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
                 }
             }
         }
@@ -593,6 +864,7 @@ private fun ClashBanner(clashes: List<ClashPair>) {
 private fun ScheduleRow(
     artist: Artist,
     isFavorite: Boolean,
+    inSquad: Boolean = false,
     onToggleFavorite: () -> Unit,
     onClick: () -> Unit,
     hapticTap: () -> Unit,
@@ -605,6 +877,7 @@ private fun ScheduleRow(
         nowPlaying    -> ToxicGreen
         artist.isHeadliner -> PrimaryMagenta
         isFavorite    -> AcidYellow
+        inSquad       -> CyanPulse
         else          -> Color.White.copy(alpha = 0.04f)
     }
 
@@ -629,7 +902,7 @@ private fun ScheduleRow(
                 .border(
                     1.dp,
                     accentColor.copy(
-                        alpha = if (nowPlaying || artist.isHeadliner || isFavorite) 0.35f else 0.04f
+                        alpha = if (nowPlaying || artist.isHeadliner || isFavorite || inSquad) 0.35f else 0.04f
                     ),
                     RoundedCornerShape(20.dp)
                 )
@@ -720,6 +993,27 @@ private fun ScheduleRow(
                     .height(36.dp)
                     .background(Color.White.copy(alpha = 0.07f))
             )
+
+            Spacer(modifier = Modifier.width(12.dp))
+
+            // Artist Thumbnail
+            Box(
+                modifier = Modifier
+                    .size(44.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(MutedBackground),
+                contentAlignment = Alignment.Center
+            ) {
+                if (artist.imageUrl != null) {
+                    coil.compose.AsyncImage(
+                        model = artist.imageUrl,
+                        contentDescription = artist.artist,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.width(14.dp))
 
             // Artist info
@@ -818,3 +1112,368 @@ private fun ScheduleRow(
         }
     }
 }
+
+@Composable
+private fun ClashBanner(clashes: List<ClashPair>) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = ClashBannerBg),
+        border = androidx.compose.foundation.BorderStroke(1.dp, ClashBannerBorder.copy(alpha = 0.50f))
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.LocalFireDepartment,
+                    contentDescription = null,
+                    tint = ClashBannerBorder,
+                    modifier = Modifier.size(18.dp)
+                )
+                Text(
+                    text = "${clashes.size} CLASH${if (clashes.size > 1) "ES" else ""} DETECTED",
+                    fontWeight = FontWeight.Black,
+                    fontStyle = FontStyle.Italic,
+                    color = ClashBannerBorder,
+                    fontSize = 13.sp,
+                    letterSpacing = 0.5.sp
+                )
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            clashes.forEach { clash ->
+                val dayLabel = DAY_LABELS[clash.a.day] ?: clash.a.day?.take(3)?.uppercase() ?: ""
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(4.dp)
+                            .clip(CircleShape)
+                            .background(ClashBadgeColor)
+                    )
+                    Text(
+                        text = "${clash.a.artist.uppercase()} vs ${clash.b.artist.uppercase()} · $dayLabel",
+                        color = Color.White.copy(alpha = 0.80f),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 0.2.sp
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SquadQRDialog(
+    favoriteIds: Set<String>,
+    onDismiss: () -> Unit
+) {
+    androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+            shape = RoundedCornerShape(28.dp),
+            colors = CardDefaults.cardColors(containerColor = MutedBackground),
+            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+        ) {
+            Column(
+                modifier = Modifier.padding(24.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = "SQUAD LINK",
+                    fontWeight = FontWeight.Black,
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    letterSpacing = (-1).sp
+                )
+                Text(
+                    text = "Have a friend scan this to merge your lineups.",
+                    color = TextMuted,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(top = 4.dp, bottom = 24.dp),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
+
+                val content = com.example.szigerinsider2026.ui.utils.QRUtils.encodeSquad(favoriteIds)
+                val qr = com.example.szigerinsider2026.ui.utils.QRUtils.generateQRCode(content)
+
+                if (qr != null) {
+                    Box(
+                        modifier = Modifier
+                            .size(240.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color.White)
+                            .padding(16.dp)
+                    ) {
+                        androidx.compose.foundation.Image(
+                            bitmap = qr.asImageBitmap(),
+                            contentDescription = "Squad QR Code",
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(Color.White.copy(alpha = 0.05f))
+                        .clickable { onDismiss() }
+                        .padding(vertical = 14.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "CLOSE",
+                        color = Color.White,
+                        fontWeight = FontWeight.Black,
+                        fontSize = 12.sp,
+                        letterSpacing = 1.sp
+                    )
+                }
+            }
+        }
+    }
+}
+
+@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)
+@Composable
+private fun Badge(text: String, color: Color) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(4.dp))
+            .background(color.copy(alpha = 0.12f))
+            .border(1.dp, color.copy(alpha = 0.25f), RoundedCornerShape(4.dp))
+            .padding(horizontal = 6.dp, vertical = 2.dp)
+    ) {
+        Text(
+            text = text,
+            color = color,
+            fontSize = 8.sp,
+            fontWeight = FontWeight.Black,
+            letterSpacing = 1.sp
+        )
+    }
+}
+@androidx.compose.material3.ExperimentalMaterial3Api
+@Composable
+private fun ArtistDetailSheet(
+    artist: Artist,
+    isFavorite: Boolean,
+    onToggleFavorite: () -> Unit,
+    onDismiss: () -> Unit
+) {
+    androidx.compose.material3.ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        containerColor = OLEDBlack,
+        dragHandle = { androidx.compose.material3.BottomSheetDefaults.DragHandle(color = Color.White.copy(alpha = 0.2f)) }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp)
+                .padding(bottom = 32.dp)
+        ) {
+            // Artist Image (Hero)
+            if (artist.imageUrl != null) {
+                AsyncImage(
+                    model = artist.imageUrl,
+                    contentDescription = artist.artist,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(240.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color.White.copy(alpha = 0.05f)),
+                    contentScale = ContentScale.Crop
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+            } else {
+                 Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(Color.White.copy(alpha = 0.05f)),
+                    contentAlignment = Alignment.Center
+                 ) {
+                     Text(artist.artist.take(1), color = TextMuted, fontSize = 48.sp, fontWeight = FontWeight.Black)
+                 }
+                 Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            Text(
+                text = artist.artist.uppercase(),
+                color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
+                fontWeight = FontWeight.Black,
+                fontSize = 28.sp,
+                letterSpacing = (-1).sp
+            )
+
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 8.dp)) {
+                 Badge(text = (artist.stage ?: "MAIN STAGE").uppercase(), color = PrimaryMagenta)
+                 Spacer(modifier = Modifier.width(10.dp))
+                 Text(
+                     text = "${artist.day?.uppercase()} · ${artist.startTime} - ${artist.endTime}",
+                     color = TextMuted,
+                     fontWeight = FontWeight.Bold,
+                     fontSize = 12.sp
+                 )
+            }
+
+            if (artist.genres?.isNotEmpty() == true) {
+                Row(
+                    modifier = Modifier.padding(top = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    artist.genres.take(3).forEach { genre ->
+                        Box(
+                            modifier = Modifier
+                                .border(1.dp, Color.White.copy(alpha = 0.15f), CircleShape)
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
+                        ) {
+                            Text(text = genre.uppercase(), color = Color.White.copy(alpha = 0.8f), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Action Button
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(if (isFavorite) RedWarning.copy(alpha = 0.2f) else ToxicGreen)
+                    .clickable { onToggleFavorite() }
+                    .padding(vertical = 16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = if (isFavorite) "REMOVE FROM LINEUP" else "ADD TO MY LINEUP",
+                    color = if (isFavorite) RedWarning else OLEDBlack,
+                    fontWeight = FontWeight.Black,
+                    fontSize = 14.sp,
+                    letterSpacing = 1.sp
+                )
+            }
+        }
+    }
+}
+
+@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)
+@Composable
+private fun SquadScannerDialog(
+    onIdsDetected: (List<String>) -> Unit,
+    onDismiss: () -> Unit
+) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    val cameraProviderFuture = remember { androidx.camera.lifecycle.ProcessCameraProvider.getInstance(context) }
+    val scanner = remember { com.google.mlkit.vision.barcode.BarcodeScanning.getClient() }
+
+    androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(480.dp)
+                .padding(24.dp),
+            shape = RoundedCornerShape(28.dp),
+            colors = CardDefaults.cardColors(containerColor = MutedBackground),
+            border = androidx.compose.foundation.BorderStroke(1.dp, CyanPulse.copy(alpha = 0.2f))
+        ) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                Box(modifier = Modifier.weight(1f)) {
+                    androidx.compose.ui.viewinterop.AndroidView(
+                        factory = { ctx ->
+                            androidx.camera.view.PreviewView(ctx).apply {
+                                scaleType = androidx.camera.view.PreviewView.ScaleType.FILL_CENTER
+                            }
+                        },
+                        modifier = Modifier.fillMaxSize(),
+                        update = { previewView ->
+                            cameraProviderFuture.addListener({
+                                try {
+                                    val cameraProvider = cameraProviderFuture.get()
+                                    val preview = androidx.camera.core.Preview.Builder().build().apply {
+                                        setSurfaceProvider(previewView.surfaceProvider)
+                                    }
+
+                                    val imageAnalysis = androidx.camera.core.ImageAnalysis.Builder()
+                                        .setBackpressureStrategy(androidx.camera.core.ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                                        .build()
+
+                                    imageAnalysis.setAnalyzer(java.util.concurrent.Executors.newSingleThreadExecutor()) { imageProxy ->
+                                        val mediaImage = imageProxy.image
+                                        if (mediaImage != null) {
+                                            val image = com.google.mlkit.vision.common.InputImage.fromMediaImage(
+                                                mediaImage,
+                                                imageProxy.imageInfo.rotationDegrees
+                                            )
+                                            scanner.process(image)
+                                                .addOnSuccessListener { barcodes ->
+                                                    for (barcode in barcodes) {
+                                                        barcode.rawValue?.let { raw ->
+                                                            val ids = com.example.szigerinsider2026.ui.utils.QRUtils.decodeSquad(raw)
+                                                            if (ids != null) {
+                                                                onIdsDetected(ids)
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                .addOnCompleteListener { imageProxy.close() }
+                                        } else {
+                                            imageProxy.close()
+                                        }
+                                    }
+
+                                    cameraProvider.unbindAll()
+                                    cameraProvider.bindToLifecycle(
+                                        lifecycleOwner,
+                                        androidx.camera.core.CameraSelector.DEFAULT_BACK_CAMERA,
+                                        preview,
+                                        imageAnalysis
+                                    )
+                                } catch (e: Exception) {
+                                    e.printStackTrace()
+                                }
+                            }, androidx.core.content.ContextCompat.getMainExecutor(context))
+                        }
+                    )
+
+                    // Target overlay
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(40.dp)
+                            .border(2.dp, CyanPulse.copy(alpha = 0.4f), RoundedCornerShape(12.dp))
+                    )
+                }
+
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MutedBackground)
+                        .clickable { onDismiss() }
+                        .padding(16.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("CANCEL", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                }
+            }
+        }
+    }
+}
+

@@ -65,7 +65,7 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   └── ArtistCard.kt               # Reusable card used in Discover + Quiz results
 │   ├── discover/
 │   │   ├── ArtistViewModel.kt          # Manages favorites via Room UserDao
-│   │   ├── DiscoverScreen.kt           # Artist grid, 4 filter rows, collapsing header
+│   │   ├── DiscoverScreen.kt           # Compact TopAppBar, 2-row consolidated filters, accessibility-ready
 │   │   ├── DiscoverViewModel.kt        # Filter state, search, country filter
 │   │   └── CountryExplorerSheet.kt     # Bottom sheet: artists grouped by country
 │   ├── food/
@@ -92,7 +92,7 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   ├── VibeQuizViewModel.kt        # Quiz state + artist scoring algorithm
 │   │   └── VibeResultScreen.kt         # Matched artist reveal + bulk-favorite
 │   ├── schedule/
-│   │   └── ScheduleScreen.kt           # Day-tab artist list (clash detection ready, no times yet)
+│   │   └── ScheduleScreen.kt           # GRID 2.0: 2D Drag, Pinch-to-Zoom, Pinned Stage/Time headers, SQUAD LINK.
 │   ├── splash/
 │   │   └── SplashScreen.kt             # Brutalist entrance, 2s delay → home
 │   ├── theme/
@@ -105,8 +105,9 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   ├── ToolsScreen.kt              # HUF converter, WeatherCard, TentFinderCard, SOS, emergency
 │   │   ├── ToolsViewModel.kt           # Loads weather via WeatherRepository
 │   │   └── WeatherCard.kt              # 5-day forecast strip + animated rain alert banner
-│   └── utils/
-│       └── HapticManager.kt            # lightTap / mediumTap / favoriteTap / successBurst
+│   ├── utils/
+│   │   ├── HapticManager.kt            # lightTap / mediumTap / favoriteTap / successBurst
+│   │   └── QRUtils.kt                  # ZXing QR Generator + Sqaud Link logic
 │
 ├── widget/
 │   ├── SzigetWidget.kt                 # Glance widget: rank, XP, favorites count, tap-to-open
@@ -258,6 +259,11 @@ MutedBackground // ~15% white — subtle dividers
 - Headlines: `fontWeight = FontWeight.Black`, `fontStyle = FontStyle.Italic`, `letterSpacing` negative
 - Labels/overlines: uppercase, `letterSpacing` wide (2–4sp)
 - Body: regular weight, `lineHeight = 22.sp`
+
+### Accessibility & Scaling
+- **Dynamic Font Scaling**: Screens like `Navigation.kt` and `DiscoverScreen.kt` listen to `fontScale`.
+- **Adaptive UX**: Navigation labels automatically downscale (10sp → 8sp) and tighten letter-spacing at high zoom levels to prevent layout breakage.
+- **Artist Details**: Card names use `maxLines = 2` and `TextOverflow.Ellipsis` to ensure readability without overlapping across all zoom levels.
 
 ### Rules
 - Background is always `OLEDBlack`

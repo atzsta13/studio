@@ -12,3 +12,4 @@ val CyanPulse = Color(0xFF00C3FF)
 
 val TextPrimary = Color.White
 val TextMuted = Color(0xFFA1A1AA)
+val RedWarning = Color(0xFFFF3B3B)

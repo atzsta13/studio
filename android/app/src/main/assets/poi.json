@@ -60,6 +60,16 @@
         }
     },
     {
+        "id": "p6",
+        "name": "Hygiene Center Center",
+        "type": "toilet",
+        "location": "Behind Main Stage",
+        "mapCoords": {
+            "x": 45,
+            "y": 55
+        }
+    },
+    {
         "id": "p7",
         "name": "Water Point East",
         "type": "water",

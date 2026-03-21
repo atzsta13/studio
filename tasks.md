@@ -1,7 +1,7 @@
 # 🗂️ Sziget Insider 2026: Comprehensive Migration & State Manifest
 **Target Platform:** Native Android (Jetpack Compose)
 **Date:** 2026-03-06
-**Status:** Phase 2 (Hardening & Data Reification)
+**Status:** Phase 3 (Social & Tactical)
 
 ---
 
@@ -48,11 +48,12 @@ The app operates strictly without internet access, fulfilling the "Survival Tool
 | **Main Activity** | `MainActivity.kt` | ✅ Done | Roots the AppNavigation. |
 | **Splash Screen** | `ui.splash.SplashScreen` | ✅ Done | Brutalist entrance with 2s delay transition. |
 | **Home Screen** | `ui.home.HomeScreen` | ✅ Done | Includes "Island Pulse" (Now Playing) logic. |
-| **Discover Grid** | `ui.discover.DiscoverScreen` | ✅ Done | Filtering by "Vibes" implemented in ViewModel. |
+| **Discover Grid** | `ui.discover.DiscoverScreen` | ✅ Done | High-density TopAppBar + consolidated filters. |
 | **Tactical Map** | `ui.map.MapScreen` | 🚧 Partial | UI is high-fidelity; POI filtering logic is wired but needs verification. |
 | **Passport** | `ui.passport.PassportScreen` | ✅ Done | XP/Rank logic linked to Room via `PassportViewModel`. |
-| **Survival Tools** | `ui.tools.ToolsScreen` | ✅ Done | Currency converter (EUR/USD/HUF) + SOS Beacon. |
-| **Database** | `data.local.*` | ✅ Done | Entities, DAOs, and TypeConverters for Lists are complete. |
+| **Schedule Screen** | `ui.schedule.ScheduleScreen` | ✅ Done | Grid 2.0: 2D Scroll, Zoom, Pinned Headers. |
+| **Squad Link** | `ui.utils.QRUtils` | ✅ Done | Peer-to-Peer QR sharing & Scanning via ML Kit. |
+| **Database** | `data.local.*` | ✅ Done | Entities, DAOs, and TypeConverters complete. |
 
 ---
 
@@ -62,6 +63,7 @@ The project uses **Version Catalogs** (`libs.versions.toml`). Key dependencies r
 - **Room**: `androidx.room:room-runtime:2.6.1` (with KSP compiler)
 - **Serialization**: `kotlinx-serialization-json:1.6.3`
 - **Image Loading**: `io.coil-kt:coil-compose:2.6.0`
+- **Camera & Scanning**: `androidx.camera:*`, `com.google.mlkit:barcode-scanning`, `com.google.zxing:core`
 - **Lifecycle**: `androidx.lifecycle:lifecycle-runtime-compose:2.8.4`
 - **Extended Icons**: `androidx.compose.material:material-icons-extended:1.6.8`
 
