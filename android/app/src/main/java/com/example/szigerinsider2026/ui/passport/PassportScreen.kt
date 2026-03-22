@@ -35,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.components.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -110,22 +111,17 @@ fun PassportScreen(navController: NavController? = null) {
                 .padding(horizontal = 16.dp)
                 .padding(top = 32.dp, bottom = 8.dp)
         ) {
-            Text(
-                text = "ISLAND PASSPORT",
-                style = BrutalistTypography.headlineLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
+            BrutalistHeader(
+                title = "ISLAND PASSPORT",
+                subtitle = "Collect stamps, level up, and become a Sziget Legend.",
+                modifier = Modifier.padding(bottom = 16.dp)
             )
-            Text(
-                text = "Collect stamps, level up, and become a Sziget Legend.",
-                color = TextMuted,
-                fontSize = 16.sp,
-                lineHeight = 22.sp,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
+            
             // Acts Seen stat
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(bottom = 8.dp)
+                modifier = Modifier.padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.Center
             ) {
                 Text(
                     text = "ACTS SEEN: ",
@@ -134,23 +130,18 @@ fun PassportScreen(navController: NavController? = null) {
                     fontWeight = FontWeight.Black,
                     letterSpacing = 1.5.sp
                 )
-                Text(
-                    text = "$actsSeenCount",
-                    color = ToxicGreen,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 1.5.sp
-                )
+                BrutalistBadge(text = "$actsSeenCount", color = ToxicGreen)
             }
+
             navController?.let { nav ->
-                androidx.compose.material3.OutlinedButton(
+                BrutalistButton(
+                    text = "MY HIGHLIGHTS →",
                     onClick = { haptic.lightTap(); nav.navigate("highlights") },
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-                    shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, PrimaryMagenta.copy(alpha = 0.4f))
-                ) {
-                    Text("MY HIGHLIGHTS →", color = PrimaryMagenta, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                }
+                    color = PrimaryMagenta.copy(alpha = 0.1f),
+                    textColor = PrimaryMagenta,
+                    modifier = Modifier.fillMaxWidth()
+                        .border(1.dp, PrimaryMagenta.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
+                )
             }
         }
 
@@ -230,12 +221,7 @@ fun PassportScreen(navController: NavController? = null) {
                                                 fontStyle = FontStyle.Italic
                                             )
                                         }
-                                        Text(
-                                            text = "${unlockedStamps.size} / ${STAMPS.size} STAMPS",
-                                            color = Color.White,
-                                            fontSize = 12.sp,
-                                            fontWeight = FontWeight.Bold
-                                        )
+                                        BrutalistBadge(text = "${unlockedStamps.size} / ${STAMPS.size} STAMPS", color = Color.White)
                                     }
                                     Spacer(modifier = Modifier.height(16.dp))
                                     LinearProgressIndicator(
@@ -327,16 +313,13 @@ fun PassportScreen(navController: NavController? = null) {
 
                     // Rank Card
                     item(span = { androidx.compose.foundation.lazy.grid.GridItemSpan(2) }) {
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 16.dp),
-                            shape = RoundedCornerShape(32.dp),
-                            colors = CardDefaults.cardColors(containerColor = CardBackground),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f))
+                        NeonCard(
+                            onClick = { haptic.lightTap() },
+                            accentColor = PrimaryMagenta,
+                            modifier = Modifier.padding(top = 16.dp)
                         ) {
                             Row(
-                                modifier = Modifier.padding(24.dp),
+                                modifier = Modifier.fillMaxWidth(),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Box(
@@ -426,21 +409,11 @@ private fun BadgeGrid(achievements: List<AchievementBadge>) {
 @Composable
 private fun BadgeCard(badge: AchievementBadge) {
     val haptic = rememberHapticManager()
-    val shape = RoundedCornerShape(16.dp)
-    val borderMod = if (badge.unlocked)
-        Modifier.border(1.dp, AcidYellow, shape)
-    else
-        Modifier
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(CardBackground)
-            .then(borderMod)
-            .graphicsLayer(alpha = if (badge.unlocked) 1f else 0.4f)
-            .clickable { haptic.lightTap() }
-            .padding(12.dp)
+    
+    NeonCard(
+        onClick = { haptic.lightTap() },
+        accentColor = if (badge.unlocked) AcidYellow else Color.White.copy(alpha = 0.05f),
+        modifier = Modifier.graphicsLayer(alpha = if (badge.unlocked) 1f else 0.4f)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             // Icon: emoji when unlocked, lock icon when locked
@@ -472,12 +445,9 @@ private fun BadgeCard(badge: AchievementBadge) {
                 lineHeight = 13.sp,
                 maxLines = 2
             )
-            Text(
+            BrutalistBadge(
                 text = if (badge.unlocked) "UNLOCKED" else "LOCKED",
-                color = if (badge.unlocked) ToxicGreen else Color(0xFF666666),
-                fontSize = 9.sp,
-                fontWeight = FontWeight.Black,
-                letterSpacing = 1.sp
+                color = if (badge.unlocked) ToxicGreen else Color(0xFF666666)
             )
         }
     }

@@ -25,11 +25,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -53,6 +50,7 @@ import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.components.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import com.example.szigerinsider2026.ui.utils.getSeenArtistIds
 import com.example.szigerinsider2026.ui.utils.toggleSeenArtist
@@ -246,11 +244,11 @@ fun ArtistDetailScreen(
                     modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    a.day?.let { item { MetaPill(it.uppercase(), AcidYellow) } }
-                    a.stage?.let { item { MetaPill(it.uppercase(), CyanPulse) } }
-                    a.countryCode?.let { item { MetaPill(it.uppercase(), ToxicGreen) } }
+                    a.day?.let { item { BrutalistBadge(it.uppercase(), AcidYellow) } }
+                    a.stage?.let { item { BrutalistBadge(it.uppercase(), CyanPulse) } }
+                    a.countryCode?.let { item { BrutalistBadge(it.uppercase(), ToxicGreen) } }
                     if (a.startTime != null && a.endTime != null) {
-                        item { MetaPill("${a.startTime} – ${a.endTime}", TextMuted) }
+                        item { BrutalistBadge("${a.startTime} – ${a.endTime}", TextMuted, isOutlined = true) }
                     }
                 }
             }
@@ -261,19 +259,15 @@ fun ArtistDetailScreen(
                     SectionBlock(title = "GENRES") {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             a.genres.filter { it != "MUSIC" }.forEach { genre ->
-                                Box(
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(100))
-                                        .background(MutedBackground)
-                                        .border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(100))
-                                        .clickable {
-                                            haptic.lightTap()
-                                            onGenreClick(genre)
-                                        }
-                                        .padding(horizontal = 14.dp, vertical = 6.dp)
-                                ) {
-                                    Text(genre.uppercase(), style = BrutalistTypography.labelSmall, color = TextPrimary, fontSize = 11.sp)
-                                }
+                                BrutalistBadge(
+                                    text = genre,
+                                    color = TextPrimary,
+                                    isOutlined = true,
+                                    modifier = Modifier.clickable {
+                                        haptic.lightTap()
+                                        onGenreClick(genre)
+                                    }
+                                )
                             }
                         }
                     }
@@ -286,19 +280,14 @@ fun ArtistDetailScreen(
                     SectionBlock(title = "VIBES") {
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             a.vibes.forEach { vibe ->
-                                Box(
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(100))
-                                        .background(PrimaryMagenta.copy(alpha = 0.1f))
-                                        .border(1.dp, PrimaryMagenta.copy(alpha = 0.25f), RoundedCornerShape(100))
-                                        .clickable {
-                                            haptic.mediumTap()
-                                            onVibeClick(vibe)
-                                        }
-                                        .padding(horizontal = 14.dp, vertical = 6.dp)
-                                ) {
-                                    Text(vibe.uppercase(), style = BrutalistTypography.labelSmall, color = PrimaryMagenta, fontSize = 11.sp)
-                                }
+                                BrutalistBadge(
+                                    text = vibe,
+                                    color = PrimaryMagenta,
+                                    modifier = Modifier.clickable {
+                                        haptic.mediumTap()
+                                        onVibeClick(vibe)
+                                    }
+                                )
                             }
                         }
                     }
@@ -408,52 +397,28 @@ fun ArtistDetailScreen(
                         .padding(horizontal = 24.dp, vertical = 12.dp)
                 ) {
                     if (isSeen) {
-                        Button(
+                        BrutalistButton(
+                            text = "✓ SAW THIS SET",
                             onClick = {
                                 haptic.lightTap()
                                 isSeen = toggleSeenArtist(context, a.id)
                             },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(52.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = ToxicGreen,
-                                contentColor = Color.Black
-                            ),
-                            shape = RoundedCornerShape(16.dp)
-                        ) {
-                            Text(
-                                text = "✓ SAW THIS SET",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 14.sp,
-                                letterSpacing = 1.5.sp,
-                                color = Color.Black
-                            )
-                        }
+                            color = ToxicGreen,
+                            textColor = Color.Black,
+                            modifier = Modifier.fillMaxWidth()
+                        )
                     } else {
-                        OutlinedButton(
+                        BrutalistButton(
+                            text = "SAW THIS SET?",
                             onClick = {
                                 haptic.successBurst()
                                 isSeen = toggleSeenArtist(context, a.id)
                             },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(52.dp),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                containerColor = CardBackground,
-                                contentColor = AcidYellow
-                            ),
-                            border = BorderStroke(1.dp, AcidYellow.copy(alpha = 0.5f)),
-                            shape = RoundedCornerShape(16.dp)
-                        ) {
-                            Text(
-                                text = "SAW THIS SET?",
-                                fontWeight = FontWeight.Black,
-                                fontSize = 14.sp,
-                                letterSpacing = 1.5.sp,
-                                color = AcidYellow
-                            )
-                        }
+                            color = AcidYellow.copy(alpha = 0.1f),
+                            textColor = AcidYellow,
+                            modifier = Modifier.fillMaxWidth()
+                                .border(1.dp, AcidYellow.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                        )
                     }
                 }
             }
@@ -508,38 +473,20 @@ private fun SectionBlock(title: String, content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun MetaPill(text: String, color: Color) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(100))
-            .background(color.copy(alpha = 0.1f))
-            .border(1.dp, color.copy(alpha = 0.3f), RoundedCornerShape(100))
-            .padding(horizontal = 14.dp, vertical = 6.dp)
-    ) {
-        Text(text, style = BrutalistTypography.labelSmall, color = color, fontSize = 11.sp)
-    }
-}
-
-@Composable
-private fun TagPill(text: String, bg: Color, textColor: Color, borderColor: Color = Color.White.copy(alpha = 0.08f)) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(100))
-            .background(bg)
-            .border(1.dp, borderColor, RoundedCornerShape(100))
-            .padding(horizontal = 14.dp, vertical = 6.dp)
-    ) {
-        Text(text.uppercase(), style = BrutalistTypography.labelSmall, color = textColor, fontSize = 11.sp)
-    }
-}
-
-@Composable
 private fun SimilarArtistCard(
     artist: Artist,
     sharedCount: Int,
     onClick: () -> Unit
 ) {
     val haptic = rememberHapticManager()
+    NeonCard(
+        onClick = { haptic.mediumTap(); onClick() },
+        modifier = Modifier.width(110.dp),
+        accentColor = Color.White.copy(alpha = 0.06f)
+    ) {
+        // NeonCard already provides 16.dp padding, but SimilarArtistCard needs more custom layout
+    }
+    // Re-implement SimilarArtistCard with custom layout for now as NeonCard might be too restrictive
     Box(
         modifier = Modifier
             .width(110.dp)

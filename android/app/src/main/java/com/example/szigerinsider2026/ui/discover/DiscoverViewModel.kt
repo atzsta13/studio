@@ -15,11 +15,6 @@ class DiscoverViewModel(
     private val context: Context? = null
 ) : ViewModel() {
 
-    companion object {
-        var pendingGenreFilter: String? = null
-        var pendingVibeFilter: String? = null
-    }
-
     private val aiRepository = context?.let { AiRecommendationRepository(it) }
 
     private val _allArtists = MutableStateFlow<List<Artist>>(emptyList())
@@ -96,15 +91,6 @@ class DiscoverViewModel(
 
     init {
         loadArtists()
-        // Apply any pending filters from artist detail screen
-        pendingGenreFilter?.let {
-            _selectedGenre.value = it
-            pendingGenreFilter = null
-        }
-        pendingVibeFilter?.let {
-            _selectedVibe.value = it
-            pendingVibeFilter = null
-        }
     }
 
     private fun loadArtists() {

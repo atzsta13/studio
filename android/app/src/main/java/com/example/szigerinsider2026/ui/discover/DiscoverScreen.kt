@@ -66,13 +66,14 @@ import android.net.Uri
 fun DiscoverScreen(
     onArtistClick: (String) -> Unit = {},
     navController: NavController? = null,
-    onScrollStateChanged: (Boolean) -> Unit = {}
+    onScrollStateChanged: (Boolean) -> Unit = {},
+    viewModel: DiscoverViewModel? = null
 ) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     val db = remember { AppDatabase.getDatabase(context) }
 
-    val discoverViewModel: DiscoverViewModel = viewModel(
+    val discoverViewModel: DiscoverViewModel = viewModel ?: viewModel(
         factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -80,6 +81,20 @@ fun DiscoverScreen(
             }
         }
     )
+
+    // Listen for filters from savedStateHandle (modern replacement for the static hack)
+    LaunchedEffect(navController) {
+        navController?.currentBackStackEntry?.savedStateHandle?.let { handle ->
+            handle.get<String>("filter_genre")?.let { genre ->
+                discoverViewModel.selectGenre(genre)
+                handle.remove<String>("filter_genre")
+            }
+            handle.get<String>("filter_vibe")?.let { vibe ->
+                discoverViewModel.selectVibe(vibe)
+                handle.remove<String>("filter_vibe")
+            }
+        }
+    }
     val artistViewModel: ArtistViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")

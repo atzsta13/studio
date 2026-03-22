@@ -1,7 +1,5 @@
 package com.example.szigerinsider2026.ui.schedule
 
-import androidx.compose.foundation.ScrollState
-
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.InfiniteRepeatableSpec
@@ -21,15 +19,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.LocalFireDepartment
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -43,15 +37,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupRepository
-import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.components.*
 import coil.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
@@ -62,7 +54,6 @@ import com.example.szigerinsider2026.data.config.FestivalConfig
 
 // ─── Constants (from FestivalConfig) ─────────────────────────────────────────
 
-private val DAY_ORDER  = FestivalConfig.DAYS
 private val DAY_LABELS = FestivalConfig.DAY_LABELS
 
 private val DAY_TO_DATE: Map<String, LocalDate> = FestivalConfig.DAYS
@@ -86,60 +77,6 @@ private fun parseTime(t: String?): LocalTime? {
     } catch (_: Exception) { null }
 }
 
-private fun timesOverlap(
-    start1: LocalTime, end1: LocalTime,
-    start2: LocalTime, end2: LocalTime
-): Boolean {
-    // Treat times that wrap past midnight: if end < start it wraps.
-    // Simple approach: compare minute-of-day, treating wrap as +1440.
-    fun toMinutes(t: LocalTime) = t.hour * 60 + t.minute
-    fun endMin(start: LocalTime, end: LocalTime): Int {
-        val s = toMinutes(start); val e = toMinutes(end)
-        return if (e <= s) e + 1440 else e
-    }
-    val s1 = toMinutes(start1); val e1 = endMin(start1, end1)
-    val s2 = toMinutes(start2); val e2 = endMin(start2, end2)
-    return s1 < e2 && s2 < e1
-}
-
-enum class ClashType { HARD, TIGHT_TRANSITION }
-data class ClashPair(val a: Artist, val b: Artist, val type: ClashType, val gapMinutes: Int = 0)
-
-private fun minutesBetween(endStr: String, startStr: String): Int {
-    val s = parseTime(startStr); val e = parseTime(endStr)
-    if (s == null || e == null) return 100 
-    val sMin = s.hour * 60 + s.minute
-    val eMin = e.hour * 60 + e.minute
-    val diff = sMin - eMin
-    return if (diff < -720) diff + 1440 else diff 
-}
-
-private fun detectClashes(favorites: List<Artist>): List<ClashPair> {
-    val result = mutableListOf<ClashPair>()
-    val byDay = favorites.sortedBy { it.startTime }.groupBy { it.day }
-    
-    byDay.values.forEach { dayArtists ->
-        for (i in dayArtists.indices) {
-            for (j in i + 1 until dayArtists.size) {
-                val a = dayArtists[i]; val b = dayArtists[j]
-                val as_ = parseTime(a.startTime); val ae = parseTime(a.endTime)
-                val bs  = parseTime(b.startTime); val be  = parseTime(b.endTime)
-                if (as_ == null || ae == null || bs == null || be == null) continue
-
-                if (timesOverlap(as_, ae, bs, be)) {
-                    result.add(ClashPair(a, b, ClashType.HARD))
-                } else {
-                    val gap = minutesBetween(a.endTime!!, b.startTime!!)
-                    if (gap in 0..14 && a.stage != b.stage) {
-                        result.add(ClashPair(a, b, ClashType.TIGHT_TRANSITION, gap))
-                    }
-                }
-            }
-        }
-    }
-    return result
-}
-
 // ─── Now-playing helper ───────────────────────────────────────────────────────
 
 private fun isNowPlaying(artist: Artist): Boolean {
@@ -157,8 +94,6 @@ private fun isNowPlaying(artist: Artist): Boolean {
 
 // ─── Screen ──────────────────────────────────────────────────────────────────
 
-private enum class ScheduleTab { GRID, BY_TIME, MY_LINEUP }
-
 @androidx.compose.material3.ExperimentalMaterial3Api
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
@@ -169,69 +104,32 @@ fun ScheduleScreen(
     val context = LocalContext.current
     val haptic  = rememberHapticManager()
 
-    val artistViewModel: ArtistViewModel = viewModel(
-        factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T =
-                ArtistViewModel(AppDatabase.getDatabase(context).userDao()) as T
-        }
+    val viewModel: ScheduleViewModel = viewModel(
+        factory = ScheduleViewModel.Factory(
+            LineupRepository(context),
+            AppDatabase.getDatabase(context).userDao()
+        )
     )
-    val favoriteIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
 
-    var allArtists by remember { mutableStateOf<List<Artist>>(emptyList()) }
-    LaunchedEffect(Unit) {
-        allArtists = LineupRepository(context).getLineup()
-    }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val dayArtists by viewModel.dayArtists.collectAsStateWithLifecycle()
+    val favoriteArtists by viewModel.favoriteArtists.collectAsStateWithLifecycle()
+    val clashes by viewModel.clashes.collectAsStateWithLifecycle()
 
-    val availableDays = remember(allArtists) {
-        val days = allArtists.mapNotNull { it.day }.distinct()
-            .sortedBy { DAY_ORDER.indexOf(it).let { i -> if (i == -1) 99 else i } }
+    var artistForDetail by remember { mutableStateOf<Artist?>(null) }
+    var showShareQR by remember { mutableStateOf(false) }
+    var showScanner by remember { mutableStateOf(false) }
+
+    val availableDays = remember(uiState.allArtists) {
+        val days = uiState.allArtists.mapNotNull { it.day }.distinct()
+            .sortedBy { FestivalConfig.DAYS.indexOf(it).let { i -> if (i == -1) 99 else i } }
         listOf("WEEK") + days
     }
 
-    var selectedDay by remember(availableDays) { mutableStateOf(availableDays.firstOrNull() ?: "WEEK") }
-    var activeTab  by remember { mutableStateOf(ScheduleTab.GRID) }
-    var artistForDetail by remember { mutableStateOf<Artist?>(null) }
-    
-    // Squad State (Peer Favorites)
-    var squadFavoriteIds by remember { mutableStateOf<Set<String>>(emptySet()) }
-    var showShareQR      by remember { mutableStateOf(false) }
-    var showScanner      by remember { mutableStateOf(false) }
-
-    // ── ALL tab data ─────────────────────────────────────────────────────────
-    val dayArtists = remember(allArtists, selectedDay) {
-        allArtists
-            .filter { selectedDay == "WEEK" || it.day?.equals(selectedDay, ignoreCase = true) == true }
-            .sortedWith(
-                compareBy<Artist> { DAY_ORDER.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
-                    .thenBy { it.startTime ?: "99:99" }
-                    .thenBy { it.artist }
-            )
-    }
-
-    val byStage = remember(dayArtists) {
-        dayArtists.groupBy { it.stage ?: "Other" }.entries
-            .sortedBy { if (it.key.contains("main", ignoreCase = true)) 0 else 1 }
-    }
-
-    // ── MY LINEUP tab data ───────────────────────────────────────────────────
-    val favoriteArtists = remember(allArtists, favoriteIds) {
-        allArtists.filter { favoriteIds.contains(it.id) }
-            .sortedWith(
-                compareBy<Artist> { DAY_ORDER.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
-                    .thenBy { it.startTime ?: "99:99" }
-                    .thenBy { it.artist }
-            )
-    }
-
+    // Grouping for the list view
     val byDayFavorites = remember(favoriteArtists) {
         favoriteArtists.groupBy { it.day ?: "Unknown" }.entries
-            .sortedBy { DAY_ORDER.indexOf(it.key).let { i -> if (i == -1) 99 else i } }
-    }
-
-    val clashes = remember(favoriteArtists) { detectClashes(favoriteArtists) }
-    val clashedArtistIds = remember(clashes) {
-        clashes.flatMap { listOf(it.a.id, it.b.id) }.toSet()
+            .sortedBy { FestivalConfig.DAYS.indexOf(it.key).let { i -> if (i == -1) 99 else i } }
     }
 
     Column(
@@ -240,29 +138,11 @@ fun ScheduleScreen(
             .background(OLEDBlack)
     ) {
         // ── Header ────────────────────────────────────────────────────────────
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-                .padding(top = 20.dp, bottom = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = "TIMETABLE",
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Black,
-                fontStyle = FontStyle.Italic,
-                color = Color.White,
-                letterSpacing = (-1.5).sp,
-                lineHeight = 34.sp
-            )
-            Text(
-                text = FestivalConfig.DATE_VENUE_DISPLAY,
-                color = TextMuted,
-                fontSize = 13.sp,
-                modifier = Modifier.padding(top = 2.dp)
-            )
-        }
+        BrutalistHeader(
+            title = "TIMETABLE",
+            subtitle = FestivalConfig.DATE_VENUE_DISPLAY,
+            modifier = Modifier.padding(top = 20.dp, bottom = 12.dp)
+        )
 
         // ── Day selector ─────────────────────────────────────────────────────────
         Box(
@@ -278,7 +158,7 @@ fun ScheduleScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items(availableDays) { day ->
-                    val isSelected = (day == selectedDay && activeTab == ScheduleTab.GRID)
+                    val isSelected = (day == uiState.selectedDay && uiState.activeTab == ScheduleTab.GRID)
                     val isWeekTab  = day == "WEEK"
                     
                     val bgColor by animateColorAsState(
@@ -307,8 +187,8 @@ fun ScheduleScreen(
                             )
                             .clickable {
                                 haptic.lightTap()
-                                selectedDay = day
-                                activeTab = ScheduleTab.GRID
+                                viewModel.selectDay(day)
+                                viewModel.setTab(ScheduleTab.GRID)
                             }
                             .padding(horizontal = 16.dp, vertical = 10.dp)
                     ) {
@@ -326,8 +206,8 @@ fun ScheduleScreen(
 
         // ── ALL / MY LINEUP segmented control ────────────────────────────────
         ScheduleTabToggle(
-            activeTab = activeTab,
-            onTabSelected = { haptic.lightTap(); activeTab = it },
+            activeTab = uiState.activeTab,
+            onTabSelected = { haptic.lightTap(); viewModel.setTab(it) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
@@ -335,18 +215,18 @@ fun ScheduleScreen(
         )
 
         // ── Content ──────────────────────────────────────────────────────────
-        when (activeTab) {
+        when (uiState.activeTab) {
             ScheduleTab.GRID -> {
                 TimetableGrid(
                     dayArtists = dayArtists,
-                    selectedDay = selectedDay,
-                    favoriteIds = favoriteIds,
-                    squadIds = squadFavoriteIds,
+                    selectedDay = uiState.selectedDay,
+                    favoriteIds = uiState.favoriteIds,
+                    squadIds = uiState.squadFavoriteIds,
                     onArtistClick = { id -> 
-                        artistForDetail = allArtists.find { it.id == id }
+                        artistForDetail = uiState.allArtists.find { it.id == id }
                     },
                     onToggleFavorite = { id ->
-                        artistViewModel.toggleFavorite(id)
+                        viewModel.toggleFavorite(id)
                     }
                 )
             }
@@ -359,15 +239,15 @@ fun ScheduleScreen(
                     items(dayArtists) { artist ->
                         ScheduleRow(
                             artist = artist,
-                            isFavorite = favoriteIds.contains(artist.id),
-                            inSquad = squadFavoriteIds.contains(artist.id),
+                            isFavorite = uiState.favoriteIds.contains(artist.id),
+                            inSquad = uiState.squadFavoriteIds.contains(artist.id),
                             onToggleFavorite = {
-                                artistViewModel.toggleFavorite(artist.id)
+                                viewModel.toggleFavorite(artist.id)
                                 haptic.lightTap()
                             },
                             onClick = { artistForDetail = artist },
                             hapticTap = { haptic.lightTap() },
-                            clashType = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id }?.type,
+                            clashPair = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id },
                             showDayBadge = false
                         )
                     }
@@ -389,21 +269,9 @@ fun ScheduleScreen(
                                 color = AcidYellow.copy(alpha = 0.4f)
                             )
                             Spacer(modifier = Modifier.height(16.dp))
-                            Text(
-                                text = "YOUR LINEUP IS EMPTY",
-                                fontWeight = FontWeight.Black,
-                                fontStyle = FontStyle.Italic,
-                                fontSize = 18.sp,
-                                color = Color.White,
-                                letterSpacing = (-0.5).sp
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "Star artists in the Discover screen to build your personal lineup.",
-                                color = TextMuted,
-                                fontSize = 14.sp,
-                                lineHeight = 20.sp,
-                                modifier = Modifier.padding(top = 4.dp)
+                            BrutalistHeader(
+                                title = "YOUR LINEUP IS EMPTY",
+                                subtitle = "Star artists in the Discover screen to build your personal lineup."
                             )
                         }
                     }
@@ -413,47 +281,25 @@ fun ScheduleScreen(
                         verticalArrangement = Arrangement.spacedBy(4.dp),
                         modifier = Modifier.fillMaxSize()
                     ) {
-                        if (favoriteArtists.isNotEmpty()) {
-                            item(key = "squad_actions") {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(bottom = 12.dp),
-                                    horizontalArrangement = Arrangement.End,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .clip(RoundedCornerShape(12.dp))
-                                            .background(CyanPulse.copy(alpha = 0.15f))
-                                            .clickable { showScanner = true }
-                                            .padding(horizontal = 14.dp, vertical = 10.dp)
-                                    ) {
-                                        Text(
-                                            text = "SCAN SQUAD",
-                                            fontWeight = FontWeight.Black,
-                                            color = CyanPulse,
-                                            fontSize = 11.sp,
-                                            letterSpacing = 1.sp
-                                        )
-                                    }
-                                    Spacer(modifier = Modifier.width(10.dp))
-                                    Box(
-                                        modifier = Modifier
-                                            .clip(RoundedCornerShape(12.dp))
-                                            .background(PrimaryMagenta.copy(alpha = 0.15f))
-                                            .clickable { showShareQR = true }
-                                            .padding(horizontal = 14.dp, vertical = 10.dp)
-                                    ) {
-                                        Text(
-                                            text = "SHARE SQUAD QR",
-                                            fontWeight = FontWeight.Black,
-                                            color = PrimaryMagenta,
-                                            fontSize = 11.sp,
-                                            letterSpacing = 1.sp
-                                        )
-                                    }
-                                }
+                        item(key = "squad_actions") {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(bottom = 12.dp),
+                                horizontalArrangement = Arrangement.End,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                BrutalistBadge(
+                                    text = "SCAN SQUAD",
+                                    color = CyanPulse,
+                                    modifier = Modifier.clickable { showScanner = true }
+                                )
+                                Spacer(modifier = Modifier.width(10.dp))
+                                BrutalistBadge(
+                                    text = "SHARE SQUAD QR",
+                                    color = PrimaryMagenta,
+                                    modifier = Modifier.clickable { showShareQR = true }
+                                )
                             }
                         }
 
@@ -474,14 +320,14 @@ fun ScheduleScreen(
                                 ScheduleRow(
                                     artist = artist,
                                     isFavorite = true,
-                                    inSquad = squadFavoriteIds.contains(artist.id),
+                                    inSquad = uiState.squadFavoriteIds.contains(artist.id),
                                     onToggleFavorite = {
-                                        artistViewModel.toggleFavorite(artist.id)
+                                        viewModel.toggleFavorite(artist.id)
                                         haptic.lightTap()
                                     },
                                     onClick = { artistForDetail = artist },
                                     hapticTap = { haptic.lightTap() },
-                                    clashType = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id }?.type,
+                                    clashPair = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id },
                                     showDayBadge = true
                                 )
                             }
@@ -496,19 +342,27 @@ fun ScheduleScreen(
 
     if (showShareQR) {
         SquadQRDialog(
-            favoriteIds = favoriteIds,
+            favoriteIds = uiState.favoriteIds,
             onDismiss = { showShareQR = false }
+        )
+    }
+
+    if (showScanner) {
+        SquadScannerDialog(
+            onIdsDetected = { ids ->
+                viewModel.updateSquadFavorites(ids)
+                showScanner = false
+                haptic.successBurst()
+            },
+            onDismiss = { showScanner = false }
         )
     }
 
     artistForDetail?.let { artist ->
         ArtistDetailSheet(
             artist = artist,
-            isFavorite = favoriteIds.contains(artist.id),
-            onToggleFavorite = {
-                artistViewModel.toggleFavorite(artist.id)
-                haptic.lightTap()
-            },
+            isFavorite = uiState.favoriteIds.contains(artist.id),
+            onToggleFavorite = { viewModel.toggleFavorite(artist.id) },
             onDismiss = { artistForDetail = null }
         )
     }
@@ -564,36 +418,6 @@ private fun ScheduleTabToggle(
     }
 }
 
-// ─── Stage header ─────────────────────────────────────────────────────────────
-
-@Composable
-private fun StageHeader(stage: String) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp)
-            .padding(top = 16.dp, bottom = 8.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
-                .background(PrimaryMagenta.copy(alpha = 0.12f))
-                .border(1.dp, PrimaryMagenta.copy(alpha = 0.2f), RoundedCornerShape(6.dp))
-                .padding(horizontal = 10.dp, vertical = 4.dp)
-        ) {
-            Text(
-                text = stage.uppercase(),
-                fontWeight = FontWeight.Black,
-                color = PrimaryMagenta,
-                fontSize = 9.sp,
-                letterSpacing = 1.5.sp
-            )
-        }
-    }
-}
-
 // ─── Day header ──────────────────────────────────────────────────────────────
 
 @Composable
@@ -606,21 +430,8 @@ private fun DayHeader(day: String) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .clip(RoundedCornerShape(6.dp))
-                .background(AcidYellow.copy(alpha = 0.14f))
-                .border(1.dp, AcidYellow.copy(alpha = 0.25f), RoundedCornerShape(6.dp))
-                .padding(horizontal = 10.dp, vertical = 4.dp)
-        ) {
-            Text(
-                text = (DAY_LABELS[day] ?: day.take(3).uppercase()) + " · " + day.uppercase(),
-                fontWeight = FontWeight.Black,
-                color = AcidYellow,
-                fontSize = 9.sp,
-                letterSpacing = 1.5.sp
-            )
-        }
+        val label = (DAY_LABELS[day] ?: day.take(3).uppercase()) + " · " + day.uppercase()
+        BrutalistBadge(text = label, color = AcidYellow)
     }
 }
 
@@ -647,8 +458,6 @@ fun TimetableGrid(
     // 2D Scroll & Zoom State
     var offsetX by remember { mutableStateOf(0f) }
     var offsetY by remember { mutableStateOf(0f) }
-    val tabs = listOf("GRID", "BY TIME", "MY LINEUP")
-    var selectedTab by remember { mutableStateOf("GRID") }
     var zoom    by remember { mutableStateOf(1f) }
 
     val baseHourWidth = 180f
@@ -666,7 +475,7 @@ fun TimetableGrid(
         return (offsetMinutes / 60f) * hourWidth
     }
 
-    Box(
+    BoxWithConstraints(
         modifier = Modifier
             .fillMaxSize()
             .pointerInput(Unit) {
@@ -677,6 +486,9 @@ fun TimetableGrid(
                }
             }
     ) {
+        val screenWidth = maxWidth.value
+        val screenHeight = maxHeight.value
+
         // ─── Main Content (Artists + Lines) ──────────────────────────────────
         Box(
             modifier = Modifier
@@ -686,37 +498,52 @@ fun TimetableGrid(
                     translationY = offsetY
                 }
         ) {
-            // Hour Lines
+            // Hour Lines (Culled)
             (START_HOUR..END_HOUR).forEach { h ->
                 val x = (h - START_HOUR) * hourWidth
-                Box(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .width(1.dp)
-                        .absoluteOffset(x = x.dp)
-                        .background(Color.White.copy(alpha = 0.05f))
-                )
+                // Culling: only draw if within screen bounds (roughly)
+                val isVisible = (x + offsetX) in -hourWidth..screenWidth + hourWidth
+                if (isVisible) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxHeight()
+                            .width(1.dp)
+                            .absoluteOffset(x = x.dp)
+                            .background(Color.White.copy(alpha = 0.05f))
+                    )
+                }
             }
 
-            // Artist Blocks
+            // Artist Blocks (Culled)
             byStage.forEachIndexed { stageIndex, entry ->
                 val trackY = stageIndex * trackHeight + 40 // Offset for time header
-                entry.value.forEach { artist ->
-                    val x = getX(artist.startTime)
-                    val endX = getX(artist.endTime)
-                    val width = (endX - x).coerceAtLeast(60f)
-                    
-                    ArtistBlock(
-                        artist = artist,
-                        x = x,
-                        y = trackY,
-                        width = width,
-                        height = trackHeight - 8,
-                        isFavorite = favoriteIds.contains(artist.id),
-                        inSquad = squadIds.contains(artist.id),
-                        onArtistClick = onArtistClick,
-                        haptic = haptic
-                    )
+                
+                // Culling: check if stage track is vertically visible
+                val isTrackVisible = (trackY + offsetY) in -trackHeight..screenHeight + trackHeight
+                
+                if (isTrackVisible) {
+                    entry.value.forEach { artist ->
+                        val x = getX(artist.startTime)
+                        val endX = getX(artist.endTime)
+                        val width = (endX - x).coerceAtLeast(60f)
+                        
+                        // Culling: check if artist block is horizontally visible
+                        val isArtistVisible = (x + offsetX + width) > 0 && (x + offsetX) < screenWidth
+                        
+                        if (isArtistVisible) {
+                            ArtistBlock(
+                                artist = artist,
+                                x = x,
+                                y = trackY,
+                                width = width,
+                                height = trackHeight - 8,
+                                isFavorite = favoriteIds.contains(artist.id),
+                                inSquad = squadIds.contains(artist.id),
+                                onArtistClick = onArtistClick,
+                                haptic = haptic
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -733,13 +560,16 @@ fun TimetableGrid(
             Box(modifier = Modifier.graphicsLayer { translationX = offsetX }) {
                 (START_HOUR..END_HOUR).forEach { h ->
                     val x = (h - START_HOUR) * hourWidth
-                    Text(
-                        text = if (h >= 24) "${h-24}:00" else "$h:00",
-                        color = TextMuted,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.absoluteOffset(x = (x + 8).dp, y = 14.dp)
-                    )
+                    val isVisible = (x + offsetX) in -hourWidth..screenWidth + hourWidth
+                    if (isVisible) {
+                        Text(
+                            text = if (h >= 24) "${h-24}:00" else "$h:00",
+                            color = TextMuted,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.absoluteOffset(x = (x + 8).dp, y = 14.dp)
+                        )
+                    }
                 }
             }
         }
@@ -754,23 +584,26 @@ fun TimetableGrid(
             Box(modifier = Modifier.graphicsLayer { translationY = offsetY }) {
                 byStage.forEachIndexed { index, entry ->
                     val y = index * trackHeight
-                    Box(
-                        modifier = Modifier
-                            .absoluteOffset(y = y.dp)
-                            .size(width = 80.dp, height = trackHeight.dp)
-                            .background(MutedBackground.copy(alpha = 0.9f))
-                            .border(1.dp, Color.White.copy(alpha = 0.05f))
-                            .padding(4.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = entry.key.uppercase(),
-                            color = Color.White,
-                            fontSize = 9.sp,
-                            fontWeight = FontWeight.Black,
-                            textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                            lineHeight = 11.sp
-                        )
+                    val isVisible = (y + offsetY) in -trackHeight..screenHeight + trackHeight
+                    if (isVisible) {
+                        Box(
+                            modifier = Modifier
+                                .absoluteOffset(y = y.dp)
+                                .size(width = 80.dp, height = trackHeight.dp)
+                                .background(MutedBackground.copy(alpha = 0.9f))
+                                .border(1.dp, Color.White.copy(alpha = 0.05f))
+                                .padding(4.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = entry.key.uppercase(),
+                                color = Color.White,
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.Black,
+                                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                                lineHeight = 11.sp
+                            )
+                        }
                     }
                 }
             }
@@ -883,7 +716,7 @@ private fun ScheduleRow(
     onToggleFavorite: () -> Unit,
     onClick: () -> Unit,
     hapticTap: () -> Unit,
-    clashType: ClashType? = null,
+    clashPair: ClashPair?,
     showDayBadge: Boolean
 ) {
     val nowPlaying = remember { isNowPlaying(artist) }
@@ -908,169 +741,19 @@ private fun ScheduleRow(
         label = "pulsingAlpha_${artist.id}"
     )
 
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(20.dp))
-                .background(CardBackground)
-                .border(
-                    1.dp,
-                    accentColor.copy(
-                        alpha = if (nowPlaying || artist.isHeadliner || isFavorite || inSquad) 0.35f else 0.04f
-                    ),
-                    RoundedCornerShape(20.dp)
-                )
-                .clickable { hapticTap(); onClick() }
-                .padding(horizontal = 16.dp, vertical = 14.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Time / badge column
-            Column(
-                modifier = Modifier.width(52.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                if (nowPlaying) {
-                    // Pulsing dot
-                    Box(
-                        modifier = Modifier
-                            .size(8.dp)
-                            .graphicsLayer { alpha = pulsingAlpha }
-                            .clip(CircleShape)
-                            .background(ToxicGreen)
-                    )
-                    Spacer(modifier = Modifier.height(3.dp))
-                    Text(
-                        text = "LIVE",
-                        fontWeight = FontWeight.Black,
-                        color = ToxicGreen,
-                        fontSize = 10.sp,
-                        letterSpacing = 1.sp
-                    )
-                    Text(
-                        text = "NOW",
-                        fontWeight = FontWeight.Black,
-                        color = ToxicGreen,
-                        fontSize = 10.sp,
-                        letterSpacing = 1.sp
-                    )
-                } else if (showDayBadge) {
-                    // In MY LINEUP mode show day badge in place of time
-                    val dayShort = DAY_LABELS[artist.day] ?: artist.day?.take(3)?.uppercase() ?: ""
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(AcidYellow.copy(alpha = 0.14f))
-                            .padding(horizontal = 6.dp, vertical = 3.dp)
-                    ) {
-                        Text(
-                            text = dayShort,
-                            fontWeight = FontWeight.Black,
-                            color = AcidYellow,
-                            fontSize = 9.sp,
-                            letterSpacing = 1.sp
-                        )
-                    }
-                    if (artist.startTime != null) {
-                        Text(
-                            text = artist.startTime,
-                            fontWeight = FontWeight.Black,
-                            color = Color.White.copy(alpha = 0.7f),
-                            fontSize = 11.sp,
-                            letterSpacing = (-0.3).sp,
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
-                    }
-                } else {
-                    if (artist.startTime != null) {
-                        Text(
-                            text = artist.startTime,
-                            fontWeight = FontWeight.Black,
-                            color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
-                            fontSize = 14.sp,
-                            letterSpacing = (-0.5).sp
-                        )
-                    }
-                    if (artist.endTime != null) {
-                        Text(
-                            text = artist.endTime,
-                            color = TextMuted,
-                            fontSize = 10.sp
-                        )
-                    }
-                }
-            }
-
-            // Divider
-            Box(
-                modifier = Modifier
-                    .width(1.dp)
-                    .height(36.dp)
-                    .background(Color.White.copy(alpha = 0.07f))
-            )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            // Artist Thumbnail
-            Box(
-                modifier = Modifier
-                    .size(44.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(MutedBackground),
-                contentAlignment = Alignment.Center
-            ) {
-                if (artist.imageUrl != null) {
-                    coil.compose.AsyncImage(
-                        model = artist.imageUrl,
-                        contentDescription = artist.artist,
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = androidx.compose.ui.layout.ContentScale.Crop
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.width(14.dp))
-
-            // Artist info
-            Column(modifier = Modifier.weight(1f)) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+    NeonCard(
+        onClick = onClick,
+        accentColor = accentColor
+    ) {
+        Box {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // Time / badge column
+                Column(
+                    modifier = Modifier.width(52.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    if (artist.isHeadliner) {
-                        Text(
-                            text = "HEADLINER",
-                            fontSize = 8.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 2.sp,
-                            color = PrimaryMagenta,
-                            modifier = Modifier.padding(bottom = 2.dp)
-                        )
-                    }
                     if (nowPlaying) {
-                        Text(
-                            text = "LIVE NOW",
-                            fontSize = 8.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 2.sp,
-                            color = ToxicGreen,
-                            modifier = Modifier.padding(bottom = 2.dp)
-                        )
-                    }
-                }
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
-                ) {
-                    Text(
-                        text = artist.artist.uppercase(),
-                        fontWeight = FontWeight.Black,
-                        color = Color.White,
-                        fontSize = 15.sp,
-                        letterSpacing = (-0.3).sp,
-                        modifier = Modifier.weight(1f, fill = false)
-                    )
-                    if (nowPlaying) {
+                        // Pulsing dot
                         Box(
                             modifier = Modifier
                                 .size(8.dp)
@@ -1078,55 +761,168 @@ private fun ScheduleRow(
                                 .clip(CircleShape)
                                 .background(ToxicGreen)
                         )
+                        Spacer(modifier = Modifier.height(3.dp))
+                        Text(
+                            text = "LIVE",
+                            fontWeight = FontWeight.Black,
+                            color = ToxicGreen,
+                            fontSize = 10.sp,
+                            letterSpacing = 1.sp
+                        )
+                        Text(
+                            text = "NOW",
+                            fontWeight = FontWeight.Black,
+                            color = ToxicGreen,
+                            fontSize = 10.sp,
+                            letterSpacing = 1.sp
+                        )
+                    } else if (showDayBadge) {
+                        // In MY LINEUP mode show day badge in place of time
+                        val dayShort = DAY_LABELS[artist.day] ?: artist.day?.take(3)?.uppercase() ?: ""
+                        BrutalistBadge(text = dayShort, color = AcidYellow)
+                        if (artist.startTime != null) {
+                            Text(
+                                text = artist.startTime,
+                                fontWeight = FontWeight.Black,
+                                color = Color.White.copy(alpha = 0.7f),
+                                fontSize = 11.sp,
+                                letterSpacing = (-0.3).sp,
+                                modifier = Modifier.padding(top = 4.dp)
+                            )
+                        }
+                    } else {
+                        if (artist.startTime != null) {
+                            Text(
+                                text = artist.startTime,
+                                fontWeight = FontWeight.Black,
+                                color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
+                                fontSize = 14.sp,
+                                letterSpacing = (-0.5).sp
+                            )
+                        }
+                        if (artist.endTime != null) {
+                            Text(
+                                text = artist.endTime,
+                                color = TextMuted,
+                                fontSize = 10.sp
+                            )
+                        }
                     }
                 }
-                if (artist.genres.filter { it != "MUSIC" }.isNotEmpty()) {
-                    Text(
-                        text = artist.genres.filter { it != "MUSIC" }.take(2).joinToString(" · "),
-                        color = TextMuted,
-                        fontSize = 11.sp,
-                        modifier = Modifier.padding(top = 2.dp)
+
+                // Divider
+                Box(
+                    modifier = Modifier
+                        .width(1.dp)
+                        .height(36.dp)
+                        .background(Color.White.copy(alpha = 0.07f))
+                )
+
+                Spacer(modifier = Modifier.width(12.dp))
+
+                // Artist Thumbnail
+                Box(
+                    modifier = Modifier
+                        .size(44.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(MutedBackground),
+                    contentAlignment = Alignment.Center
+                ) {
+                    if (artist.imageUrl != null) {
+                        coil.compose.AsyncImage(
+                            model = artist.imageUrl,
+                            contentDescription = artist.artist,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = androidx.compose.ui.layout.ContentScale.Crop
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.width(14.dp))
+
+                // Artist info
+                Column(modifier = Modifier.weight(1f)) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        if (artist.isHeadliner) {
+                            BrutalistBadge(text = "HEADLINER", color = PrimaryMagenta)
+                        }
+                        if (nowPlaying) {
+                            BrutalistBadge(text = "LIVE NOW", color = ToxicGreen)
+                        }
+                    }
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Text(
+                            text = artist.artist.uppercase(),
+                            fontWeight = FontWeight.Black,
+                            color = Color.White,
+                            fontSize = 15.sp,
+                            letterSpacing = (-0.3).sp,
+                            modifier = Modifier.weight(1f, fill = false)
+                        )
+                        if (nowPlaying) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .graphicsLayer { alpha = pulsingAlpha }
+                                    .clip(CircleShape)
+                                    .background(ToxicGreen)
+                            )
+                        }
+                    }
+                    if (artist.genres.filter { it != "MUSIC" }.isNotEmpty()) {
+                        Text(
+                            text = artist.genres.filter { it != "MUSIC" }.take(2).joinToString(" · "),
+                            color = TextMuted,
+                            fontSize = 11.sp,
+                            modifier = Modifier.padding(top = 2.dp)
+                        )
+                    }
+                }
+
+                // Favorite star
+                Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(RoundedCornerShape(10.dp))
+                        .background(if (isFavorite) AcidYellow.copy(alpha = 0.12f) else Color.Transparent)
+                        .clickable { onToggleFavorite() }
+                        .padding(6.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        Icons.Filled.Star,
+                        contentDescription = "Favorite",
+                        tint = if (isFavorite) AcidYellow else Color.White.copy(alpha = 0.2f),
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
 
-            // Favorite star
-            Box(
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(if (isFavorite) AcidYellow.copy(alpha = 0.12f) else Color.Transparent)
-                    .clickable { onToggleFavorite() }
-                    .padding(6.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    Icons.Filled.Star,
-                    contentDescription = "Favorite",
-                    tint = if (isFavorite) AcidYellow else Color.White.copy(alpha = 0.2f),
-                    modifier = Modifier.size(20.dp)
-                )
+            // ⚡ Clash badge — top-right corner of the card
+            if (clashPair != null) {
+                val color = if (clashPair.type == ClashType.HARD) ClashBadgeColor else CyanPulse
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(top = 0.dp, end = 0.dp)
+                        .clip(RoundedCornerShape(6.dp))
+                        .background(color)
+                        .padding(horizontal = 5.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = if (clashPair.type == ClashType.HARD) "⚡" else "⚠️",
+                        fontSize = 10.sp,
+                        color = if (clashPair.type == ClashType.HARD) Color.White else Color.Black
+                    )
+                }
             }
         }
-
-    // ⚡ Clash badge — top-right corner of the card
-    if (clashType != null) {
-        val color = if (clashType == ClashType.HARD) ClashBadgeColor else CyanPulse
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(top = 4.dp, end = 4.dp)
-                .clip(RoundedCornerShape(6.dp))
-                .background(color)
-                .padding(horizontal = 5.dp, vertical = 2.dp)
-        ) {
-            Text(
-                text = if (clashType == ClashType.HARD) "⚡" else "⚠️",
-                fontSize = 10.sp,
-                color = if (clashType == ClashType.HARD) Color.White else Color.Black
-            )
-        }
-    }
     }
 }
 
@@ -1168,20 +964,11 @@ private fun ClashBanner(clashes: List<ClashPair>) {
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(4.dp))
-                            .background(color.copy(alpha = 0.2f))
-                            .border(1.dp, color.copy(alpha = 0.4f), RoundedCornerShape(4.dp))
-                            .padding(horizontal = 6.dp, vertical = 2.dp)
-                    ) {
-                        Text(
-                            text = if (isHard) "HARD CLASH" else "TIGHT TRANSITION",
-                            color = color,
-                            fontSize = 8.sp,
-                            fontWeight = FontWeight.Black
-                        )
-                    }
+                    BrutalistBadge(
+                        text = if (isHard) "HARD CLASH" else "TIGHT TRANSITION",
+                        color = color,
+                        isOutlined = true
+                    )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
                         text = "${clash.a.artist} vs ${clash.b.artist}",
@@ -1222,20 +1009,12 @@ private fun SquadQRDialog(
                 modifier = Modifier.padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = "SQUAD LINK",
-                    fontWeight = FontWeight.Black,
-                    color = Color.White,
-                    fontSize = 20.sp,
-                    letterSpacing = (-1).sp
+                BrutalistHeader(
+                    title = "SQUAD LINK",
+                    subtitle = "Have a friend scan this to merge your lineups."
                 )
-                Text(
-                    text = "Have a friend scan this to merge your lineups.",
-                    color = TextMuted,
-                    fontSize = 12.sp,
-                    modifier = Modifier.padding(top = 4.dp, bottom = 24.dp),
-                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
-                )
+                
+                Spacer(modifier = Modifier.height(24.dp))
 
                 val content = com.example.szigerinsider2026.ui.utils.QRUtils.encodeSquad(favoriteIds)
                 val qr = com.example.szigerinsider2026.ui.utils.QRUtils.generateQRCode(content)
@@ -1258,47 +1037,18 @@ private fun SquadQRDialog(
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(Color.White.copy(alpha = 0.05f))
-                        .clickable { onDismiss() }
-                        .padding(vertical = 14.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = "CLOSE",
-                        color = Color.White,
-                        fontWeight = FontWeight.Black,
-                        fontSize = 12.sp,
-                        letterSpacing = 1.sp
-                    )
-                }
+                BrutalistButton(
+                    text = "CLOSE",
+                    onClick = onDismiss,
+                    color = Color.White.copy(alpha = 0.05f),
+                    textColor = Color.White,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
 }
 
-@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)
-@Composable
-private fun Badge(text: String, color: Color) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(4.dp))
-            .background(color.copy(alpha = 0.12f))
-            .border(1.dp, color.copy(alpha = 0.25f), RoundedCornerShape(4.dp))
-            .padding(horizontal = 6.dp, vertical = 2.dp)
-    ) {
-        Text(
-            text = text,
-            color = color,
-            fontSize = 8.sp,
-            fontWeight = FontWeight.Black,
-            letterSpacing = 1.sp
-        )
-    }
-}
 @androidx.compose.material3.ExperimentalMaterial3Api
 @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
@@ -1355,7 +1105,7 @@ private fun ArtistDetailSheet(
             )
 
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 8.dp)) {
-                 Badge(text = (artist.stage ?: "MAIN STAGE").uppercase(), color = PrimaryMagenta)
+                 BrutalistBadge(text = (artist.stage ?: "MAIN STAGE").uppercase(), color = PrimaryMagenta)
                  Spacer(modifier = Modifier.width(10.dp))
                  Text(
                      text = "${artist.day?.uppercase()} · ${artist.startTime} - ${artist.endTime}",
@@ -1371,13 +1121,7 @@ private fun ArtistDetailSheet(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     artist.genres.take(3).forEach { genre ->
-                        Box(
-                            modifier = Modifier
-                                .border(1.dp, Color.White.copy(alpha = 0.15f), CircleShape)
-                                .padding(horizontal = 12.dp, vertical = 6.dp)
-                        ) {
-                            Text(text = genre.uppercase(), color = Color.White.copy(alpha = 0.8f), fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                        }
+                        BrutalistBadge(text = genre, color = Color.White, isOutlined = true)
                     }
                 }
             }
@@ -1385,23 +1129,13 @@ private fun ArtistDetailSheet(
             Spacer(modifier = Modifier.height(32.dp))
 
             // Action Button
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(if (isFavorite) RedWarning.copy(alpha = 0.2f) else ToxicGreen)
-                    .clickable { onToggleFavorite() }
-                    .padding(vertical = 16.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = if (isFavorite) "REMOVE FROM LINEUP" else "ADD TO MY LINEUP",
-                    color = if (isFavorite) RedWarning else OLEDBlack,
-                    fontWeight = FontWeight.Black,
-                    fontSize = 14.sp,
-                    letterSpacing = 1.sp
-                )
-            }
+            BrutalistButton(
+                text = if (isFavorite) "REMOVE FROM LINEUP" else "ADD TO MY LINEUP",
+                onClick = onToggleFavorite,
+                color = if (isFavorite) RedWarning.copy(alpha = 0.2f) else ToxicGreen,
+                textColor = if (isFavorite) RedWarning else OLEDBlack,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }
@@ -1509,4 +1243,3 @@ private fun SquadScannerDialog(
         }
     }
 }
-

@@ -8,6 +8,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Event
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -80,8 +81,10 @@ val bottomNavItems = listOf(
     Screen.Tools
 )
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppNavigation() {
+fun AppNavigation(
+) {
     val navController = rememberNavController()
     val context = LocalContext.current
     val quizViewModel: VibeQuizViewModel = viewModel(
@@ -134,10 +137,18 @@ fun AppNavigation() {
                 HomeScreen(navController = navController)
             }
             composable(Screen.Discover.route) {
+                val discoverViewModel: DiscoverViewModel = viewModel(
+                    factory = object : ViewModelProvider.Factory {
+                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                            return DiscoverViewModel(LineupRepository(context), context) as T
+                        }
+                    }
+                )
                 DiscoverScreen(
                     onArtistClick = { id -> navController.navigate("artist/$id") },
                     navController = navController,
-                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling }
+                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
+                    viewModel = discoverViewModel
                 )
             }
             composable(Screen.Map.route) {
@@ -163,16 +174,14 @@ fun AppNavigation() {
                     onArtistNavigate = { id -> navController.navigate("artist/$id") },
                     onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
                     onGenreClick = { genre ->
-                        DiscoverViewModel.pendingGenreFilter = genre
-                        navController.navigate(Screen.Discover.route) {
-                            popUpTo(Screen.Discover.route) { inclusive = true }
-                        }
+                        // Better: Navigate with args, but for this refactor we can use a shared ViewModel if we were using Hilt.
+                        // For now, let's at least stop using the static hack and use the NavController properly if possible.
+                        navController.previousBackStackEntry?.savedStateHandle?.set("filter_genre", genre)
+                        navController.popBackStack(Screen.Discover.route, false)
                     },
                     onVibeClick = { vibe ->
-                        DiscoverViewModel.pendingVibeFilter = vibe
-                        navController.navigate(Screen.Discover.route) {
-                            popUpTo(Screen.Discover.route) { inclusive = true }
-                        }
+                        navController.previousBackStackEntry?.savedStateHandle?.set("filter_vibe", vibe)
+                        navController.popBackStack(Screen.Discover.route, false)
                     }
                 )
             }

@@ -23,6 +23,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -96,15 +97,12 @@ fun ArtistCard(
         )
     }
 
-    // Initials fallback
-    val initials = artist.artist.split(" ").filter { it.isNotEmpty() }.take(2)
-        .map { it.first().uppercaseChar() }.joinToString("")
     val mood = getMood(artist)
     val fallbackBrush = Brush.radialGradient(
         listOf(mood.color.copy(alpha = 0.4f), OLEDBlack)
     )
 
-    // Outer Box: animated shimmer border via 1.dp padding
+    // Outer Box: animated shimmer border
     Box(
         modifier = modifier
             .graphicsLayer(scaleX = scale, scaleY = scale)
@@ -129,183 +127,154 @@ fun ArtistCard(
                 )
             }
     ) {
-        Column(
+        Surface(
+            onClick = {
+                haptic.lightTap()
+                onClick(artist.id)
+            },
             modifier = Modifier
                 .fillMaxWidth()
-                .clip(RoundedCornerShape(31.dp))
-                .background(CardBackground)
-                .clickable(interactionSource = interactionSource, indication = null) {
-                    haptic.lightTap()
-                    onClick(artist.id)
-                }
+                .clip(RoundedCornerShape(31.dp)),
+            color = CardBackground,
+            interactionSource = interactionSource
         ) {
-            // Upper Visual Section (4:5 Aspect Ratio)
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(4f / 5f)
-                    .background(MutedBackground)
-            ) {
-                // Image with initials fallback
-                Box(modifier = Modifier.fillMaxSize()) {
-                    // Fallback always visible underneath
+            Column(modifier = Modifier.fillMaxWidth()) {
+                // Upper Visual Section
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(4f / 5f)
+                        .background(MutedBackground)
+                ) {
+                    // Image with initials fallback
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        Box(
+                            modifier = Modifier.fillMaxSize().background(fallbackBrush),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = artist.artist.split(" ").filter { it.isNotEmpty() }.take(2).map { it.first().uppercaseChar() }.joinToString(""),
+                                fontSize = 64.sp,
+                                fontWeight = FontWeight.Black,
+                                fontStyle = FontStyle.Italic,
+                                color = Color.White.copy(alpha = 0.8f)
+                            )
+                        }
+                        if (artist.imageUrl != null) {
+                            AsyncImage(
+                                model = artist.imageUrl,
+                                contentDescription = artist.artist,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Crop
+                            )
+                        }
+                    }
+
+                    // Tactical Gradient Overlay
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .background(fallbackBrush),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = initials,
-                            fontSize = 64.sp,
-                            fontWeight = FontWeight.Black,
-                            fontStyle = FontStyle.Italic,
-                            color = Color.White.copy(alpha = 0.8f)
-                        )
-                    }
-                    // Image on top (only when url present)
-                    if (artist.imageUrl != null) {
-                        AsyncImage(
-                            model = artist.imageUrl,
-                            contentDescription = artist.artist,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
-                }
-
-                // Tactical Gradient Blur Overlay (Tactical OLED)
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(
-                            brush = Brush.verticalGradient(
-                                colors = listOf(
-                                    Color.Transparent,
-                                    Color.Black.copy(alpha = 0.2f),
-                                    Color.Black.copy(alpha = 0.95f)
-                                ),
-                                startY = 0f
+                            .background(
+                                brush = Brush.verticalGradient(
+                                    colors = listOf(
+                                        Color.Transparent,
+                                        Color.Black.copy(alpha = 0.2f),
+                                        Color.Black.copy(alpha = 0.95f)
+                                    )
+                                )
                             )
-                        )
-                )
+                    )
 
-                // Overlays: Day Badge (Top Left)
-                if (artist.day != null) {
+                    // Overlays: Day Badge
+                    if (artist.day != null) {
+                        Box(modifier = Modifier.padding(16.dp)) {
+                            BrutalistBadge(text = artist.day.uppercase(), color = Color.White)
+                        }
+                    }
+
+                    // Overlays: Favorite Star
                     Box(
                         modifier = Modifier
+                            .align(Alignment.TopEnd)
                             .padding(16.dp)
-                            .clip(RoundedCornerShape(100))
+                            .size(44.dp)
+                            .clip(CircleShape)
                             .background(Color.Black.copy(alpha = 0.6f))
-                            .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(100))
-                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                            .border(
+                                1.dp,
+                                if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.1f),
+                                CircleShape
+                            )
+                            .clickable {
+                                if (isFavorite) haptic.mediumTap() else haptic.favoriteTap()
+                                onToggleFavorite(artist.id)
+                            },
+                        contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            text = artist.day.uppercase(),
-                            style = BrutalistTypography.labelSmall,
-                            color = Color.White,
-                            fontSize = 8.sp,
-                            letterSpacing = 1.sp
+                        Icon(
+                            imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
+                            contentDescription = "Toggle Favorite",
+                            tint = if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.6f),
+                            modifier = Modifier.size(24.dp)
                         )
                     }
-                }
 
-                // Overlays: Favorite Star (Top Right)
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.TopEnd)
-                        .padding(16.dp)
-                        .size(44.dp)
-                        .clip(CircleShape)
-                        .background(Color.Black.copy(alpha = 0.6f))
-                        .border(
-                            1.dp,
-                            if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.1f),
-                            CircleShape
-                        )
-                        .clickable {
-                            if (isFavorite) haptic.mediumTap() else haptic.favoriteTap()
-                            onToggleFavorite(artist.id)
-                        },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
-                        contentDescription = "Toggle Favorite",
-                        tint = if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.6f),
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
-
-                // Overlays: Artist Info (Bottom Overlay)
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.BottomStart)
-                        .padding(20.dp)
-                ) {
-                    Text(
-                        text = artist.artist.uppercase(),
-                        style = BrutalistTypography.titleLarge,
-                        color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
-                        modifier = Modifier.padding(bottom = 4.dp),
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        lineHeight = 24.sp
-                    )
-
-                    // Genre Pills
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                        verticalAlignment = Alignment.CenterVertically
+                    // Overlays: Artist Info
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(20.dp)
                     ) {
-                        artist.genres.filter { it != "MUSIC" }.take(2).forEach { genre ->
-                            Box(
-                                modifier = Modifier
-                                    .clip(RoundedCornerShape(100))
-                                    .background(Color.White.copy(alpha = 0.1f))
-                                    .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(100))
-                                    .padding(horizontal = 8.dp, vertical = 2.dp)
-                            ) {
-                                Text(
-                                    text = genre.uppercase(),
-                                    style = BrutalistTypography.labelSmall,
-                                    color = TextPrimary,
-                                    fontSize = 8.sp,
-                                    letterSpacing = 1.sp
-                                )
+                        Text(
+                            text = artist.artist.uppercase(),
+                            style = BrutalistTypography.titleLarge,
+                            color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
+                            modifier = Modifier.padding(bottom = 4.dp),
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            lineHeight = 24.sp
+                        )
+
+                        // Genre Pills
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            artist.genres.filter { it != "MUSIC" }.take(2).forEach { genre ->
+                                BrutalistBadge(text = genre, color = TextPrimary, isOutlined = true)
                             }
                         }
                     }
                 }
-            }
 
-            // Bottom Vibe Section (Subtle Muted Area)
-            if (artist.vibes.isNotEmpty()) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(MutedBackground.copy(alpha = 0.3f))
-                        .padding(horizontal = 20.dp, vertical = 12.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                // Bottom Vibe Section
+                if (artist.vibes.isNotEmpty()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(MutedBackground.copy(alpha = 0.3f))
+                            .padding(horizontal = 20.dp, vertical = 12.dp)
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .size(8.dp)
-                                .clip(CircleShape)
-                                .background(mood.color)
-                        )
-                        Text(
-                            text = mood.label + " • " + artist.vibes.first().uppercase(),
-                            style = BrutalistTypography.labelSmall,
-                            color = TextMuted.copy(alpha = 0.6f),
-                            fontSize = 9.sp,
-                            letterSpacing = 2.sp,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .size(8.dp)
+                                    .clip(CircleShape)
+                                    .background(mood.color)
+                            )
+                            Text(
+                                text = mood.label + " • " + artist.vibes.first().uppercase(),
+                                style = BrutalistTypography.labelSmall,
+                                color = TextMuted.copy(alpha = 0.6f),
+                                fontSize = 9.sp,
+                                letterSpacing = 2.sp,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
                     }
                 }
             }
