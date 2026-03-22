@@ -14,6 +14,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -68,6 +69,7 @@ private fun findSimilarArtists(current: Artist, all: List<Artist>): List<Pair<Ar
         .take(5)
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ArtistDetailScreen(
     artistId: String,
@@ -253,6 +255,40 @@ fun ArtistDetailScreen(
                 }
             }
 
+            // SAW THIS SET toggle (Moved higher for accessibility)
+            item {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 24.dp, vertical = 8.dp)
+                ) {
+                    if (isSeen) {
+                        BrutalistButton(
+                            text = "✓ SAW THIS SET",
+                            onClick = {
+                                haptic.lightTap()
+                                isSeen = toggleSeenArtist(context, a.id)
+                            },
+                            color = ToxicGreen,
+                            textColor = Color.Black,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    } else {
+                        BrutalistButton(
+                            text = "SAW THIS SET?",
+                            onClick = {
+                                haptic.successBurst()
+                                isSeen = toggleSeenArtist(context, a.id)
+                            },
+                            color = AcidYellow.copy(alpha = 0.1f),
+                            textColor = AcidYellow,
+                            modifier = Modifier.fillMaxWidth()
+                                .border(1.dp, AcidYellow.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
+                        )
+                    }
+                }
+            }
+
             // Genres (clickable)
             if (a.genres.filter { it != "MUSIC" }.isNotEmpty()) {
                 item {
@@ -324,8 +360,14 @@ fun ArtistDetailScreen(
                 if (links.isNotEmpty()) {
                     item {
                         SectionBlock(title = "LINKS") {
-                            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                links.forEach { (name, url) ->
+                            FlowRow( // Use FlowRow for more compact social buttons
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                verticalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                for (link in links) {
+                                    val name = link.first
+                                    val url = link.second
                                     val platformColor = when (name) {
                                         "Spotify" -> Color(0xFF1DB954)
                                         "Instagram" -> Color(0xFFE1306C)
@@ -339,19 +381,19 @@ fun ArtistDetailScreen(
                                     }
                                     Box(
                                         modifier = Modifier
-                                            .fillMaxWidth()
-                                            .clip(RoundedCornerShape(16.dp))
-                                            .background(platformColor.copy(alpha = 0.08f))
-                                            .border(1.dp, platformColor.copy(alpha = 0.2f), RoundedCornerShape(16.dp))
+                                            .wrapContentWidth()
+                                            .clip(RoundedCornerShape(12.dp))
+                                            .background(platformColor.copy(alpha = 0.1f))
+                                            .border(1.dp, platformColor.copy(alpha = 0.2f), RoundedCornerShape(12.dp))
                                             .clickable {
                                                 haptic.lightTap()
                                                 runCatching {
                                                     context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
                                                 }
                                             }
-                                            .padding(horizontal = 20.dp, vertical = 16.dp)
+                                            .padding(horizontal = 14.dp, vertical = 10.dp)
                                     ) {
-                                        Text(name.uppercase(), style = BrutalistTypography.labelSmall, color = platformColor, letterSpacing = 1.5.sp)
+                                        Text(name.uppercase(), style = BrutalistTypography.labelSmall, color = platformColor, letterSpacing = 1.sp, fontSize = 9.sp)
                                     }
                                 }
                             }
@@ -366,62 +408,21 @@ fun ArtistDetailScreen(
                 ?.split("?")?.firstOrNull()
             if (spotifyId != null) {
                 item {
-                    SectionBlock(title = "ISLAND LISTEN") {
-                        AndroidView(
-                            factory = { ctx ->
-                                WebView(ctx).apply {
-                                    settings.apply {
-                                        javaScriptEnabled = true
-                                        domStorageEnabled = true
-                                        mediaPlaybackRequiresUserGesture = false
-                                        mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-                                    }
-                                    setBackgroundColor(android.graphics.Color.TRANSPARENT)
-                                    loadUrl("https://open.spotify.com/embed/artist/$spotifyId")
-                                }
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(500.dp)
-                                .clip(RoundedCornerShape(16.dp))
-                        )
-                    }
+                    SpotifyIsland(
+                        artistName = a.artist,
+                        spotifyId = spotifyId,
+                        onOpenSpotify = {
+                            haptic.successBurst()
+                            runCatching {
+                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("spotify:artist:$spotifyId")))
+                            }.onFailure {
+                                context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://open.spotify.com/artist/$spotifyId")))
+                            }
+                        }
+                    )
                 }
             }
 
-            // SAW THIS SET toggle
-            item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 12.dp)
-                ) {
-                    if (isSeen) {
-                        BrutalistButton(
-                            text = "✓ SAW THIS SET",
-                            onClick = {
-                                haptic.lightTap()
-                                isSeen = toggleSeenArtist(context, a.id)
-                            },
-                            color = ToxicGreen,
-                            textColor = Color.Black,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    } else {
-                        BrutalistButton(
-                            text = "SAW THIS SET?",
-                            onClick = {
-                                haptic.successBurst()
-                                isSeen = toggleSeenArtist(context, a.id)
-                            },
-                            color = AcidYellow.copy(alpha = 0.1f),
-                            textColor = AcidYellow,
-                            modifier = Modifier.fillMaxWidth()
-                                .border(1.dp, AcidYellow.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
-                        )
-                    }
-                }
-            }
 
             // More Like This
             if (similarArtists.isNotEmpty()) {
@@ -451,10 +452,78 @@ fun ArtistDetailScreen(
                 }
             }
 
-            item { Spacer(modifier = Modifier.height(100.dp)) }
+            item { Spacer(modifier = Modifier.height(40.dp)) }
         }
     } ?: Box(modifier = Modifier.fillMaxSize().background(OLEDBlack), contentAlignment = Alignment.Center) {
         CircularProgressIndicator(color = PrimaryMagenta)
+    }
+}
+
+@Composable
+private fun SpotifyIsland(
+    artistName: String,
+    spotifyId: String,
+    onOpenSpotify: () -> Unit
+) {
+    SectionBlock(title = "ISLAND LISTEN") {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(Brush.horizontalGradient(listOf(Color(0xFF1DB954).copy(alpha = 0.15f), OLEDBlack)))
+                .border(1.dp, Color(0xFF1DB954).copy(alpha = 0.3f), RoundedCornerShape(24.dp))
+                .clickable { onOpenSpotify() }
+                .padding(20.dp)
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                // Spotify Icon + Branding
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(CircleShape)
+                        .background(Color(0xFF1DB954)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "≈",
+                        color = OLEDBlack,
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Black,
+                        modifier = Modifier.offset(y = (-2).dp)
+                    )
+                }
+                
+                Spacer(modifier = Modifier.width(16.dp))
+                
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = artistName.uppercase(),
+                        color = Color.White,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                    Text(
+                        text = "LISTEN ON SPOTIFY",
+                        color = Color(0xFF1DB954).copy(alpha = 0.8f),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        letterSpacing = 2.sp
+                    )
+                }
+                
+                // Play Icon
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .border(1.dp, Color(0xFF1DB954).copy(alpha = 0.5f), CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("▶", color = Color(0xFF1DB954), fontSize = 14.sp)
+                }
+            }
+        }
     }
 }
 
@@ -479,17 +548,9 @@ private fun SimilarArtistCard(
     onClick: () -> Unit
 ) {
     val haptic = rememberHapticManager()
-    NeonCard(
-        onClick = { haptic.mediumTap(); onClick() },
-        modifier = Modifier.width(110.dp),
-        accentColor = Color.White.copy(alpha = 0.06f)
-    ) {
-        // NeonCard already provides 16.dp padding, but SimilarArtistCard needs more custom layout
-    }
-    // Re-implement SimilarArtistCard with custom layout for now as NeonCard might be too restrictive
     Box(
         modifier = Modifier
-            .width(110.dp)
+            .width(130.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(CardBackground)
             .border(1.dp, Color.White.copy(alpha = 0.06f), RoundedCornerShape(16.dp))
@@ -501,8 +562,8 @@ private fun SimilarArtistCard(
                 contentDescription = artist.artist,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(110.dp)
-                    .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
+                    .height(130.dp)
+                    .clip(RoundedCornerShape(16.dp)),
                 contentScale = ContentScale.Crop
             )
             Column(modifier = Modifier.padding(8.dp)) {

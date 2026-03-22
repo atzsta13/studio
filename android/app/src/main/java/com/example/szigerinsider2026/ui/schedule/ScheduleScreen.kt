@@ -34,7 +34,10 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -460,9 +463,9 @@ fun TimetableGrid(
     var offsetY by remember { mutableStateOf(0f) }
     var zoom    by remember { mutableStateOf(1f) }
 
-    val baseHourWidth = 180f
+    val baseHourWidth = 160f
     val hourWidth = baseHourWidth * zoom
-    val trackHeight = 100f
+    val trackHeight = 110f
 
     fun getX(time: String?): Float {
         if (time == null) return 0f
@@ -501,7 +504,6 @@ fun TimetableGrid(
             // Hour Lines (Culled)
             (START_HOUR..END_HOUR).forEach { h ->
                 val x = (h - START_HOUR) * hourWidth
-                // Culling: only draw if within screen bounds (roughly)
                 val isVisible = (x + offsetX) in -hourWidth..screenWidth + hourWidth
                 if (isVisible) {
                     Box(
@@ -509,9 +511,29 @@ fun TimetableGrid(
                             .fillMaxHeight()
                             .width(1.dp)
                             .absoluteOffset(x = x.dp)
-                            .background(Color.White.copy(alpha = 0.05f))
+                            .background(
+                                Brush.verticalGradient(
+                                    listOf(Color.White.copy(alpha = 0.15f), Color.Transparent),
+                                    startY = 0f,
+                                    endY = 1000f
+                                )
+                            )
                     )
                 }
+            }
+
+            // Current Time Line
+            val now = LocalTime.now()
+            val today = LocalDate.now()
+            if (today >= FESTIVAL_START && today <= FESTIVAL_END) {
+                val currentX = getX("${now.hour}:${now.minute}")
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(2.dp)
+                        .absoluteOffset(x = currentX.dp)
+                        .background(ToxicGreen.copy(alpha = 0.6f))
+                )
             }
 
             // Artist Blocks (Culled)
@@ -531,12 +553,12 @@ fun TimetableGrid(
                         val isArtistVisible = (x + offsetX + width) > 0 && (x + offsetX) < screenWidth
                         
                         if (isArtistVisible) {
-                            ArtistBlock(
+                            ArtistGridBlock(
                                 artist = artist,
                                 x = x,
                                 y = trackY,
                                 width = width,
-                                height = trackHeight - 8,
+                                blockHeight = trackHeight - 12,
                                 isFavorite = favoriteIds.contains(artist.id),
                                 inSquad = squadIds.contains(artist.id),
                                 onArtistClick = onArtistClick,
@@ -550,12 +572,20 @@ fun TimetableGrid(
 
         // ─── FLOATING HEADERS ───────────────────────────────────────────────
 
-        // Time Bar (Top)
+        // Time Bar (Top Header)
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(40.dp)
-                .background(MutedBackground.copy(alpha = 0.95f))
+                .background(OLEDBlack.copy(alpha = 0.85f))
+                .drawBehind {
+                   drawLine(
+                       color = Color.White.copy(alpha = 0.1f),
+                       start = androidx.compose.ui.geometry.Offset(0f, size.height),
+                       end = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                       strokeWidth = 1.dp.toPx()
+                   )
+                }
         ) {
             Box(modifier = Modifier.graphicsLayer { translationX = offsetX }) {
                 (START_HOUR..END_HOUR).forEach { h ->
@@ -574,12 +604,21 @@ fun TimetableGrid(
             }
         }
 
-        // Stage Labels (Left)
+        // Stage Labels (Left Sidebar)
         Box(
             modifier = Modifier
                 .fillMaxHeight()
                 .padding(top = 40.dp)
-                .width(80.dp)
+                .width(90.dp)
+                .background(OLEDBlack.copy(alpha = 0.8f))
+                .drawBehind {
+                    drawLine(
+                        color = Color.White.copy(alpha = 0.1f),
+                        start = androidx.compose.ui.geometry.Offset(size.width, 0f),
+                        end = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                        strokeWidth = 1.dp.toPx()
+                    )
+                }
         ) {
             Box(modifier = Modifier.graphicsLayer { translationY = offsetY }) {
                 byStage.forEachIndexed { index, entry ->
@@ -589,20 +628,28 @@ fun TimetableGrid(
                         Box(
                             modifier = Modifier
                                 .absoluteOffset(y = y.dp)
-                                .size(width = 80.dp, height = trackHeight.dp)
-                                .background(MutedBackground.copy(alpha = 0.9f))
-                                .border(1.dp, Color.White.copy(alpha = 0.05f))
-                                .padding(4.dp),
-                            contentAlignment = Alignment.Center
+                                .size(width = 90.dp, height = trackHeight.dp)
+                                .padding(horizontal = 8.dp, vertical = 6.dp),
+                            contentAlignment = Alignment.CenterStart
                         ) {
-                            Text(
-                                text = entry.key.uppercase(),
-                                color = Color.White,
-                                fontSize = 9.sp,
-                                fontWeight = FontWeight.Black,
-                                textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                                lineHeight = 11.sp
-                            )
+                            Column {
+                                Text(
+                                    text = "STAGE",
+                                    color = PrimaryMagenta.copy(alpha = 0.6f),
+                                    fontSize = 7.sp,
+                                    fontWeight = FontWeight.Black,
+                                    letterSpacing = 1.sp
+                                )
+                                Text(
+                                    text = entry.key.uppercase(),
+                                    color = Color.White,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Black,
+                                    lineHeight = 12.sp,
+                                    maxLines = 3,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
                         }
                     }
                 }
@@ -612,93 +659,111 @@ fun TimetableGrid(
 }
 
 @Composable
-private fun ArtistBlock(
+private fun ArtistGridBlock(
     artist: Artist,
     x: Float,
     y: Float,
     width: Float,
-    height: Float,
+    blockHeight: Float,
     isFavorite: Boolean,
     inSquad: Boolean,
     onArtistClick: (String) -> Unit,
     haptic: com.example.szigerinsider2026.ui.utils.HapticManager
 ) {
+    val accentColor = when {
+        isFavorite -> AcidYellow
+        inSquad -> CyanPulse
+        artist.isHeadliner -> PrimaryMagenta
+        else -> Color.White.copy(alpha = 0.4f)
+    }
+
     Box(
         modifier = Modifier
             .absoluteOffset(x = x.dp, y = y.dp)
             .width(width.dp)
-            .height(height.dp)
+            .height(blockHeight.dp)
             .padding(4.dp)
             .clip(RoundedCornerShape(12.dp))
             .background(CardBackground)
             .border(
                 1.dp,
-                when {
-                    isFavorite -> AcidYellow.copy(alpha = 0.5f)
-                    inSquad    -> CyanPulse.copy(alpha = 0.5f)
-                    else       -> Color.White.copy(alpha = 0.08f)
-                },
+                accentColor.copy(alpha = if (isFavorite || inSquad || artist.isHeadliner) 0.6f else 0.1f),
                 RoundedCornerShape(12.dp)
             )
             .clickable { haptic.lightTap(); onArtistClick(artist.id) }
-            .padding(8.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            // Artist Image
-            if (artist.imageUrl != null) {
-                AsyncImage(
-                    model = artist.imageUrl,
-                    contentDescription = null,
+        // Progress background for headliners
+        if (artist.isHeadliner) {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(0.1f)
+                    .background(PrimaryMagenta.copy(alpha = 0.05f))
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxSize().padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Minimal Thumbnail
+            if (width > 80f) {
+                Box(
                     modifier = Modifier
-                        .size(36.dp)
-                        .clip(CircleShape)
-                        .background(Color.White.copy(alpha = 0.05f)),
-                    contentScale = ContentScale.Crop
-                )
+                        .size(44.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(MutedBackground)
+                ) {
+                    if (artist.imageUrl != null) {
+                        AsyncImage(
+                            model = artist.imageUrl,
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Crop
+                        )
+                    } else {
+                        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                            Text(artist.artist.take(1), color = Color.White.copy(alpha = 0.2f), fontWeight = FontWeight.Black)
+                        }
+                    }
+                }
                 Spacer(modifier = Modifier.width(10.dp))
-            } else if (artist.genres?.isNotEmpty() == true) {
-                 // Fallback genre icon
-                 Box(
-                    modifier = Modifier
-                        .size(36.dp)
-                        .clip(CircleShape)
-                        .background(PrimaryMagenta.copy(alpha = 0.1f)),
-                    contentAlignment = Alignment.Center
-                 ) {
-                     Text(artist.artist.take(1), color = PrimaryMagenta, fontWeight = FontWeight.Bold)
-                 }
-                 Spacer(modifier = Modifier.width(10.dp))
             }
 
-            Column {
+            Column(modifier = Modifier.weight(1f)) {
+                if (artist.isHeadliner) {
+                    Text(
+                        text = "MAIN STAGE HEADLINER",
+                        color = PrimaryMagenta,
+                        fontSize = 7.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                }
                 Text(
                     text = artist.artist.uppercase(),
-                    color = when {
-                        artist.isHeadliner -> PrimaryMagenta
-                        inSquad && !isFavorite -> CyanPulse
-                        else -> Color.White
-                    },
+                    color = if (isFavorite) AcidYellow else Color.White,
                     fontWeight = FontWeight.Black,
-                    fontSize = 11.sp,
-                    maxLines = 1,
+                    fontSize = if (artist.isHeadliner) 13.sp else 11.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    lineHeight = 13.sp,
                     letterSpacing = (-0.2).sp
                 )
-                Text(
-                    text = "${artist.startTime} - ${artist.endTime}",
-                    color = TextMuted,
-                    fontSize = 9.sp
-                )
-                if (isFavorite || inSquad) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        if (isFavorite) {
-                            Text("★", color = AcidYellow, fontSize = 8.sp, fontWeight = FontWeight.Bold)
-                        }
-                        if (inSquad) {
-                            Text("👥", color = CyanPulse, fontSize = 8.sp, fontWeight = FontWeight.Bold)
-                        }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "${artist.startTime} - ${artist.endTime}",
+                        color = TextMuted,
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                    if (isFavorite || inSquad) {
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = if (isFavorite) "★" else "👥",
+                            color = if (isFavorite) AcidYellow else CyanPulse,
+                            fontSize = 8.sp
+                        )
                     }
                 }
             }
