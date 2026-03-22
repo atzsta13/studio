@@ -102,28 +102,42 @@ private fun timesOverlap(
     return s1 < e2 && s2 < e1
 }
 
-data class ClashPair(val a: Artist, val b: Artist)
+enum class ClashType { HARD, TIGHT_TRANSITION }
+data class ClashPair(val a: Artist, val b: Artist, val type: ClashType, val gapMinutes: Int = 0)
+
+private fun minutesBetween(endStr: String, startStr: String): Int {
+    val s = parseTime(startStr); val e = parseTime(endStr)
+    if (s == null || e == null) return 100 
+    val sMin = s.hour * 60 + s.minute
+    val eMin = e.hour * 60 + e.minute
+    val diff = sMin - eMin
+    return if (diff < -720) diff + 1440 else diff 
+}
 
 private fun detectClashes(favorites: List<Artist>): List<ClashPair> {
-    val clashes = mutableListOf<ClashPair>()
-    val byDay = favorites.groupBy { it.day }
+    val result = mutableListOf<ClashPair>()
+    val byDay = favorites.sortedBy { it.startTime }.groupBy { it.day }
+    
     byDay.values.forEach { dayArtists ->
         for (i in dayArtists.indices) {
             for (j in i + 1 until dayArtists.size) {
                 val a = dayArtists[i]; val b = dayArtists[j]
-                if (a.stage != null && b.stage != null && a.stage != b.stage) {
-                    val as_ = parseTime(a.startTime); val ae = parseTime(a.endTime)
-                    val bs  = parseTime(b.startTime); val be  = parseTime(b.endTime)
-                    if (as_ != null && ae != null && bs != null && be != null) {
-                        if (timesOverlap(as_, ae, bs, be)) {
-                            clashes.add(ClashPair(a, b))
-                        }
+                val as_ = parseTime(a.startTime); val ae = parseTime(a.endTime)
+                val bs  = parseTime(b.startTime); val be  = parseTime(b.endTime)
+                if (as_ == null || ae == null || bs == null || be == null) continue
+
+                if (timesOverlap(as_, ae, bs, be)) {
+                    result.add(ClashPair(a, b, ClashType.HARD))
+                } else {
+                    val gap = minutesBetween(a.endTime!!, b.startTime!!)
+                    if (gap in 0..14 && a.stage != b.stage) {
+                        result.add(ClashPair(a, b, ClashType.TIGHT_TRANSITION, gap))
                     }
                 }
             }
         }
     }
-    return clashes
+    return result
 }
 
 // ─── Now-playing helper ───────────────────────────────────────────────────────
@@ -146,6 +160,7 @@ private fun isNowPlaying(artist: Artist): Boolean {
 private enum class ScheduleTab { GRID, BY_TIME, MY_LINEUP }
 
 @androidx.compose.material3.ExperimentalMaterial3Api
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 fun ScheduleScreen(
     onArtistClick: (String) -> Unit = {},
@@ -352,7 +367,7 @@ fun ScheduleScreen(
                             },
                             onClick = { artistForDetail = artist },
                             hapticTap = { haptic.lightTap() },
-                            showClashBadge = false,
+                            clashType = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id }?.type,
                             showDayBadge = false
                         )
                     }
@@ -466,7 +481,7 @@ fun ScheduleScreen(
                                     },
                                     onClick = { artistForDetail = artist },
                                     hapticTap = { haptic.lightTap() },
-                                    showClashBadge = clashes.any { it.a.id == artist.id || it.b.id == artist.id },
+                                    clashType = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id }?.type,
                                     showDayBadge = true
                                 )
                             }
@@ -868,7 +883,7 @@ private fun ScheduleRow(
     onToggleFavorite: () -> Unit,
     onClick: () -> Unit,
     hapticTap: () -> Unit,
-    showClashBadge: Boolean,
+    clashType: ClashType? = null,
     showDayBadge: Boolean
 ) {
     val nowPlaying = remember { isNowPlaying(artist) }
@@ -1094,22 +1109,24 @@ private fun ScheduleRow(
             }
         }
 
-        // ⚡ Clash badge — top-right corner of the card
-        if (showClashBadge) {
-            Box(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(top = 4.dp, end = 4.dp)
-                    .clip(RoundedCornerShape(6.dp))
-                    .background(ClashBadgeColor)
-                    .padding(horizontal = 5.dp, vertical = 2.dp)
-            ) {
-                Text(
-                    text = "⚡",
-                    fontSize = 10.sp
-                )
-            }
+    // ⚡ Clash badge — top-right corner of the card
+    if (clashType != null) {
+        val color = if (clashType == ClashType.HARD) ClashBadgeColor else CyanPulse
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(top = 4.dp, end = 4.dp)
+                .clip(RoundedCornerShape(6.dp))
+                .background(color)
+                .padding(horizontal = 5.dp, vertical = 2.dp)
+        ) {
+            Text(
+                text = if (clashType == ClashType.HARD) "⚡" else "⚠️",
+                fontSize = 10.sp,
+                color = if (clashType == ClashType.HARD) Color.White else Color.Black
+            )
         }
+    }
     }
 }
 
@@ -1145,27 +1162,42 @@ private fun ClashBanner(clashes: List<ClashPair>) {
             Spacer(modifier = Modifier.height(8.dp))
 
             clashes.forEach { clash ->
-                val dayLabel = DAY_LABELS[clash.a.day] ?: clash.a.day?.take(3)?.uppercase() ?: ""
+                val isHard = clash.type == ClashType.HARD
+                val color = if (isHard) ClashBadgeColor else CyanPulse
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 4.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Box(
                         modifier = Modifier
-                            .size(4.dp)
-                            .clip(CircleShape)
-                            .background(ClashBadgeColor)
-                    )
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(color.copy(alpha = 0.2f))
+                            .border(1.dp, color.copy(alpha = 0.4f), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text(
+                            text = if (isHard) "HARD CLASH" else "TIGHT TRANSITION",
+                            color = color,
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "${clash.a.artist.uppercase()} vs ${clash.b.artist.uppercase()} · $dayLabel",
-                        color = Color.White.copy(alpha = 0.80f),
-                        fontSize = 11.sp,
+                        text = "${clash.a.artist} vs ${clash.b.artist}",
+                        color = Color.White,
+                        fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.2.sp
+                        modifier = Modifier.weight(1f)
                     )
+                    if (!isHard) {
+                        Text(
+                            text = "${clash.gapMinutes} MINS GAP",
+                            color = TextMuted,
+                            fontSize = 9.sp,
+                            fontWeight = FontWeight.Black
+                        )
+                    }
                 }
             }
         }
@@ -1268,6 +1300,7 @@ private fun Badge(text: String, color: Color) {
     }
 }
 @androidx.compose.material3.ExperimentalMaterial3Api
+@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 @Composable
 private fun ArtistDetailSheet(
     artist: Artist,

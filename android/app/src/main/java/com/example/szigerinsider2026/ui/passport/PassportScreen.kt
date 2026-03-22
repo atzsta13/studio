@@ -239,7 +239,7 @@ fun PassportScreen(navController: NavController? = null) {
                                     }
                                     Spacer(modifier = Modifier.height(16.dp))
                                     LinearProgressIndicator(
-                                        progress = progress / 100f,
+                                        progress = { progress / 100f },
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .height(8.dp)
@@ -261,9 +261,14 @@ fun PassportScreen(navController: NavController? = null) {
                             label = "stampScale_${stamp.id}"
                         )
 
+                        val rotation = remember(stamp.id) { (stamp.id.hashCode() % 10) - 5f }
                         Box(
                             modifier = Modifier
-                                .graphicsLayer(scaleX = stampScale, scaleY = stampScale)
+                                .graphicsLayer(
+                                    scaleX = stampScale,
+                                    scaleY = stampScale,
+                                    rotationZ = if (isUnlocked) rotation else 0f
+                                )
                                 .aspectRatio(1f)
                                 .clip(RoundedCornerShape(24.dp))
                                 .background(if (isUnlocked) CardBackground else MutedBackground.copy(alpha = 0.3f))

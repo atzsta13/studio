@@ -211,6 +211,22 @@ fun HomeScreen(navController: NavController? = null) {
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium
                     )
+                    Row(modifier = Modifier.padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text(
+                            text = "L-LEVEL: ALPHA_2.3",
+                            color = PrimaryMagenta.copy(alpha = 0.5f),
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 1.sp
+                        )
+                        Text(
+                            text = "SYS_AUTH: APPROVED",
+                            color = ToxicGreen.copy(alpha = 0.5f),
+                            fontSize = 8.sp,
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 1.sp
+                        )
+                    }
                 }
                 Box(
                     modifier = Modifier
@@ -633,6 +649,7 @@ private fun SectionHeader(title: String, subtitle: String? = null, count: Int? =
 
 @Composable
 private fun FavoriteArtistChip(artist: Artist) {
+    val shape = RoundedCornerShape(topStart = 20.dp, bottomEnd = 20.dp)
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.width(72.dp)
@@ -640,9 +657,9 @@ private fun FavoriteArtistChip(artist: Artist) {
         Box(
             modifier = Modifier
                 .size(64.dp)
-                .clip(CircleShape)
+                .clip(shape)
                 .background(MutedBackground)
-                .border(2.dp, PrimaryMagenta.copy(alpha = 0.4f), CircleShape)
+                .border(2.dp, PrimaryMagenta.copy(alpha = 0.4f), shape)
         ) {
             AsyncImage(
                 model = artist.imageUrl,
