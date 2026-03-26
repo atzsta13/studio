@@ -1,43 +1,32 @@
-# 🗂️ Sziget Insider 2026: Comprehensive Migration & State Manifest
-**Target Platform:** Native Android (Jetpack Compose)
-**Date:** 2026-03-06
+# 🗂️ Sziget Insider 2026: Comprehensive Ecosystem & State Manifest
+**Target Platforms:** Native Android (Jetpack Compose) + Next.js Web (React)
+**Date:** 2026-03-25
 **Status:** Phase 3 (Social & Tactical)
 
 ---
 
 ## 🕰️ Project Evolution & Context
-Sziget Insider 2026 has undergone a major architectural evolution to reach its current native state:
+Sziget Insider 2026 is a **Cross-Platform Ecosystem** designed to provide a unified, offline-first experience for festival-goers across web and mobile.
 
 1.  **Stage 1: The Firebase Era**: Originally conceived as a web application utilizing **Firebase Studio** for real-time cloud data and authentication.
-2.  **Stage 2: The Local Web implementation**: Transitioned to a **Next.js** App Router architecture. During this phase, the project pivoted to a **Local-First** model, moving away from cloud dependencies to ensure the app functions perfectly in high-density, low-connectivity festival environments.
-3.  **Stage 3: The Native Android Port (Current)**: The project is now being fully ported to **Native Android (Kotlin + Jetpack Compose)**. This move provides deeper hardware integration (Flashlight/SOS) and superior performance while strictly maintaining the "Offline-First" philosophy established in the web reference.
+2.  **Stage 2: The Local Web Implementation**: Transitioned to a **Next.js** App Router architecture. During this phase, the project pivoted to a **Local-First** model, ensuring the app functions perfectly in high-density, low-connectivity festival environments.
+3.  **Stage 3: The Native Android Expansion (Current)**: The project has expanded to include a **Native Android (Kotlin + Jetpack Compose)** app alongside the Web version. This provides deeper hardware integration (Flashlight/SOS) and superior mobile performance while sharing the same "Offline-First" source of truth (`lineup.json`).
 
 ---
 
 ## 🏛️ System Architecture Overview
 
-### 1. UI Framework: Neon Brutalism (Jetpack Compose)
-The UI is built on a custom design system mapped from the original Next.js web application.
-- **Theme**: `ui.theme.Theme.kt` forces a persistent dark mode (OLED Black).
-- **Core Colors**: `AcidYellow`, `PrimaryMagenta`, `ToxicGreen`, `CyanPulse` (Atomic OLED palette).
-- **Typography**: Heavily stylized `BrutalistTypography` using extra-bold weights and italicized headers.
-- **Navigation**: `ui.navigation.Navigation.kt` manages a 5-tab scaffold + a SplashScreen.
-  - *Home* (Strategic Radar)
-  - *Discover* (Music Finder)
-  - *Map* (Tactical POI)
-  - *Passport* (Legend XP / Gamification)
-  - *Tools* (Survival Toolkit)
+### 1. Unified Design Language: Neon Brutalism
+Both platforms share a "Neon Brutalist" design system.
+- **Web**: Tailwind CSS 4 with custom Acid/OLED palette.
+- **Android**: `ui.theme.Theme.kt` with Acid/OLED colors and custom `BrutalistTypography`.
 
-### 2. Data Strategy: Offline-First & Reactive
-The app operates strictly without internet access, fulfilling the "Survival Toolkit" requirement.
-- **Local Assets**: JSON files (`lineup.json`, `poi.json`, `food.json`) are parsed from `assets/` using `kotlinx.serialization`.
-- **Persistence (Room Database)**:
-  - `AppDatabase.kt`: The central database instance.
-  - `UserDao.kt`: Handles CRUD for user progress and favorites.
-  - `UserProgress.kt`: Stores XP, current Rank, and a list of collected Stamps.
-  - `FavoriteArtist.kt`: Stores favorited artist IDs.
-- **Repositories**: Singleton repositories (`LineupRepository`, `POIRepository`) manage the abstraction between local JSON and the UI.
-- **ViewModels**: Every major screen now has a corresponding `ViewModel` (e.g., `DiscoverViewModel`, `PassportViewModel`) providing reactive `StateFlow` streams.
+### 2. Data Strategy: Shared Offline-First Source
+- **Source of Truth**: `src/data/lineup.json` is the master file for both platforms.
+- **Sync Mechanism**: `sync.sh` bridges the web assets to the Android `assets/` folder.
+- **Persistence**:
+  - **Web**: LocalStorage / IndexedDB for user favorites and progress.
+  - **Android**: Room Database (`AppDatabase.kt`) for XP, Stamps, and Favorites.
 
 ---
 

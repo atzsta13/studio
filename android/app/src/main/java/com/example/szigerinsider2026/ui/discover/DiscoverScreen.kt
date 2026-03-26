@@ -333,20 +333,47 @@ fun DiscoverScreen(
                             }
                         }
                         
-                        Button(
-                            onClick = {
-                                haptic.mediumTap()
-                                serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(allArtists, favoritedIds)
-                            },
-                            modifier = Modifier.height(26.dp),
-                            colors = ButtonDefaults.buttonColors(containerColor = PrimaryMagenta),
-                            shape = RoundedCornerShape(6.dp),
-                            contentPadding = PaddingValues(horizontal = 8.dp)
-                        ) {
-                            Text("SHUFFLE", fontSize = 8.sp, fontWeight = FontWeight.Black)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Button(
+                                onClick = {
+                                    haptic.successBurst()
+                                    navController?.navigate("speed_discovery")
+                                },
+                                modifier = Modifier.height(26.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = ToxicGreen),
+                                shape = RoundedCornerShape(6.dp),
+                                contentPadding = PaddingValues(horizontal = 8.dp)
+                            ) {
+                                Icon(Icons.Default.Zap, contentDescription = null, modifier = Modifier.size(12.dp), tint = Color.Black)
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text("SPEED", fontSize = 8.sp, fontWeight = FontWeight.Black, color = Color.Black)
+                            }
+
+                            Button(
+                                onClick = {
+                                    haptic.mediumTap()
+                                    serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(allArtists, favoritedIds)
+                                },
+                                modifier = Modifier.height(26.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = PrimaryMagenta),
+                                shape = RoundedCornerShape(6.dp),
+                                contentPadding = PaddingValues(horizontal = 8.dp)
+                            ) {
+                                Text("SHUFFLE", fontSize = 8.sp, fontWeight = FontWeight.Black)
+                            }
                         }
                     }
                 }
+            }
+
+            item(span = { GridItemSpan(2) }) {
+                TagCloud(
+                    artists = allArtists,
+                    selectedGenre = selectedGenre,
+                    onGenreSelect = { discoverViewModel.selectGenre(it) },
+                    selectedVibe = selectedVibe,
+                    onVibeSelect = { discoverViewModel.selectVibe(it) }
+                )
             }
 
             if (isLoading) {

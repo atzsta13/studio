@@ -17,7 +17,9 @@ data class Artist(
     val description: String? = null,
     val imageUrl: String? = null,
     val vibes: List<String> = emptyList(),
-    val isHeadliner: Boolean = false
+    val isHeadliner: Boolean = false,
+    val returningHero: Boolean = false,
+    val lastYearStage: String? = null
 ) {
     val spotifyId: String?
         get() = socials?.spotify

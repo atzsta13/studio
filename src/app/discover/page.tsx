@@ -19,6 +19,7 @@ import {
   X,
   LayoutGrid,
   Shuffle,
+  Zap,
 } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -39,6 +40,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
 import { SerendipityModal } from '@/components/discover/SerendipityModal';
+import { TagCloud } from '@/components/discover/tag-cloud';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
 
@@ -59,7 +61,8 @@ function loadSeenIds(): Set<string> {
 const allArtists2026 = (lineup as any[]).map(a => ({
   ...a,
   vibes: a.vibes || [],
-})) as (LineupItem & { vibes: string[]; isHeadliner?: boolean })[];
+  returningHero: !!a.returningHero,
+})) as (LineupItem & { vibes: string[]; isHeadliner?: boolean; returningHero?: boolean; lastYearStage?: string })[];
 
 const allArtists2025 = (lineup2025 as any[]).map(a => ({
   ...a,
@@ -273,8 +276,13 @@ export default function DiscoverPage() {
 
             <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
               <div className="flex flex-col gap-1.5">
+                {artist.returningHero && (
+                  <Badge className="bg-[var(--acid-yellow)] text-black font-black italic border-none text-[8px] py-0 px-2 rounded-sm w-fit">
+                    RETURNING HERO
+                  </Badge>
+                )}
                 {artist.day && (
-                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[8px] font-black uppercase tracking-[0.2em] backdrop-blur-3xl px-2.5 py-1 rounded-full">
+                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[8px] font-black uppercase tracking-[0.2em] backdrop-blur-3xl px-2.5 py-1 rounded-full w-fit">
                     {artist.day}
                   </Badge>
                 )}
@@ -426,6 +434,16 @@ export default function DiscoverPage() {
               <Shuffle className="h-6 w-6" />
               SURPRISE ME
             </button>
+
+            {/* Speed Discovery */}
+            <Link href="/discover/speed">
+              <button
+                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-white hover:bg-zinc-200 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-white/10 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <Zap className="h-6 w-6 fill-black" />
+                SPEED DISCOVERY
+              </button>
+            </Link>
 
             <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#FF00FF] hover:bg-[#FF33FF] text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#FF00FF]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
               <Sparkles className="h-6 w-6" />
@@ -602,6 +620,14 @@ export default function DiscoverPage() {
           </section>
         );
       })()}
+
+      <TagCloud
+        artists={allArtists}
+        selectedGenre={selectedGenre}
+        onGenreSelect={setSelectedGenre}
+        selectedVibe={selectedVibe}
+        onVibeSelect={handleVibeSelect}
+      />
 
       <div className="min-h-[600px]">
         {viewMode === 'ai' && aiResult && (

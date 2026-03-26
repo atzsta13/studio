@@ -35,6 +35,8 @@ import com.example.szigerinsider2026.ui.theme.TextMuted
 import com.example.szigerinsider2026.ui.home.HomeScreen
 import com.example.szigerinsider2026.ui.discover.DiscoverScreen
 import com.example.szigerinsider2026.ui.discover.DiscoverViewModel
+import com.example.szigerinsider2026.ui.discover.ArtistViewModel
+import com.example.szigerinsider2026.ui.discover.SpeedDiscoveryScreen
 import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
@@ -103,6 +105,7 @@ fun AppNavigation(
         && currentRoute != "highlights"
         && currentRoute != "food"
         && currentRoute != "packing_list"
+        && currentRoute != "speed_discovery"
 
     Scaffold(
         bottomBar = {
@@ -183,6 +186,33 @@ fun AppNavigation(
                         navController.previousBackStackEntry?.savedStateHandle?.set("filter_vibe", vibe)
                         navController.popBackStack(Screen.Discover.route, false)
                     }
+                )
+            }
+            composable("speed_discovery") {
+                val discoverViewModel: DiscoverViewModel = viewModel(
+                    factory = object : ViewModelProvider.Factory {
+                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                            return DiscoverViewModel(LineupRepository(context), context) as T
+                        }
+                    }
+                )
+                val artistViewModel: ArtistViewModel = viewModel(
+                    factory = object : ViewModelProvider.Factory {
+                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                            val db = com.example.szigerinsider2026.data.local.AppDatabase.getDatabase(context)
+                            return ArtistViewModel(db.userDao()) as T
+                        }
+                    }
+                )
+                val artists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
+                val favorites by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
+                
+                SpeedDiscoveryScreen(
+                    artists = artists,
+                    favoriteIds = favorites,
+                    onToggleFavorite = { artistViewModel.toggleFavorite(it) },
+                    onArtistClick = { id -> navController.navigate("artist/$id") },
+                    onBack = { navController.popBackStack() }
                 )
             }
             composable("vibe_quiz") {

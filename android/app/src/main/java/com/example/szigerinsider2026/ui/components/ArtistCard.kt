@@ -186,8 +186,27 @@ fun ArtistCard(
                     )
 
                     // Overlays: Day Badge
-                    if (artist.day != null) {
-                        Box(modifier = Modifier.padding(16.dp)) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        if (artist.returningHero) {
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(4.dp))
+                                    .background(AcidYellow)
+                                    .padding(horizontal = 8.dp, vertical = 2.dp)
+                            ) {
+                                Text(
+                                    text = "RETURNING HERO",
+                                    color = Color.Black,
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Black,
+                                    fontStyle = FontStyle.Italic
+                                )
+                            }
+                        }
+                        if (artist.day != null) {
                             BrutalistBadge(text = artist.day.uppercase(), color = Color.White)
                         }
                     }

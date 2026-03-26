@@ -32,7 +32,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "2",
@@ -65,7 +66,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "3",
@@ -97,7 +99,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "4",
@@ -130,7 +133,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "5",
@@ -172,7 +176,8 @@
       "Party",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "6",
@@ -206,7 +211,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "7",
@@ -241,7 +247,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "8",
@@ -276,7 +283,9 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "The Buzz"
   },
   {
     "id": "9",
@@ -311,7 +320,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "10",
@@ -345,7 +355,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "11",
@@ -380,7 +391,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "12",
@@ -415,7 +427,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "13",
@@ -450,7 +463,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "14",
@@ -485,7 +499,8 @@
       "Dance",
       "Bold"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "15",
@@ -519,7 +534,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "16",
@@ -553,7 +569,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "17",
@@ -591,7 +608,8 @@
       "Feel-good",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "18",
@@ -626,7 +644,8 @@
       "Moshpit",
       "Rebellious"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "19",
@@ -658,7 +677,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "20",
@@ -690,7 +710,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "21",
@@ -724,7 +745,9 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "The Buzz"
   },
   {
     "id": "22",
@@ -758,7 +781,8 @@
       "Moshpit",
       "Live Power"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "23",
@@ -792,7 +816,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "24",
@@ -826,7 +851,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "25",
@@ -858,7 +884,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "26",
@@ -888,7 +915,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "27",
@@ -920,7 +948,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "28",
@@ -956,7 +985,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "29",
@@ -992,7 +1022,8 @@
       "Groovy",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "30",
@@ -1027,7 +1058,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "31",
@@ -1061,7 +1093,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "32",
@@ -1094,7 +1127,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "33",
@@ -1125,7 +1159,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "34",
@@ -1156,7 +1191,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "35",
@@ -1188,7 +1224,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "36",
@@ -1220,7 +1257,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "37",
@@ -1256,7 +1294,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "38",
@@ -1288,7 +1327,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "39",
@@ -1319,7 +1359,9 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "Revolut Stage"
   },
   {
     "id": "40",
@@ -1353,7 +1395,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "41",
@@ -1385,7 +1428,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "42",
@@ -1425,7 +1469,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "43",
@@ -1460,7 +1505,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "44",
@@ -1494,7 +1540,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "45",
@@ -1529,7 +1576,8 @@
       "High Energy",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "46",
@@ -1566,7 +1614,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "47",
@@ -1600,7 +1649,8 @@
       "Dance",
       "Summer"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "48",
@@ -1636,7 +1686,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "49",
@@ -1665,7 +1716,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "50",
@@ -1703,7 +1755,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "51",
@@ -1738,7 +1791,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "52",
@@ -1772,7 +1826,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "53",
@@ -1810,7 +1865,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "54",
@@ -1845,7 +1901,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "55",
@@ -1879,7 +1936,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "56",
@@ -1916,7 +1974,8 @@
       "Sing-along",
       "Emotional"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "57",
@@ -1950,7 +2009,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "58",
@@ -1988,7 +2048,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "59",
@@ -2020,7 +2081,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "60",
@@ -2054,7 +2116,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "61",
@@ -2086,7 +2149,8 @@
       "High Energy",
       "Anthemic"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "62",
@@ -2116,7 +2180,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "63",
@@ -2152,7 +2217,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "64",
@@ -2187,7 +2253,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "65",
@@ -2218,7 +2285,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "66",
@@ -2250,7 +2318,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "67",
@@ -2284,7 +2353,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "68",
@@ -2314,7 +2384,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "69",
@@ -2349,7 +2420,9 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "The Buzz"
   },
   {
     "id": "70",
@@ -2381,7 +2454,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "71",
@@ -2414,7 +2488,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "72",
@@ -2449,7 +2524,8 @@
       "Moshpit",
       "Rebellious"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "73",
@@ -2485,7 +2561,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "74",
@@ -2516,7 +2593,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "75",
@@ -2556,7 +2634,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "76",
@@ -2587,7 +2666,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "77",
@@ -2624,7 +2704,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "78",
@@ -2658,7 +2739,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "79",
@@ -2692,7 +2774,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "80",
@@ -2727,7 +2810,9 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "Jukebox"
   },
   {
     "id": "81",
@@ -2761,7 +2846,8 @@
       "Moshpit",
       "Rebellious"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "82",
@@ -2795,7 +2881,9 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "Jukebox"
   },
   {
     "id": "83",
@@ -2833,7 +2921,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "84",
@@ -2866,7 +2955,8 @@
       "Sing-along",
       "Heartfelt"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "85",
@@ -2898,7 +2988,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "86",
@@ -2932,7 +3023,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "87",
@@ -2965,7 +3057,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "88",
@@ -2997,7 +3090,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "89",
@@ -3029,7 +3123,8 @@
       "Moshpit",
       "Aggressive"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "90",
@@ -3060,7 +3155,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "91",
@@ -3091,7 +3187,8 @@
       "High Energy",
       "Anthemic"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "92",
@@ -3123,7 +3220,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "93",
@@ -3153,7 +3251,8 @@
     "vibes": [
       "Explore"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "94",
@@ -3184,7 +3283,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "95",
@@ -3217,7 +3317,9 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "dropYard"
   },
   {
     "id": "96",
@@ -3251,7 +3353,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "97",
@@ -3282,7 +3385,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "98",
@@ -3318,7 +3422,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "99",
@@ -3350,7 +3455,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "100",
@@ -3385,7 +3491,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "101",
@@ -3422,7 +3529,8 @@
       "High Energy",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "102",
@@ -3453,7 +3561,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "103",
@@ -3484,7 +3593,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "104",
@@ -3519,7 +3629,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "105",
@@ -3553,7 +3664,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "106",
@@ -3587,7 +3699,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "107",
@@ -3623,7 +3736,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "108",
@@ -3661,7 +3775,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "109",
@@ -3695,7 +3810,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "110",
@@ -3728,7 +3844,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "111",
@@ -3760,7 +3877,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "112",
@@ -3794,7 +3912,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "113",
@@ -3829,7 +3948,9 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "The Buzz"
   },
   {
     "id": "114",
@@ -3862,7 +3983,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "115",
@@ -3896,7 +4018,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "116",
@@ -3930,7 +4053,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "117",
@@ -3966,7 +4090,8 @@
       "Dance",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "118",
@@ -3999,7 +4124,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "119",
@@ -4034,7 +4160,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "120",
@@ -4067,7 +4194,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "121",
@@ -4099,7 +4227,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "122",
@@ -4135,7 +4264,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "123",
@@ -4167,7 +4297,9 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": true,
+    "lastYearStage": "dropYard"
   },
   {
     "id": "124",
@@ -4200,7 +4332,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "125",
@@ -4233,7 +4366,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "126",
@@ -4267,7 +4401,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "127",
@@ -4310,7 +4445,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "128",
@@ -4343,7 +4479,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "129",
@@ -4378,7 +4515,8 @@
       "High Energy",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "130",
@@ -4414,7 +4552,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "131",
@@ -4449,7 +4588,8 @@
       "Chill",
       "Atmospheric"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "132",
@@ -4485,7 +4625,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "133",
@@ -4519,7 +4660,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "134",
@@ -4550,7 +4692,8 @@
       "High Energy",
       "Anthemic"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "135",
@@ -4585,7 +4728,8 @@
       "Trippy",
       "Chill"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "136",
@@ -4618,7 +4762,8 @@
       "High Energy",
       "Anthemic"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "137",
@@ -4651,7 +4796,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "138",
@@ -4686,7 +4832,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "139",
@@ -4725,7 +4872,8 @@
       "Hard",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "140",
@@ -4759,7 +4907,8 @@
       "Rave",
       "Hard"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "141",
@@ -4795,7 +4944,8 @@
       "Moshpit",
       "Genre-bending"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "142",
@@ -4829,7 +4979,8 @@
       "Rave",
       "Iconic"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "143",
@@ -4864,7 +5015,8 @@
       "Rave",
       "Groovy"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "144",
@@ -4896,7 +5048,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "145",
@@ -4928,7 +5081,8 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "146",
@@ -4960,7 +5114,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "147",
@@ -4999,7 +5154,8 @@
       "Unique",
       "Live Band"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "148",
@@ -5031,7 +5187,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "149",
@@ -5064,7 +5221,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "150",
@@ -5096,7 +5254,8 @@
       "Sing-along",
       "Feel-good"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "returningHero": false
   },
   {
     "id": "151",
@@ -5130,7 +5289,8 @@
       "Flow",
       "Party"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "152",
@@ -5165,6 +5325,7 @@
       "Dance",
       "Rave"
     ],
-    "isHeadliner": false
+    "isHeadliner": false,
+    "returningHero": false
   }
 ]

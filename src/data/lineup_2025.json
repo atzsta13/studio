@@ -6,17 +6,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T16:00:00Z",
     "endTime": "2025-08-06T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-2",
@@ -25,17 +16,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T17:30:00Z",
     "endTime": "2025-08-06T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-3",
@@ -44,17 +26,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T19:00:00Z",
     "endTime": "2025-08-06T20:15:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-4",
@@ -63,17 +36,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T20:15:00Z",
     "endTime": "2025-08-06T20:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-5",
@@ -82,17 +46,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T21:15:00Z",
     "endTime": "2025-08-06T22:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-6",
@@ -101,17 +56,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T16:00:00Z",
     "endTime": "2025-08-07T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-7",
@@ -120,17 +66,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T17:30:00Z",
     "endTime": "2025-08-07T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-8",
@@ -139,17 +76,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T18:30:00Z",
     "endTime": "2025-08-07T18:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-9",
@@ -158,17 +86,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T19:15:00Z",
     "endTime": "2025-08-07T20:20:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-10",
@@ -177,17 +96,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T21:15:00Z",
     "endTime": "2025-08-07T22:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-11",
@@ -196,17 +106,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T16:00:00Z",
     "endTime": "2025-08-08T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-12",
@@ -215,17 +116,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T17:30:00Z",
     "endTime": "2025-08-08T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-13",
@@ -234,17 +126,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T19:00:00Z",
     "endTime": "2025-08-08T20:15:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-14",
@@ -253,17 +136,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T20:15:00Z",
     "endTime": "2025-08-08T20:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-15",
@@ -272,17 +146,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T21:15:00Z",
     "endTime": "2025-08-08T22:25:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-16",
@@ -291,17 +156,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T16:00:00Z",
     "endTime": "2025-08-09T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-17",
@@ -310,17 +166,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T17:30:00Z",
     "endTime": "2025-08-09T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-18",
@@ -329,17 +176,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T18:30:00Z",
     "endTime": "2025-08-09T18:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-19",
@@ -348,17 +186,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T19:15:00Z",
     "endTime": "2025-08-09T20:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-20",
@@ -367,17 +196,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T21:15:00Z",
     "endTime": "2025-08-09T22:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-21",
@@ -386,17 +206,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T16:00:00Z",
     "endTime": "2025-08-10T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-22",
@@ -405,17 +216,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T17:30:00Z",
     "endTime": "2025-08-10T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-23",
@@ -424,17 +226,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T18:30:00Z",
     "endTime": "2025-08-10T18:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-24",
@@ -443,17 +236,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T19:15:00Z",
     "endTime": "2025-08-10T20:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-25",
@@ -462,17 +246,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T21:15:00Z",
     "endTime": "2025-08-10T22:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-26",
@@ -481,17 +256,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
     "endTime": "2025-08-11T17:00:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-27",
@@ -500,17 +266,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T17:30:00Z",
     "endTime": "2025-08-11T18:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-28",
@@ -519,17 +276,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T19:15:00Z",
     "endTime": "2025-08-11T20:15:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-29",
@@ -538,17 +286,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T20:15:00Z",
     "endTime": "2025-08-11T20:30:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-30",
@@ -557,17 +296,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T21:15:00Z",
     "endTime": "2025-08-11T22:45:00Z",
-    "genres": [
-      "MUSIC",
-      "POP",
-      "ROCK",
-      "HEADLINER"
-    ],
-    "vibes": [
-      "Anthemic",
-      "Sing-along",
-      "High Energy"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-31",
@@ -575,7 +305,9 @@
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
-    "endTime": "2025-08-06T18:00:00Z"
+    "endTime": "2025-08-06T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-32",
@@ -583,7 +315,9 @@
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:45:00Z",
-    "endTime": "2025-08-06T20:00:00Z"
+    "endTime": "2025-08-06T20:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-33",
@@ -591,7 +325,9 @@
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:45:00Z",
-    "endTime": "2025-08-06T22:00:00Z"
+    "endTime": "2025-08-06T22:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-34",
@@ -599,23 +335,29 @@
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
-    "endTime": "2025-08-06T23:45:00Z"
+    "endTime": "2025-08-06T23:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-35",
     "artist": "Empire of the Sun",
     "stage": "Revolut Stage",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:30:00Z",
-    "endTime": "2025-08-07T01:45:00Z"
+    "startTime": "2025-08-06T00:30:00Z",
+    "endTime": "2025-08-06T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-36",
     "artist": "The Dare",
     "stage": "Revolut Stage",
     "day": "Wednesday",
-    "startTime": "2025-08-07T02:10:00Z",
-    "endTime": "2025-08-07T03:10:00Z"
+    "startTime": "2025-08-06T02:10:00Z",
+    "endTime": "2025-08-06T03:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-37",
@@ -623,7 +365,9 @@
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
-    "endTime": "2025-08-07T18:00:00Z"
+    "endTime": "2025-08-07T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-38",
@@ -631,7 +375,9 @@
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T18:45:00Z",
-    "endTime": "2025-08-07T20:00:00Z"
+    "endTime": "2025-08-07T20:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-39",
@@ -639,7 +385,9 @@
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T20:45:00Z",
-    "endTime": "2025-08-07T22:00:00Z"
+    "endTime": "2025-08-07T22:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-40",
@@ -647,15 +395,19 @@
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T22:45:00Z",
-    "endTime": "2025-08-08T00:00:00Z"
+    "endTime": "2025-08-08T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-41",
     "artist": "Justice",
     "stage": "Revolut Stage",
     "day": "Thursday",
-    "startTime": "2025-08-08T01:00:00Z",
-    "endTime": "2025-08-08T02:30:00Z"
+    "startTime": "2025-08-07T01:00:00Z",
+    "endTime": "2025-08-07T02:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-42",
@@ -663,7 +415,9 @@
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T17:00:00Z",
-    "endTime": "2025-08-08T18:00:00Z"
+    "endTime": "2025-08-08T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-43",
@@ -671,7 +425,9 @@
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T18:45:00Z",
-    "endTime": "2025-08-08T20:00:00Z"
+    "endTime": "2025-08-08T20:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-44",
@@ -679,7 +435,9 @@
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T20:45:00Z",
-    "endTime": "2025-08-08T22:00:00Z"
+    "endTime": "2025-08-08T22:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-45",
@@ -687,23 +445,29 @@
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T22:45:00Z",
-    "endTime": "2025-08-09T00:00:00Z"
+    "endTime": "2025-08-09T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-46",
     "artist": "Caribou",
     "stage": "Revolut Stage",
     "day": "Friday",
-    "startTime": "2025-08-09T00:30:00Z",
-    "endTime": "2025-08-09T01:45:00Z"
+    "startTime": "2025-08-08T00:30:00Z",
+    "endTime": "2025-08-08T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-47",
     "artist": "Ahadadream",
     "stage": "Revolut Stage",
     "day": "Friday",
-    "startTime": "2025-08-09T02:00:00Z",
-    "endTime": "2025-08-09T03:30:00Z"
+    "startTime": "2025-08-08T02:00:00Z",
+    "endTime": "2025-08-08T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-48",
@@ -711,7 +475,9 @@
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T17:00:00Z",
-    "endTime": "2025-08-09T18:00:00Z"
+    "endTime": "2025-08-09T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-49",
@@ -719,7 +485,9 @@
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T18:45:00Z",
-    "endTime": "2025-08-09T20:00:00Z"
+    "endTime": "2025-08-09T20:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-50",
@@ -727,7 +495,9 @@
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T20:45:00Z",
-    "endTime": "2025-08-09T22:00:00Z"
+    "endTime": "2025-08-09T22:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-51",
@@ -735,23 +505,29 @@
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T22:45:00Z",
-    "endTime": "2025-08-10T00:00:00Z"
+    "endTime": "2025-08-10T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-52",
     "artist": "Elderbrook",
     "stage": "Revolut Stage",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:30:00Z",
-    "endTime": "2025-08-10T01:45:00Z"
+    "startTime": "2025-08-09T00:30:00Z",
+    "endTime": "2025-08-09T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-53",
     "artist": "Mindchatter",
     "stage": "Revolut Stage",
     "day": "Saturday",
-    "startTime": "2025-08-10T02:00:00Z",
-    "endTime": "2025-08-10T03:00:00Z"
+    "startTime": "2025-08-09T02:00:00Z",
+    "endTime": "2025-08-09T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-54",
@@ -759,7 +535,9 @@
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T17:00:00Z",
-    "endTime": "2025-08-10T18:00:00Z"
+    "endTime": "2025-08-10T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-55",
@@ -767,7 +545,9 @@
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T18:45:00Z",
-    "endTime": "2025-08-10T20:00:00Z"
+    "endTime": "2025-08-10T20:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-56",
@@ -775,7 +555,9 @@
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T20:45:00Z",
-    "endTime": "2025-08-10T21:45:00Z"
+    "endTime": "2025-08-10T21:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-57",
@@ -783,23 +565,29 @@
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T22:45:00Z",
-    "endTime": "2025-08-10T23:45:00Z"
+    "endTime": "2025-08-10T23:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-58",
     "artist": "Rival Consoles",
     "stage": "Revolut Stage",
     "day": "Sunday",
-    "startTime": "2025-08-11T00:30:00Z",
-    "endTime": "2025-08-11T01:45:00Z"
+    "startTime": "2025-08-10T00:30:00Z",
+    "endTime": "2025-08-10T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-59",
     "artist": "Ela Minus",
     "stage": "Revolut Stage",
     "day": "Sunday",
-    "startTime": "2025-08-11T02:00:00Z",
-    "endTime": "2025-08-11T03:00:00Z"
+    "startTime": "2025-08-10T02:00:00Z",
+    "endTime": "2025-08-10T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-60",
@@ -807,7 +595,9 @@
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
-    "endTime": "2025-08-11T17:45:00Z"
+    "endTime": "2025-08-11T17:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-61",
@@ -815,7 +605,9 @@
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T18:15:00Z",
-    "endTime": "2025-08-11T19:15:00Z"
+    "endTime": "2025-08-11T19:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-62",
@@ -823,7 +615,9 @@
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T20:00:00Z",
-    "endTime": "2025-08-11T21:15:00Z"
+    "endTime": "2025-08-11T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-63",
@@ -831,23 +625,29 @@
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T22:45:00Z",
-    "endTime": "2025-08-11T23:45:00Z"
+    "endTime": "2025-08-11T23:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-64",
     "artist": "Brutalismus 3000",
     "stage": "Revolut Stage",
     "day": "Monday",
-    "startTime": "2025-08-12T00:30:00Z",
-    "endTime": "2025-08-12T01:45:00Z"
+    "startTime": "2025-08-11T00:30:00Z",
+    "endTime": "2025-08-11T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-65",
     "artist": "LSDXOXO",
     "stage": "Revolut Stage",
     "day": "Monday",
-    "startTime": "2025-08-12T02:00:00Z",
-    "endTime": "2025-08-12T03:30:00Z"
+    "startTime": "2025-08-11T02:00:00Z",
+    "endTime": "2025-08-11T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-66",
@@ -856,16 +656,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
     "endTime": "2025-08-06T23:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-67",
@@ -874,70 +666,38 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T23:45:00Z",
     "endTime": "2025-08-07T01:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-68",
     "artist": "Steve Angello",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
-    "startTime": "2025-08-07T01:15:00Z",
-    "endTime": "2025-08-07T02:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T01:15:00Z",
+    "endTime": "2025-08-06T02:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-69",
     "artist": "Lavern",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
-    "startTime": "2025-08-07T02:45:00Z",
-    "endTime": "2025-08-07T03:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T02:45:00Z",
+    "endTime": "2025-08-06T03:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-70",
     "artist": "StadiumX",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
-    "startTime": "2025-08-07T03:45:00Z",
-    "endTime": "2025-08-07T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T03:45:00Z",
+    "endTime": "2025-08-06T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-71",
@@ -946,16 +706,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T22:00:00Z",
     "endTime": "2025-08-07T23:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-72",
@@ -964,70 +716,38 @@
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
     "endTime": "2025-08-08T00:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-73",
     "artist": "Alex Wann",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:30:00Z",
-    "endTime": "2025-08-08T01:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T00:30:00Z",
+    "endTime": "2025-08-07T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-74",
     "artist": "Massano",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
-    "startTime": "2025-08-08T01:45:00Z",
-    "endTime": "2025-08-08T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T01:45:00Z",
+    "endTime": "2025-08-07T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-75",
     "artist": "Boris Brejcha",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
-    "startTime": "2025-08-08T03:00:00Z",
-    "endTime": "2025-08-08T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T03:00:00Z",
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-76",
@@ -1036,16 +756,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T22:00:00Z",
     "endTime": "2025-08-08T23:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-77",
@@ -1054,70 +766,38 @@
     "day": "Friday",
     "startTime": "2025-08-08T23:30:00Z",
     "endTime": "2025-08-09T01:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-78",
     "artist": "Len Faki",
     "stage": "Bolt Party Arena",
     "day": "Friday",
-    "startTime": "2025-08-09T01:00:00Z",
-    "endTime": "2025-08-09T02:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T01:00:00Z",
+    "endTime": "2025-08-08T02:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-79",
     "artist": "Blawan",
     "stage": "Bolt Party Arena",
     "day": "Friday",
-    "startTime": "2025-08-09T02:30:00Z",
-    "endTime": "2025-08-09T04:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T02:30:00Z",
+    "endTime": "2025-08-08T04:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-80",
     "artist": "Amelie Lens",
     "stage": "Bolt Party Arena",
     "day": "Friday",
-    "startTime": "2025-08-09T04:15:00Z",
-    "endTime": "2025-08-09T06:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T04:15:00Z",
+    "endTime": "2025-08-08T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-81",
@@ -1126,16 +806,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T22:00:00Z",
     "endTime": "2025-08-09T23:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-82",
@@ -1144,106 +816,58 @@
     "day": "Saturday",
     "startTime": "2025-08-09T23:00:00Z",
     "endTime": "2025-08-10T00:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-83",
     "artist": "Korolova",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:00:00Z",
-    "endTime": "2025-08-10T01:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T00:00:00Z",
+    "endTime": "2025-08-09T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-84",
     "artist": "Agents Of Time",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
-    "startTime": "2025-08-10T01:00:00Z",
-    "endTime": "2025-08-10T02:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T01:00:00Z",
+    "endTime": "2025-08-09T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-85",
     "artist": "Miss Monique",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
-    "startTime": "2025-08-10T02:00:00Z",
-    "endTime": "2025-08-10T03:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T02:00:00Z",
+    "endTime": "2025-08-09T03:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-86",
     "artist": "Mathame",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
-    "startTime": "2025-08-10T03:15:00Z",
-    "endTime": "2025-08-10T04:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T03:15:00Z",
+    "endTime": "2025-08-09T04:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-87",
     "artist": "Adriatique",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
-    "startTime": "2025-08-10T04:30:00Z",
-    "endTime": "2025-08-10T06:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T04:30:00Z",
+    "endTime": "2025-08-09T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-88",
@@ -1252,16 +876,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
     "endTime": "2025-08-10T23:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-89",
@@ -1270,70 +886,38 @@
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
     "endTime": "2025-08-11T01:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-90",
     "artist": "Armin Van Buuren",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
-    "startTime": "2025-08-11T01:00:00Z",
-    "endTime": "2025-08-11T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-10T01:00:00Z",
+    "endTime": "2025-08-10T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-91",
     "artist": "Vini Vici",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
-    "startTime": "2025-08-11T03:00:00Z",
-    "endTime": "2025-08-11T04:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-10T03:00:00Z",
+    "endTime": "2025-08-10T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-92",
     "artist": "Maddix",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
-    "startTime": "2025-08-11T04:00:00Z",
-    "endTime": "2025-08-11T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-10T04:00:00Z",
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-93",
@@ -1342,16 +926,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T22:00:00Z",
     "endTime": "2025-08-11T23:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-94",
@@ -1360,88 +936,48 @@
     "day": "Monday",
     "startTime": "2025-08-11T23:00:00Z",
     "endTime": "2025-08-12T00:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-95",
     "artist": "Hedex B2B Bou + Eksman & B Live 247",
     "stage": "Bolt Party Arena",
     "day": "Monday",
-    "startTime": "2025-08-12T00:00:00Z",
-    "endTime": "2025-08-12T01:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T00:00:00Z",
+    "endTime": "2025-08-11T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-96",
     "artist": "Subtronics",
     "stage": "Bolt Party Arena",
     "day": "Monday",
-    "startTime": "2025-08-12T01:30:00Z",
-    "endTime": "2025-08-12T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T01:30:00Z",
+    "endTime": "2025-08-11T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-97",
     "artist": "Eptic b2b Space Laces",
     "stage": "Bolt Party Arena",
     "day": "Monday",
-    "startTime": "2025-08-12T03:00:00Z",
-    "endTime": "2025-08-12T04:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T03:00:00Z",
+    "endTime": "2025-08-11T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-98",
     "artist": "HOL!",
     "stage": "Bolt Party Arena",
     "day": "Monday",
-    "startTime": "2025-08-12T04:00:00Z",
-    "endTime": "2025-08-12T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T04:00:00Z",
+    "endTime": "2025-08-11T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-99",
@@ -1450,16 +986,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T16:00:00Z",
     "endTime": "2025-08-06T17:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-100",
@@ -1468,16 +996,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
     "endTime": "2025-08-06T18:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-101",
@@ -1486,16 +1006,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T18:30:00Z",
     "endTime": "2025-08-06T20:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-102",
@@ -1504,16 +1016,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T20:00:00Z",
     "endTime": "2025-08-06T21:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-103",
@@ -1522,16 +1026,8 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T21:30:00Z",
     "endTime": "2025-08-06T23:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-104",
@@ -1540,70 +1036,38 @@
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
     "endTime": "2025-08-07T00:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-105",
     "artist": "999999999",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:30:00Z",
-    "endTime": "2025-08-07T02:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T00:30:00Z",
+    "endTime": "2025-08-06T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-106",
     "artist": "Fatima Hajji",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
-    "startTime": "2025-08-07T02:00:00Z",
-    "endTime": "2025-08-07T03:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T02:00:00Z",
+    "endTime": "2025-08-06T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-107",
     "artist": "Oguz",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
-    "startTime": "2025-08-07T03:30:00Z",
-    "endTime": "2025-08-07T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-06T03:30:00Z",
+    "endTime": "2025-08-06T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-108",
@@ -1612,16 +1076,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T16:00:00Z",
     "endTime": "2025-08-07T17:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-109",
@@ -1630,16 +1086,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
     "endTime": "2025-08-07T18:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-110",
@@ -1648,16 +1096,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T18:00:00Z",
     "endTime": "2025-08-07T19:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-111",
@@ -1666,16 +1106,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T19:15:00Z",
     "endTime": "2025-08-07T20:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-112",
@@ -1684,16 +1116,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T20:30:00Z",
     "endTime": "2025-08-07T21:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-113",
@@ -1702,16 +1126,8 @@
     "day": "Thursday",
     "startTime": "2025-08-07T21:45:00Z",
     "endTime": "2025-08-07T23:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-114",
@@ -1720,70 +1136,38 @@
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
     "endTime": "2025-08-08T00:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-115",
     "artist": "Pegassi",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:45:00Z",
-    "endTime": "2025-08-08T02:15:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T00:45:00Z",
+    "endTime": "2025-08-07T02:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-116",
     "artist": "horsegiirL",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
-    "startTime": "2025-08-08T02:15:00Z",
-    "endTime": "2025-08-08T03:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T02:15:00Z",
+    "endTime": "2025-08-07T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-117",
     "artist": "Cera Khin",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
-    "startTime": "2025-08-08T03:30:00Z",
-    "endTime": "2025-08-08T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-07T03:30:00Z",
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-118",
@@ -1792,16 +1176,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T16:00:00Z",
     "endTime": "2025-08-08T17:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-119",
@@ -1810,16 +1186,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T17:00:00Z",
     "endTime": "2025-08-08T18:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-120",
@@ -1828,16 +1196,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T18:00:00Z",
     "endTime": "2025-08-08T19:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-121",
@@ -1846,16 +1206,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T19:30:00Z",
     "endTime": "2025-08-08T21:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-122",
@@ -1864,16 +1216,8 @@
     "day": "Friday",
     "startTime": "2025-08-08T21:00:00Z",
     "endTime": "2025-08-08T22:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-123",
@@ -1882,88 +1226,48 @@
     "day": "Friday",
     "startTime": "2025-08-08T22:30:00Z",
     "endTime": "2025-08-09T00:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-124",
     "artist": "Carlita",
     "stage": "Yettel Colosseum",
     "day": "Friday",
-    "startTime": "2025-08-09T00:00:00Z",
-    "endTime": "2025-08-09T01:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T00:00:00Z",
+    "endTime": "2025-08-08T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-125",
     "artist": "Josh Baker",
     "stage": "Yettel Colosseum",
     "day": "Friday",
-    "startTime": "2025-08-09T01:30:00Z",
-    "endTime": "2025-08-09T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T01:30:00Z",
+    "endTime": "2025-08-08T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-126",
     "artist": "Hot Since 82",
     "stage": "Yettel Colosseum",
     "day": "Friday",
-    "startTime": "2025-08-09T03:00:00Z",
-    "endTime": "2025-08-09T04:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T03:00:00Z",
+    "endTime": "2025-08-08T04:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-127",
     "artist": "Francis Mercier",
     "stage": "Yettel Colosseum",
     "day": "Friday",
-    "startTime": "2025-08-09T04:30:00Z",
-    "endTime": "2025-08-09T06:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-08T04:30:00Z",
+    "endTime": "2025-08-08T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-128",
@@ -1972,16 +1276,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T16:00:00Z",
     "endTime": "2025-08-09T17:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-129",
@@ -1990,16 +1286,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T17:00:00Z",
     "endTime": "2025-08-09T18:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-130",
@@ -2008,16 +1296,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T18:00:00Z",
     "endTime": "2025-08-09T19:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-131",
@@ -2026,16 +1306,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T19:30:00Z",
     "endTime": "2025-08-09T21:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-132",
@@ -2044,16 +1316,8 @@
     "day": "Saturday",
     "startTime": "2025-08-09T21:00:00Z",
     "endTime": "2025-08-09T22:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-133",
@@ -2062,88 +1326,48 @@
     "day": "Saturday",
     "startTime": "2025-08-09T22:30:00Z",
     "endTime": "2025-08-10T00:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-134",
     "artist": "Bedouin",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:00:00Z",
-    "endTime": "2025-08-10T01:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T00:00:00Z",
+    "endTime": "2025-08-09T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-135",
     "artist": "Âme DJ Set b2b Trikk",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
-    "startTime": "2025-08-10T01:30:00Z",
-    "endTime": "2025-08-10T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T01:30:00Z",
+    "endTime": "2025-08-09T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-136",
     "artist": "Kölsch",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
-    "startTime": "2025-08-10T03:00:00Z",
-    "endTime": "2025-08-10T04:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T03:00:00Z",
+    "endTime": "2025-08-09T04:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-137",
     "artist": "Âme Live",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
-    "startTime": "2025-08-10T04:30:00Z",
-    "endTime": "2025-08-10T06:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-09T04:30:00Z",
+    "endTime": "2025-08-09T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-138",
@@ -2152,16 +1376,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T16:00:00Z",
     "endTime": "2025-08-10T17:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-139",
@@ -2170,16 +1386,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T17:30:00Z",
     "endTime": "2025-08-10T19:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-140",
@@ -2188,16 +1396,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T19:00:00Z",
     "endTime": "2025-08-10T20:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-141",
@@ -2206,16 +1406,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T20:30:00Z",
     "endTime": "2025-08-10T22:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-142",
@@ -2224,16 +1416,8 @@
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
     "endTime": "2025-08-10T23:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-143",
@@ -2242,52 +1426,28 @@
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
     "endTime": "2025-08-11T01:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-144",
     "artist": "FJAAK",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
-    "startTime": "2025-08-11T01:00:00Z",
-    "endTime": "2025-08-11T03:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-10T01:00:00Z",
+    "endTime": "2025-08-10T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-145",
     "artist": "Chris Liebing",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
-    "startTime": "2025-08-11T03:00:00Z",
-    "endTime": "2025-08-11T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-10T03:00:00Z",
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-146",
@@ -2296,16 +1456,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
     "endTime": "2025-08-11T17:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-147",
@@ -2314,16 +1466,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
     "endTime": "2025-08-11T18:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-148",
@@ -2332,16 +1476,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T18:30:00Z",
     "endTime": "2025-08-11T20:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-149",
@@ -2350,16 +1486,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T20:00:00Z",
     "endTime": "2025-08-11T21:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-150",
@@ -2368,16 +1496,8 @@
     "day": "Monday",
     "startTime": "2025-08-11T21:30:00Z",
     "endTime": "2025-08-11T23:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-151",
@@ -2386,70 +1506,38 @@
     "day": "Monday",
     "startTime": "2025-08-11T23:00:00Z",
     "endTime": "2025-08-12T00:45:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-152",
     "artist": "Fatima Yamaha",
     "stage": "Yettel Colosseum",
     "day": "Monday",
-    "startTime": "2025-08-12T00:45:00Z",
-    "endTime": "2025-08-12T02:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T00:45:00Z",
+    "endTime": "2025-08-11T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-153",
     "artist": "The Blessed Madonna",
     "stage": "Yettel Colosseum",
     "day": "Monday",
-    "startTime": "2025-08-12T02:00:00Z",
-    "endTime": "2025-08-12T03:30:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T02:00:00Z",
+    "endTime": "2025-08-11T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-154",
     "artist": "Young Marco",
     "stage": "Yettel Colosseum",
     "day": "Monday",
-    "startTime": "2025-08-12T03:30:00Z",
-    "endTime": "2025-08-12T05:00:00Z",
-    "genres": [
-      "ELECTRONIC",
-      "TECHNO",
-      "DANCE"
-    ],
-    "vibes": [
-      "Rave",
-      "Dance",
-      "Hard"
-    ]
+    "startTime": "2025-08-11T03:30:00Z",
+    "endTime": "2025-08-11T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-155",
@@ -2457,31 +1545,39 @@
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
-    "endTime": "2025-08-07T00:30:00Z"
+    "endTime": "2025-08-07T00:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-156",
     "artist": "Franc Fala",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:30:00Z",
-    "endTime": "2025-08-07T02:00:00Z"
+    "startTime": "2025-08-06T00:30:00Z",
+    "endTime": "2025-08-06T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-157",
     "artist": "STRYV",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
-    "startTime": "2025-08-07T02:00:00Z",
-    "endTime": "2025-08-07T03:30:00Z"
+    "startTime": "2025-08-06T02:00:00Z",
+    "endTime": "2025-08-06T03:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-158",
     "artist": "dublon",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
-    "startTime": "2025-08-07T03:30:00Z",
-    "endTime": "2025-08-07T05:00:00Z"
+    "startTime": "2025-08-06T03:30:00Z",
+    "endTime": "2025-08-06T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-159",
@@ -2489,7 +1585,9 @@
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T22:00:00Z",
-    "endTime": "2025-08-07T23:15:00Z"
+    "endTime": "2025-08-07T23:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-160",
@@ -2497,39 +1595,49 @@
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
-    "endTime": "2025-08-08T00:30:00Z"
+    "endTime": "2025-08-08T00:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-161",
     "artist": "Villain",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:30:00Z",
-    "endTime": "2025-08-08T01:30:00Z"
+    "startTime": "2025-08-07T00:30:00Z",
+    "endTime": "2025-08-07T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-162",
     "artist": "Sound Rush",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
-    "startTime": "2025-08-08T01:30:00Z",
-    "endTime": "2025-08-08T02:45:00Z"
+    "startTime": "2025-08-07T01:30:00Z",
+    "endTime": "2025-08-07T02:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-163",
     "artist": "Zatox",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
-    "startTime": "2025-08-08T02:45:00Z",
-    "endTime": "2025-08-08T04:00:00Z"
+    "startTime": "2025-08-07T02:45:00Z",
+    "endTime": "2025-08-07T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-164",
     "artist": "Endymion",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
-    "startTime": "2025-08-08T04:00:00Z",
-    "endTime": "2025-08-08T05:00:00Z"
+    "startTime": "2025-08-07T04:00:00Z",
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-165",
@@ -2537,31 +1645,39 @@
     "stage": "The Club by Don Julio",
     "day": "Friday",
     "startTime": "2025-08-08T22:00:00Z",
-    "endTime": "2025-08-09T00:00:00Z"
+    "endTime": "2025-08-09T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-166",
     "artist": "DJ Seinfeld",
     "stage": "The Club by Don Julio",
     "day": "Friday",
-    "startTime": "2025-08-09T00:00:00Z",
-    "endTime": "2025-08-09T01:30:00Z"
+    "startTime": "2025-08-08T00:00:00Z",
+    "endTime": "2025-08-08T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-167",
     "artist": "Juicy Romance",
     "stage": "The Club by Don Julio",
     "day": "Friday",
-    "startTime": "2025-08-09T01:30:00Z",
-    "endTime": "2025-08-09T03:00:00Z"
+    "startTime": "2025-08-08T01:30:00Z",
+    "endTime": "2025-08-08T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-168",
     "artist": "Superstrings",
     "stage": "The Club by Don Julio",
     "day": "Friday",
-    "startTime": "2025-08-09T03:00:00Z",
-    "endTime": "2025-08-09T06:00:00Z"
+    "startTime": "2025-08-08T03:00:00Z",
+    "endTime": "2025-08-08T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-169",
@@ -2569,31 +1685,39 @@
     "stage": "The Club by Don Julio",
     "day": "Saturday",
     "startTime": "2025-08-09T22:00:00Z",
-    "endTime": "2025-08-10T02:30:00Z"
+    "endTime": "2025-08-10T02:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-170",
     "artist": "Raven",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
-    "startTime": "2025-08-10T02:30:00Z",
-    "endTime": "2025-08-10T04:00:00Z"
+    "startTime": "2025-08-09T02:30:00Z",
+    "endTime": "2025-08-09T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-171",
     "artist": "Kitti Kay",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
-    "startTime": "2025-08-10T04:00:00Z",
-    "endTime": "2025-08-10T05:00:00Z"
+    "startTime": "2025-08-09T04:00:00Z",
+    "endTime": "2025-08-09T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-172",
     "artist": "Jauri",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
-    "startTime": "2025-08-10T05:00:00Z",
-    "endTime": "2025-08-10T06:00:00Z"
+    "startTime": "2025-08-09T05:00:00Z",
+    "endTime": "2025-08-09T06:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-173",
@@ -2601,7 +1725,9 @@
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
-    "endTime": "2025-08-10T23:30:00Z"
+    "endTime": "2025-08-10T23:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-174",
@@ -2609,31 +1735,39 @@
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
-    "endTime": "2025-08-11T01:00:00Z"
+    "endTime": "2025-08-11T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-175",
     "artist": "DJ BORING",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
-    "startTime": "2025-08-11T01:00:00Z",
-    "endTime": "2025-08-11T02:30:00Z"
+    "startTime": "2025-08-10T01:00:00Z",
+    "endTime": "2025-08-10T02:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-176",
     "artist": "1-800 GIRLS",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
-    "startTime": "2025-08-11T02:30:00Z",
-    "endTime": "2025-08-11T04:00:00Z"
+    "startTime": "2025-08-10T02:30:00Z",
+    "endTime": "2025-08-10T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-177",
     "artist": "Hundred Sins (DJ set)",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
-    "startTime": "2025-08-11T04:00:00Z",
-    "endTime": "2025-08-11T05:00:00Z"
+    "startTime": "2025-08-10T04:00:00Z",
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-178",
@@ -2641,23 +1775,29 @@
     "stage": "The Club by Don Julio",
     "day": "Monday",
     "startTime": "2025-08-11T22:00:00Z",
-    "endTime": "2025-08-12T01:00:00Z"
+    "endTime": "2025-08-12T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-179",
     "artist": "Big Wett",
     "stage": "The Club by Don Julio",
     "day": "Monday",
-    "startTime": "2025-08-12T01:00:00Z",
-    "endTime": "2025-08-12T01:45:00Z"
+    "startTime": "2025-08-11T01:00:00Z",
+    "endTime": "2025-08-11T01:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-180",
     "artist": "Garçons",
     "stage": "The Club by Don Julio",
     "day": "Monday",
-    "startTime": "2025-08-12T01:45:00Z",
-    "endTime": "2025-08-12T05:00:00Z"
+    "startTime": "2025-08-11T01:45:00Z",
+    "endTime": "2025-08-11T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-181",
@@ -2665,7 +1805,9 @@
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
-    "endTime": "2025-08-06T19:30:00Z"
+    "endTime": "2025-08-06T19:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-182",
@@ -2673,7 +1815,9 @@
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:00:00Z",
-    "endTime": "2025-08-06T21:00:00Z"
+    "endTime": "2025-08-06T21:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-183",
@@ -2681,7 +1825,9 @@
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T21:00:00Z",
-    "endTime": "2025-08-06T22:00:00Z"
+    "endTime": "2025-08-06T22:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-184",
@@ -2689,7 +1835,9 @@
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
-    "endTime": "2025-08-07T05:00:00Z"
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-185",
@@ -2697,7 +1845,9 @@
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T11:30:00Z",
-    "endTime": "2025-08-07T15:00:00Z"
+    "endTime": "2025-08-07T15:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-186",
@@ -2705,7 +1855,9 @@
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
-    "endTime": "2025-08-07T19:30:00Z"
+    "endTime": "2025-08-07T19:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-187",
@@ -2713,7 +1865,9 @@
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T19:30:00Z",
-    "endTime": "2025-08-07T21:00:00Z"
+    "endTime": "2025-08-07T21:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-188",
@@ -2721,7 +1875,9 @@
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T21:00:00Z",
-    "endTime": "2025-08-08T05:00:00Z"
+    "endTime": "2025-08-08T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-189",
@@ -2729,7 +1885,9 @@
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T11:30:00Z",
-    "endTime": "2025-08-08T19:30:00Z"
+    "endTime": "2025-08-08T19:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-190",
@@ -2737,23 +1895,29 @@
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T19:30:00Z",
-    "endTime": "2025-08-09T00:00:00Z"
+    "endTime": "2025-08-09T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-191",
     "artist": "KBT Live",
     "stage": "Sziget Beach",
     "day": "Friday",
-    "startTime": "2025-08-09T00:00:00Z",
-    "endTime": "2025-08-09T01:00:00Z"
+    "startTime": "2025-08-08T00:00:00Z",
+    "endTime": "2025-08-08T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-192",
     "artist": "Budapest Calling : Nortio, Fury, George Jr.",
     "stage": "Sziget Beach",
     "day": "Friday",
-    "startTime": "2025-08-09T01:00:00Z",
-    "endTime": "2025-08-09T05:00:00Z"
+    "startTime": "2025-08-08T01:00:00Z",
+    "endTime": "2025-08-08T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-193",
@@ -2761,7 +1925,9 @@
     "stage": "Sziget Beach",
     "day": "Saturday",
     "startTime": "2025-08-09T11:30:00Z",
-    "endTime": "2025-08-10T05:00:00Z"
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-194",
@@ -2769,7 +1935,9 @@
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T11:30:00Z",
-    "endTime": "2025-08-10T14:30:00Z"
+    "endTime": "2025-08-10T14:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-195",
@@ -2777,7 +1945,9 @@
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T14:30:00Z",
-    "endTime": "2025-08-10T15:30:00Z"
+    "endTime": "2025-08-10T15:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-196",
@@ -2785,7 +1955,9 @@
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T15:30:00Z",
-    "endTime": "2025-08-10T17:00:00Z"
+    "endTime": "2025-08-10T17:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-197",
@@ -2793,7 +1965,9 @@
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T17:00:00Z",
-    "endTime": "2025-08-10T21:00:00Z"
+    "endTime": "2025-08-10T21:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-198",
@@ -2801,15 +1975,19 @@
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T21:00:00Z",
-    "endTime": "2025-08-11T00:00:00Z"
+    "endTime": "2025-08-11T00:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-199",
     "artist": "Populous",
     "stage": "Sziget Beach",
     "day": "Sunday",
-    "startTime": "2025-08-11T00:00:00Z",
-    "endTime": "2025-08-11T01:00:00Z"
+    "startTime": "2025-08-10T00:00:00Z",
+    "endTime": "2025-08-10T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-200",
@@ -2817,7 +1995,9 @@
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T11:30:00Z",
-    "endTime": "2025-08-11T16:00:00Z"
+    "endTime": "2025-08-11T16:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-201",
@@ -2825,7 +2005,9 @@
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
-    "endTime": "2025-08-11T17:00:00Z"
+    "endTime": "2025-08-11T17:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-202",
@@ -2833,7 +2015,9 @@
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
-    "endTime": "2025-08-11T18:00:00Z"
+    "endTime": "2025-08-11T18:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-203",
@@ -2841,7 +2025,9 @@
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T18:00:00Z",
-    "endTime": "2025-08-11T19:00:00Z"
+    "endTime": "2025-08-11T19:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-204",
@@ -2849,7 +2035,9 @@
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T19:00:00Z",
-    "endTime": "2025-08-12T02:00:00Z"
+    "endTime": "2025-08-12T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-205",
@@ -2857,7 +2045,9 @@
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:10:00Z",
-    "endTime": "2025-08-06T18:10:00Z"
+    "endTime": "2025-08-06T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-206",
@@ -2865,7 +2055,9 @@
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:40:00Z",
-    "endTime": "2025-08-06T19:40:00Z"
+    "endTime": "2025-08-06T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-207",
@@ -2873,7 +2065,9 @@
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:10:00Z",
-    "endTime": "2025-08-06T21:10:00Z"
+    "endTime": "2025-08-06T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-208",
@@ -2881,15 +2075,19 @@
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
-    "endTime": "2025-08-07T00:10:00Z"
+    "endTime": "2025-08-07T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-209",
     "artist": "Julien Granel",
     "stage": "The Buzz",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:40:00Z",
-    "endTime": "2025-08-07T01:40:00Z"
+    "startTime": "2025-08-06T00:40:00Z",
+    "endTime": "2025-08-06T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-210",
@@ -2897,7 +2095,9 @@
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T17:10:00Z",
-    "endTime": "2025-08-07T18:10:00Z"
+    "endTime": "2025-08-07T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-211",
@@ -2905,7 +2105,9 @@
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T18:40:00Z",
-    "endTime": "2025-08-07T19:40:00Z"
+    "endTime": "2025-08-07T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-212",
@@ -2913,7 +2115,9 @@
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T20:10:00Z",
-    "endTime": "2025-08-07T21:10:00Z"
+    "endTime": "2025-08-07T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-213",
@@ -2921,15 +2125,19 @@
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
-    "endTime": "2025-08-08T00:10:00Z"
+    "endTime": "2025-08-08T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-214",
     "artist": "Kamrad",
     "stage": "The Buzz",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:40:00Z",
-    "endTime": "2025-08-08T01:40:00Z"
+    "startTime": "2025-08-07T00:40:00Z",
+    "endTime": "2025-08-07T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-215",
@@ -2937,7 +2145,9 @@
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T18:40:00Z",
-    "endTime": "2025-08-08T19:40:00Z"
+    "endTime": "2025-08-08T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-216",
@@ -2945,7 +2155,9 @@
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T20:10:00Z",
-    "endTime": "2025-08-08T21:10:00Z"
+    "endTime": "2025-08-08T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-217",
@@ -2953,23 +2165,29 @@
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T22:50:00Z",
-    "endTime": "2025-08-08T23:50:00Z"
+    "endTime": "2025-08-08T23:50:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-218",
     "artist": "Beton.Hofi",
     "stage": "The Buzz",
     "day": "Friday",
-    "startTime": "2025-08-09T00:20:00Z",
-    "endTime": "2025-08-09T01:30:00Z"
+    "startTime": "2025-08-08T00:20:00Z",
+    "endTime": "2025-08-08T01:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-219",
     "artist": "Malalata",
     "stage": "The Buzz",
     "day": "Friday",
-    "startTime": "2025-08-09T02:10:00Z",
-    "endTime": "2025-08-09T03:00:00Z"
+    "startTime": "2025-08-08T02:10:00Z",
+    "endTime": "2025-08-08T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-220",
@@ -2977,7 +2195,9 @@
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T17:10:00Z",
-    "endTime": "2025-08-09T18:10:00Z"
+    "endTime": "2025-08-09T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-221",
@@ -2985,7 +2205,9 @@
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T18:40:00Z",
-    "endTime": "2025-08-09T19:40:00Z"
+    "endTime": "2025-08-09T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-222",
@@ -2993,7 +2215,9 @@
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T20:10:00Z",
-    "endTime": "2025-08-09T21:10:00Z"
+    "endTime": "2025-08-09T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-223",
@@ -3001,23 +2225,29 @@
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
-    "endTime": "2025-08-10T00:10:00Z"
+    "endTime": "2025-08-10T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-224",
     "artist": "Analog Balaton",
     "stage": "The Buzz",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:40:00Z",
-    "endTime": "2025-08-10T01:40:00Z"
+    "startTime": "2025-08-09T00:40:00Z",
+    "endTime": "2025-08-09T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-225",
     "artist": "Bearcubs",
     "stage": "The Buzz",
     "day": "Saturday",
-    "startTime": "2025-08-10T02:10:00Z",
-    "endTime": "2025-08-10T03:00:00Z"
+    "startTime": "2025-08-09T02:10:00Z",
+    "endTime": "2025-08-09T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-226",
@@ -3025,7 +2255,9 @@
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T17:10:00Z",
-    "endTime": "2025-08-10T18:10:00Z"
+    "endTime": "2025-08-10T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-227",
@@ -3033,7 +2265,9 @@
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T18:40:00Z",
-    "endTime": "2025-08-10T19:40:00Z"
+    "endTime": "2025-08-10T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-228",
@@ -3041,7 +2275,9 @@
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T20:10:00Z",
-    "endTime": "2025-08-10T21:10:00Z"
+    "endTime": "2025-08-10T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-229",
@@ -3049,23 +2285,29 @@
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
-    "endTime": "2025-08-11T00:10:00Z"
+    "endTime": "2025-08-11T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-230",
     "artist": "Hundreds Sin Live",
     "stage": "The Buzz",
     "day": "Sunday",
-    "startTime": "2025-08-11T00:40:00Z",
-    "endTime": "2025-08-11T01:40:00Z"
+    "startTime": "2025-08-10T00:40:00Z",
+    "endTime": "2025-08-10T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-231",
     "artist": "JOUBe",
     "stage": "The Buzz",
     "day": "Sunday",
-    "startTime": "2025-08-11T02:10:00Z",
-    "endTime": "2025-08-11T03:00:00Z"
+    "startTime": "2025-08-10T02:10:00Z",
+    "endTime": "2025-08-10T03:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-232",
@@ -3073,7 +2315,9 @@
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T17:10:00Z",
-    "endTime": "2025-08-11T18:10:00Z"
+    "endTime": "2025-08-11T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-233",
@@ -3081,7 +2325,9 @@
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T18:40:00Z",
-    "endTime": "2025-08-11T19:40:00Z"
+    "endTime": "2025-08-11T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-234",
@@ -3089,7 +2335,9 @@
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T20:10:00Z",
-    "endTime": "2025-08-11T21:10:00Z"
+    "endTime": "2025-08-11T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-235",
@@ -3097,15 +2345,19 @@
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
-    "endTime": "2025-08-12T00:10:00Z"
+    "endTime": "2025-08-12T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-236",
     "artist": "Platon Karataev",
     "stage": "The Buzz",
     "day": "Monday",
-    "startTime": "2025-08-12T00:40:00Z",
-    "endTime": "2025-08-12T01:40:00Z"
+    "startTime": "2025-08-11T00:40:00Z",
+    "endTime": "2025-08-11T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-237",
@@ -3113,7 +2365,9 @@
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:00:00Z",
-    "endTime": "2025-08-06T18:45:00Z"
+    "endTime": "2025-08-06T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-238",
@@ -3121,7 +2375,9 @@
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T19:00:00Z",
-    "endTime": "2025-08-06T19:45:00Z"
+    "endTime": "2025-08-06T19:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-239",
@@ -3129,7 +2385,9 @@
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:15:00Z",
-    "endTime": "2025-08-06T21:15:00Z"
+    "endTime": "2025-08-06T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-240",
@@ -3137,15 +2395,19 @@
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
-    "endTime": "2025-08-07T00:10:00Z"
+    "endTime": "2025-08-07T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-241",
     "artist": "Backspin DJ Night: Figub Brazlevic, DJ Cutrock, Marc Hype, DJ Lala",
     "stage": "dropYard",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:15:00Z",
-    "endTime": "2025-08-07T05:00:00Z"
+    "startTime": "2025-08-06T00:15:00Z",
+    "endTime": "2025-08-06T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-242",
@@ -3153,7 +2415,9 @@
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T18:00:00Z",
-    "endTime": "2025-08-07T18:45:00Z"
+    "endTime": "2025-08-07T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-243",
@@ -3161,7 +2425,9 @@
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T19:00:00Z",
-    "endTime": "2025-08-07T19:45:00Z"
+    "endTime": "2025-08-07T19:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-244",
@@ -3169,7 +2435,9 @@
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T20:15:00Z",
-    "endTime": "2025-08-07T21:15:00Z"
+    "endTime": "2025-08-07T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-245",
@@ -3177,15 +2445,19 @@
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
-    "endTime": "2025-08-08T00:10:00Z"
+    "endTime": "2025-08-08T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-246",
     "artist": "VD presents: Vunzige Deuntjes Sound System + MC Claudio, Rockefellababe, WEF",
     "stage": "dropYard",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:15:00Z",
-    "endTime": "2025-08-08T05:00:00Z"
+    "startTime": "2025-08-07T00:15:00Z",
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-247",
@@ -3193,7 +2465,9 @@
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T18:00:00Z",
-    "endTime": "2025-08-08T18:45:00Z"
+    "endTime": "2025-08-08T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-248",
@@ -3201,7 +2475,9 @@
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T19:00:00Z",
-    "endTime": "2025-08-08T19:45:00Z"
+    "endTime": "2025-08-08T19:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-249",
@@ -3209,7 +2485,9 @@
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T20:15:00Z",
-    "endTime": "2025-08-08T21:15:00Z"
+    "endTime": "2025-08-08T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-250",
@@ -3217,15 +2495,19 @@
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T23:10:00Z",
-    "endTime": "2025-08-09T00:10:00Z"
+    "endTime": "2025-08-09T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-251",
     "artist": "NCT & Friends: Yue, NCT, T & Sugah, Ekko & Sidetrack, Gladde Paling",
     "stage": "dropYard",
     "day": "Friday",
-    "startTime": "2025-08-09T00:15:00Z",
-    "endTime": "2025-08-09T05:00:00Z"
+    "startTime": "2025-08-08T00:15:00Z",
+    "endTime": "2025-08-08T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-252",
@@ -3233,7 +2515,9 @@
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T18:00:00Z",
-    "endTime": "2025-08-09T18:45:00Z"
+    "endTime": "2025-08-09T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-253",
@@ -3241,7 +2525,9 @@
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T19:00:00Z",
-    "endTime": "2025-08-09T19:45:00Z"
+    "endTime": "2025-08-09T19:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-254",
@@ -3249,7 +2535,9 @@
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T20:15:00Z",
-    "endTime": "2025-08-09T21:15:00Z"
+    "endTime": "2025-08-09T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-255",
@@ -3257,15 +2545,19 @@
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
-    "endTime": "2025-08-10T00:10:00Z"
+    "endTime": "2025-08-10T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-256",
     "artist": "Bladerunnaz Night: Unglued + MC PVC + Chris.SU + Incident + Markov + Ninive",
     "stage": "dropYard",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:15:00Z",
-    "endTime": "2025-08-10T05:00:00Z"
+    "startTime": "2025-08-09T00:15:00Z",
+    "endTime": "2025-08-09T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-257",
@@ -3273,7 +2565,9 @@
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T18:00:00Z",
-    "endTime": "2025-08-10T18:45:00Z"
+    "endTime": "2025-08-10T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-258",
@@ -3281,7 +2575,9 @@
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T19:00:00Z",
-    "endTime": "2025-08-10T19:45:00Z"
+    "endTime": "2025-08-10T19:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-259",
@@ -3289,7 +2585,9 @@
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T20:15:00Z",
-    "endTime": "2025-08-10T21:15:00Z"
+    "endTime": "2025-08-10T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-260",
@@ -3297,15 +2595,19 @@
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
-    "endTime": "2025-08-11T00:10:00Z"
+    "endTime": "2025-08-11T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-261",
     "artist": "Halfpipe Records Night: Albre + Emionskis + Lespol",
     "stage": "dropYard",
     "day": "Sunday",
-    "startTime": "2025-08-11T00:15:00Z",
-    "endTime": "2025-08-11T05:00:00Z"
+    "startTime": "2025-08-10T00:15:00Z",
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-262",
@@ -3313,7 +2615,9 @@
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T18:00:00Z",
-    "endTime": "2025-08-11T18:45:00Z"
+    "endTime": "2025-08-11T18:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-263",
@@ -3321,7 +2625,9 @@
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T19:00:00Z",
-    "endTime": "2025-08-11T21:15:00Z"
+    "endTime": "2025-08-11T21:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-264",
@@ -3329,15 +2635,19 @@
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
-    "endTime": "2025-08-12T00:10:00Z"
+    "endTime": "2025-08-12T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-265",
     "artist": "ANDA Electronix (LIVE) w/ Ceciel Moyano, Ferré & Samwho",
     "stage": "dropYard",
     "day": "Monday",
-    "startTime": "2025-08-12T00:15:00Z",
-    "endTime": "2025-08-12T05:00:00Z"
+    "startTime": "2025-08-11T00:15:00Z",
+    "endTime": "2025-08-11T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-266",
@@ -3345,7 +2655,9 @@
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:40:00Z",
-    "endTime": "2025-08-06T19:40:00Z"
+    "endTime": "2025-08-06T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-267",
@@ -3353,7 +2665,9 @@
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:10:00Z",
-    "endTime": "2025-08-06T21:10:00Z"
+    "endTime": "2025-08-06T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-268",
@@ -3361,23 +2675,29 @@
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
-    "endTime": "2025-08-07T00:10:00Z"
+    "endTime": "2025-08-07T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-269",
     "artist": "Don4t Stop the Queen",
     "stage": "Jukebox",
     "day": "Wednesday",
-    "startTime": "2025-08-07T00:40:00Z",
-    "endTime": "2025-08-07T01:40:00Z"
+    "startTime": "2025-08-06T00:40:00Z",
+    "endTime": "2025-08-06T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-270",
     "artist": "80's Party by DJL",
     "stage": "Jukebox",
     "day": "Wednesday",
-    "startTime": "2025-08-07T01:45:00Z",
-    "endTime": "2025-08-07T05:00:00Z"
+    "startTime": "2025-08-06T01:45:00Z",
+    "endTime": "2025-08-06T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-271",
@@ -3385,7 +2705,9 @@
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T17:10:00Z",
-    "endTime": "2025-08-07T18:10:00Z"
+    "endTime": "2025-08-07T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-272",
@@ -3393,7 +2715,9 @@
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T18:40:00Z",
-    "endTime": "2025-08-07T19:40:00Z"
+    "endTime": "2025-08-07T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-273",
@@ -3401,7 +2725,9 @@
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T20:10:00Z",
-    "endTime": "2025-08-07T21:10:00Z"
+    "endTime": "2025-08-07T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-274",
@@ -3409,23 +2735,29 @@
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
-    "endTime": "2025-08-08T00:10:00Z"
+    "endTime": "2025-08-08T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-275",
     "artist": "The Rays - David Bowie Tribute",
     "stage": "Jukebox",
     "day": "Thursday",
-    "startTime": "2025-08-08T00:40:00Z",
-    "endTime": "2025-08-08T01:40:00Z"
+    "startTime": "2025-08-07T00:40:00Z",
+    "endTime": "2025-08-07T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-276",
     "artist": "Bailando Latin Night",
     "stage": "Jukebox",
     "day": "Thursday",
-    "startTime": "2025-08-08T01:45:00Z",
-    "endTime": "2025-08-08T05:00:00Z"
+    "startTime": "2025-08-07T01:45:00Z",
+    "endTime": "2025-08-07T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-277",
@@ -3433,7 +2765,9 @@
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T17:10:00Z",
-    "endTime": "2025-08-08T18:10:00Z"
+    "endTime": "2025-08-08T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-278",
@@ -3441,7 +2775,9 @@
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T18:40:00Z",
-    "endTime": "2025-08-08T19:40:00Z"
+    "endTime": "2025-08-08T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-279",
@@ -3449,7 +2785,9 @@
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T20:10:00Z",
-    "endTime": "2025-08-08T21:10:00Z"
+    "endTime": "2025-08-08T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-280",
@@ -3457,23 +2795,29 @@
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T23:10:00Z",
-    "endTime": "2025-08-09T00:10:00Z"
+    "endTime": "2025-08-09T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-281",
     "artist": "The Blackbirds",
     "stage": "Jukebox",
     "day": "Friday",
-    "startTime": "2025-08-09T00:40:00Z",
-    "endTime": "2025-08-09T01:40:00Z"
+    "startTime": "2025-08-08T00:40:00Z",
+    "endTime": "2025-08-08T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-282",
     "artist": "Los Santos Party",
     "stage": "Jukebox",
     "day": "Friday",
-    "startTime": "2025-08-09T01:45:00Z",
-    "endTime": "2025-08-09T05:00:00Z"
+    "startTime": "2025-08-08T01:45:00Z",
+    "endTime": "2025-08-08T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-283",
@@ -3481,7 +2825,9 @@
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T17:10:00Z",
-    "endTime": "2025-08-09T18:10:00Z"
+    "endTime": "2025-08-09T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-284",
@@ -3489,7 +2835,9 @@
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T18:40:00Z",
-    "endTime": "2025-08-09T19:40:00Z"
+    "endTime": "2025-08-09T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-285",
@@ -3497,7 +2845,9 @@
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T20:10:00Z",
-    "endTime": "2025-08-09T21:10:00Z"
+    "endTime": "2025-08-09T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-286",
@@ -3505,15 +2855,19 @@
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
-    "endTime": "2025-08-10T00:10:00Z"
+    "endTime": "2025-08-10T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-287",
     "artist": "NECC PARTY",
     "stage": "Jukebox",
     "day": "Saturday",
-    "startTime": "2025-08-10T00:40:00Z",
-    "endTime": "2025-08-10T05:00:00Z"
+    "startTime": "2025-08-09T00:40:00Z",
+    "endTime": "2025-08-09T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-288",
@@ -3521,7 +2875,9 @@
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T17:10:00Z",
-    "endTime": "2025-08-10T18:10:00Z"
+    "endTime": "2025-08-10T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-289",
@@ -3529,7 +2885,9 @@
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T18:40:00Z",
-    "endTime": "2025-08-10T19:40:00Z"
+    "endTime": "2025-08-10T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-290",
@@ -3537,7 +2895,9 @@
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T20:10:00Z",
-    "endTime": "2025-08-10T21:10:00Z"
+    "endTime": "2025-08-10T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-291",
@@ -3545,7 +2905,9 @@
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
-    "endTime": "2025-08-10T23:40:00Z"
+    "endTime": "2025-08-10T23:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-292",
@@ -3553,23 +2915,29 @@
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T23:45:00Z",
-    "endTime": "2025-08-11T00:45:00Z"
+    "endTime": "2025-08-11T00:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-293",
     "artist": "Eberkoma",
     "stage": "Jukebox",
     "day": "Sunday",
-    "startTime": "2025-08-11T00:50:00Z",
-    "endTime": "2025-08-11T01:40:00Z"
+    "startTime": "2025-08-10T00:50:00Z",
+    "endTime": "2025-08-10T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-294",
     "artist": "Bailando Latin Night",
     "stage": "Jukebox",
     "day": "Sunday",
-    "startTime": "2025-08-11T01:45:00Z",
-    "endTime": "2025-08-11T05:00:00Z"
+    "startTime": "2025-08-10T01:45:00Z",
+    "endTime": "2025-08-10T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-295",
@@ -3577,7 +2945,9 @@
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T17:10:00Z",
-    "endTime": "2025-08-11T18:10:00Z"
+    "endTime": "2025-08-11T18:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-296",
@@ -3585,7 +2955,9 @@
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T18:40:00Z",
-    "endTime": "2025-08-11T19:40:00Z"
+    "endTime": "2025-08-11T19:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-297",
@@ -3593,7 +2965,9 @@
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T20:10:00Z",
-    "endTime": "2025-08-11T21:10:00Z"
+    "endTime": "2025-08-11T21:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-298",
@@ -3601,23 +2975,29 @@
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
-    "endTime": "2025-08-12T00:10:00Z"
+    "endTime": "2025-08-12T00:10:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-299",
     "artist": "Sziami and Friends",
     "stage": "Jukebox",
     "day": "Monday",
-    "startTime": "2025-08-12T00:40:00Z",
-    "endTime": "2025-08-12T01:40:00Z"
+    "startTime": "2025-08-11T00:40:00Z",
+    "endTime": "2025-08-11T01:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-300",
     "artist": "Taylor Swift Night",
     "stage": "Jukebox",
     "day": "Monday",
-    "startTime": "2025-08-12T01:45:00Z",
-    "endTime": "2025-08-12T05:00:00Z"
+    "startTime": "2025-08-11T01:45:00Z",
+    "endTime": "2025-08-11T05:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-301",
@@ -3625,7 +3005,9 @@
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T13:00:00Z",
-    "endTime": "2025-08-06T13:40:00Z"
+    "endTime": "2025-08-06T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-302",
@@ -3633,7 +3015,9 @@
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T13:55:00Z",
-    "endTime": "2025-08-06T15:15:00Z"
+    "endTime": "2025-08-06T15:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-303",
@@ -3641,7 +3025,9 @@
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T15:30:00Z",
-    "endTime": "2025-08-06T16:45:00Z"
+    "endTime": "2025-08-06T16:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-304",
@@ -3649,23 +3035,29 @@
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
-    "endTime": "2025-08-07T01:00:00Z"
+    "endTime": "2025-08-07T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-305",
     "artist": "Eva Bloo",
     "stage": "Lightstage",
     "day": "Wednesday",
-    "startTime": "2025-08-07T01:00:00Z",
-    "endTime": "2025-08-07T02:30:00Z"
+    "startTime": "2025-08-06T01:00:00Z",
+    "endTime": "2025-08-06T02:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-306",
     "artist": "Kiras",
     "stage": "Lightstage",
     "day": "Wednesday",
-    "startTime": "2025-08-07T02:30:00Z",
-    "endTime": "2025-08-07T04:05:00Z"
+    "startTime": "2025-08-06T02:30:00Z",
+    "endTime": "2025-08-06T04:05:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-307",
@@ -3673,7 +3065,9 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T13:00:00Z",
-    "endTime": "2025-08-07T13:40:00Z"
+    "endTime": "2025-08-07T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-308",
@@ -3681,7 +3075,9 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T13:55:00Z",
-    "endTime": "2025-08-07T14:35:00Z"
+    "endTime": "2025-08-07T14:35:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-309",
@@ -3689,7 +3085,9 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T14:50:00Z",
-    "endTime": "2025-08-07T15:30:00Z"
+    "endTime": "2025-08-07T15:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-310",
@@ -3697,7 +3095,9 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T15:45:00Z",
-    "endTime": "2025-08-07T16:45:00Z"
+    "endTime": "2025-08-07T16:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-311",
@@ -3705,7 +3105,9 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T16:50:00Z",
-    "endTime": "2025-08-07T18:30:00Z"
+    "endTime": "2025-08-07T18:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-312",
@@ -3713,15 +3115,19 @@
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T23:00:00Z",
-    "endTime": "2025-08-08T01:00:00Z"
+    "endTime": "2025-08-08T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-313",
     "artist": "Carlo Chicco",
     "stage": "Lightstage",
     "day": "Thursday",
-    "startTime": "2025-08-08T01:00:00Z",
-    "endTime": "2025-08-08T04:00:00Z"
+    "startTime": "2025-08-07T01:00:00Z",
+    "endTime": "2025-08-07T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-314",
@@ -3729,7 +3135,9 @@
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T13:00:00Z",
-    "endTime": "2025-08-08T13:40:00Z"
+    "endTime": "2025-08-08T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-315",
@@ -3737,7 +3145,9 @@
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T13:55:00Z",
-    "endTime": "2025-08-08T14:35:00Z"
+    "endTime": "2025-08-08T14:35:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-316",
@@ -3745,7 +3155,9 @@
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T14:50:00Z",
-    "endTime": "2025-08-08T16:15:00Z"
+    "endTime": "2025-08-08T16:15:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-317",
@@ -3753,7 +3165,9 @@
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T16:50:00Z",
-    "endTime": "2025-08-08T18:30:00Z"
+    "endTime": "2025-08-08T18:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-318",
@@ -3761,23 +3175,29 @@
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T23:00:00Z",
-    "endTime": "2025-08-09T00:30:00Z"
+    "endTime": "2025-08-09T00:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-319",
     "artist": "Stefano di Matteo",
     "stage": "Lightstage",
     "day": "Friday",
-    "startTime": "2025-08-09T00:30:00Z",
-    "endTime": "2025-08-09T02:00:00Z"
+    "startTime": "2025-08-08T00:30:00Z",
+    "endTime": "2025-08-08T02:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-320",
     "artist": "Lurayana",
     "stage": "Lightstage",
     "day": "Friday",
-    "startTime": "2025-08-09T02:00:00Z",
-    "endTime": "2025-08-09T04:00:00Z"
+    "startTime": "2025-08-08T02:00:00Z",
+    "endTime": "2025-08-08T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-321",
@@ -3785,7 +3205,9 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T13:00:00Z",
-    "endTime": "2025-08-09T13:40:00Z"
+    "endTime": "2025-08-09T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-322",
@@ -3793,7 +3215,9 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T13:55:00Z",
-    "endTime": "2025-08-09T14:35:00Z"
+    "endTime": "2025-08-09T14:35:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-323",
@@ -3801,7 +3225,9 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T14:50:00Z",
-    "endTime": "2025-08-09T15:30:00Z"
+    "endTime": "2025-08-09T15:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-324",
@@ -3809,7 +3235,9 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T15:45:00Z",
-    "endTime": "2025-08-09T16:45:00Z"
+    "endTime": "2025-08-09T16:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-325",
@@ -3817,7 +3245,9 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T16:50:00Z",
-    "endTime": "2025-08-09T18:30:00Z"
+    "endTime": "2025-08-09T18:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-326",
@@ -3825,15 +3255,19 @@
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T23:00:00Z",
-    "endTime": "2025-08-10T01:00:00Z"
+    "endTime": "2025-08-10T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-327",
     "artist": "Fab Mayday",
     "stage": "Lightstage",
     "day": "Saturday",
-    "startTime": "2025-08-10T01:00:00Z",
-    "endTime": "2025-08-10T04:00:00Z"
+    "startTime": "2025-08-09T01:00:00Z",
+    "endTime": "2025-08-09T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-328",
@@ -3841,7 +3275,9 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T13:00:00Z",
-    "endTime": "2025-08-10T13:40:00Z"
+    "endTime": "2025-08-10T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-329",
@@ -3849,7 +3285,9 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T13:55:00Z",
-    "endTime": "2025-08-10T14:35:00Z"
+    "endTime": "2025-08-10T14:35:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-330",
@@ -3857,7 +3295,9 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T14:50:00Z",
-    "endTime": "2025-08-10T15:30:00Z"
+    "endTime": "2025-08-10T15:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-331",
@@ -3865,7 +3305,9 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T15:45:00Z",
-    "endTime": "2025-08-10T16:45:00Z"
+    "endTime": "2025-08-10T16:45:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-332",
@@ -3873,7 +3315,9 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T16:50:00Z",
-    "endTime": "2025-08-10T18:30:00Z"
+    "endTime": "2025-08-10T18:30:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-333",
@@ -3881,15 +3325,19 @@
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T23:00:00Z",
-    "endTime": "2025-08-11T01:00:00Z"
+    "endTime": "2025-08-11T01:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-334",
     "artist": "Chroma Soundsystem",
     "stage": "Lightstage",
     "day": "Sunday",
-    "startTime": "2025-08-11T01:00:00Z",
-    "endTime": "2025-08-11T04:00:00Z"
+    "startTime": "2025-08-10T01:00:00Z",
+    "endTime": "2025-08-10T04:00:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-335",
@@ -3897,7 +3345,9 @@
     "stage": "Lightstage",
     "day": "Monday",
     "startTime": "2025-08-11T13:00:00Z",
-    "endTime": "2025-08-11T13:40:00Z"
+    "endTime": "2025-08-11T13:40:00Z",
+    "genres": [],
+    "vibes": []
   },
   {
     "id": "2025-336",
@@ -3905,30 +3355,8 @@
     "stage": "Lightstage",
     "day": "Monday",
     "startTime": "2025-08-11T13:55:00Z",
-    "endTime": "2025-08-11T14:35:00Z"
-  },
-  {
-    "id": "2025-337",
-    "artist": "Spyres",
-    "stage": "Lightstage",
-    "day": "Monday",
-    "startTime": "2025-08-11T14:50:00Z",
-    "endTime": "2025-08-11T15:30:00Z"
-  },
-  {
-    "id": "2025-338",
-    "artist": "Split Dogs",
-    "stage": "Lightstage",
-    "day": "Monday",
-    "startTime": "2025-08-11T15:45:00Z",
-    "endTime": "2025-08-11T16:45:00Z"
-  },
-  {
-    "id": "2025-339",
-    "artist": "Chrome Soundsystem",
-    "stage": "Lightstage",
-    "day": "Monday",
-    "startTime": "2025-08-11T23:00:00Z",
-    "endTime": "2025-08-12T04:00:00Z"
+    "endTime": "2025-08-11T14:35:00Z",
+    "genres": [],
+    "vibes": []
   }
 ]
