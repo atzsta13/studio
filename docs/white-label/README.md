@@ -84,13 +84,16 @@ A pop/electronic/rock festival co-hosted by FM4 (Austrian public radio). Held at
 | Document | Status | Purpose |
 |---|---|---|
 | [01_ARCHITECTURE.md](./01_ARCHITECTURE.md) | ✅ Complete | Full technical architecture, migration path, component diagram |
-| [08_COMPETITIVE_ANALYSIS.md](./08_COMPETITIVE_ANALYSIS.md) | ✅ Complete | Greencopper incumbent, festival-by-festival position, GTM strategy |
-| 02_FESTIVAL_CONFIGS.md | 🔵 Planned | Per-festival `FestivalConfig` objects (web + Android) |
-| 03_DATA_PIPELINE.md | 🔵 Planned | How to produce festival data packages |
-| 04_WEB_MIGRATION.md | 🔵 Planned | Web platform step-by-step migration |
-| 05_ANDROID_MIGRATION.md | 🔵 Planned | Android product flavor setup |
-| 06_DEPLOYMENT.md | 🔵 Planned | Vercel + CI/CD per festival |
-| 07_ADDING_A_FESTIVAL.md | 🔵 Planned | New festival onboarding runbook |
+| [02_CONFIG_SYSTEM.md](./02_CONFIG_SYSTEM.md) | ✅ Complete | TypeScript + Kotlin config interfaces + all four festival objects |
+| [03_DATA_PIPELINE.md](./03_DATA_PIPELINE.md) | ✅ Complete | Schemas, vibe taxonomy, scraper architecture, npm scripts |
+| [04_WEB_IMPLEMENTATION.md](./04_WEB_IMPLEMENTATION.md) | ✅ Complete | Per-file web migration guide with before/after code |
+| [05_ANDROID_IMPLEMENTATION.md](./05_ANDROID_IMPLEMENTATION.md) | ✅ Complete | Product flavors, FestivalConfig.kt, per-file Android changes |
+| [06_PHASE1_IMPLEMENTATION.md](./06_PHASE1_IMPLEMENTATION.md) | ✅ Complete | Numbered task checklist for Phase 1 (config extraction) |
+| [07_DEPLOYMENT.md](./07_DEPLOYMENT.md) | ✅ Complete | Vercel projects, GitHub Actions CI/CD, Play Store, Firebase |
+| [08_COMPETITIVE_ANALYSIS.md](./08_COMPETITIVE_ANALYSIS.md) | ✅ Complete | Greencopper incumbent, festival-by-festival position, GTM |
+| [festivals/AREA_53.md](./festivals/AREA_53.md) | ✅ Complete | Area 53 full spec: config, aesthetic, guide.json, map POIs |
+| [festivals/NOVA_ROCK.md](./festivals/NOVA_ROCK.md) | ✅ Complete | Nova Rock full spec: cashless, Greencopper positioning |
+| [festivals/FREQUENCY.md](./festivals/FREQUENCY.md) | ✅ Complete | Frequency full spec: Daypark/Nightpark UX, FM4 angle |
 
 ---
 
@@ -109,11 +112,11 @@ A pop/electronic/rock festival co-hosted by FM4 (Austrian public radio). Held at
 
 ## Current Status
 
-> **Phase 0 — Research Complete**
+> **Documentation Complete — Ready to Begin Phase 1**
 >
-> The codebase audit, competitive landscape analysis, and target architecture design are complete (documented in this directory). No production code has been changed. Sziget 2026 is live and unaffected.
+> All white-label research, architecture design, competitive analysis, and implementation guides are written and committed. All 11 documents in this directory are complete. No production code has been changed yet — Sziget 2026 is live and unaffected.
 >
-> Next action: Begin Phase 1 config extraction, starting with `src/config/festival.ts` on the web platform and extending the existing `FestivalConfig.kt` on Android.
+> Next action: Begin Phase 1 config extraction per `06_PHASE1_IMPLEMENTATION.md`, starting with `src/config/festival.ts` on the web platform and extending `FestivalConfig.kt` on Android.
 
 ---
 
