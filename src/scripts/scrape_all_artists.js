@@ -99,7 +99,7 @@ async function scrapeAllArtists() {
         // Create map of existing artists by URL for quick lookup
         const existingByUrl = new Map();
         existingArtists.forEach(a => {
-            if (a.szigetUrl) existingByUrl.set(a.szigetUrl, a);
+            if (a.festivalUrl) existingByUrl.set(a.festivalUrl, a);
         });
 
         // Find new artists
@@ -124,7 +124,7 @@ async function scrapeAllArtists() {
                 endTime: null,
                 countryCode: null,
                 genres: [],
-                szigetUrl: newArtist.url,
+                festivalUrl: newArtist.url,
                 socials: {
                     website: null,
                     facebook: null,
@@ -147,7 +147,7 @@ async function scrapeAllArtists() {
         for (let i = 0; i < existingArtists.length; i++) {
             const artist = existingArtists[i];
 
-            if (!artist.szigetUrl) {
+            if (!artist.festivalUrl) {
                 console.log(`[${artist.id}] ${artist.artist} - No URL, skipping.`);
                 continue;
             }
@@ -155,7 +155,7 @@ async function scrapeAllArtists() {
             console.log(`[${artist.id}] Processing ${artist.artist}...`);
 
             try {
-                await page.goto(artist.szigetUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+                await page.goto(artist.festivalUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
                 try {
                     await page.waitForSelector('.ArtistSingleBody__content', { timeout: 10000 });

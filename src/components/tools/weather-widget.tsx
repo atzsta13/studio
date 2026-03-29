@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Cloud, Sun, Umbrella, Snowflake, Zap, Droplets } from 'lucide-react';
+import { FESTIVAL } from '@/config/festival';
 
 interface DailyForecast {
     date: string;
@@ -76,7 +77,7 @@ export function WeatherWidget() {
                 </div>
                 <div>
                     <h4 className="font-black text-2xl uppercase italic tracking-tighter text-cyan-400">Weather</h4>
-                    <p className="text-[11px] font-black text-muted-foreground/60 uppercase tracking-widest">Budapest · Óbudai-sziget</p>
+                    <p className="text-[11px] font-black text-muted-foreground/60 uppercase tracking-widest">{FESTIVAL.location.weatherDisplayName}</p>
                 </div>
             </div>
 

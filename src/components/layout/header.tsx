@@ -6,6 +6,7 @@ import { Music2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { navItems } from '@/config/nav';
 import { ModeToggle } from './mode-toggle';
+import { FESTIVAL } from '@/config/festival';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
@@ -31,7 +32,7 @@ export default function Header() {
               <Music2 className="h-6 w-6 text-primary" />
             </div>
             <span className="hidden font-headline font-black text-2xl tracking-tighter sm:inline-block uppercase italic">
-              Sziget <span className="text-primary text-glow">Insider</span>
+              {FESTIVAL.name} <span className="text-primary text-glow">Insider</span>
             </span>
           </Link>
           

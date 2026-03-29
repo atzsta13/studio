@@ -4,7 +4,9 @@ import android.content.Context
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
-private const val PREFS_NAME = "sziget_seen"
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
+private val PREFS_NAME get() = "${FestivalConfig.current.id}_seen"
 private const val KEY_SEEN_IDS = "seen_artist_ids"
 
 private val json = Json { ignoreUnknownKeys = true }

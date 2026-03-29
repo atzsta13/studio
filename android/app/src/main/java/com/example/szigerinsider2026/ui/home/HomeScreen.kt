@@ -82,7 +82,7 @@ private fun calcCountdown(): CountdownState {
  * - After Aug 12 2026  -> "Tuesday"
  */
 private fun getFestivalDay(): String {
-    val now = Calendar.getInstance(TimeZone.getTimeZone("Europe/Budapest"))
+    val now = Calendar.getInstance(TimeZone.getTimeZone(FestivalConfig.TIMEZONE))
     val year = now.get(Calendar.YEAR)
     val month = now.get(Calendar.MONTH)   // 0-indexed
     val dom = now.get(Calendar.DAY_OF_MONTH)
@@ -200,13 +200,13 @@ fun HomeScreen(navController: NavController? = null) {
             ) {
                 Column {
                     Text(
-                        text = "SZIGET 2026",
+                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
                         style = BrutalistTypography.labelSmall,
-                        color = PrimaryMagenta,
+                        color = MaterialTheme.colorScheme.primary,
                         letterSpacing = 3.sp
                     )
                     Text(
-                        text = "Island of Freedom",
+                        text = FestivalConfig.current.tagline,
                         color = TextMuted,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium
@@ -260,7 +260,7 @@ fun HomeScreen(navController: NavController? = null) {
             ) {
                 Column {
                     Text(
-                        text = "COUNTDOWN TO ISLAND",
+                        text = "COUNTDOWN TO ${FestivalConfig.NAME.uppercase()}",
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Black,
                         letterSpacing = 3.sp,
@@ -389,7 +389,7 @@ fun HomeScreen(navController: NavController? = null) {
         item {
             val stage = nowPlaying.firstOrNull()?.stage ?: "Main Stage"
             SectionHeader(
-                title = "ISLAND PULSE",
+                title = "${FestivalConfig.NAME.uppercase()} PULSE",
                 subtitle = "$festivalDay · $stage"
             )
         }
@@ -521,7 +521,7 @@ private fun WeatherCard() {
         Column {
             // Top label
             Text(
-                text = "BUDAPEST FORECAST",
+                text = "${FestivalConfig.current.city.uppercase()} FORECAST",
                 fontSize = 8.sp,
                 fontWeight = FontWeight.Black,
                 letterSpacing = 3.sp,

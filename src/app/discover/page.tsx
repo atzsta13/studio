@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
 import lineup from '@/data/lineup.json';
-import lineup2025 from '@/data/lineup_2025.json';
 import {
   Music,
   Search,
@@ -43,11 +42,12 @@ import { SerendipityModal } from '@/components/discover/SerendipityModal';
 import { TagCloud } from '@/components/discover/tag-cloud';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
+import { FESTIVAL } from '@/config/festival';
 
 // Hard-coded hidden gem artist IDs — non-headliners with unusual/diverse vibes
 const HIDDEN_GEM_IDS = ['1', '4', '5', '47', '57', '70'];
 
-const SEEN_KEY = 'sziget-2026-seen';
+const SEEN_KEY = `${FESTIVAL.id}-seen`;
 
 function loadSeenIds(): Set<string> {
   try {
@@ -58,16 +58,11 @@ function loadSeenIds(): Set<string> {
 }
 
 
-const allArtists2026 = (lineup as any[]).map(a => ({
+const allArtistsCurrent = (lineup as any[]).map(a => ({
   ...a,
   vibes: a.vibes || [],
   returningHero: !!a.returningHero,
 })) as (LineupItem & { vibes: string[]; isHeadliner?: boolean; returningHero?: boolean; lastYearStage?: string })[];
-
-const allArtists2025 = (lineup2025 as any[]).map(a => ({
-  ...a,
-  vibes: a.vibes || [],
-})) as (LineupItem & { vibes: string[]; isHeadliner?: boolean })[];
 
 const getFlagEmoji = (countryCode: string | undefined) => {
   if (!countryCode || countryCode === 'Unknown') return '';
@@ -83,13 +78,12 @@ const getFlagEmoji = (countryCode: string | undefined) => {
   }
 };
 
-const DAY_ORDER = ['Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const DAY_ORDER = FESTIVAL.dates.days;
 
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
 export default function DiscoverPage() {
   const haptic = useHaptic();
-  const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
@@ -98,7 +92,7 @@ export default function DiscoverPage() {
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(activeYear === '2026' ? allArtists2026 : allArtists2025);
+  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent);
   const router = useRouter();
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
@@ -118,9 +112,7 @@ export default function DiscoverPage() {
     setIsMounted(true);
   }, []);
 
-  const allArtists = useMemo(() => {
-    return activeYear === '2026' ? allArtists2026 : allArtists2025;
-  }, [activeYear]);
+  const allArtists = allArtistsCurrent;
 
   const allGenres = useMemo(() => {
     const genres = new Set<string>();
@@ -277,7 +269,7 @@ export default function DiscoverPage() {
             <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
               <div className="flex flex-col gap-1.5">
                 {artist.returningHero && (
-                  <Badge className="bg-[var(--acid-yellow)] text-black font-black italic border-none text-[8px] py-0 px-2 rounded-sm w-fit">
+                  <Badge className="bg-[var(--accent)] text-black font-black italic border-none text-[8px] py-0 px-2 rounded-sm w-fit">
                     RETURNING HERO
                   </Badge>
                 )}
@@ -389,33 +381,18 @@ export default function DiscoverPage() {
           Music <span className="text-primary text-glow">Finder</span>
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed opacity-70 italic">
-          Curate your personal journey on the Island of Freedom.
+          Curate your personal journey at {FESTIVAL.name}.
         </p>
 
         <div className="mt-16 max-w-lg mx-auto px-6">
           <div className="flex justify-between items-end mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-            <span>Island Discovery</span>
+            <span>{FESTIVAL.name} Discovery</span>
             <span className="text-primary">{favorites.size} / {allArtists.length} Artists Saved</span>
           </div>
           <Progress value={progress} className="h-2.5 bg-muted/20" />
         </div>
 
         <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8">
-          <div className="inline-flex rounded-[2rem] bg-muted/40 p-2 border border-white/5 shadow-2xl backdrop-blur-3xl">
-            {['2026', '2025'].map(year => (
-              <button
-                key={year}
-                onClick={() => setActiveYear(year as '2025' | '2026')}
-                className={`flex items-center justify-center rounded-[1.5rem] px-10 py-3.5 text-xs font-black tracking-[0.2em] transition-all duration-300 ${activeYear === year
-                  ? 'bg-background text-foreground shadow-lg border border-white/10'
-                  : 'text-muted-foreground hover:text-foreground'
-                  }`}
-              >
-                {year}
-              </button>
-            ))}
-          </div>
-
           <div className="flex items-center gap-6 flex-wrap justify-center">
             <SpotifyConnect onMatchesFound={(ids) => {
               setSpotifyMatches(ids);
@@ -554,10 +531,10 @@ export default function DiscoverPage() {
       </div>
 
       {/* Hidden Gems section — curated non-headliners with unusual vibes */}
-      {activeYear === '2026' && (() => {
+      {(() => {
         const gems = HIDDEN_GEM_IDS
-          .map(id => allArtists2026.find(a => a.id === id))
-          .filter((a): a is typeof allArtists2026[0] => a !== undefined);
+          .map(id => allArtistsCurrent.find(a => a.id === id))
+          .filter((a): a is typeof allArtistsCurrent[0] => a !== undefined);
         if (gems.length === 0) return null;
         return (
           <section className="mb-20">

@@ -1,10 +1,9 @@
-'use client';
-
 import { useState, useEffect, useCallback } from 'react';
 import type { LineupItem } from '@/types';
+import { FESTIVAL } from '@/config/festival';
 
-const FAVORITES_KEY_V1 = 'sziget-2026-favorites';
-const FAVORITES_KEY_V2 = 'sziget-2026-favorites-v2';
+const FAVORITES_KEY_V1 = `${FESTIVAL.id}-favorites`;
+const FAVORITES_KEY_V2 = `${FESTIVAL.id}-favorites-v2`;
 
 export type FavoriteTier = 'must_see' | 'interested';
 
@@ -102,7 +101,7 @@ export const useFavorites = (lineup: LineupItem[] = []) => {
 
   // Conflict detection
   useEffect(() => {
-    const favoritesWithDetails = lineup.filter(item => isFavorite(item.id));
+    const favoritesWithDetails = lineup.filter(item => isFavorite(item.id) && item.startTime && item.endTime);
     const newConflicts = new Set<string>();
 
     if (favoritesWithDetails.length < 2) {
@@ -111,7 +110,7 @@ export const useFavorites = (lineup: LineupItem[] = []) => {
     }
 
     favoritesWithDetails.sort(
-      (a, b) => new Date(a.startTime).getTime() - new Date(b.startTime).getTime()
+      (a, b) => new Date(a.startTime!).getTime() - new Date(b.startTime!).getTime()
     );
 
     for (let i = 0; i < favoritesWithDetails.length; i++) {
@@ -119,10 +118,10 @@ export const useFavorites = (lineup: LineupItem[] = []) => {
         const favA = favoritesWithDetails[i];
         const favB = favoritesWithDetails[j];
 
-        const startA = new Date(favA.startTime).getTime();
-        const endA = new Date(favA.endTime).getTime();
-        const startB = new Date(favB.startTime).getTime();
-        const endB = new Date(favB.endTime).getTime();
+        const startA = new Date(favA.startTime!).getTime();
+        const endA = new Date(favA.endTime!).getTime();
+        const startB = new Date(favB.startTime!).getTime();
+        const endB = new Date(favB.endTime!).getTime();
 
         if (startA < endB && startB < endA) {
           newConflicts.add(favA.id);

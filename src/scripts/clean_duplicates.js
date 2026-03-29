@@ -26,7 +26,7 @@ lineup.forEach(item => {
             reason = "Score";
         } else if (incomingScore === existingScore) {
             // Tie-breaker: URL length (cleaner URL preferred)
-            if (incoming.szigetUrl && existing.szigetUrl && incoming.szigetUrl.length < existing.szigetUrl.length) {
+            if (incoming.festivalUrl && existing.festivalUrl && incoming.festivalUrl.length < existing.festivalUrl.length) {
                 replace = true;
                 reason = "URL length";
             }

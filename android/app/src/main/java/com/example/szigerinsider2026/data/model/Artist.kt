@@ -12,7 +12,7 @@ data class Artist(
     val endTime: String? = null,
     val countryCode: String? = null,
     val genres: List<String> = emptyList(),
-    val szigetUrl: String? = null,
+    val festivalUrl: String? = null,
     val socials: Socials? = null,
     val description: String? = null,
     val imageUrl: String? = null,

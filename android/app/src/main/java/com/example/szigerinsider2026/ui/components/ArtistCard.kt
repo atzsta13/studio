@@ -25,6 +25,7 @@ import androidx.compose.material.icons.outlined.StarBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -48,6 +49,7 @@ import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.getMood
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 @Composable
 fun ArtistCard(
@@ -82,11 +84,11 @@ fun ArtistCard(
     val shimmerBrush = if (artist.isHeadliner) {
         Brush.linearGradient(
             colors = listOf(
-                PrimaryMagenta.copy(alpha = 0.3f),
-                AcidYellow.copy(alpha = 0.8f),
-                PrimaryMagenta,
-                AcidYellow.copy(alpha = 0.3f),
-                PrimaryMagenta.copy(alpha = 0.3f)
+                MaterialTheme.colorScheme.primary.copy(alpha = 0.3f),
+                MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f),
+                MaterialTheme.colorScheme.primary,
+                MaterialTheme.colorScheme.secondary.copy(alpha = 0.3f),
+                MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
             ),
             start = Offset(shimmerOffset * 2000f - 1000f, 0f),
             end = Offset(shimmerOffset * 2000f, 1000f)
@@ -117,7 +119,7 @@ fun ArtistCard(
                         val shareText = "🎵 ${artist.artist}\n" +
                             "📅 ${artist.day ?: "TBA"} · ${artist.stage ?: "Main Stage"}\n" +
                             "⏰ ${artist.startTime ?: ""} – ${artist.endTime ?: ""}\n\n" +
-                            "Sziget 2026 · Budapest · Island of Freedom"
+                            "${FestivalConfig.NAME} ${FestivalConfig.current.year} · ${FestivalConfig.current.city} · ${FestivalConfig.current.tagline}"
                         val sendIntent = Intent(Intent.ACTION_SEND).apply {
                             type = "text/plain"
                             putExtra(Intent.EXTRA_TEXT, shareText)
@@ -194,7 +196,7 @@ fun ArtistCard(
                             Box(
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(4.dp))
-                                    .background(AcidYellow)
+                                    .background(MaterialTheme.colorScheme.secondary)
                                     .padding(horizontal = 8.dp, vertical = 2.dp)
                             ) {
                                 Text(
@@ -221,7 +223,7 @@ fun ArtistCard(
                             .background(Color.Black.copy(alpha = 0.6f))
                             .border(
                                 1.dp,
-                                if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.1f),
+                                if (isFavorite) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.1f),
                                 CircleShape
                             )
                             .clickable {
@@ -233,7 +235,7 @@ fun ArtistCard(
                         Icon(
                             imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.StarBorder,
                             contentDescription = "Toggle Favorite",
-                            tint = if (isFavorite) PrimaryMagenta else Color.White.copy(alpha = 0.6f),
+                            tint = if (isFavorite) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.6f),
                             modifier = Modifier.size(24.dp)
                         )
                     }
@@ -247,7 +249,7 @@ fun ArtistCard(
                         Text(
                             text = artist.artist.uppercase(),
                             style = BrutalistTypography.titleLarge,
-                            color = if (artist.isHeadliner) PrimaryMagenta else Color.White,
+                            color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White,
                             modifier = Modifier.padding(bottom = 4.dp),
                             maxLines = 2,
                             overflow = TextOverflow.Ellipsis,

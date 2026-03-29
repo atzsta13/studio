@@ -1,64 +1,56 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Bus, Plane, Ship, MapPin, Ticket } from 'lucide-react';
+import { Bus, Train, Ship, Info } from 'lucide-react';
 import type { Metadata } from 'next';
+import { PageHeader } from '@/components/layout/page-header';
+import { FESTIVAL } from '@/config/festival';
 
 export const metadata: Metadata = {
-  title: 'Shuttle & Boat Info',
-  description: 'All you need to know about Sziget transport, including the CityPass and Boat Parties.',
+  title: 'Shuttle & Transport',
+  description: `All you need to know about ${FESTIVAL.name} transport and travel.`,
 };
 
+const transportItems = [
+  { title: "Festival Boat", desc: `Direct boat sets running from the city center to the island. Check the schedule for sunset sets.`, icon: Ship },
+  { title: "Public Transport", desc: "Available 24/7 during the festival. Night buses run every 10-15 minutes.", icon: Bus },
+  { title: "HÉV Train (Line 5)", desc: "The fastest way to reach the island from Batthyány tér. Use the Filatorigát stop.", icon: Train },
+];
+
 export default function ShuttlePage() {
-  const routes = [
-    { title: "Airport (BUD) Express", desc: "Runs 24/7 during the festival. Direct from Terminal 2 to the H-Bridge entrance. Free with CityPass.", icon: Plane },
-    { title: "Sziget Cruisin' Boat", desc: "Danube boat sets running from Batthyány tér to the island. Check the schedule for sunset sets.", icon: Ship },
-    { title: "City Center Line", desc: "Every 15-20 mins from Deák Ferenc tér to Filatorigát station via H5 HÉV train.", icon: Bus },
-  ];
-
   return (
-    <div>
-      <header className="mb-8">
-        <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Island Transit
-        </h1>
-        <p className="mt-2 text-muted-foreground">
-          Getting to and from the Island of Freedom.
-        </p>
-      </header>
+    <div className="container mx-auto max-w-4xl py-20 px-4">
+      <PageHeader 
+        title="Transport Guide" 
+        description={`Getting to and from ${FESTIVAL.name} safely and efficiently.`}
+      />
 
-      <div className="space-y-4">
-        {routes.map(route => (
-          <Card key={route.title} className="bg-card/50 border-border/50 overflow-hidden group">
-            <CardHeader className="flex flex-row items-center gap-4 pb-2 relative">
-              <div className="p-3 bg-primary/10 rounded-xl text-primary group-hover:scale-110 transition-transform">
-                <route.icon size={20} />
+      <div className="grid gap-8 mt-12">
+        {transportItems.map((item) => (
+          <Card key={item.title} className="bg-card/50 border-white/5 rounded-[2.5rem] p-10 backdrop-blur-3xl">
+            <div className="flex items-start gap-8">
+              <div className="p-5 rounded-2xl bg-secondary/10 text-secondary">
+                <item.icon size={32} />
               </div>
-              <CardTitle className="text-lg">{route.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground leading-relaxed">{route.desc}</p>
-            </CardContent>
+              <div>
+                <h3 className="font-black text-2xl uppercase italic tracking-tighter mb-2">{item.title}</h3>
+                <p className="text-lg font-medium text-muted-foreground leading-relaxed opacity-80 italic">{item.desc}</p>
+              </div>
+            </div>
           </Card>
         ))}
-      </div>
 
-      <Card className="mt-8 bg-indigo-600 text-white border-none shadow-xl shadow-indigo-500/20 overflow-hidden relative">
-        <div className="absolute right-[-20px] top-[-20px] opacity-10 rotate-12">
-          <Ticket size={160} />
-        </div>
-        <CardContent className="p-8 relative z-10">
-          <h3 className="font-black text-2xl flex items-center gap-3 mb-4 uppercase italic italic tracking-tight">
-            <Ticket size={24} />
-            The CityPass
-          </h3>
-          <p className="text-sm font-medium opacity-90 leading-relaxed mb-6">
-            The Sziget CityPass by BKK includes ALL public transport, the airport shuttle, and the Sziget Boat service for free. It also gives you discounts at Budapest’s thermal baths and beaches.
-          </p>
-          <div className="p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
-            <p className="text-[10px] font-black uppercase tracking-widest opacity-70 mb-1">Insider Tip</p>
-            <p className="text-xs font-bold italic">Pick yours up at the airport or Deák Ferenc tér before your first ride!</p>
+        <div className="mt-12 bg-blue-500/10 border border-blue-500/20 rounded-[3rem] p-12">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-3 bg-blue-500 rounded-full">
+              <Info className="text-white" size={24} />
+            </div>
+            <h2 className="text-3xl font-black uppercase italic tracking-tighter text-blue-400">Tactical Tip</h2>
           </div>
-        </CardContent>
-      </Card>
+          <p className="text-xl font-medium text-blue-100/80 leading-relaxed italic">
+            The CityPass includes ALL public transport, the airport shuttle, and the boat service for free. 
+            It also gives you discounts at local thermal baths and beaches. Pick one up at the airport or the entrance.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

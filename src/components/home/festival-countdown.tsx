@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { FESTIVAL } from '@/config/festival';
 
-// Sziget 2026: August 5–11, 2026
-// Target: Aug 5, 2026 00:00:00 Budapest time (UTC+2) = Aug 4, 2026 22:00:00 UTC
-const FESTIVAL_START = new Date('2026-08-04T22:00:00Z');
-// End of Aug 11, 2026 Budapest time = Aug 11, 2026 22:00:00 UTC
-const FESTIVAL_END = new Date('2026-08-11T22:00:00Z');
+// Start of startDate (e.g. Aug 5th 00:00 CEST)
+const FESTIVAL_START = new Date(`${FESTIVAL.dates.startDate}T00:00:00+02:00`);
+// End of endDate (e.g. Aug 11th 23:59:59 CEST)
+const FESTIVAL_END = new Date(`${FESTIVAL.dates.endDate}T23:59:59+02:00`);
 
 interface TimeLeft {
   days: number;
@@ -51,7 +51,7 @@ export function FestivalCountdown() {
     <div
       style={{
         background: '#1a1a1a',
-        border: '1px solid #f5e642',
+        border: `1px solid ${FESTIVAL.theme.accentHex}`,
         borderRadius: 0,
         padding: '2rem 2.5rem',
         textAlign: 'center',
@@ -69,13 +69,13 @@ export function FestivalCountdown() {
           marginBottom: '1.25rem',
         }}
       >
-        DAYS UNTIL SZIGET 2026
+        DAYS UNTIL {FESTIVAL.appName.toUpperCase()}
       </p>
 
       {isAfterFestival ? (
         <p
           style={{
-            color: '#f5e642',
+            color: FESTIVAL.theme.accentHex,
             fontSize: '1.6rem',
             fontWeight: 900,
             textTransform: 'uppercase',
@@ -83,12 +83,12 @@ export function FestivalCountdown() {
             fontStyle: 'italic',
           }}
         >
-          SEE YOU AT SZIGET 2027
+          SEE YOU AT {FESTIVAL.name.toUpperCase()} {FESTIVAL.dates.year + 1}
         </p>
       ) : isFestivalWeek ? (
         <p
           style={{
-            color: '#f5e642',
+            color: FESTIVAL.theme.accentHex,
             fontSize: '1.6rem',
             fontWeight: 900,
             textTransform: 'uppercase',
@@ -97,7 +97,7 @@ export function FestivalCountdown() {
             animation: 'countdown-pulse 1.5s ease-in-out infinite',
           }}
         >
-          🔥 FESTIVAL IS LIVE — BUDAPEST
+          🔥 FESTIVAL IS LIVE — {FESTIVAL.location.city.toUpperCase()}
         </p>
       ) : (
         <div
@@ -116,7 +116,7 @@ export function FestivalCountdown() {
             <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
               <span
                 style={{
-                  color: '#f5e642',
+                  color: FESTIVAL.theme.accentHex,
                   fontSize: 'clamp(2.2rem, 6vw, 3.5rem)',
                   fontWeight: 900,
                   lineHeight: 1,

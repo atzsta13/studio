@@ -24,6 +24,7 @@ import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 import com.example.szigerinsider2026.MainActivity
 import com.example.szigerinsider2026.data.local.AppDatabase
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.flow.first
 
 class SzigetWidget : GlanceAppWidget() {
@@ -44,9 +45,9 @@ class SzigetWidget : GlanceAppWidget() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "SZIGET 2026",
+                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
                         style = TextStyle(
-                            color = ColorProvider(Color(0xFFE4FF00)),
+                            color = ColorProvider(Color(FestivalConfig.current.accentColorHex)),
                             fontWeight = FontWeight.Bold,
                             fontSize = 11.sp
                         )
@@ -72,7 +73,7 @@ class SzigetWidget : GlanceAppWidget() {
                     Text(
                         text = "TAP TO OPEN →",
                         style = TextStyle(
-                            color = ColorProvider(Color(0xFFE4FF00)),
+                            color = ColorProvider(Color(FestivalConfig.current.accentColorHex)),
                             fontWeight = FontWeight.Bold,
                             fontSize = 10.sp
                         )

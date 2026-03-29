@@ -20,16 +20,19 @@ import androidx.navigation.NavController
 import com.example.szigerinsider2026.ui.theme.*
 import kotlinx.coroutines.delay
 
+import androidx.compose.material3.MaterialTheme
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
 @Composable
 fun SplashScreen(navController: NavController) {
-    var showSziget by remember { mutableStateOf(false) }
+    var showFestivalName by remember { mutableStateOf(false) }
     var showInsider by remember { mutableStateOf(false) }
     var showBadge by remember { mutableStateOf(false) }
     val hapticFeedback = LocalHapticFeedback.current
 
     LaunchedEffect(Unit) {
         delay(80)
-        showSziget = true
+        showFestivalName = true
         hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
         delay(180)
         showInsider = true
@@ -52,7 +55,7 @@ fun SplashScreen(navController: NavController) {
                 .align(Alignment.TopEnd)
                 .size(150.dp)
                 .padding(24.dp)
-                .background(PrimaryMagenta)
+                .background(MaterialTheme.colorScheme.primary)
         )
 
         // Main content
@@ -64,14 +67,14 @@ fun SplashScreen(navController: NavController) {
                 .fillMaxWidth()
         ) {
             AnimatedVisibility(
-                visible = showSziget,
+                visible = showFestivalName,
                 enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { it / 2 }
             ) {
                 Text(
-                    text = "SZIGET",
+                    text = FestivalConfig.NAME.uppercase(),
                     fontSize = 100.sp,
                     fontWeight = FontWeight.Black,
-                    color = AcidYellow,
+                    color = MaterialTheme.colorScheme.secondary,
                     lineHeight = 85.sp,
                     letterSpacing = (-4).sp
                 )
@@ -85,7 +88,7 @@ fun SplashScreen(navController: NavController) {
                     text = "INSIDER",
                     fontSize = 100.sp,
                     fontWeight = FontWeight.Black,
-                    color = PrimaryMagenta,
+                    color = MaterialTheme.colorScheme.primary,
                     lineHeight = 85.sp,
                     letterSpacing = (-4).sp
                 )
@@ -103,7 +106,7 @@ fun SplashScreen(navController: NavController) {
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = "EST. 2026 – ALPHA v2.0",
+                        text = "EST. ${FestivalConfig.current.year} – ALPHA v2.0",
                         fontWeight = FontWeight.Black,
                         color = Color.Black,
                         fontSize = 12.sp,
@@ -118,7 +121,7 @@ fun SplashScreen(navController: NavController) {
                 .align(Alignment.BottomStart)
                 .fillMaxWidth(0.4f)
                 .height(8.dp)
-                .background(AcidYellow)
+                .background(MaterialTheme.colorScheme.secondary)
         )
     }
 }

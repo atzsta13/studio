@@ -1,3 +1,4 @@
+import { FESTIVAL } from '@/config/festival';
 import type { LineupItem } from '@/types';
 
 export interface Challenge {
@@ -9,15 +10,7 @@ export interface Challenge {
   isCompleted: boolean;
 }
 
-export const FESTIVAL_DAYS = [
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-  'Monday',
-  'Tuesday',
-];
+export const FESTIVAL_DAYS = FESTIVAL.dates.days;
 
 const CHALLENGE_DEFINITIONS = [
   {
@@ -154,13 +147,14 @@ export function getNewlyCompletedChallenges(
  * Calculates rank based on XP.
  */
 export function getRankFromXp(xp: number): string {
+  const { name } = FESTIVAL;
   return xp >= 2000
-    ? 'Sziget Legend'
+    ? `${name} Legend`
     : xp >= 1000
       ? 'Main Stage Hero'
       : xp >= 500
-        ? 'Szitizen'
+        ? 'Superfan'
         : xp >= 200
-          ? 'Island Explorer'
+          ? 'Festival Explorer'
           : 'Tourist';
 }

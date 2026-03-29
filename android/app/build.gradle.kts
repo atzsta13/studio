@@ -23,6 +23,56 @@ android {
         }
     }
 
+    // ── Product Flavors ──────────────────────────────────────────────────────
+    flavorDimensions += "festival"
+
+    productFlavors {
+        create("sziget") {
+            dimension = "festival"
+            applicationId = "com.example.szigetinsider"
+            versionName = "2.0"
+            resValue("string", "app_name", "Sziget Insider 2026")
+            buildConfigField("String", "FESTIVAL_ID", "\"sziget-2026\"")
+            manifestPlaceholders["deepLinkScheme"] = "sziget2026"
+            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
+        }
+        create("area53") {
+            dimension = "festival"
+            applicationId = "com.example.area53insider"
+            versionName = "1.0"
+            resValue("string", "app_name", "Area 53 Insider 2026")
+            buildConfigField("String", "FESTIVAL_ID", "\"area53-2026\"")
+            manifestPlaceholders["deepLinkScheme"] = "area532026"
+            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
+        }
+        create("novarock") {
+            dimension = "festival"
+            applicationId = "com.example.novarockinsider"
+            versionName = "1.0"
+            resValue("string", "app_name", "Nova Rock Insider 2026")
+            buildConfigField("String", "FESTIVAL_ID", "\"novarock-2026\"")
+            manifestPlaceholders["deepLinkScheme"] = "novarock2026"
+            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
+        }
+        create("frequency") {
+            dimension = "festival"
+            applicationId = "com.example.frequencyinsider"
+            versionName = "1.0"
+            resValue("string", "app_name", "Frequency Insider 2026")
+            buildConfigField("String", "FESTIVAL_ID", "\"frequency-2026\"")
+            manifestPlaceholders["deepLinkScheme"] = "frequency2026"
+            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
+        }
+    }
+
+    // ── Per-flavor asset source sets ─────────────────────────────────────────
+    sourceSets {
+        getByName("sziget")    { assets.srcDirs("src/sziget/assets") }
+        getByName("area53")    { assets.srcDirs("src/area53/assets") }
+        getByName("novarock")  { assets.srcDirs("src/novarock/assets") }
+        getByName("frequency") { assets.srcDirs("src/frequency/assets") }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -41,6 +91,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {

@@ -8,6 +8,7 @@ import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search } from 'luci
 import foodAndDrinkData from '@/data/food.json';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';
+import { FESTIVAL } from '@/config/festival';
 
 // Define the type for a vendor item
 interface Vendor {
@@ -81,7 +82,7 @@ export default function FoodFinderPage() {
         <div className="container mx-auto max-w-5xl px-4 py-8">
             <PageHeader 
                 title="Food & Drink Scout"
-                description="Find the tastiest meals and the best value on Sziget. Look for the Budget Hero badge for official festival-priced options."
+                description={`Find the tastiest meals and the best value on ${FESTIVAL.name}. Look for the Budget Hero badge for official festival-priced options.`}
             />
 
             {/* Search and Filter UI */}

@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import type { LineupItem } from '@/types';
 import type { Challenge } from '@/lib/challenges';
 import { evaluateChallenges, getNewlyCompletedChallenges } from '@/lib/challenges';
+import { FESTIVAL } from '@/config/festival';
 
-const CHALLENGES_KEY = 'sziget-2026-challenges';
-const CHALLENGES_XP_KEY = 'sziget-2026-challenges-xp';
+const CHALLENGES_KEY = `${FESTIVAL.id}-challenges`;
+const CHALLENGES_XP_KEY = `${FESTIVAL.id}-challenges-xp`;
 
 export function useChallenges(favArtists: LineupItem[], quizCompleted: boolean) {
   const [challenges, setChallenges] = useState<Challenge[]>([]);
@@ -18,7 +19,7 @@ export function useChallenges(favArtists: LineupItem[], quizCompleted: boolean) 
     try {
       const saved = localStorage.getItem(CHALLENGES_KEY);
       const xpSaved = localStorage.getItem(CHALLENGES_XP_KEY);
-      const completedIds = saved ? new Set(JSON.parse(saved)) : new Set<string>();
+      const completedIds = saved ? new Set<string>(JSON.parse(saved)) : new Set<string>();
       const xp = xpSaved ? parseInt(xpSaved) : 0;
 
       const evaluated = evaluateChallenges(favArtists, completedIds, quizCompleted);
@@ -37,7 +38,7 @@ export function useChallenges(favArtists: LineupItem[], quizCompleted: boolean) 
 
     try {
       const saved = localStorage.getItem(CHALLENGES_KEY);
-      const completedIds = saved ? new Set(JSON.parse(saved)) : new Set<string>();
+      const completedIds = saved ? new Set<string>(JSON.parse(saved)) : new Set<string>();
 
       const evaluated = evaluateChallenges(favArtists, completedIds, quizCompleted);
       const { challenges: newlyDone, xpGain } = getNewlyCompletedChallenges(
@@ -48,7 +49,7 @@ export function useChallenges(favArtists: LineupItem[], quizCompleted: boolean) 
       // Update persisted state if there are new completions
       if (newlyDone.length > 0) {
         const updatedIds = Array.from(
-          new Set([...completedIds, ...newlyDone.map((c) => c.id)])
+          new Set<string>([...Array.from(completedIds), ...newlyDone.map((c) => c.id)])
         );
         localStorage.setItem(CHALLENGES_KEY, JSON.stringify(updatedIds));
 

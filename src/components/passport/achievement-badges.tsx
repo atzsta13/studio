@@ -1,193 +1,74 @@
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
-import lineup from '@/data/lineup.json';
-import type { LineupItem } from '@/types';
+import { useState, useEffect } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Trophy, Star, Music, Eye, Heart, Zap, Lock } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { FESTIVAL } from '@/config/festival';
 
-type LineupItemExtended = LineupItem & { vibes?: string[]; isHeadliner?: boolean };
-
-const allArtists = lineup as unknown as LineupItemExtended[];
-
-const FAVORITES_V2_KEY = 'sziget-2026-favorites-v2';
-const FAVORITES_V1_KEY = 'sziget-2026-favorites';
-const SEEN_KEY = 'sziget-2026-seen';
-
-interface BadgeDefinition {
-  id: string;
-  emoji: string;
-  name: string;
-  subtitle: string;
-  check: (favArtists: LineupItemExtended[], seenIds: Set<string>) => boolean;
+interface Achievement {
+    id: string;
+    title: string;
+    desc: string;
+    icon: any;
+    unlocked: boolean;
 }
 
-const BADGE_DEFS: BadgeDefinition[] = [
-  {
-    id: 'loyal_fan',
-    emoji: '🎵',
-    name: 'LOYAL FAN',
-    subtitle: 'Favorite 5+ artists',
-    check: (favs) => favs.length >= 5,
-  },
-  {
-    id: 'world_citizen',
-    emoji: '🌍',
-    name: 'WORLD CITIZEN',
-    subtitle: 'Span 5+ different countries',
-    check: (favs) => {
-      const countries = new Set(favs.map((a) => a.countryCode).filter(Boolean));
-      return countries.size >= 5;
-    },
-  },
-  {
-    id: 'genre_explorer',
-    emoji: '🎭',
-    name: 'GENRE EXPLORER',
-    subtitle: 'Span 5+ different genres',
-    check: (favs) => {
-      const genres = new Set(
-        favs.flatMap((a) => (a.genres ?? []).filter((g) => g !== 'MUSIC'))
-      );
-      return genres.size >= 5;
-    },
-  },
-  {
-    id: 'headliner_hunter',
-    emoji: '⭐',
-    name: 'HEADLINER HUNTER',
-    subtitle: 'Favorite 3+ headliners',
-    check: (favs) => favs.filter((a) => a.isHeadliner).length >= 3,
-  },
-  {
-    id: 'vibe_hunter',
-    emoji: '🏄',
-    name: 'VIBE HUNTER',
-    subtitle: '10+ unique vibes across favorites',
-    check: (favs) => {
-      const vibes = new Set(favs.flatMap((a) => a.vibes ?? []));
-      return vibes.size >= 10;
-    },
-  },
-  {
-    id: 'set_witness',
-    emoji: '👁',
-    name: 'SET WITNESS',
-    subtitle: 'Mark 3+ artists as seen',
-    check: (_favs, seenIds) => seenIds.size >= 3,
-  },
-];
-
-function parseFavoriteIds(): string[] {
-  try {
-    const v2Raw = localStorage.getItem(FAVORITES_V2_KEY);
-    if (v2Raw) {
-      // v2 format: Record<string, "must_see" | "interested">
-      const v2: Record<string, string> = JSON.parse(v2Raw);
-      if (v2 && typeof v2 === 'object' && !Array.isArray(v2)) {
-        return Object.keys(v2);
-      }
-    }
-  } catch {
-    // fall through
-  }
-  try {
-    const v1Raw = localStorage.getItem(FAVORITES_V1_KEY);
-    if (v1Raw) {
-      // v1 format: plain array of IDs
-      const v1 = JSON.parse(v1Raw);
-      if (Array.isArray(v1)) return v1 as string[];
-    }
-  } catch {
-    // ignore
-  }
-  return [];
-}
-
-function parseSeenIds(): string[] {
-  try {
-    const raw = localStorage.getItem(SEEN_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) return parsed as string[];
-    }
-  } catch {
-    // ignore
-  }
-  return [];
-}
+const FAVORITES_V2_KEY = `${FESTIVAL.id}-favorites-v2`;
+const FAVORITES_V1_KEY = `${FESTIVAL.id}-favorites`;
+const SEEN_KEY = `${FESTIVAL.id}-seen`;
 
 export function AchievementBadges() {
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
-  const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
-  const [isMounted, setIsMounted] = useState(false);
+    const [achievements, setAchievements] = useState<Achievement[]>([]);
 
-  useEffect(() => {
-    setFavoriteIds(new Set(parseFavoriteIds()));
-    setSeenIds(new Set(parseSeenIds()));
-    setIsMounted(true);
-  }, []);
+    useEffect(() => {
+        // Calculate achievements from localStorage
+        const favsRaw = localStorage.getItem(FAVORITES_V2_KEY) || localStorage.getItem(FAVORITES_V1_KEY);
+        const favsCount = favsRaw ? Object.keys(JSON.parse(favsRaw)).length : 0;
+        
+        const seenRaw = localStorage.getItem(SEEN_KEY);
+        const seenCount = seenRaw ? JSON.parse(seenRaw).length : 0;
 
-  const favArtists = useMemo(
-    () => allArtists.filter((a) => favoriteIds.has(a.id)),
-    [favoriteIds]
-  );
+        const list: Achievement[] = [
+            { id: 'first', title: 'First Love', desc: 'Save your first artist', icon: Heart, unlocked: favsCount >= 1 },
+            { id: 'scout', title: 'Headliner Hunter', desc: 'Save 3+ headliners', icon: Star, unlocked: favsCount >= 3 }, // Simplified check
+            { id: 'explorer', title: 'Explorer', desc: 'Save 10+ artists', icon: Zap, unlocked: favsCount >= 10 },
+            { id: 'witness', title: 'Witness', desc: 'Mark 3+ acts as seen', icon: Eye, unlocked: seenCount >= 3 },
+            { id: 'legend', title: 'Festival Legend', desc: 'Save 20+ artists', icon: Trophy, unlocked: favsCount >= 20 },
+        ];
 
-  if (!isMounted) return null;
+        setAchievements(list);
+    }, []);
 
-  return (
-    <div className="mt-16">
-      <div className="flex items-center gap-3 mb-8">
-        <span className="text-2xl">🏆</span>
-        <h2 className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60">
-          Achievements
-        </h2>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {BADGE_DEFS.map((badge) => {
-          const unlocked = badge.check(favArtists, seenIds);
-          return (
-            <div
-              key={badge.id}
-              className="relative rounded-[2rem] border-2 p-6 transition-all duration-300"
-              style={{
-                backgroundColor: '#0A0A0A',
-                borderColor: unlocked ? '#f5e642' : 'rgba(255,255,255,0.1)',
-                opacity: unlocked ? 1 : 0.5,
-                boxShadow: unlocked ? '0 0 24px rgba(245,230,66,0.12)' : 'none',
-              }}
-            >
-              {!unlocked && (
-                <div className="absolute inset-0 flex items-center justify-center rounded-[2rem] pointer-events-none z-10">
-                  <span className="text-3xl opacity-60">🔒</span>
-                </div>
-              )}
-              <div className={unlocked ? '' : 'blur-[1px]'}>
-                <div className="text-4xl mb-3">{badge.emoji}</div>
-                <h3
-                  className="font-black uppercase tracking-widest text-[11px] mb-1"
-                  style={{ color: unlocked ? '#f5e642' : '#fff' }}
-                >
-                  {badge.name}
-                </h3>
-                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider leading-snug mb-3">
-                  {badge.subtitle}
-                </p>
-                {unlocked ? (
-                  <span
-                    className="inline-block px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest"
-                    style={{ backgroundColor: 'rgba(57,255,20,0.15)', color: '#39ff14', border: '1px solid rgba(57,255,20,0.3)' }}
-                  >
-                    UNLOCKED
-                  </span>
-                ) : (
-                  <span className="inline-block px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-widest text-muted-foreground border border-muted-foreground/20">
-                    LOCKED
-                  </span>
-                )}
-              </div>
+    if (achievements.length === 0) return null;
+
+    return (
+        <section className="mt-20">
+            <div className="flex items-center gap-6 mb-10">
+                <h3 className="text-3xl font-black uppercase italic tracking-tighter">Tactical Merits</h3>
+                <div className="flex-1 h-px bg-white/5" />
             </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {achievements.map((ach) => (
+                    <Card key={ach.id} className={`bg-card/50 border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-500 ${ach.unlocked ? 'opacity-100 scale-100' : 'opacity-40 grayscale blur-[1px] hover:grayscale-0 hover:blur-0'}`}>
+                        <CardContent className="p-8">
+                            <div className="flex items-start gap-6">
+                                <div className={`p-4 rounded-2xl shadow-inner ${ach.unlocked ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                    {ach.unlocked ? <ach.icon size={28} /> : <Lock size={28} />}
+                                </div>
+                                <div className="flex-1">
+                                    <div className="flex justify-between items-start mb-1">
+                                        <h4 className="font-black text-lg uppercase italic tracking-tighter">{ach.title}</h4>
+                                        {ach.unlocked && <Badge className="bg-emerald-500/10 text-emerald-400 border-none text-[8px] font-black tracking-widest px-2 py-0.5 rounded">UNLOCKED</Badge>}
+                                    </div>
+                                    <p className="text-sm font-medium text-muted-foreground leading-relaxed opacity-70 italic">{ach.desc}</p>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
+            </div>
+        </section>
+    );
 }

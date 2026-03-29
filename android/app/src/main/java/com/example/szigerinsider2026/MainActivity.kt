@@ -13,8 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.szigerinsider2026.ui.theme.AcidYellow
-import com.example.szigerinsider2026.ui.theme.SzigetInsiderTheme
+import com.example.szigerinsider2026.ui.theme.FestivalInsiderTheme
 
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SzigetInsiderTheme {
+            FestivalInsiderTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun handleSpotifyCallback(uri: Uri?) {
-        if (uri?.scheme == "sziget" && uri.host == "spotify-callback") {
+        if (uri?.scheme == FestivalConfig.DEEP_LINK_SCHEME && uri.host == "spotify-callback") {
             val code = uri.getQueryParameter("code")
             val error = uri.getQueryParameter("error")
 

@@ -1,134 +1,86 @@
 'use client';
 
-import { useFavorites, type FavoriteTier } from '@/hooks/use-favorites';
+import { useState, useEffect } from 'react';
+import { Heart, Eye, CheckCircle2 } from 'lucide-react';
+import { useFavorites } from '@/hooks/use-favorites';
 import { useHaptic } from '@/hooks/useHaptic';
-import { useEffect, useState, useCallback } from 'react';
+import { FESTIVAL } from '@/config/festival';
 
 interface FavoriteButtonProps {
-  artistId: string;
+    artistId: string;
+    size?: 'sm' | 'lg';
 }
 
-const SEEN_KEY = 'sziget-2026-seen';
+const SEEN_KEY = `${FESTIVAL.id}-seen`;
 
-function loadSeenIds(): Set<string> {
-  try {
-    const raw = localStorage.getItem(SEEN_KEY);
-    if (raw) return new Set(JSON.parse(raw) as string[]);
-  } catch {
-    // ignore
-  }
-  return new Set();
-}
+export function FavoriteButton({ artistId, size = 'lg' }: FavoriteButtonProps) {
+    const { isFavorite, toggleFavorite } = useFavorites();
+    const [isSeen, setIsSeen] = useState(false);
+    const haptic = useHaptic();
 
-function saveSeenIds(ids: Set<string>) {
-  try {
-    localStorage.setItem(SEEN_KEY, JSON.stringify(Array.from(ids)));
-  } catch {
-    // ignore
-  }
-}
+    useEffect(() => {
+        const raw = localStorage.getItem(SEEN_KEY);
+        if (raw) {
+            const seen = JSON.parse(raw) as string[];
+            setIsSeen(seen.includes(artistId));
+        }
+    }, [artistId]);
 
-export function FavoriteButton({ artistId }: FavoriteButtonProps) {
-  const { getFavoriteTier, addFavorite, removeFavorite, isFavorite } = useFavorites([]);
-  const haptic = useHaptic();
-  const [mounted, setMounted] = useState(false);
-  const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
+    const handleSeenToggle = (e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        haptic.lightTap();
+        
+        const raw = localStorage.getItem(SEEN_KEY);
+        const seen = raw ? JSON.parse(raw) as string[] : [];
+        const next = isSeen ? seen.filter(id => id !== artistId) : [...seen, artistId];
+        
+        localStorage.setItem(SEEN_KEY, JSON.stringify(next));
+        setIsSeen(!isSeen);
+    };
 
-  useEffect(() => {
-    setMounted(true);
-    setSeenIds(loadSeenIds());
-  }, []);
+    const isFave = isFavorite(artistId);
 
-  const handleTierClick = useCallback(
-    (tier: FavoriteTier) => {
-      haptic.mediumTap();
-      const currentTier = getFavoriteTier(artistId);
-      if (currentTier === tier) {
-        // Clicking the active tier removes the favorite
-        removeFavorite(artistId);
-      } else {
-        // Switch to or set this tier
-        addFavorite(artistId, tier);
-      }
-    },
-    [artistId, getFavoriteTier, addFavorite, removeFavorite, haptic]
-  );
-
-  const toggleSeen = useCallback(() => {
-    haptic.lightTap();
-    setSeenIds(prev => {
-      const updated = new Set(prev);
-      if (updated.has(artistId)) {
-        updated.delete(artistId);
-      } else {
-        updated.add(artistId);
-      }
-      saveSeenIds(updated);
-      return updated;
-    });
-  }, [artistId, haptic]);
-
-  if (!mounted) {
     return (
-      <div className="flex flex-col gap-3">
         <div className="flex gap-3">
-          <div className="h-14 flex-1 rounded-2xl bg-muted animate-pulse" />
-          <div className="h-14 flex-1 rounded-2xl bg-muted animate-pulse" />
+            <button
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    haptic.favoriteTap();
+                    toggleFavorite(artistId, 'must_see');
+                }}
+                className={`flex items-center justify-center rounded-2xl transition-all duration-500 ${
+                    size === 'lg' ? 'h-16 px-8' : 'h-12 px-5'
+                } ${isFave 
+                    ? 'bg-primary text-white shadow-2xl shadow-primary/20 scale-105' 
+                    : 'bg-muted/20 border border-white/5 text-muted-foreground hover:bg-muted/40 hover:text-foreground'
+                }`}
+            >
+                <Heart className={`${size === 'lg' ? 'h-6 w-6' : 'h-4 w-4'} ${isFave ? 'fill-current' : 'fill-none'} mr-3`} />
+                <span className={`font-black uppercase tracking-widest ${size === 'lg' ? 'text-xs' : 'text-[10px]'}`}>
+                    {isFave ? 'SAVED' : 'SAVE'}
+                </span>
+            </button>
+
+            <button
+                onClick={handleSeenToggle}
+                className={`flex items-center justify-center rounded-2xl transition-all duration-500 ${
+                    size === 'lg' ? 'h-16 px-8' : 'h-12 px-5'
+                } ${isSeen 
+                    ? 'bg-[#39FF14]/10 text-[#39FF14] border border-[#39FF14]/20 shadow-2xl shadow-[#39FF14]/10' 
+                    : 'bg-muted/20 border border-white/5 text-muted-foreground hover:bg-muted/40 hover:text-foreground'
+                }`}
+            >
+                {isSeen ? (
+                    <CheckCircle2 className={`${size === 'lg' ? 'h-6 w-6' : 'h-4 w-4'} mr-3`} />
+                ) : (
+                    <Eye className={`${size === 'lg' ? 'h-6 w-6' : 'h-4 w-4'} mr-3`} />
+                )}
+                <span className={`font-black uppercase tracking-widest ${size === 'lg' ? 'text-xs' : 'text-[10px]'}`}>
+                    {isSeen ? 'SEEN' : 'SEEN'}
+                </span>
+            </button>
         </div>
-        <div className="h-14 w-full rounded-2xl bg-muted animate-pulse" />
-      </div>
     );
-  }
-
-  const currentTier = getFavoriteTier(artistId);
-  const isSeen = seenIds.has(artistId);
-
-  const mustSeeActive = currentTier === 'must_see';
-  const interestedActive = currentTier === 'interested';
-
-  return (
-    <div className="flex flex-col gap-3 w-full">
-      {/* Two-tier favorite buttons */}
-      <div className="flex gap-3">
-        {/* MUST SEE */}
-        <button
-          onClick={() => handleTierClick('must_see')}
-          className={`flex-1 h-14 rounded-2xl font-black uppercase tracking-[0.15em] text-xs transition-all duration-300 border-2 flex items-center justify-center gap-2 ${
-            mustSeeActive
-              ? 'bg-[#FAFF00] border-[#FAFF00] text-black shadow-[0_0_20px_rgba(250,255,0,0.4)] scale-[1.02]'
-              : 'bg-transparent border-[#FAFF00]/30 text-[#FAFF00]/60 hover:border-[#FAFF00]/70 hover:text-[#FAFF00] hover:bg-[#FAFF00]/5'
-          }`}
-        >
-          <span>⭐</span>
-          <span>MUST SEE</span>
-        </button>
-
-        {/* INTERESTED */}
-        <button
-          onClick={() => handleTierClick('interested')}
-          className={`flex-1 h-14 rounded-2xl font-black uppercase tracking-[0.15em] text-xs transition-all duration-300 border-2 flex items-center justify-center gap-2 ${
-            interestedActive
-              ? 'bg-[#FF00FF] border-[#FF00FF] text-white shadow-[0_0_20px_rgba(255,0,255,0.35)] scale-[1.02]'
-              : 'bg-transparent border-[#FF00FF]/30 text-[#FF00FF]/60 hover:border-[#FF00FF]/70 hover:text-[#FF00FF] hover:bg-[#FF00FF]/5'
-          }`}
-        >
-          <span>🔖</span>
-          <span>INTERESTED</span>
-        </button>
-      </div>
-
-      {/* SAW THIS SET toggle */}
-      <button
-        onClick={toggleSeen}
-        className={`w-full h-14 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all duration-300 border-2 flex items-center justify-center gap-2 ${
-          isSeen
-            ? 'bg-[#39FF14] border-[#39FF14] text-black shadow-[0_0_20px_rgba(57,255,20,0.4)] scale-[1.01]'
-            : 'bg-transparent border-white/15 text-white/40 hover:border-white/40 hover:text-white/80 hover:bg-white/5'
-        }`}
-      >
-        <span className="text-base">✓</span>
-        <span>{isSeen ? 'SEEN IT!' : 'MARK AS SEEN'}</span>
-      </button>
-    </div>
-  );
 }

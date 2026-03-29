@@ -14,6 +14,8 @@ interface ArtistCardProps {
 }
 
 export default function ArtistCard({ artist, isFavorite, isConflicting, onToggleFavorite }: ArtistCardProps) {
+  if (!artist.startTime || !artist.endTime) return null;
+
   const start = new Date(artist.startTime);
   const startTime = format(start, 'HH:mm');
   const duration = (new Date(artist.endTime).getTime() - start.getTime()) / (1000 * 60);
@@ -84,7 +86,7 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
             <Heart size={16} fill="#ff0080" color="#ff0080" style={{ marginTop: 2 }} />
           )}
           {!isSmall && (
-            <Link href={`/map?stage=${encodeURIComponent(artist.stage)}`} style={{ textDecoration: 'none' }}>
+            <Link href={`/map?stage=${encodeURIComponent(artist.stage || "")}`} style={{ textDecoration: 'none' }}>
               <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: '#00f2ff' } }}>
                 <MapPin size={14} />
               </IconButton>

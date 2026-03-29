@@ -7,23 +7,40 @@ import BottomNav from '@/components/layout/bottom-nav';
 import MuiRegistry from '@/components/mui-registry';
 import InstallPrompt from '@/components/install-prompt';
 import { ThemeProvider } from '@/components/theme-provider';
+import { FESTIVAL } from '@/config/festival';
 
-const APP_NAME = "Sziget Insider 2026";
-const APP_DEFAULT_TITLE = "Sziget Insider 2026";
-const APP_DESCRIPTION = "Your unofficial offline-first guide to Sziget Festival 2026.";
+const themeStyle = `
+  :root {
+    --primary: ${FESTIVAL.theme.primaryHsl};
+    --primary-foreground: 0 0% 100%;
+    --secondary: ${FESTIVAL.theme.secondaryHsl};
+    --secondary-foreground: 0 0% 100%;
+    --accent: ${FESTIVAL.theme.accentHsl};
+    --accent-foreground: 0 0% 0%;
+    --background: ${FESTIVAL.theme.backgroundHsl};
+    --card: ${FESTIVAL.theme.cardHsl};
+    --card-foreground: 0 0% 100%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 0 0% 63%;
+    --border: 240 4% 16%;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px ${FESTIVAL.theme.glowColor};
+  }
+`;
 
 export const metadata: Metadata = {
-  applicationName: APP_NAME,
+  applicationName: FESTIVAL.appName,
   title: {
-    default: APP_DEFAULT_TITLE,
-    template: "%s | Sziget 2026",
+    default: FESTIVAL.appName,
+    template: `%s | ${FESTIVAL.name} ${FESTIVAL.dates.year}`,
   },
-  description: APP_DESCRIPTION,
+  description: FESTIVAL.description,
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: APP_DEFAULT_TITLE,
+    title: FESTIVAL.appName,
   },
   formatDetection: {
     telephone: false,
@@ -31,7 +48,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: FESTIVAL.theme.primaryHex,
 };
 
 export default function RootLayout({
@@ -45,6 +62,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Varela+Round&display=swap" rel="stylesheet" />
+        <style dangerouslySetInnerHTML={{ __html: themeStyle }} />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>

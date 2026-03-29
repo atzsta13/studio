@@ -1,29 +1,23 @@
-'use client';
-
 import { useState, useEffect } from 'react';
+import { FESTIVAL } from '@/config/festival';
 
-const STORAGE_KEY = 'sziget_hydration_v1';
+const STORAGE_KEY = `${FESTIVAL.id}_hydration_v1`;
 
 export function useHydration() {
-  const [waterCount, setWaterAmount] = useState<number>(0);
+  const [glassCount, setHydrationCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) setWaterAmount(parseInt(saved, 10));
+    if (saved) setHydrationCount(parseInt(saved, 10));
     setIsLoaded(true);
   }, []);
 
-  const addWater = () => {
-    const newVal = waterCount + 1;
-    setWaterAmount(newVal);
-    localStorage.setItem(STORAGE_KEY, newVal.toString());
-  };
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem(STORAGE_KEY, glassCount.toString());
+    }
+  }, [glassCount, isLoaded]);
 
-  const resetWater = () => {
-    setWaterAmount(0);
-    localStorage.setItem(STORAGE_KEY, '0');
-  };
-
-  return { waterCount, addWater, resetWater, isLoaded };
+  return { glassCount, setHydrationCount };
 }

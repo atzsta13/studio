@@ -6,6 +6,7 @@ import type { LineupItem } from '@/types';
 import { Share2, Star, Music, Sparkles, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useFavorites } from '@/hooks/use-favorites';
+import { FESTIVAL } from '@/config/festival';
 
 const allArtists = lineup as unknown as (LineupItem & { vibes?: string[] })[];
 
@@ -16,7 +17,7 @@ export default function HighlightsPage() {
     useEffect(() => {
         setIsMounted(true);
         try {
-            const raw = localStorage.getItem('sziget-2026-seen');
+            const raw = localStorage.getItem(`${FESTIVAL.id}-seen`);
             if (raw) {
                 const parsed = JSON.parse(raw);
                 if (Array.isArray(parsed)) setActsSeenCount(parsed.length);
@@ -56,7 +57,7 @@ export default function HighlightsPage() {
 
     const share = () => {
         const text = [
-            '🎪 My Sziget 2026 Highlights',
+            `🎪 My ${FESTIVAL.appName} Highlights`,
             '',
             `❤️ Saved artists: ${favArtists.length}`,
             topGenres.length ? `🎵 Top genres: ${topGenres.join(', ')}` : '',
@@ -64,7 +65,7 @@ export default function HighlightsPage() {
             '',
             ...favArtists.slice(0, 5).map((a) => `• ${a.artist}`),
             '',
-            '#SzigetFestival #Sziget2026',
+            `#${FESTIVAL.name}Festival #${FESTIVAL.name}${FESTIVAL.dates.year}`,
         ].filter(Boolean).join('\n');
 
         if (navigator.share) {
@@ -79,8 +80,8 @@ export default function HighlightsPage() {
     return (
         <div className="container mx-auto max-w-2xl px-4 py-16 pb-32">
             <div className="mb-12 bg-gradient-to-b from-primary/15 to-transparent rounded-[4rem] p-12 border border-primary/10">
-                <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-2">My Sziget</p>
-                <h1 className="font-headline text-8xl font-black tracking-tighter italic uppercase leading-none text-primary mb-1">2026</h1>
+                <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-2">My {FESTIVAL.name}</p>
+                <h1 className="font-headline text-8xl font-black tracking-tighter italic uppercase leading-none text-primary mb-1">{FESTIVAL.dates.year}</h1>
                 <h2 className="font-headline text-5xl font-black tracking-tighter italic uppercase leading-none mb-8">Highlights</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                     <StatCard icon={Music} label="Artists Saved" value={`${favArtists.length}`} color="text-primary" bg="bg-primary/10" />

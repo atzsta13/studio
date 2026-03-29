@@ -12,6 +12,7 @@ import { useFavorites } from '@/hooks/use-favorites';
 import { useHaptic } from '@/hooks/useHaptic';
 import lineupData from '@/data/lineup.json';
 import { LineupItem } from '@/types';
+import { FESTIVAL } from '@/config/festival';
 
 const allArtists = (lineupData as any[]).map(a => ({
   ...a,
@@ -59,9 +60,9 @@ export default function SpeedDiscoveryPage() {
   if (!currentArtist || currentIndex >= pool.length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center bg-black">
-        <Sparkles className="w-16 h-16 mb-6 text-[var(--acid-yellow)]" />
-        <h1 className="text-4xl font-black mb-4 uppercase italic">YOU'VE SEEN IT ALL!</h1>
-        <p className="text-muted-foreground mb-8 max-w-xs">You processed the entire lineup. Time to head to the island.</p>
+        <Sparkles className="w-16 h-16 mb-6" style={{ color: FESTIVAL.theme.accentHex }} />
+        <h1 className="text-4xl font-black mb-4 uppercase italic">YOU&apos;VE SEEN IT ALL!</h1>
+        <p className="text-muted-foreground mb-8 max-w-xs">You processed the entire lineup. Time to head to {FESTIVAL.name}.</p>
         <Button 
           variant="outline" 
           className="border-2 font-bold uppercase italic"
@@ -82,7 +83,7 @@ export default function SpeedDiscoveryPage() {
         </Button>
         <div className="flex flex-col items-center">
           <span className="text-[10px] font-black uppercase text-muted-foreground tracking-tighter">Speed Discovery</span>
-          <span className="text-xs font-bold text-[var(--acid-yellow)]">{currentIndex + 1} / {pool.length}</span>
+          <span className="text-xs font-bold" style={{ color: FESTIVAL.theme.accentHex }}>{currentIndex + 1} / {pool.length}</span>
         </div>
         <div className="w-10" />
       </div>
@@ -111,7 +112,7 @@ export default function SpeedDiscoveryPage() {
           >
             {/* Indicators */}
             <motion.div style={{ scale: heartScale }} className="absolute top-10 right-10 z-20 pointer-events-none">
-              <div className="bg-[var(--acid-yellow)] p-4 rounded-full">
+              <div className="p-4 rounded-full" style={{ background: FESTIVAL.theme.accentHex }}>
                 <Heart className="w-12 h-12 text-black fill-black" />
               </div>
             </motion.div>
@@ -143,7 +144,7 @@ export default function SpeedDiscoveryPage() {
               <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
                 <div className="space-y-1">
                   {currentArtist.returningHero && (
-                    <Badge className="bg-[var(--acid-yellow)] text-black font-black italic border-none text-[10px] py-0 px-2">
+                    <Badge className="text-black font-black italic border-none text-[10px] py-0 px-2" style={{ background: FESTIVAL.theme.accentHex }}>
                       RETURNING HERO
                     </Badge>
                   )}
@@ -157,8 +158,8 @@ export default function SpeedDiscoveryPage() {
                   </div>
                 </div>
 
-                <p className="text-sm text-zinc-300 line-clamp-3 font-medium italic border-l-2 border-[var(--acid-yellow)] pl-3">
-                  {currentArtist.description || "The Sziget vibe is calling. Don't miss this one."}
+                <p className="text-sm text-zinc-300 line-clamp-3 font-medium italic border-l-2 pl-3" style={{ borderColor: FESTIVAL.theme.accentHex }}>
+                  {currentArtist.description || `The ${FESTIVAL.name} vibe is calling. Don't miss this one.`}
                 </p>
 
                 <div className="flex gap-2 pt-2">
@@ -185,7 +186,8 @@ export default function SpeedDiscoveryPage() {
         </Button>
         <Button
           size="icon"
-          className="w-20 h-20 rounded-full bg-[var(--acid-yellow)] border-4 border-black hover:scale-105 transition-transform active:scale-95 shadow-[0_0_20px_rgba(255,255,0,0.3)]"
+          className="w-20 h-20 rounded-full border-4 border-black hover:scale-105 transition-transform active:scale-95 shadow-2xl"
+          style={{ background: FESTIVAL.theme.accentHex, boxShadow: `0 0 20px ${FESTIVAL.theme.accentHex}44` }}
           onClick={() => handleNext(true)}
         >
           <Heart className="w-10 h-10 text-black fill-black" />

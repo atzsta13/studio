@@ -2,6 +2,7 @@ package com.example.szigerinsider2026.ui.utils
 
 import android.graphics.Bitmap
 import android.graphics.Color
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 
@@ -23,11 +24,12 @@ object QRUtils {
     }
 
     fun encodeSquad(ids: Collection<String>): String {
-        return "sziget://squad?ids=" + ids.joinToString(",")
+        return "${FestivalConfig.DEEP_LINK_SCHEME}://squad?ids=" + ids.joinToString(",")
     }
 
     fun decodeSquad(uri: String): List<String>? {
-        if (!uri.startsWith("sziget://squad?ids=")) return null
+        val prefix = "${FestivalConfig.DEEP_LINK_SCHEME}://squad?ids="
+        if (!uri.startsWith(prefix)) return null
         return uri.substringAfter("ids=").split(",").filter { it.isNotEmpty() }
     }
 }

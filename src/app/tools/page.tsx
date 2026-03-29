@@ -18,24 +18,25 @@ import {
   QrCode,
   MapPin,
   Share2,
-  Languages
+  Languages,
+  ArrowRight
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { WeatherWidget } from '@/components/tools/weather-widget';
 import { HungarianPhrases } from '@/components/tools/hungarian-phrases';
 import { CampsiteChecklist } from '@/components/tools/campsite-checklist';
+import { FESTIVAL } from '@/config/festival';
 
 export default function ToolsPage() {
   const { toast } = useToast();
-  const [hufAmount, setHufAmount] = useState<string>('1000');
+  const [localAmount, setLocalAmount] = useState<string>(FESTIVAL.currency.localCode === 'HUF' ? '1000' : '10');
   const [isFlashOn, setIsFlashOn] = useState(false);
-  const [showQr, setShowQr] = useState(false);
 
-  const convertHuf = (amount: string) => {
+  const convertCurrency = (amount: string) => {
     const val = parseFloat(amount) || 0;
     return {
-      eur: (val * 0.0025).toFixed(2),
-      usd: (val * 0.0027).toFixed(2)
+      eur: (val / FESTIVAL.currency.eurRate).toFixed(2),
+      usd: (val / FESTIVAL.currency.usdRate).toFixed(2)
     };
   };
 
@@ -48,8 +49,6 @@ export default function ToolsPage() {
       });
     }
   };
-
-
 
   return (
     <div className={`container mx-auto max-w-5xl px-4 py-20 pb-32 transition-colors duration-1000 ${isFlashOn ? 'bg-white' : ''}`}>
@@ -68,49 +67,77 @@ export default function ToolsPage() {
           <div className="mb-20">
             <PageHeader
               title="Survival Toolkit"
-              description="Elite tactical utilities for the Island of Freedom. No signal required."
+              description={`Elite tactical utilities for the ${FESTIVAL.tagline}. No signal required.`}
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-            <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
-              <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
-                <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
-                  <Coins size={32} />
-                  HUF Converter
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-10">
-                <div className="space-y-8">
-                  <div>
-                    <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">Forints (HUF)</label>
-                    <Input
-                      type="number"
-                      value={hufAmount}
-                      onChange={(e) => setHufAmount(e.target.value)}
-                      className="h-20 text-4xl font-black bg-muted/20 border-none rounded-[1.5rem] px-8 shadow-inner"
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
-                      <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">EURO</p>
-                      <p className="text-4xl font-black tracking-tighter">€{convertHuf(hufAmount).eur}</p>
+            {FESTIVAL.features.currencyConverter && (
+              <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
+                <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
+                  <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
+                    <Coins size={32} />
+                    {FESTIVAL.currency.localCode} Converter
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-10">
+                  <div className="space-y-8">
+                    <div>
+                      <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">{FESTIVAL.currency.localName} ({FESTIVAL.currency.localCode})</label>
+                      <Input
+                        type="number"
+                        value={localAmount}
+                        onChange={(e) => setLocalAmount(e.target.value)}
+                        className="h-20 text-4xl font-black bg-muted/20 border-none rounded-[1.5rem] px-8 shadow-inner"
+                      />
                     </div>
-                    <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
-                      <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">USD</p>
-                      <p className="text-4xl font-black tracking-tighter">${convertHuf(hufAmount).usd}</p>
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
+                        <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">EURO</p>
+                        <p className="text-4xl font-black tracking-tighter">€{convertCurrency(localAmount).eur}</p>
+                      </div>
+                      <div className="p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner text-center">
+                        <p className="text-[10px] font-black text-muted-foreground/60 uppercase tracking-[0.3em] mb-2">USD</p>
+                        <p className="text-4xl font-black tracking-tighter">${convertCurrency(localAmount).usd}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
+
+            {FESTIVAL.features.cashlessLink && (
+              <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
+                <CardHeader className="bg-blue-500/10 border-b border-blue-500/10 px-10 py-8">
+                  <CardTitle className="flex items-center gap-4 text-blue-500 text-2xl font-black uppercase italic tracking-tighter">
+                    <QrCode size={32} />
+                    Cashless Wallet
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-10 flex flex-col justify-center items-center gap-6">
+                   <p className="text-lg font-medium text-muted-foreground text-center italic opacity-80">
+                     Manage your RFID wristband and top up your balance.
+                   </p>
+                   <Button
+                     asChild
+                     className="w-full h-16 rounded-[1.5rem] bg-blue-600 hover:bg-blue-700 font-black uppercase tracking-[0.2em] text-[11px]"
+                   >
+                     <a href={FESTIVAL.features.cashlessUrl} target="_blank" rel="noopener noreferrer">
+                       Top Up Wristband <ArrowRight className="ml-2 h-4 w-4" />
+                     </a>
+                   </Button>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12">
+            <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${FESTIVAL.location.countryCode === 'HU' ? 'grid-cols-4' : 'grid-cols-3'}`}>
               <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Tactical</TabsTrigger>
               <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Safety</TabsTrigger>
-              <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
+              {FESTIVAL.location.countryCode === 'HU' && (
+                <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
+              )}
               <TabsTrigger value="camp" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Camp</TabsTrigger>
             </TabsList>
 
@@ -161,7 +188,7 @@ export default function ToolsPage() {
                       </div>
                       <h4 className="font-black text-2xl uppercase italic tracking-tighter">Lost Item Helper</h4>
                     </div>
-                    <p className="text-lg font-medium text-muted-foreground mb-8 leading-relaxed italic opacity-80">Prepare tech metadata for official Sziget security or Police reports.</p>
+                    <p className="text-lg font-medium text-muted-foreground mb-8 leading-relaxed italic opacity-80">Prepare tech metadata for official {FESTIVAL.name} security or Police reports.</p>
                     <Button
                       variant="outline"
                       className="w-full h-16 rounded-[1.5rem] border-white/10 hover:bg-white/5 font-black uppercase tracking-[0.2em] text-[11px]"
@@ -227,14 +254,16 @@ export default function ToolsPage() {
               </div>
             </TabsContent>
 
-            <TabsContent value="phrases" className="space-y-10">
-              <div>
-                <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">
-                  Essential Hungarian for the Island
-                </p>
-                <HungarianPhrases />
-              </div>
-            </TabsContent>
+            {FESTIVAL.location.countryCode === 'HU' && (
+              <TabsContent value="phrases" className="space-y-10">
+                <div>
+                  <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">
+                    Essential Hungarian for the Island
+                  </p>
+                  <HungarianPhrases />
+                </div>
+              </TabsContent>
+            )}
 
             <TabsContent value="camp" className="space-y-10">
               <div>

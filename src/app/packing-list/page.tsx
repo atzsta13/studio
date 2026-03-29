@@ -28,6 +28,7 @@ import {
   CreditCard
 } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
+import { FESTIVAL } from '@/config/festival';
 
 interface PackingItem {
   id: string;
@@ -50,7 +51,7 @@ const CATEGORIES = [
 const DEFAULT_ITEMS: PackingItem[] = [
   { id: '1', text: 'Festival Ticket (Digital & Print)', checked: false, category: 'essentials' },
   { id: '2', text: 'ID Card / Passport', checked: false, category: 'essentials' },
-  { id: '3', text: 'Wallet (Cash in HUF & Cards)', checked: false, category: 'essentials' },
+  { id: '3', text: `Wallet (Cash in ${FESTIVAL.currency.localCode} & Cards)`, checked: false, category: 'essentials' },
   { id: '10', text: 'Waterproof Tent (Double layer)', checked: false, category: 'camping' },
   { id: '11', text: 'Sleeping Bag (Nights can be 10°C)', checked: false, category: 'camping' },
   { id: '30', text: 'Comfortable Sneakers (Dusty!)', checked: false, category: 'clothing' },
@@ -60,7 +61,7 @@ const DEFAULT_ITEMS: PackingItem[] = [
   { id: '90', text: 'Power Bank (20,000mAh+ recommended)', checked: false, category: 'electronics' },
 ];
 
-const STORAGE_KEY = 'sziget_packing_checklist_v2';
+const STORAGE_KEY = `${FESTIVAL.id}_packing_checklist_v2`;
 
 export default function PackingChecklistPage() {
   const [items, setItems] = useState<PackingItem[]>([]);
@@ -134,7 +135,7 @@ export default function PackingChecklistPage() {
           <div className="flex justify-between items-end mb-2">
             <div>
               <p className="text-2xl font-bold">{progress}%</p>
-              <p className="text-sm text-muted-foreground">Ready for the Island</p>
+              <p className="text-sm text-muted-foreground">Ready for {FESTIVAL.name}</p>
             </div>
             <div className="text-right">
               <p className="text-sm font-medium text-primary">{checkedCount} / {totalCount} Items</p>

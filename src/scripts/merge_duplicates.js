@@ -80,7 +80,7 @@ lineup.forEach(item => {
         }
 
         // 9. Links 
-        if (!existing.szigetUrl && incoming.szigetUrl) existing.szigetUrl = incoming.szigetUrl;
+        if (!existing.festivalUrl && incoming.festivalUrl) existing.festivalUrl = incoming.festivalUrl;
 
         // 10. Headliner
         if (incoming.isHeadliner) existing.isHeadliner = true;

@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.delay
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -27,8 +28,9 @@ private data class CountdownState(
 )
 
 private fun computeCountdown(): CountdownState {
-    val target = ZonedDateTime.of(2026, 8, 5, 0, 0, 0, 0, ZoneId.of("Europe/Budapest"))
-    val now = ZonedDateTime.now(ZoneId.of("Europe/Budapest"))
+    val config = FestivalConfig.current
+    val target = ZonedDateTime.of(config.startYear, config.startMonth, config.startDay, 0, 0, 0, 0, ZoneId.of(config.timezone))
+    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
     val totalSeconds = java.time.Duration.between(now, target).seconds.coerceAtLeast(0)
     val days = totalSeconds / 86400
     val hours = (totalSeconds % 86400) / 3600
@@ -38,15 +40,17 @@ private fun computeCountdown(): CountdownState {
 }
 
 private fun isFestivalLive(): Boolean {
-    val now = ZonedDateTime.now(ZoneId.of("Europe/Budapest"))
-    val start = ZonedDateTime.of(2026, 8, 5, 0, 0, 0, 0, ZoneId.of("Europe/Budapest"))
-    val end = ZonedDateTime.of(2026, 8, 12, 0, 0, 0, 0, ZoneId.of("Europe/Budapest"))
+    val config = FestivalConfig.current
+    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
+    val start = ZonedDateTime.of(config.startYear, config.startMonth, config.startDay, 0, 0, 0, 0, ZoneId.of(config.timezone))
+    val end = ZonedDateTime.of(config.startYear, config.endMonth, config.endDay, 23, 59, 59, 0, ZoneId.of(config.timezone))
     return now >= start && now < end
 }
 
 private fun isFestivalOver(): Boolean {
-    val now = ZonedDateTime.now(ZoneId.of("Europe/Budapest"))
-    val end = ZonedDateTime.of(2026, 8, 12, 0, 0, 0, 0, ZoneId.of("Europe/Budapest"))
+    val config = FestivalConfig.current
+    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
+    val end = ZonedDateTime.of(config.startYear, config.endMonth, config.endDay, 23, 59, 59, 0, ZoneId.of(config.timezone))
     return now >= end
 }
 
@@ -66,12 +70,12 @@ fun FestivalCountdownCard() {
         shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .border(1.dp, AcidYellow, RoundedCornerShape(20.dp))
+            .border(1.dp, MaterialTheme.colorScheme.secondary, RoundedCornerShape(20.dp))
     ) {
         Column(modifier = Modifier.padding(24.dp)) {
             Text(
-                text = "COUNTDOWN TO SZIGET 2026",
-                color = AcidYellow,
+                text = "COUNTDOWN TO ${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Black,
                 fontStyle = FontStyle.Italic,
@@ -83,7 +87,7 @@ fun FestivalCountdownCard() {
                 isFestivalLive() -> {
                     Text(
                         text = "FESTIVAL IS LIVE",
-                        color = AcidYellow,
+                        color = MaterialTheme.colorScheme.secondary,
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
                         fontStyle = FontStyle.Italic,
@@ -91,8 +95,9 @@ fun FestivalCountdownCard() {
                     )
                 }
                 isFestivalOver() -> {
+                    val config = FestivalConfig.current
                     Text(
-                        text = "SEE YOU AT SZIGET 2027",
+                        text = "SEE YOU AT ${config.name.uppercase()} ${config.year + 1}",
                         color = TextMuted,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Black,
@@ -121,14 +126,14 @@ private fun CountdownBox(value: String, label: String, modifier: Modifier = Modi
         modifier = modifier
             .clip(RoundedCornerShape(12.dp))
             .background(OLEDBlack)
-            .border(1.dp, AcidYellow.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
+            .border(1.dp, MaterialTheme.colorScheme.secondary.copy(alpha = 0.15f), RoundedCornerShape(12.dp))
             .padding(vertical = 12.dp, horizontal = 4.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = value,
-                color = AcidYellow,
+                color = MaterialTheme.colorScheme.secondary,
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Black,
                 fontFamily = FontFamily.Monospace,

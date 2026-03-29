@@ -2,6 +2,7 @@ package com.example.szigerinsider2026.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 @Database(
     entities = [UserProgress::class, FavoriteArtist::class],
@@ -18,10 +19,11 @@ abstract class AppDatabase : RoomDatabase() {
 
         fun getDatabase(context: android.content.Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
+                val dbName = "${FestivalConfig.current.id.replace("-", "_")}_database"
                 val instance = androidx.room.Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "sziget_database"
+                    dbName
                 )
                 .fallbackToDestructiveMigration()
                 .build()

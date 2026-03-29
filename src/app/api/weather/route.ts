@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
+import { FESTIVAL } from '@/config/festival';
 
 let cachedData: unknown = null;
 let cacheTimestamp = 0;
 const CACHE_TTL_MS = 30 * 60 * 1000;
 
+const { lat, lng, timezone } = FESTIVAL.location;
 const OPEN_METEO_URL =
-    'https://api.open-meteo.com/v1/forecast?' +
-    'latitude=47.5194&longitude=19.0512' +
-    '&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
-    '&hourly=precipitation_probability' +
-    '&timezone=Europe%2FBudapest' +
-    '&forecast_days=7';
+    `https://api.open-meteo.com/v1/forecast?` +
+    `latitude=${lat}&longitude=${lng}` +
+    `&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+    `&hourly=precipitation_probability` +
+    `&timezone=${encodeURIComponent(timezone)}` +
+    `&forecast_days=7`;
 
 export async function GET() {
     const now = Date.now();

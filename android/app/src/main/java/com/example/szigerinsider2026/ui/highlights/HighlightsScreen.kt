@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
@@ -49,8 +50,8 @@ fun HighlightsScreen(onBack: () -> Unit) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = TextPrimary)
                     }
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text("MY SZIGET", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp)
-                    Text("2026", color = PrimaryMagenta, fontSize = 80.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp, lineHeight = 72.sp)
+                    Text("MY ${FestivalConfig.NAME.uppercase()}", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp)
+                    Text("${FestivalConfig.current.year}", color = MaterialTheme.colorScheme.primary, fontSize = 80.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp, lineHeight = 72.sp)
                     Text("HIGHLIGHTS", color = TextPrimary, fontSize = 40.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-2).sp, lineHeight = 38.sp)
                 }
             }
@@ -120,7 +121,7 @@ fun HighlightsScreen(onBack: () -> Unit) {
                     onClick = {
                         haptic.successBurst()
                         val text = buildString {
-                            append("🎪 My Sziget 2026 Highlights\n\n")
+                            append("🎪 My ${FestivalConfig.NAME} ${FestivalConfig.current.year} Highlights\n\n")
                             append("🏆 Rank: ${s.rank}\n")
                             append("⚡ XP: ${s.xp}\n")
                             append("❤️ Saved: ${s.favoriteCount} artists (⭐ ${s.mustSeeCount} Must See, 💙 ${s.interestedCount} Interested)\n")
@@ -134,7 +135,7 @@ fun HighlightsScreen(onBack: () -> Unit) {
                                 append("\n💙 Interested:\n")
                                 s.interestedNames.take(5).forEach { append("• $it\n") }
                             }
-                            append("\n#SzigetFestival #Sziget2026")
+                            append("\n#${FestivalConfig.NAME}Festival #${FestivalConfig.NAME}${FestivalConfig.current.year}")
                         }
                         context.startActivity(
                             Intent.createChooser(

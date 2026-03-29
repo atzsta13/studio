@@ -1,13 +1,13 @@
 export interface LineupItem {
   id: string;
   artist: string;
-  stage?: string;
-  day: string;
-  startTime?: string;
-  endTime?: string;
+  stage?: string | null;
+  day: string | null;
+  startTime?: string | null;
+  endTime?: string | null;
   countryCode?: string;
   genres?: string[];
-  szigetUrl?: string;
+  festivalUrl?: string;
   imageUrl?: string;
   socials?: {
     spotify?: string;
@@ -21,6 +21,8 @@ export interface LineupItem {
   };
   description?: string;
   vibes?: string[];
+  returningHero?: boolean;
+  lastYearStage?: string;
 }
 
 export interface MapPin {

@@ -26,6 +26,7 @@ import {
   Utensils
 } from 'lucide-react';
 import { useEffect, useState, useMemo } from 'react';
+import { FESTIVAL } from '@/config/festival';
 import lineup from '@/data/lineup.json';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
 
@@ -35,14 +36,14 @@ const features = [
     description: 'AI Scouting & Lineup',
     href: '/discover',
     icon: Wand2,
-    color: '#ffee00',
+    color: FESTIVAL.theme.accentHex,
   },
   {
     title: 'Tactical Map',
     description: 'Find Water & Vibes',
     href: '/map',
     icon: MapIcon,
-    color: '#00c3ff',
+    color: FESTIVAL.theme.secondaryHex,
   },
   {
     title: 'Toolkit',
@@ -56,7 +57,7 @@ const features = [
     description: 'Collect Island Stamps',
     href: '/passport',
     icon: Trophy,
-    color: '#ff0080',
+    color: FESTIVAL.theme.primaryHex,
   },
 ];
 
@@ -69,7 +70,7 @@ export default function Home() {
   }, []);
 
   const nowPlaying = useMemo(() => {
-    return (lineup as any[]).filter(a => a.day === 'Wednesday').slice(0, 3);
+    return (lineup as any[]).filter(a => a.day === FESTIVAL.dates.openingDayFilter).slice(0, 3);
   }, []);
 
   if (!mounted) return null;
@@ -83,8 +84,8 @@ export default function Home() {
         textAlign: 'center',
         position: 'relative',
         background: theme.palette.mode === 'dark'
-          ? 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.12) 0%, transparent 70%)'
-          : 'radial-gradient(circle at 50% -20%, rgba(255,0,128,0.05) 0%, transparent 70%)'
+          ? `radial-gradient(circle at 50% -20%, ${alpha(FESTIVAL.theme.primaryHex, 0.12)} 0%, transparent 70%)`
+          : `radial-gradient(circle at 50% -20%, ${alpha(FESTIVAL.theme.primaryHex, 0.05)} 0%, transparent 70%)`
       }}>
         <Container maxWidth="md">
           <Box sx={{ display: 'flex', justifyContent: 'center', mb: 5 }}>
@@ -96,7 +97,7 @@ export default function Home() {
               backdropFilter: 'blur(20px)',
               boxShadow: `0 20px 40px ${alpha(theme.palette.primary.main, 0.05)}`
             }}>
-              <Music size={44} color="#ff0080" strokeWidth={2.5} />
+              <Music size={44} color={FESTIVAL.theme.primaryHex} strokeWidth={2.5} />
             </Box>
           </Box>
 
@@ -114,7 +115,7 @@ export default function Home() {
               filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.1))'
             }}
           >
-            Sziget <span style={{ color: '#ff0080' }}>Insider</span>
+            {FESTIVAL.name} <span style={{ color: FESTIVAL.theme.primaryHex }}>Insider</span>
           </Typography>
 
           <Typography
@@ -131,7 +132,7 @@ export default function Home() {
               letterSpacing: '-0.02em'
             }}
           >
-            Elite intelligence for the <span style={{ color: '#ffee00', fontWeight: 900, textShadow: theme.palette.mode === 'light' ? '0 0 1px rgba(0,0,0,0.1)' : 'none' }}>Island of Freedom</span>.
+            Elite intelligence for the <span style={{ color: FESTIVAL.theme.accentHex, fontWeight: 900, textShadow: theme.palette.mode === 'light' ? '0 0 1px rgba(0,0,0,0.1)' : 'none' }}>{FESTIVAL.tagline}</span>.
           </Typography>
 
           <Container maxWidth="sm">

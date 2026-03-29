@@ -31,6 +31,7 @@ export async function requestNotificationPermission(): Promise<NotificationPermi
  */
 export async function timetableNotification(artist: LineupItem) {
   if (!areNotificationsSupported()) return;
+  if (!artist.startTime) return;
 
   const registration = await navigator.serviceWorker.getRegistration();
   if (!registration) return;

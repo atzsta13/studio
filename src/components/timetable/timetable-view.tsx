@@ -38,10 +38,11 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
     const { days, stages, timeSlots } = useMemo(() => {
         const scheduledLineup = lineup.filter(item => item.day && item.stage && item.startTime && item.endTime);
 
-        const sortedDays = [...new Set(scheduledLineup.map(item => item.day))].sort((a, b) =>
-            new Date(scheduledLineup.find(l => l.day === a)!.startTime).getTime() -
-            new Date(scheduledLineup.find(l => l.day === b)!.startTime).getTime()
-        );
+        const sortedDays = [...new Set(scheduledLineup.map(item => item.day))].sort((a, b) => {
+            const startA = scheduledLineup.find(l => l.day === a)!.startTime!;
+            const startB = scheduledLineup.find(l => l.day === b)!.startTime!;
+            return new Date(startA).getTime() - new Date(startB).getTime();
+        });
         const uniqueStages = [...new Set(scheduledLineup.map(item => item.stage))];
         const slots = Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }, (_, i) => {
             const totalHour = MIN_TIME + Math.floor(i / 2);
@@ -49,13 +50,14 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
             const minute = (i % 2) * 30;
             return `${displayHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
         });
-        return { days: sortedDays, stages: uniqueStages, timeSlots: slots };
+        return { days: (sortedDays as string[]), stages: (uniqueStages as string[]), timeSlots: slots };
     }, [lineup]);
 
     const [activeDayIdx, setActiveDayIdx] = useState(0);
     const activeDay = days[activeDayIdx];
 
-    const getGridRow = (startTime: string, endTime: string) => {
+    const getGridRow = (startTime: string | null | undefined, endTime: string | null | undefined) => {
+        if (!startTime || !endTime) return { gridRowStart: 1, gridRowEnd: 2 };
         const start = new Date(startTime);
         const end = new Date(endTime);
         let startHours = start.getUTCHours();
@@ -139,7 +141,7 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
                     ))}
 
                     {dailyLineup.map(item => {
-                        const col = stages.indexOf(item.stage) + 2;
+                        const col = stages.indexOf(item.stage || "") + 2;
                         if (col === 1) return null;
                         return (
                             <div

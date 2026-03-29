@@ -2,15 +2,17 @@
 
 import { useState } from 'react';
 import type { LineupItem } from '@/types';
-import lineup from '@/data/lineup.json';
+import lineupData from '@/data/lineup.json';
 import { VibeQuizScreen } from '@/components/quiz/VibeQuizScreen';
 import { VibeResultsScreen } from '@/components/quiz/VibeResultsScreen';
 import { useFavorites } from '@/hooks/use-favorites';
 
+const lineup = lineupData as unknown as LineupItem[];
+
 export default function VibeQuizPage() {
   const [results, setResults] = useState<LineupItem[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const { toggleFavorite } = useFavorites(lineup as LineupItem[]);
+  const { toggleFavorite } = useFavorites(lineup);
 
   const handleComplete = (quizResults: LineupItem[]) => {
     setResults(quizResults);
@@ -45,7 +47,7 @@ export default function VibeQuizPage() {
 
   return (
     <VibeQuizScreen
-      lineup={lineup as LineupItem[]}
+      lineup={lineup}
       onComplete={handleComplete}
     />
   );

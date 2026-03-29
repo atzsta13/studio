@@ -47,7 +47,7 @@ function showLineup() {
 
     console.log('');
     console.log('╔════════════════════════════════════════════════════════╗');
-    console.log('║            🎪 SZIGET 2026 LINEUP SUMMARY               ║');
+    console.log('║               FESTIVAL LINEUP SUMMARY                  ║');
     console.log('╚════════════════════════════════════════════════════════╝');
     console.log('');
     console.log(`  Total Artists:     ${data.length}`);

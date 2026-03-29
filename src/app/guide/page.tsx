@@ -1,3 +1,4 @@
+import { FESTIVAL } from "@/config/festival";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Icon, IconName } from "@/components/ui/icon";
 import { PageHeader } from "@/components/layout/page-header";
@@ -6,7 +7,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Survival Guide',
-  description: 'Essential tips and information for Sziget Festival.',
+  description: `Essential tips and information for ${FESTIVAL.name} Festival.`,
 };
 
 export default function GuidePage() {

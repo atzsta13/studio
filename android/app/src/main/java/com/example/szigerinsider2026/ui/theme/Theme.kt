@@ -10,11 +10,15 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+import androidx.compose.ui.graphics.Color
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
 // Always force tactical OLED dark mode for this app.
-private val TacticalColorScheme = darkColorScheme(
-    primary = PrimaryMagenta,
-    secondary = AcidYellow,
-    tertiary = ToxicGreen,
+@Composable
+private fun getTacticalColorScheme() = darkColorScheme(
+    primary = Color(FestivalConfig.current.primaryColorHex),
+    secondary = Color(FestivalConfig.current.accentColorHex),
+    tertiary = Color(FestivalConfig.current.secondaryColorHex),
     background = OLEDBlack,
     surface = CardBackground,
     onPrimary = TextPrimary,
@@ -25,7 +29,7 @@ private val TacticalColorScheme = darkColorScheme(
 )
 
 @Composable
-fun SzigetInsiderTheme(
+fun FestivalInsiderTheme(
     content: @Composable () -> Unit
 ) {
     val view = LocalView.current
@@ -38,7 +42,7 @@ fun SzigetInsiderTheme(
     }
 
     MaterialTheme(
-        colorScheme = TacticalColorScheme,
+        colorScheme = getTacticalColorScheme(),
         typography = BrutalistTypography,
         content = content
     )

@@ -30,7 +30,9 @@ import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import kotlin.math.*
 
-private const val PREFS_NAME = "sziget_tent"
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
+private val PREFS_NAME get() = "${FestivalConfig.current.id}_tent"
 private const val KEY_LAT = "tent_lat"
 private const val KEY_LNG = "tent_lng"
 

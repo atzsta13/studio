@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/sync-data.mjs",
+    "prebuild": "node scripts/sync-data.mjs && node scripts/generate-manifest.mjs",
     "dev": "next dev -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
@@ -14,7 +16,7 @@
     "lineup:clean": "node src/scripts/clean_lineup.js",
     "lineup:show": "node src/scripts/show_lineup.js",
     "lineup:vibes": "node update_vibes.js",
-    "lineup:sync-android": "cp src/data/*.json android/app/src/main/assets/",
+    "lineup:sync-android": "node scripts/sync-android-assets.mjs",
     "lineup:update": "npm run lineup:scrape && npm run lineup:clean && npm run lineup:vibes && npm run lineup:sync-android && npm run lineup:show"
   },
   "dependencies": {

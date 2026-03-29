@@ -45,6 +45,7 @@ import com.example.szigerinsider2026.data.local.AppDatabase
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import androidx.navigation.NavController
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 data class Stamp(
     val id: String,
@@ -57,11 +58,11 @@ data class Stamp(
 
 val STAMPS = listOf(
     Stamp("s1", "Main Stage Legend", Icons.Default.Star, "Visit the Main Stage during a headliner set.", "stage", Color(0xFFFFD700)),
-    Stamp("s2", "Colosseum Raver", Icons.Default.Whatshot, "Dance at the Colosseum for at least 1 hour.", "stage", Color(0xFFFF4500)),
+    Stamp("s2", "Power Raver", Icons.Default.Whatshot, "Dance at a major stage for at least 1 hour.", "stage", Color(0xFFFF4500)),
     Stamp("s3", "Water Finder", Icons.Default.WaterDrop, "Locate 3 different water refill points on your map.", "utility", Color(0xFF00BFFF)),
     Stamp("s4", "Global Gourmet", Icons.Default.Restaurant, "Eat at 3 different international stalls.", "food", Color(0xFF50C878)),
-    Stamp("s5", "Art Garden Dreamer", Icons.Default.LocationOn, "Visit the Art Garden at midnight.", "secret", Color(0xFF9370DB)),
-    Stamp("s6", "Bridge Crosser", Icons.Default.Place, "Cross the K-Bridge at dawn.", "secret", Color(0xFFFF69B4)),
+    Stamp("s5", "Midnight Dreamer", Icons.Default.LocationOn, "Visit a secret spot at midnight.", "secret", Color(0xFF9370DB)),
+    Stamp("s6", "Gate Crusher", Icons.Default.Place, "Enter the festival grounds at dawn.", "secret", Color(0xFFFF69B4)),
     Stamp("s7", "Early Bird", Icons.Default.Schedule, "Be the first at a stage before 4 PM.", "utility", Color(0xFF00CED1)),
     Stamp("s8", "Scout Master", Icons.Default.AutoAwesome, "Follow 3 AI Scout recommendations.", "secret", Color(0xFF4B0082))
 )
@@ -112,8 +113,8 @@ fun PassportScreen(navController: NavController? = null) {
                 .padding(top = 32.dp, bottom = 8.dp)
         ) {
             BrutalistHeader(
-                title = "ISLAND PASSPORT",
-                subtitle = "Collect stamps, level up, and become a Sziget Legend.",
+                title = "${FestivalConfig.NAME.uppercase()} PASSPORT",
+                subtitle = "Collect stamps, level up, and become a ${FestivalConfig.NAME} Legend.",
                 modifier = Modifier.padding(bottom = 16.dp)
             )
             

@@ -21,6 +21,7 @@ import {
   Wand2
 } from 'lucide-react';
 import { AchievementBadges } from '@/components/passport/achievement-badges';
+import { FESTIVAL } from '@/config/festival';
 
 interface Stamp {
   id: string;
@@ -33,23 +34,23 @@ interface Stamp {
 
 const STAMPS: Stamp[] = [
   { id: 's1', title: 'Main Stage Legend', icon: Star, description: 'Visit the Main Stage during a headliner set.', category: 'stage', color: 'text-yellow-500' },
-  { id: 's2', title: 'Colosseum Raver', icon: Flame, description: 'Dance at the Colosseum for at least 1 hour.', category: 'stage', color: 'text-orange-500' },
+  { id: 's2', title: 'Power Raver', icon: Flame, description: 'Dance at a major stage for at least 1 hour.', category: 'stage', color: 'text-orange-500' },
   { id: 's3', title: 'Water Finder', icon: Droplet, description: 'Locate 3 different water refill points on your map.', category: 'utility', color: 'text-blue-500' },
   { id: 's4', title: 'Global Gourmet', icon: Utensils, description: 'Eat at 3 different international stalls.', category: 'food', color: 'text-emerald-500' },
-  { id: 's5', title: 'Art Garden Dreamer', icon: MapPin, description: 'Visit the Art Garden at midnight.', category: 'secret', color: 'text-purple-500' },
-  { id: 's6', title: 'Bridge Crosser', icon: Navigation, description: 'Cross the K-Bridge at dawn.', category: 'secret', color: 'text-pink-500' },
+  { id: 's5', title: 'Late Night Dreamer', icon: MapPin, description: 'Visit a secret spot at midnight.', category: 'secret', color: 'text-purple-500' },
+  { id: 's6', title: 'Bridge Crosser', icon: Navigation, description: 'Cross the main entrance at dawn.', category: 'secret', color: 'text-pink-500' },
   { id: 's7', title: 'Early Bird', icon: Clock, description: 'Be the first at a stage before 4 PM.', category: 'utility', color: 'text-cyan-500' },
   { id: 's8', title: 'Scout Master', icon: Wand2, description: 'Follow 3 AI Scout recommendations.', category: 'secret', color: 'text-indigo-500' },
 ];
 
-const STORAGE_KEY = 'sziget_passport_v1';
+const STORAGE_KEY = `${FESTIVAL.id}_passport_v1`;
 
 const RANKS = [
   { title: 'Tourist', minXP: 0 },
-  { title: 'Island Explorer', minXP: 200 },
-  { title: 'Szitizen', minXP: 500 },
+  { title: 'Festival Explorer', minXP: 200 },
+  { title: 'Superfan', minXP: 500 },
   { title: 'Main Stage Hero', minXP: 1000 },
-  { title: 'Sziget Legend', minXP: 2000 },
+  { title: `${FESTIVAL.name} Legend`, minXP: 2000 },
 ];
 
 export default function PassportPage() {
@@ -66,19 +67,19 @@ export default function PassportPage() {
 
     // Load Favorites Count
     try {
-      const favs = localStorage.getItem('sziget-2026-favorites');
-      if (favs) setFavoritesCount(JSON.parse(favs).length);
+      const favs = localStorage.getItem(`${FESTIVAL.id}-favorites-v2`) || localStorage.getItem(`${FESTIVAL.id}-favorites`);
+      if (favs) setFavoritesCount(Object.keys(JSON.parse(favs)).length);
     } catch (e) { }
 
     // Load Packing List Count
     try {
-      const packedItems = Object.keys(localStorage).filter(k => k.startsWith('sziget-packed-'));
+      const packedItems = Object.keys(localStorage).filter(k => k.startsWith(`${FESTIVAL.id}_packing_checklist`));
       setPackingCount(packedItems.length);
     } catch (e) { }
 
     // Load Acts Seen Count
     try {
-      const seen = localStorage.getItem('sziget-2026-seen');
+      const seen = localStorage.getItem(`${FESTIVAL.id}-seen`);
       if (seen) setActsSeenCount(JSON.parse(seen).length);
     } catch (e) { }
 
@@ -99,11 +100,11 @@ export default function PassportPage() {
   }
 
   const toggleStamp = (id: string) => {
-    setUnlocked(prev =>
-      prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id]
-    );
-    const updated = unlocked.includes(id) ? unlocked.filter(s => s !== id) : [...unlocked, id];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    setUnlocked(prev => {
+      const updated = prev.includes(id) ? prev.filter(s => s !== id) : [...prev, id];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const progress = Math.round((unlocked.length / STAMPS.length) * 100);
@@ -113,15 +114,15 @@ export default function PassportPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 pb-32">
       <PageHeader
-        title="Island Passport & XP"
-        description="Collect stamps, favorite artists, and unlock your ultimate Sziget Legend rank."
+        title={`${FESTIVAL.name} Passport & XP`}
+        description={`Collect stamps, favorite artists, and unlock your ultimate ${FESTIVAL.name} Legend rank.`}
       />
       <div className="mb-8">
         <Link
           href="/highlights"
           className="inline-flex items-center gap-3 px-8 py-4 rounded-[1.5rem] border border-primary/30 text-primary font-black uppercase text-[11px] tracking-widest bg-primary/5 hover:bg-primary/10 transition-all hover:scale-105"
         >
-          ✨ View My 2026 Highlights →
+          ✨ View My {FESTIVAL.dates.year} Highlights →
         </Link>
       </div>
 

@@ -7,6 +7,7 @@ import com.example.szigerinsider2026.data.local.UserDao
 import com.example.szigerinsider2026.data.local.UserProgress
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.utils.getSeenArtistIds
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -158,11 +159,12 @@ class PassportViewModel(
     }
 
     private fun calculateRankFromXp(xp: Int): String {
+        val name = FestivalConfig.NAME
         return when {
-            xp >= 2000 -> "Sziget Legend"
+            xp >= 2000 -> "$name Legend"
             xp >= 1000 -> "Main Stage Hero"
-            xp >= 500 -> "Szitizen"
-            xp >= 200 -> "Island Explorer"
+            xp >= 500 -> "Superfan"
+            xp >= 200 -> "Festival Explorer"
             else -> "Tourist"
         }
     }

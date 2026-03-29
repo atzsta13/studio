@@ -1,15 +1,19 @@
 'use server';
 /**
  * @fileOverview AI Artist Recommendation Flow.
- * Matches user preferences against the Sziget 2026 lineup using Genkit.
+ * Matches user preferences against the festival lineup using Genkit.
  */
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
+import { FESTIVAL } from '@/config/festival';
 import lineup from '@/data/lineup.json';
 
 const RecommendInputSchema = z.object({
   prompt: z.string().describe('The user\'s mood or musical preference (e.g., "I want something loud and heavy" or "chill afternoon vibes").'),
+  aiPersona: z.string().optional(),
+  fullName: z.string().optional(),
+  artists: z.array(z.any()).optional(),
 });
 
 const RecommendOutputSchema = z.object({
@@ -17,7 +21,7 @@ const RecommendOutputSchema = z.object({
     artistId: z.string(),
     reason: z.string().describe('A short, catchy explanation of why this artist matches the user\'s mood.'),
   })).max(5),
-  scoutMessage: z.string().describe('A short, hype-filled message from the Sziget Scout.'),
+  scoutMessage: z.string().describe('A short, hype-filled message from the Scout.'),
 });
 
 export type RecommendInput = z.infer<typeof RecommendInputSchema>;
@@ -27,9 +31,9 @@ const recommendPrompt = ai.definePrompt({
   name: 'recommendArtists',
   input: { schema: RecommendInputSchema },
   output: { schema: RecommendOutputSchema },
-  prompt: `You are the "Sziget Insider Scout", a legendary festival veteran who knows every corner of the Island of Freedom.
+  prompt: `You are {{aiPersona}}.
   
-  Below is the official lineup for Sziget 2026:
+  Below is the official lineup for {{fullName}}:
   {{#each artists}}
   - ID: {{this.id}}, Artist: {{this.artist}}, Genres: {{this.genres}}, Vibes: {{this.vibes}}, Bio: {{this.description}}
   {{/each}}
@@ -60,13 +64,15 @@ const recommendArtistsFlow = ai.defineFlow(
     // but for 80 artists it should fit in a single prompt.
     const { output } = await recommendPrompt({
       ...input,
+      aiPersona: FESTIVAL.aiPersona,
+      fullName: FESTIVAL.fullName,
       artists: lineup.map(a => ({
         id: a.id,
         artist: a.artist,
         genres: a.genres?.join(', '),
         vibes: a.vibes?.join(', '),
         description: a.description?.substring(0, 150)
-      }))
+      })) as any
     });
     return output!;
   }

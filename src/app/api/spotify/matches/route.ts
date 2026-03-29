@@ -2,6 +2,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import lineup from '@/data/lineup.json';
+import { FESTIVAL } from '@/config/festival';
 
 // Helper to extract Spotify Artist ID
 function getSpotifyId(url: string | null): string | null {
@@ -10,7 +11,7 @@ function getSpotifyId(url: string | null): string | null {
     return match ? match[1] : null;
 }
 
-// Build map of Spotify Artist ID -> Sziget Artist ID
+// Build map of Spotify Artist ID -> Festival Artist ID
 const spotifyMap = new Map<string, string>();
 (lineup as any[]).forEach((artist) => {
     const spotifyId = getSpotifyId(artist.socials?.spotify);
@@ -19,7 +20,7 @@ const spotifyMap = new Map<string, string>();
     }
 });
 
-const SzigetArtistIds = new Set(spotifyMap.keys());
+const FestivalArtistIds = new Set(spotifyMap.keys());
 
 export async function GET(request: NextRequest) {
     const cookieStore = await cookies();
@@ -33,7 +34,7 @@ export async function GET(request: NextRequest) {
         const accessToken = token.value;
         const limit = 50;
         let offset = 0;
-        const matches = new Set<string>(); // Set of Sziget Artist IDs
+        const matches = new Set<string>(); // Set of Festival Artist IDs
 
         // Fetch tracks logic
         // We'll fetch pages until we check enough or all
@@ -67,13 +68,13 @@ export async function GET(request: NextRequest) {
                 const track = item.track;
                 if (!track || !track.artists) return;
                 track.artists.forEach((artist: any) => {
-                    if (SzigetArtistIds.has(artist.id)) {
-                        const szigetId = spotifyMap.get(artist.id);
-                        if (szigetId) {
-                            if (!matches.has(szigetId)) {
-                                debugMatches.push({ id: szigetId, name: artist.name });
+                    if (FestivalArtistIds.has(artist.id)) {
+                        const festivalId = spotifyMap.get(artist.id);
+                        if (festivalId) {
+                            if (!matches.has(festivalId)) {
+                                debugMatches.push({ id: festivalId, name: artist.name });
                             }
-                            matches.add(szigetId);
+                            matches.add(festivalId);
                         }
                     }
                 });

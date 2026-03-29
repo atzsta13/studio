@@ -15,11 +15,14 @@ import java.net.URLEncoder
 import java.security.MessageDigest
 import java.util.*
 
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
 class SpotifyRepository(private val context: Context) {
+
+    private val REDIRECT_URI = "${FestivalConfig.DEEP_LINK_SCHEME}://spotify-callback"
 
     companion object {
         private const val CLIENT_ID = "d27e168c2c3746f7a22c075ce1a49dc2"
-        private const val REDIRECT_URI = "sziget://spotify-callback"
         private const val SCOPES = "user-library-read"
         private const val PREFS_NAME = "spotify_prefs"
         private const val KEY_ACCESS_TOKEN = "access_token"
