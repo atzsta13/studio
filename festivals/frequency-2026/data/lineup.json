@@ -74,5 +74,1134 @@
       "Guitar",
       "Eclectic"
     ]
+  },
+  {
+    "id": "1",
+    "artist": "Twenty One Pilots",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE POP",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/twenty-one-pilots-2/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2k3tf2?si=Vw9qXbhZTMuwoidtMckXPw&pi=pggo6x0sRHCRC"
+    },
+    "description": "ABOUT\n\nGrammy-Award winning band, Twenty One Pilots, have shifted music and culture as an incomparable creative force and with an ever-evolving vision. The Columbus, OH duo—Tyler Joseph and Josh Dun— have tallied over 33 billion global streams and counting, sold north of three million tickets worldwide, notched dozens of multi-Platinum certifications, and even claimed a spot in the Guinness® Book of World Records. In historic fashion, their quadruple-Platinum breakout LP, Blurryface, took flight as “the first album to notch a RIAA Gold or Platinum certification for every one of its songs, while Vessel followed suit and achieved the same distinction. They elevated to rarified air as “one of only 18 artists to earn multiple RIAA Diamond certifications,” going Diamond with “Stressed Out” and “Heathens.” 2018’s Platinum-certified Trench extended the ambitious concept laid out in Blurryface and delivered the multi-Platinum and Platinum singles: “Chlorine,” “My Blood” and the GRAMMY® Award-nominated “Jumpsuit.” They followed Trench with their Gold-certified LP Scaled And Icy, achieving “the biggest opening week for a rock album in 2021” by capturing #1 on the Billboard Top Rock Albums and Top Alternative Albums charts and crashing the Top 3 of the Billboard 200. Beyond rapturous headline shows at arenas and festivals worldwide, Twenty One Pilots have notably architected an immersive world without comparison, originating a multi-album conceptual arc across Blurryface, Trench and Scaled And Icy.\n\nIn 2024, the band released their seventh full-length offering, Clancy [Fueled By Ramen], which shattered records as the biggest rock debut AND biggest rock album overall of 2024. Led by the single “Overcompensate,” the LP signals the dawn of another era for Twenty One Pilots and alternative rock music at large. The band closed out the year with “The Line,” an original track for Netflix’s Arcane Season 2 that has already seen massive growth on streaming platforms. Just weeks after wrapping their massive Clancy World Tour, Twenty One Pilots announced their latest record, Breach, which marks the long-awaited conclusion to the story first introduced a decade ago on Blurryface. The first single off the record, “The Contract,” marked the biggest song debut of the band’s career and reached #1 on the Alternative Airplay chart, their 12th time accomplishing this feat. Following the album’s release on September 12, the band kicks off THE CLANCY TOUR: BREACH 2025, which will hit stadiums and amphitheatres across North America, closing with two nights at BMO Stadium in Los Angeles.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152515-19134-kleiner_Twenty-One-Pilots0239_V1.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Melodic",
+      "Chill",
+      "Atmospheric"
+    ]
+  },
+  {
+    "id": "2",
+    "artist": "Kraftklub",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK",
+      "RAP ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/kraftklub/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ABOUT\n\nWhat was initially interpreted as a mysterious art project turned out to be a large-scale campaign by the Chemnitz band Kraftklub: On a Monday at the end of May, a huge sign with the words “Sterben in Karl-Marx-Stadt” (Dying in Karl Marx City) appeared in the Saxon city, initially puzzling onlookers. The countdown on the sign ran down to Wednesday evening at 9:15 p.m. – and then the moment arrived: the band gave a spontaneous concert and opened with their brand-new single “Schief in jedem Chor” (Crooked in Every Choir). They announced their fifth studio album, “Sterben in Karl-Marx-Stadt,” for November 28, 2025, as well as the tour of the same name for 2026. Advance sales for the album and tour will start on Thursday, May 29, at 6:00 p.m. exclusively on kraftklub.to.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132620-18583-KraftklubcPhilipp-Gladsome.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic",
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "3",
+    "artist": "Lorde",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE POP",
+      "ELECTROPOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/lorde/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0AtdTy?si=e349dba0d3524e35"
+    },
+    "description": "ABOUT\n\nLorde is a Grammy-winning artist and cultural force, known for her genre-defying sound, introspective lyricism, and striking creative vision. Since her breakthrough with Pure Heroine in 2013, she has redefined the contours of modern pop—merging poetic storytelling with minimalist, emotionally resonant production. To date, she has amassed over 18 billion global streams and 18 million album sales worldwide. \n\nIn April 2025, she returned with What Was That, her first original release in four years. The single debuted to widespread acclaim and commercial success, hitting #1 on Spotify in the US — her first US #1 on the platform since “Royals.” It also landed at #3 in the UK and #5 globally, reaffirming her place at the forefront of pop music.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152517-19135-Lorde-Press-shot-2-Thistle-Brown.jpg",
+    "vibes": [
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "4",
+    "artist": "Ken Carson",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RAP",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/ken-carson/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1Tr1Hs?si=e2cfa10970f942f7"
+    },
+    "description": "ABOUT\n\n“I just feel like that’s the story of my life,” says Ken Carson, the wildly inventive, vocally adaptive rapper who has emerged as one of hip-hop’s can’t-miss breakout stars of the 2020s. He’s talking about his forthcoming album, A Great Chaos, the title of which captures the whirlwind that his existence has become—and the joy he takes in navigating that whirlwind with preternatural ease. “Shit be good,” he says, hesitating just before he adds the crucial caveat: “But life be life-ing.” That unpredictability, that sense that there’s always a complication around the corner, can be daunting. But it’s molded Carson into the artist he is today, ready to switch everything up at a moment’s notice. \n\nBorn Kenyatta Frazier Jr. in the spring of 2000 and raised in Atlanta, Carson is living proof of another maxim: that steel sharpens steel. That was his experience growing up around his uncle, the celebrated producer TM88, and the cadre of rappers who worked closely with him. “I was the youngest in every room that I went into,” Carson recalls. Observing the work habits of superstars like Young Thug and Playboi Carti inspired Carson to push himself, and to be unsparing about sifting through the demos he recorded to find the best material. Finally, the results were undeniable: “I was playing one of my songs around the house,” Carson says, “and TM88 was like, ‘Who the hell is that?’ I said, ‘This is me!’”\n\nFrom the time he and his friends began putting together their earliest songs in middle school, Carson had been rapping off the top of his head, rather than scrawling his thoughts in notebooks. But this process, he explains, actually allowed him to dig deeper into his psyche. “I’m always surprised,” he says of the topics and thematic concerns that recur in his spur-of-the-moment takes. That surprise becomes a sort of electric excitement when those takes coalesce into a truly unique record. “I’m four or five thousand songs deep,” he notes, “and I still surprise myself—I still get the same feeling as when I made my first good song.” \n\nWhen Carson was still a teenager, he inked a deal with Carti’s Opium imprint and began distilling his buoyant energy into the EPs that would introduce him to the world at large: Boy Barbie and Teen X, released in the spring and summer of 2020 respectively. The pandemic had forced clubs and house parties—the natural ecosystems for many of Carson’s songs—to shutter. But rather than be discouraged, the artist saw the vacation of his lane as an opportunity. “It was actually so, so, so much easier” to break through during this fraught period, he figures, “because I felt like I was the only one outside. All these established artists couldn’t do shit, and I could do anything.”\n\nMoving swiftly continued to serve Carson well. By the end of 2021, he had released two more EPs (Lost Files and Teen X: Relapsed), a mixtape (Lost Files 2), and a debut album, Project X, which captured the unique alchemy of poise and urgency that makes his music unforgettable. That’s perhaps best evidenced by the project’s breakout hit, “Rock N Roll,” where chaos seems to simmer just under a convincingly casual surface. On other standout songs, like Teen X’s “Yale,” this effect is even leveraged to communicate a kind of ennui, Carson sounding weary and regretful before his time. \n\nBut no project to date has synthesized all the things that make Ken Carson special like A Great Chaos. “I was a student for a long time,” he says of the road that led him here. “I used to really, really, really study—I’d go home and watch interviews. In order to make it with this music shit, you gotta bring something new to the table. If you wanna be great, you gotta do something that’s gonna stand out.” And that’s exactly what he’s done with his third official LP, a fever dream of emotional pain and consumer excess, each complicating the other, blurring its origin points. Whether on the sly single “Jennifer’s Body” or the stark “Hardcore,” Carson confirms himself as a slick, athletic vocalist who can contort himself into any shape necessary to chase a song’s ideal form. “I’ve never been on vacation,” he says. “I’ve never taken a break in four years.” The dedication is paying off in ways he could have only imagined.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152906-19894-Ken-Carson-2025-Approved-Press-Photo.jpg",
+    "vibes": [
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense",
+      "Hype"
+    ]
+  },
+  {
+    "id": "5",
+    "artist": "Ski Aggu",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RAP",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/ski-aggu/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ABOUT\n\nSki Aggu is a phenomenon. Since landing a viral hit in October 2022 with the song “Party Sahne,” which has since been awarded a gold record, things have been moving at a rapid pace. He's a regular in Spotify's Top 50, has reached number 1 in the singles and album charts, and has sold out his tour. When his gabber pop reinterpretation of Otto Waalkes' “Friesenjung” also went viral on TikTok in the summer of 2023, it became clear just how strong Aggu's community is. They fought for the sample to be released; in the end, the comedy legend not only supported the promo and appeared in the music video, but also performed alongside Ski Aggu at Splash, Germany's largest hip-hop festival. No other artist encapsulates the Berlin lifestyle and the zeitgeist of Gen Z as authentically in their lyrics, music videos, and social media presence as Ski Aggu. The Wilmersdorf native enjoys life – especially when rapping, with punchlines, technique, laid-back flow, and entertaining, authentic West Berlin rap. But since his life isn't a constant party, he regularly reflects on his sometimes perhaps somewhat unrestrained lifestyle in his lyrics.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132754-18629-SKIAGGU01_Prio_Pic_SkiAggu.jpg",
+    "vibes": [
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense",
+      "Hype"
+    ]
+  },
+  {
+    "id": "6",
+    "artist": "Sdp",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/sdp/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0V38Pe?si=878e8594ab2e4ad2"
+    },
+    "description": "ABOUT\n\nAfter SDP celebrate their 25th anniversary in 2024 with a unique open-air summer in the biggest venues in the band's history to date, Vincent and Dag will play selected festivals in 2025 in addition to their big “They just want to play” arena tour.\n\nTen studio albums, singles that have since gone multi-gold and even multi-platinum, almost a billion views on YouTube, countless headlining slots at all major festivals and an anniversary tour with more than 260,000 visitors: SDP are now without question one of the most successful bands in the country. Their live shows are bursting with energy and spread not only a long-lasting good mood, but also persistent catchy tunes. “Die Bekannteste Unbekannte Band der Welt\": a unique independent career for the two Berlin friends, who are no longer so unknown thanks to their participation in Sing meinen Song and the 1LIVE Krone award for best live act.\n\nOn October 25, 2024, the “Best Of 25 Years SDP” will be released album, which includes many brand new and previously unreleased songs alongside their greatest hits.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152395-16165-SDP_pressebild_web_byRobertHirschmannandbdxmedia-(1).png",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "7",
+    "artist": "Ashnikko",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ELECTROPOP",
+      "ALT-POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/ashnikko-2/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2etfOF?si=24b53c557d0b465e"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152519-19111-Ashnikko.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "8",
+    "artist": "Bbno",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RAP",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/bbno-2/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ABOUT\n\nHailed by Rolling Stone as “A Viral Pioneer”, bbno$ is no stranger to producing addictive hooks, having released the first ever TikTok thit, ‘Lalala’ with Y2K in 2019, which has gone 10x Platinum across the globe. Unlike a lot of his counterparts who's fame stemmed from a \"TikTok hit\", bbno$'s fame was no \"flash in the pan\" and his artistry quickly came to be respected in 2021 when he recreated his virality with his next hyper-successful hit \"Edamame\" which has gone 8x Platinum globally. He had opportunities flow in from his success with a performance at the JUNO’s, guest appearance during Coachella, a Late Night TV performance on Jimmy Kimmel, amongst many others. Over the years, bbno$ has become a case study in how to succeed as an independent artist. The sheer success accumulated by the young artist is evidenced by the fact that he has been featured in Billboard, Flaunt, tmrw, Rolling Stone, NME, Lady Gunn, SPIN, Euphoria, i-D, Ones to Watch and many other publications. His work as an artist and songwriter has received praise and support from the likes of both Capital FM and BBC R1’s Jack Saunders, and Triple J. In 2023 bbno$ released his 3rd album with Yung Gravy, Baby Gravy 3 and immediately went on to sell 3-5K cap rooms on the Baby Gravy tour across North\n\nAmerica, Australia & NZ. 2024 has seen the massive success of bbno$'s singles \"lil freak\", \"it boy\", and \"two\" driving a staggering 750M views across 1.4M UGC videos while attaining roughly 140M streams across DSPs on those 3 singles alone. Off the success of “lil freak”, \"it boy\" and \"two\", bbno$ has grown by more than 2.5M followers across socials in just the past 8 months. In 2025 he will continue releasing singles at the top of the year leading into his ninth studio album slated to drop in October while also embarking on a world tour - a sold out 1.5-3.5K cap North American headline run (first time back solo since 2021), a sold out 1500-3K cap EU/UK, 3-5K cap in AU/NZ, and an unannounced 1-2K cap in SEA and Central/South America. You won't have to look far to keep your eye on him as he implements viral stunts across the globe and continues to collaborate with creators and people of influence across the internet.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132646-18560-bbnoS-photo-DSCF4053-SQUARE.jpg",
+    "vibes": [
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense",
+      "Hype"
+    ]
+  },
+  {
+    "id": "9",
+    "artist": "Ssio",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/ssio-3/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ABOUT\n\nSSIO is back—and he wants it all or nothing. A decade as the king of rap is apparently not enough for him. With a new album (even before GTA VI), jewelry as golden as Donald Trump's hair, and Burberry velour joggers, the freshest Kabuli 2025 is returning to the stages of Germany, Austria, and Switzerland for his “First Tour After Corona” tour. \n\nAnyone who has seen SSIO live in the last ten years knows what to expect: a catalog crammed to the brim with head-nodding tracks from one of the country's most outrageous live rappers – or as SSIO says on his new single: “Your signing sees my live show and learns like an apprentice.” It's no coincidence that SSIO's live shows have always sold out in no time. So better get a move on!\n\nIt's a confidence that SSIO can certainly afford. Back in 2012, with his mixtape “Spezial Material,” he delivered a self-deprecating alternative to the clichéd street rap standard with late-nineties beats – and continued his triumphant success with albums such as “BB.UM.SS.N,” “0.9,” and “Messios”: three top ten entries and a few gold records included.\n\nAnd for good reason. Because it is and remains difficult to find an artist who, like SSIO, manages to combine wordplay, personality, humor, authenticity, and exceptional rap skills into such a well-rounded package—and thus remain relevant despite all trends.\n\nA glance at your trusted FYP is enough to see that SSIO is still a regular guest there—with mashups, remixes, or his own songs. Without any new releases or sounds designed to go viral, but with straight rap about selling narcotics, the advantages of working in adult entertainment, excessive fast food consumption, and traffic violations in very expensive sports cars – between Bonn-Tannenbusch and Bangkok.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152521-19090-SSIO-PRESSE-TICKET-NIKMULLER.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "10",
+    "artist": "Ikkimel",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/ikkimel/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0iJigy?si=ee8723e3812b4f7f"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/147407-19101-Ikkimel_c_LaurentNoichl.jpg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ]
+  },
+  {
+    "id": "11",
+    "artist": "Ravyn Lenae",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RNB",
+      "SOUL"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/ravyn-lenae/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3suc4V?si=4b3a6df99c0043b2"
+    },
+    "description": "ABOUT\n\nAcclaimed singer-songwriter Ravyn Lenae has evolved from humble beginnings on the Southside of Chicago to the forefront of R&B and pop. Over the last decade, she has carefully crafted an incomparable sound by incorporating elements from house, synth-funk and more, with her signature style naturally evolving over the course of fan favorite EPs (MoonShoes, Midnight Moonlight and Crush) and full-length albums Hypnos and Bird’s Eye.Following a run of standout singles and collaborations with the likes of MonteBooker, KAYTRANADA and SteveLacy, Lenae joined forces with GRAMMY Award winner Dahi (Kendrick Lamar, SZA) to executive produce her sophomore LP Bird’s Eye in 2024. The album is highlighted by Lenae’s breakthrough smash single “Love Me Not” (co-penned by Anderson .Paak) which has gone on to amass over 650 million global streams, a career debut and peak of #5 so far on the Billboard Hot 100chart, top 10 placement across Top 40 and Rhythmic radio and standout performances on The Tonight Show with Jimmy Fallon, Jimmy Kimmel Live, The BET Awards 2025, The TODAY Show and more. Bird’s Eye, which also features collaborations with Childish Gambino and Ty Dolla $ign, has been met by further critical praise from the likes of Billboard, NPR, TheNew York Times, TheWashington Post, The Guardian and Pitchfork, the latter of which declared the collection to be “a genre-blending album that experiments within and beyond R&B—always guided by her expansive, cotton-candy soft soprano.”A seasoned live performer, Lenae has toured on stages alongside OmarApollo,SZAand more. After making her festival-debut performances at Coachella and Lollapalooza in 2025, this fall will see Lenae embark on her own sold-out North American headline run in tandem with support performances along SabrinaCarpenter’s Short n’ Sweet tour (including six nights at Los Angeles’ Crypto.com Arena) and Renee Rapp’s Bite Me tour.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152524-19103-Ravyn-Lenae-Photo-2025-Crop.jpg",
+    "vibes": [
+      "Soulful",
+      "Smooth",
+      "Groove",
+      "Emotional"
+    ]
+  },
+  {
+    "id": "12",
+    "artist": "Sub Focus",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "DRUM AND BASS",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/sub-focus/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152526-19114-subfocus.jpg",
+    "vibes": [
+      "Dance",
+      "Fast",
+      "Energetic",
+      "Dark"
+    ]
+  },
+  {
+    "id": "13",
+    "artist": "Natasha Bedingfield",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP",
+      "RNB"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/natasha-bedingfield/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO4nc7dK?si=d56178044edc43c0"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152528-19752-kleiner_atashaBedingfieldBoardmasters_AaronParsonsPhotography1_highres.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Soulful",
+      "Smooth",
+      "Groove"
+    ]
+  },
+  {
+    "id": "14",
+    "artist": "Souly",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/souly/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133128-19823-souly.jpg",
+    "vibes": [
+      "Soulful",
+      "Emotional",
+      "Groove"
+    ]
+  },
+  {
+    "id": "15",
+    "artist": "Mehnersmoos",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/mehnersmoos/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2DpLIR?si=2f743c69a7a944a7"
+    },
+    "description": "ABOUT\n\nFoto: BEN G / @6en_g",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132756-19092-kleiner_MM25-l-Pressefoto-02.25-hochformat.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "16",
+    "artist": "Noga Erez",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ELECTROPOP",
+      "ALTERNATIVE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/noga-erez/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3uFtXa?si=e73938c6b8234e89"
+    },
+    "description": "ABOUT\n\nNoga Erez is a visionary musician and producer with an innate talent for blending genres and pushing creative boundaries. She along with her partner and producer Rousso have emerged as a trailblazing force in the contemporary music scene. Drawing inspiration from her surroundings and experiences, her music delves fearlessly into topics ranging from societal issues to personal introspection, all delivered with a raw, unapologetic honesty. Her unique sonic palette creates a mesmerizing fusion that defies conventional categorization. Noga's clever lyrics, coupled with her infectious melodies and powerful vocals, have earned her widespread acclaim and a dedicated global following. With a string of successful releases, Noga Erez has cemented her position as a boundary-pushing artist, consistently reinventing herself with each new project. Her live performances are known for their infectious energy and dynamic stage presence, captivating audiences and leaving a lasting impact on all who experience her music firsthand. As she continues to evolve and captivate the music world, Noga Erez remains an inspiring and influential figure, a true artistic force that is destined to shape the future of music.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152531-19115-Nora-EReze.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Raw",
+      "Eclectic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "17",
+    "artist": "Glueboys",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/glueboys-2/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0gKVvc?si=d3cc93a0f82f450d"
+    },
+    "description": "ABOUT\n\nTake one studio. Three young musicians. And endless potential. It all makes sense. At least when Ego, Schutt and Tom are working on new hits in their studio in Vienna. Under the stage name Glueboys, the Pinzgauer Buam perform throughout the German-speaking world. Whether reggae tunes, hard dance melodies or après-ski hits - the trio ensures a great party atmosphere at every event.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152533-16965-IMG_0336.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "18",
+    "artist": "Ritter Lean",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/ritter-lean/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1yNg5m?si=5b46f879aee343ee"
+    },
+    "description": "ABOUT\n\n\"I rapped for fun but don't release stuff - Adri told me to just do it,\" raps Berlin high-flyer Ski Aggu. Who is this Adri that Aggu keeps mentioning?\n\nAdrian Julius Tillmann first made a name for himself in Berlin's creative scene as an actor. Among other things, he starred in the Netflix series \"Biohackers.\" In 2020, after encouraging his best friend Ski Aggu to release music with great success, he finally took the plunge himself in 2023: with the release of his debut single \"Einsame Insel,\" the musician Ritter Lean was born.\n\nThe fact that Ritter Lean comes from film is not only noticeable in his image-rich videos, but also in his largely self-produced music. His lively storytelling could not be more captivating. Thus Ritter Lean tells true-to-life stories of lost souls in the techno capital, of never-ending evenings in dirty bars and his constant tendency towards extremes. He tries to hide his big ego just as little as his vulnerability. For his stories he finds a language unprecedented in German indie pop: dirty and rough, but honest and unafraid to provoke.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133134-19100-Pressefoto-1-Ritter-Lean_photo-by-David-Grunwald.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "19",
+    "artist": "James Marriott",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/james-marriott/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0zkPnk?si=952fbc6a31ea4c7a"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152541-19098-kleiner_JM_presshots_secondpass_-21.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "20",
+    "artist": "Frytz",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/frytz/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152543-19097-Pressefoto_frytz_SOMMERSHOWS3-(Credits-Johannes-Klingelhofer).jpg",
+    "vibes": [
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "21",
+    "artist": "Og Lu",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/og-lu/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO42t7G5?si=c7dbdb8542674c88"
+    },
+    "description": "ABOUT\n\nOver the past two years, up-and-coming Frankfurt rapper OG LU has made a name for herself on the German rap scene. With songs such as “Paar Ecken Hish,” “Kein Zurück Freestyle,” and “Sonne Strand Sattla,” she continues to assert herself and captivate fans not only with her dynamic flow and clever lyrics full of wordplay, but also with her charismatic stage presence during live performances. Whether energetic and aggressive or thoughtful and reflective, OG LU always manages to show her personality through her music, addressing empowerment and personal experiences from her life in Frankfurt. With the track “Paar Ecken Hish,” she was able to make her first mark! She takes us with her as she parties through the Frankfurt nights with her girls and tells us exciting stories from the Gallus district.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152545-19113-OGLU_3_Credits_Janis_Luders.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "22",
+    "artist": "Fontaines D C",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POST-PUNK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/fontaines-d-c/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2gvLag?si=f249542a182c4627"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152799-19673-FDC-R+L-CROP.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "23",
+    "artist": "Zara Larsson",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP",
+      "DANCE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/zara-larsson/",
+    "socials": {
+      "spotify": "https://open.spotify.com/intl-de/artist/1Xylc3o4UrD53lo9CvFvVg?si=jiIi0AYxRy-n-QkgwFisng"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152801-19586-ZaraLarsson_LOOK06_00108_V2_Adobergb_LR.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "24",
+    "artist": "Symba",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/symba-3/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO15lEoe?si=ade42268ebd94eba"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152803-19713-SymbabyFelixAaron-37.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "25",
+    "artist": "Red Leather",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/red-leather/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/artist/red-leather/",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "26",
+    "artist": "Evening Elephants",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/evening-elephants/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152807-19847-d3643ed1_349561001867-R1-E007-(1).jpg",
+    "vibes": [
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "27",
+    "artist": "James Hype",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "TECH HOUSE",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/james-hype/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2mUPO8?si=ca9bdd1aeca144fb"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152808-19674-20251028_JAMES_HYPE_CULT_KA_01_WHITE_41511_V1G.jpg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ]
+  },
+  {
+    "id": "28",
+    "artist": "Koven",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "DRUM AND BASS",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/koven-2/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133183-13641-Katie-DJ-2.jpg",
+    "vibes": [
+      "Dance",
+      "Fast",
+      "Energetic",
+      "Dark"
+    ]
+  },
+  {
+    "id": "29",
+    "artist": "Sido",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/sido/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2V8k6I?si=e9e5c7f07fe240c3"
+    },
+    "description": "ABOUT\n\nHe is Sido. He is Paul. He is LIVE again and he is back in his element, with a new album, new hits and in good old SIDO style incl. powerful entertainment, the long-running hits, the well-known songs and his hymns.\n\nIn the summer of 2023, SIDO will be on the road again and play festivals in Germany, Austria and Switzerland.\n\nSIDO: FESTIVALS LIVE 2023.\n\nSIDO is and remains a one-of-a-kind. No other German artist masters the balancing act between hip-hop and mainstream as well as the masked man. This is also reflected in his audience. After more than 20 years at the top, SIDO manages to unite the generations of his fans like hardly any other rapper in Germany - by now, the rap fans of the first hour are often in the audience together with their children.\n\nAnyone who has ever experienced the exceptional artist SIDO in his live element knows that an energetic and unique show awaits him. Now you can look forward, get in the starting position and secure tickets for the festivals: https://bit.ly/3PySU5y",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132988-19661-SIDO-2024-006-c-Niklas-Kamp.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "30",
+    "artist": "Paul Kalkbrenner",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "TECHNO",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/paul-kalkbrenner/",
+    "socials": {
+      "spotify": "https://open.spotify.com/intl-de/artist/0rasA5Z5h1ITtHelCpfu9R?si=y22sDgQqT7G9dhoe9AkDPQ"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152812-19587-kleiner_PaulKalkbrenner_Cover_Press_Shoot_SvenjaAva_8-(1).jpg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ]
+  },
+  {
+    "id": "31",
+    "artist": "Tom Odell",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "SINGER SONGWRITER",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/tom-odell/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132695-10798-TOM_ODELL_2022_RLD_FULL_RES-06.jpg",
+    "vibes": [
+      "Emotional",
+      "Acoustic",
+      "Intimate",
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "32",
+    "artist": "Esdeekid",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/esdeekid/",
+    "socials": {
+      "spotify": "https://open.spotify.com/intl-de/artist/0EyhkwP3UnwGFBy6xwKjSy?si=vXh5xhlJR4O142vMOiKKWQ"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152814-19677-ESDEE-PRESS-PIC.png",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "33",
+    "artist": "Makko",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/makko/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO3TxAe4?si=0a6d358b7f534b01"
+    },
+    "description": "ABOUT\n\nBy 2025, makko will definitely be one of the biggest stars that German rap has produced in the last year. A man of many trades with a deep voice flow, maximum coolness, urban sensitivity, and an unmistakable aesthetic somewhere between skate spot, studio, and Boloboys universe. The widest gap between his teeth in Berlin, his trademark style, and his inimitable switch heels have long made him a figure you recognize before you hear him.\n\nGrowing up between Brandenburg and Berlin, first came skateboarding, then music—a reversed Lil Wayne story that still forms his creative backbone today. Ever since “Nachts wach” (together with Miksu & Macloud), makko has been one of the scene's undisputed fixtures. He also released the “Undercover EP” with the two, which once again sharpened his cross-genre style and pushed musical boundaries. \n\n2025 was all about his breakthrough and coming of age:\n\nover 500 million streams, a legendary Splash! performance with a capacity of 15,000 people, new creative alliances – including with Nina Cuba – that have further opened up and expanded his sound.\n\nmakko has long been more than just a rapper: he is a movement, a style, a feeling for a generation that lives nonconformity rather than performing it. An artist who has come to stay – and who will be bigger than ever in 2026.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133175-19675-makko_presspic1_Steffen-Grap.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "34",
+    "artist": "Og Keemo",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/og-keemo/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2uOQWl?si=04b614d0ac36446c"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152817-19662-og-keemo.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "35",
+    "artist": "Filow",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/en/artist/filow/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0ijaCA?si=46a2bb66aa974392"
+    },
+    "description": "ABOUT\n\nTwitch, YouTube, Instagram or TikTok - no matter where, Filow is already there. Within a year, he doubled the number of followers on his channels and became one of the most relevant German-speaking newcomers. Filow plays the social media game at the highest level, but is always reinventing himself. His content is like his humor: on the pulse of Generation Z, always on trend, always different, always funny.\n\nSince 2022, the vegan musician has also been producing songs with a catchy tune guarantee that have found a permanent place in the Spotify playlists of many streamers.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/149116-19676-Filow_2025_3_@MariusFaulhaber-1.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "36",
+    "artist": "T Low",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/t-low/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132658-11108-DSC07233.png",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "37",
+    "artist": "Esther Graf",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP",
+      "PUNK POP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/esther-graf/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0W4F7I?si=72bd86d4a39641aa"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152821-19608-EstherGRaf(c)AnnikaYanura.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Raw",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "38",
+    "artist": "Leap",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/leap/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152823-19663-LEAP_01_LiamMaxwell.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "39",
+    "artist": "Summer Cem Kc Rebell",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/summer-cem-kc-rebell/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO1RwMFy?si=678a413762374315"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152825-19588-PRESSEBILD_KC_and_SUMMER_2025_Fotocredit_Felix_Kruger.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "40",
+    "artist": "Hbz",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ELECTRONIC",
+      "HARDSTYLE"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/hbz/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132778-10563-HBz-Pressebild-Alternative1.jpg",
+    "vibes": []
+  },
+  {
+    "id": "41",
+    "artist": "Audrey Nuna",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RNB",
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/audrey-nuna/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0uJFEU?si=0d2620f631ca4bb6"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152908-19893-audrey-nuna.jpg",
+    "vibes": [
+      "Soulful",
+      "Smooth",
+      "Groove",
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "42",
+    "artist": "Yt",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/yt/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0vUgzm?si=f93aa297f15843eb"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152910-19868-YT-PRESS-0239.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "43",
+    "artist": "Tom Hengst",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HIP HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/tom-hengst/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO0YVcwp?si=47ab967811a943c6"
+    },
+    "description": null,
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152912-19872-@kurosh______-50.jpg",
+    "vibes": [
+      "Urban",
+      "Hype",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "44",
+    "artist": "Alt Blk Era",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "NU METAL"
+    ],
+    "festivalUrl": "https://www.frequency.at/artist/alt-blk-era/",
+    "socials": {
+      "spotify": "https://open.spotify.com/playlist/37i9dQZF1DZ06evO2JTNe5?si=46d6f1b5408944e0"
+    },
+    "description": "ABOUT\n\nDie Gewinnerinnen des MOBO Award 2025 für den besten Alternative-Musik-Act, ALT BLK ERA, sind das britische Schwesternduo Nyrobi (21) und Chaya (18).\n\nIhr Debütalbum „Rave Immortal“ – eine Nummer 1 in den britischen Rock- und Metal-Charts – ist eine genreübergreifende Mischung aus elektronischen Klängen, Rock und DnB, die ihre Fähigkeit unter Beweis stellt, die Energie der Underground-Clubszene in alternative Räume zu übertragen.\n\nDie Schwestern sind nicht nur in den Spotify-Redaktionsplaylists und im britischen Radio zu hören, sondern haben ihren Sound auch auf großen britischen Plattformen präsentiert, darunter Live-Auftritte bei „Later… with Jools Holland“ und „Channel 4’s Sunday Brunch“, und damit ihren Ruf als eine der aufregendsten neuen Kräfte in der genreübergreifenden Musik gefestigt.\n\nBBC Introducing kürte sie zu „Ones to Watch“ im Jahr 2025, bevor sie Großbritannien beim SXSW in Texas vertraten und in der British Music Embassy auftraten.\n\nAußerdem lieferten sie herausragende Auftritte bei legendären Festivals in Großbritannien und der EU, darunter Lowlands, Glastonbury, Reading & Leeds und Download, wo ihre rohe Energie das Publikum davon überzeugte, dass ALT BLK ERA neu definiert, was alternative, elektronische und Rockmusik sein kann.\n\nDie Presse lobte sie in NME, REVOLVER und Kerrang!, und die Brit Awards bezeichneten ihren Sound als „break the repeat button”.\n\nÜber die Musik hinaus setzen sich die Schwestern für das Bewusstsein für versteckte Behinderungen und Inklusion in der Branche ein, inspiriert von Nyrobis persönlicher Reise – ein Thema, das sich durch Rave Immortal zieht.\n\nMit ihrem wachsenden internationalen Bekanntheitsgrad erweisen sich ALT BLK ERA als eine der zukunftsweisendsten Bands, die die Zukunft der alternativen Musik prägen.",
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152914-19898-bdbbc515_ALT-BLK-ERA-HIGH-RES-1.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic",
+      "Heavy",
+      "Intense"
+    ]
   }
 ]
