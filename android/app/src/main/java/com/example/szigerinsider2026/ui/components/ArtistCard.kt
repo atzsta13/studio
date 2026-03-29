@@ -119,7 +119,7 @@ fun ArtistCard(
                         val shareText = "🎵 ${artist.artist}\n" +
                             "📅 ${artist.day ?: "TBA"} · ${artist.stage ?: "Main Stage"}\n" +
                             "⏰ ${artist.startTime ?: ""} – ${artist.endTime ?: ""}\n\n" +
-                            "${FestivalConfig.NAME} ${FestivalConfig.current.year} · ${FestivalConfig.current.city} · ${FestivalConfig.current.tagline}"
+                            "${FestivalConfig.NAME} ${FestivalConfig.current.dates.year} · ${FestivalConfig.current.location.city} · ${FestivalConfig.current.tagline}"
                         val sendIntent = Intent(Intent.ACTION_SEND).apply {
                             type = "text/plain"
                             putExtra(Intent.EXTRA_TEXT, shareText)

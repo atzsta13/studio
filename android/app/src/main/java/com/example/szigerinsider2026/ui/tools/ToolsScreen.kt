@@ -16,6 +16,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.filled.CurrencyExchange
 import androidx.compose.material.icons.filled.FlashOn
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -50,7 +53,7 @@ fun ToolsScreen(navController: NavController) {
     val isLoadingWeather by vm.isLoadingWeather.collectAsStateWithLifecycle()
     
     val config = FestivalConfig.current
-    var localAmount by remember { mutableStateOf(if (config.localCurrencyCode == "HUF") "1000" else "10") }
+    var localAmount by remember { mutableStateOf(if (config.currency.localCode == "HUF") "1000" else "10") }
     var selectedTab by remember { mutableIntStateOf(0) }
     var isFlashOn by remember { mutableStateOf(false) }
 
@@ -85,7 +88,7 @@ fun ToolsScreen(navController: NavController) {
                 )
             }
 
-            if (config.showCurrencyConverter) {
+            if (config.currency.showConverter) {
                 item {
                     LocalCurrencyConverterCard(
                         localAmount = localAmount,
@@ -214,8 +217,8 @@ fun TabItem(text: String, isSelected: Boolean, onClick: () -> Unit, modifier: Mo
 fun LocalCurrencyConverterCard(localAmount: String, onAmountChange: (String) -> Unit) {
     val config = FestivalConfig.current
     val localValue = localAmount.toFloatOrNull() ?: 0f
-    val eurValue = String.format(Locale.US, "%.2f", localValue / config.eurRate.toFloat())
-    val usdValue = String.format(Locale.US, "%.2f", localValue / config.usdRate.toFloat())
+    val eurValue = String.format(Locale.US, "%.2f", localValue / config.currency.eurRate.toFloat())
+    val usdValue = String.format(Locale.US, "%.2f", localValue / config.currency.usdRate.toFloat())
 
     Card(
         colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
@@ -226,9 +229,9 @@ fun LocalCurrencyConverterCard(localAmount: String, onAmountChange: (String) -> 
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 24.dp)) {
                 Icon(Icons.Default.CurrencyExchange, contentDescription = null, tint = ToxicGreen, modifier = Modifier.size(28.dp))
                 Spacer(modifier = Modifier.width(12.dp))
-                Text(text = "${config.localCurrencyCode} CONVERTER", color = ToxicGreen, fontSize = 24.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                Text(text = "${config.currency.localCode} CONVERTER", color = ToxicGreen, fontSize = 24.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
             }
-            Text(text = "${config.localCurrencyName.uppercase()} (${config.localCurrencyCode})", color = TextMuted.copy(alpha = 0.6f), fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 4.sp, modifier = Modifier.padding(bottom = 12.dp))
+            Text(text = "${config.currency.localName.uppercase()} (${config.currency.localCode})", color = TextMuted.copy(alpha = 0.6f), fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 4.sp, modifier = Modifier.padding(bottom = 12.dp))
             OutlinedTextField(
                 value = localAmount, onValueChange = onAmountChange, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = MutedBackground.copy(alpha = 0.3f), unfocusedContainerColor = MutedBackground.copy(alpha = 0.3f), focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, focusedTextColor = TextPrimary, unfocusedTextColor = TextPrimary),

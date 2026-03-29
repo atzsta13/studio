@@ -1,0 +1,71 @@
+{
+  "id": "sziget-2026",
+  "slug": "sziget",
+  "name": "Sziget",
+  "fullName": "Sziget Festival 2026",
+  "appName": "dev Sziget Insider",
+  "tagline": "Island of Freedom",
+  "description": "Your unofficial offline-first guide to Sziget Festival 2026.",
+  "officialWebsite": "https://szigetfestival.com",
+  "deepLinkScheme": "sziget2026",
+  "aiPersona": "the 'Sziget Insider Scout', a legendary festival veteran who knows every corner of the Island of Freedom",
+  "location": {
+    "city": "Budapest",
+    "country": "Hungary",
+    "countryCode": "HU",
+    "venue": "Óbudai-sziget",
+    "timezone": "Europe/Budapest",
+    "lat": 47.5194,
+    "lng": 19.0512,
+    "weatherDisplayName": "Budapest · Óbudai-sziget"
+  },
+  "dates": {
+    "year": 2026,
+    "startDate": "2026-08-05",
+    "endDate": "2026-08-11",
+    "days": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"],
+    "dayLabels": {
+      "Wednesday": "WED", "Thursday": "THU", "Friday": "FRI",
+      "Saturday": "SAT", "Sunday": "SUN", "Monday": "MON", "Tuesday": "TUE"
+    },
+    "openingDayFilter": "Wednesday"
+  },
+  "currency": {
+    "localCode": "HUF",
+    "localName": "Forint",
+    "eurRate": 400,
+    "usdRate": 370,
+    "gbpRate": 470,
+    "showConverter": true
+  },
+  "theme": {
+    "primaryHex": "#FF0080",
+    "primaryHsl": "326 100% 50%",
+    "accentHex": "#FFEE00",
+    "accentHsl": "55 100% 50%",
+    "secondaryHex": "#00C3FF",
+    "secondaryHsl": "194 100% 50%",
+    "backgroundHex": "#09090B",
+    "backgroundHsl": "240 4% 4%",
+    "cardHex": "#131315",
+    "cardHsl": "240 4% 8%",
+    "glowColor": "rgba(255, 0, 128, 0.4)",
+    "aesthetic": "brutalist",
+    "androidPrimaryLong": "0xFFFF0080",
+    "androidAccentLong": "0xFFFFEE00",
+    "androidSecondaryLong": "0xFF00C3FF"
+  },
+  "features": {
+    "currencyConverter": true,
+    "tentFinder": true,
+    "vibeQuiz": true,
+    "passport": true,
+    "spotifyIntegration": true,
+    "aiRecommendations": true,
+    "survivalGuide": true,
+    "timetable": true,
+    "cashlessLink": false,
+    "dayparkNightpark": false,
+    "familyZone": false
+  }
+}

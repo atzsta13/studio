@@ -51,7 +51,7 @@ fun HighlightsScreen(onBack: () -> Unit) {
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                     Text("MY ${FestivalConfig.NAME.uppercase()}", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp)
-                    Text("${FestivalConfig.current.year}", color = MaterialTheme.colorScheme.primary, fontSize = 80.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp, lineHeight = 72.sp)
+                    Text("${FestivalConfig.current.dates.year}", color = MaterialTheme.colorScheme.primary, fontSize = 80.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp, lineHeight = 72.sp)
                     Text("HIGHLIGHTS", color = TextPrimary, fontSize = 40.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-2).sp, lineHeight = 38.sp)
                 }
             }
@@ -121,7 +121,7 @@ fun HighlightsScreen(onBack: () -> Unit) {
                     onClick = {
                         haptic.successBurst()
                         val text = buildString {
-                            append("🎪 My ${FestivalConfig.NAME} ${FestivalConfig.current.year} Highlights\n\n")
+                            append("🎪 My ${FestivalConfig.NAME} ${FestivalConfig.current.dates.year} Highlights\n\n")
                             append("🏆 Rank: ${s.rank}\n")
                             append("⚡ XP: ${s.xp}\n")
                             append("❤️ Saved: ${s.favoriteCount} artists (⭐ ${s.mustSeeCount} Must See, 💙 ${s.interestedCount} Interested)\n")
@@ -135,7 +135,7 @@ fun HighlightsScreen(onBack: () -> Unit) {
                                 append("\n💙 Interested:\n")
                                 s.interestedNames.take(5).forEach { append("• $it\n") }
                             }
-                            append("\n#${FestivalConfig.NAME}Festival #${FestivalConfig.NAME}${FestivalConfig.current.year}")
+                            append("\n#${FestivalConfig.NAME}Festival #${FestivalConfig.NAME}${FestivalConfig.current.dates.year}")
                         }
                         context.startActivity(
                             Intent.createChooser(

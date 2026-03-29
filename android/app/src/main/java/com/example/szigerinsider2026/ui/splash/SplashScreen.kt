@@ -106,7 +106,7 @@ fun SplashScreen(navController: NavController) {
                         .padding(horizontal = 12.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = "EST. ${FestivalConfig.current.year} – ALPHA v2.0",
+                        text = "EST. ${FestivalConfig.current.dates.year} – ALPHA v2.0",
                         fontWeight = FontWeight.Black,
                         color = Color.Black,
                         fontSize = 12.sp,

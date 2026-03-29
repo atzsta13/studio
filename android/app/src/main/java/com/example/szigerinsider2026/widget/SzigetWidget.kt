@@ -30,9 +30,15 @@ import kotlinx.coroutines.flow.first
 class SzigetWidget : GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
+        // Ensure config is initialized even for widget process
+        FestivalConfig.initialize(context)
+        
         val db = AppDatabase.getDatabase(context)
         val progress = db.userDao().getUserProgress().first()
         val favorites = db.userDao().getAllFavorites().first()
+        
+        val config = FestivalConfig.current
+        val accentColor = Color(java.lang.Long.decode(config.theme.androidAccentLong))
 
         provideContent {
             GlanceTheme {
@@ -45,9 +51,9 @@ class SzigetWidget : GlanceAppWidget() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
+                        text = "${config.name.uppercase()} ${config.dates.year}",
                         style = TextStyle(
-                            color = ColorProvider(Color(FestivalConfig.current.accentColorHex)),
+                            color = ColorProvider(accentColor),
                             fontWeight = FontWeight.Bold,
                             fontSize = 11.sp
                         )
@@ -73,7 +79,7 @@ class SzigetWidget : GlanceAppWidget() {
                     Text(
                         text = "TAP TO OPEN →",
                         style = TextStyle(
-                            color = ColorProvider(Color(FestivalConfig.current.accentColorHex)),
+                            color = ColorProvider(accentColor),
                             fontWeight = FontWeight.Bold,
                             fontSize = 10.sp
                         )

@@ -1,0 +1,69 @@
+{
+  "id": "novarock-2026",
+  "slug": "novarock",
+  "name": "Nova Rock",
+  "fullName": "Nova Rock Festival 2026",
+  "appName": "dev Nova Rock Insider",
+  "tagline": "Rock the Fields",
+  "description": "Your unofficial discovery guide to Nova Rock Festival 2026 in Nickelsdorf.",
+  "officialWebsite": "https://www.novarock.at/en/",
+  "deepLinkScheme": "novarock2026",
+  "aiPersona": "the 'Nova Rock Scout', a rock veteran who has survived every Pannonia dust storm since 2005 and knows all five stages by heart",
+  "location": {
+    "city": "Nickelsdorf",
+    "country": "Austria",
+    "countryCode": "AT",
+    "venue": "Pannonia Fields II",
+    "timezone": "Europe/Vienna",
+    "lat": 47.9381,
+    "lng": 17.0651,
+    "weatherDisplayName": "Nickelsdorf · Pannonia Fields II"
+  },
+  "dates": {
+    "year": 2026,
+    "startDate": "2026-06-11",
+    "endDate": "2026-06-14",
+    "days": ["Thursday", "Friday", "Saturday", "Sunday"],
+    "dayLabels": { "Thursday": "THU", "Friday": "FRI", "Saturday": "SAT", "Sunday": "SUN" },
+    "openingDayFilter": "Thursday"
+  },
+  "currency": {
+    "localCode": "EUR",
+    "localName": "Euro",
+    "eurRate": 1,
+    "usdRate": 0.92,
+    "gbpRate": 1.17,
+    "showConverter": false
+  },
+  "theme": {
+    "primaryHex": "#FF6600",
+    "primaryHsl": "24 100% 50%",
+    "accentHex": "#FFD700",
+    "accentHsl": "51 100% 50%",
+    "secondaryHex": "#FF4444",
+    "secondaryHsl": "0 100% 63%",
+    "backgroundHex": "#09090B",
+    "backgroundHsl": "240 4% 4%",
+    "cardHex": "#131315",
+    "cardHsl": "240 4% 8%",
+    "glowColor": "rgba(255, 102, 0, 0.4)",
+    "aesthetic": "rock",
+    "androidPrimaryLong": "0xFFFF6600",
+    "androidAccentLong": "0xFFFFD700",
+    "androidSecondaryLong": "0xFFFF4444"
+  },
+  "features": {
+    "currencyConverter": false,
+    "tentFinder": true,
+    "vibeQuiz": true,
+    "passport": true,
+    "spotifyIntegration": true,
+    "aiRecommendations": true,
+    "survivalGuide": true,
+    "timetable": true,
+    "cashlessLink": true,
+    "cashlessUrl": "https://www.novarock.at/en/cashless/",
+    "dayparkNightpark": false,
+    "familyZone": true
+  }
+}

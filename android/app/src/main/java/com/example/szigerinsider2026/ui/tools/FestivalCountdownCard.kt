@@ -9,16 +9,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.data.config.FestivalConfig
+import com.example.szigerinsider2026.ui.theme.*
 import kotlinx.coroutines.delay
 import java.time.ZoneId
 import java.time.ZonedDateTime
+import java.time.LocalDate
 
 private data class CountdownState(
     val days: Long,
@@ -29,8 +31,9 @@ private data class CountdownState(
 
 private fun computeCountdown(): CountdownState {
     val config = FestivalConfig.current
-    val target = ZonedDateTime.of(config.startYear, config.startMonth, config.startDay, 0, 0, 0, 0, ZoneId.of(config.timezone))
-    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
+    val startDate = LocalDate.parse(config.dates.startDate)
+    val target = ZonedDateTime.of(startDate.atStartOfDay(), ZoneId.of(config.location.timezone))
+    val now = ZonedDateTime.now(ZoneId.of(config.location.timezone))
     val totalSeconds = java.time.Duration.between(now, target).seconds.coerceAtLeast(0)
     val days = totalSeconds / 86400
     val hours = (totalSeconds % 86400) / 3600
@@ -41,16 +44,19 @@ private fun computeCountdown(): CountdownState {
 
 private fun isFestivalLive(): Boolean {
     val config = FestivalConfig.current
-    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
-    val start = ZonedDateTime.of(config.startYear, config.startMonth, config.startDay, 0, 0, 0, 0, ZoneId.of(config.timezone))
-    val end = ZonedDateTime.of(config.startYear, config.endMonth, config.endDay, 23, 59, 59, 0, ZoneId.of(config.timezone))
+    val now = ZonedDateTime.now(ZoneId.of(config.location.timezone))
+    val startDate = LocalDate.parse(config.dates.startDate)
+    val endDate = LocalDate.parse(config.dates.endDate)
+    val start = ZonedDateTime.of(startDate.atStartOfDay(), ZoneId.of(config.location.timezone))
+    val end = ZonedDateTime.of(endDate.atTime(23, 59, 59), ZoneId.of(config.location.timezone))
     return now >= start && now < end
 }
 
 private fun isFestivalOver(): Boolean {
     val config = FestivalConfig.current
-    val now = ZonedDateTime.now(ZoneId.of(config.timezone))
-    val end = ZonedDateTime.of(config.startYear, config.endMonth, config.endDay, 23, 59, 59, 0, ZoneId.of(config.timezone))
+    val now = ZonedDateTime.now(ZoneId.of(config.location.timezone))
+    val endDate = LocalDate.parse(config.dates.endDate)
+    val end = ZonedDateTime.of(endDate.atTime(23, 59, 59), ZoneId.of(config.location.timezone))
     return now >= end
 }
 
@@ -74,7 +80,7 @@ fun FestivalCountdownCard() {
     ) {
         Column(modifier = Modifier.padding(24.dp)) {
             Text(
-                text = "COUNTDOWN TO ${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
+                text = "COUNTDOWN TO ${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.dates.year}",
                 color = MaterialTheme.colorScheme.secondary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Black,
@@ -97,7 +103,7 @@ fun FestivalCountdownCard() {
                 isFestivalOver() -> {
                     val config = FestivalConfig.current
                     Text(
-                        text = "SEE YOU AT ${config.name.uppercase()} ${config.year + 1}",
+                        text = "SEE YOU AT ${config.name.uppercase()} ${config.dates.year + 1}",
                         color = TextMuted,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Black,

@@ -16,9 +16,9 @@ import com.example.szigerinsider2026.data.config.FestivalConfig
 // Always force tactical OLED dark mode for this app.
 @Composable
 private fun getTacticalColorScheme() = darkColorScheme(
-    primary = Color(FestivalConfig.current.primaryColorHex),
-    secondary = Color(FestivalConfig.current.accentColorHex),
-    tertiary = Color(FestivalConfig.current.secondaryColorHex),
+    primary = Color(java.lang.Long.decode(FestivalConfig.current.theme.androidPrimaryLong)),
+    secondary = Color(java.lang.Long.decode(FestivalConfig.current.theme.androidAccentLong)),
+    tertiary = Color(java.lang.Long.decode(FestivalConfig.current.theme.androidSecondaryLong)),
     background = OLEDBlack,
     surface = CardBackground,
     onPrimary = TextPrimary,

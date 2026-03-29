@@ -21,6 +21,10 @@ import com.example.szigerinsider2026.ui.navigation.AppNavigation
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Initialize unified configuration from JSON assets
+        FestivalConfig.initialize(applicationContext)
+        
         enableEdgeToEdge()
         setContent {
             FestivalInsiderTheme {

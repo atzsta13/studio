@@ -54,17 +54,18 @@ import com.example.szigerinsider2026.data.config.FestivalConfig
 
 // ─── Constants (derived from FestivalConfig.current) ───────────────────────────
 
-private val DAY_LABELS get() = FestivalConfig.current.dayLabels
+private val DAY_LABELS get() = FestivalConfig.current.dates.dayLabels
 
 private val DAY_TO_DATE: Map<String, LocalDate> get() {
     val config = FestivalConfig.current
-    return config.days.mapIndexed { i, day ->
-        day to LocalDate.of(config.startYear, config.startMonth, config.startDay).plusDays(i.toLong())
+    val start = LocalDate.parse(config.dates.startDate)
+    return config.dates.days.mapIndexed { i, day ->
+        day to start.plusDays(i.toLong())
     }.toMap()
 }
 
-private val FESTIVAL_START get() = FestivalConfig.current.let { LocalDate.of(it.startYear, it.startMonth, it.startDay) }
-private val FESTIVAL_END   get() = FestivalConfig.current.let { LocalDate.of(it.startYear, it.endMonth, it.endDay) }
+private val FESTIVAL_START get() = FestivalConfig.current.let { LocalDate.parse(it.dates.startDate) }
+private val FESTIVAL_END   get() = FestivalConfig.current.let { LocalDate.parse(it.dates.endDate) }
 
 private val ClashBannerBg     = Color(0xFF2A0A00)
 private val ClashBannerBorder = Color(0xFFFF4500)
@@ -82,10 +83,18 @@ private fun parseTime(t: String?): LocalTime? {
 // ─── Now-playing helper ───────────────────────────────────────────────────────
 
 private fun isNowPlaying(artist: Artist): Boolean {
+    val config = FestivalConfig.current
     val today = LocalDate.now()
-    if (today < FESTIVAL_START || today > FESTIVAL_END) return false
-    val festDate = DAY_TO_DATE[artist.day] ?: return false
-    if (festDate != today) return false
+    val startDate = LocalDate.parse(config.dates.startDate)
+    val endDate   = LocalDate.parse(config.dates.endDate)
+    
+    if (today < startDate || today > endDate) return false
+    
+    val dayIndex = config.dates.days.indexOf(artist.day)
+    if (dayIndex == -1) return false
+    val targetDate = startDate.plusDays(dayIndex.toLong())
+    if (targetDate != today) return false
+    
     val start = parseTime(artist.startTime) ?: return false
     val end   = parseTime(artist.endTime)   ?: return false
     val now   = LocalTime.now()
@@ -121,13 +130,13 @@ fun ScheduleScreen(
 
     val availableDays = remember(uiState.allArtists) {
         val days = uiState.allArtists.mapNotNull { it.day }.distinct()
-            .sortedBy { FestivalConfig.current.days.indexOf(it).let { i -> if (i == -1) 99 else i } }
+            .sortedBy { FestivalConfig.current.dates.days.indexOf(it).let { i -> if (i == -1) 99 else i } }
         listOf("WEEK") + days
     }
 
     val byDayFavorites = remember(favoriteArtists) {
         favoriteArtists.groupBy { it.day ?: "Unknown" }.entries
-            .sortedBy { FestivalConfig.current.days.indexOf(it.key).let { i -> if (i == -1) 99 else i } }
+            .sortedBy { FestivalConfig.current.dates.days.indexOf(it.key).let { i -> if (i == -1) 99 else i } }
     }
 
     Column(
@@ -137,7 +146,7 @@ fun ScheduleScreen(
     ) {
         BrutalistHeader(
             title = "TIMETABLE",
-            subtitle = FestivalConfig.current.dateVenueDisplay,
+            subtitle = FestivalConfig.current.location.weatherDisplayName,
             modifier = Modifier.padding(top = 20.dp, bottom = 12.dp)
         )
 
@@ -189,7 +198,7 @@ fun ScheduleScreen(
                             .padding(horizontal = 16.dp, vertical = 10.dp)
                     ) {
                         Text(
-                            text = if (isWeekTab) "FULL WEEK" else (DAY_LABELS[day] ?: day.take(3).uppercase()),
+                            text = if (isWeekTab) "FULL WEEK" else (FestivalConfig.current.dates.dayLabels[day] ?: day.take(3).uppercase()),
                             fontWeight = FontWeight.Black,
                             color = textColor,
                             fontSize = 11.sp,
@@ -437,7 +446,7 @@ private fun DayHeader(day: String) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        val label = (DAY_LABELS[day] ?: day.take(3).uppercase()) + " · " + day.uppercase()
+        val label = (FestivalConfig.current.dates.dayLabels[day] ?: day.take(3).uppercase()) + " · " + day.uppercase()
         BrutalistBadge(text = label, color = MaterialTheme.colorScheme.secondary)
     }
 }
@@ -502,7 +511,9 @@ fun TimetableGrid(
 
             val now = LocalTime.now()
             val today = LocalDate.now()
-            if (today >= FESTIVAL_START && today <= FESTIVAL_END) {
+            val startDate = LocalDate.parse(FestivalConfig.current.dates.startDate)
+            val endDate   = LocalDate.parse(FestivalConfig.current.dates.endDate)
+            if (today >= startDate && today <= endDate) {
                 val currentX = getX("${now.hour}:${now.minute}")
                 Box(modifier = Modifier.fillMaxHeight().width(2.dp).absoluteOffset(x = currentX.dp).background(ToxicGreen.copy(alpha = 0.6f)))
             }
@@ -627,7 +638,7 @@ private fun ScheduleRow(
                         Text(text = "LIVE", fontWeight = FontWeight.Black, color = ToxicGreen, fontSize = 10.sp, letterSpacing = 1.sp)
                         Text(text = "NOW", fontWeight = FontWeight.Black, color = ToxicGreen, fontSize = 10.sp, letterSpacing = 1.sp)
                     } else if (showDayBadge) {
-                        val dayShort = DAY_LABELS[artist.day] ?: artist.day?.take(3)?.uppercase() ?: ""
+                        val dayShort = FestivalConfig.current.dates.dayLabels[artist.day] ?: artist.day?.take(3)?.uppercase() ?: ""
                         BrutalistBadge(text = dayShort, color = MaterialTheme.colorScheme.secondary)
                         if (artist.startTime != null) { Text(text = artist.startTime, fontWeight = FontWeight.Black, color = Color.White.copy(alpha = 0.7f), fontSize = 11.sp, letterSpacing = (-0.3).sp, modifier = Modifier.padding(top = 4.dp)) }
                     } else {

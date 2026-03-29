@@ -48,45 +48,28 @@ import com.example.szigerinsider2026.data.repository.LineupDiffRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.tools.FestivalCountdownCard
 import kotlinx.coroutines.delay
 import java.util.Calendar
 import java.util.TimeZone
+import java.time.LocalDate
 import com.example.szigerinsider2026.data.config.FestivalConfig
-
-private val FESTIVAL_START_MS: Long by lazy {
-    val config = FestivalConfig.current
-    Calendar.getInstance(TimeZone.getTimeZone(config.timezone)).apply {
-        set(config.startYear, config.calendarStartMonth, config.startDay, 12, 0, 0)
-        set(Calendar.MILLISECOND, 0)
-    }.timeInMillis
-}
-
-private data class CountdownState(val days: Long, val hours: Long, val minutes: Long, val seconds: Long)
-
-private fun calcCountdown(): CountdownState {
-    val diff = (FESTIVAL_START_MS - System.currentTimeMillis()).coerceAtLeast(0L)
-    val days = diff / 86_400_000L
-    val hours = (diff % 86_400_000L) / 3_600_000L
-    val minutes = (diff % 3_600_000L) / 60_000L
-    val seconds = (diff % 60_000L) / 1_000L
-    return CountdownState(days, hours, minutes, seconds)
-}
 
 private fun getFestivalDay(): String {
     val config = FestivalConfig.current
-    val now = Calendar.getInstance(TimeZone.getTimeZone(config.timezone))
+    val now = Calendar.getInstance(TimeZone.getTimeZone(config.location.timezone))
     val year = now.get(Calendar.YEAR)
     val month = now.get(Calendar.MONTH)
     val dom = now.get(Calendar.DAY_OF_MONTH)
 
-    if (year < config.startYear || (year == config.startYear && month < config.calendarStartMonth)) return config.days.first()
-    if (year > config.startYear || (year == config.startYear && month > config.calendarStartMonth)) return config.days.last()
+    val start = LocalDate.parse(config.dates.startDate)
+    if (year < start.year || (year == start.year && month < (start.monthValue - 1))) return config.dates.days.first()
     
-    return when {
-        dom < config.startDay -> config.days.first()
-        dom > config.endDay   -> config.days.last()
-        else -> config.days.getOrNull(dom - config.startDay) ?: config.days.first()
-    }
+    // Simple offset-based day picker
+    val currentLocalDate = LocalDate.of(year, month + 1, dom)
+    val diff = java.time.temporal.ChronoUnit.DAYS.between(start, currentLocalDate).toInt()
+    
+    return config.dates.days.getOrNull(diff) ?: config.dates.days.first()
 }
 
 private fun isArtistLive(artist: Artist): Boolean {
@@ -95,23 +78,23 @@ private fun isArtistLive(artist: Artist): Boolean {
     val startTime = artist.startTime ?: return false
     val endTime = artist.endTime ?: return false
 
-    val dayIndex = config.days.indexOf(day)
+    val dayIndex = config.dates.days.indexOf(day)
     if (dayIndex == -1) return false
 
-    val now = Calendar.getInstance(TimeZone.getTimeZone(config.timezone))
-    val year = now.get(Calendar.YEAR)
-    val month = now.get(Calendar.MONTH)
-    val dom = now.get(Calendar.DAY_OF_MONTH)
-    val currentHour = now.get(Calendar.HOUR_OF_DAY)
-    val currentMin = now.get(Calendar.MINUTE)
+    val start = LocalDate.parse(config.dates.startDate)
+    val targetDate = start.plusDays(dayIndex.toLong())
+    val now = Calendar.getInstance(TimeZone.getTimeZone(config.location.timezone))
+    val currentLocalDate = LocalDate.of(now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH))
 
-    // Check if current date matches the artist's scheduled date
-    if (year != config.startYear || month != config.calendarStartMonth || dom != (config.startDay + dayIndex)) return false
+    if (currentLocalDate != targetDate) return false
 
     return try {
         val (startH, startM) = startTime.split(":").map { it.toInt() }
         val (endH, endM) = endTime.split(":").map { it.toInt() }
-        val nowMinutes = currentHour * 60 + currentMin
+        val nowH = now.get(Calendar.HOUR_OF_DAY)
+        val nowM = now.get(Calendar.MINUTE)
+        
+        val nowMinutes = nowH * 60 + nowM
         val startMinutes = startH * 60 + startM
         val endMinutes = endH * 60 + endM
         nowMinutes in startMinutes until endMinutes
@@ -127,10 +110,8 @@ fun HomeScreen(navController: NavController? = null) {
     val repository = remember { LineupRepository(context) }
     val db = remember { AppDatabase.getDatabase(context) }
 
-    var countdown by remember { mutableStateOf(calcCountdown()) }
     var allArtists by remember { mutableStateOf<List<Artist>>(emptyList()) }
     var favoriteArtistIds by remember { mutableStateOf<Set<String>>(emptySet()) }
-    var showDiffSheet by remember { mutableStateOf(false) }
     var newArtistPreview by remember { mutableStateOf<List<Artist>>(emptyList()) }
 
     LaunchedEffect(Unit) {
@@ -144,19 +125,11 @@ fun HomeScreen(navController: NavController? = null) {
     }
 
     LaunchedEffect(Unit) {
-        while (true) {
-            countdown = calcCountdown()
-            delay(1000L)
-        }
-    }
-
-    LaunchedEffect(Unit) {
         val diff = LineupDiffRepository(context).computeDiff()
         newArtistPreview = diff.newArtists.take(4)
     }
 
     val festivalDay = remember { getFestivalDay() }
-
     val headliner = remember(allArtists) { allArtists.firstOrNull { it.isHeadliner } }
     val nowPlaying = remember(allArtists, festivalDay) {
         allArtists.filter { it.day == festivalDay }.take(3)
@@ -190,7 +163,7 @@ fun HomeScreen(navController: NavController? = null) {
             ) {
                 Column {
                     Text(
-                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.year}",
+                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.dates.year}",
                         style = BrutalistTypography.labelSmall,
                         color = MaterialTheme.colorScheme.primary,
                         letterSpacing = 3.sp
@@ -201,22 +174,6 @@ fun HomeScreen(navController: NavController? = null) {
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium
                     )
-                    Row(modifier = Modifier.padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(
-                            text = "L-LEVEL: ALPHA_2.3",
-                            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                            fontSize = 8.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 1.sp
-                        )
-                        Text(
-                            text = "SYS_AUTH: APPROVED",
-                            color = ToxicGreen.copy(alpha = 0.5f),
-                            fontSize = 8.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 1.sp
-                        )
-                    }
                 }
                 Box(
                     modifier = Modifier
@@ -232,47 +189,8 @@ fun HomeScreen(navController: NavController? = null) {
         }
 
         item {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(bottom = 16.dp)
-                    .clip(RoundedCornerShape(32.dp))
-                    .background(
-                        Brush.linearGradient(
-                            colors = listOf(Color(0xFF6C3CE1), MaterialTheme.colorScheme.primary, Color(0xFF6C3CE1)),
-                            start = Offset(countdownAnimFloat * 500f, 0f),
-                            end = Offset(countdownAnimFloat * 500f + 500f, 500f)
-                        )
-                    )
-                    .padding(28.dp)
-            ) {
-                Column {
-                    Text(
-                        text = "COUNTDOWN TO ${FestivalConfig.NAME.uppercase()}",
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 3.sp,
-                        color = Color.White.copy(alpha = 0.7f)
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        CountdownUnit(countdown.days, "DAYS")
-                        CountdownUnit(countdown.hours, "HRS")
-                        CountdownUnit(countdown.minutes, "MIN")
-                        CountdownUnit(countdown.seconds, "SEC")
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = FestivalConfig.current.dateDisplay,
-                        color = Color.White.copy(alpha = 0.6f),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
+            Box(modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) {
+                FestivalCountdownCard()
             }
         }
 
@@ -282,28 +200,16 @@ fun HomeScreen(navController: NavController? = null) {
         item {
             if (favoriteArtists.isEmpty()) {
                 Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(CardBackground)
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
+                        .clip(RoundedCornerShape(20.dp)).background(CardBackground)
                         .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(20.dp))
                         .padding(24.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "Star artists to build your lineup",
-                        color = TextMuted,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Medium
-                    )
+                    Text(text = "Star artists to build your lineup", color = TextMuted, fontSize = 14.sp, fontWeight = FontWeight.Medium)
                 }
             } else {
-                LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    modifier = Modifier.padding(bottom = 8.dp)
-                ) {
+                LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(bottom = 8.dp)) {
                     items(favoriteArtists) { artist -> FavoriteArtistChip(artist) }
                 }
             }
@@ -312,54 +218,13 @@ fun HomeScreen(navController: NavController? = null) {
         headliner?.let { artist ->
             item { SectionHeader(title = "HEADLINER SPOTLIGHT") }
             item {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .padding(bottom = 16.dp)
-                        .height(240.dp)
-                        .clip(RoundedCornerShape(32.dp))
-                ) {
-                    AsyncImage(
-                        model = artist.imageUrl,
-                        contentDescription = artist.artist,
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
-                    )
-                    Box(
-                        modifier = Modifier.fillMaxSize().background(
-                            Brush.verticalGradient(
-                                colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.85f))
-                            )
-                        )
-                    )
-                    Column(
-                        modifier = Modifier.align(Alignment.BottomStart).padding(24.dp)
-                    ) {
-                        Text(
-                            text = "HEADLINER",
-                            fontSize = 9.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 3.sp,
-                            color = MaterialTheme.colorScheme.secondary
-                        )
-                        Text(
-                            text = artist.artist.uppercase(),
-                            fontSize = 30.sp,
-                            fontWeight = FontWeight.Black,
-                            fontStyle = FontStyle.Italic,
-                            color = Color.White,
-                            lineHeight = 32.sp
-                        )
-                        if (artist.day != null) {
-                            Text(
-                                text = artist.day.uppercase(),
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White.copy(alpha = 0.6f),
-                                modifier = Modifier.padding(top = 2.dp)
-                            )
-                        }
+                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 16.dp).height(240.dp).clip(RoundedCornerShape(32.dp))) {
+                    AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+                    Box(modifier = Modifier.fillMaxSize().background(Brush.verticalGradient(colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.85f)))))
+                    Column(modifier = Modifier.align(Alignment.BottomStart).padding(24.dp)) {
+                        Text(text = "HEADLINER", fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp, color = MaterialTheme.colorScheme.secondary)
+                        Text(text = artist.artist.uppercase(), fontSize = 30.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, color = Color.White, lineHeight = 32.sp)
+                        if (artist.day != null) { Text(text = artist.day.uppercase(), fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.White.copy(alpha = 0.6f), modifier = Modifier.padding(top = 2.dp)) }
                     }
                 }
             }
@@ -367,95 +232,24 @@ fun HomeScreen(navController: NavController? = null) {
 
         item {
             val stage = nowPlaying.firstOrNull()?.stage ?: "Main Stage"
-            SectionHeader(
-                title = "${FestivalConfig.NAME.uppercase()} PULSE",
-                subtitle = "$festivalDay · $stage"
-            )
+            SectionHeader(title = "${FestivalConfig.NAME.uppercase()} PULSE", subtitle = "$festivalDay · $stage")
         }
         items(nowPlaying) { artist -> IslandPulseRow(artist) }
-
-        if (newArtistPreview.isNotEmpty()) {
-            item {
-                Spacer(modifier = Modifier.height(24.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column {
-                        Text("NEW THIS YEAR", color = ToxicGreen, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
-                        Text("${FestivalConfig.current.year} ARRIVALS", color = TextMuted, fontSize = 13.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic)
-                    }
-                    TextButton(onClick = { haptic.lightTap(); /* showDiffSheet logic if needed */ }) {
-                        Text("SEE ALL →", color = MaterialTheme.colorScheme.secondary, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                    }
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                LazyRow(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    contentPadding = PaddingValues(horizontal = 20.dp)
-                ) {
-                    items(newArtistPreview) { artist ->
-                        Box(
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(20.dp))
-                                .background(CardBackground)
-                                .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
-                                .clickable { haptic.lightTap(); navController?.navigate("artist/${artist.id}") }
-                                .padding(horizontal = 12.dp, vertical = 8.dp)
-                        ) {
-                            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                                Text(
-                                    text = artist.countryCode?.let { code ->
-                                        val offset = 0x1F1E6 - 'A'.code
-                                        code.uppercase().map { String(Character.toChars(it.code + offset)) }.joinToString("")
-                                    } ?: "🌐",
-                                    fontSize = 14.sp
-                                )
-                                Text(artist.artist, color = TextPrimary, fontSize = 12.sp, fontWeight = FontWeight.Black)
-                                Box(
-                                    modifier = Modifier
-                                        .clip(RoundedCornerShape(4.dp))
-                                        .background(ToxicGreen.copy(alpha = 0.2f))
-                                        .padding(horizontal = 4.dp, vertical = 1.dp)
-                                ) {
-                                    Text("NEW", color = ToxicGreen, fontSize = 9.sp, fontWeight = FontWeight.Black)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
 
         item {
             Spacer(modifier = Modifier.height(8.dp))
             SectionHeader(title = "EXPLORE")
         }
         item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
                 QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, MaterialTheme.colorScheme.primary, Modifier.weight(1f)) { navController?.navigate("passport") }
             }
         }
         item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 QuickNavCard("TOOLS", Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
                 QuickNavCard("SCHEDULE", Icons.Default.Schedule, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("schedule") }
-            }
-        }
-        item {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                QuickNavCard("VIBE QUIZ", Icons.Default.AutoAwesome, MaterialTheme.colorScheme.primary, Modifier.fillMaxWidth()) { navController?.navigate("vibe_quiz") }
             }
         }
     }
@@ -463,24 +257,9 @@ fun HomeScreen(navController: NavController? = null) {
 
 @Composable
 private fun WeatherCard() {
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
-            .padding(bottom = 4.dp)
-            .clip(RoundedCornerShape(24.dp))
-            .background(Brush.linearGradient(colors = listOf(Color(0xFF1A1A1A), OLEDBlack)))
-            .border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(24.dp))
-            .padding(horizontal = 20.dp, vertical = 16.dp)
-    ) {
+    Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 4.dp).clip(RoundedCornerShape(24.dp)).background(Brush.linearGradient(colors = listOf(Color(0xFF1A1A1A), OLEDBlack))).border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(24.dp)).padding(horizontal = 20.dp, vertical = 16.dp)) {
         Column {
-            Text(
-                text = "${FestivalConfig.current.city.uppercase()} FORECAST",
-                fontSize = 8.sp,
-                fontWeight = FontWeight.Black,
-                letterSpacing = 3.sp,
-                color = TextMuted
-            )
+            Text(text = "${FestivalConfig.current.location.city.uppercase()} FORECAST", fontSize = 8.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp, color = TextMuted)
             Spacer(modifier = Modifier.height(10.dp))
             Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Column(modifier = Modifier.weight(1f)) {
@@ -492,28 +271,8 @@ private fun WeatherCard() {
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(text = "Sunny · Perfect festival weather", fontSize = 12.sp, fontWeight = FontWeight.Medium, color = TextMuted)
                 }
-                Column(horizontalAlignment = Alignment.End) {
-                    WeatherStat("UV INDEX", "8")
-                    Spacer(modifier = Modifier.height(4.dp))
-                    WeatherStat("HUMIDITY", "45%")
-                    Spacer(modifier = Modifier.height(4.dp))
-                    WeatherStat("WIND", "12 KM/H")
-                }
             }
         }
-    }
-}
-
-@Composable
-private fun WeatherStat(label: String, value: String) {
-    Text(text = "$label · $value", fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, color = TextMuted)
-}
-
-@Composable
-private fun CountdownUnit(value: Long, label: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = value.toString().padStart(2, '0'), fontSize = 40.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, color = Color.White, lineHeight = 40.sp)
-        Text(text = label, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp, color = Color.White.copy(alpha = 0.6f))
     }
 }
 
@@ -522,9 +281,7 @@ private fun SectionHeader(title: String, subtitle: String? = null, count: Int? =
     Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(top = 24.dp, bottom = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
         Column {
             Text(text = title, style = BrutalistTypography.labelSmall, color = TextMuted, letterSpacing = 3.sp)
-            if (subtitle != null) {
-                Text(text = subtitle, color = Color.White.copy(alpha = 0.4f), fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp))
-            }
+            if (subtitle != null) { Text(text = subtitle, color = Color.White.copy(alpha = 0.4f), fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp)) }
         }
         if (count != null) {
             Box(modifier = Modifier.clip(RoundedCornerShape(100)).background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)).padding(horizontal = 10.dp, vertical = 4.dp)) {
@@ -548,9 +305,6 @@ private fun FavoriteArtistChip(artist: Artist) {
 @Composable
 private fun IslandPulseRow(artist: Artist) {
     val live = remember(artist) { isArtistLive(artist) }
-    val liveTransition = rememberInfiniteTransition(label = "livePulse")
-    val pulseAlpha by liveTransition.animateFloat(initialValue = 0.5f, targetValue = 1f, animationSpec = infiniteRepeatable(animation = tween(durationMillis = 800, easing = LinearEasing), repeatMode = RepeatMode.Reverse), label = "livePulseAlpha")
-
     Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = CardBackground), border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f))) {
         Row(modifier = Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(modifier = Modifier.size(4.dp).clip(CircleShape).background(if (live) ToxicGreen else MaterialTheme.colorScheme.primary))
@@ -560,15 +314,6 @@ private fun IslandPulseRow(artist: Artist) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(text = artist.artist.uppercase(), style = BrutalistTypography.titleLarge, fontSize = 16.sp)
                 Text(text = (artist.stage ?: "Main Stage").uppercase(), style = BrutalistTypography.labelSmall, color = MaterialTheme.colorScheme.primary, fontSize = 9.sp)
-            }
-            if (live) {
-                Box(modifier = Modifier.clip(RoundedCornerShape(8.dp)).background(ToxicGreen.copy(alpha = pulseAlpha)).padding(horizontal = 8.dp, vertical = 4.dp)) {
-                    Text(text = "● LIVE", fontSize = 8.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, color = Color.White)
-                }
-            } else if (artist.day != null) {
-                Box(modifier = Modifier.clip(RoundedCornerShape(8.dp)).background(MaterialTheme.colorScheme.secondary.copy(alpha = 0.1f)).border(1.dp, MaterialTheme.colorScheme.secondary.copy(alpha = 0.2f), RoundedCornerShape(8.dp)).padding(horizontal = 8.dp, vertical = 4.dp)) {
-                    Text(text = artist.day.take(3).uppercase(), style = BrutalistTypography.labelSmall, color = MaterialTheme.colorScheme.secondary, fontSize = 9.sp)
-                }
             }
         }
     }
