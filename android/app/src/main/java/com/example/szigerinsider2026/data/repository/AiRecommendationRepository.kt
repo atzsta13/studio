@@ -3,6 +3,7 @@ package com.example.szigerinsider2026.data.repository
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.szigerinsider2026.data.model.AiRecommendationResult
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
@@ -32,6 +33,7 @@ class AiRecommendationRepository(private val context: Context) {
                 val url = "$BASE_URL/api/ai/recommend"
                 val body = JSONObject().apply {
                     put("prompt", prompt)
+                    put("festivalId", FestivalConfig.current.id)
                 }.toString()
 
                 val connection = URL(url).openConnection()

@@ -4,7 +4,7 @@ import { recommendArtists } from '@/ai/flows/recommend-artists-flow';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { prompt } = body;
+    const { prompt, festivalId } = body;
 
     if (!prompt || typeof prompt !== 'string' || prompt.trim().length === 0) {
       return NextResponse.json(
@@ -13,7 +13,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const result = await recommendArtists({ prompt: prompt.trim() });
+    const result = await recommendArtists({ 
+      prompt: prompt.trim(),
+      festivalId: festivalId
+    });
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

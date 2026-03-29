@@ -6,11 +6,13 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import { FESTIVAL } from '@/config/festival';
-import lineup from '@/data/lineup.json';
+import { FESTIVAL, FESTIVAL_CONFIGS } from '@/config/festival';
+import fs from 'fs';
+import path from 'path';
 
 const RecommendInputSchema = z.object({
   prompt: z.string().describe('The user\'s mood or musical preference (e.g., "I want something loud and heavy" or "chill afternoon vibes").'),
+  festivalId: z.string().optional(),
   aiPersona: z.string().optional(),
   fullName: z.string().optional(),
   artists: z.array(z.any()).optional(),
@@ -53,6 +55,23 @@ export async function recommendArtists(input: RecommendInput): Promise<Recommend
   return result;
 }
 
+/**
+ * Helper to load festival-specific lineup data for the AI flow.
+ * On Vercel/Server, we read from the festivals/ directory.
+ */
+function getFestivalLineup(festivalId: string) {
+  try {
+    const dataPath = path.join(process.cwd(), 'festivals', festivalId, 'data', 'lineup.json');
+    if (fs.existsSync(dataPath)) {
+      return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+    }
+  } catch (e) {
+    console.error(`Failed to load lineup for ${festivalId}`, e);
+  }
+  // Fallback to currently synced lineup
+  return import('@/data/lineup.json').then(m => m.default);
+}
+
 const recommendArtistsFlow = ai.defineFlow(
   {
     name: 'recommendArtistsFlow',
@@ -60,13 +79,17 @@ const recommendArtistsFlow = ai.defineFlow(
     outputSchema: RecommendOutputSchema,
   },
   async (input) => {
-    // We pass a subset of data to avoid token limits if needed, 
-    // but for 80 artists it should fit in a single prompt.
+    const targetId = input.festivalId || FESTIVAL.id;
+    const config = FESTIVAL_CONFIGS[targetId as keyof typeof FESTIVAL_CONFIGS] || FESTIVAL;
+    
+    // Load the correct lineup for this festival
+    const lineup = await getFestivalLineup(targetId);
+
     const { output } = await recommendPrompt({
       ...input,
-      aiPersona: FESTIVAL.aiPersona,
-      fullName: FESTIVAL.fullName,
-      artists: lineup.map(a => ({
+      aiPersona: config.aiPersona,
+      fullName: config.fullName,
+      artists: lineup.map((a: any) => ({
         id: a.id,
         artist: a.artist,
         genres: a.genres?.join(', '),
