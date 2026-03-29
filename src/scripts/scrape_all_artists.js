@@ -1,9 +1,69 @@
+// src/scripts/scrape_all_artists.js
 const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const LINEUP_FILE = path.join(__dirname, '../data/lineup.json');
-const LINEUP_URL = 'https://szigetfestival.com/en/programs-lineup-2026#/';
+/**
+ * Multi-festival Scraper Configuration.
+ * These selectors are targeted at the Appmiral-based web interfaces 
+ * used by Sziget and most Nova Music festivals.
+ */
+const SCRAPER_CONFIGS = {
+    'sziget-2026': {
+        baseUrl: 'https://szigetfestival.com/en/programs-lineup-2026#/',
+        artistLinkSelector: 'a[href*="#/artist/"]',
+        contentSelector: '.ArtistSingleBody__content',
+        tagSelector: '.ArtistSingleBody__content__tags__tag',
+        countrySelector: '.ArtistSingleHeader__country',
+        descriptionSelector: '.ArtistSingleBody__content__description',
+        imageSelector: '.ArtistSingleHeader__fullimg',
+        socialsSelector: '.ArtistSingleBody__content__socials a',
+        slugRegex: /#\/artist\/([^?]+)/
+    },
+    'novarock-2026': {
+        baseUrl: 'https://www.novarock.at/en/lineup/',
+        artistLinkSelector: 'a[href*="/lineup/"]', // Estimate
+        contentSelector: '.ArtistSingleBody__content',
+        tagSelector: '.ArtistSingleBody__content__tags__tag',
+        countrySelector: '.ArtistSingleHeader__country',
+        descriptionSelector: '.ArtistSingleBody__content__description',
+        imageSelector: '.ArtistSingleHeader__fullimg',
+        socialsSelector: '.ArtistSingleBody__content__socials a',
+        slugRegex: /\/lineup\/([^/]+)/
+    },
+    'area53-2026': {
+        baseUrl: 'https://area53festival.at/en/lineup/',
+        artistLinkSelector: 'a.artist-link', // Placeholder
+        contentSelector: '.entry-content',
+        tagSelector: '.genre-tag',
+        countrySelector: '.country',
+        descriptionSelector: '.artist-bio',
+        imageSelector: '.featured-image img',
+        socialsSelector: '.social-links a',
+        slugRegex: /\/lineup\/([^/]+)/
+    },
+    'frequency-2026': {
+        baseUrl: 'https://www.frequency.at/en/lineup/',
+        artistLinkSelector: 'a[href*="/lineup/"]',
+        contentSelector: '.ArtistSingleBody__content',
+        tagSelector: '.ArtistSingleBody__content__tags__tag',
+        countrySelector: '.ArtistSingleHeader__country',
+        descriptionSelector: '.ArtistSingleBody__content__description',
+        imageSelector: '.ArtistSingleHeader__fullimg',
+        socialsSelector: '.ArtistSingleBody__content__socials a',
+        slugRegex: /\/lineup\/([^/]+)/
+    }
+};
+
+const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026';
+const config = SCRAPER_CONFIGS[festivalId];
+
+if (!config) {
+    console.error(`Unknown FESTIVAL_ID: ${festivalId}`);
+    process.exit(1);
+}
+
+const LINEUP_FILE = path.join(__dirname, `../../festivals/${festivalId}/data/lineup.json`);
 
 // Helper to convert URL slug to proper artist name
 function slugToName(slug) {
@@ -19,7 +79,7 @@ function slugToName(slug) {
 }
 
 async function scrapeAllArtists() {
-    console.log('🚀 Launching browser...');
+    console.log(`🚀 Launching browser for ${festivalId}...`);
     const browser = await puppeteer.launch({
         headless: "new",
         args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -31,61 +91,46 @@ async function scrapeAllArtists() {
     let existingArtists = [];
 
     try {
-        console.log('📄 Navigating to lineup page...');
-        await page.goto(LINEUP_URL, { waitUntil: 'networkidle2', timeout: 60000 });
+        console.log(`📄 Navigating to ${festivalId} lineup page...`);
+        await page.goto(config.baseUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
         // Wait for artist links to appear
-        await page.waitForSelector('a[href*="#/artist/"]', { timeout: 15000 });
+        console.log(`⏳ Waiting for selector: ${config.artistLinkSelector}`);
+        await page.waitForSelector(config.artistLinkSelector, { timeout: 15000 });
 
         // Scroll slowly to load ALL artists (handles lazy loading)
         console.log('📜 Scrolling to load all artists...');
         const allArtistUrls = new Set();
 
-        for (let i = 0; i < 30; i++) { // Max 30 scroll iterations
-            // Collect current artist URLs
-            const urls = await page.evaluate(() => {
-                const links = document.querySelectorAll('a[href*="#/artist/"]');
+        for (let i = 0; i < 30; i++) {
+            const urls = await page.evaluate((sel) => {
+                const links = document.querySelectorAll(sel);
                 return Array.from(links).map(a => a.href);
-            });
+            }, config.artistLinkSelector);
 
             urls.forEach(url => allArtistUrls.add(url));
 
-            // Scroll down
-            await page.evaluate(() => window.scrollBy(0, 800));
+            await page.evaluate(() => window.scrollBy(0, 1000));
             await new Promise(r => setTimeout(r, 800));
 
-            // Check if we've reached the bottom
             const atBottom = await page.evaluate(() =>
                 (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100
             );
-
-            if (atBottom && i > 5) {
-                // Do a few more scrolls to be sure
-                await new Promise(r => setTimeout(r, 1000));
-                const finalUrls = await page.evaluate(() => {
-                    const links = document.querySelectorAll('a[href*="#/artist/"]');
-                    return Array.from(links).map(a => a.href);
-                });
-                finalUrls.forEach(url => allArtistUrls.add(url));
-                break;
-            }
+            if (atBottom && i > 5) break;
         }
 
-        console.log(`✅ Found ${allArtistUrls.size} unique artist URLs on the lineup page.`);
+        console.log(`✅ Found ${allArtistUrls.size} unique artist URLs.`);
 
         // Parse artist names from URLs
         const artistsFromPage = [];
         for (const url of allArtistUrls) {
-            // Extract slug from URL like: https://szigetfestival.com/en/programs-lineup-2026#/artist/2069922-bring-me-the-horizon
-            const match = url.match(/#\/artist\/([^?]+)/);
+            const match = url.match(config.slugRegex);
             if (match) {
                 const slug = match[1];
                 const name = slugToName(slug);
                 artistsFromPage.push({ name, url, slug });
             }
         }
-
-        console.log(`🎤 Parsed ${artistsFromPage.length} artist names from URLs.`);
 
         // Load existing lineup
         try {
@@ -96,27 +141,19 @@ async function scrapeAllArtists() {
             console.log('📁 No existing lineup.json found, starting fresh.');
         }
 
-        // Create map of existing artists by URL for quick lookup
         const existingByUrl = new Map();
         existingArtists.forEach(a => {
             if (a.festivalUrl) existingByUrl.set(a.festivalUrl, a);
         });
 
-        // Find new artists
+        // Add new artists
         const newArtists = artistsFromPage.filter(a => !existingByUrl.has(a.url));
-        console.log(`\n🆕 Found ${newArtists.length} NEW artists to add!`);
+        console.log(`🆕 Found ${newArtists.length} NEW artists to add!`);
 
-        if (newArtists.length > 0) {
-            console.log('\n--- New Artists ---');
-            newArtists.forEach(a => console.log(`  ✨ ${a.name}`));
-            console.log('-------------------\n');
-        }
-
-        // Add new artists with placeholder data
-        let nextId = Math.max(...existingArtists.map(a => parseInt(a.id) || 0), 0) + 1;
+        let nextIdNum = Math.max(...existingArtists.map(a => parseInt(a.id) || 0), 0) + 1;
         for (const newArtist of newArtists) {
             existingArtists.push({
-                id: String(nextId++),
+                id: String(nextIdNum++),
                 artist: newArtist.name,
                 stage: null,
                 day: null,
@@ -125,147 +162,67 @@ async function scrapeAllArtists() {
                 countryCode: null,
                 genres: [],
                 festivalUrl: newArtist.url,
-                socials: {
-                    website: null,
-                    facebook: null,
-                    instagram: null,
-                    x: null,
-                    tiktok: null,
-                    youtube: null,
-                    spotify: null,
-                    appleMusic: null
-                },
+                socials: { spotify: null },
                 description: null,
                 imageUrl: null,
                 vibes: []
             });
         }
 
-        // Now fetch details for ALL artists
-        console.log('\n--- Fetching details for all artists ---\n');
-
+        // Fetch details
+        console.log('\n--- Fetching details for artists ---\n');
         for (let i = 0; i < existingArtists.length; i++) {
             const artist = existingArtists[i];
+            if (!artist.festivalUrl) continue;
 
-            if (!artist.festivalUrl) {
-                console.log(`[${artist.id}] ${artist.artist} - No URL, skipping.`);
-                continue;
-            }
+            // Only fetch if data is missing or empty
+            if (artist.description && artist.imageUrl && artist.genres.length > 0) continue;
 
             console.log(`[${artist.id}] Processing ${artist.artist}...`);
 
             try {
                 await page.goto(artist.festivalUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+                await page.waitForSelector(config.contentSelector, { timeout: 10000 });
 
-                try {
-                    await page.waitForSelector('.ArtistSingleBody__content', { timeout: 10000 });
-                } catch (e) {
-                    console.log('  ⚠️ Timeout waiting for content, page may not exist.');
-                    continue;
-                }
+                artist.genres = await page.evaluate((sel) => {
+                    return Array.from(document.querySelectorAll(sel)).map(t => t.innerText.trim().toUpperCase()).filter(t => t.length > 0);
+                }, config.tagSelector);
 
-                // --- Genres ---
-                const genres = await page.evaluate(() => {
-                    const tags = Array.from(document.querySelectorAll('.ArtistSingleBody__content__tags__tag'));
-                    return tags.map(t => t.innerText.trim().toUpperCase()).filter(t => t.length > 0);
-                });
-                if (genres.length > 0) {
-                    artist.genres = genres;
-                    console.log(`  🏷️ Genres: ${genres.join(', ')}`);
-                }
-
-                // --- Country Code ---
-                const countryCode = await page.evaluate(() => {
-                    const el = document.querySelector('.ArtistSingleHeader__country');
+                artist.countryCode = await page.evaluate((sel) => {
+                    const el = document.querySelector(sel);
                     return el ? el.innerText.trim().toUpperCase() : null;
-                });
-                if (countryCode) {
-                    artist.countryCode = countryCode;
-                    console.log(`  🌍 Country: ${countryCode}`);
-                }
+                }, config.countrySelector);
 
-                // --- Description (expand if needed) ---
-                try {
-                    const moreBtn = await page.$('.ArtistSingleBody__content__description__more');
-                    if (moreBtn) {
-                        const hasMore = await page.evaluate(() => {
-                            const btn = document.querySelector('.ArtistSingleBody__content__description__more');
-                            return btn && btn.innerText.includes('More');
-                        });
-                        if (hasMore) {
-                            await moreBtn.click();
-                            await page.waitForFunction(() => {
-                                const btn = document.querySelector('.ArtistSingleBody__content__description__more');
-                                return btn && btn.innerText.includes('Less');
-                            }, { timeout: 3000 }).catch(() => { });
-                        }
-                    }
-                } catch (e) { }
-
-                const description = await page.evaluate(() => {
-                    const el = document.querySelector('.ArtistSingleBody__content__description');
+                artist.description = await page.evaluate((sel) => {
+                    const el = document.querySelector(sel);
                     return el ? el.innerText.trim() : null;
-                });
-                if (description) {
-                    // Clean up description - remove "More..." or "Less" if still there
-                    artist.description = description.replace(/\s*(More\.\.\.|Less)\s*$/, '').trim();
-                    console.log(`  📝 Description (${artist.description.length} chars)`);
-                }
+                }, config.descriptionSelector);
 
-                // --- Image ---
-                const imageUrl = await page.evaluate(() => {
-                    const fullImg = document.querySelector('.ArtistSingleHeader__fullimg');
-                    if (fullImg && fullImg.src) return fullImg.src;
+                artist.imageUrl = await page.evaluate((sel) => {
+                    const el = document.querySelector(sel);
+                    return el ? (el.src || el.getAttribute('src')) : null;
+                }, config.imageSelector);
 
-                    const allImgs = Array.from(document.querySelectorAll('img'));
-                    for (const img of allImgs) {
-                        const src = img.src;
-                        if (src.includes('media.appmiral.com')) return src;
-                    }
-                    return null;
-                });
-                if (imageUrl) {
-                    artist.imageUrl = imageUrl;
-                    console.log(`  🖼️ Image found`);
-                }
-
-                // --- Socials ---
-                const socialsMap = await page.evaluate(() => {
+                // Socials
+                const socialsMap = await page.evaluate((sel) => {
                     const links = {};
-                    const anchors = Array.from(document.querySelectorAll('.ArtistSingleBody__content__socials a'));
+                    const anchors = Array.from(document.querySelectorAll(sel));
                     anchors.forEach(a => {
                         const href = a.href;
                         if (href.includes('facebook.com')) links.facebook = href;
                         else if (href.includes('instagram.com')) links.instagram = href;
-                        else if (href.includes('twitter.com') || href.includes('x.com')) links.x = href;
-                        else if (href.includes('tiktok.com')) links.tiktok = href;
-                        else if (href.includes('youtube.com')) links.youtube = href;
                         else if (href.includes('spotify.com')) links.spotify = href;
-                        else if (href.includes('music.apple.com')) links.appleMusic = href;
-                        else if (href.includes('soundcloud.com')) links.soundcloud = href;
-                        else links.website = href;
+                        else if (href.includes('youtube.com')) links.youtube = href;
                     });
                     return links;
-                });
+                }, config.socialsSelector);
 
-                if (!artist.socials) {
-                    artist.socials = {};
-                }
-                let socialCount = 0;
-                for (const [key, value] of Object.entries(socialsMap)) {
-                    if (value) {
-                        artist.socials[key] = value;
-                        socialCount++;
-                    }
-                }
-                console.log(`  🔗 Found ${socialCount} social links`);
+                artist.socials = { ...artist.socials, ...socialsMap };
 
             } catch (err) {
                 console.error(`  ❌ Error: ${err.message}`);
             }
-
-            // Polite pause
-            await new Promise(r => setTimeout(r, 600));
+            await new Promise(r => setTimeout(r, 500));
         }
 
     } catch (error) {
@@ -274,9 +231,9 @@ async function scrapeAllArtists() {
         await browser.close();
     }
 
-    console.log('\n💾 Saving updated lineup.json...');
+    console.log(`\n💾 Saving to ${LINEUP_FILE}...`);
     fs.writeFileSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
-    console.log(`✅ Done! Total artists: ${existingArtists.length}`);
+    console.log(`✅ Done! Total: ${existingArtists.length}`);
 }
 
 scrapeAllArtists();
