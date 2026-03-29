@@ -4,7 +4,9 @@ import path from 'path'
 
 const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
 const src = path.join('festivals', festivalId, 'data')
+const assetSrc = path.join('festivals', festivalId, 'assets')
 const dest = path.join('src', 'data')
+const publicDest = 'public'
 
 if (!fs.existsSync(src)) {
   console.error(`Festival data directory not found: ${src}`)
@@ -24,12 +26,23 @@ for (const file of fs.readdirSync(src)) {
   }
 }
 
-// Copy map asset if present
-const mapSrc = path.join('festivals', festivalId, 'assets', 'map.svg')
-const mapDest = path.join('public', 'map.svg')
-if (fs.existsSync(mapSrc)) {
-  fs.copyFileSync(mapSrc, mapDest)
-  console.log('✓ Synced map.svg')
+// Sync Assets (Map, Icons, OG Images)
+const assetsToSync = [
+  { from: 'map.svg', to: 'map.svg' },
+  { from: 'icon-192x192.png', to: 'icon-192x192.png' },
+  { from: 'icon-512x512.png', to: 'icon-512x512.png' },
+  { from: 'og-image.jpg', to: 'og-image.jpg' }
+]
+
+if (fs.existsSync(assetSrc)) {
+  assetsToSync.forEach(asset => {
+    const s = path.join(assetSrc, asset.from)
+    const d = path.join(publicDest, asset.to)
+    if (fs.existsSync(s)) {
+      fs.copyFileSync(s, d)
+      console.log(`✓ Synced asset: ${asset.from}`)
+    }
+  })
 }
 
 console.log(`Data package synced for: ${festivalId}`)

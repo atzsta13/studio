@@ -22,18 +22,18 @@ const SCRAPER_CONFIGS = {
     },
     'novarock-2026': {
         baseUrl: 'https://www.novarock.at/en/lineup/',
-        artistLinkSelector: 'a[href*="/lineup/"]', // Estimate
-        contentSelector: '.ArtistSingleBody__content',
-        tagSelector: '.ArtistSingleBody__content__tags__tag',
-        countrySelector: '.ArtistSingleHeader__country',
-        descriptionSelector: '.ArtistSingleBody__content__description',
-        imageSelector: '.ArtistSingleHeader__fullimg',
-        socialsSelector: '.ArtistSingleBody__content__socials a',
-        slugRegex: /\/lineup\/([^/]+)/
+        artistLinkSelector: 'a[href*="/artist/"]',
+        contentSelector: '.artistSingle__descContent, .hero__image', // Fallback to hero if no bio
+        tagSelector: '.showMeta__entry:has(.showMeta--stage) .showMeta__value', // We hijack tags for stage info if needed
+        countrySelector: '.ArtistSingleHeader__country', // Appmiral pattern
+        descriptionSelector: '.artistSingle__descContent',
+        imageSelector: '.hero__image img',
+        socialsSelector: '.embedContainer--spotify iframe, .body__content a',
+        slugRegex: /\/artist\/([^/]+)/
     },
     'area53-2026': {
         baseUrl: 'https://area53festival.at/en/lineup/',
-        artistLinkSelector: 'a.artist-link', // Placeholder
+        artistLinkSelector: 'a.artist-link', 
         contentSelector: '.entry-content',
         tagSelector: '.genre-tag',
         countrySelector: '.country',
@@ -44,14 +44,14 @@ const SCRAPER_CONFIGS = {
     },
     'frequency-2026': {
         baseUrl: 'https://www.frequency.at/en/lineup/',
-        artistLinkSelector: 'a[href*="/lineup/"]',
-        contentSelector: '.ArtistSingleBody__content',
-        tagSelector: '.ArtistSingleBody__content__tags__tag',
-        countrySelector: '.ArtistSingleHeader__country',
-        descriptionSelector: '.ArtistSingleBody__content__description',
-        imageSelector: '.ArtistSingleHeader__fullimg',
-        socialsSelector: '.ArtistSingleBody__content__socials a',
-        slugRegex: /\/lineup\/([^/]+)/
+        artistLinkSelector: 'a[href*="/artist/"]',
+        contentSelector: '.act__content',
+        tagSelector: '.torn--badge',
+        countrySelector: '.country',
+        descriptionSelector: 'main.torn--box.copy',
+        imageSelector: '.act__content header img',
+        socialsSelector: '.body__content dl dd.copy a',
+        slugRegex: /\/artist\/([^/]+)/
     }
 };
 
@@ -169,8 +169,12 @@ async function scrapeAllArtists() {
             });
         }
 
-        // Fetch details
+        fs.writeFileSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2)); console.log("💾 Baseline saved."); // Fetch details
         console.log('\n--- Fetching details for artists ---\n');
+        
+        let consecutiveFailures = 0;
+        const MAX_CONSECUTIVE_FAILURES = 3;
+
         for (let i = 0; i < existingArtists.length; i++) {
             const artist = existingArtists[i];
             if (!artist.festivalUrl) continue;
@@ -178,10 +182,15 @@ async function scrapeAllArtists() {
             // Only fetch if data is missing or empty
             if (artist.description && artist.imageUrl && artist.genres.length > 0) continue;
 
+            if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
+                console.log(`\n🛑 Circuit breaker triggered after ${MAX_CONSECUTIVE_FAILURES} consecutive failures. stopping detail scrape.`);
+                break;
+            }
+
             console.log(`[${artist.id}] Processing ${artist.artist}...`);
 
             try {
-                await page.goto(artist.festivalUrl, { waitUntil: 'networkidle2', timeout: 60000 });
+                await page.goto(artist.festivalUrl, { waitUntil: 'networkidle2', timeout: 30000 });
                 await page.waitForSelector(config.contentSelector, { timeout: 10000 });
 
                 artist.genres = await page.evaluate((sel) => {
@@ -208,7 +217,7 @@ async function scrapeAllArtists() {
                     const links = {};
                     const anchors = Array.from(document.querySelectorAll(sel));
                     anchors.forEach(a => {
-                        const href = a.href;
+                        const href = a.href || "";
                         if (href.includes('facebook.com')) links.facebook = href;
                         else if (href.includes('instagram.com')) links.instagram = href;
                         else if (href.includes('spotify.com')) links.spotify = href;
@@ -218,11 +227,16 @@ async function scrapeAllArtists() {
                 }, config.socialsSelector);
 
                 artist.socials = { ...artist.socials, ...socialsMap };
+                
+                consecutiveFailures = 0; // Reset on success
 
             } catch (err) {
-                console.error(`  ❌ Error: ${err.message}`);
+                consecutiveFailures++;
+                console.error(`  ❌ Error: ${err.message} (Failure ${consecutiveFailures}/${MAX_CONSECUTIVE_FAILURES})`);
             }
-            await new Promise(r => setTimeout(r, 500));
+            // Slower, randomized delay to be more human-like
+            const delay = 1000 + Math.random() * 2000;
+            await new Promise(r => setTimeout(r, delay));
         }
 
     } catch (error) {
