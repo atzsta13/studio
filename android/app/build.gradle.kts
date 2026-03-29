@@ -49,7 +49,7 @@ android {
             dimension = "festival"
             applicationId = "com.example.novarockinsider"
             versionName = "1.0"
-            resValue("string", "app_name", "dev_Nova Rock Insider")
+            resValue("string", "app_name", "dev Nova Rock Insider")
             buildConfigField("String", "FESTIVAL_ID", "\"novarock-2026\"")
             manifestPlaceholders["deepLinkScheme"] = "novarock2026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
