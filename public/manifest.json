@@ -1,8 +1,8 @@
 {
-  "name": "Area 53 Insider 2026",
-  "short_name": "Area 53",
-  "description": "Your unofficial guide to Area 53 Metal Festival 2026.",
-  "theme_color": "#CC0000",
+  "name": "Sziget Insider",
+  "short_name": "Sziget Insider",
+  "description": "Your unofficial tactical guide to Sziget 2026. Offline maps, AI scout & more.",
+  "theme_color": "#FF0080",
   "background_color": "#09090B",
   "display": "standalone",
   "orientation": "portrait",

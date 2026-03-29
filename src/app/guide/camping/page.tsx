@@ -19,8 +19,8 @@ const rules = [
 export default function CampingPage() {
   return (
     <div className="container mx-auto max-w-4xl py-20 px-4">
-      <PageHeader 
-        title="Camping Guide" 
+      <PageHeader
+        title="Camping Guide"
         description={`Elite survival tips for living on the Island of Freedom.`}
       />
 
@@ -39,7 +39,7 @@ export default function CampingPage() {
       <div className="mt-16 p-12 bg-zinc-900/50 border border-white/5 rounded-[3rem] text-center">
         <h2 className="text-2xl font-black uppercase italic tracking-widest mb-4">Quiet Zones</h2>
         <p className="text-muted-foreground italic text-lg max-w-2xl mx-auto">
-          Respect your neighbors. Designated quiet zones are enforced from 03:00 to 08:00. 
+          Respect your neighbors. Designated quiet zones are enforced from 03:00 to 08:00.
           Use headphones if you're keeping the party going at your tent.
         </p>
       </div>
