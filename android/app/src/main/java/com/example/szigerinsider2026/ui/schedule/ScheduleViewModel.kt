@@ -20,6 +20,7 @@ data class ScheduleUiState(
     val favoriteIds: Set<String> = emptySet(),
     val squadFavoriteIds: Set<String> = emptySet(),
     val selectedDay: String = FestivalConfig.DAYS.firstOrNull() ?: "Wednesday",
+    val selectedTimeSlot: String = "daypark",
     val activeTab: ScheduleTab = ScheduleTab.GRID,
     val isLoading: Boolean = true
 )
@@ -34,7 +35,15 @@ class ScheduleViewModel(
 
     val dayArtists: StateFlow<List<Artist>> = _uiState.map { state ->
         state.allArtists
-            .filter { state.selectedDay == "WEEK" || it.day?.equals(state.selectedDay, ignoreCase = true) == true }
+            .filter { artist ->
+                val dayMatch = state.selectedDay == "WEEK" || artist.day?.equals(state.selectedDay, ignoreCase = true) == true
+                val slotMatch = if (FestivalConfig.FEATURES.dayparkNightpark) {
+                    artist.timeSlot == state.selectedTimeSlot
+                } else {
+                    true
+                }
+                dayMatch && slotMatch
+            }
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
                     .thenBy { it.startTime ?: "99:99" }
@@ -74,6 +83,10 @@ class ScheduleViewModel(
 
     fun selectDay(day: String) {
         _uiState.update { it.copy(selectedDay = day) }
+    }
+
+    fun setTimeSlot(slot: String) {
+        _uiState.update { it.copy(selectedTimeSlot = slot) }
     }
 
     fun setTab(tab: ScheduleTab) {

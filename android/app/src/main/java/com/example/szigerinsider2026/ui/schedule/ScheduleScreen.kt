@@ -217,6 +217,18 @@ fun ScheduleScreen(
                 .padding(bottom = 10.dp)
         )
 
+        // ── DAYPARK / NIGHTPARK toggle (Frequency only) ──────────────────────
+        if (FestivalConfig.FEATURES.dayparkNightpark && uiState.activeTab != ScheduleTab.MY_LINEUP) {
+            TimeSlotToggle(
+                selectedSlot = uiState.selectedTimeSlot,
+                onSlotSelected = { haptic.lightTap(); viewModel.setTimeSlot(it) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 12.dp)
+            )
+        }
+
         // ── Content ──────────────────────────────────────────────────────────
         when (uiState.activeTab) {
             ScheduleTab.GRID -> {
@@ -368,6 +380,69 @@ fun ScheduleScreen(
             onToggleFavorite = { viewModel.toggleFavorite(artist.id) },
             onDismiss = { artistForDetail = null }
         )
+    }
+}
+
+// ─── TimeSlot toggle ────────────────────────────────────────────────────────
+
+@Composable
+private fun TimeSlotToggle(
+    selectedSlot: String,
+    onSlotSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(16.dp))
+            .background(CardBackground)
+            .border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(16.dp))
+            .padding(4.dp)
+    ) {
+        Row(modifier = Modifier.fillMaxWidth()) {
+            // Daypark
+            val isDay = selectedSlot == "daypark"
+            val dayBg by animateColorAsState(
+                targetValue = if (isDay) MaterialTheme.colorScheme.primary else Color.Transparent,
+                label = "dayBg"
+            )
+            val dayText by animateColorAsState(
+                targetValue = if (isDay) Color.White else TextMuted,
+                label = "dayText"
+            )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(dayBg)
+                    .clickable { onSlotSelected("daypark") }
+                    .padding(vertical = 10.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("☀️ DAYPARK", fontWeight = FontWeight.Black, color = dayText, fontSize = 12.sp, letterSpacing = 1.sp)
+            }
+
+            // Nightpark
+            val isNight = selectedSlot == "nightpark"
+            val nightBg by animateColorAsState(
+                targetValue = if (isNight) MaterialTheme.colorScheme.tertiary else Color.Transparent,
+                label = "nightBg"
+            )
+            val nightText by animateColorAsState(
+                targetValue = if (isNight) Color.Black else TextMuted,
+                label = "nightText"
+            )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(nightBg)
+                    .clickable { onSlotSelected("nightpark") }
+                    .padding(vertical = 10.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text("🌙 NIGHTPARK", fontWeight = FontWeight.Black, color = nightText, fontSize = 12.sp, letterSpacing = 1.sp)
+            }
+        }
     }
 }
 

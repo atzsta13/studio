@@ -3,16 +3,18 @@
 import { useState, useMemo, useEffect } from 'react';
 import TimetableView from '@/components/timetable/timetable-view';
 import lineupCurrent from '@/data/lineup.json';
-import { History, Calendar, Clock } from 'lucide-react';
+import { History, Calendar, Clock, Sun, Moon } from 'lucide-react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { useTheme, alpha } from '@mui/material/styles';
 import { FESTIVAL } from '@/config/festival';
+import Link from 'next/link';
 
 export default function TimetablePage() {
   const [mounted, setMounted] = useState(false);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState<'daypark' | 'nightpark'>('daypark');
   const theme = useTheme();
 
   useEffect(() => {
@@ -20,8 +22,12 @@ export default function TimetablePage() {
   }, []);
 
   const currentLineup = useMemo(() => {
-    return (lineupCurrent as any[]);
-  }, []);
+    const base = (lineupCurrent as any[]);
+    if (FESTIVAL.features.dayparkNightpark) {
+      return base.filter(a => a.timeSlot === selectedTimeSlot);
+    }
+    return base;
+  }, [selectedTimeSlot]);
 
   const hasSchedule = useMemo(() => {
     return currentLineup.some(item => item.startTime && item.endTime && item.day && item.stage);
@@ -70,12 +76,57 @@ export default function TimetablePage() {
           >
             Official Stage Times
           </Typography>
+
+          {/* Daypark / Nightpark Toggle (Frequency) */}
+          {FESTIVAL.features.dayparkNightpark && (
+            <Box sx={{ 
+              display: 'inline-flex', 
+              p: 0.5, 
+              bgcolor: 'rgba(255,255,255,0.03)', 
+              borderRadius: '1.25rem', 
+              border: '1px solid rgba(255,255,255,0.05)',
+              mt: 2
+            }}>
+              <Button
+                onClick={() => setSelectedTimeSlot('daypark')}
+                sx={{
+                  borderRadius: '1rem',
+                  px: 4,
+                  height: '3rem',
+                  fontWeight: 900,
+                  letterSpacing: '0.1em',
+                  bgcolor: selectedTimeSlot === 'daypark' ? 'primary.main' : 'transparent',
+                  color: selectedTimeSlot === 'daypark' ? '#fff' : 'text.secondary',
+                  '&:hover': { bgcolor: selectedTimeSlot === 'daypark' ? 'primary.dark' : 'rgba(255,255,255,0.05)' }
+                }}
+                startIcon={<Sun size={18} />}
+              >
+                DAYPARK
+              </Button>
+              <Button
+                onClick={() => setSelectedTimeSlot('nightpark')}
+                sx={{
+                  borderRadius: '1rem',
+                  px: 4,
+                  height: '3rem',
+                  fontWeight: 900,
+                  letterSpacing: '0.1em',
+                  bgcolor: selectedTimeSlot === 'nightpark' ? FESTIVAL.theme.accentHex : 'transparent',
+                  color: selectedTimeSlot === 'nightpark' ? '#000' : 'text.secondary',
+                  '&:hover': { bgcolor: selectedTimeSlot === 'nightpark' ? FESTIVAL.theme.accentHex : 'rgba(255,255,255,0.05)', opacity: 0.9 }
+                }}
+                startIcon={<Moon size={18} />}
+              >
+                NIGHTPARK
+              </Button>
+            </Box>
+          )}
         </Container>
       </Box>
 
       <Box sx={{ flex: 1, position: 'relative' }}>
         {hasSchedule ? (
-          <TimetableView lineup={currentLineup} />
+          <TimetableView key={selectedTimeSlot} lineup={currentLineup} />
         ) : (
           <Container maxWidth="sm" sx={{ py: 20, textAlign: 'center' }}>
             <Box sx={{ 
@@ -93,10 +144,10 @@ export default function TimetablePage() {
               <Clock size={40} color={FESTIVAL.theme.primaryHex} style={{ opacity: 0.5 }} />
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', mb: 2 }}>
-              Announcing Soon
+              {FESTIVAL.features.dayparkNightpark ? `${selectedTimeSlot.toUpperCase()} PENDING` : 'Announcing Soon'}
             </Typography>
             <Typography sx={{ color: 'text.secondary', fontWeight: 500, lineHeight: 1.6, opacity: 0.7 }}>
-              The official stage times for {FESTIVAL.name} {FESTIVAL.dates.year} have not been published yet. 
+              The official stage times for {FESTIVAL.name} {selectedTimeSlot} have not been published yet. 
               Check back closer to the festival dates.
             </Typography>
             <Button
@@ -125,6 +176,3 @@ export default function TimetablePage() {
     </Box>
   );
 }
-
-// Adding Link import since I used it in the button
-import Link from 'next/link';
