@@ -14,58 +14,44 @@ import {
   Flame,
   Users
 } from 'lucide-react';
-import lineup2026 from '@/data/lineup.json';
-import lineup2025 from '@/data/lineup_2025.json';
+import lineupCurrent from '@/data/lineup.json';
 import food from '@/data/food.json';
 import poiData from '@/data/poi.json';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
-import TentFinder from '@/components/tools/tent-finder';
-import { toast } from '@/hooks/use-toast';
-
-const stagePositions: Record<string, { x: number; y: number }> = {
-  'Main Stage': { x: 42, y: 48 },
-  'Revolut Stage': { x: 28, y: 38 },
-  'Colosseum': { x: 35, y: 22 },
-  'Bolt Party Arena': { x: 22, y: 55 },
-  'A38 Stage': { x: 12, y: 42 },
-  'World Music Stage': { x: 62, y: 72 },
-  'The Buzz': { x: 55, y: 30 },
-  'Yettel Colosseum': { x: 35, y: 22 },
-  'The Club': { x: 80, y: 15 },
-};
+import { TentFinder } from '@/components/tools/tent-finder';
+import { FESTIVAL } from '@/config/festival';
 
 export default function MapPage() {
-  const [activeYear, setActiveYear] = useState<'2025' | '2026'>('2026');
+  const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util'>('all');
   const [selectedPin, setSelectedPin] = useState<any>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
 
-  const currentLineup = useMemo(() => {
-    return activeYear === '2026' ? lineup2026 : lineup2025;
-  }, [activeYear]);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const allPins = useMemo(() => {
-    const musicPins = Object.entries(stagePositions).map(([name, coords]) => {
-      const stageData = currentLineup.find(a => a.stage === name);
-      const isColosseum = name.includes('Colosseum');
-      const isMain = name === 'Main Stage';
-
+    // Derive Stage Pins from poiData (where type === 'stage')
+    const musicPins = (poiData as any[]).filter(p => p.type === 'stage').map(p => {
+      const stageData = (lineupCurrent as any[]).find(a => a.stage === p.name);
       return {
-        id: `stage-${name}`,
-        name,
+        id: p.id,
+        name: p.name,
         type: 'music',
-        ...coords,
+        x: p.mapCoords.x,
+        y: p.mapCoords.y,
         icon: Music,
         color: 'bg-primary',
         data: stageData
       };
     });
 
-    const foodPins = food.map(f => ({
+    const foodPins = (food as any[]).map(f => ({
       id: f.id,
       name: f.name,
       type: 'food',
@@ -76,7 +62,7 @@ export default function MapPage() {
       data: f
     }));
 
-    const utilPins = poiData.map(p => ({
+    const utilPins = (poiData as any[]).filter(p => p.type !== 'stage').map(p => ({
       id: p.id,
       name: p.name,
       type: 'util',
@@ -89,14 +75,14 @@ export default function MapPage() {
     }));
 
     return [...musicPins, ...foodPins, ...utilPins];
-  }, [currentLineup, activeYear]);
+  }, [mounted]);
 
   const filteredPins = allPins.filter(pin => {
     if (hydrationMode) return (pin as any)?.subType === 'water';
     return activeCategory === 'all' || pin?.type === activeCategory;
   });
 
-
+  if (!mounted) return null;
 
   return (
     <div className="relative flex h-[calc(100vh-64px)] w-full flex-col overflow-hidden bg-zinc-950">
@@ -105,14 +91,9 @@ export default function MapPage() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <h1 className="text-2xl font-black uppercase tracking-tighter text-white md:text-3xl">
-              Island Radar <span className="text-primary italic">{activeYear}</span>
+              {FESTIVAL.name} Radar <span className="text-primary italic">{FESTIVAL.dates.year}</span>
             </h1>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-400">Tactical Navigation</p>
-          </div>
-
-          <div className="inline-flex rounded-xl bg-black/60 p-1 border border-white/10 backdrop-blur-xl shadow-inner w-fit">
-            <button onClick={() => setActiveYear('2026')} className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-bold transition-all ${activeYear === '2026' ? 'bg-primary text-primary-foreground shadow-lg' : 'text-zinc-400 hover:text-white'}`}>2026</button>
-            <button onClick={() => setActiveYear('2025')} className={`flex items-center gap-2 rounded-lg px-4 py-1.5 text-xs font-bold transition-all ${activeYear === '2025' ? 'bg-primary text-primary-foreground shadow-lg' : 'text-zinc-400 hover:text-white'}`}><History className="h-3 w-3" /> 2025</button>
           </div>
         </div>
 
@@ -147,12 +128,16 @@ export default function MapPage() {
       <div className="relative flex-1">
         <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode ? 'scale-110' : ''}`}>
           <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
+            
+            {/* Dynamic Map Asset */}
+            <img 
+              src="/map.svg" 
+              alt="Festival Map" 
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${hydrationMode ? 'opacity-20' : 'opacity-100'}`}
+            />
 
-
-
-            <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M20,10 Q50,0 80,15 T90,50 T70,90 T30,85 T10,50 Z" fill={hydrationMode ? "#0f172a" : "#18181b"} stroke={hydrationMode ? "#1e40af" : "#27272a"} strokeWidth="0.5" />
-            </svg>
+            {/* Coordinate Layer */}
+            <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" />
 
             {filteredPins.map((pin) => {
               if (!pin || !pin.icon) return null;

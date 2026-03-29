@@ -1,7 +1,67 @@
 [
-  { "id": "stage-blue", "name": "Blue Stage", "category": "stage", "mapCoords": { "x": 30, "y": 40 } },
-  { "id": "stage-red", "name": "Red Stage", "category": "stage", "mapCoords": { "x": 70, "y": 40 } },
-  { "id": "stage-redbull", "name": "Red Bull Stage", "category": "stage", "mapCoords": { "x": 50, "y": 80 } },
-  { "id": "water-1", "name": "Free Water North", "category": "water", "mapCoords": { "x": 20, "y": 20 } },
-  { "id": "medical-1", "name": "Medical Center", "category": "medical", "mapCoords": { "x": 50, "y": 10 } }
+    { "id": "stage-main", "name": "Main Stage", "type": "stage", "mapCoords": { "x": 42, "y": 48 } },
+    { "id": "stage-revolut", "name": "Revolut Stage", "type": "stage", "mapCoords": { "x": 28, "y": 38 } },
+    { "id": "stage-colosseum", "name": "Colosseum", "type": "stage", "mapCoords": { "x": 35, "y": 22 } },
+    { "id": "stage-bolt", "name": "Bolt Party Arena", "type": "stage", "mapCoords": { "x": 22, "y": 55 } },
+    { "id": "stage-a38", "name": "A38 Stage", "type": "stage", "mapCoords": { "x": 12, "y": 42 } },
+    { "id": "stage-world", "name": "World Music Stage", "type": "stage", "mapCoords": { "x": 62, "y": 72 } },
+    { "id": "stage-buzz", "name": "The Buzz", "type": "stage", "mapCoords": { "x": 55, "y": 30 } },
+    { "id": "stage-yettel", "name": "Yettel Colosseum", "type": "stage", "mapCoords": { "x": 35, "y": 22 } },
+    { "id": "stage-club", "name": "The Club", "type": "stage", "mapCoords": { "x": 80, "y": 15 } },
+    {
+        "id": "p1",
+        "name": "Main Water Tap",
+        "type": "water",
+        "location": "Near Colosseum",
+        "mapCoords": { "x": 35, "y": 25 }
+    },
+    {
+        "id": "p2",
+        "name": "Hygiene Center West",
+        "type": "toilet",
+        "location": "A38 Area",
+        "mapCoords": { "x": 15, "y": 42 }
+    },
+    {
+        "id": "p3",
+        "name": "First Aid HQ",
+        "type": "first-aid",
+        "location": "Main Entrance",
+        "mapCoords": { "x": 10, "y": 92 }
+    },
+    {
+        "id": "p4",
+        "name": "Locker Station A",
+        "type": "camping",
+        "location": "VIP Camping Entrance",
+        "mapCoords": { "x": 80, "y": 20 }
+    },
+    {
+        "id": "p5",
+        "name": "Water Point South",
+        "type": "water",
+        "location": "Food Court B",
+        "mapCoords": { "x": 55, "y": 65 }
+    },
+    {
+        "id": "p6",
+        "name": "Hygiene Center Center",
+        "type": "toilet",
+        "location": "Behind Main Stage",
+        "mapCoords": { "x": 45, "y": 55 }
+    },
+    {
+        "id": "p7",
+        "name": "Water Point East",
+        "type": "water",
+        "location": "Siesta Camping",
+        "mapCoords": { "x": 75, "y": 45 }
+    },
+    {
+        "id": "p8",
+        "name": "Quick Tap North",
+        "type": "water",
+        "location": "Near Circus",
+        "mapCoords": { "x": 60, "y": 20 }
+    }
 ]
