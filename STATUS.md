@@ -9,7 +9,10 @@
 - **Massive Code Cleanup**: Deleted **25,000+ lines** of redundant hardcoded configuration objects across both platforms.
 - **Production Data Packages**: Scraped and refined full lineups for **Nova Rock** (84 acts) and **Frequency** (47 acts), including bios and high-res images.
 - **AI Taxonomic Vibe Engine**: Centralized Genre-to-Vibe mapping powers discovery for all four festivals automatically.
-- **Hardware Verified**: Successfully built and deployed 4 independent branded apps to physical Android hardware via ADB.
+- **Harmonic Note Identity**: Established a unified "♫" DNA across all festivals with festival-specific monogram cutouts (SZ, FQ, NR, 53).
+- **Vector Core Sharpness**: Replaced blurry PNGs with mathematical Android Vector Drawables for 100% sharpness on high-density 2026 hardware.
+- **Next.js Type-Safety**: Resolved `useHydration` and `lucide-react` mismatches, ensuring a 100% "Green Build" baseline.
+- **Hardware Verified**: Built and deployed 4 independent branded apps to physical SM-S931B hardware via ADB.
 
 ## 🛠️ Unified Hot Zones
 1. **Master Config**: `festivals/<id>/config.json` (Change one file to rebrand the entire platform).
@@ -18,7 +21,7 @@
 
 ## 🔜 Future Priorities (Phase 3 Cont.)
 - [ ] **Venue Map Design**: Actual coordinate-mapped SVG layouts for Austrian venues.
-- [ ] **Android Icon Branding**: Final unique festival icons in `res/mipmap` folders.
+- [ ] **Android Production Signing**: Prepare `.jks` and release flavors for Play Store submission.
 - [ ] **Data Sync Button**: Optional Android feature to pull latest JSON from the hosted web app.
 
 ## 📝 LLM / Agent Context
