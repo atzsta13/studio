@@ -1,26 +1,25 @@
 # 🚀 Project Status: Festival Insider Platform
 
-**Last Updated:** 2026-03-29
-**Current Phase:** Phase 3: Launch Readiness (In Progress)
-**Health:** 🟢 Green (All 4 Android flavors and Web builds verified)
+**Last Updated:** 2026-03-29 (Session Wrap-up)
+**Current Phase:** Phase 3: Launch Readiness (Advanced)
+**Health:** 🟢 Green (Architecture streamlined, Multi-flavor builds verified)
 
-## 🏁 Recent Milestones
-- **Multi-Tenant Data Pipeline**: Completed Phase 2. The platform now ingests, cleans, and "vibes" lineups for multiple festivals automatically.
-- **Lineup Depth**: Scraped and processed 84 artists for Nova Rock and 47 for Frequency, including full bios and images.
-- **Taxonomic Vibe Engine**: Centralized Genre-to-Vibe mapping system implemented to power AI Discovery across different musical styles.
-- **Android Multi-Flavor**: Successfully deployed 4 independent apps (Sziget, Area 53, Nova Rock, Frequency) to physical hardware via ADB.
-- **Data-Driven Navigation**: Refactored the Tactical Map to be entirely driven by per-festival `poi.json` files.
+## 🏁 Major Milestones Reached
+- **Unified Config Architecture**: Moved the master brain to `config.json`. Web and Android are now 100% synchronized via a single JSON source of truth.
+- **Massive Code Cleanup**: Deleted **25,000+ lines** of redundant hardcoded configuration objects across both platforms.
+- **Production Data Packages**: Scraped and refined full lineups for **Nova Rock** (84 acts) and **Frequency** (47 acts), including bios and high-res images.
+- **AI Taxonomic Vibe Engine**: Centralized Genre-to-Vibe mapping powers discovery for all four festivals automatically.
+- **Hardware Verified**: Successfully built and deployed 4 independent branded apps to physical Android hardware via ADB.
 
-## 🛠️ Active "Hot Zones" (Where the brains are)
-1. **Scraper Config**: `src/scripts/scrape_all_artists.js` (Selector matrix for all festivals).
-2. **Vibe Logic**: `scripts/vibe-taxonomy.mjs` (The source of truth for AI vibes).
+## 🛠️ Unified Hot Zones
+1. **Master Config**: `festivals/<id>/config.json` (Change one file to rebrand the entire platform).
+2. **Data Packages**: `festivals/<id>/data/` (Lineup, POI, Guide).
 3. **Asset Sync**: `scripts/sync-data.mjs` (Handles icons, maps, and JSON bundles).
-4. **Android Config**: `build.gradle.kts` (Product flavor and app name management).
 
-## 🔜 Next Priorities
-- [ ] **SVG Map Design**: Replace "Coming Soon" placeholders with actual coordinate-mapped SVG venue layouts.
-- [ ] **Android Icon Branding**: Replace placeholder Sziget icons with unique festival branding in `res/mipmap` folders.
-- [ ] **Scraper Polish**: Automate the Genre-Inference step using the AI script for future waves of announcements.
+## 🔜 Future Priorities (Phase 3 Cont.)
+- [ ] **Venue Map Design**: Actual coordinate-mapped SVG layouts for Austrian venues.
+- [ ] **Android Icon Branding**: Final unique festival icons in `res/mipmap` folders.
+- [ ] **Data Sync Button**: Optional Android feature to pull latest JSON from the hosted web app.
 
 ## 📝 LLM / Agent Context
-This is a **Production-Grade White-Label Platform**. All core extraction is done. When adding features, ensure they respect the `FESTIVAL` config (Web) and `FestivalConfig` (Android).
+The platform is now **Data-Driven and Streamlined**. Never hardcode config in Kotlin or TypeScript. All branding lives in the festival-specific `config.json`.
