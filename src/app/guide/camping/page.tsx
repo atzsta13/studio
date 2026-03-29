@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tent, ShowerHead, Lock, FlameKindle } from 'lucide-react';
+import { Tent, ShowerHead, Lock, Flame } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';
 import { FESTIVAL } from '@/config/festival';
@@ -13,7 +13,7 @@ const rules = [
   { title: "Tent Placement", desc: "Keep fire lanes clear. Security will ask you to move if you block paths.", icon: Tent },
   { title: "Showers & Hygiene", desc: "Free showers available in all camping zones. Peak hours are 08:00 - 11:00.", icon: ShowerHead },
   { title: "Valuables", desc: "Use the lockers at the City Center for passports and electronics. Don't leave tech in tents.", icon: Lock },
-  { title: "No Open Fires", desc: "Gas stoves and open fires are strictly prohibited. Use the designated cooking areas.", icon: FlameKindle },
+  { title: "No Open Fires", desc: "Gas stoves and open fires are strictly prohibited. Use the designated cooking areas.", icon: Flame },
 ];
 
 export default function CampingPage() {

@@ -19,5 +19,13 @@ export function useHydration() {
     }
   }, [glassCount, isLoaded]);
 
-  return { glassCount, setHydrationCount };
+  const addWater = () => setHydrationCount(prev => prev + 1);
+  const resetWater = () => setHydrationCount(0);
+
+  return { 
+    waterCount: glassCount, 
+    addWater, 
+    resetWater, 
+    isLoaded 
+  };
 }
