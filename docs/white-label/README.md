@@ -99,24 +99,25 @@ A pop/electronic/rock festival co-hosted by FM4 (Austrian public radio). Held at
 
 ## Phase Overview
 
-| Phase | Name | One-liner |
-|---|---|---|
-| **Phase 0** | Research Complete | Codebase audit, competitive analysis, architecture design — no code changes |
-| **Phase 1** | Config Extraction | Extract all hardcoded strings to `FestivalConfig` on both platforms; zero new features |
-| **Phase 2** | Web Build Pipeline | Env-var-driven config injection on web; `FESTIVAL_ID` selects the festival bundle at build time |
-| **Phase 3** | Android Product Flavors | Convert Android build to product flavors; one flavor per festival; independent app store listings |
-| **Phase 4** | Area 53 Launch | First live deployment of a non-Sziget festival; full data pipeline, custom theme, AI persona |
-| **Phase 5** | Nova Rock + Frequency | Challenger deployments against Greencopper; companion app positioning, FM4 editorial angle |
+| Phase | Name | One-liner | Status |
+|---|---|---|---|
+| **Phase 0** | Research Complete | Codebase audit, architecture design | ✅ Done |
+| **Phase 1** | Config Extraction | Lift all brand literals to `FestivalConfig` | ✅ Done |
+| **Phase 2** | Data Pipeline | Automated ingestion for new festivals | 🔵 Next |
+| **Phase 3** | Launch Readiness | Final assets, app store listings | ⏳ Planned |
 
 ---
 
 ## Current Status
 
-> **Documentation Complete — Ready to Begin Phase 1**
+> **White-Label Foundation Established (Phase 1 Complete)**
 >
-> All white-label research, architecture design, competitive analysis, and implementation guides are written and committed. All 11 documents in this directory are complete. No production code has been changed yet — Sziget 2026 is live and unaffected.
+> The app is now fully configuration-driven. Every brand-specific detail (names, dates, colors, storage keys, AI personas) has been moved to `src/config/festival.ts` (Web) and `FestivalConfig.kt` (Android).
 >
-> Next action: Begin Phase 1 config extraction per `06_PHASE1_IMPLEMENTATION.md`, starting with `src/config/festival.ts` on the web platform and extending `FestivalConfig.kt` on Android.
+> - **Web**: Build-time injection via `NEXT_PUBLIC_FESTIVAL_ID`.
+> - **Android**: Build-time injection via Product Flavors.
+>
+> Next action: Proceed to Phase 2 (Data Pipeline) to automate the ingestion of actual lineup/POI data for Area 53, Nova Rock, and Frequency.
 
 ---
 
