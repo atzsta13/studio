@@ -1,28 +1,24 @@
-# Agent Instructions: Sziget Insider 2026
+# Agent Instructions: Festival Insider Platform
 
 ## Core Philosophy
-You are an autonomous AI Agent working on the **Sziget Insider 2026** application. 
-Your primary goal is to maintain the **Offline-First**, **High-Performance**, and **Tactical** nature of this repository.
+You are an autonomous AI Agent maintaining the **Festival Insider Platform**. 
+Your primary goal is to ensure the **White-Label**, **Offline-First**, and **Tactical** nature of this repository.
 
-## Strict Rules & Constraints
-1. **Offline-First Priority**: DO NOT add any new features that require a live data connection (except the initial Spotify initialization/match). All logic MUST run entirely offline client-side.
-2. **Data Sourcing**: All festival data (lineups, schedules, food, POIs) comes exclusively from static files in `/src/data/*.json`. DO NOT map to external REST/GraphQL APIs.
-3. **Storage**: All user-generated data (Favorites, Memories, Quest Progress, XP, GPS Coordinates) must be stored strictly natively via `localStorage`.
-4. **No Unverifiable Bloat**: Do not invent locations, lore, or internal navigation logic that cannot be backed by the static `.json` configuration.
+## Strict Rules & Constraints (Mandatory)
+1. **No Brand Literals**: DO NOT add "Sziget", "Nova Rock", "Area 53", or "Frequency" literals to components. Use `FESTIVAL.name` (Web) or `FestivalConfig.NAME` (Android).
+2. **Config-First**: Any new festival-specific property (e.g., ticket URL, age limit) MUST be added to the `FestivalConfig` interface first, then consumed by UI.
+3. **Data Isolation**: All `localStorage` keys and shared preference names MUST be prefixed with the active festival ID.
+4. **Static Data Only**: Lineup and POI info come from static JSON files in `src/data/`. Never fetch these from external live APIs.
+5. **Offline Priority**: All features MUST work without a data connection. Test assuming 0.0kbps bandwidth.
 
-## Technical & UX Stack
-- **Framework**: **Next.js 16.1.6** (App Router) & **React 19**. Use server components by default unless interactivity (`useState`, `useEffect`) requires `"use client"`.
-- **Styling**: **Tailwind CSS v4** combined with **MUI 6** (Material UI) for complex structured grid components (Timetable).
-- **Icons**: Use **lucide-react** for general UI and **react-icons/si** for brand logos (Spotify, etc.).
-- **Theme**: We use an OLED-dark theme by default to save battery on festival grounds. Refer to `/docs/UI_GUIDE.md` for aesthetics.
-- **PWA Architecture**: Keep bundle sizes small. Ensure fast client-side navigation. Leverage `useMemo` for any heavy array filtering (like the 100+ artist lineup).
+## Technical Requirements
+- **Web**: Next.js 16 (App Router), React 19, Tailwind CSS 4. Use server components where possible.
+- **Android**: Jetpack Compose, Kotlin, Room. Follow the repository pattern. No DI framework (manual construction).
+- **Type Safety**: strict TypeScript and Kotlin typing. No `any`. No `@ts-ignore` without an incident ticket.
+- **Build Hooks**: Remember that `npm run prebuild` or `predev` is required to sync data from the `festivals/` directory.
 
-## Engineering Standards
-- **TypeScript**: Always use strict typing. Avoid `any`. Interfaces for components should be explicit.
-- **Imports**: Use absolute imports (`@/components/...`, `@/data/...`).
-- **File Structure**: Feature components live in `/src/components/[feature]/`, generic utility UI in `/src/components/ui/`, and standard pages in `/src/app/[route]/page.tsx`.
-
-## Provided Resources & Workflows
-- **`/docs/UI_GUIDE.md`**: Strict design rules for the 2026 aesthetic.
-- **`/docs/FEATURES.md`**: The master matrix of all 34 implemented offline features.
-- **`/.agent/workflows/`**: Pre-defined step-by-step procedures for you to run tasks on this repository safely.
+## Provided Resources
+- **`docs/white-label/`**: The ground truth for the multi-festival architecture.
+- **`docs/UI_GUIDE.md`**: Aesthetic and haptic requirements.
+- **`src/config/festival.ts`**: The web configuration brain.
+- **`android/.../data/config/FestivalConfig.kt`**: The Android configuration brain.

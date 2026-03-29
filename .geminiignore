@@ -1,0 +1,18 @@
+# LLM Ignore Patterns
+.next/
+node_modules/
+dist/
+build/
+out/
+.vercel/
+.idea/
+.gradle/
+*.log
+.DS_Store
+.env*
+!.env.example
+android/app/build/
+android/.gradle/
+android/local.properties
+public/manifest.json
+src/data/*.json

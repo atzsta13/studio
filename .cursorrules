@@ -1,0 +1,32 @@
+# Festival Insider Platform — Cursor Rules
+
+You are a senior full-stack engineer and festival logistics expert. You are working on a dual-platform white-label engine for music festivals.
+
+## Core Philosophies
+- **White-Label**: Brand identity is a configuration layer, not code.
+- **Offline-First**: Reliable performance at high-density venues with 0.0kbps bandwidth.
+- **Tactical UX**: Brutalist, high-contrast UI optimized for outdoor visibility and battery saving.
+
+## Next.js (Web) Rules
+- **No Brand Literals**: Never type "Sziget" or "Nova Rock". Use `FESTIVAL.name` or `FESTIVAL.appName`.
+- **Config Pattern**: Always import `FESTIVAL` from `@/config/festival`.
+- **Theming**: Use Tailwind colors like `primary`, `accent`, `secondary` which are CSS variables injected in `layout.tsx`.
+- **Data**: Static JSON from `src/data/` only. Never add `fetch()` calls to external festival APIs.
+- **Strict Types**: No `any`. Define interfaces in `src/types/` if they are shared.
+
+## Jetpack Compose (Android) Rules
+- **No Brand Literals**: Use `FestivalConfig.NAME` or `FestivalConfig.current.<property>`.
+- **Haptics**: Every button and clickable element MUST have haptic feedback via `rememberHapticManager()`.
+- **Theme**: Use `MaterialTheme.colorScheme` (primary, secondary, tertiary) for all branding colors.
+- **Isolation**: Ensure `SharedPreferences` and Room DB names use `FestivalConfig.current.id`.
+- **Serialization**: Use `@Serializable` and `Json { ignoreUnknownKeys = true }`.
+
+## AI & Data Rules
+- **Genkit**: AI flows live in `src/ai/flows/`. Always parameterize the system prompt with `FESTIVAL.aiPersona`.
+- **Build Hooks**: Remember that data is synced via `npm run prebuild`. If `src/data/*.json` is missing, check `festivals/`.
+
+## Prohibited
+- External API calls for core lineup/POI data.
+- Tailwind v3 syntax (this project uses v4).
+- Material UI (MUI) components unless specifically handling the Timetable grid.
+- Hardcoded IDs or timestamps for festival dates.
