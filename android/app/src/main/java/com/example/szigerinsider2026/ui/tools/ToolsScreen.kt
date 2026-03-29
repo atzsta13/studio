@@ -48,8 +48,10 @@ fun ToolsScreen(navController: NavController) {
     val vm: ToolsViewModel = viewModel()
     val weather by vm.weather.collectAsStateWithLifecycle()
     val isLoadingWeather by vm.isLoadingWeather.collectAsStateWithLifecycle()
-    var hufAmount by remember { mutableStateOf("1000") }
-    var selectedTab by remember { mutableIntStateOf(0) } // 0: Tactical, 1: Safety
+    
+    val config = FestivalConfig.current
+    var localAmount by remember { mutableStateOf(if (config.localCurrencyCode == "HUF") "1000" else "10") }
+    var selectedTab by remember { mutableIntStateOf(0) }
     var isFlashOn by remember { mutableStateOf(false) }
 
     if (isFlashOn) {
@@ -62,7 +64,6 @@ fun ToolsScreen(navController: NavController) {
                 .padding(horizontal = 20.dp),
             contentPadding = PaddingValues(top = 48.dp, bottom = 120.dp)
         ) {
-            // Page Header
             item {
                 Text(
                     text = "SURVIVAL TOOLKIT",
@@ -75,7 +76,7 @@ fun ToolsScreen(navController: NavController) {
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                    text = "Elite tactical utilities for the Island of Freedom. No signal required.",
+                    text = "Elite tactical utilities for the ${config.tagline}. No signal required.",
                     color = TextMuted,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
@@ -84,15 +85,15 @@ fun ToolsScreen(navController: NavController) {
                 )
             }
 
-            // HUF Converter Section (Persistent)
-            item {
-                HufConverterCard(
-                    hufAmount = hufAmount,
-                    onAmountChange = { hufAmount = it }
-                )
+            if (config.showCurrencyConverter) {
+                item {
+                    LocalCurrencyConverterCard(
+                        localAmount = localAmount,
+                        onAmountChange = { localAmount = it }
+                    )
+                }
             }
 
-            // Tabs
             item {
                 Row(
                     modifier = Modifier
@@ -104,45 +105,34 @@ fun ToolsScreen(navController: NavController) {
                         .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(36.dp))
                         .padding(6.dp)
                 ) {
-                    TabItem(
-                        text = "TACTICAL",
-                        isSelected = selectedTab == 0,
-                        onClick = { selectedTab = 0 },
-                        modifier = Modifier.weight(1f)
-                    )
-                    TabItem(
-                        text = "SAFETY",
-                        isSelected = selectedTab == 1,
-                        onClick = { selectedTab = 1 },
-                        modifier = Modifier.weight(1f)
-                    )
+                    TabItem(text = "TACTICAL", isSelected = selectedTab == 0, onClick = { selectedTab = 0 }, modifier = Modifier.weight(1f))
+                    TabItem(text = "SAFETY", isSelected = selectedTab == 1, onClick = { selectedTab = 1 }, modifier = Modifier.weight(1f))
                 }
             }
 
-            // Tab Content
             if (selectedTab == 0) {
-                // TACTICAL TAB
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                         FestivalCountdownCard()
 
                         if (isLoadingWeather) {
                             Box(modifier = Modifier.fillMaxWidth().height(120.dp), contentAlignment = Alignment.Center) {
-                                CircularProgressIndicator(color = com.example.szigerinsider2026.ui.theme.CyanPulse, modifier = Modifier.size(32.dp))
+                                CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(32.dp))
                             }
                         } else {
                             weather?.let { WeatherCard(it) }
                         }
 
-                        TentFinderCard()
+                        if (config.features.tentFinder) {
+                            TentFinderCard()
+                        }
 
-                        // Packing List navigation card
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clip(RoundedCornerShape(20.dp))
                                 .background(CardBackground)
-                                .border(1.dp, AcidYellow, RoundedCornerShape(20.dp))
+                                .border(1.dp, MaterialTheme.colorScheme.secondary, RoundedCornerShape(20.dp))
                                 .clickable { haptic.mediumTap(); navController.navigate("packing_list") }
                                 .padding(20.dp)
                         ) {
@@ -150,26 +140,10 @@ fun ToolsScreen(navController: NavController) {
                                 Text("\uD83D\uDCE6", fontSize = 32.sp)
                                 Spacer(modifier = Modifier.width(16.dp))
                                 Column(modifier = Modifier.weight(1f)) {
-                                    Text(
-                                        "PACKING LIST",
-                                        color = TextPrimary,
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.Black,
-                                        letterSpacing = 0.5.sp
-                                    )
-                                    Text(
-                                        "CHECK YOUR GEAR BEFORE YOU GO",
-                                        color = TextMuted,
-                                        fontSize = 12.sp,
-                                        letterSpacing = 0.5.sp
-                                    )
+                                    Text("PACKING LIST", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                    Text("CHECK YOUR GEAR BEFORE YOU GO", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
                                 }
-                                Icon(
-                                    Icons.Default.ChevronRight,
-                                    contentDescription = null,
-                                    tint = AcidYellow,
-                                    modifier = Modifier.size(24.dp)
-                                )
+                                Icon(Icons.Default.ChevronRight, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(24.dp))
                             }
                         }
 
@@ -177,7 +151,6 @@ fun ToolsScreen(navController: NavController) {
                     }
                 }
             } else {
-                // SAFETY TAB
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
                         EmergencyCard(
@@ -201,7 +174,6 @@ fun ToolsScreen(navController: NavController) {
                 }
             }
 
-            // Survival Guide navigation card
             item {
                 Spacer(modifier = Modifier.height(16.dp))
                 Box(
@@ -217,26 +189,9 @@ fun ToolsScreen(navController: NavController) {
                         Text("♻️", fontSize = 32.sp)
                         Spacer(modifier = Modifier.width(16.dp))
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                "SURVIVAL GUIDE",
-                                color = TextPrimary,
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Black,
-                                letterSpacing = 0.5.sp
-                            )
-                            Text(
-                                "Camping · Phrases · Money · Safety",
-                                color = TextMuted,
-                                fontSize = 13.sp
-                            )
-                            Text(
-                                "84 TIPS FOR ISLAND SURVIVAL",
-                                color = ToxicGreen,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Black,
-                                letterSpacing = 1.sp,
-                                modifier = Modifier.padding(top = 4.dp)
-                            )
+                            Text("SURVIVAL GUIDE", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                            Text("Camping · Phrases · Money · Safety", color = TextMuted, fontSize = 13.sp)
+                            Text("ESSENTIAL INTELLIGENCE FOR ${config.name.uppercase()}", color = ToxicGreen, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 4.dp))
                         }
                     }
                 }
@@ -247,98 +202,39 @@ fun ToolsScreen(navController: NavController) {
 
 @Composable
 fun TabItem(text: String, isSelected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    val backgroundColor by animateColorAsState(
-        targetValue = if (isSelected) CardBackground else Color.Transparent, label = "tabBg"
-    )
-    val textColor by animateColorAsState(
-        targetValue = if (isSelected) TextPrimary else TextMuted, label = "tabText"
-    )
-
-    Box(
-        modifier = modifier
-            .fillMaxHeight()
-            .clip(RoundedCornerShape(30.dp))
-            .background(backgroundColor)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = text,
-            color = textColor,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Black,
-            letterSpacing = 2.sp
-        )
+    val backgroundColor by animateColorAsState(targetValue = if (isSelected) CardBackground else Color.Transparent, label = "tabBg")
+    val textColor by animateColorAsState(targetValue = if (isSelected) TextPrimary else TextMuted, label = "tabText")
+    Box(modifier = modifier.fillMaxHeight().clip(RoundedCornerShape(30.dp)).background(backgroundColor).clickable(onClick = onClick).padding(horizontal = 16.dp), contentAlignment = Alignment.Center) {
+        Text(text = text, color = textColor, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HufConverterCard(hufAmount: String, onAmountChange: (String) -> Unit) {
-    val hufValue = hufAmount.toFloatOrNull() ?: 0f
-    val eurValue = String.format(Locale.US, "%.2f", hufValue / FestivalConfig.EUR_RATE.toFloat())
-    val usdValue = String.format(Locale.US, "%.2f", hufValue / FestivalConfig.USD_RATE.toFloat())
+fun LocalCurrencyConverterCard(localAmount: String, onAmountChange: (String) -> Unit) {
+    val config = FestivalConfig.current
+    val localValue = localAmount.toFloatOrNull() ?: 0f
+    val eurValue = String.format(Locale.US, "%.2f", localValue / config.eurRate.toFloat())
+    val usdValue = String.format(Locale.US, "%.2f", localValue / config.usdRate.toFloat())
 
     Card(
         colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
         shape = RoundedCornerShape(40.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(40.dp))
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(40.dp))
     ) {
         Column(modifier = Modifier.padding(32.dp)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(bottom = 24.dp)
-            ) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 24.dp)) {
                 Icon(Icons.Default.CurrencyExchange, contentDescription = null, tint = ToxicGreen, modifier = Modifier.size(28.dp))
                 Spacer(modifier = Modifier.width(12.dp))
-                Text(
-                    text = "${FestivalConfig.LOCAL_CURRENCY_CODE} CONVERTER",
-                    color = ToxicGreen,
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Black,
-                    fontStyle = FontStyle.Italic,
-                    letterSpacing = (-1).sp
-                )
+                Text(text = "${config.localCurrencyCode} CONVERTER", color = ToxicGreen, fontSize = 24.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
             }
-
-            Text(
-                text = "${FestivalConfig.LOCAL_CURRENCY_NAME.uppercase()} (${FestivalConfig.LOCAL_CURRENCY_CODE})",
-                color = TextMuted.copy(alpha = 0.6f),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Black,
-                letterSpacing = 4.sp,
-                modifier = Modifier.padding(bottom = 12.dp)
-            )
-
+            Text(text = "${config.localCurrencyName.uppercase()} (${config.localCurrencyCode})", color = TextMuted.copy(alpha = 0.6f), fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 4.sp, modifier = Modifier.padding(bottom = 12.dp))
             OutlinedTextField(
-                value = hufAmount,
-                onValueChange = onAmountChange,
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedContainerColor = MutedBackground.copy(alpha = 0.3f),
-                    unfocusedContainerColor = MutedBackground.copy(alpha = 0.3f),
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    focusedTextColor = TextPrimary,
-                    unfocusedTextColor = TextPrimary
-                ),
-                textStyle = TextStyle(
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Black,
-                    color = TextPrimary,
-                    letterSpacing = (-1).sp
-                ),
-                singleLine = true,
-                shape = RoundedCornerShape(24.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(bottom = 24.dp)
-                    .height(88.dp)
+                value = localAmount, onValueChange = onAmountChange, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = MutedBackground.copy(alpha = 0.3f), unfocusedContainerColor = MutedBackground.copy(alpha = 0.3f), focusedBorderColor = Color.Transparent, unfocusedBorderColor = Color.Transparent, focusedTextColor = TextPrimary, unfocusedTextColor = TextPrimary),
+                textStyle = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Black, color = TextPrimary, letterSpacing = (-1).sp),
+                singleLine = true, shape = RoundedCornerShape(24.dp), modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp).height(88.dp)
             )
-
             Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                 ConversionResultBox(label = "EURO", value = "€$eurValue", modifier = Modifier.weight(1f))
                 ConversionResultBox(label = "USD", value = "$$usdValue", modifier = Modifier.weight(1f))
@@ -349,14 +245,7 @@ fun HufConverterCard(hufAmount: String, onAmountChange: (String) -> Unit) {
 
 @Composable
 fun ConversionResultBox(label: String, value: String, modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .clip(RoundedCornerShape(24.dp))
-            .background(OLEDBlack)
-            .border(1.dp, Color.White.copy(alpha = 0.03f), RoundedCornerShape(24.dp))
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
-    ) {
+    Box(modifier = modifier.clip(RoundedCornerShape(24.dp)).background(OLEDBlack).border(1.dp, Color.White.copy(alpha = 0.03f), RoundedCornerShape(24.dp)).padding(16.dp), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(label, color = TextMuted.copy(alpha = 0.6f), fontSize = 10.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp, modifier = Modifier.padding(bottom = 4.dp))
             Text(value, color = TextPrimary, fontSize = 26.sp, fontWeight = FontWeight.Black, letterSpacing = (-1).sp)
@@ -365,119 +254,17 @@ fun ConversionResultBox(label: String, value: String, modifier: Modifier = Modif
 }
 
 @Composable
-fun SurvivalCard(title: String, value: String, description: String, icon: ImageVector, accentColor: Color) {
-    Card(
-        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(48.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(48.dp))
-    ) {
-        Row(modifier = Modifier.padding(32.dp), verticalAlignment = Alignment.Top) {
-            Box(
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(accentColor.copy(alpha = 0.1f)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(icon, contentDescription = null, tint = accentColor, modifier = Modifier.size(32.dp))
-            }
-            Spacer(modifier = Modifier.width(24.dp))
-            Column {
-                Text(
-                    text = title,
-                    color = TextPrimary,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Black,
-                    fontStyle = FontStyle.Italic,
-                    letterSpacing = (-0.5).sp,
-                    modifier = Modifier.padding(bottom = 4.dp)
-                )
-                Text(
-                    text = buildString {
-                        append("Index: ")
-                        append(value)
-                    },
-                    color = TextMuted,
-                    fontSize = 16.sp,
-                    lineHeight = 22.sp
-                )
-                Text(
-                    text = description,
-                    color = TextMuted.copy(alpha = 0.7f),
-                    fontSize = 14.sp,
-                    lineHeight = 20.sp,
-                    modifier = Modifier.padding(top = 8.dp)
-                )
-            }
-        }
-    }
-}
-
-@Composable
 fun EmergencyCard(title: String, description: String, buttonText: String, phoneNumber: String, containerColor: Color, icon: ImageVector) {
     val context = LocalContext.current
-    val dialAction = {
-        val intent = Intent(Intent.ACTION_DIAL).apply {
-            data = Uri.parse("tel:$phoneNumber")
-        }
-        context.startActivity(intent)
-    }
-
-    Card(
-        colors = CardDefaults.cardColors(containerColor = containerColor),
-        shape = RoundedCornerShape(48.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable(onClick = dialAction)
-    ) {
+    val dialAction = { val intent = Intent(Intent.ACTION_DIAL).apply { data = Uri.parse("tel:$phoneNumber") }; context.startActivity(intent) }
+    Card(colors = CardDefaults.cardColors(containerColor = containerColor), shape = RoundedCornerShape(48.dp), modifier = Modifier.fillMaxWidth().clickable(onClick = dialAction)) {
         Column(modifier = Modifier.padding(32.dp)) {
-            Box(
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(Color.White.copy(alpha = 0.2f)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(32.dp))
-            }
+            Box(modifier = Modifier.size(64.dp).clip(RoundedCornerShape(20.dp)).background(Color.White.copy(alpha = 0.2f)), contentAlignment = Alignment.Center) { Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(32.dp)) }
             Spacer(modifier = Modifier.height(24.dp))
-            Text(
-                text = title,
-                color = Color.White,
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Black,
-                fontStyle = FontStyle.Italic,
-                letterSpacing = (-1).sp,
-                modifier = Modifier.padding(bottom = 12.dp)
-            )
-            Text(
-                text = description,
-                color = Color.White.copy(alpha = 0.9f),
-                fontSize = 17.sp,
-                fontStyle = FontStyle.Italic,
-                lineHeight = 24.sp,
-                modifier = Modifier.padding(bottom = 32.dp)
-            )
-            
-            Button(
-                onClick = dialAction,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.White,
-                    contentColor = containerColor
-                ),
-                shape = RoundedCornerShape(20.dp),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(72.dp)
-            ) {
-                Text(
-                    text = buttonText,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 2.sp
-                )
+            Text(text = title, color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp, modifier = Modifier.padding(bottom = 12.dp))
+            Text(text = description, color = Color.White.copy(alpha = 0.9f), fontSize = 17.sp, fontStyle = FontStyle.Italic, lineHeight = 24.sp, modifier = Modifier.padding(bottom = 32.dp))
+            Button(onClick = dialAction, colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = containerColor), shape = RoundedCornerShape(20.dp), modifier = Modifier.fillMaxWidth().height(72.dp)) {
+                Text(text = buttonText, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
             }
         }
     }
@@ -485,23 +272,11 @@ fun EmergencyCard(title: String, description: String, buttonText: String, phoneN
 
 @Composable
 fun SOSBeaconButton(onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
-        shape = RoundedCornerShape(36.dp),
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(96.dp)
-    ) {
+    Button(onClick = onClick, colors = ButtonDefaults.buttonColors(containerColor = Color.Red), shape = RoundedCornerShape(36.dp), modifier = Modifier.fillMaxWidth().height(96.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Default.FlashOn, contentDescription = null, modifier = Modifier.size(32.dp))
             Spacer(modifier = Modifier.width(16.dp))
-            Text(
-                text = "SOS BEACON",
-                fontSize = 26.sp,
-                fontWeight = FontWeight.Black,
-                letterSpacing = 4.sp
-            )
+            Text(text = "SOS BEACON", fontSize = 26.sp, fontWeight = FontWeight.Black, letterSpacing = 4.sp)
         }
     }
 }
@@ -509,47 +284,12 @@ fun SOSBeaconButton(onClick: () -> Unit) {
 @Composable
 fun FlashOverlay(onDismiss: () -> Unit) {
     val infiniteTransition = rememberInfiniteTransition(label = "flash")
-    val alpha by infiniteTransition.animateFloat(
-        initialValue = 0.5f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(100, easing = LinearEasing),
-            repeatMode = RepeatMode.Reverse
-        ), label = "alpha"
-    )
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White.copy(alpha = alpha))
-            .clickable(onClick = onDismiss),
-        contentAlignment = Alignment.Center
-    ) {
+    val alpha by infiniteTransition.animateFloat(initialValue = 0.5f, targetValue = 1f, animationSpec = infiniteRepeatable(animation = tween(100, easing = LinearEasing), repeatMode = RepeatMode.Reverse), label = "alpha")
+    Box(modifier = Modifier.fillMaxSize().background(Color.White.copy(alpha = alpha)).clickable(onClick = onDismiss), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Box(
-                modifier = Modifier
-                    .size(200.dp)
-                    .border(16.dp, Color.Black, CircleShape)
-                    .background(Color.Transparent, CircleShape)
-                    .clickable(onClick = onDismiss),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "OFF",
-                    color = Color.Black,
-                    fontSize = 56.sp,
-                    fontWeight = FontWeight.Black
-                )
-            }
+            Box(modifier = Modifier.size(200.dp).border(16.dp, Color.Black, CircleShape).background(Color.Transparent, CircleShape).clickable(onClick = onDismiss), contentAlignment = Alignment.Center) { Text(text = "OFF", color = Color.Black, fontSize = 56.sp, fontWeight = FontWeight.Black) }
             Spacer(modifier = Modifier.height(48.dp))
-            Text(
-                text = "FIND ME!",
-                color = Color.Black,
-                fontSize = 72.sp,
-                fontWeight = FontWeight.Black,
-                fontStyle = FontStyle.Italic,
-                letterSpacing = (-4).sp
-            )
+            Text(text = "FIND ME!", color = Color.Black, fontSize = 72.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp)
         }
     }
 }

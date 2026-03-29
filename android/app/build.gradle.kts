@@ -31,7 +31,7 @@ android {
             dimension = "festival"
             applicationId = "com.example.szigetinsider"
             versionName = "2.0"
-            resValue("string", "app_name", "Sziget Insider 2026")
+            resValue("string", "app_name", "dev_Sziget Insider")
             buildConfigField("String", "FESTIVAL_ID", "\"sziget-2026\"")
             manifestPlaceholders["deepLinkScheme"] = "sziget2026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
@@ -40,7 +40,7 @@ android {
             dimension = "festival"
             applicationId = "com.example.area53insider"
             versionName = "1.0"
-            resValue("string", "app_name", "Area 53 Insider 2026")
+            resValue("string", "app_name", "dev_Area 53 Insider")
             buildConfigField("String", "FESTIVAL_ID", "\"area53-2026\"")
             manifestPlaceholders["deepLinkScheme"] = "area532026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
@@ -49,7 +49,7 @@ android {
             dimension = "festival"
             applicationId = "com.example.novarockinsider"
             versionName = "1.0"
-            resValue("string", "app_name", "Nova Rock Insider 2026")
+            resValue("string", "app_name", "dev_Nova Rock Insider")
             buildConfigField("String", "FESTIVAL_ID", "\"novarock-2026\"")
             manifestPlaceholders["deepLinkScheme"] = "novarock2026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
@@ -58,7 +58,7 @@ android {
             dimension = "festival"
             applicationId = "com.example.frequencyinsider"
             versionName = "1.0"
-            resValue("string", "app_name", "Frequency Insider 2026")
+            resValue("string", "app_name", "dev_Frequency Insider")
             buildConfigField("String", "FESTIVAL_ID", "\"frequency-2026\"")
             manifestPlaceholders["deepLinkScheme"] = "frequency2026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"

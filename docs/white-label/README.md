@@ -103,8 +103,8 @@ A pop/electronic/rock festival co-hosted by FM4 (Austrian public radio). Held at
 |---|---|---|---|
 | **Phase 0** | Research Complete | Codebase audit, architecture design | ✅ Done |
 | **Phase 1** | Config Extraction | Lift all brand literals to `FestivalConfig` | ✅ Done |
-| **Phase 2** | Data Pipeline | Automated ingestion for new festivals | 🔵 Next |
-| **Phase 3** | Launch Readiness | Final assets, app store listings | ⏳ Planned |
+| **Phase 2** | Data Pipeline | Automated ingestion for new festivals | ✅ Done |
+| **Phase 3** | Launch Readiness | Final assets, app store listings | 🔵 Next |
 
 ---
 

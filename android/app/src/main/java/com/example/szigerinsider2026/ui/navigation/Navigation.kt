@@ -29,7 +29,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.szigerinsider2026.ui.theme.AcidYellow
 import com.example.szigerinsider2026.ui.theme.CardBackground
 import com.example.szigerinsider2026.ui.theme.TextMuted
 import com.example.szigerinsider2026.ui.home.HomeScreen
@@ -57,6 +56,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.quiz.VibeQuizScreen
@@ -72,7 +72,7 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
     object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event)
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn)
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
-    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents) // Keep route for links, but remove from bar
+    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents)
 }
 
 val bottomNavItems = listOf(
@@ -85,8 +85,7 @@ val bottomNavItems = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppNavigation(
-) {
+fun AppNavigation() {
     val navController = rememberNavController()
     val context = LocalContext.current
     val quizViewModel: VibeQuizViewModel = viewModel(
@@ -177,8 +176,6 @@ fun AppNavigation(
                     onArtistNavigate = { id -> navController.navigate("artist/$id") },
                     onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
                     onGenreClick = { genre ->
-                        // Better: Navigate with args, but for this refactor we can use a shared ViewModel if we were using Hilt.
-                        // For now, let's at least stop using the static hack and use the NavController properly if possible.
                         navController.previousBackStackEntry?.savedStateHandle?.set("filter_genre", genre)
                         navController.popBackStack(Screen.Discover.route, false)
                     },
@@ -239,13 +236,14 @@ fun FluidBottomNavigation(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = rememberHapticManager()
+    val accentColor = MaterialTheme.colorScheme.secondary
 
     NavigationBar(
         modifier = Modifier
             .fillMaxWidth()
             .navigationBarsPadding(),
         containerColor = CardBackground,
-        contentColor = AcidYellow,
+        contentColor = accentColor,
         tonalElevation = 3.dp,
         windowInsets = androidx.compose.foundation.layout.WindowInsets(0)
     ) {
@@ -280,9 +278,9 @@ fun FluidBottomNavigation(navController: NavHostController) {
                     }
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = AcidYellow,
-                    selectedTextColor = AcidYellow,
-                    indicatorColor = AcidYellow.copy(alpha = 0.12f),
+                    selectedIconColor = accentColor,
+                    selectedTextColor = accentColor,
+                    indicatorColor = accentColor.copy(alpha = 0.12f),
                     unselectedIconColor = TextMuted,
                     unselectedTextColor = TextMuted
                 )

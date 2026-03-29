@@ -29,6 +29,7 @@ import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material3.*
 import androidx.compose.ui.text.TextStyle
@@ -60,6 +61,7 @@ import androidx.compose.material3.MediumTopAppBar
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,7 +84,6 @@ fun DiscoverScreen(
         }
     )
 
-    // Listen for filters from savedStateHandle (modern replacement for the static hack)
     LaunchedEffect(navController) {
         navController?.currentBackStackEntry?.savedStateHandle?.let { handle ->
             handle.get<String>("filter_genre")?.let { genre ->
@@ -132,12 +133,10 @@ fun DiscoverScreen(
 
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
-    var spotifyCodeVerifier by remember { mutableStateOf<String?>(null) }
-
+    
     val favoritedIds = remember(favoriteArtistIds) { favoriteArtistIds }
     val gridState = rememberLazyGridState()
     
-    // Material 3 Scroll Behavior for smooth collapsing title
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Scaffold(
@@ -153,12 +152,12 @@ fun DiscoverScreen(
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Text("MUSIC ", style = BrutalistTypography.headlineLarge, color = Color.White, fontSize = 20.sp, letterSpacing = 1.sp)
-                        Text("FINDER", style = BrutalistTypography.headlineLarge, color = PrimaryMagenta, fontSize = 20.sp, letterSpacing = 1.sp)
+                        Text("FINDER", style = BrutalistTypography.headlineLarge, color = MaterialTheme.colorScheme.primary, fontSize = 20.sp, letterSpacing = 1.sp)
                     }
                 },
                 actions = {
                     IconButton(onClick = { haptic.lightTap(); navController?.navigate("vibe_quiz") }) {
-                        Icon(Icons.Filled.AutoAwesome, contentDescription = "Quiz", tint = PrimaryMagenta, modifier = Modifier.size(20.dp))
+                        Icon(Icons.Filled.AutoAwesome, contentDescription = "Quiz", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
                     }
                     IconButton(onClick = { haptic.lightTap(); showCountrySheet = true }) {
                         Icon(Icons.Default.Public, contentDescription = "Country", tint = CyanPulse, modifier = Modifier.size(20.dp))
@@ -170,7 +169,7 @@ fun DiscoverScreen(
                     scrolledContainerColor = OLEDBlack,
                     titleContentColor = Color.White
                 ),
-                windowInsets = WindowInsets(0.dp) // Tighten to top
+                windowInsets = WindowInsets(0.dp)
             )
         }
     ) { paddingValues ->
@@ -184,7 +183,6 @@ fun DiscoverScreen(
             horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            // Header: Ultra-compact Search + Consolidated Filters
             item(span = { GridItemSpan(2) }) {
                 Column(
                     modifier = Modifier
@@ -192,7 +190,6 @@ fun DiscoverScreen(
                         .padding(bottom = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // Slim Search bar
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -220,7 +217,6 @@ fun DiscoverScreen(
                         }
                     }
 
-                    // Consolidated Scrollable Filters - Row 1
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -229,7 +225,7 @@ fun DiscoverScreen(
                             FilterChip(
                                 text = "HEADLINERS",
                                 isSelected = sortMode == "headliners",
-                                selectedColor = AcidYellow,
+                                selectedColor = MaterialTheme.colorScheme.secondary,
                                 onClick = { haptic.lightTap(); discoverViewModel.setSortMode("headliners") }
                             )
                         }
@@ -237,7 +233,7 @@ fun DiscoverScreen(
                             FilterChip(
                                 text = "A – Z",
                                 isSelected = sortMode == "az",
-                                selectedColor = AcidYellow,
+                                selectedColor = MaterialTheme.colorScheme.secondary,
                                 onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") }
                             )
                         }
@@ -259,7 +255,6 @@ fun DiscoverScreen(
                         }
                     }
 
-                    // Consolidated Scrollable Filters - Row 2 (Genre & Year)
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -298,7 +293,6 @@ fun DiscoverScreen(
                         }
                     }
 
-                    // Spotify Match & Country Summary (Single Line)
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -326,7 +320,7 @@ fun DiscoverScreen(
                             if (spotifyAuthState is SpotifyAuthState.Connected) {
                                 Text(
                                     text = "· ${spotifyMatchedIds.size} MATCHES",
-                                    color = AcidYellow,
+                                    color = MaterialTheme.colorScheme.secondary,
                                     fontSize = 8.sp,
                                     fontWeight = FontWeight.Bold
                                 )
@@ -344,7 +338,7 @@ fun DiscoverScreen(
                                 shape = RoundedCornerShape(6.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp)
                             ) {
-                                Icon(Icons.Default.Zap, contentDescription = null, modifier = Modifier.size(12.dp), tint = Color.Black)
+                                Icon(Icons.Default.Bolt, contentDescription = null, modifier = Modifier.size(12.dp), tint = Color.Black)
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text("SPEED", fontSize = 8.sp, fontWeight = FontWeight.Black, color = Color.Black)
                             }
@@ -355,7 +349,7 @@ fun DiscoverScreen(
                                     serendipityArtist = discoverViewModel.getRandomUnfavoritedArtist(allArtists, favoritedIds)
                                 },
                                 modifier = Modifier.height(26.dp),
-                                colors = ButtonDefaults.buttonColors(containerColor = PrimaryMagenta),
+                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                                 shape = RoundedCornerShape(6.dp),
                                 contentPadding = PaddingValues(horizontal = 8.dp)
                             ) {
@@ -379,7 +373,7 @@ fun DiscoverScreen(
             if (isLoading) {
                 item(span = { GridItemSpan(2) }) {
                     Box(modifier = Modifier.fillMaxWidth().padding(vertical = 100.dp), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator(color = PrimaryMagenta)
+                        CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
                     }
                 }
             } else {

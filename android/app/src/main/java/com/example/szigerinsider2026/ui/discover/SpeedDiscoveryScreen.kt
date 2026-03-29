@@ -3,6 +3,7 @@ package com.example.szigerinsider2026.ui.discover
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -34,6 +35,7 @@ import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
+import com.example.szigerinsider2026.data.config.FestivalConfig
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -94,7 +96,7 @@ fun SpeedDiscoveryScreen(
                             Text(
                                 "${currentIndex + 1} / ${pool.size}",
                                 style = BrutalistTypography.labelSmall,
-                                color = AcidYellow,
+                                color = MaterialTheme.colorScheme.secondary,
                                 fontSize = 12.sp
                             )
                         }
@@ -123,7 +125,7 @@ fun SpeedDiscoveryScreen(
                     Text(
                         "YOU'VE SEEN IT ALL!",
                         style = BrutalistTypography.headlineLarge,
-                        color = AcidYellow,
+                        color = MaterialTheme.colorScheme.secondary,
                         fontStyle = FontStyle.Italic
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -136,7 +138,6 @@ fun SpeedDiscoveryScreen(
                     }
                 }
             } else {
-                // Background card (next one)
                 pool.getOrNull(currentIndex + 1)?.let { nextArtist ->
                     ArtistSwipeCard(
                         artist = nextArtist,
@@ -148,7 +149,6 @@ fun SpeedDiscoveryScreen(
                     )
                 }
 
-                // Foreground card (current)
                 ArtistSwipeCard(
                     artist = currentArtist,
                     modifier = Modifier
@@ -172,7 +172,6 @@ fun SpeedDiscoveryScreen(
                         }
                 )
                 
-                // Indicators
                 if (offsetX > 100) {
                     Box(
                         modifier = Modifier
@@ -180,7 +179,7 @@ fun SpeedDiscoveryScreen(
                             .padding(end = 40.dp)
                             .size(80.dp)
                             .clip(CircleShape)
-                            .background(AcidYellow)
+                            .background(MaterialTheme.colorScheme.secondary)
                             .graphicsLayer { alpha = (offsetX / 400f).coerceIn(0f, 1f) },
                         contentAlignment = Alignment.Center
                     ) {
@@ -203,7 +202,6 @@ fun SpeedDiscoveryScreen(
                     }
                 }
 
-                // Controls
                 Row(
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
@@ -225,7 +223,7 @@ fun SpeedDiscoveryScreen(
                         onClick = { handleSwipe(true) },
                         modifier = Modifier
                             .size(80.dp)
-                            .background(AcidYellow, CircleShape)
+                            .background(MaterialTheme.colorScheme.secondary, CircleShape)
                     ) {
                         Icon(Icons.Default.Favorite, contentDescription = "Favorite", tint = Color.Black, modifier = Modifier.size(40.dp))
                     }
@@ -278,7 +276,7 @@ fun ArtistSwipeCard(artist: Artist, modifier: Modifier = Modifier) {
                 Box(
                     modifier = Modifier
                         .clip(RoundedCornerShape(4.dp))
-                        .background(AcidYellow)
+                        .background(MaterialTheme.colorScheme.secondary)
                         .padding(horizontal = 8.dp, vertical = 2.dp)
                 ) {
                     Text("RETURNING HERO", color = Color.Black, fontSize = 10.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic)
@@ -301,7 +299,7 @@ fun ArtistSwipeCard(artist: Artist, modifier: Modifier = Modifier) {
                     Text(
                         text = genre.uppercase(),
                         style = BrutalistTypography.labelSmall,
-                        color = AcidYellow,
+                        color = MaterialTheme.colorScheme.secondary,
                         fontSize = 10.sp
                     )
                 }
@@ -310,7 +308,7 @@ fun ArtistSwipeCard(artist: Artist, modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(12.dp))
             
             Text(
-                text = artist.description ?: "Ready for the Island of Freedom?",
+                text = artist.description ?: "Ready for ${FestivalConfig.NAME}?",
                 color = Color.White.copy(alpha = 0.7f),
                 fontSize = 14.sp,
                 maxLines = 3,
