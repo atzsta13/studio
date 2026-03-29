@@ -1,25 +1,26 @@
-# 🚀 Project Status: Sziget Insider 2026
+# 🚀 Project Status: Festival Insider Platform
 
-**Last Updated:** 2026-03-22
-**Current Phase:** Phase 3 (Social & Tactical)
-**Health:** 🟢 Green (Builds passing on Web & Android)
+**Last Updated:** 2026-03-27
+**Current Phase:** White-Label Foundation (Phase 1 Complete)
+**Health:** 🟢 Green (Multi-flavor builds passing on Web & Android)
 
 ## 🏁 Recent Milestones
-- **Design System Industrialization**: Created `DesignSystem.kt` with reusable Brutalist components.
-- **Architectural Cleanup**: Extracted ViewModel logic from `ScheduleScreen` and fixed navigation state handling.
-- **Performance Fix**: Implemented viewport-aware culling in the 2D Timetable Grid.
-- **Verification**: Web and Android builds verified and pushed.
+- **White-Label Engine**: Lifted all brand-specific literals into a centralized configuration system.
+- **Product Flavors**: Implemented Android build flavors for Sziget, Area 53, Nova Rock, and Frequency.
+- **Dynamic Theming**: UI now automatically adapts colors, metadata, and AI personas based on `FESTIVAL_ID`.
+- **Data Sync Pipeline**: Automated synchronization of festival-specific JSON data packages at build time.
+- **Type Safety**: Resolved 25+ TypeScript errors; project now passes clean `npm run typecheck`.
 
 ## 🛠️ Active "Hot Zones" (Where the brains are)
-1. **Timetable Logic**: `android/.../ui/schedule/ScheduleViewModel.kt` & `ScheduleScreen.kt`
-2. **Local Storage**: `android/.../data/local/UserDao.kt`
-3. **AI Recommendations**: `src/ai/flows/recommend-artists-flow.ts`
-4. **Source of Truth Data**: `src/data/lineup.json`
+1. **Config Layer**: `src/config/festival.ts` (Web) & `FestivalConfig.kt` (Android)
+2. **Build Scripts**: `scripts/sync-data.mjs` & `generate-manifest.mjs`
+3. **Theming Engine**: `src/app/layout.tsx` (Web) & `Theme.kt` (Android)
+4. **Data Packages**: `festivals/<id>/data/`
 
 ## 🔜 Next Priorities
-- [ ] **Spotify Playlist Builder**: Implementation of the playlist generation flow in Android.
-- [ ] **Grand Sync Logic**: Finalizing the bridge between Web AI results and Android local storage.
-- [ ] **Offline Map Tiles**: Implementing MBTiles support for the Map screen.
+- [ ] **Phase 2: Data Pipeline**: Automated ingestion of actual lineup/POI data for Austrian festivals.
+- [ ] **Venue Mapping**: Implementation of the Pannonia Fields (Nova Rock) tactical map.
+- [ ] **Feature Expansion**: Tailoring the survival tools for metal-specific (Area 53) requirements.
 
 ## 📝 LLM / Agent Context
-When joining this project, always check `CLAUDE.md` for coding standards and `docs/DEVELOPER_QUICKSTART.md` for environment setup.
+This is now a **multi-festival white-label platform**. Always use `FESTIVAL` config constants instead of hardcoded strings. Check `docs/white-label/` for the implementation specs.
