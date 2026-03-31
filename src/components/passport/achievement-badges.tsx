@@ -6,11 +6,13 @@ import { Trophy, Star, Music, Eye, Heart, Zap, Lock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { FESTIVAL } from '@/config/festival';
 
+import type { ElementType } from 'react';
+
 interface Achievement {
     id: string;
     title: string;
     desc: string;
-    icon: any;
+    icon: ElementType;
     unlocked: boolean;
 }
 

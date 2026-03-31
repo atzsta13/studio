@@ -5,20 +5,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ReactNode, useMemo, useEffect, useState } from 'react';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { useTheme } from 'next-themes';
+import { FESTIVAL } from '@/config/festival';
 
 const getThemeOptions = (mode: 'light' | 'dark') => ({
   palette: {
     mode,
     primary: {
-      main: '#ff0080',
-      light: '#ff3399',
-      dark: '#cc0066',
+      main: FESTIVAL.theme.primaryHex,
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#00f2ff',
-      light: '#33f5ff',
-      dark: '#00c2cc',
+      main: FESTIVAL.theme.secondaryHex,
       contrastText: mode === 'dark' ? '#000000' : '#ffffff',
     },
     background: {
@@ -52,7 +49,7 @@ const getThemeOptions = (mode: 'light' | 'dark') => ({
           fontWeight: 900,
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: mode === 'dark' ? '0 0 30px rgba(255, 0, 128, 0.3)' : '0 10px 30px rgba(255, 0, 128, 0.2)',
+            boxShadow: FESTIVAL.theme.glowColor ? `0 0 30px ${FESTIVAL.theme.glowColor}` : 'none',
           },
         },
       },

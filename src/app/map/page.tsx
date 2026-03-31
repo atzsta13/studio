@@ -22,6 +22,35 @@ import {
 import lineupCurrent from '@/data/lineup.json';
 import food from '@/data/food.json';
 import poiData from '@/data/poi.json';
+import type { LineupItem } from '@/types';
+import type { ElementType } from 'react';
+
+interface POIItem {
+  id: string;
+  name: string;
+  type: string;
+  mapCoords: { x: number; y: number };
+}
+
+interface FoodItem {
+  id: string;
+  name: string;
+  mapCoords: { x: number; y: number };
+}
+
+type PinCategory = 'music' | 'food' | 'util' | 'access' | 'quiet' | 'charging';
+
+interface MapPin {
+  id: string;
+  name: string;
+  type: PinCategory;
+  subType?: string;
+  x: number;
+  y: number;
+  icon: ElementType;
+  color: string;
+  data: LineupItem | POIItem | FoodItem | null;
+}
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -32,7 +61,7 @@ import { FESTIVAL } from '@/config/festival';
 export default function MapPage() {
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util' | 'access' | 'quiet' | 'charging'>('all');
-  const [selectedPin, setSelectedPin] = useState<any>(null);
+  const [selectedPin, setSelectedPin] = useState<MapPin | null>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
   const [heatmapMode, setHeatmapMode] = useState(false);
@@ -44,8 +73,8 @@ export default function MapPage() {
 
   const allPins = useMemo(() => {
     // Derive Stage Pins from poiData (where type === 'stage')
-    const musicPins = (poiData as any[]).filter(p => p.type === 'stage').map(p => {
-      const stageData = (lineupCurrent as any[]).find(a => a.stage === p.name);
+    const musicPins: MapPin[] = (poiData as POIItem[]).filter(p => p.type === 'stage').map(p => {
+      const stageData = (lineupCurrent as LineupItem[]).find(a => a.stage === p.name) ?? null;
       return {
         id: p.id,
         name: p.name,
@@ -54,11 +83,11 @@ export default function MapPage() {
         y: p.mapCoords.y,
         icon: Music,
         color: 'bg-primary',
-        data: stageData
+        data: stageData,
       };
     });
 
-    const foodPins = (food as any[]).map(f => ({
+    const foodPins: MapPin[] = (food as FoodItem[]).map(f => ({
       id: f.id,
       name: f.name,
       type: 'food',
@@ -66,13 +95,13 @@ export default function MapPage() {
       y: f.mapCoords.y,
       icon: Utensils,
       color: 'bg-emerald-500',
-      data: f
+      data: f,
     }));
 
-    const utilPins = (poiData as any[]).filter(p => p.type !== 'stage').map(p => {
-       let type: any = 'util';
+    const utilPins: MapPin[] = (poiData as POIItem[]).filter(p => p.type !== 'stage').map(p => {
+       let type: PinCategory = 'util';
        let color = 'bg-amber-500';
-       let icon: any = Info;
+       let icon: ElementType = Info;
 
        if (p.type === 'water') { type = 'util'; color = 'bg-blue-500'; icon = Droplet; }
        else if (p.type === 'first-aid') { type = 'util'; color = 'bg-red-500'; icon = Activity; }
@@ -89,7 +118,7 @@ export default function MapPage() {
           y: p.mapCoords.y,
           icon,
           color,
-          data: p
+          data: p,
        };
     });
 
@@ -97,9 +126,9 @@ export default function MapPage() {
   }, [mounted]);
 
   const filteredPins = allPins.filter(pin => {
-    if (hydrationMode) return (pin as any)?.subType === 'water';
+    if (hydrationMode) return pin.subType === 'water';
     if (activeCategory === 'all') return true;
-    return pin?.type === activeCategory;
+    return pin.type === activeCategory;
   });
 
   if (!mounted) return null;
@@ -215,7 +244,7 @@ export default function MapPage() {
                 <button
                   key={pin.id}
                   className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-full transition-all 
-                      ${hydrationMode && (pin as any).subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500' : 'p-2 ring-4 ring-black/50 hover:scale-125'} 
+                      ${hydrationMode && pin.subType === 'water' ? 'p-4 ring-4 ring-blue-400 animate-pulse bg-blue-500' : 'p-2 ring-4 ring-black/50 hover:scale-125'}
                       ${!hydrationMode && pin.color} ${selectedPin?.id === pin.id ? 'scale-150 ring-white' : ''}`}
                   style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
                   onClick={() => setSelectedPin(pin)}
@@ -236,8 +265,12 @@ export default function MapPage() {
               <h3 className="text-xl font-black text-white">{selectedPin.name}</h3>
               {selectedPin.type === 'music' && (
                 <div className="space-y-3 mt-4">
-                  <Badge variant="secondary" className="bg-primary/20 text-primary">Live Now: {selectedPin.data?.artist || 'TBA'}</Badge>
-                  <Button asChild className="w-full rounded-xl"><Link href={selectedPin.data?.id ? `/artist/${selectedPin.data.id}` : '/timetable'}>Set Details</Link></Button>
+                  <Badge variant="secondary" className="bg-primary/20 text-primary">
+                    {(selectedPin.data as LineupItem | null)?.artist ?? 'TBA'}
+                  </Badge>
+                  <Button asChild className="w-full rounded-xl">
+                    <Link href={selectedPin.data ? `/artist/${(selectedPin.data as LineupItem).id}` : '/timetable'}>Set Details</Link>
+                  </Button>
                 </div>
               )}
             </Card>

@@ -60,11 +60,11 @@ function loadSeenIds(): Set<string> {
 }
 
 
-const allArtistsCurrent = (lineup as any[]).map(a => ({
+const allArtistsCurrent = (lineup as LineupItem[]).map(a => ({
   ...a,
-  vibes: a.vibes || [],
+  vibes: a.vibes ?? [],
   returningHero: !!a.returningHero,
-})) as (LineupItem & { vibes: string[]; isHeadliner?: boolean; returningHero?: boolean; lastYearStage?: string })[];
+}));
 
 const getFlagEmoji = (countryCode: string | undefined) => {
   if (!countryCode || countryCode === 'Unknown') return '';
@@ -289,13 +289,13 @@ export default function DiscoverPage() {
               {isMounted && (
                 <div className="flex flex-col gap-1.5 items-end">
                   {isMustSee && (
-                    <span className="text-sm drop-shadow-[0_0_8px_rgba(250,255,0,0.9)]" title="Must See">⭐</span>
+                    <span className="text-sm drop-shadow-[0_0_8px_hsl(var(--accent)/0.9)]" title="Must See">⭐</span>
                   )}
                   {isInterested && (
                     <span className="text-sm drop-shadow-[0_0_8px_rgba(0,229,255,0.9)]" title="Interested">🔖</span>
                   )}
                   {isSeen && (
-                    <span className="bg-[#39FF14] text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">SEEN</span>
+                    <span className="bg-emerald-400 text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">SEEN</span>
                   )}
                 </div>
               )}
@@ -414,7 +414,7 @@ export default function DiscoverPage() {
             {/* Surprise Me */}
             <button
               onClick={handleSurpriseMe}
-              className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#f5e642] hover:bg-[#faff00] text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#f5e642]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-accent/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
               <Shuffle className="h-6 w-6" />
               SURPRISE ME
@@ -429,7 +429,7 @@ export default function DiscoverPage() {
                   const random = unvisited[Math.floor(Math.random() * unvisited.length)];
                   if (random) router.push(`/artist/${random.id}`);
                 }}
-                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#FFD700] hover:bg-[#FFEE00] text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#FFD700]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-accent/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
                 <Shuffle className="h-6 w-6" />
                 ROULETTE
@@ -446,7 +446,7 @@ export default function DiscoverPage() {
               </button>
             </Link>
 
-            <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#FF00FF] hover:bg-[#FF33FF] text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#FF00FF]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+            <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
               <Sparkles className="h-6 w-6" />
               Vibe Quiz
             </Link>
@@ -563,10 +563,10 @@ export default function DiscoverPage() {
         return (
           <section className="mb-20">
             <div className="flex items-center gap-6 mb-6">
-              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-[#39FF14]">
+              <p className="text-[10px] font-black uppercase tracking-[0.4em] text-accent">
                 HIDDEN GEMS
               </p>
-              <div className="flex-1 h-px bg-gradient-to-r from-[#39FF14]/20 to-transparent" />
+              <div className="flex-1 h-px bg-gradient-to-r from-accent/20 to-transparent" />
               <p className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/30">
                 ARTISTS YOU MIGHT MISS
               </p>
@@ -578,7 +578,7 @@ export default function DiscoverPage() {
                   href={`/artist/${artist.id}`}
                   className="shrink-0 w-40 group block"
                 >
-                  <div className="relative w-40 h-52 rounded-[2rem] overflow-hidden bg-muted border-2 border-[#39FF14]/30 group-hover:border-[#39FF14]/80 transition-all duration-500 shadow-[0_0_16px_rgba(57,255,20,0.1)] group-hover:shadow-[0_0_24px_rgba(57,255,20,0.25)] mb-3">
+                  <div className="relative w-40 h-52 rounded-[2rem] overflow-hidden bg-muted border-2 border-accent/30 group-hover:border-accent/80 transition-all duration-500 shadow-accent/10 group-hover:shadow-accent/25 mb-3">
                     {artist.imageUrl ? (
                       <img
                         src={artist.imageUrl}
@@ -592,7 +592,7 @@ export default function DiscoverPage() {
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
                     <div className="absolute top-3 left-3">
-                      <span className="bg-[#39FF14] text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">GEM</span>
+                      <span className="bg-accent text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">GEM</span>
                     </div>
                     <div className="absolute bottom-3 left-3 right-3">
                       {isMounted && artist.countryCode && (
@@ -609,7 +609,7 @@ export default function DiscoverPage() {
                     {artist.vibes.slice(0, 2).map(vibe => (
                       <span
                         key={vibe}
-                        className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.1em] border bg-[#39FF14]/5 text-[#39FF14] border-[#39FF14]/20"
+                        className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.1em] border bg-accent/5 text-accent border-accent/20"
                       >
                         {vibe}
                       </span>

@@ -1,15 +1,16 @@
 # Known Issues & Tech Debt Log
 
-**Last updated:** 2026-03-20 (reviewed 2026-03-20 post-sprint)
+**Last updated:** 2026-03-31
 **Format:** Severity (Critical/High/Medium/Low) + Status (Open/Workaround/Accepted)
 
 ---
 
 ## TLDR
 
-- **3 critical:** Pre-existing TypeScript errors, unencrypted Android tokens, no proper error boundaries
-- **2 high:** Missing Android tests, Web component over-nesting
-- **7 medium:** Performance, accessibility, data pipeline gaps
+- **1 critical:** Unencrypted Android tokens (MVP accepted, deferred to production)
+- **1 high:** Missing Android tests (needs dedicated sprint)
+- **3 medium:** No automated service worker update prompt, accessibility audit pending, prop drilling in discover
+- **White-label compliance:** ✅ Fully resolved — all hardcoded colors, festival names, and branding replaced with config-driven values
 - **All actively tracked:** No hidden bugs
 
 ---
@@ -125,7 +126,7 @@ implementation 'androidx.security:security-crypto:1.1.0-alpha06'
 ### Issue #3: No Error Boundaries / App Crash Recovery
 
 **Severity:** 🔴 Critical
-**Status:** ⏳ Open
+**Status:** ✅ Fixed (2026-03-31)
 **Platforms:** Web + Android
 
 **Root Cause:**
@@ -251,7 +252,7 @@ class ArtistViewModelTest {
 ### Issue #5: Web Component Over-Nesting (Prop Drilling)
 
 **Severity:** 🟠 High
-**Status:** ⏳ Workaround exists
+**Status:** ⏳ Accepted (works; defer to refactor cycle)
 **Files:** `src/components/discover/`, `src/components/artist/`
 
 **Example:**
@@ -295,7 +296,7 @@ const { isFavorite, toggle } = useContext(FavoritesContext);
 ### Issue #6: No Pagination in Spotify Library Scan
 
 **Severity:** 🟡 Medium
-**Status:** ⏳ Workaround exists
+**Status:** ✅ Fixed (2026-03-31) — removed artificial loop cap; pagination follows Spotify's `next` field naturally
 **File:** `data/repository/SpotifyRepository.kt` (line ~67)
 
 **Current Code:**
@@ -330,7 +331,7 @@ while (nextUrl != null && allSpotifyIds.size < 50000) {  // ← No loop limit
 ### Issue #7: Timezone Issues in Weather Endpoint
 
 **Severity:** 🟡 Medium
-**Status:** ⏳ Workaround exists
+**Status:** ✅ Fixed (2026-03-31) — dates now returned as ISO 8601 (`YYYY-MM-DDT00:00:00Z`)
 **File:** `src/app/api/weather/route.ts`
 
 **Current Code:**
@@ -417,7 +418,7 @@ return {
 ### Issue #11: No Rate Limiting on `/api/` Routes
 
 **Severity:** 🟡 Medium
-**Status:** ⏳ Open
+**Status:** ✅ Fixed (2026-03-31) — `src/middleware.ts` + `src/lib/rate-limit.ts`; tiered limits (20/min AI, 60/min Spotify, 100/min other)
 **Impact:** Malicious user could spam endpoints
 
 **Example Scenario:**
@@ -504,7 +505,7 @@ export async function middleware(request: NextRequest) {
 ### Issue #15: DiscoverViewModel Pending Filter via Companion Object
 
 **Severity:** 🟢 Low
-**Status:** ⏳ Accepted (works, minor architectural smell)
+**Status:** ✅ Already fixed — filter is passed via `navController.currentBackStackEntry.savedStateHandle`; companion object pattern was never shipped
 **File:** `ui/discover/DiscoverViewModel.kt`
 
 **Context:**

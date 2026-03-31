@@ -81,21 +81,21 @@ export function SerendipityModal({
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-                  className="absolute w-64 h-64 rounded-full border-2 border-[#FF00FF]/30"
+                  className="absolute w-64 h-64 rounded-full border-2 border-primary/30"
                 />
 
                 {/* Middle ring */}
                 <motion.div
                   animate={{ rotate: -360 }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
-                  className="absolute w-48 h-48 rounded-full border-2 border-[#FFED4E]/30"
+                  className="absolute w-48 h-48 rounded-full border-2 border-accent/30"
                 />
 
                 {/* Inner ring */}
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                  className="absolute w-32 h-32 rounded-full border-2 border-[#00FFFF]/30"
+                  className="absolute w-32 h-32 rounded-full border-2 border-secondary/30"
                 />
 
                 {/* Center icon */}
@@ -110,7 +110,7 @@ export function SerendipityModal({
                 <motion.p
                   animate={{ opacity: [0.6, 1, 0.6] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
-                  className="absolute top-1/2 mt-40 text-sm uppercase tracking-widest font-bold text-[#FFED4E]"
+                  className="absolute top-1/2 mt-40 text-sm uppercase tracking-widest font-bold text-accent"
                 >
                   Scanning Lineup...
                 </motion.p>
@@ -135,7 +135,7 @@ export function SerendipityModal({
                       className="object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#FF00FF]/20 to-[#00FFFF]/20 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
                       <span className="text-4xl">🎵</span>
                     </div>
                   )}
@@ -181,7 +181,7 @@ export function SerendipityModal({
 
                   {/* Day tag */}
                   {artist.day && (
-                    <span className="inline-block text-xs px-3 py-1 bg-[#00FFFF]/20 text-[#00FFFF] rounded-full font-bold tracking-wider">
+                    <span className="inline-block text-xs px-3 py-1 bg-secondary/20 text-secondary rounded-full font-bold tracking-wider">
                       {artist.day}
                     </span>
                   )}
@@ -191,7 +191,7 @@ export function SerendipityModal({
                     <Link
                       href={`/artist/${artist.id}`}
                       onClick={handleExplore}
-                      className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#FFED4E] hover:bg-white text-black font-black uppercase tracking-wider rounded-lg transition-colors"
+                      className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-accent hover:bg-accent/80 text-black font-black uppercase tracking-wider rounded-lg transition-colors"
                     >
                       Explore
                       <ChevronRight className="w-5 h-5" />
@@ -209,8 +209,8 @@ export function SerendipityModal({
                         onClick={() => handleToggleFavorite(artist.id)}
                         className={`w-full px-6 py-2 rounded-lg font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 ${
                           isFavorite
-                            ? 'bg-[#FF00FF] text-white hover:bg-[#FF33FF]'
-                            : 'bg-[#1a1a1a] border border-[#333333] text-gray-400 hover:border-[#FF00FF] hover:text-[#FF00FF]'
+                            ? 'bg-primary text-white hover:bg-primary/90'
+                            : 'bg-card border border-border text-muted-foreground hover:border-primary hover:text-primary'
                         }`}
                       >
                         <Heart

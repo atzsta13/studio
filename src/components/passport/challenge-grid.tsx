@@ -23,7 +23,7 @@ export function ChallengeGrid({ challenges }: ChallengeGridProps) {
           <div
             className={`flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center font-semibold ${
               challenge.isCompleted
-                ? 'bg-[#FFED4E] text-black'
+                ? 'bg-accent text-black'
                 : 'bg-[#1a1a1a] text-gray-500'
             }`}
           >
@@ -54,7 +54,7 @@ export function ChallengeGrid({ challenges }: ChallengeGridProps) {
           <div className="flex-shrink-0 flex flex-col items-end justify-center">
             <div className="flex items-center gap-1">
               {challenge.isCompleted ? (
-                <CheckCircle2 className="w-5 h-5 text-[#FFED4E]" />
+                <CheckCircle2 className="w-5 h-5 text-accent" />
               ) : (
                 <Lock className="w-5 h-5 text-gray-500" />
               )}
@@ -62,7 +62,7 @@ export function ChallengeGrid({ challenges }: ChallengeGridProps) {
             <span
               className={`text-xs font-black italic mt-1 ${
                 challenge.isCompleted
-                  ? 'text-[#FFED4E]'
+                  ? 'text-accent'
                   : 'text-gray-500'
               }`}
             >

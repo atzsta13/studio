@@ -2,6 +2,8 @@ package com.example.szigerinsider2026
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Process
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +23,16 @@ import com.example.szigerinsider2026.ui.navigation.AppNavigation
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
+
+        Thread.setDefaultUncaughtExceptionHandler { _, exception ->
+            Log.e("FestivalInsider", "Uncaught exception — restarting app", exception)
+            val intent = packageManager.getLaunchIntentForPackage(packageName)
+                ?.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP or android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+            if (intent != null) startActivity(intent)
+            finish()
+            Process.killProcess(Process.myPid())
+        }
+
         // Initialize unified configuration from JSON assets
         FestivalConfig.initialize(applicationContext)
         

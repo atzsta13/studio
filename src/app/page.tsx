@@ -28,6 +28,7 @@ import {
 import { useEffect, useState, useMemo } from 'react';
 import { FESTIVAL } from '@/config/festival';
 import lineup from '@/data/lineup.json';
+import type { LineupItem } from '@/types';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
 import { NewsBulletin } from '@/components/home/news-bulletin';
 import { FanPoll } from '@/components/home/fan-poll';
@@ -73,8 +74,8 @@ export default function Home() {
     setMounted(true);
   }, []);
 
-  const nowPlaying = useMemo(() => {
-    return (lineup as any[]).filter(a => a.day === FESTIVAL.dates.openingDayFilter).slice(0, 3);
+  const openingActs = useMemo(() => {
+    return (lineup as LineupItem[]).filter(a => a.day === FESTIVAL.dates.openingDayFilter).slice(0, 3);
   }, []);
 
   if (!mounted) return null;
@@ -158,16 +159,16 @@ export default function Home() {
               }
             }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <Newspaper size={20} color="#ff0080" />
+                <Newspaper size={20} color={FESTIVAL.theme.primaryHex} />
                 <Typography variant="caption" sx={{ fontWeight: 900, color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.7rem' }}>
-                  Island Status
+                  Festival Dates
                 </Typography>
               </Box>
               <Typography variant="h6" sx={{ fontWeight: 900, color: 'text.primary', fontSize: '1.6rem', fontStyle: 'italic', lineHeight: 1 }}>
-                Vibe: Electric. Dust: High.
+                {FESTIVAL.dates.startDate} – {FESTIVAL.dates.endDate}
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.5, fontSize: '1rem', fontWeight: 500, opacity: 0.8 }}>
-                Colosseum peak at 02:00. All water points active. Reapply sunscreen; UV index is peaking.
+                {FESTIVAL.location.venue} · {FESTIVAL.location.city}
               </Typography>
             </Paper>
           </Container>
@@ -186,16 +187,16 @@ export default function Home() {
             width: 16,
             height: 16,
             borderRadius: '50%',
-            bgcolor: '#ff0080',
-            boxShadow: '0 0 30px #ff0080',
+            bgcolor: FESTIVAL.theme.primaryHex,
+            boxShadow: `0 0 30px ${FESTIVAL.theme.primaryHex}`,
             animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           }} />
           <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', letterSpacing: '-0.04em', fontSize: '2.5rem' }}>
-            Island Pulse: <span style={{ opacity: 0.2 }}>Now Playing</span>
+            {FESTIVAL.dates.days[0]} <span style={{ opacity: 0.2 }}>Opening Acts</span>
           </Typography>
         </Box>
         <Grid container spacing={4}>
-          {nowPlaying.map((artist, idx) => (
+          {openingActs.map((artist) => (
             <Grid key={artist.id} size={{ xs: 12, md: 4 }}>
               <Card sx={{
                 bgcolor: alpha(theme.palette.background.paper, 0.02),
@@ -225,10 +226,10 @@ export default function Home() {
                     <Box sx={{ flex: 1, minWidth: 0 }}>
                       <Typography noWrap sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5, letterSpacing: '-0.02em' }}>{artist.artist}</Typography>
                       <Typography variant="caption" sx={{ color: 'primary.main', fontWeight: 900, textTransform: 'uppercase', display: 'block', letterSpacing: '0.15em', mb: 0.5 }}>
-                        {artist.stage || 'Main Stage'}
+                        {artist.genres?.[0] ?? 'Live'}
                       </Typography>
                       <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '0.85rem', opacity: 0.6 }}>
-                        Set: {idx * 15 + 10}m elapsed
+                        {artist.countryCode}
                       </Typography>
                     </Box>
                     <ChevronRight size={24} color="rgba(255,255,255,0.15)" />
@@ -302,7 +303,6 @@ export default function Home() {
         </Grid>
 
         {FESTIVAL.features.photoWall && <PhotoWall />}
-      </Container>
 
         {/* Strategic Tactical Sections */}
         <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>

@@ -130,5 +130,19 @@
     "feedbackSystem": true,
     "offlineBanner": true,
     "highContrast": true
+  },
+  "content": {
+    "shuttleRoutes": [
+      { "id": "1", "route": "City Center Express", "from": "Deák Ferenc tér", "to": "Bridge of Freedom", "freq": "Every 15m", "active": "24/7" },
+      { "id": "2", "route": "Airport Shuttle", "from": "Budapest Airport (BUD)", "to": "Island Entrance", "freq": "Every 30m", "active": "08:00 – 22:00" },
+      { "id": "3", "route": "Camping North", "from": "H-HÉV Station", "to": "North Camping Gate", "freq": "Every 20m", "active": "10:00 – 02:00" }
+    ],
+    "dictionaryTerms": [
+      { "term": "Colosseum", "def": "A circular venue built from wooden pallets, the heart of Sziget techno." },
+      { "term": "Island Eye", "def": "The giant ferris wheel offering panoramic views of the entire festival." },
+      { "term": "Main Stage", "def": "The massive centerpiece where headliners perform each night." },
+      { "term": "Siesta", "def": "Taking a nap during the hottest hours (13:00–16:00) to survive the night." },
+      { "term": "Bridge of Freedom", "def": "The iconic K-bridge entry point to the island." }
+    ]
   }
 }

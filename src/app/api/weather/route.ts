@@ -31,7 +31,7 @@ export async function GET() {
         const rainAlert = hourlyPrecip.slice(0, 24).some((p) => p > 60);
 
         const forecast = (daily.time as string[]).map((date: string, i: number) => ({
-            date,
+            date: `${date}T00:00:00Z`,
             maxTemp: daily.temperature_2m_max[i] as number,
             minTemp: daily.temperature_2m_min[i] as number,
             precipProbability: daily.precipitation_probability_max[i] as number,

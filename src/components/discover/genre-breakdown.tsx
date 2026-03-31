@@ -7,8 +7,9 @@ import { PieChart, Pie, Cell as PieCell } from 'recharts';
 import { LineChart, Line } from 'recharts';
 import { FESTIVAL } from '@/config/festival';
 import { Zap, PieChart as PieIcon } from 'lucide-react';
+import type { LineupItem } from '@/types';
 
-export function GenreBreakdown({ artists }: { artists: any[] }) {
+export function GenreBreakdown({ artists }: { artists: LineupItem[] }) {
   const data = useMemo(() => {
     const counts: Record<string, number> = {};
     artists.forEach(a => {

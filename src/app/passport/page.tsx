@@ -25,10 +25,12 @@ import { AchievementGallery } from '@/components/passport/achievement-gallery';
 import { DailyChallenges } from '@/components/passport/daily-challenges';
 import { FESTIVAL } from '@/config/festival';
 
+import type { ElementType } from 'react';
+
 interface Stamp {
   id: string;
   title: string;
-  icon: any;
+  icon: ElementType;
   description: string;
   category: 'stage' | 'utility' | 'food' | 'secret';
   color: string;
@@ -222,7 +224,7 @@ export default function PassportPage() {
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Packed (+2)</p>
               </div>
               <div>
-                <p className="text-3xl font-black" style={{ color: '#FAFF00' }}>{actsSeenCount}</p>
+                <p className="text-3xl font-black text-accent">{actsSeenCount}</p>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Acts Seen</p>
               </div>
               {FESTIVAL.features.ecoWarrior && (

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
+import { FESTIVAL } from '@/config/festival';
 
 interface Phrase {
   english: string;
@@ -98,7 +99,7 @@ function PhraseRow({ phrase }: { phrase: Phrase }) {
           <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>→</span>
           <span
             style={{
-              color: '#f5e642',
+              color: FESTIVAL.theme.accentHex,
               fontWeight: 900,
               fontSize: '0.95rem',
               letterSpacing: '-0.01em',
@@ -130,8 +131,8 @@ function PhraseRow({ phrase }: { phrase: Phrase }) {
           padding: '0.35rem 0.75rem',
           borderRadius: '0.5rem',
           border: '1px solid rgba(255,255,255,0.1)',
-          background: copied ? 'rgba(57,255,20,0.1)' : 'rgba(255,255,255,0.05)',
-          color: copied ? '#39ff14' : 'rgba(255,255,255,0.4)',
+          background: copied ? 'rgba(74,222,128,0.1)' : 'rgba(255,255,255,0.05)',
+          color: copied ? '#4ade80' : 'rgba(255,255,255,0.4)',
           cursor: 'pointer',
           fontSize: '0.65rem',
           fontWeight: 900,
@@ -169,7 +170,7 @@ export function HungarianPhrases() {
         <div key={cat.title}>
           <p
             style={{
-              color: '#f5e642',
+              color: FESTIVAL.theme.accentHex,
               fontSize: '0.6rem',
               fontWeight: 900,
               letterSpacing: '0.4em',

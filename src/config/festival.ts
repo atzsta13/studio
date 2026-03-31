@@ -126,6 +126,20 @@ export interface FestivalConfig {
     offlineBanner: boolean
     highContrast: boolean
   }
+  content: {
+    shuttleRoutes: Array<{
+      id: string
+      route: string
+      from: string
+      to: string
+      freq: string
+      active: string
+    }>
+    dictionaryTerms: Array<{
+      term: string
+      def: string
+    }>
+  }
 }
 
 export const FESTIVAL_CONFIGS: Record<string, FestivalConfig> = {

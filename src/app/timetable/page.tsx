@@ -13,21 +13,22 @@ import { FESTIVAL } from '@/config/festival';
 import Link from 'next/link';
 import { useFavorites } from '@/hooks/use-favorites';
 import { ClashResolver } from '@/components/timetable/clash-resolver';
+import type { LineupItem } from '@/types';
 
 export default function TimetablePage() {
   const [mounted, setMounted] = useState(false);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<'daypark' | 'nightpark'>('daypark');
   const theme = useTheme();
-  const { allFavoriteIds } = useFavorites(lineupCurrent as any[]);
+  const { allFavoriteIds } = useFavorites(lineupCurrent as LineupItem[]);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const currentLineup = useMemo(() => {
-    const base = (lineupCurrent as any[]);
+    const base = lineupCurrent as LineupItem[];
     if (FESTIVAL.features.dayparkNightpark) {
-      return base.filter(a => a.timeSlot === selectedTimeSlot);
+      return base.filter((a: LineupItem & { timeSlot?: string }) => a.timeSlot === selectedTimeSlot);
     }
     return base;
   }, [selectedTimeSlot]);
@@ -130,7 +131,7 @@ export default function TimetablePage() {
       <Box sx={{ flex: 1, position: 'relative' }}>
         <Container maxWidth="lg" sx={{ mt: 4 }}>
            {FESTIVAL.features.clashResolver && (
-             <ClashResolver favorites={(lineupCurrent as any[]).filter(a => allFavoriteIds.has(a.id))} />
+             <ClashResolver favorites={(lineupCurrent as LineupItem[]).filter(a => allFavoriteIds.has(a.id))} />
            )}
         </Container>
 

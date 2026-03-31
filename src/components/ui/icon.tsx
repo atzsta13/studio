@@ -1,8 +1,9 @@
 import {
-    Sparkles, HeartPulse, Gavel, Home, CalendarDays, Wand2, Map, LifeBuoy, Camera
+    Sparkles, HeartPulse, Gavel, Home, CalendarDays, Wand2, Map, LifeBuoy, Camera,
+    ShoppingBag, Trophy, Zap
 } from 'lucide-react';
 
-export type IconName = 'sparkles' | 'heart-pulse' | 'gavel' | 'home' | 'calendar-days' | 'wand-2' | 'map' | 'life-buoy' | 'camera';
+export type IconName = 'sparkles' | 'heart-pulse' | 'gavel' | 'home' | 'calendar-days' | 'wand-2' | 'map' | 'life-buoy' | 'camera' | 'shopping-bag' | 'trophy' | 'zap';
 
 interface IconProps extends React.HTMLAttributes<SVGElement> {
   name: IconName;
@@ -19,7 +20,10 @@ export function Icon({ name, size = 20, ...props }: IconProps) {
     'wand-2': Wand2,
     map: Map,
     'life-buoy': LifeBuoy,
-    camera: Camera
+    camera: Camera,
+    'shopping-bag': ShoppingBag,
+    trophy: Trophy,
+    zap: Zap,
   }[name] || Sparkles;
 
   return <LucideIcon size={size} {...props} />;

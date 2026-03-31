@@ -3,6 +3,13 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import lineup from '@/data/lineup.json';
 import { FESTIVAL } from '@/config/festival';
+import type { LineupItem } from '@/types';
+
+interface SpotifyTrackItem {
+  track: {
+    artists: Array<{ id: string; name: string }>;
+  } | null;
+}
 
 // Helper to extract Spotify Artist ID
 function getSpotifyId(url: string | null): string | null {
@@ -13,8 +20,8 @@ function getSpotifyId(url: string | null): string | null {
 
 // Build map of Spotify Artist ID -> Festival Artist ID
 const spotifyMap = new Map<string, string>();
-(lineup as any[]).forEach((artist) => {
-    const spotifyId = getSpotifyId(artist.socials?.spotify);
+(lineup as LineupItem[]).forEach((artist) => {
+    const spotifyId = getSpotifyId(artist.socials?.spotify ?? null);
     if (spotifyId) {
         spotifyMap.set(spotifyId, artist.id);
     }
@@ -63,11 +70,11 @@ export async function GET(request: NextRequest) {
         const debugMatches: { id: string, name: string }[] = [];
 
         // Process first page
-        const processItems = (trackItems: any[]) => {
-            trackItems.forEach((item: any) => {
+        const processItems = (trackItems: SpotifyTrackItem[]) => {
+            trackItems.forEach((item) => {
                 const track = item.track;
                 if (!track || !track.artists) return;
-                track.artists.forEach((artist: any) => {
+                track.artists.forEach((artist) => {
                     if (FestivalArtistIds.has(artist.id)) {
                         const festivalId = spotifyMap.get(artist.id);
                         if (festivalId) {

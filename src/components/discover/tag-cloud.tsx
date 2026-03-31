@@ -3,9 +3,10 @@
 import { useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import type { LineupItem } from '@/types';
 
 interface TagCloudProps {
-  artists: any[];
+  artists: LineupItem[];
   selectedGenre: string | null;
   onGenreSelect: (genre: string | null) => void;
   selectedVibe: string | null;

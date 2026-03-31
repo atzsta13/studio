@@ -6,8 +6,9 @@ import { Badge } from '@/components/ui/badge';
 import { Clock, Zap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { FESTIVAL } from '@/config/festival';
+import type { LineupItem } from '@/types';
 
-export function VibeOfTheHour({ artists }: { artists: any[] }) {
+export function VibeOfTheHour({ artists }: { artists: LineupItem[] }) {
   const currentArtist = useMemo(() => {
     // Deterministic selection based on hour
     const hour = new Date().getHours();

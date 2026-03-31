@@ -9,27 +9,53 @@ import { FESTIVAL } from '@/config/festival';
 interface TriviaProps {
   artistName: string;
   description: string;
+  countryCode?: string;
+  vibes?: string[];
 }
 
-export function ArtistTrivia({ artistName, description }: TriviaProps) {
+function buildQuestions(artistName: string, countryCode?: string, vibes?: string[]) {
+  const questions = [];
+
+  if (countryCode) {
+    const distractors = ['DE', 'US', 'GB', 'FR', 'SE', 'JP', 'AU', 'BR']
+      .filter(c => c !== countryCode)
+      .slice(0, 3);
+    const options = [...distractors, countryCode].sort();
+    const correct = options.indexOf(countryCode);
+    questions.push({
+      q: `What is ${artistName}'s country code?`,
+      options,
+      correct,
+    });
+  }
+
+  if (vibes && vibes.length > 0) {
+    const correctVibe = vibes[0];
+    const distractors = ['Chill', 'Heavy', 'Rave', 'Emotional', 'Dance', 'Dark', 'Uplifting']
+      .filter(v => !vibes.includes(v))
+      .slice(0, 3);
+    const options = [...distractors, correctVibe].sort();
+    const correct = options.indexOf(correctVibe);
+    questions.push({
+      q: `Which of these is a vibe tag for ${artistName}?`,
+      options,
+      correct,
+    });
+  }
+
+  return questions;
+}
+
+export function ArtistTrivia({ artistName, description, countryCode, vibes }: TriviaProps) {
+  const questions = buildQuestions(artistName, countryCode, vibes);
+  // Deterministic pick: use name length to index into questions
+  const questionIndex = artistName.length % Math.max(questions.length, 1);
+  const question = questions[questionIndex];
+
   const [selected, setSelected] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
 
-  // Simple heuristic trivia based on description length or country
-  const questions = [
-    {
-      q: `Which country is ${artistName} representing at ${FESTIVAL.name}?`,
-      options: ['Germany', 'United States', 'Japan', 'United Kingdom'],
-      correct: 2, // Mocked for now, logic can be more dynamic
-    },
-    {
-      q: `What is the primary vibe of ${artistName}'s set?`,
-      options: ['Chill', 'Heavy', 'Rave', 'Emotional'],
-      correct: 1,
-    }
-  ];
-
-  const question = questions[Math.floor(Math.random() * questions.length)];
+  if (!question) return null;
 
   return (
     <Card className="bg-indigo-600/10 border-indigo-500/20 shadow-2xl overflow-hidden rounded-[3rem] backdrop-blur-3xl mt-12">
@@ -53,9 +79,9 @@ export function ArtistTrivia({ artistName, description }: TriviaProps) {
                   setShowResult(true);
                 }}
                 className={`h-14 rounded-[1.2rem] font-bold text-left justify-between px-6 transition-all ${
-                  showResult 
-                    ? i === question.correct 
-                      ? 'bg-emerald-500/20 border-emerald-500 text-emerald-500' 
+                  showResult
+                    ? i === question.correct
+                      ? 'bg-emerald-500/20 border-emerald-500 text-emerald-500'
                       : i === selected ? 'bg-red-500/20 border-red-500 text-red-500' : 'opacity-40'
                     : 'hover:bg-indigo-500/10'
                 }`}

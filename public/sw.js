@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sziget-insider-cache-v3';
+const CACHE_NAME = 'festival-insider-cache-v3';
 
 // --- Lifecycle: Install ---
 self.addEventListener('install', (event) => {
@@ -12,7 +12,7 @@ self.addEventListener('activate', (event) => {
       // Clean up old caches
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName.startsWith('sziget-insider-cache-') && cacheName !== CACHE_NAME) {
+          if (cacheName.startsWith('festival-insider-cache-') && cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
         })

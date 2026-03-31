@@ -215,12 +215,8 @@ function GenreDnaCard({ score, uniqueGenreCount, artistCount, topGenres }: {
 }) {
     return (
         <section className="mb-12">
-            <div
-                className="rounded-[2.5rem] p-8 border"
-                style={{ backgroundColor: '#0A0A0A', borderColor: 'rgba(250,255,0,0.2)' }}
-            >
-                <p className="text-[11px] font-black uppercase tracking-[0.4em] mb-6"
-                    style={{ color: 'rgba(250,255,0,0.6)' }}>
+            <div className="rounded-[2.5rem] p-8 border bg-[#0A0A0A] border-accent/20">
+                <p className="text-[11px] font-black uppercase tracking-[0.4em] mb-6 text-accent/60">
                     Genre DNA
                 </p>
 
@@ -228,15 +224,15 @@ function GenreDnaCard({ score, uniqueGenreCount, artistCount, topGenres }: {
                     <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground/60">
                         Genre Diversity Score
                     </p>
-                    <p className="text-4xl font-black tracking-tighter" style={{ color: '#FAFF00' }}>
+                    <p className="text-4xl font-black tracking-tighter text-accent">
                         {score}
                     </p>
                 </div>
 
-                <div className="w-full rounded-full overflow-hidden mb-4" style={{ height: '10px', backgroundColor: 'rgba(255,255,255,0.08)' }}>
+                <div className="w-full rounded-full overflow-hidden mb-4 bg-white/[0.08]" style={{ height: '10px' }}>
                     <div
-                        className="h-full rounded-full transition-all duration-700"
-                        style={{ width: `${score}%`, backgroundColor: '#FAFF00' }}
+                        className="h-full rounded-full transition-all duration-700 bg-accent"
+                        style={{ width: `${score}%` }}
                     />
                 </div>
 
@@ -249,12 +245,7 @@ function GenreDnaCard({ score, uniqueGenreCount, artistCount, topGenres }: {
                         {topGenres.map((g) => (
                             <span
                                 key={g}
-                                className="px-4 py-1.5 rounded-full font-black uppercase text-[10px] tracking-widest"
-                                style={{
-                                    backgroundColor: 'rgba(250,255,0,0.1)',
-                                    color: '#FAFF00',
-                                    border: '1px solid rgba(250,255,0,0.3)',
-                                }}
+                                className="px-4 py-1.5 rounded-full font-black uppercase text-[10px] tracking-widest bg-accent/10 text-accent border border-accent/30"
                             >
                                 {g}
                             </span>

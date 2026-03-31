@@ -110,7 +110,7 @@ class SpotifyRepository(private val context: Context) {
                 val spotifyIds = mutableSetOf<String>()
                 var nextUrl: String? = "$API_URL/me/tracks?limit=50"
 
-                while (nextUrl != null && spotifyIds.size < 10000) {
+                while (nextUrl != null) {
                     val connection = URL(nextUrl).openConnection()
                     connection.setRequestProperty("Authorization", "Bearer $token")
 

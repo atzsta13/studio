@@ -89,13 +89,13 @@ const recommendArtistsFlow = ai.defineFlow(
       ...input,
       aiPersona: config.aiPersona,
       fullName: config.fullName,
-      artists: lineup.map((a: any) => ({
+      artists: (lineup as Array<{ id: string; artist: string; genres?: string[]; vibes?: string[]; description?: string }>).map(a => ({
         id: a.id,
         artist: a.artist,
-        genres: a.genres?.join(', '),
-        vibes: a.vibes?.join(', '),
-        description: a.description?.substring(0, 150)
-      })) as any
+        genres: a.genres?.join(', ') ?? '',
+        vibes: a.vibes?.join(', ') ?? '',
+        description: a.description?.substring(0, 150) ?? '',
+      }))
     });
     return output!;
   }

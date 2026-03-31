@@ -68,7 +68,7 @@ export function FavoriteButton({ artistId, size = 'lg' }: FavoriteButtonProps) {
                 className={`flex items-center justify-center rounded-2xl transition-all duration-500 ${
                     size === 'lg' ? 'h-16 px-8' : 'h-12 px-5'
                 } ${isSeen 
-                    ? 'bg-[#39FF14]/10 text-[#39FF14] border border-[#39FF14]/20 shadow-2xl shadow-[#39FF14]/10' 
+                    ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20 shadow-2xl shadow-emerald-400/10' 
                     : 'bg-muted/20 border border-white/5 text-muted-foreground hover:bg-muted/40 hover:text-foreground'
                 }`}
             >

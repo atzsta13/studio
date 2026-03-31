@@ -125,5 +125,9 @@
     "feedbackSystem": true,
     "offlineBanner": true,
     "highContrast": true
+  },
+  "content": {
+    "shuttleRoutes": [],
+    "dictionaryTerms": []
   }
 }

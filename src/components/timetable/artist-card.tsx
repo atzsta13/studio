@@ -5,6 +5,7 @@ import { Heart, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
 import Link from 'next/link';
+import { FESTIVAL } from '@/config/festival';
 
 interface ArtistCardProps {
   artist: LineupItem;
@@ -34,13 +35,13 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         borderRadius: '0.75rem',
         bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : '#0a0a0a',
         border: '1px solid rgba(255,255,255,0.06)',
-        borderLeft: isConflicting ? '4px solid #ef4444' : isFavorite ? '4px solid #ff0080' : '1px solid rgba(255,255,255,0.06)',
+        borderLeft: isConflicting ? '4px solid #ef4444' : isFavorite ? `4px solid ${FESTIVAL.theme.primaryHex}` : '1px solid rgba(255,255,255,0.06)',
         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
-        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isFavorite ? '0 10px 30px rgba(255,0,128,0.15)' : 'none',
+        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isFavorite ? `0 10px 30px ${FESTIVAL.theme.glowColor}` : 'none',
         '&:hover': {
           bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : '#141414',
-          borderColor: isConflicting ? '#ef4444' : isFavorite ? '#ff0080' : 'rgba(255,255,255,0.2)',
+          borderColor: isConflicting ? '#ef4444' : isFavorite ? FESTIVAL.theme.primaryHex : 'rgba(255,255,255,0.2)',
           zIndex: 50,
           transform: 'scale(1.02)'
         },
@@ -83,11 +84,11 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
 
         <Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
           {isFavorite && (
-            <Heart size={16} fill="#ff0080" color="#ff0080" style={{ marginTop: 2 }} />
+            <Heart size={16} fill={FESTIVAL.theme.primaryHex} color={FESTIVAL.theme.primaryHex} style={{ marginTop: 2 }} />
           )}
           {!isSmall && (
             <Link href={`/map?stage=${encodeURIComponent(artist.stage || "")}`} style={{ textDecoration: 'none' }}>
-              <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: '#00f2ff' } }}>
+              <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: FESTIVAL.theme.secondaryHex } }}>
                 <MapPin size={14} />
               </IconButton>
             </Link>
@@ -100,7 +101,7 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
           sx={{
             fontSize: '0.65rem',
             fontWeight: 900,
-            color: isFavorite ? '#ff0080' : '#00f2ff',
+            color: isFavorite ? FESTIVAL.theme.primaryHex : FESTIVAL.theme.secondaryHex,
             letterSpacing: '0.2em',
             mt: 'auto',
             opacity: 0.8

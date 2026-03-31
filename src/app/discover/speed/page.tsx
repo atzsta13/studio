@@ -14,11 +14,11 @@ import lineupData from '@/data/lineup.json';
 import { LineupItem } from '@/types';
 import { FESTIVAL } from '@/config/festival';
 
-const allArtists = (lineupData as any[]).map(a => ({
+const allArtists = (lineupData as LineupItem[]).map(a => ({
   ...a,
-  vibes: a.vibes || [],
+  vibes: a.vibes ?? [],
   returningHero: !!a.returningHero,
-})) as (LineupItem & { vibes: string[]; returningHero: boolean; lastYearStage?: string })[];
+}));
 
 export default function SpeedDiscoveryPage() {
   const haptic = useHaptic();

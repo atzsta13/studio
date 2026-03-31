@@ -6,13 +6,13 @@ import { Download, X, Smartphone, Sparkles } from 'lucide-react';
 import { FESTIVAL } from '@/config/festival';
 
 export default function InstallPrompt() {
-    const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+    const [deferredPrompt, setDeferredPrompt] = useState<Event & { prompt(): void; userChoice: Promise<{ outcome: string }> } | null>(null);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        const handler = (e: any) => {
+        const handler = (e: Event) => {
             e.preventDefault();
-            setDeferredPrompt(e);
+            setDeferredPrompt(e as Event & { prompt(): void; userChoice: Promise<{ outcome: string }> });
             // Show prompt after 5 seconds
             setTimeout(() => setShow(true), 5000);
         };

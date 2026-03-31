@@ -2,6 +2,11 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import lineup from '@/data/lineup.json';
 import { FESTIVAL } from '@/config/festival';
+import type { LineupItem } from '@/types';
+
+interface SpotifyTrack {
+  uri: string;
+}
 
 function getSpotifyId(url: string | null | undefined): string | null {
     if (!url) return null;
@@ -37,7 +42,7 @@ export async function POST(request: NextRequest) {
 
         // 2. Build festival artist ID → Spotify artist ID map
         const lineupMap = new Map<string, string>();
-        (lineup as any[]).forEach((a) => {
+        (lineup as LineupItem[]).forEach((a) => {
             const sid = getSpotifyId(a.socials?.spotify);
             if (sid) lineupMap.set(a.id, sid);
         });
@@ -53,8 +58,8 @@ export async function POST(request: NextRequest) {
                     { headers }
                 );
                 if (!tracksRes.ok) return;
-                const { tracks } = await tracksRes.json() as { tracks: any[] };
-                tracks.slice(0, 3).forEach((t) => trackUris.push(t.uri as string));
+                const { tracks } = await tracksRes.json() as { tracks: SpotifyTrack[] };
+                tracks.slice(0, 3).forEach((t) => trackUris.push(t.uri));
             })
         );
 

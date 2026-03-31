@@ -10,6 +10,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { FESTIVAL } from '@/config/festival';
 import { OfflineBanner } from '@/components/layout/offline-banner';
 import { InsiderProvider } from '@/components/insider-provider';
+import { ErrorBoundary } from '@/components/error-boundary';
 
 const themeStyle = `
   :root {
@@ -75,7 +76,9 @@ export default function RootLayout({
               <InstallPrompt />
               <div className="relative flex min-h-screen w-full flex-col">
                 <Header />
-                <main className="flex-1 pb-24 md:pb-0">{children}</main>
+                <main className="flex-1 pb-24 md:pb-0">
+                  <ErrorBoundary>{children}</ErrorBoundary>
+                </main>
                 <BottomNav />
               </div>
               <Toaster />

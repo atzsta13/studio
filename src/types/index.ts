@@ -8,6 +8,7 @@ export interface LineupItem {
   countryCode?: string;
   genres?: string[];
   festivalUrl?: string;
+  szigetUrl?: string;
   imageUrl?: string;
   socials?: {
     spotify?: string;
@@ -15,12 +16,15 @@ export interface LineupItem {
     instagram?: string;
     facebook?: string;
     x?: string;
+    twitter?: string;
     youtube?: string;
     website?: string;
     tiktok?: string;
+    soundcloud?: string;
   };
   description?: string;
   vibes?: string[];
+  isHeadliner?: boolean;
   returningHero?: boolean;
   lastYearStage?: string;
 }

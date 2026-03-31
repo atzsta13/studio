@@ -94,7 +94,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Link href="/discover" className="p-2 hover:bg-[#1a1a1a] rounded-lg transition">
-            <ChevronLeft className="w-6 h-6 text-[#FFED4E]" />
+            <ChevronLeft className="w-6 h-6 text-accent" />
           </Link>
           <h1 className="text-3xl font-bold uppercase tracking-wider">VIBE DNA</h1>
           <div className="w-10" />
@@ -172,7 +172,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
                 disabled={!canProceed()}
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
                   canProceed()
-                    ? 'bg-[#FFED4E] text-black hover:bg-white cursor-pointer'
+                    ? 'bg-accent text-black hover:bg-accent/80 cursor-pointer'
                     : 'bg-[#1a1a1a] text-gray-600 cursor-not-allowed border border-[#333333]'
                 }`}
               >
@@ -185,7 +185,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
                 disabled={!canProceed()}
                 className={`flex items-center gap-2 px-8 py-3 rounded-lg font-semibold transition-all uppercase tracking-wide ${
                   canProceed()
-                    ? 'bg-[#FF00FF] text-white hover:bg-[#FF33FF] cursor-pointer'
+                    ? 'bg-primary text-white hover:bg-primary/90 cursor-pointer'
                     : 'bg-[#1a1a1a] text-gray-600 cursor-not-allowed border border-[#333333]'
                 }`}
               >

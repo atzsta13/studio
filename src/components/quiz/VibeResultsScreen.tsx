@@ -54,7 +54,7 @@ export function VibeResultsScreen({
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <Link href="/vibe-quiz" className="p-2 hover:bg-[#1a1a1a] rounded-lg transition">
-            <ChevronLeft className="w-6 h-6 text-[#FFED4E]" />
+            <ChevronLeft className="w-6 h-6 text-accent" />
           </Link>
           <h1 className="text-3xl font-bold uppercase tracking-wider">
             Your Sound
@@ -73,7 +73,7 @@ export function VibeResultsScreen({
             >
               <div className="flex gap-4">
                 {/* Rank Badge */}
-                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-[#FFED4E] text-black font-bold text-lg">
+                <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-accent text-black font-bold text-lg">
                   #{index + 1}
                 </div>
 
@@ -112,8 +112,8 @@ export function VibeResultsScreen({
                   onClick={() => handleToggleFavorite(artist.id)}
                   className={`flex-shrink-0 p-2 rounded-lg transition-colors ${
                     favorites.has(artist.id)
-                      ? 'bg-[#FF00FF] text-white'
-                      : 'bg-[#1a1a1a] border border-[#333333] text-gray-400 hover:border-[#FF00FF] hover:text-[#FF00FF]'
+                      ? 'bg-primary text-white'
+                      : 'bg-card border border-border text-muted-foreground hover:border-primary hover:text-primary'
                   }`}
                 >
                   <Heart className="w-5 h-5" fill="currentColor" />
@@ -126,7 +126,7 @@ export function VibeResultsScreen({
                   {artist.vibes.slice(0, 4).map((vibe) => (
                     <span
                       key={vibe}
-                      className="text-xs px-2 py-1 bg-[#0a0a0a] text-[#FFED4E] rounded"
+                      className="text-xs px-2 py-1 bg-card text-accent rounded"
                     >
                       {vibe}
                     </span>
@@ -141,7 +141,7 @@ export function VibeResultsScreen({
         <div className="flex gap-4">
           <button
             onClick={handleSaveAll}
-            className="flex-1 px-6 py-3 bg-[#FF00FF] text-white font-semibold rounded-lg hover:bg-[#FF33FF] transition-colors uppercase tracking-wide"
+            className="flex-1 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors uppercase tracking-wide"
           >
             Save All as Favorites
           </button>

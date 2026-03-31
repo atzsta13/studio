@@ -123,7 +123,12 @@ export default function ArtistDetailPage() {
           </div>
 
           {FESTIVAL.features.artistTrivia && (
-            <ArtistTrivia artistName={artist.artist} description={artist.description || ''} />
+            <ArtistTrivia
+              artistName={artist.artist}
+              description={artist.description || ''}
+              countryCode={artist.countryCode}
+              vibes={artist.vibes}
+            />
           )}
 
           {FESTIVAL.features.setlistLinks && (
