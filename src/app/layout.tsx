@@ -8,6 +8,8 @@ import MuiRegistry from '@/components/mui-registry';
 import InstallPrompt from '@/components/install-prompt';
 import { ThemeProvider } from '@/components/theme-provider';
 import { FESTIVAL } from '@/config/festival';
+import { OfflineBanner } from '@/components/layout/offline-banner';
+import { InsiderProvider } from '@/components/insider-provider';
 
 const themeStyle = `
   :root {
@@ -66,16 +68,19 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <MuiRegistry>
-            <PwaLoader />
-            <InstallPrompt />
-            <div className="relative flex min-h-screen w-full flex-col">
-              <Header />
-              <main className="flex-1 pb-24 md:pb-0">{children}</main>
-              <BottomNav />
-            </div>
-            <Toaster />
-          </MuiRegistry>
+          <InsiderProvider>
+            <MuiRegistry>
+              <PwaLoader />
+              {FESTIVAL.features.offlineBanner && <OfflineBanner />}
+              <InstallPrompt />
+              <div className="relative flex min-h-screen w-full flex-col">
+                <Header />
+                <main className="flex-1 pb-24 md:pb-0">{children}</main>
+                <BottomNav />
+              </div>
+              <Toaster />
+            </MuiRegistry>
+          </InsiderProvider>
         </ThemeProvider>
       </body>
     </html>

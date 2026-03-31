@@ -3,21 +3,23 @@
 This document highlights the "core logic" files to help developers and AI agents navigate the codebase efficiently.
 
 ## 📱 Android (Native Jetpack Compose)
-- **`ui/schedule/ScheduleViewModel.kt`**: The "brain" of the timetable. Handles sorting, filtering by day, and complex clash detection.
-- **`ui/schedule/ScheduleScreen.kt`**: Advanced 2D scroll/zoom grid with performance culling.
-- **`ui/components/DesignSystem.kt`**: The single source of truth for the Brutalist UI tokens.
-- **`data/local/UserDao.kt`**: All Room database persistence (Favorites, XP, Stamps).
-- **`ui/navigation/Navigation.kt`**: Centralized route definitions and state passing via `SavedStateHandle`.
+- **`android/app/src/main/java/.../data/config/FestivalConfig.kt`**: The "brain" of the Android white-labeling. Switches themes and features based on `FESTIVAL_ID`.
+- **`android/app/src/main/java/.../ui/schedule/ScheduleViewModel.kt`**: Handles sorting, filtering, and clash detection.
+- **`android/app/src/main/java/.../ui/components/DesignSystem.kt`**: Brutalist UI tokens and theme definitions.
+- **`android/app/src/main/java/.../data/local/UserDao.kt`**: Persistence logic for favorites, XP, and stamps.
 
-## 🌐 Web (Next.js 15)
-- **`src/ai/flows/recommend-artists-flow.ts`**: The core AI logic using Genkit for personalized artist discovery.
-- **`src/lib/spotify.ts`**: Integration logic for Spotify Web API.
-- **`src/app/vibe-quiz/`**: The React implementation of the discovery quiz.
+## 🌐 Web (Next.js 16)
+- **`src/config/festival.ts`**: The central configuration loader for the Web app.
+- **`src/ai/flows/recommend-artists-flow.ts`**: Genkit-based AI logic for artist discovery.
+- **`src/lib/spotify.ts`**: Spotify Web API integration and playlist builder.
+- **`src/app/discover/page.tsx`**: The main discovery interface with AI and Spotify integration.
 
-## 📊 Data Layer
-- **`src/data/lineup.json`**: The **Source of Truth** for the 2026 lineup.
-- **`android/app/src/main/assets/lineup.json`**: A copy of the source data used by the mobile app. Sync via `sync.sh`.
+## 📊 Data Layer (White-Label)
+- **`festivals/<id>/config.json`**: **Master Source of Truth** for branding and features per festival.
+- **`festivals/<id>/data/lineup.json`**: Artist data for the specific festival.
+- **`src/data/`**: The active data package synced from `festivals/` at build time.
 
 ## 🛠️ Scripts
-- **`src/scripts/scrape_all_artists.js`**: Scraper for the official Sziget website.
-- **`update_vibes.js`**: Enrichment script that adds genre/vibe tags to the raw data.
+- **`scripts/sync-data.mjs`**: Orchestrates data movement from `festivals/` to `src/data/`.
+- **`src/scripts/scrape_all_artists.js`**: Multi-festival scraper for official lineups.
+- **`scripts/backfill-vibes.mjs`**: Enrichment script that adds vibe tags based on genres.

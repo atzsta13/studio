@@ -12,7 +12,12 @@ import {
   History,
   Zap,
   Flame,
-  Users
+  Users,
+  Accessibility,
+  VolumeX,
+  BatteryCharging,
+  Eye,
+  Crosshair
 } from 'lucide-react';
 import lineupCurrent from '@/data/lineup.json';
 import food from '@/data/food.json';
@@ -26,10 +31,12 @@ import { FESTIVAL } from '@/config/festival';
 
 export default function MapPage() {
   const [mounted, setMounted] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util' | 'access' | 'quiet' | 'charging'>('all');
   const [selectedPin, setSelectedPin] = useState<any>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
+  const [heatmapMode, setHeatmapMode] = useState(false);
+  const [arMode, setArMode] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -62,24 +69,37 @@ export default function MapPage() {
       data: f
     }));
 
-    const utilPins = (poiData as any[]).filter(p => p.type !== 'stage').map(p => ({
-      id: p.id,
-      name: p.name,
-      type: 'util',
-      subType: p.type,
-      x: p.mapCoords.x,
-      y: p.mapCoords.y,
-      icon: p.type === 'water' ? Droplet : p.type === 'first-aid' ? Activity : Info,
-      color: p.type === 'water' ? 'bg-blue-500' : p.type === 'first-aid' ? 'bg-red-500' : 'bg-amber-500',
-      data: p
-    }));
+    const utilPins = (poiData as any[]).filter(p => p.type !== 'stage').map(p => {
+       let type: any = 'util';
+       let color = 'bg-amber-500';
+       let icon: any = Info;
+
+       if (p.type === 'water') { type = 'util'; color = 'bg-blue-500'; icon = Droplet; }
+       else if (p.type === 'first-aid') { type = 'util'; color = 'bg-red-500'; icon = Activity; }
+       else if (p.type === 'accessibility') { type = 'access'; color = 'bg-indigo-500'; icon = Accessibility; }
+       else if (p.type === 'quiet-zone') { type = 'quiet'; color = 'bg-teal-500'; icon = VolumeX; }
+       else if (p.type === 'charging') { type = 'charging'; color = 'bg-yellow-500'; icon = BatteryCharging; }
+
+       return {
+          id: p.id,
+          name: p.name,
+          type,
+          subType: p.type,
+          x: p.mapCoords.x,
+          y: p.mapCoords.y,
+          icon,
+          color,
+          data: p
+       };
+    });
 
     return [...musicPins, ...foodPins, ...utilPins];
   }, [mounted]);
 
   const filteredPins = allPins.filter(pin => {
     if (hydrationMode) return (pin as any)?.subType === 'water';
-    return activeCategory === 'all' || pin?.type === activeCategory;
+    if (activeCategory === 'all') return true;
+    return pin?.type === activeCategory;
   });
 
   if (!mounted) return null;
@@ -98,15 +118,33 @@ export default function MapPage() {
         </div>
 
         {/* Filter Chips */}
-        <div className="flex flex-wrap gap-2 rounded-2xl bg-black/40 p-2 backdrop-blur-xl border border-white/10">
-          <Button size="sm" variant={activeCategory === 'all' ? 'default' : 'ghost'} onClick={() => setActiveCategory('all')} className="rounded-xl h-9 px-4">All</Button>
-          <Button size="sm" variant={activeCategory === 'music' ? 'default' : 'ghost'} onClick={() => setActiveCategory('music')} className="rounded-xl h-9 px-4 gap-2 text-primary"><Music className="h-4 w-4" /> Stages</Button>
-          <Button size="sm" variant={activeCategory === 'food' ? 'default' : 'ghost'} onClick={() => setActiveCategory('food')} className="rounded-xl h-9 px-4 gap-2 text-emerald-400"><Utensils className="h-4 w-4" /> Food</Button>
+        <div className="flex flex-wrap gap-2 rounded-2xl bg-black/40 p-2 backdrop-blur-xl border border-white/10 max-w-[80vw] overflow-x-auto no-scrollbar">
+          <Button size="sm" variant={activeCategory === 'all' ? 'default' : 'ghost'} onClick={() => setActiveCategory('all')} className="rounded-xl h-9 px-4 shrink-0">All</Button>
+          <Button size="sm" variant={activeCategory === 'music' ? 'default' : 'ghost'} onClick={() => setActiveCategory('music')} className="rounded-xl h-9 px-4 gap-2 text-primary shrink-0"><Music className="h-4 w-4" /> Stages</Button>
+          <Button size="sm" variant={activeCategory === 'food' ? 'default' : 'ghost'} onClick={() => setActiveCategory('food')} className="rounded-xl h-9 px-4 gap-2 text-emerald-400 shrink-0"><Utensils className="h-4 w-4" /> Food</Button>
+          
+          {FESTIVAL.features.accessibilityMap && (
+            <Button size="sm" variant={activeCategory === 'access' ? 'default' : 'ghost'} onClick={() => setActiveCategory('access')} className="rounded-xl h-9 px-4 gap-2 text-indigo-400 shrink-0"><Accessibility className="h-4 w-4" /> Access</Button>
+          )}
+          
+          {FESTIVAL.features.quietZones && (
+            <Button size="sm" variant={activeCategory === 'quiet' ? 'default' : 'ghost'} onClick={() => setActiveCategory('quiet')} className="rounded-xl h-9 px-4 gap-2 text-teal-400 shrink-0"><VolumeX className="h-4 w-4" /> Quiet</Button>
+          )}
+
+          {FESTIVAL.features.chargingStations && (
+            <Button size="sm" variant={activeCategory === 'charging' ? 'default' : 'ghost'} onClick={() => setActiveCategory('charging')} className="rounded-xl h-9 px-4 gap-2 text-yellow-400 shrink-0"><BatteryCharging className="h-4 w-4" /> Charge</Button>
+          )}
         </div>
       </div>
 
       {/* Floating Survival FAB */}
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
+        {FESTIVAL.features.arStageView && (
+           <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${arMode ? 'bg-indigo-600 border-indigo-400' : 'bg-black/60 border-white/20'}`} onClick={() => setArMode(!arMode)}><Eye className={`h-6 w-6 ${arMode ? 'text-white' : 'text-indigo-400'} `} /></Button>
+        )}
+        {FESTIVAL.features.crowdHeatmap && (
+           <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${heatmapMode ? 'bg-orange-600 border-orange-400' : 'bg-black/60 border-white/20'}`} onClick={() => setHeatmapMode(!heatmapMode)}><Users className={`h-6 w-6 ${heatmapMode ? 'text-white' : 'text-orange-400'} `} /></Button>
+        )}
         <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${hydrationMode ? 'bg-blue-500 border-blue-300' : 'bg-black/60 border-white/20'}`} onClick={() => setHydrationMode(!hydrationMode)}><Droplet className={`h-6 w-6 ${hydrationMode ? 'text-white' : 'text-blue-400'} `} /></Button>
         <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${showTools ? 'bg-emerald-600 border-emerald-400' : 'bg-black/60 border-white/20'}`} onClick={() => { setShowTools(!showTools); setSelectedPin(null); }}><Zap className={`h-6 w-6 ${showTools ? 'text-white' : 'text-yellow-400'} `} /></Button>
       </div>
@@ -124,9 +162,32 @@ export default function MapPage() {
         </div>
       )}
 
-      {/* The Visual Map Area */}
+      {/* Visual Map Area */}
       <div className="relative flex-1">
-        <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode ? 'scale-110' : ''}`}>
+        {arMode && (
+           <div className="absolute inset-0 z-10 bg-indigo-950/20 backdrop-blur-[2px] flex items-center justify-center pointer-events-none animate-in fade-in duration-1000">
+              <div className="relative w-full h-full flex items-center justify-center">
+                 <div className="w-64 h-64 border-2 border-indigo-500/40 rounded-full animate-ping" />
+                 <div className="absolute w-full h-[1px] bg-indigo-500/20" />
+                 <div className="absolute h-full w-[1px] bg-indigo-500/20" />
+                 
+                 {allPins.filter(p => p.type === 'music').map((p, i) => (
+                    <div 
+                      key={i} 
+                      className="absolute px-4 py-2 bg-indigo-600/80 text-white rounded-lg border border-indigo-400 text-[8px] font-black uppercase tracking-widest animate-bounce"
+                      style={{ 
+                        left: `${p.x}%`, 
+                        top: `${p.y}%`,
+                        animationDelay: `${i * 0.2}s`
+                      }}
+                    >
+                       {p.name} · {Math.floor(Math.random() * 500) + 100}m
+                    </div>
+                 ))}
+              </div>
+           </div>
+        )}
+        <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode || arMode ? 'scale-110' : ''}`}>
           <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
             
             {/* Dynamic Map Asset */}
@@ -137,7 +198,15 @@ export default function MapPage() {
             />
 
             {/* Coordinate Layer */}
-            <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" />
+            <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+               {heatmapMode && (
+                  <g className="animate-pulse opacity-40">
+                     <circle cx="20" cy="30" r="15" fill="rgba(255,0,0,0.5)" filter="blur(8px)" />
+                     <circle cx="70" cy="50" r="20" fill="rgba(255,165,0,0.5)" filter="blur(10px)" />
+                     <circle cx="40" cy="80" r="12" fill="rgba(255,0,0,0.5)" filter="blur(6px)" />
+                  </g>
+               )}
+            </svg>
 
             {filteredPins.map((pin) => {
               if (!pin || !pin.icon) return null;

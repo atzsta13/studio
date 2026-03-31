@@ -19,16 +19,28 @@ import {
   MapPin,
   Share2,
   Languages,
-  ArrowRight
+  ArrowRight,
+  BookOpen,
+  Bus,
+  Radar
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { WeatherWidget } from '@/components/tools/weather-widget';
+import { WeatherRadar } from '@/components/tools/weather-radar';
 import { HungarianPhrases } from '@/components/tools/hungarian-phrases';
 import { CampsiteChecklist } from '@/components/tools/campsite-checklist';
+import { HydrationTracker } from '@/components/tools/hydration-tracker';
+import { BudgetTracker } from '@/components/tools/budget-tracker';
+import { NotesJournal } from '@/components/tools/notes-journal';
+import { SOSMorse } from '@/components/tools/sos-morse';
+import { FeedbackSystem } from '@/components/tools/feedback-system';
+import { CarFinder } from '@/components/tools/car-finder';
+import { useInsider } from '@/components/insider-provider';
 import { FESTIVAL } from '@/config/festival';
 
 export default function ToolsPage() {
   const { toast } = useToast();
+  const { batterySaver, toggleBatterySaver: toggleBattery } = useInsider();
   const [localAmount, setLocalAmount] = useState<string>(FESTIVAL.currency.localCode === 'HUF' ? '1000' : '10');
   const [isFlashOn, setIsFlashOn] = useState(false);
 
@@ -71,7 +83,24 @@ export default function ToolsPage() {
             />
           </div>
 
+          {FESTIVAL.features.sunscreenAlert && (
+            <Card className="mb-10 bg-orange-500 text-black border-none shadow-2xl rounded-[2.5rem] p-6 flex items-center gap-6 animate-in slide-in-from-top-4 duration-1000">
+               <div className="p-4 bg-black/10 rounded-2xl">
+                 <Sun size={32} />
+               </div>
+               <div className="flex-1">
+                 <p className="font-black uppercase tracking-widest text-[10px] mb-1">UV Alert</p>
+                 <p className="font-bold text-lg leading-tight">Extreme Exposure. Reapply SPF 50 now.</p>
+               </div>
+               <Button variant="ghost" className="rounded-full h-12 w-12 border-2 border-black/20 p-0 font-black text-lg">✕</Button>
+            </Card>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+            {FESTIVAL.features.hydrationTracker && (
+              <HydrationTracker />
+            )}
+
             {FESTIVAL.features.currencyConverter && (
               <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
                 <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
@@ -105,30 +134,6 @@ export default function ToolsPage() {
                 </CardContent>
               </Card>
             )}
-
-            {FESTIVAL.features.cashlessLink && (
-              <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
-                <CardHeader className="bg-blue-500/10 border-b border-blue-500/10 px-10 py-8">
-                  <CardTitle className="flex items-center gap-4 text-blue-500 text-2xl font-black uppercase italic tracking-tighter">
-                    <QrCode size={32} />
-                    Cashless Wallet
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-10 flex flex-col justify-center items-center gap-6">
-                   <p className="text-lg font-medium text-muted-foreground text-center italic opacity-80">
-                     Manage your RFID wristband and top up your balance.
-                   </p>
-                   <Button
-                     asChild
-                     className="w-full h-16 rounded-[1.5rem] bg-blue-600 hover:bg-blue-700 font-black uppercase tracking-[0.2em] text-[11px]"
-                   >
-                     <a href={FESTIVAL.features.cashlessUrl} target="_blank" rel="noopener noreferrer">
-                       Top Up Wristband <ArrowRight className="ml-2 h-4 w-4" />
-                     </a>
-                   </Button>
-                </CardContent>
-              </Card>
-            )}
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
@@ -143,7 +148,14 @@ export default function ToolsPage() {
 
             <TabsContent value="survival" className="space-y-10">
               <WeatherWidget />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {FESTIVAL.features.weatherRadar && <WeatherRadar />}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {FESTIVAL.features.budgetTracker && <BudgetTracker />}
+                {FESTIVAL.features.notesJournal && <NotesJournal />}
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {FESTIVAL.features.carFinder && <CarFinder />}
                 <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl relative overflow-hidden group backdrop-blur-3xl">
                   <div className="absolute right-[-20px] top-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-1000">
                     <Sun size={160} />
@@ -162,6 +174,54 @@ export default function ToolsPage() {
                     </div>
                   </div>
                 </Card>
+
+                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                  <div className="flex items-center gap-6 mb-8">
+                    <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
+                      <Ear size={40} />
+                    </div>
+                    <h4 className="font-black text-2xl uppercase italic tracking-tighter">Audio Monitor</h4>
+                  </div>
+                  <div className="h-10 bg-muted/20 rounded-full overflow-hidden mb-6 shadow-inner p-1">
+                    <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500 rounded-full" />
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
+                    <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
+                  </div>
+                </Card>
+              </div>
+
+              {FESTIVAL.features.sosMorseCode && <SOSMorse />}
+
+              {FESTIVAL.features.batterySaver && (
+                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl mt-10">
+                  <div className="flex items-center justify-between gap-6">
+                    <div className="flex items-center gap-6">
+                      <div className={`p-5 rounded-[2rem] ${batterySaver ? 'bg-emerald-500/10 text-emerald-500' : 'bg-yellow-500/10 text-yellow-500'} shadow-inner`}>
+                        <Zap size={40} />
+                      </div>
+                      <div>
+                        <h4 className="font-black text-2xl uppercase italic tracking-tighter">Battery Saver</h4>
+                        <p className="text-sm font-medium text-muted-foreground opacity-60 italic leading-snug">Disables animations and effects to save power.</p>
+                      </div>
+                    </div>
+                    <Button 
+                      onClick={toggleBattery}
+                      variant={batterySaver ? "secondary" : "outline"}
+                      className={`h-16 px-10 rounded-2xl font-black uppercase tracking-widest text-[11px] ${batterySaver ? 'bg-emerald-600 text-white border-none' : ''}`}
+                    >
+                      {batterySaver ? 'ENABLED' : 'ACTIVATE'}
+                    </Button>
+                  </div>
+                </Card>
+              )}
+              
+              <Button onClick={toggleFlash} variant="destructive" className="mt-8 w-full h-24 rounded-[2.5rem] font-black uppercase tracking-[0.4em] text-2xl shadow-2xl gap-6 transition-all hover:scale-[1.02] active:scale-95">
+                <Zap size={32} />
+                SOS BEACON
+              </Button>
+            </TabsContent>
 
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -211,6 +271,7 @@ export default function ToolsPage() {
             </TabsContent>
 
             <TabsContent value="safety" className="space-y-10">
+              {FESTIVAL.features.feedbackSystem && <FeedbackSystem />}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <Card className="p-10 bg-red-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
                   <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
@@ -252,6 +313,40 @@ export default function ToolsPage() {
                   </div>
                 </Card>
               </div>
+
+              {FESTIVAL.features.shuttleTimetable && (
+                <Link href="/tools/shuttle" className="block mt-10">
+                  <Card className="p-10 bg-emerald-600/20 border border-emerald-500/20 shadow-2xl rounded-[3.5rem] hover:bg-emerald-600/30 transition-all group">
+                    <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-6">
+                          <div className="p-5 rounded-[2rem] bg-emerald-500/20 text-emerald-400 group-hover:scale-110 transition-transform shadow-inner"><Bus size={40} /></div>
+                          <div>
+                             <h4 className="font-black text-2xl uppercase italic tracking-tighter text-emerald-400">Shuttle Timetable</h4>
+                             <p className="text-sm font-medium text-emerald-400/60 italic leading-snug">Official routes and airport connection schedules.</p>
+                          </div>
+                       </div>
+                       <ArrowRight className="text-emerald-400/40 group-hover:translate-x-2 transition-transform" />
+                    </div>
+                  </Card>
+                </Link>
+              )}
+
+              {FESTIVAL.features.festivalDictionary && (
+                <Link href="/tools/dictionary" className="block mt-10">
+                  <Card className="p-10 bg-indigo-600/20 border border-indigo-500/20 shadow-2xl rounded-[3.5rem] hover:bg-indigo-600/30 transition-all group">
+                    <div className="flex items-center justify-between">
+                       <div className="flex items-center gap-6">
+                          <div className="p-5 rounded-[2rem] bg-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform shadow-inner"><BookOpen size={40} /></div>
+                          <div>
+                             <h4 className="font-black text-2xl uppercase italic tracking-tighter text-indigo-400">Festival Dictionary</h4>
+                             <p className="text-sm font-medium text-indigo-400/60 italic leading-snug">Master the local island terminology and slang.</p>
+                          </div>
+                       </div>
+                       <ArrowRight className="text-indigo-400/40 group-hover:translate-x-2 transition-transform" />
+                    </div>
+                  </Card>
+                </Link>
+              )}
             </TabsContent>
 
             {FESTIVAL.location.countryCode === 'HU' && (

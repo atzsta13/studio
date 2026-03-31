@@ -11,11 +11,14 @@ import Button from '@mui/material/Button';
 import { useTheme, alpha } from '@mui/material/styles';
 import { FESTIVAL } from '@/config/festival';
 import Link from 'next/link';
+import { useFavorites } from '@/hooks/use-favorites';
+import { ClashResolver } from '@/components/timetable/clash-resolver';
 
 export default function TimetablePage() {
   const [mounted, setMounted] = useState(false);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<'daypark' | 'nightpark'>('daypark');
   const theme = useTheme();
+  const { allFavoriteIds } = useFavorites(lineupCurrent as any[]);
 
   useEffect(() => {
     setMounted(true);
@@ -125,6 +128,12 @@ export default function TimetablePage() {
       </Box>
 
       <Box sx={{ flex: 1, position: 'relative' }}>
+        <Container maxWidth="lg" sx={{ mt: 4 }}>
+           {FESTIVAL.features.clashResolver && (
+             <ClashResolver favorites={(lineupCurrent as any[]).filter(a => allFavoriteIds.has(a.id))} />
+           )}
+        </Container>
+
         {hasSchedule ? (
           <TimetableView key={selectedTimeSlot} lineup={currentLineup} />
         ) : (

@@ -40,6 +40,8 @@ import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
 import { SerendipityModal } from '@/components/discover/SerendipityModal';
 import { TagCloud } from '@/components/discover/tag-cloud';
+import { GenreBreakdown } from '@/components/discover/genre-breakdown';
+import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
 import { FESTIVAL } from '@/config/festival';
@@ -384,6 +386,12 @@ export default function DiscoverPage() {
           Curate your personal journey at {FESTIVAL.name}.
         </p>
 
+        {FESTIVAL.features.vibeOfTheHour && (
+          <div className="mt-16 max-w-5xl mx-auto px-6">
+             <VibeOfTheHour artists={allArtists} />
+          </div>
+        )}
+
         <div className="mt-16 max-w-lg mx-auto px-6">
           <div className="flex justify-between items-end mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
             <span>{FESTIVAL.name} Discovery</span>
@@ -411,6 +419,22 @@ export default function DiscoverPage() {
               <Shuffle className="h-6 w-6" />
               SURPRISE ME
             </button>
+
+            {/* Surprise Roulette */}
+            {FESTIVAL.features.surpriseRoulette && (
+              <button
+                onClick={() => {
+                  haptic.successBurst();
+                  const unvisited = allArtists.filter(a => !allFavoriteIds.has(a.id));
+                  const random = unvisited[Math.floor(Math.random() * unvisited.length)];
+                  if (random) router.push(`/artist/${random.id}`);
+                }}
+                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-[#FFD700] hover:bg-[#FFEE00] text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-[#FFD700]/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <Shuffle className="h-6 w-6" />
+                ROULETTE
+              </button>
+            )}
 
             {/* Speed Discovery */}
             <Link href="/discover/speed">
@@ -605,6 +629,12 @@ export default function DiscoverPage() {
         selectedVibe={selectedVibe}
         onVibeSelect={handleVibeSelect}
       />
+
+      {FESTIVAL.features.genreBreakdown && (
+        <div className="max-w-5xl mx-auto mt-12 mb-20 px-6">
+           <GenreBreakdown artists={allArtists} />
+        </div>
+      )}
 
       <div className="min-h-[600px]">
         {viewMode === 'ai' && aiResult && (

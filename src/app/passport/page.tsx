@@ -18,9 +18,11 @@ import {
   Star,
   Navigation,
   Clock,
-  Wand2
+  Wand2,
+  QrCode
 } from 'lucide-react';
-import { AchievementBadges } from '@/components/passport/achievement-badges';
+import { AchievementGallery } from '@/components/passport/achievement-gallery';
+import { DailyChallenges } from '@/components/passport/daily-challenges';
 import { FESTIVAL } from '@/config/festival';
 
 interface Stamp {
@@ -206,29 +208,57 @@ export default function PassportPage() {
               <Progress value={xpProgress} className="h-4 bg-muted/30" />
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mt-8 pt-8 border-t border-white/5">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 text-center mt-8 pt-8 border-t border-white/5">
               <div>
                 <p className="text-3xl font-black">{unlocked.length}</p>
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Stamps (+50 XP/ea)</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Stamps (+50)</p>
               </div>
               <div>
                 <p className="text-3xl font-black">{favoritesCount}</p>
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Favorites (+10 XP/ea)</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Favs (+10)</p>
               </div>
               <div>
                 <p className="text-3xl font-black">{packingCount}</p>
-                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Packed (+2 XP/ea)</p>
+                <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Packed (+2)</p>
               </div>
               <div>
                 <p className="text-3xl font-black" style={{ color: '#FAFF00' }}>{actsSeenCount}</p>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Acts Seen</p>
               </div>
+              {FESTIVAL.features.ecoWarrior && (
+                <div>
+                  <p className="text-3xl font-black text-emerald-500">{(unlocked.length * 5)}</p>
+                  <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/60">Eco XP</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      <AchievementBadges />
+      {FESTIVAL.features.dailyChallenges && <DailyChallenges />}
+
+      {FESTIVAL.features.achievements && <AchievementGallery />}
+
+      {FESTIVAL.features.friendFinder && (
+        <Card className="bg-primary/5 border border-primary/20 shadow-2xl overflow-hidden rounded-[3.5rem] mt-20 p-12 text-center relative">
+          <div className="absolute top-[-40px] right-[-40px] opacity-5 blur-[80px] bg-primary w-80 h-80 rounded-full" />
+          <div className="mx-auto mb-10 flex h-32 w-32 items-center justify-center rounded-[2.5rem] bg-primary/10 border border-primary/20 shadow-2xl">
+            <QrCode className="h-16 w-16 text-primary" />
+          </div>
+          <h2 className="text-5xl font-black uppercase italic tracking-tighter mb-4">My Squad Code</h2>
+          <p className="mx-auto max-w-md text-lg font-medium text-muted-foreground leading-relaxed italic mb-10 opacity-70">
+            Share this code with your friends to merge your schedules and track each other on the Island.
+          </p>
+          <div className="bg-white p-8 rounded-[2rem] inline-block shadow-2xl mb-10 transition-transform hover:scale-105">
+             {/* Mock QR placeholder */}
+             <div className="w-48 h-48 bg-black flex items-center justify-center p-4">
+                <div className="w-full h-full border-4 border-white border-dashed opacity-20" />
+             </div>
+          </div>
+          <p className="text-3xl font-black tracking-[0.5em] text-primary uppercase italic">SZ-{FESTIVAL.id.substring(0,3).toUpperCase()}-42K</p>
+        </Card>
+      )}
     </div>
   );
 }

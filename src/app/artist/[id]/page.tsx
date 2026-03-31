@@ -1,4 +1,6 @@
-import { notFound } from 'next/navigation';
+'use client';
+
+import { useParams, notFound } from 'next/navigation';
 import lineup from '@/data/lineup.json';
 import type { LineupItem } from '@/types';
 import { format } from 'date-fns';
@@ -24,14 +26,12 @@ import {
 } from 'react-icons/si';
 import { FaGlobe } from 'react-icons/fa6';
 import { FavoriteButton } from '@/components/artist/favorite-button';
+import { ArtistTrivia } from '@/components/artist/artist-trivia';
+import { SetCountdown } from '@/components/artist/set-countdown';
+import { SetlistLinks } from '@/components/artist/setlist-links';
+import { FESTIVAL } from '@/config/festival';
 
 const allArtists: LineupItem[] = lineup as unknown as LineupItem[];
-
-export async function generateStaticParams() {
-  return allArtists.map((artist) => ({
-    id: artist.id,
-  }));
-}
 
 function getArtist(id: string): LineupItem | undefined {
   return allArtists.find((artist) => artist.id === id);
@@ -56,8 +56,8 @@ const getFlagEmoji = (countryCode: string | undefined) => {
   } catch (e) { return ''; }
 };
 
-export default async function ArtistDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
+export default function ArtistDetailPage() {
+  const { id } = useParams() as { id: string };
   const artist = getArtist(id) as (LineupItem & { vibes?: string[] }) | undefined;
 
   if (!artist) {
@@ -84,7 +84,7 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
   return (
     <div className="container mx-auto max-w-4xl px-4 py-8 pb-32">
       <div className="mb-6 flex justify-between items-center">
-        <Button asChild variant="ghost" className="rounded-xl">
+        <Button asChild variant="ghost" className="rounded-xl text-muted-foreground">
           <Link href="/discover" className="hover:text-primary transition-colors">
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Finder
@@ -92,113 +92,129 @@ export default async function ArtistDetailPage({ params }: { params: Promise<{ i
         </Button>
       </div>
 
+      {FESTIVAL.features.setCountdowns && artist.startTime && (
+        <div className="mb-8">
+           <SetCountdown startTime={artist.startTime} />
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         <div className="lg:col-span-5">
           {artist.imageUrl && (
-            <div className="overflow-hidden rounded-[2.5rem] bg-muted shadow-xl mb-6 border border-border/50">
-              <img src={artist.imageUrl} alt={artist.artist} className="w-full h-auto object-cover aspect-square" />
+            <div className="overflow-hidden rounded-[2.5rem] bg-muted shadow-xl mb-6 border border-border/50 group relative">
+              <img src={artist.imageUrl} alt={artist.artist} className="w-full h-auto object-cover aspect-square transition-transform duration-1000 group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           )}
 
-          <div className="rounded-[2rem] border bg-card p-6 shadow-sm space-y-4">
-            <div className="flex items-center gap-3">
-              <Calendar className="h-5 w-5 text-primary" />
-              <div><p className="text-[10px] font-black uppercase text-muted-foreground">Day</p><p className="font-semibold">{artist.day || 'TBD'}</p></div>
+          <div className="rounded-[2rem] border bg-card/50 backdrop-blur-3xl p-8 shadow-2xl space-y-6">
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 text-primary"><Calendar className="h-5 w-5" /></div>
+              <div><p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Day</p><p className="font-black italic">{artist.day || 'TBD'}</p></div>
             </div>
-            <div className="flex items-center gap-3">
-              <Clock className="h-5 w-5 text-primary" />
-              <div><p className="text-[10px] font-black uppercase text-muted-foreground">Time</p><p className="font-semibold">{artist.startTime ? `${startTime} - ${endTime}` : 'Schedule TBA'}</p></div>
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 text-primary"><Clock className="h-5 w-5" /></div>
+              <div><p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Time</p><p className="font-black italic">{artist.startTime ? `${startTime} - ${endTime}` : 'Schedule TBA'}</p></div>
             </div>
-            <div className="flex items-center gap-3">
-              <Building className="h-5 w-5 text-primary" />
-              <div><p className="text-[10px] font-black uppercase text-muted-foreground">Stage</p><p className="font-semibold">{artist.stage || 'TBA'}</p></div>
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-xl bg-primary/10 text-primary"><Building className="h-5 w-5" /></div>
+              <div><p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Stage</p><p className="font-black italic uppercase">{artist.stage || 'TBA'}</p></div>
             </div>
           </div>
+
+          {FESTIVAL.features.artistTrivia && (
+            <ArtistTrivia artistName={artist.artist} description={artist.description || ''} />
+          )}
+
+          {FESTIVAL.features.setlistLinks && (
+            <SetlistLinks artistName={artist.artist} />
+          )}
         </div>
 
         <div className="lg:col-span-7">
           <header className="mb-6">
-            <h1 className="font-headline text-4xl font-black tracking-tight flex items-center gap-3 mb-2 uppercase italic leading-none">
-              <span suppressHydrationWarning className="drop-shadow-lg">{getFlagEmoji(artist.countryCode)}</span>
+            <h1 className="font-headline text-5xl md:text-7xl font-black tracking-tighter flex items-center gap-4 mb-4 uppercase italic leading-none">
+              <span suppressHydrationWarning className="drop-shadow-2xl">{getFlagEmoji(artist.countryCode)}</span>
               <span>{artist.artist}</span>
             </h1>
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-2 mb-8">
               {artist.genres?.filter(g => g !== 'MUSIC').map(genre => (
-                <Badge key={genre} variant="secondary" className="px-3 py-1 font-black text-[10px] uppercase tracking-widest rounded-full">{genre}</Badge>
+                <Badge key={genre} variant="secondary" className="px-5 py-1.5 font-black text-[10px] uppercase tracking-widest rounded-full bg-white/5 border border-white/5">{genre}</Badge>
               ))}
             </div>
           </header>
 
-          <article className="prose prose-invert max-w-none mb-8">
-            <p className="text-muted-foreground leading-relaxed text-lg font-medium opacity-90">
+          <article className="prose prose-invert max-w-none mb-12">
+            <p className="text-muted-foreground leading-relaxed text-xl font-medium opacity-90 italic">
               {artist.description || "No description available for this artist yet. Stay tuned for the scout report."}
             </p>
           </article>
 
-
-
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-4 mb-10">
             {socialLinks.map(link => (
-              <Button asChild variant="outline" size="icon" key={link.platform} className="h-12 w-12 rounded-2xl hover:bg-primary hover:text-white transition-all border-border shadow-sm">
+              <Button asChild variant="outline" size="icon" key={link.platform} className="h-14 w-14 rounded-2xl hover:bg-primary hover:text-white transition-all border-white/5 bg-white/5 shadow-2xl">
                 <a href={link.url} target="_blank" rel="noopener noreferrer" title={link.platform}>
-                  <link.icon className="h-5 w-5" />
+                  <link.icon className="h-6 w-6" />
                 </a>
               </Button>
             ))}
           </div>
 
-          {/* Two-tier favorites + saw this set */}
-          <div className="mb-8">
+          <div className="mb-10">
             <FavoriteButton artistId={artist.id} />
           </div>
 
-          <Button asChild size="lg" className="w-full sm:w-auto h-16 px-10 rounded-2xl shadow-xl shadow-primary/20 font-black uppercase tracking-widest text-sm">
+          <Button asChild size="lg" className="w-full h-20 rounded-[2rem] shadow-2xl shadow-primary/20 font-black uppercase tracking-[0.3em] text-base transition-all hover:scale-[1.02] active:scale-95">
             <Link href={`/timetable?day=${artist.day || ''}`}>Add to My Timetable</Link>
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-border/50 pt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 border-t border-white/5 pt-12">
         <section>
-          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Vibe Radar</h3>
-          <div className="flex flex-wrap gap-3 mb-12">
+          <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Vibe Radar</h3>
+          <div className="flex flex-wrap gap-3 mb-16">
             {artist.vibes?.map(vibe => (
-              <Badge key={vibe} variant="outline" className="px-5 py-2.5 border-primary/30 text-primary font-black uppercase tracking-widest text-[9px] rounded-full">
+              <Badge key={vibe} variant="outline" className="px-6 py-3 border-primary/30 text-primary font-black uppercase tracking-widest text-[10px] rounded-full bg-primary/5">
                 {vibe}
               </Badge>
-            )) || <p className="text-muted-foreground font-medium">Scouting vibes...</p>}
+            )) || <p className="text-muted-foreground font-medium italic">Scouting vibes...</p>}
           </div>
 
-          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
-          <div className="grid grid-cols-2 gap-4">
-            {similar.map(a => (
-              <Link key={a.id} href={`/artist/${a.id}`} className="group block">
-                <div className="aspect-square rounded-[2rem] bg-muted overflow-hidden mb-3 relative border border-border/50 shadow-md">
-                  <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
-                    <UserPlus className="text-white h-8 w-8" />
-                  </div>
-                </div>
-                <p className="font-black uppercase italic text-[10px] tracking-tight truncate px-2">{a.artist}</p>
-              </Link>
-            ))}
-          </div>
+          {FESTIVAL.features.similarArtists && (
+            <>
+              <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {similar.map(a => (
+                  <Link key={a.id} href={`/artist/${a.id}`} className="group block">
+                    <div className="aspect-square rounded-[2rem] bg-muted overflow-hidden mb-3 relative border border-white/5 shadow-2xl">
+                      <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                        <UserPlus className="text-white h-10 w-10" />
+                      </div>
+                    </div>
+                    <p className="font-black uppercase italic text-[10px] tracking-tight truncate px-2 text-center">{a.artist}</p>
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         <section>
-          <h3 className="mb-8 text-2xl font-black uppercase italic tracking-tighter">Island Listen</h3>
+          <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Island Listen</h3>
           {spotifyArtistId ? (
-            <div className="rounded-[2.5rem] overflow-hidden shadow-2xl bg-muted border border-border/50">
+            <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-black border border-white/5 p-4">
               <iframe
                 src={`https://open.spotify.com/embed/artist/${spotifyArtistId}?utm_source=generator&theme=0`}
                 width="100%" height="380" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"
-                className="opacity-95"
+                className="rounded-[2.5rem]"
               ></iframe>
             </div>
           ) : (
-            <div className="flex aspect-video w-full flex-col items-center justify-center rounded-[2.5rem] bg-muted border border-dashed border-border text-center p-12">
+            <div className="flex aspect-video w-full flex-col items-center justify-center rounded-[3rem] bg-muted/20 border border-dashed border-white/10 text-center p-12">
               <SiSpotify className="h-16 w-16 text-muted-foreground/10 mb-6" />
-              <p className="text-muted-foreground font-black uppercase text-[10px] tracking-widest opacity-60">Spotify ID Not Linked for this Artist</p>
+              <p className="text-muted-foreground font-black uppercase text-[10px] tracking-widest opacity-60 italic">Spotify ID Not Linked</p>
             </div>
           )}
         </section>

@@ -29,6 +29,10 @@ import { useEffect, useState, useMemo } from 'react';
 import { FESTIVAL } from '@/config/festival';
 import lineup from '@/data/lineup.json';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
+import { NewsBulletin } from '@/components/home/news-bulletin';
+import { FanPoll } from '@/components/home/fan-poll';
+import { PhotoWall } from '@/components/home/photo-wall';
+import { Badge } from '@/components/ui/badge';
 
 const features = [
   {
@@ -237,91 +241,68 @@ export default function Home() {
       </Container>
 
       {/* Mission Control Operations */}
-      <Container maxWidth="lg">
-        <Box sx={{ mb: 6, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
-          <Box>
-            <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.5em', mb: 1.5, display: 'block', fontSize: '0.75rem' }}>
-              Mission Control
-            </Typography>
-            <Typography variant="h3" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', fontSize: '3.5rem', letterSpacing: '-0.05em' }}>
-              Operations
-            </Typography>
-          </Box>
-          <Link href="/timetable" style={{ textDecoration: 'none' }}>
-            <Button
-              size="large"
-              endIcon={<LayoutGrid size={20} />}
-              sx={{
-                borderRadius: '1.5rem',
-                bgcolor: alpha(theme.palette.background.paper, 0.03),
-                color: 'text.primary',
-                px: 5,
-                height: '4.5rem',
-                border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
-                '&:hover': {
-                  bgcolor: alpha(theme.palette.background.paper, 0.08),
-                  borderColor: 'primary.main'
-                }
-              }}
-            >
-              Grid View
-            </Button>
-          </Link>
-        </Box>
-
-        <Grid container spacing={4}>
-          {features.map((feature) => (
-            <Grid key={feature.title} size={{ xs: 12, sm: 6, md: 3 }}>
-              <Card
-                sx={{
-                  height: '100%',
-                  bgcolor: alpha(theme.palette.background.paper, 0.01),
-                  backgroundImage: 'none',
-                  borderRadius: '3rem',
-                  border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
-                  transition: 'all 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-16px)',
-                    borderColor: feature.color,
-                    bgcolor: alpha(theme.palette.background.paper, 0.03),
-                    boxShadow: `0 50px 100px -20px ${alpha(feature.color, 0.25)}`,
-                  }
-                }}
-              >
-                <CardActionArea component={Link} href={feature.href} sx={{ height: '100%' }}>
-                  <CardContent sx={{ textAlign: 'center', py: 8 }}>
-                    <Box
-                      sx={{
-                        width: 88,
-                        height: 88,
-                        borderRadius: '2.5rem',
-                        bgcolor: alpha(feature.color, 0.1),
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 4,
-                        color: feature.color,
-                        boxShadow: `0 20px 40px ${alpha(feature.color, 0.1)}`,
-                        transition: 'all 0.5s ease',
-                        '& svg': { strokeWidth: 2.5 }
-                      }}
-                    >
-                      <feature.icon size={40} />
-                    </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 1.5, textTransform: 'uppercase', fontSize: '1.25rem', fontStyle: 'italic', letterSpacing: '-0.02em' }}>
-                      {feature.title}
-                    </Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, display: 'block', fontSize: '0.9rem', opacity: 0.6 }}>
-                      {feature.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
+      <Container maxWidth="lg" sx={{ mt: 16 }}>
+        <Grid container spacing={12}>
+          <Grid size={{ xs: 12, md: 7 }}>
+            {FESTIVAL.features.newsBulletin && <NewsBulletin />}
+            {FESTIVAL.features.fanPolls && <FanPoll />}
+          </Grid>
+          <Grid size={{ xs: 12, md: 5 }}>
+            <Box sx={{ position: 'sticky', top: 100 }}>
+              <Typography variant="overline" sx={{ color: 'primary.main', fontWeight: 900, letterSpacing: '0.5em', mb: 1.5, display: 'block', fontSize: '0.75rem' }}>
+                Mission Control
+              </Typography>
+              <Typography variant="h3" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', fontSize: '3.5rem', letterSpacing: '-0.05em', mb: 6 }}>
+                Operations
+              </Typography>
+              
+              <Grid container spacing={3}>
+                {features.map((feature) => (
+                  <Grid key={feature.title} size={{ xs: 6 }}>
+                     <Card
+                        sx={{
+                          height: '100%',
+                          bgcolor: alpha(theme.palette.background.paper, 0.01),
+                          backgroundImage: 'none',
+                          borderRadius: '2.5rem',
+                          border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+                          transition: 'all 0.5s ease',
+                          overflow: 'hidden',
+                          '&:hover': {
+                            borderColor: feature.color,
+                            bgcolor: alpha(theme.palette.background.paper, 0.03),
+                            transform: 'translateY(-8px)'
+                          }
+                        }}
+                      >
+                        <CardActionArea component={Link} href={feature.href} sx={{ height: '100%', p: 4 }}>
+                            <Box sx={{
+                              width: 56,
+                              height: 56,
+                              borderRadius: '1.5rem',
+                              bgcolor: alpha(feature.color, 0.1),
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              mb: 2,
+                              color: feature.color
+                            }}>
+                              <feature.icon size={28} />
+                            </Box>
+                            <Typography variant="h6" sx={{ fontWeight: 900, mb: 0.5, textTransform: 'uppercase', fontSize: '1rem', fontStyle: 'italic' }}>
+                              {feature.title}
+                            </Typography>
+                        </CardActionArea>
+                      </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Grid>
         </Grid>
+
+        {FESTIVAL.features.photoWall && <PhotoWall />}
+      </Container>
 
         {/* Strategic Tactical Sections */}
         <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>

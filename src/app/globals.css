@@ -69,6 +69,17 @@
   .text-glow {
     text-shadow: 0 0 20px rgba(230, 0, 126, 0.4);
   }
+
+  /* Battery Saver Mode */
+  .battery-saver *,
+  .battery-saver *::before,
+  .battery-saver *::after {
+    animation: none !important;
+    transition: none !important;
+    backdrop-filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
 }
 
 @layer base {

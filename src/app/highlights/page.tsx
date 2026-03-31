@@ -3,7 +3,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import lineup from '@/data/lineup.json';
 import type { LineupItem } from '@/types';
-import { Share2, Star, Music, Sparkles, Eye } from 'lucide-react';
+import { Share2, Star, Music, Sparkles, Eye, Radar as RadarIcon } from 'lucide-react';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import { Button } from '@/components/ui/button';
 import { useFavorites } from '@/hooks/use-favorites';
 import { FESTIVAL } from '@/config/festival';
@@ -53,6 +54,15 @@ export default function HighlightsPage() {
         const count = new Map<string, number>();
         favArtists.forEach((a) => a.vibes?.forEach((v) => count.set(v, (count.get(v) ?? 0) + 1)));
         return [...count.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([v]) => v);
+    }, [favArtists]);
+
+    const vibeRadarData = useMemo(() => {
+        const count = new Map<string, number>();
+        favArtists.forEach((a) => a.vibes?.forEach((v) => count.set(v, (count.get(v) ?? 0) + 1)));
+        return [...count.entries()]
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 6)
+            .map(([subject, value]) => ({ subject, A: value, fullMark: 10 }));
     }, [favArtists]);
 
     const share = () => {
@@ -113,6 +123,26 @@ export default function HighlightsPage() {
 
             {topVibes.length > 0 && (
                 <Section title="Your Vibes">
+                    {FESTIVAL.features.vibeAnalysis && vibeRadarData.length >= 3 && (
+                        <div className="h-[300px] w-full bg-card/30 rounded-[3rem] border border-white/5 mb-10 p-6 shadow-inner relative overflow-hidden">
+                            <ResponsiveContainer width="100%" height="100%">
+                                <RadarChart data={vibeRadarData} cx="50%" cy="50%" outerRadius="80%">
+                                    <PolarGrid stroke="rgba(255,255,255,0.05)" />
+                                    <PolarAngleAxis 
+                                        dataKey="subject" 
+                                        tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 900 }} 
+                                    />
+                                    <Radar
+                                        name="Vibe"
+                                        dataKey="A"
+                                        stroke={FESTIVAL.theme.primaryHex}
+                                        fill={FESTIVAL.theme.primaryHex}
+                                        fillOpacity={0.3}
+                                    />
+                                </RadarChart>
+                            </ResponsiveContainer>
+                        </div>
+                    )}
                     <div className="flex flex-wrap gap-3">
                         {topVibes.map((v) => (
                             <span key={v} className="px-5 py-2.5 rounded-full border border-yellow-500/30 text-yellow-400 font-black uppercase text-[10px] tracking-widest bg-yellow-500/5">

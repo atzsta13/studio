@@ -60,6 +60,7 @@ export interface FestivalConfig {
     androidSecondaryLong: string
   }
   features: {
+    // Phase 1 Core (Existing)
     currencyConverter: boolean
     tentFinder: boolean
     vibeQuiz: boolean
@@ -72,6 +73,58 @@ export interface FestivalConfig {
     cashlessUrl?: string
     dayparkNightpark: boolean
     familyZone: boolean
+
+    // Phase 3 Hyper-Insider Expansion (50 Features)
+    hydrationTracker: boolean
+    sunscreenAlert: boolean
+    batterySaver: boolean
+    friendFinder: boolean
+    groupSchedules: boolean
+    artistTrivia: boolean
+    similarArtists: boolean
+    vibeOfTheHour: boolean
+    stageCapacity: boolean
+    merchCatalog: boolean
+    foodRatings: boolean
+    budgetTracker: boolean
+    lostAndFound: boolean
+    dailyChallenges: boolean
+    leaderboard: boolean
+    achievements: boolean
+    sosMorseCode: boolean
+    festivalDictionary: boolean
+    firstAidFinder: boolean
+    chargingStations: boolean
+    shuttleTimetable: boolean
+    weatherRadar: boolean
+    setlistLinks: boolean
+    collabPlaylists: boolean
+    arStageView: boolean
+    stickerBook: boolean
+    fanPolls: boolean
+    photoWall: boolean
+    clashResolver: boolean
+    posterGenerator: boolean
+    customThemes: boolean
+    waterCounter: boolean
+    carFinder: boolean
+    notesJournal: boolean
+    socialFeed: boolean
+    newsBulletin: boolean
+    setCountdowns: boolean
+    surpriseRoulette: boolean
+    genreBreakdown: boolean
+    vibeAnalysis: boolean
+    accessibilityMap: boolean
+    quietZones: boolean
+    crowdHeatmap: boolean
+    merchPriceWatch: boolean
+    ecoWarrior: boolean
+    secretStages: boolean
+    afterMovie: boolean
+    feedbackSystem: boolean
+    offlineBanner: boolean
+    highContrast: boolean
   }
 }
 

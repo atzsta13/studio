@@ -4,8 +4,9 @@ import { useState, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search } from 'lucide-react';
+import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star } from 'lucide-react';
 import foodAndDrinkData from '@/data/food.json';
+import { useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';
 import { FESTIVAL } from '@/config/festival';
@@ -38,6 +39,18 @@ const filters = {
 export default function FoodFinderPage() {
     const [searchTerm, setSearchTerm] = useState('');
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
+    const [ratings, setRatings] = useState<Record<string, number>>({});
+
+    useEffect(() => {
+        const saved = localStorage.getItem(`${FESTIVAL.id}-food-ratings`);
+        if (saved) setRatings(JSON.parse(saved));
+    }, []);
+
+    const setRating = (vendorId: string, value: number) => {
+        const newRatings = { ...ratings, [vendorId]: value };
+        setRatings(newRatings);
+        localStorage.setItem(`${FESTIVAL.id}-food-ratings`, JSON.stringify(newRatings));
+    };
 
     const handleFilterToggle = (filterKey: string) => {
         setActiveFilters(prev =>
@@ -139,6 +152,24 @@ export default function FoodFinderPage() {
                                 <p className="text-sm text-muted-foreground leading-relaxed mb-6">
                                     {vendor.description}
                                 </p>
+
+                                {FESTIVAL.features.foodRatings && (
+                                    <div className="flex items-center gap-2 mb-6 p-3 rounded-xl bg-white/5 border border-white/5">
+                                        <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/60 mr-2">Your Rating</span>
+                                        {[1, 2, 3, 4, 5].map((star) => (
+                                            <button 
+                                                key={star} 
+                                                onClick={() => setRating(vendor.id, star)}
+                                                className="transition-transform hover:scale-125"
+                                            >
+                                                <Star 
+                                                    size={16} 
+                                                    className={star <= (ratings[vendor.id] || 0) ? 'fill-yellow-500 text-yellow-500' : 'text-muted-foreground/20'} 
+                                                />
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
 
                                 {vendor.budgetPrice && (
                                     <div className="mt-auto rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4 relative overflow-hidden group/budget">
