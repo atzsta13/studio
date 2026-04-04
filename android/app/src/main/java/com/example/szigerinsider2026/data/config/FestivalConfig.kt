@@ -71,7 +71,59 @@ data class FestivalFeatures(
     val afterMovie: Boolean,
     val feedbackSystem: Boolean,
     val offlineBanner: Boolean,
+    val audioMonitor: Boolean,
     val highContrast: Boolean
+)
+
+@Serializable
+data class EmergencyContact(
+    val phone: String,
+    val label: String
+)
+
+@Serializable
+data class EmergencyContacts(
+    val security: EmergencyContact? = null,
+    val medical: EmergencyContact? = null
+)
+
+@Serializable
+data class StampConfig(
+    val id: String,
+    val title: String,
+    val icon: String,
+    val description: String,
+    val category: String,
+    val color: String? = null,
+    val androidColor: String
+)
+
+@Serializable
+data class RankConfig(
+    val title: String,
+    val minXP: Int
+)
+
+@Serializable
+data class PassportConfig(
+    val stamps: List<StampConfig>,
+    val ranks: List<RankConfig>
+)
+
+@Serializable
+data class RadarFocusConfig(
+    val id: String,
+    val label: String,
+    val targetStages: List<String>? = null,
+    val targetGenres: List<String>? = null
+)
+
+@Serializable
+data class FestivalContent(
+    val emergencyContacts: EmergencyContacts? = null,
+    val hiddenGems: List<String>? = null,
+    val radarFocuses: List<RadarFocusConfig>? = null,
+    val passport: PassportConfig? = null
 )
 
 @Serializable
@@ -141,7 +193,8 @@ data class FestivalConfigData(
     val dates: FestivalDates,
     val currency: FestivalCurrency,
     val theme: FestivalTheme,
-    val features: FestivalFeatures
+    val features: FestivalFeatures,
+    val content: FestivalContent? = null
 )
 
 object FestivalConfig {

@@ -124,9 +124,36 @@ export interface FestivalConfig {
     afterMovie: boolean
     feedbackSystem: boolean
     offlineBanner: boolean
+    audioMonitor: boolean
     highContrast: boolean
   }
   content: {
+    emergencyContacts?: {
+      security: { phone: string; label: string }
+      medical: { phone: string; label: string }
+    }
+    radarFocuses?: Array<{
+      id: string
+      label: string
+      targetStages: string[]
+      targetGenres: string[]
+    }>
+    hiddenGems?: string[]
+    passport?: {
+      stamps: Array<{
+        id: string
+        title: string
+        icon: string
+        description: string
+        category: 'stage' | 'utility' | 'food' | 'secret'
+        color: string
+        androidColor: string
+      }>
+      ranks: Array<{
+        title: string
+        minXP: number
+      }>
+    }
     shuttleRoutes: Array<{
       id: string
       route: string
@@ -154,7 +181,7 @@ export function loadFestivalConfig(): FestivalConfig {
   const config = FESTIVAL_CONFIGS[id]
   if (!config) {
     const valid = Object.keys(FESTIVAL_CONFIGS).join(', ')
-    throw new Error(`Unknown FESTIVAL_ID: "${id}". Valid options: ${valid}`)
+    throw new Error(`Unknown FESTIVAL_ID: \"${id}\". Valid options: ${valid}`)
   }
   return config
 }

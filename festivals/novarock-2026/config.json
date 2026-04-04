@@ -124,6 +124,7 @@
     "afterMovie": true,
     "feedbackSystem": true,
     "offlineBanner": true,
+    "audioMonitor": true,
     "highContrast": true
   },
   "content": {
