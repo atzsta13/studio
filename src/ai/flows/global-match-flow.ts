@@ -1,7 +1,7 @@
 'use server';
 /**
  * @fileOverview AI Global Matchmaker Flow.
- * Matches a user's vibe against ALL festivals in the ecosystem.
+ * Matches a user's vibe against ALL festivals in the ecosystem with deep context.
  */
 
 import { ai } from '@/ai/genkit';
@@ -17,11 +17,13 @@ const MatchInputSchema = z.object({
 const MatchOutputSchema = z.object({
   festivalId: z.string().describe('The ID of the recommended festival.'),
   festivalName: z.string().describe('The name of the recommended festival.'),
-  reason: z.string().describe('A compelling, hype-filled explanation of why this festival is their perfect match.'),
+  vibeMatchPercentage: z.number().min(0).max(100).describe('A score from 0-100 indicating how perfect this match is.'),
+  reason: z.string().describe('A compelling, hype-filled explanation of why this festival is their perfect match. Mention specific stages or slang if provided.'),
+  suggestedStage: z.string().describe('The best stage or area (e.g. from Radar Focuses) for this user at this festival.').optional(),
   topArtists: z.array(z.object({
     artistId: z.string(),
     artistName: z.string(),
-    reason: z.string().describe('Why they should see this specific artist.'),
+    reason: z.string().describe('Why they should see this specific artist, matching their vibe.'),
   })).max(3),
 });
 
@@ -36,11 +38,13 @@ function loadAllFestivalsData() {
       const dataPath = path.join(process.cwd(), 'festivals', id, 'data', 'lineup.json');
       if (fs.existsSync(dataPath)) {
         const fullLineup = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-        // Take top 30 artists to fit in context window and avoid token explosion
-        artists = fullLineup.slice(0, 30).map((a: any) => ({
+        // Pass all artists to leverage the massive 1M context window of Gemini 2.5 Flash
+        artists = fullLineup.map((a: any) => ({
           id: a.id,
           artist: a.artist,
           genres: a.genres?.join(', ') ?? '',
+          vibes: a.vibes?.join(', ') ?? '',
+          stage: a.stage ?? 'TBA'
         }));
       }
     } catch (e) {
@@ -51,7 +55,9 @@ function loadAllFestivalsData() {
       id,
       name: config.name,
       tagline: config.tagline,
-      location: `${config.location.city}, ${config.location.country}`,
+      location: `${config.location.venue} in ${config.location.city}, ${config.location.country}`,
+      radarFocuses: config.content.radarFocuses?.map((f: any) => f.label).join(', ') ?? 'N/A',
+      dictionary: config.content.dictionaryTerms?.map((t: any) => `${t.term}: ${t.def}`).join(' | ') ?? 'N/A',
       artists,
     };
   });
@@ -63,26 +69,30 @@ const matchPrompt = ai.definePrompt({
   output: { schema: MatchOutputSchema },
   prompt: `You are the "Global Vibe Scout", an elite AI that matches music fans with their perfect European summer festival.
 
-  Here are the available festivals in our ecosystem and a sample of their lineups:
+  Here are the available festivals in our ecosystem and their COMPLETE lineups:
   {{#each festivals}}
   === FESTIVAL: {{this.name}} (ID: {{this.id}}) ===
   Location: {{this.location}}
   Vibe/Tagline: {{this.tagline}}
-  Sample Artists:
+  Key Stages/Territories: {{this.radarFocuses}}
+  Local Slang/Terms: {{this.dictionary}}
+  Lineup:
   {{#each this.artists}}
-    - ID: {{this.id}}, Name: {{this.artist}}, Genres: {{this.genres}}
+    - ID: {{this.id}}, Name: {{this.artist}}, Genres: {{this.genres}}, Vibes: {{this.vibes}}, Stage: {{this.stage}}
   {{/each}}
   {{/each}}
 
-  USER VIBE: "{{{prompt}}}"
+  USER VIBE REQUEST: "{{{prompt}}}"
 
   Your task:
-  1. Analyze the user's vibe.
-  2. Pick the SINGLE best festival from the list that matches their preferences.
-  3. Provide a compelling reason why.
-  4. Select the top 3 artists from THAT festival's sample lineup that they must see.
+  1. Analyze the user's vibe and musical taste deeply.
+  2. Evaluate ALL festivals to find the ONE that has the highest density of matching artists and the right overall vibe.
+  3. Provide a compelling reason why. Use the festival's specific stages (Radar Focuses) or local slang (Dictionary) in your pitch to prove you know the festival well.
+  4. Select the top 3 artists from THAT festival's lineup that perfectly match the user.
+  5. Provide a vibe match percentage (0-100).
+  6. Suggest a specific stage or territory they should hang out at.
   
-  Be energetic, confident, and persuasive. Assume the persona of an expert music journalist.`,
+  Tone: Energetic, authoritative, insider knowledge. Talk like a seasoned festival veteran.`,
 });
 
 export async function matchGlobalFestival(input: MatchInput): Promise<MatchOutput> {

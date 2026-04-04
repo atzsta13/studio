@@ -13,6 +13,8 @@ import {
   Sparkles,
   UserPlus,
   Loader2,
+  MapPin,
+  ArrowRight,
 } from 'lucide-react';
 import {
   SiSpotify,
@@ -31,18 +33,19 @@ import { SetlistLinks } from '@/components/artist/setlist-links';
 import { useFestivalData } from '@/hooks/use-festival-data';
 import type { LineupItem } from '@/types';
 
+import { useGlobalArtist } from '@/hooks/use-global-artist';
+
 export default function ArtistDetailPage() {
   const { festivalId, id } = useParams() as { festivalId: string; id: string };
   const { config, lineup, isLoading } = useFestivalData(festivalId);
+  
+  const artist = lineup.find((artist) => artist.id === id) as (LineupItem & { vibes?: string[] }) | undefined;
+  const { appearances, isLoading: isGlobalLoading } = useGlobalArtist(artist?.artist);
 
-  const getArtist = (artistId: string): LineupItem | undefined => {
-    return lineup.find((artist) => artist.id === artistId);
-  };
-
-  const getSimilarArtists = (artist: LineupItem) => {
-    if (!artist.genres) return [];
+  const getSimilarArtists = (a: LineupItem) => {
+    if (!a.genres) return [];
     return lineup
-      .filter(a => a.id !== artist.id && a.genres?.some(g => artist.genres?.includes(g)))
+      .filter(other => other.id !== a.id && other.genres?.some(g => a.genres?.includes(g)))
       .slice(0, 4);
   };
 
@@ -65,8 +68,6 @@ export default function ArtistDetailPage() {
       </div>
     );
   }
-
-  const artist = getArtist(id) as (LineupItem & { vibes?: string[] }) | undefined;
 
   if (!artist) {
     notFound();
@@ -199,7 +200,7 @@ export default function ArtistDetailPage() {
               <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {similar.map(a => (
-                  <Link key={a.id} href={`/artist/${a.id}`} className="group block">
+                  <Link key={a.id} href={`/${festivalId}/artist/${a.id}`} className="group block">
                     <div className="aspect-square rounded-[2rem] bg-muted overflow-hidden mb-3 relative border border-white/5 shadow-2xl">
                       <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
@@ -215,7 +216,31 @@ export default function ArtistDetailPage() {
         </section>
 
         <section>
-          <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Island Listen</h3>
+          {appearances.filter(a => a.festivalId !== festivalId).length > 0 && (
+            <div className="mb-16">
+              <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Ecosystem Appearances</h3>
+              <div className="space-y-4">
+                {appearances.filter(a => a.festivalId !== festivalId).map(app => (
+                  <Link key={app.festivalId} href={`/${app.festivalId}/artist/${artist.artist.toLowerCase().replace(/ /g, '-')}`}>
+                    <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-primary/30 transition-all group flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">
+                          <MapPin size={20} />
+                        </div>
+                        <div>
+                          <p className="font-black uppercase italic tracking-tight">{app.festivalName}</p>
+                          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{app.day || 'TBD'} · {app.stage || 'TBA'}</p>
+                        </div>
+                      </div>
+                      <ArrowRight size={20} className="text-white/10 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">{config.location.venue.includes('Island') ? 'Island' : 'Festival'} Listen</h3>
           {spotifyArtistId ? (
             <div className="rounded-[3rem] overflow-hidden shadow-2xl bg-black border border-white/5 p-4">
               <iframe

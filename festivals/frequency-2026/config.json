@@ -9,6 +9,50 @@
   "officialWebsite": "https://www.frequency.at",
   "productionUrl": "https://frequency-2026.vercel.app",
   "deepLinkScheme": "frequency2026",
+  "i18n": {
+    "defaultLocale": "de",
+    "locales": ["de", "en"],
+    "translations": {
+      "de": {
+        "nav_home": "Home",
+        "nav_artists": "Lineup",
+        "nav_map": "Karte",
+        "nav_merch": "Merch",
+        "nav_tools": "Tools",
+        "home_tagline": "Daypark & Nightpark",
+        "home_opening_acts": "Opening Acts",
+        "toolkit_title": "Survival Toolkit",
+        "toolkit_safety": "Sicherheit",
+        "toolkit_tactical": "Taktik",
+        "toolkit_refresh": "DATEN AKTUALISIEREN",
+        "map_title": "RADAR NAVIGATION",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Bands oder Vibes...",
+        "tip_shuttle": "Shuttlebus-Flatrate für €10 beim Bahnhof.",
+        "tip_nighttrain": "Sonderzug nach Wien um 02:10 (extra Ticket).",
+        "tip_walk": "Der Weg zw. Day- und Nightpark dauert ca. 10 Min."
+      },
+      "en": {
+        "nav_home": "Home",
+        "nav_artists": "Artists",
+        "nav_map": "Map",
+        "nav_merch": "Merch",
+        "nav_tools": "Tools",
+        "home_tagline": "Daypark & Nightpark",
+        "home_opening_acts": "Opening Acts",
+        "toolkit_title": "Survival Toolkit",
+        "toolkit_safety": "Safety",
+        "toolkit_tactical": "Tactical",
+        "toolkit_refresh": "REFRESH DATA",
+        "map_title": "RADAR NAVIGATION",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Search bands or vibes...",
+        "tip_shuttle": "Shuttle bus flatrate for €10 at the station.",
+        "tip_nighttrain": "Special night train to Vienna at 02:10 (needs extra ticket).",
+        "tip_walk": "Walk between Daypark and Nightpark takes ~10 min."
+      }
+    }
+  },
 
   "aiPersona": "the 'Frequency Scout', a St. Pölten regular who knows every act on both the Daypark stages and the Nightpark floors",
   "location": {
@@ -66,7 +110,6 @@
     "currencyConverter": false,
     "tentFinder": true,
     "vibeQuiz": true,
-    "passport": true,
     "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
@@ -88,9 +131,6 @@
     "foodRatings": true,
     "budgetTracker": true,
     "lostAndFound": true,
-    "dailyChallenges": true,
-    "leaderboard": true,
-    "achievements": true,
     "sosMorseCode": true,
     "festivalDictionary": true,
     "firstAidFinder": true,

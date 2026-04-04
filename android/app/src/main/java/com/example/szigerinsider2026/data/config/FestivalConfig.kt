@@ -35,9 +35,6 @@ data class FestivalFeatures(
     val foodRatings: Boolean,
     val budgetTracker: Boolean,
     val lostAndFound: Boolean,
-    val dailyChallenges: Boolean,
-    val leaderboard: Boolean,
-    val achievements: Boolean,
     val sosMorseCode: Boolean,
     val festivalDictionary: Boolean,
     val firstAidFinder: Boolean,
@@ -47,7 +44,6 @@ data class FestivalFeatures(
     val setlistLinks: Boolean,
     val collabPlaylists: Boolean,
     val arStageView: Boolean,
-    val stickerBook: Boolean,
     val fanPolls: Boolean,
     val photoWall: Boolean,
     val clashResolver: Boolean,
@@ -88,29 +84,6 @@ data class EmergencyContacts(
 )
 
 @Serializable
-data class StampConfig(
-    val id: String,
-    val title: String,
-    val icon: String,
-    val description: String,
-    val category: String,
-    val color: String? = null,
-    val androidColor: String
-)
-
-@Serializable
-data class RankConfig(
-    val title: String,
-    val minXP: Int
-)
-
-@Serializable
-data class PassportConfig(
-    val stamps: List<StampConfig>,
-    val ranks: List<RankConfig>
-)
-
-@Serializable
 data class RadarFocusConfig(
     val id: String,
     val label: String,
@@ -122,8 +95,7 @@ data class RadarFocusConfig(
 data class FestivalContent(
     val emergencyContacts: EmergencyContacts? = null,
     val hiddenGems: List<String>? = null,
-    val radarFocuses: List<RadarFocusConfig>? = null,
-    val passport: PassportConfig? = null
+    val radarFocuses: List<RadarFocusConfig>? = null
 )
 
 @Serializable
@@ -178,6 +150,13 @@ data class FestivalCurrency(
 )
 
 @Serializable
+data class FestivalI18n(
+    val defaultLocale: String,
+    val locales: List<String>,
+    val translations: Map<String, Map<String, String>>
+)
+
+@Serializable
 data class FestivalConfigData(
     val id: String,
     val slug: String,
@@ -189,6 +168,7 @@ data class FestivalConfigData(
     val officialWebsite: String,
     val productionUrl: String? = null,
     val deepLinkScheme: String,
+    val i18n: FestivalI18n? = null,
     val aiPersona: String,
     val location: FestivalLocation,
     val dates: FestivalDates,

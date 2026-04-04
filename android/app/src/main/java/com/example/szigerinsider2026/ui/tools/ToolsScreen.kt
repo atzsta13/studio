@@ -43,6 +43,7 @@ import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.theme.*
 import androidx.navigation.NavController
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.t
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,7 +87,7 @@ fun ToolsScreen(navController: NavController) {
             ) {
             item {
                 Text(
-                    text = "SURVIVAL TOOLKIT",
+                    text = t("toolkit_title"),
                     color = TextPrimary,
                     fontSize = 40.sp,
                     fontWeight = FontWeight.Black,
@@ -125,8 +126,8 @@ fun ToolsScreen(navController: NavController) {
                         .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(36.dp))
                         .padding(6.dp)
                 ) {
-                    TabItem(text = "TACTICAL", isSelected = selectedTab == 0, onClick = { selectedTab = 0 }, modifier = Modifier.weight(1f))
-                    TabItem(text = "SAFETY", isSelected = selectedTab == 1, onClick = { selectedTab = 1 }, modifier = Modifier.weight(1f))
+                    TabItem(text = t("toolkit_tactical"), isSelected = selectedTab == 0, onClick = { selectedTab = 0 }, modifier = Modifier.weight(1f))
+                    TabItem(text = t("toolkit_safety"), isSelected = selectedTab == 1, onClick = { selectedTab = 1 }, modifier = Modifier.weight(1f))
                 }
             }
 

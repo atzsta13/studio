@@ -8,12 +8,14 @@ import { getNavItems } from '@/config/nav';
 import { ModeToggle } from './mode-toggle';
 import { getFestivalConfig } from '@/config/festival';
 import { useState, useEffect } from 'react';
+import { useTranslation } from '@/hooks/use-translation';
 
 export default function Header({ festivalId }: { festivalId?: string }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const config = getFestivalConfig(festivalId);
   const navItems = getNavItems(festivalId);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
@@ -48,12 +50,13 @@ export default function Header({ festivalId }: { festivalId?: string }) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "transition-all duration-500 hover:text-primary relative py-2",
-                    isActive ? "text-primary" : "text-foreground/60"
+                    'transition-all duration-300 hover:text-primary relative py-1 px-2',
+                    isActive ? 'text-primary' : 'text-muted-foreground'
                   )}
-                >
-                  {item.label}
+                  >
+                  {t(item.tKey)}
                   {isActive && (
+
                     <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-primary rounded-full shadow-[0_0_15px_rgba(255,0,128,0.6)] animate-in fade-in zoom-in duration-500" />
                   )}
                 </Link>

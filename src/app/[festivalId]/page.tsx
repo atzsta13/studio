@@ -68,14 +68,6 @@ export default function Home() {
       icon: Zap,
       color: '#4ade80',
     },
-    {
-      title: 'Passport',
-      description: 'Collect Island Stamps',
-      href: `/${festivalId}/passport`,
-      icon: Trophy,
-      color: config.theme.primaryHex,
-      feature: 'passport'
-    },
   ], [festivalId, config]);
 
   const features = useMemo(() => 

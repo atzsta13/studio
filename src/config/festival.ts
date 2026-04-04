@@ -16,6 +16,11 @@ export interface FestivalConfig {
   officialWebsite: string
   productionUrl?: string
   deepLinkScheme: string
+  i18n?: {
+    defaultLocale: string
+    locales: string[]
+    translations: Record<string, Record<string, string>>
+  }
   aiPersona: string
   location: {
     city: string
@@ -65,7 +70,6 @@ export interface FestivalConfig {
     currencyConverter: boolean
     tentFinder: boolean
     vibeQuiz: boolean
-    passport: boolean
     spotifyIntegration: boolean
     aiRecommendations: boolean
     survivalGuide: boolean
@@ -89,9 +93,6 @@ export interface FestivalConfig {
     foodRatings: boolean
     budgetTracker: boolean
     lostAndFound: boolean
-    dailyChallenges: boolean
-    leaderboard: boolean
-    achievements: boolean
     sosMorseCode: boolean
     festivalDictionary: boolean
     firstAidFinder: boolean
@@ -101,7 +102,6 @@ export interface FestivalConfig {
     setlistLinks: boolean
     collabPlaylists: boolean
     arStageView: boolean
-    stickerBook: boolean
     fanPolls: boolean
     photoWall: boolean
     clashResolver: boolean
@@ -140,21 +140,6 @@ export interface FestivalConfig {
       targetGenres: string[]
     }>
     hiddenGems?: string[]
-    passport?: {
-      stamps: Array<{
-        id: string
-        title: string
-        icon: string
-        description: string
-        category: 'stage' | 'utility' | 'food' | 'secret'
-        color: string
-        androidColor: string
-      }>
-      ranks: Array<{
-        title: string
-        minXP: number
-      }>
-    }
     shuttleRoutes: Array<{
       id: string
       route: string

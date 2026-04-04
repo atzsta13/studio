@@ -48,6 +48,7 @@ import com.example.szigerinsider2026.data.repository.LineupDiffRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.t
 import com.example.szigerinsider2026.ui.tools.FestivalCountdownCard
 import kotlinx.coroutines.delay
 import java.util.Calendar
@@ -169,7 +170,7 @@ fun HomeScreen(navController: NavController? = null) {
                         letterSpacing = 3.sp
                     )
                     Text(
-                        text = FestivalConfig.current.tagline,
+                        text = t("home_tagline"),
                         color = TextMuted,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.Medium
@@ -244,17 +245,15 @@ fun HomeScreen(navController: NavController? = null) {
             val features = FestivalConfig.FEATURES
             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 if (features.weatherRadar) {
-                    QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
+                    QuickNavCard(t("nav_map"), Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
                 }
-                if (features.passport) {
-                    QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, MaterialTheme.colorScheme.primary, Modifier.weight(1f)) { navController?.navigate("passport") }
-                }
+                QuickNavCard(t("nav_artists"), Icons.Default.Search, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("discover") }
             }
         }
         item {
             val features = FestivalConfig.FEATURES
             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                QuickNavCard("TOOLS", Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
+                QuickNavCard(t("nav_tools"), Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
                 if (features.timetable) {
                     QuickNavCard("SCHEDULE", Icons.Default.Schedule, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("schedule") }
                 }

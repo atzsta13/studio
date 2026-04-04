@@ -37,7 +37,6 @@ import com.example.szigerinsider2026.ui.discover.DiscoverViewModel
 import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.discover.SpeedDiscoveryScreen
 import com.example.szigerinsider2026.ui.map.MapScreen
-import com.example.szigerinsider2026.ui.passport.PassportScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
 import com.example.szigerinsider2026.ui.tools.SurvivalGuideScreen
 import com.example.szigerinsider2026.ui.splash.SplashScreen
@@ -72,7 +71,6 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector,
     object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event, { it.timetable })
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn, { it.weatherRadar })
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
-    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents, { it.passport })
 }
 
 val allBottomNavItems = listOf(
@@ -157,9 +155,6 @@ fun AppNavigation() {
             }
             composable(Screen.Map.route) {
                 MapScreen(navController = navController)
-            }
-            composable(Screen.Passport.route) {
-                PassportScreen(navController = navController)
             }
             composable(Screen.Tools.route) {
                 ToolsScreen(navController = navController)

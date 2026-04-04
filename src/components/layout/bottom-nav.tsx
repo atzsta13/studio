@@ -5,12 +5,14 @@ import { usePathname, useRouter } from 'next/navigation';
 import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/material';
 import { Icon } from '@/components/ui/icon';
 import { getNavItems } from '@/config/nav';
+import { useTranslation } from '@/hooks/use-translation';
 
 export default function BottomNav({ festivalId }: { festivalId?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [mounted, setMounted] = React.useState(false);
   const navItems = getNavItems(festivalId);
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     setMounted(true);
@@ -84,7 +86,7 @@ export default function BottomNav({ festivalId }: { festivalId?: string }) {
           {navItems.map((item) => (
             <BottomNavigationAction
               key={item.href}
-              label={item.label}
+              label={t(item.tKey)}
               icon={
                 <Box className="MuiBottomNavigationAction-iconWrapper" sx={{ transition: 'all 0.3s ease' }}>
                   <Icon name={item.icon} size={22} />

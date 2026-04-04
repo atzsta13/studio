@@ -515,7 +515,22 @@ fun TimetableGrid(
             val endDate   = LocalDate.parse(FestivalConfig.current.dates.endDate)
             if (today >= startDate && today <= endDate) {
                 val currentX = getX("${now.hour}:${now.minute}")
-                Box(modifier = Modifier.fillMaxHeight().width(2.dp).absoluteOffset(x = currentX.dp).background(ToxicGreen.copy(alpha = 0.6f)))
+                // Glow effect
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(20.dp)
+                        .absoluteOffset(x = (currentX - 10).dp)
+                        .background(Brush.horizontalGradient(listOf(Color.Transparent, ToxicGreen.copy(alpha = 0.15f), Color.Transparent)))
+                )
+                // Sharp line
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(3.dp)
+                        .absoluteOffset(x = (currentX - 1).dp)
+                        .background(ToxicGreen)
+                )
             }
 
             byStage.forEachIndexed { stageIndex, entry ->
@@ -533,26 +548,64 @@ fun TimetableGrid(
             }
         }
 
-        Box(modifier = Modifier.fillMaxWidth().height(40.dp).background(OLEDBlack.copy(alpha = 0.85f)).drawBehind { drawLine(color = Color.White.copy(alpha = 0.1f), start = androidx.compose.ui.geometry.Offset(0f, size.height), end = androidx.compose.ui.geometry.Offset(size.width, size.height), strokeWidth = 1.dp.toPx()) }) {
+        // Time Header (Sticky at top)
+        Box(modifier = Modifier.fillMaxWidth().height(44.dp).background(OLEDBlack).drawBehind { 
+            drawLine(color = Color.White.copy(alpha = 0.15f), start = androidx.compose.ui.geometry.Offset(0f, size.height), end = androidx.compose.ui.geometry.Offset(size.width, size.height), strokeWidth = 1.dp.toPx()) 
+        }) {
             Box(modifier = Modifier.graphicsLayer { translationX = offsetX }) {
                 (START_HOUR..END_HOUR).forEach { h ->
                     val x = (h - START_HOUR) * hourWidth
                     if ((x + offsetX) in -hourWidth..screenWidth + hourWidth) {
-                        Text(text = if (h >= 24) "${h-24}:00" else "$h:00", color = TextMuted, fontSize = 11.sp, fontWeight = FontWeight.Bold, modifier = Modifier.absoluteOffset(x = (x + 8).dp, y = 14.dp))
+                        Text(
+                            text = if (h >= 24) "${h-24}:00" else "$h:00", 
+                            color = Color.White, 
+                            fontSize = 11.sp, 
+                            fontWeight = FontWeight.Black, 
+                            fontStyle = FontStyle.Italic,
+                            modifier = Modifier.absoluteOffset(x = (x + 12).dp, y = 14.dp)
+                        )
                     }
                 }
             }
         }
 
-        Box(modifier = Modifier.fillMaxHeight().padding(top = 40.dp).width(90.dp).background(OLEDBlack.copy(alpha = 0.8f)).drawBehind { drawLine(color = Color.White.copy(alpha = 0.1f), start = androidx.compose.ui.geometry.Offset(size.width, 0f), end = androidx.compose.ui.geometry.Offset(size.width, size.height), strokeWidth = 1.dp.toPx()) }) {
+        // Stage Sidebar (Sticky at left)
+        Box(modifier = Modifier.fillMaxHeight().padding(top = 44.dp).width(100.dp).background(OLEDBlack.copy(alpha = 0.95f)).drawBehind { 
+            drawLine(color = Color.White.copy(alpha = 0.15f), start = androidx.compose.ui.geometry.Offset(size.width, 0f), end = androidx.compose.ui.geometry.Offset(size.width, size.height), strokeWidth = 1.dp.toPx()) 
+        }) {
             Box(modifier = Modifier.graphicsLayer { translationY = offsetY }) {
                 byStage.forEachIndexed { index, entry ->
                     val y = index * trackHeight
                     if ((y + offsetY) in -trackHeight..screenHeight + trackHeight) {
-                        Box(modifier = Modifier.absoluteOffset(y = y.dp).size(width = 90.dp, height = trackHeight.dp).padding(horizontal = 8.dp, vertical = 6.dp), contentAlignment = Alignment.CenterStart) {
-                            Column {
-                                Text(text = "STAGE", color = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f), fontSize = 7.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                                Text(text = entry.key.uppercase(), color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Black, lineHeight = 12.sp, maxLines = 3, overflow = TextOverflow.Ellipsis)
+                        Column(
+                            modifier = Modifier
+                                .absoluteOffset(y = y.dp)
+                                .size(width = 100.dp, height = trackHeight.dp)
+                                .padding(12.dp),
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Text(
+                                text = "STAGE", 
+                                color = MaterialTheme.colorScheme.primary, 
+                                fontSize = 7.sp, 
+                                fontWeight = FontWeight.Black, 
+                                letterSpacing = 2.sp
+                            )
+                            Spacer(modifier = Modifier.height(2.dp))
+                            Text(
+                                text = entry.key.uppercase(), 
+                                color = Color.White, 
+                                fontSize = 11.sp, 
+                                fontWeight = FontWeight.Black, 
+                                fontStyle = FontStyle.Italic,
+                                lineHeight = 13.sp, 
+                                maxLines = 3, 
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            // Show act count for this stage
+                            Box(modifier = Modifier.clip(RoundedCornerShape(4.dp)).background(Color.White.copy(alpha = 0.05f)).padding(horizontal = 6.dp, vertical = 2.dp)) {
+                                Text(text = "${entry.value.size} ACTS", color = TextMuted, fontSize = 7.sp, fontWeight = FontWeight.Bold)
                             }
                         }
                     }
@@ -574,34 +627,104 @@ private fun ArtistGridBlock(
     onArtistClick: (String) -> Unit,
     haptic: com.example.szigerinsider2026.ui.utils.HapticManager
 ) {
+    val isLive = remember(artist) { isNowPlaying(artist) }
     val accentColor = when {
         isFavorite -> MaterialTheme.colorScheme.secondary
         inSquad -> CyanPulse
+        isLive -> ToxicGreen
         artist.isHeadliner -> MaterialTheme.colorScheme.primary
-        else -> Color.White.copy(alpha = 0.4f)
+        else -> Color.White.copy(alpha = 0.2f)
     }
 
-    Box(modifier = Modifier.absoluteOffset(x = x.dp, y = y.dp).width(width.dp).height(blockHeight.dp).padding(4.dp).clip(RoundedCornerShape(12.dp)).background(CardBackground).border(1.dp, accentColor.copy(alpha = if (isFavorite || inSquad || artist.isHeadliner) 0.6f else 0.1f), RoundedCornerShape(12.dp)).clickable { haptic.lightTap(); onArtistClick(artist.id) }) {
-        if (artist.isHeadliner) { Box(modifier = Modifier.fillMaxHeight().fillMaxWidth(0.1f).background(MaterialTheme.colorScheme.primary.copy(alpha = 0.05f))) }
-        Row(modifier = Modifier.fillMaxSize().padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            if (width > 80f) {
-                Box(modifier = Modifier.size(44.dp).clip(RoundedCornerShape(8.dp)).background(MutedBackground)) {
-                    if (artist.imageUrl != null) { AsyncImage(model = artist.imageUrl, contentDescription = null, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop) }
-                    else { Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) { Text(artist.artist.take(1), color = Color.White.copy(alpha = 0.2f), fontWeight = FontWeight.Black) } }
-                }
-                Spacer(modifier = Modifier.width(10.dp))
-            }
-            Column(modifier = Modifier.weight(1f)) {
-                if (artist.isHeadliner) { Text(text = "MAIN STAGE HEADLINER", color = MaterialTheme.colorScheme.primary, fontSize = 7.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp) }
-                Text(text = artist.artist.uppercase(), color = if (isFavorite) MaterialTheme.colorScheme.secondary else Color.White, fontWeight = FontWeight.Black, fontSize = if (artist.isHeadliner) 13.sp else 11.sp, maxLines = 2, overflow = TextOverflow.Ellipsis, lineHeight = 13.sp, letterSpacing = (-0.2).sp)
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = "${artist.startTime} - ${artist.endTime}", color = TextMuted, fontSize = 9.sp, fontWeight = FontWeight.Medium)
-                    if (isFavorite || inSquad) {
-                        Spacer(modifier = Modifier.width(6.dp))
-                        Text(text = if (isFavorite) "★" else "👥", color = if (isFavorite) MaterialTheme.colorScheme.secondary else CyanPulse, fontSize = 8.sp)
+    Box(
+        modifier = Modifier
+            .absoluteOffset(x = x.dp, y = y.dp)
+            .width(width.dp)
+            .height(blockHeight.dp)
+            .padding(4.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(if (isLive) CardBackground.copy(alpha = 0.9f) else CardBackground)
+            .border(
+                width = if (isFavorite || isLive || artist.isHeadliner) 1.5.dp else 1.dp,
+                color = accentColor.copy(alpha = if (isFavorite || isLive || artist.isHeadliner) 0.8f else 0.15f),
+                shape = RoundedCornerShape(14.dp)
+            )
+            .clickable { haptic.lightTap(); onArtistClick(artist.id) }
+    ) {
+        // Subtle background glow for high-importance acts
+        if (isFavorite || isLive || artist.isHeadliner) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .drawBehind {
+                        drawRect(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(accentColor.copy(alpha = 0.08f), Color.Transparent)
+                            )
+                        )
                     }
+            )
+        }
+
+        Column(modifier = Modifier.fillMaxSize().padding(10.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (isLive) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = 6.dp)
+                            .size(6.dp)
+                            .clip(CircleShape)
+                            .background(ToxicGreen)
+                    )
+                    Text(
+                        text = "LIVE NOW",
+                        color = ToxicGreen,
+                        fontSize = 7.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                } else if (artist.isHeadliner && width > 100f) {
+                    Text(
+                        text = "HEADLINER",
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 7.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                }
+                
+                Spacer(modifier = Modifier.weight(1f))
+                
+                if (isFavorite) {
+                    Icon(Icons.Filled.Star, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(12.dp))
+                } else if (inSquad) {
+                    Text("👥", fontSize = 10.sp)
                 }
             }
+
+            Spacer(modifier = Modifier.height(2.dp))
+
+            Text(
+                text = artist.artist.uppercase(),
+                color = if (isFavorite) MaterialTheme.colorScheme.secondary else Color.White,
+                fontWeight = FontWeight.Black,
+                fontSize = if (width < 100f) 10.sp else 12.sp,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                lineHeight = 12.sp,
+                letterSpacing = (-0.2).sp,
+                fontStyle = FontStyle.Italic
+            )
+            
+            Spacer(modifier = Modifier.weight(1f))
+            
+            Text(
+                text = "${artist.startTime} - ${artist.endTime}",
+                color = if (isLive) ToxicGreen.copy(alpha = 0.7f) else TextMuted,
+                fontSize = 8.sp,
+                fontWeight = FontWeight.Bold,
+                letterSpacing = 0.5.sp
+            )
         }
     }
 }

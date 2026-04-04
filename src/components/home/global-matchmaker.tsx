@@ -86,15 +86,27 @@ export function GlobalMatchmaker() {
               <div className="p-4 rounded-[1.5rem] bg-primary/20 text-primary">
                 <MapPin size={28} />
               </div>
-              <div>
+              <div className="flex-1">
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Your Perfect Match</p>
-                <h4 className="text-4xl font-black uppercase italic tracking-tighter">{result.festivalName}</h4>
+                <div className="flex items-center justify-between">
+                  <h4 className="text-4xl font-black uppercase italic tracking-tighter">{result.festivalName}</h4>
+                  <div className="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-black text-xs tracking-widest">
+                    {result.vibeMatchPercentage}% MATCH
+                  </div>
+                </div>
               </div>
             </div>
             
-            <p className="text-lg text-muted-foreground italic leading-relaxed mb-10">
+            <p className="text-lg text-muted-foreground italic leading-relaxed mb-6">
               "{result.reason}"
             </p>
+
+            {result.suggestedStage && (
+              <div className="mb-8 p-4 rounded-2xl bg-primary/5 border border-primary/10 flex items-center gap-3">
+                <Sparkles className="text-primary h-5 w-5" />
+                <p className="text-sm font-bold text-primary/80 italic">Recommended Zone: <span className="text-primary font-black uppercase not-italic">{result.suggestedStage}</span></p>
+              </div>
+            )}
 
             <div className="space-y-4 mb-10">
               <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-2">Top 3 Artists for you</p>

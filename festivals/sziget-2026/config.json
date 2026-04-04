@@ -9,6 +9,44 @@
   "officialWebsite": "https://szigetfestival.com",
   "productionUrl": "https://sziget-2026.vercel.app",
   "deepLinkScheme": "sziget2026",
+  "i18n": {
+    "defaultLocale": "en",
+    "locales": ["en", "hu"],
+    "translations": {
+      "en": {
+        "nav_home": "Home",
+        "nav_artists": "Artists",
+        "nav_map": "Map",
+        "nav_merch": "Merch",
+        "nav_tools": "Tools",
+        "home_tagline": "Elite Intelligence",
+        "home_opening_acts": "Opening Acts",
+        "toolkit_title": "Survival Toolkit",
+        "toolkit_safety": "Safety",
+        "toolkit_tactical": "Tactical",
+        "toolkit_refresh": "REFRESH DATA",
+        "map_title": "ISLAND RADAR",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Search artists or vibes..."
+      },
+      "hu": {
+        "nav_home": "Főoldal",
+        "nav_artists": "Fellépők",
+        "nav_map": "Térkép",
+        "nav_merch": "Merch",
+        "nav_tools": "Eszközök",
+        "home_tagline": "Sziget Intelligencia",
+        "home_opening_acts": "Nyitó fellépők",
+        "toolkit_title": "Túlélőkészlet",
+        "toolkit_safety": "Biztonság",
+        "toolkit_tactical": "Taktika",
+        "toolkit_refresh": "ADATOK FRISSÍTÉSE",
+        "map_title": "SZIGET RADAR",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Keress előadót vagy stílust..."
+      }
+    }
+  },
   "aiPersona": "the 'Sziget Insider Scout', a legendary festival veteran who knows every corner of the Island of Freedom",
   "location": {
     "city": "Budapest",
@@ -73,7 +111,6 @@
     "currencyConverter": true,
     "tentFinder": true,
     "vibeQuiz": true,
-    "passport": false,
     "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
@@ -94,9 +131,6 @@
     "foodRatings": true,
     "budgetTracker": true,
     "lostAndFound": true,
-    "dailyChallenges": true,
-    "leaderboard": true,
-    "achievements": true,
     "sosMorseCode": true,
     "festivalDictionary": true,
     "firstAidFinder": true,
@@ -106,7 +140,6 @@
     "setlistLinks": true,
     "collabPlaylists": true,
     "arStageView": false,
-    "stickerBook": true,
     "fanPolls": true,
     "photoWall": true,
     "clashResolver": true,
@@ -171,25 +204,6 @@
       }
     ],
     "hiddenGems": ["1", "4", "5", "47", "57", "70"],
-    "passport": {
-      "stamps": [
-        { "id": "s1", "title": "Main Stage Legend", "icon": "star", "description": "Visit the Main Stage during a headliner set.", "category": "stage", "color": "text-yellow-500", "androidColor": "0xFFFFD700" },
-        { "id": "s2", "title": "Power Raver", "icon": "flame", "description": "Dance at a major stage for at least 1 hour.", "category": "stage", "color": "text-orange-500", "androidColor": "0xFFFF4500" },
-        { "id": "s3", "title": "Water Finder", "icon": "droplet", "description": "Locate 3 different water refill points on your map.", "category": "utility", "color": "text-blue-500", "androidColor": "0xFF00BFFF" },
-        { "id": "s4", "title": "Global Gourmet", "icon": "utensils", "description": "Eat at 3 different international stalls.", "category": "food", "color": "text-emerald-500", "androidColor": "0xFF50C878" },
-        { "id": "s5", "title": "Late Night Dreamer", "icon": "map-pin", "description": "Visit a secret spot at midnight.", "category": "secret", "color": "text-purple-500", "androidColor": "0xFF9370DB" },
-        { "id": "s6", "title": "Bridge Crosser", "icon": "navigation", "description": "Cross the main entrance at dawn.", "category": "secret", "color": "text-pink-500", "androidColor": "0xFFFF69B4" },
-        { "id": "s7", "title": "Early Bird", "icon": "clock", "description": "Be the first at a stage before 4 PM.", "category": "utility", "color": "text-cyan-500", "androidColor": "0xFF00CED1" },
-        { "id": "s8", "title": "Scout Master", "icon": "wand-2", "description": "Follow 3 AI Scout recommendations.", "category": "secret", "color": "text-indigo-500", "androidColor": "0xFF4B0082" }
-      ],
-      "ranks": [
-        { "title": "Tourist", "minXP": 0 },
-        { "title": "Festival Explorer", "minXP": 200 },
-        { "title": "Superfan", "minXP": 500 },
-        { "title": "Main Stage Hero", "minXP": 1000 },
-        { "title": "Legend", "minXP": 2000 }
-      ]
-    },
     "shuttleRoutes": [
       { "id": "1", "route": "City Center Express", "from": "Deák Ferenc tér", "to": "Bridge of Freedom", "freq": "Every 15m", "active": "24/7" },
       { "id": "2", "route": "Airport Shuttle", "from": "Budapest Airport (BUD)", "to": "Island Entrance", "freq": "Every 30m", "active": "08:00 – 22:00" },

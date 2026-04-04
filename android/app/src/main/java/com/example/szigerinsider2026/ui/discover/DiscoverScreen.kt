@@ -60,12 +60,19 @@ import com.example.szigerinsider2026.data.repository.SpotifyRepository
 import com.example.szigerinsider2026.ui.components.ArtistCard
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.t
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MediumTopAppBar
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import com.example.szigerinsider2026.data.config.FestivalConfig
+
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.content.ContextCompat
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -77,6 +84,14 @@ fun DiscoverScreen(
 ) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
+    
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            viewModel?.startAcousticScout()
+        }
+    }
     val db = remember { AppDatabase.getDatabase(context) }
 
     val discoverViewModel: DiscoverViewModel = viewModel ?: viewModel(
@@ -267,7 +282,13 @@ fun DiscoverScreen(
                             discoverViewModel.downloadModel(modelUrl) 
                         },
                         onSearch = { discoverViewModel.runLocalScout(it) },
-                        onListen = { discoverViewModel.startAcousticScout() },
+                        onListen = { 
+                            if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                                discoverViewModel.startAcousticScout() 
+                            } else {
+                                permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+                            }
+                        },
                         onClear = { discoverViewModel.clearLocalScout() }
                     )
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -523,7 +544,7 @@ fun LocalAiScoutCard(
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = if (isDownloaded) "OFFLINE AI SCOUT" else "AI SCOUT (OFFLINE)",
+                    text = if (isDownloaded) t("scout_title") else "${t("scout_title")} (OFFLINE)",
                     color = TextPrimary,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Black,
@@ -605,7 +626,7 @@ fun LocalAiScoutCard(
                             OutlinedTextField(
                                 value = prompt,
                                 onValueChange = { prompt = it },
-                                placeholder = { Text("e.g. late night techno...", color = TextMuted, fontSize = 13.sp) },
+                                placeholder = { Text(t("scout_placeholder"), color = TextMuted, fontSize = 13.sp) },
                                 modifier = Modifier.weight(1f),
                                 shape = RoundedCornerShape(16.dp),
                                 colors = OutlinedTextFieldDefaults.colors(
