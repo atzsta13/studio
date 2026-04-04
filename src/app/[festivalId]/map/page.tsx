@@ -19,9 +19,15 @@ import {
   Eye,
   Crosshair
 } from 'lucide-react';
-import lineupCurrent from '@/data/lineup.json';
-import food from '@/data/food.json';
-import poiData from '@/data/poi.json';
+import { useParams } from 'next/navigation';
+import { useFestivalData } from '@/hooks/use-festival-data';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import Link from 'next/link';
+import { TentFinder } from '@/components/tools/tent-finder';
+import { Loader2 } from 'lucide-react';
+
 import type { LineupItem } from '@/types';
 import type { ElementType } from 'react';
 
@@ -51,15 +57,14 @@ interface MapPin {
   color: string;
   data: LineupItem | POIItem | FoodItem | null;
 }
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import Link from 'next/link';
-import { TentFinder } from '@/components/tools/tent-finder';
-import { FESTIVAL } from '@/config/festival';
 
 export default function MapPage() {
-  const [mounted, setMounted] = useState(false);
+  const { festivalId } = useParams() as { festivalId: string };
+  const { config, lineup, isLoading: isDataLoading } = useFestivalData(festivalId);
+  const [poiData, setPoiData] = useState<POIItem[]>([]);
+  const [foodData, setFoodData] = useState<FoodItem[]>([]);
+  const [isLocalLoading, setIsLocalLoading] = useState(true);
+  
   const [activeCategory, setActiveCategory] = useState<'all' | 'music' | 'food' | 'util' | 'access' | 'quiet' | 'charging'>('all');
   const [selectedPin, setSelectedPin] = useState<MapPin | null>(null);
   const [showTools, setShowTools] = useState(false);
@@ -68,13 +73,29 @@ export default function MapPage() {
   const [arMode, setArMode] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    async function fetchMapData() {
+      try {
+        const [poiRes, foodRes] = await Promise.all([
+          fetch(`/data/${festivalId}/poi.json`),
+          fetch(`/data/${festivalId}/food.json`)
+        ]);
+        if (poiRes.ok) setPoiData(await poiRes.json());
+        if (foodRes.ok) setFoodData(await foodRes.json());
+      } catch (err) {
+        console.error('Failed to load map assets', err);
+      } finally {
+        setIsLocalLoading(false);
+      }
+    }
+    fetchMapData();
+  }, [festivalId]);
 
   const allPins = useMemo(() => {
+    if (isLocalLoading) return [];
+    
     // Derive Stage Pins from poiData (where type === 'stage')
-    const musicPins: MapPin[] = (poiData as POIItem[]).filter(p => p.type === 'stage').map(p => {
-      const stageData = (lineupCurrent as LineupItem[]).find(a => a.stage === p.name) ?? null;
+    const musicPins: MapPin[] = poiData.filter(p => p.type === 'stage').map(p => {
+      const stageData = lineup.find(a => a.stage === p.name) ?? null;
       return {
         id: p.id,
         name: p.name,
@@ -87,7 +108,7 @@ export default function MapPage() {
       };
     });
 
-    const foodPins: MapPin[] = (food as FoodItem[]).map(f => ({
+    const foodPins: MapPin[] = foodData.map(f => ({
       id: f.id,
       name: f.name,
       type: 'food',
@@ -123,7 +144,7 @@ export default function MapPage() {
     });
 
     return [...musicPins, ...foodPins, ...utilPins];
-  }, [mounted]);
+  }, [poiData, foodData, lineup, isLocalLoading]);
 
   const filteredPins = allPins.filter(pin => {
     if (hydrationMode) return pin.subType === 'water';
@@ -131,7 +152,13 @@ export default function MapPage() {
     return pin.type === activeCategory;
   });
 
-  if (!mounted) return null;
+  if (isDataLoading || isLocalLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative flex h-[calc(100vh-64px)] w-full flex-col overflow-hidden bg-zinc-950">
@@ -140,7 +167,7 @@ export default function MapPage() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col">
             <h1 className="text-2xl font-black uppercase tracking-tighter text-white md:text-3xl">
-              {FESTIVAL.name} Radar <span className="text-primary italic">{FESTIVAL.dates.year}</span>
+              {config.name} Radar <span className="text-primary italic">{config.dates.year}</span>
             </h1>
             <p className="text-xs font-bold uppercase tracking-widest text-zinc-400">Tactical Navigation</p>
           </div>
@@ -152,15 +179,15 @@ export default function MapPage() {
           <Button size="sm" variant={activeCategory === 'music' ? 'default' : 'ghost'} onClick={() => setActiveCategory('music')} className="rounded-xl h-9 px-4 gap-2 text-primary shrink-0"><Music className="h-4 w-4" /> Stages</Button>
           <Button size="sm" variant={activeCategory === 'food' ? 'default' : 'ghost'} onClick={() => setActiveCategory('food')} className="rounded-xl h-9 px-4 gap-2 text-emerald-400 shrink-0"><Utensils className="h-4 w-4" /> Food</Button>
           
-          {FESTIVAL.features.accessibilityMap && (
+          {config.features.accessibilityMap && (
             <Button size="sm" variant={activeCategory === 'access' ? 'default' : 'ghost'} onClick={() => setActiveCategory('access')} className="rounded-xl h-9 px-4 gap-2 text-indigo-400 shrink-0"><Accessibility className="h-4 w-4" /> Access</Button>
           )}
           
-          {FESTIVAL.features.quietZones && (
+          {config.features.quietZones && (
             <Button size="sm" variant={activeCategory === 'quiet' ? 'default' : 'ghost'} onClick={() => setActiveCategory('quiet')} className="rounded-xl h-9 px-4 gap-2 text-teal-400 shrink-0"><VolumeX className="h-4 w-4" /> Quiet</Button>
           )}
 
-          {FESTIVAL.features.chargingStations && (
+          {config.features.chargingStations && (
             <Button size="sm" variant={activeCategory === 'charging' ? 'default' : 'ghost'} onClick={() => setActiveCategory('charging')} className="rounded-xl h-9 px-4 gap-2 text-yellow-400 shrink-0"><BatteryCharging className="h-4 w-4" /> Charge</Button>
           )}
         </div>
@@ -168,10 +195,10 @@ export default function MapPage() {
 
       {/* Floating Survival FAB */}
       <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
-        {FESTIVAL.features.arStageView && (
+        {config.features.arStageView && (
            <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${arMode ? 'bg-indigo-600 border-indigo-400' : 'bg-black/60 border-white/20'}`} onClick={() => setArMode(!arMode)}><Eye className={`h-6 w-6 ${arMode ? 'text-white' : 'text-indigo-400'} `} /></Button>
         )}
-        {FESTIVAL.features.crowdHeatmap && (
+        {config.features.crowdHeatmap && (
            <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${heatmapMode ? 'bg-orange-600 border-orange-400' : 'bg-black/60 border-white/20'}`} onClick={() => setHeatmapMode(!heatmapMode)}><Users className={`h-6 w-6 ${heatmapMode ? 'text-white' : 'text-orange-400'} `} /></Button>
         )}
         <Button size="icon" className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 ${hydrationMode ? 'bg-blue-500 border-blue-300' : 'bg-black/60 border-white/20'}`} onClick={() => setHydrationMode(!hydrationMode)}><Droplet className={`h-6 w-6 ${hydrationMode ? 'text-white' : 'text-blue-400'} `} /></Button>
@@ -269,7 +296,7 @@ export default function MapPage() {
                     {(selectedPin.data as LineupItem | null)?.artist ?? 'TBA'}
                   </Badge>
                   <Button asChild className="w-full rounded-xl">
-                    <Link href={selectedPin.data ? `/artist/${(selectedPin.data as LineupItem).id}` : '/timetable'}>Set Details</Link>
+                    <Link href={selectedPin.data ? `/${festivalId}/artist/${(selectedPin.data as LineupItem).id}` : `/${festivalId}/timetable`}>Set Details</Link>
                   </Button>
                 </div>
               )}

@@ -36,20 +36,23 @@ import { NotesJournal } from '@/components/tools/notes-journal';
 import { SOSMorse } from '@/components/tools/sos-morse';
 import { FeedbackSystem } from '@/components/tools/feedback-system';
 import { CarFinder } from '@/components/tools/car-finder';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival';
 import { useInsider } from '@/components/insider-provider';
-import { FESTIVAL } from '@/config/festival';
 
 export default function ToolsPage() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
   const { toast } = useToast();
   const { batterySaver, toggleBatterySaver: toggleBattery } = useInsider();
-  const [localAmount, setLocalAmount] = useState<string>(FESTIVAL.currency.localCode === 'HUF' ? '1000' : '10');
+  const [localAmount, setLocalAmount] = useState<string>(config.currency.localCode === 'HUF' ? '1000' : '10');
   const [isFlashOn, setIsFlashOn] = useState(false);
 
   const convertCurrency = (amount: string) => {
     const val = parseFloat(amount) || 0;
     return {
-      eur: (val / FESTIVAL.currency.eurRate).toFixed(2),
-      usd: (val / FESTIVAL.currency.usdRate).toFixed(2)
+      eur: (val / config.currency.eurRate).toFixed(2),
+      usd: (val / config.currency.usdRate).toFixed(2)
     };
   };
 
@@ -80,11 +83,11 @@ export default function ToolsPage() {
           <div className="mb-20">
             <PageHeader
               title="Survival Toolkit"
-              description={`Elite tactical utilities for the ${FESTIVAL.tagline}. No signal required.`}
+              description={`Elite tactical utilities for the ${config.tagline}. No signal required.`}
             />
           </div>
 
-          {FESTIVAL.features.sunscreenAlert && (
+          {config.features.sunscreenAlert && (
             <Card className="mb-10 bg-orange-500 text-black border-none shadow-2xl rounded-[2.5rem] p-6 flex items-center gap-6 animate-in slide-in-from-top-4 duration-1000">
                <div className="p-4 bg-black/10 rounded-2xl">
                  <Sun size={32} />
@@ -98,22 +101,22 @@ export default function ToolsPage() {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
-            {FESTIVAL.features.hydrationTracker && (
+            {config.features.hydrationTracker && (
               <HydrationTracker />
             )}
 
-            {FESTIVAL.features.currencyConverter && (
+            {config.features.currencyConverter && (
               <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
                 <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
                   <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
                     <Coins size={32} />
-                    {FESTIVAL.currency.localCode} Converter
+                    {config.currency.localCode} Converter
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-10">
                   <div className="space-y-8">
                     <div>
-                      <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">{FESTIVAL.currency.localName} ({FESTIVAL.currency.localCode})</label>
+                      <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">{config.currency.localName} ({config.currency.localCode})</label>
                       <Input
                         type="number"
                         value={localAmount}
@@ -138,10 +141,10 @@ export default function ToolsPage() {
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
-            <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${FESTIVAL.location.countryCode === 'HU' ? 'grid-cols-4' : 'grid-cols-3'}`}>
+            <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${config.location.countryCode === 'HU' ? 'grid-cols-4' : 'grid-cols-3'}`}>
               <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Tactical</TabsTrigger>
               <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Safety</TabsTrigger>
-              {FESTIVAL.location.countryCode === 'HU' && (
+              {config.location.countryCode === 'HU' && (
                 <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
               )}
               <TabsTrigger value="camp" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Camp</TabsTrigger>
@@ -149,14 +152,14 @@ export default function ToolsPage() {
 
             <TabsContent value="survival" className="space-y-10">
               <WeatherWidget />
-              {FESTIVAL.features.weatherRadar && <WeatherRadar />}
+              {config.features.weatherRadar && <WeatherRadar />}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {FESTIVAL.features.budgetTracker && <BudgetTracker />}
-                {FESTIVAL.features.notesJournal && <NotesJournal />}
+                {config.features.budgetTracker && <BudgetTracker />}
+                {config.features.notesJournal && <NotesJournal />}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {FESTIVAL.features.carFinder && <CarFinder />}
+                {config.features.carFinder && <CarFinder />}
                 <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl relative overflow-hidden group backdrop-blur-3xl">
                   <div className="absolute right-[-20px] top-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-1000">
                     <Sun size={160} />
@@ -176,7 +179,7 @@ export default function ToolsPage() {
                   </div>
                 </Card>
 
-                {FESTIVAL.features.audioMonitor && (
+                {config.features.audioMonitor && (
                   <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
                     <div className="flex items-center gap-6 mb-8">
                       <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
@@ -195,9 +198,9 @@ export default function ToolsPage() {
                 )}
               </div>
 
-              {FESTIVAL.features.sosMorseCode && <SOSMorse />}
+              {config.features.sosMorseCode && <SOSMorse />}
 
-              {FESTIVAL.features.batterySaver && (
+              {config.features.batterySaver && (
                 <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl mt-10">
                   <div className="flex items-center justify-between gap-6">
                     <div className="flex items-center gap-6">
@@ -227,11 +230,11 @@ export default function ToolsPage() {
             </TabsContent>
 
             <TabsContent value="safety" className="space-y-10">
-              {FESTIVAL.features.feedbackSystem && <FeedbackSystem />}
+              {config.features.feedbackSystem && <FeedbackSystem />}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {FESTIVAL.content.emergencyContacts?.security && (
+                {config.content.emergencyContacts?.security && (
                   <Card 
-                    onClick={() => window.location.href = `tel:${FESTIVAL.content.emergencyContacts?.security.phone}`}
+                    onClick={() => window.location.href = `tel:${config.content.emergencyContacts?.security.phone}`}
                     className="p-10 bg-red-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
                   >
                     <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
@@ -245,7 +248,7 @@ export default function ToolsPage() {
                       </div>
                       <div>
                         <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Security Alert</h4>
-                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {FESTIVAL.content.emergencyContacts.security.label}. Have your location ready.</p>
+                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {config.content.emergencyContacts.security.label}. Have your location ready.</p>
                         <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-red-600 bg-white hover:bg-white/90">
                           DIAL SECURITY
                         </Button>
@@ -254,9 +257,9 @@ export default function ToolsPage() {
                   </Card>
                 )}
 
-                {FESTIVAL.content.emergencyContacts?.medical && (
+                {config.content.emergencyContacts?.medical && (
                   <Card 
-                    onClick={() => window.location.href = `tel:${FESTIVAL.content.emergencyContacts?.medical.phone}`}
+                    onClick={() => window.location.href = `tel:${config.content.emergencyContacts?.medical.phone}`}
                     className="p-10 bg-blue-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
                   >
                     <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
@@ -270,7 +273,7 @@ export default function ToolsPage() {
                       </div>
                       <div>
                         <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Medical Help</h4>
-                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {FESTIVAL.content.emergencyContacts.medical.label}. Available 24/7.</p>
+                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {config.content.emergencyContacts.medical.label}. Available 24/7.</p>
                         <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-blue-600 bg-white hover:bg-white/90">
                           DIAL MEDICAL
                         </Button>
@@ -280,8 +283,8 @@ export default function ToolsPage() {
                 )}
               </div>
 
-              {FESTIVAL.features.shuttleTimetable && (
-                <Link href="/tools/shuttle" className="block mt-10">
+              {config.features.shuttleTimetable && (
+                <Link href={`/${festivalId}/tools/shuttle`} className="block mt-10">
                   <Card className="p-10 bg-emerald-600/20 border border-emerald-500/20 shadow-2xl rounded-[3.5rem] hover:bg-emerald-600/30 transition-all group">
                     <div className="flex items-center justify-between">
                        <div className="flex items-center gap-6">
@@ -297,8 +300,8 @@ export default function ToolsPage() {
                 </Link>
               )}
 
-              {FESTIVAL.features.festivalDictionary && (
-                <Link href="/tools/dictionary" className="block mt-10">
+              {config.features.festivalDictionary && (
+                <Link href={`/${festivalId}/tools/dictionary`} className="block mt-10">
                   <Card className="p-10 bg-indigo-600/20 border border-indigo-500/20 shadow-2xl rounded-[3.5rem] hover:bg-indigo-600/30 transition-all group">
                     <div className="flex items-center justify-between">
                        <div className="flex items-center gap-6">
@@ -315,7 +318,7 @@ export default function ToolsPage() {
               )}
             </TabsContent>
 
-            {FESTIVAL.location.countryCode === 'HU' && (
+            {config.location.countryCode === 'HU' && (
               <TabsContent value="phrases" className="space-y-10">
                 <div>
                   <p className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-6">

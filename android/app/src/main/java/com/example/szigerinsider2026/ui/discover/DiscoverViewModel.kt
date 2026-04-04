@@ -7,6 +7,7 @@ import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.model.AiRecommendationResult
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.AiRecommendationRepository
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -48,6 +49,7 @@ class DiscoverViewModel(
     val selectedDay = _selectedDay.asStateFlow()
     val selectedGenre = _selectedGenre.asStateFlow()
     val selectedVibe = _selectedVibe.asStateFlow()
+    val selectedStage = _selectedStage.asStateFlow()
     val searchQuery = _searchQuery.asStateFlow()
     val isLoading = _isLoading.asStateFlow()
     val countryFilter: StateFlow<String?> = _countryFilter.asStateFlow()
@@ -137,8 +139,11 @@ class DiscoverViewModel(
     fun runLocalScout(prompt: String) {
         viewModelScope.launch {
             _isLocalAiLoading.value = true
-            val response = localScoutRepository?.getLocalRecommendations(prompt, _allArtists.value)
-            _localAiResponse.value = response
+            _localAiResponse.value = "" // Start with empty string
+            localScoutRepository?.getLocalRecommendationsStreaming(prompt, _allArtists.value)
+                ?.collect { chunk ->
+                    _localAiResponse.value = (_localAiResponse.value ?: "") + chunk
+                }
             _isLocalAiLoading.value = false
         }
     }
@@ -196,35 +201,6 @@ class DiscoverViewModel(
 
     fun clearAiRecommendations() {
         _aiRecommendations.value = null
-    }
-
-    fun updateSpotifyMatches(matchedIds: Set<String>) {
-        _spotifyMatchedIds.value = matchedIds
-    }
-
-    fun setShowSpotifyOnly(show: Boolean) {
-        _showSpotifyOnly.value = show
-    }
-
-    fun clearSpotifyMatches() {
-        _spotifyMatchedIds.value = emptySet()
-        _showSpotifyOnly.value = false
-    }
-
-    private val _serendipityHistory = mutableSetOf<String>()
-
-    fun getRandomUnfavoritedArtist(allArtistsList: List<Artist>, favoritedIds: Set<String>): Artist? {
-        if (allArtistsList.isEmpty()) return null
-        val pool = allArtistsList
-            .filter { it.id !in favoritedIds && it.id !in _serendipityHistory }
-            .ifEmpty { allArtistsList.filter { it.id !in favoritedIds } }
-            .ifEmpty { allArtistsList }
-        val pick = pool.random()
-        _serendipityHistory.add(pick.id)
-        return pick
-    }
-}
-ons.value = null
     }
 
     fun updateSpotifyMatches(matchedIds: Set<String>) {

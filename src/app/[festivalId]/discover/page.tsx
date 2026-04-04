@@ -46,6 +46,8 @@ import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
 import { useFestivalData } from '@/hooks/use-festival-data';
 
+type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
+
 export default function DiscoverPage() {
   const { festivalId } = useParams() as { festivalId: string };
   const { config, lineup, isLoading: isDataLoading } = useFestivalData(festivalId);
@@ -59,6 +61,9 @@ export default function DiscoverPage() {
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  
+  const [serendipityArtist, setSerendipityArtist] = useState<LineupItem | null>(null);
+  const [serendipityHistory, setSerendipityHistory] = useState<Set<string>>(new Set());
 
   const allArtistsCurrent = useMemo(() => {
     return (lineup as LineupItem[]).map(a => ({
@@ -71,8 +76,17 @@ export default function DiscoverPage() {
   const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent);
   const router = useRouter();
   
-  const HIDDEN_GEM_IDS = config.content.hiddenGems || [];
-  const SEEN_KEY = `${config.id}-seen`;
+  const HIDDEN_GEM_IDS = config?.content?.hiddenGems || [];
+  const SEEN_KEY = config ? `${config.id}-seen` : 'seen';
+  
+  const loadSeenIds = () => {
+    try {
+      const raw = typeof window !== 'undefined' ? localStorage.getItem(SEEN_KEY) : null;
+      if (raw) return new Set(JSON.parse(raw) as string[]);
+    } catch { /* ignore */ }
+    return new Set<string>();
+  };
+
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -671,7 +685,7 @@ export default function DiscoverPage() {
         onVibeSelect={handleVibeSelect}
       />
 
-      {FESTIVAL.features.genreBreakdown && (
+      {config.features.genreBreakdown && (
         <div className="max-w-5xl mx-auto mt-12 mb-20 px-6">
            <GenreBreakdown artists={allArtists} />
         </div>

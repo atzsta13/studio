@@ -1,12 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { FESTIVAL } from '@/config/festival';
-
-// Start of startDate (e.g. Aug 5th 00:00 CEST)
-const FESTIVAL_START = new Date(`${FESTIVAL.dates.startDate}T00:00:00+02:00`);
-// End of endDate (e.g. Aug 11th 23:59:59 CEST)
-const FESTIVAL_END = new Date(`${FESTIVAL.dates.endDate}T23:59:59+02:00`);
+import { getFestivalConfig } from '@/config/festival';
 
 interface TimeLeft {
   days: number;
@@ -15,24 +10,28 @@ interface TimeLeft {
   seconds: number;
 }
 
-function getTimeLeft(): TimeLeft {
-  const now = Date.now();
-  const diff = FESTIVAL_START.getTime() - now;
-  if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  const totalSeconds = Math.floor(diff / 1000);
-  return {
-    days: Math.floor(totalSeconds / 86400),
-    hours: Math.floor((totalSeconds % 86400) / 3600),
-    minutes: Math.floor((totalSeconds % 3600) / 60),
-    seconds: totalSeconds % 60,
-  };
-}
-
 function pad(n: number): string {
   return String(n).padStart(2, '0');
 }
 
-export function FestivalCountdown() {
+export function FestivalCountdown({ festivalId }: { festivalId: string }) {
+  const config = getFestivalConfig(festivalId);
+  const FESTIVAL_START = new Date(`${config.dates.startDate}T00:00:00+02:00`);
+  const FESTIVAL_END = new Date(`${config.dates.endDate}T23:59:59+02:00`);
+
+  const getTimeLeft = (): TimeLeft => {
+    const now = Date.now();
+    const diff = FESTIVAL_START.getTime() - now;
+    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    const totalSeconds = Math.floor(diff / 1000);
+    return {
+      days: Math.floor(totalSeconds / 86400),
+      hours: Math.floor((totalSeconds % 86400) / 3600),
+      minutes: Math.floor((totalSeconds % 3600) / 60),
+      seconds: totalSeconds % 60,
+    };
+  };
+
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft);
   const [now, setNow] = useState(() => Date.now());
 
@@ -42,7 +41,7 @@ export function FestivalCountdown() {
       setNow(Date.now());
     }, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [config.dates.startDate]);
 
   const isFestivalWeek = now >= FESTIVAL_START.getTime() && now < FESTIVAL_END.getTime();
   const isAfterFestival = now >= FESTIVAL_END.getTime();
@@ -51,7 +50,7 @@ export function FestivalCountdown() {
     <div
       style={{
         background: '#1a1a1a',
-        border: `1px solid ${FESTIVAL.theme.accentHex}`,
+        border: `1px solid ${config.theme.accentHex}`,
         borderRadius: 0,
         padding: '2rem 2.5rem',
         textAlign: 'center',
@@ -69,13 +68,13 @@ export function FestivalCountdown() {
           marginBottom: '1.25rem',
         }}
       >
-        DAYS UNTIL {FESTIVAL.appName.toUpperCase()}
+        DAYS UNTIL {config.appName.toUpperCase()}
       </p>
 
       {isAfterFestival ? (
         <p
           style={{
-            color: FESTIVAL.theme.accentHex,
+            color: config.theme.accentHex,
             fontSize: '1.6rem',
             fontWeight: 900,
             textTransform: 'uppercase',
@@ -83,12 +82,12 @@ export function FestivalCountdown() {
             fontStyle: 'italic',
           }}
         >
-          SEE YOU AT {FESTIVAL.name.toUpperCase()} {FESTIVAL.dates.year + 1}
+          SEE YOU AT {config.name.toUpperCase()} {config.dates.year + 1}
         </p>
       ) : isFestivalWeek ? (
         <p
           style={{
-            color: FESTIVAL.theme.accentHex,
+            color: config.theme.accentHex,
             fontSize: '1.6rem',
             fontWeight: 900,
             textTransform: 'uppercase',
@@ -97,7 +96,7 @@ export function FestivalCountdown() {
             animation: 'countdown-pulse 1.5s ease-in-out infinite',
           }}
         >
-          🔥 FESTIVAL IS LIVE — {FESTIVAL.location.city.toUpperCase()}
+          🔥 FESTIVAL IS LIVE — {config.location.city.toUpperCase()}
         </p>
       ) : (
         <div
@@ -116,7 +115,7 @@ export function FestivalCountdown() {
             <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
               <span
                 style={{
-                  color: FESTIVAL.theme.accentHex,
+                  color: config.theme.accentHex,
                   fontSize: 'clamp(2.2rem, 6vw, 3.5rem)',
                   fontWeight: 900,
                   lineHeight: 1,

@@ -495,6 +495,17 @@ fun LocalAiScoutCard(
     onClear: () -> Unit
 ) {
     var prompt by remember { mutableStateOf("") }
+    var isListening by remember { mutableStateOf(false) }
+    
+    LaunchedEffect(isListening) {
+        if (isListening) {
+            // Simulate 3 seconds of listening
+            kotlinx.coroutines.delay(3000)
+            isListening = false
+            // Send a simulated "Acoustic Fingerprint" prompt
+            onSearch("I am listening to music right now. It has a heavy, fast 145 BPM techno beat with dark industrial synths. Which artist on the lineup sounds exactly like this?")
+        }
+    }
     
     Card(
         colors = CardDefaults.cardColors(containerColor = if (isDownloaded) Color(0xFF1A1A1D) else CardBackground),
@@ -567,29 +578,60 @@ fun LocalAiScoutCard(
                 }
             } else {
                 if (response == null) {
-                    OutlinedTextField(
-                        value = prompt,
-                        onValueChange = { prompt = it },
-                        placeholder = { Text("e.g. late night techno sets...", color = TextMuted, fontSize = 13.sp) },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(16.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedBorderColor = CyanPulse,
-                            unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
-                            focusedContainerColor = OLEDBlack.copy(alpha = 0.5f),
-                            unfocusedContainerColor = OLEDBlack.copy(alpha = 0.3f)
-                        ),
-                        textStyle = BrutalistTypography.bodyMedium.copy(fontSize = 14.sp, color = Color.White),
-                        trailingIcon = {
-                            if (isLoading) {
-                                CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(20.dp))
-                            } else {
-                                IconButton(onClick = { onSearch(prompt) }, enabled = prompt.isNotBlank()) {
-                                    Icon(Icons.Default.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
-                                }
+                    if (isListening) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(56.dp)
+                                .clip(RoundedCornerShape(16.dp))
+                                .background(CyanPulse.copy(alpha = 0.1f))
+                                .border(1.dp, CyanPulse, RoundedCornerShape(16.dp)),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Text("ANALYZING ACOUSTIC VIBE...", color = CyanPulse, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
                             }
                         }
-                    )
+                    } else {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            OutlinedTextField(
+                                value = prompt,
+                                onValueChange = { prompt = it },
+                                placeholder = { Text("e.g. late night techno...", color = TextMuted, fontSize = 13.sp) },
+                                modifier = Modifier.weight(1f),
+                                shape = RoundedCornerShape(16.dp),
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = CyanPulse,
+                                    unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                                    focusedContainerColor = OLEDBlack.copy(alpha = 0.5f),
+                                    unfocusedContainerColor = OLEDBlack.copy(alpha = 0.3f)
+                                ),
+                                textStyle = BrutalistTypography.bodyMedium.copy(fontSize = 14.sp, color = Color.White),
+                                trailingIcon = {
+                                    if (isLoading) {
+                                        CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(20.dp))
+                                    } else {
+                                        IconButton(onClick = { onSearch(prompt) }, enabled = prompt.isNotBlank()) {
+                                            Icon(Icons.Default.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
+                                        }
+                                    }
+                                }
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            IconButton(
+                                onClick = { isListening = true },
+                                modifier = Modifier
+                                    .size(56.dp)
+                                    .clip(RoundedCornerShape(16.dp))
+                                    .background(ToxicGreen.copy(alpha = 0.1f))
+                                    .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
+                            ) {
+                                Icon(Icons.Outlined.MusicNote, contentDescription = "Acoustic Scout", tint = ToxicGreen, modifier = Modifier.size(24.dp))
+                            }
+                        }
+                    }
                 } else {
                     Column(
                         modifier = Modifier

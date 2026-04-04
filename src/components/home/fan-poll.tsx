@@ -2,9 +2,11 @@
 
 import { Card } from '@/components/ui/card';
 import { BarChart2 } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival';
 
-export function FanPoll() {
+export function FanPoll({ festivalId }: { festivalId: string }) {
+  const config = getFestivalConfig(festivalId);
+
   return (
     <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem] p-10 mt-12">
       <div className="flex items-center gap-6 mb-8">
@@ -15,7 +17,7 @@ export function FanPoll() {
       </div>
 
       <p className="text-lg font-medium text-muted-foreground/60 italic leading-relaxed text-center py-6">
-        Live polls will open when {FESTIVAL.name} begins.
+        Live polls will open when {config.name} begins.
       </p>
     </Card>
   );

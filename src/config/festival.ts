@@ -177,6 +177,8 @@ export const FESTIVAL_CONFIGS: Record<string, FestivalConfig> = {
   'frequency-2026': frequency as FestivalConfig,
 }
 
+export const FESTIVAL_IDS = Object.keys(FESTIVAL_CONFIGS)
+
 export function getFestivalConfig(id: string | undefined): FestivalConfig {
   const finalId = id ?? process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
   const config = FESTIVAL_CONFIGS[finalId]

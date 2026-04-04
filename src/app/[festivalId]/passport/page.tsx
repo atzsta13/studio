@@ -21,45 +21,41 @@ import {
   Wand2,
   QrCode
 } from 'lucide-react';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival';
+
 import { AchievementGallery } from '@/components/passport/achievement-gallery';
 import { DailyChallenges } from '@/components/passport/daily-challenges';
-import { FESTIVAL } from '@/config/festival';
 
 import type { ElementType } from 'react';
 
-interface Stamp {
-  id: string;
-  title: string;
-  icon: ElementType;
-  description: string;
-  category: 'stage' | 'utility' | 'food' | 'secret';
-  color: string;
-}
-
-const STAMP_ICONS: Record<string, ElementType> = {
-  'star': Star,
-  'flame': Flame,
-  'droplet': Droplet,
-  'utensils': Utensils,
-  'map-pin': MapPin,
-  'navigation': Navigation,
-  'clock': Clock,
-  'wand-2': Wand2
-};
-
-const STAMPS = (FESTIVAL.content.passport?.stamps || []).map(s => ({
-  ...s,
-  icon: STAMP_ICONS[s.icon] || Star
-}));
-
-const STORAGE_KEY = `${FESTIVAL.id}_passport_v1`;
-
-const RANKS = (FESTIVAL.content.passport?.ranks || []).map(r => ({
-  ...r,
-  title: r.title === 'Legend' ? `${FESTIVAL.name} Legend` : r.title
-}));
-
 export default function PassportPage() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
+  
+  const STAMP_ICONS: Record<string, ElementType> = {
+    'star': Star,
+    'flame': Flame,
+    'droplet': Droplet,
+    'utensils': Utensils,
+    'map-pin': MapPin,
+    'navigation': Navigation,
+    'clock': Clock,
+    'wand-2': Wand2
+  };
+
+  const STAMPS = (config.content.passport?.stamps || []).map(s => ({
+    ...s,
+    icon: STAMP_ICONS[s.icon] || Star
+  }));
+
+  const STORAGE_KEY = `${config.id}_passport_v1`;
+
+  const RANKS = (config.content.passport?.ranks || []).map(r => ({
+    ...r,
+    title: r.title === 'Legend' ? `${config.name} Legend` : r.title
+  }));
+
   const [unlocked, setUnlocked] = useState<string[]>([]);
   const [favoritesCount, setFavoritesCount] = useState(0);
   const [packingCount, setPackingCount] = useState(0);
@@ -73,24 +69,24 @@ export default function PassportPage() {
 
     // Load Favorites Count
     try {
-      const favs = localStorage.getItem(`${FESTIVAL.id}-favorites-v2`) || localStorage.getItem(`${FESTIVAL.id}-favorites`);
+      const favs = localStorage.getItem(`${config.id}-favorites-v2`) || localStorage.getItem(`${config.id}-favorites`);
       if (favs) setFavoritesCount(Object.keys(JSON.parse(favs)).length);
     } catch (e) { }
 
     // Load Packing List Count
     try {
-      const packedItems = Object.keys(localStorage).filter(k => k.startsWith(`${FESTIVAL.id}_packing_checklist`));
+      const packedItems = Object.keys(localStorage).filter(k => k.startsWith(`${config.id}_packing_checklist`));
       setPackingCount(packedItems.length);
     } catch (e) { }
 
     // Load Acts Seen Count
     try {
-      const seen = localStorage.getItem(`${FESTIVAL.id}-seen`);
+      const seen = localStorage.getItem(`${config.id}-seen`);
       if (seen) setActsSeenCount(JSON.parse(seen).length);
     } catch (e) { }
 
     setIsLoaded(true);
-  }, []);
+  }, [config.id, STORAGE_KEY]);
 
   const totalXP = (unlocked.length * 50) + (favoritesCount * 10) + (packingCount * 2);
 
@@ -120,15 +116,15 @@ export default function PassportPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 pb-32">
       <PageHeader
-        title={`${FESTIVAL.name} Passport & XP`}
-        description={`Collect stamps, favorite artists, and unlock your ultimate ${FESTIVAL.name} Legend rank.`}
+        title={`${config.name} Passport & XP`}
+        description={`Collect stamps, favorite artists, and unlock your ultimate ${config.name} Legend rank.`}
       />
       <div className="mb-8">
         <Link
-          href="/highlights"
+          href={`/${festivalId}/highlights`}
           className="inline-flex items-center gap-3 px-8 py-4 rounded-[1.5rem] border border-primary/30 text-primary font-black uppercase text-[11px] tracking-widest bg-primary/5 hover:bg-primary/10 transition-all hover:scale-105"
         >
-          ✨ View My {FESTIVAL.dates.year} Highlights →
+          ✨ View My {config.dates.year} Highlights →
         </Link>
       </div>
 
@@ -229,7 +225,7 @@ export default function PassportPage() {
                 <p className="text-3xl font-black text-accent">{actsSeenCount}</p>
                 <p className="text-[9px] font-black uppercase tracking-[0.2em] text-muted-foreground">Acts Seen</p>
               </div>
-              {FESTIVAL.features.ecoWarrior && (
+              {config.features.ecoWarrior && (
                 <div>
                   <p className="text-3xl font-black text-emerald-500">{(unlocked.length * 5)}</p>
                   <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500/60">Eco XP</p>
@@ -240,11 +236,11 @@ export default function PassportPage() {
         </div>
       </div>
 
-      {FESTIVAL.features.dailyChallenges && <DailyChallenges />}
+      {config.features.dailyChallenges && <DailyChallenges />}
 
-      {FESTIVAL.features.achievements && <AchievementGallery />}
+      {config.features.achievements && <AchievementGallery />}
 
-      {FESTIVAL.features.friendFinder && (
+      {config.features.friendFinder && (
         <Card className="bg-primary/5 border border-primary/20 shadow-2xl overflow-hidden rounded-[3.5rem] mt-20 p-12 text-center relative">
           <div className="absolute top-[-40px] right-[-40px] opacity-5 blur-[80px] bg-primary w-80 h-80 rounded-full" />
           <div className="mx-auto mb-10 flex h-32 w-32 items-center justify-center rounded-[2.5rem] bg-primary/10 border border-primary/20 shadow-2xl">
@@ -260,7 +256,7 @@ export default function PassportPage() {
                 <div className="w-full h-full border-4 border-white border-dashed opacity-20" />
              </div>
           </div>
-          <p className="text-3xl font-black tracking-[0.5em] text-primary uppercase italic">SZ-{FESTIVAL.id.substring(0,3).toUpperCase()}-42K</p>
+          <p className="text-3xl font-black tracking-[0.5em] text-primary uppercase italic">{config.id.substring(0,3).toUpperCase()}-42K</p>
         </Card>
       )}
     </div>

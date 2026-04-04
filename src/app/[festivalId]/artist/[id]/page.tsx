@@ -1,8 +1,6 @@
 'use client';
 
 import { useParams, notFound } from 'next/navigation';
-import lineup from '@/data/lineup.json';
-import type { LineupItem } from '@/types';
 import { format } from 'date-fns';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -14,6 +12,7 @@ import {
   Building,
   Sparkles,
   UserPlus,
+  Loader2,
 } from 'lucide-react';
 import {
   SiSpotify,
@@ -29,35 +28,44 @@ import { FavoriteButton } from '@/components/artist/favorite-button';
 import { ArtistTrivia } from '@/components/artist/artist-trivia';
 import { SetCountdown } from '@/components/artist/set-countdown';
 import { SetlistLinks } from '@/components/artist/setlist-links';
-import { FESTIVAL } from '@/config/festival';
-
-const allArtists: LineupItem[] = lineup as unknown as LineupItem[];
-
-function getArtist(id: string): LineupItem | undefined {
-  return allArtists.find((artist) => artist.id === id);
-}
-
-function getSimilarArtists(artist: LineupItem) {
-  if (!artist.genres) return [];
-  return allArtists
-    .filter(a => a.id !== artist.id && a.genres?.some(g => artist.genres?.includes(g)))
-    .slice(0, 4);
-}
-
-const getFlagEmoji = (countryCode: string | undefined) => {
-  if (!countryCode || countryCode === 'Unknown') return '';
-  const trimmedCode = countryCode.trim().toUpperCase();
-  const code = trimmedCode === 'UK' ? 'GB' : trimmedCode;
-  try {
-    const codePoints = code
-      .split('')
-      .map(char => 127397 + char.charCodeAt(0));
-    return String.fromCodePoint(...codePoints);
-  } catch (e) { return ''; }
-};
+import { useFestivalData } from '@/hooks/use-festival-data';
+import type { LineupItem } from '@/types';
 
 export default function ArtistDetailPage() {
-  const { id } = useParams() as { id: string };
+  const { festivalId, id } = useParams() as { festivalId: string; id: string };
+  const { config, lineup, isLoading } = useFestivalData(festivalId);
+
+  const getArtist = (artistId: string): LineupItem | undefined => {
+    return lineup.find((artist) => artist.id === artistId);
+  };
+
+  const getSimilarArtists = (artist: LineupItem) => {
+    if (!artist.genres) return [];
+    return lineup
+      .filter(a => a.id !== artist.id && a.genres?.some(g => artist.genres?.includes(g)))
+      .slice(0, 4);
+  };
+
+  const getFlagEmoji = (countryCode: string | undefined) => {
+    if (!countryCode || countryCode === 'Unknown') return '';
+    const trimmedCode = countryCode.trim().toUpperCase();
+    const code = trimmedCode === 'UK' ? 'GB' : trimmedCode;
+    try {
+      const codePoints = code
+        .split('')
+        .map(char => 127397 + char.charCodeAt(0));
+      return String.fromCodePoint(...codePoints);
+    } catch (e) { return ''; }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   const artist = getArtist(id) as (LineupItem & { vibes?: string[] }) | undefined;
 
   if (!artist) {
@@ -85,14 +93,14 @@ export default function ArtistDetailPage() {
     <div className="container mx-auto max-w-4xl px-4 py-8 pb-32">
       <div className="mb-6 flex justify-between items-center">
         <Button asChild variant="ghost" className="rounded-xl text-muted-foreground">
-          <Link href="/discover" className="hover:text-primary transition-colors">
+          <Link href={`/${festivalId}/discover`} className="hover:text-primary transition-colors">
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Finder
           </Link>
         </Button>
       </div>
 
-      {FESTIVAL.features.setCountdowns && artist.startTime && (
+      {config.features.setCountdowns && artist.startTime && (
         <div className="mb-8">
            <SetCountdown startTime={artist.startTime} />
         </div>
@@ -122,7 +130,7 @@ export default function ArtistDetailPage() {
             </div>
           </div>
 
-          {FESTIVAL.features.artistTrivia && (
+          {config.features.artistTrivia && (
             <ArtistTrivia
               artistName={artist.artist}
               description={artist.description || ''}
@@ -131,7 +139,7 @@ export default function ArtistDetailPage() {
             />
           )}
 
-          {FESTIVAL.features.setlistLinks && (
+          {config.features.setlistLinks && (
             <SetlistLinks artistName={artist.artist} />
           )}
         </div>
@@ -170,7 +178,7 @@ export default function ArtistDetailPage() {
           </div>
 
           <Button asChild size="lg" className="w-full h-20 rounded-[2rem] shadow-2xl shadow-primary/20 font-black uppercase tracking-[0.3em] text-base transition-all hover:scale-[1.02] active:scale-95">
-            <Link href={`/timetable?day=${artist.day || ''}`}>Add to My Timetable</Link>
+            <Link href={`/${festivalId}/timetable?day=${artist.day || ''}`}>Add to My Timetable</Link>
           </Button>
         </div>
       </div>
@@ -186,7 +194,7 @@ export default function ArtistDetailPage() {
             )) || <p className="text-muted-foreground font-medium italic">Scouting vibes...</p>}
           </div>
 
-          {FESTIVAL.features.similarArtists && (
+          {config.features.similarArtists && (
             <>
               <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Similar Acts</h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">

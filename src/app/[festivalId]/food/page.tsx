@@ -1,15 +1,15 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star } from 'lucide-react';
-import foodAndDrinkData from '@/data/food.json';
-import { useEffect } from 'react';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival';
+import { Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';
-import { FESTIVAL } from '@/config/festival';
 
 // Define the type for a vendor item
 interface Vendor {
@@ -25,9 +25,6 @@ interface Vendor {
     budgetPrice?: string;
 }
 
-// Explicitly type the imported data
-const vendors: Vendor[] = foodAndDrinkData as Vendor[];
-
 const filters = {
     FOOD: { label: 'Food', icon: UtensilsCrossed, category: 'Food' },
     DRINK: { label: 'Drink', icon: GlassWater, category: 'Drink' },
@@ -37,19 +34,36 @@ const filters = {
 };
 
 export default function FoodFinderPage() {
+    const { festivalId } = useParams() as { festivalId: string };
+    const config = getFestivalConfig(festivalId);
+    
+    const [vendors, setVendors] = useState<Vendor[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
     const [ratings, setRatings] = useState<Record<string, number>>({});
 
     useEffect(() => {
-        const saved = localStorage.getItem(`${FESTIVAL.id}-food-ratings`);
+        async function fetchFood() {
+            try {
+                const response = await fetch(`/data/${festivalId}/food.json`);
+                if (response.ok) setVendors(await response.json());
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setIsLoading(false);
+            }
+        }
+        fetchFood();
+
+        const saved = localStorage.getItem(`${config.id}-food-ratings`);
         if (saved) setRatings(JSON.parse(saved));
-    }, []);
+    }, [festivalId, config.id]);
 
     const setRating = (vendorId: string, value: number) => {
         const newRatings = { ...ratings, [vendorId]: value };
         setRatings(newRatings);
-        localStorage.setItem(`${FESTIVAL.id}-food-ratings`, JSON.stringify(newRatings));
+        localStorage.setItem(`${config.id}-food-ratings`, JSON.stringify(newRatings));
     };
 
     const handleFilterToggle = (filterKey: string) => {
@@ -95,7 +109,7 @@ export default function FoodFinderPage() {
         <div className="container mx-auto max-w-5xl px-4 py-8">
             <PageHeader 
                 title="Food & Drink Scout"
-                description={`Find the tastiest meals and the best value on ${FESTIVAL.name}. Look for the Budget Hero badge for official festival-priced options.`}
+                description={`Find the tastiest meals and the best value on ${config.name}. Look for the Budget Hero badge for official festival-priced options.`}
             />
 
             {/* Search and Filter UI */}
@@ -153,7 +167,7 @@ export default function FoodFinderPage() {
                                     {vendor.description}
                                 </p>
 
-                                {FESTIVAL.features.foodRatings && (
+                                {config.features.foodRatings && (
                                     <div className="flex items-center gap-2 mb-6 p-3 rounded-xl bg-white/5 border border-white/5">
                                         <span className="text-[9px] font-black uppercase tracking-widest text-muted-foreground/60 mr-2">Your Rating</span>
                                         {[1, 2, 3, 4, 5].map((star) => (

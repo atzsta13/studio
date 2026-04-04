@@ -27,6 +27,12 @@ import {
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { useFestivalData } from '@/hooks/use-festival-data';
+import { useState, useEffect, useMemo } from 'react';
+import type { LineupItem } from '@/types';
+import { FestivalCountdown } from '@/components/home/festival-countdown';
+import { NewsBulletin } from '@/components/home/news-bulletin';
+import { FanPoll } from '@/components/home/fan-poll';
+import { PhotoWall } from '@/components/home/photo-wall';
 
 export default function Home() {
   const { festivalId } = useParams() as { festivalId: string };

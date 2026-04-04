@@ -67,7 +67,7 @@
     "tentFinder": true,
     "vibeQuiz": true,
     "passport": true,
-    "spotifyIntegration": true,
+    "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
     "timetable": true,
