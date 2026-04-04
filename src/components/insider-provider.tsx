@@ -1,10 +1,11 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL, getFestivalConfig, FestivalConfig } from '@/config/festival';
 
 interface InsiderContextType {
-  features: typeof FESTIVAL.features;
+  config: FestivalConfig;
+  features: FestivalConfig['features'];
   batterySaver: boolean;
   toggleBatterySaver: () => void;
   getStorageKey: (key: string) => string;
@@ -13,13 +14,20 @@ interface InsiderContextType {
 
 const InsiderContext = createContext<InsiderContextType | undefined>(undefined);
 
-export function InsiderProvider({ children }: { children: React.ReactNode }) {
+export function InsiderProvider({ 
+  children, 
+  festivalId 
+}: { 
+  children: React.ReactNode,
+  festivalId?: string 
+}) {
+  const config = getFestivalConfig(festivalId);
   const [batterySaver, setBatterySaver] = useState(false);
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
     // Initial Load
-    const savedBattery = localStorage.getItem(`${FESTIVAL.id}-battery-saver`);
+    const savedBattery = localStorage.getItem(`${config.id}-battery-saver`);
     if (savedBattery === 'true') {
       setBatterySaver(true);
       document.body.classList.add('battery-saver');
@@ -36,12 +44,12 @@ export function InsiderProvider({ children }: { children: React.ReactNode }) {
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
     };
-  }, []);
+  }, [config.id]);
 
   const toggleBatterySaver = () => {
     const next = !batterySaver;
     setBatterySaver(next);
-    localStorage.setItem(`${FESTIVAL.id}-battery-saver`, String(next));
+    localStorage.setItem(`${config.id}-battery-saver`, String(next));
     if (next) {
       document.body.classList.add('battery-saver');
     } else {
@@ -49,10 +57,11 @@ export function InsiderProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const getStorageKey = (key: string) => `${FESTIVAL.id}-${key}`;
+  const getStorageKey = (key: string) => `${config.id}-${key}`;
 
   const value = {
-    features: FESTIVAL.features,
+    config,
+    features: config.features,
     batterySaver,
     toggleBatterySaver,
     getStorageKey,

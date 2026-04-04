@@ -2,47 +2,52 @@
 import fs from 'fs'
 import path from 'path'
 
-const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
-const src = path.join('festivals', festivalId, 'data')
-const assetSrc = path.join('festivals', festivalId, 'assets')
-const dest = path.join('src', 'data')
-const publicDest = 'public'
+const FESTIVALS_DIR = 'festivals'
+const PUBLIC_DATA_DIR = path.join('public', 'data')
 
-if (!fs.existsSync(src)) {
-  console.error(`Festival data directory not found: ${src}`)
+if (!fs.existsSync(FESTIVALS_DIR)) {
+  console.error(`Festivals directory not found: ${FESTIVALS_DIR}`)
   process.exit(1)
 }
 
 // Ensure destination exists
-if (!fs.existsSync(dest)) {
-  fs.mkdirSync(dest, { recursive: true })
+if (!fs.existsSync(PUBLIC_DATA_DIR)) {
+  fs.mkdirSync(PUBLIC_DATA_DIR, { recursive: true })
 }
 
-// Copy JSON data files
-for (const file of fs.readdirSync(src)) {
-  if (file.endsWith('.json')) {
-    fs.copyFileSync(path.join(src, file), path.join(dest, file))
-    console.log(`✓ Synced ${file}`)
+const festivalFolders = fs.readdirSync(FESTIVALS_DIR)
+
+for (const id of festivalFolders) {
+  const festDir = path.join(FESTIVALS_DIR, id)
+  if (!fs.statSync(festDir).isDirectory()) continue
+
+  const src = path.join(festDir, 'data')
+  const dest = path.join(PUBLIC_DATA_DIR, id)
+
+  if (fs.existsSync(src)) {
+    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
+    
+    // Copy JSON files to public/data/[id]
+    for (const file of fs.readdirSync(src)) {
+      if (file.endsWith('.json')) {
+        fs.copyFileSync(path.join(src, file), path.join(dest, file))
+      }
+    }
+    console.log(`✓ Synced data for: ${id}`)
   }
 }
 
-// Sync Assets (Map, Icons, OG Images)
-const assetsToSync = [
-  { from: 'map.svg', to: 'map.svg' },
-  { from: 'icon-192x192.png', to: 'icon-192x192.png' },
-  { from: 'icon-512x512.png', to: 'icon-512x512.png' },
-  { from: 'og-image.jpg', to: 'og-image.jpg' }
-]
+// Legacy support: sync default festival to src/data
+const defaultId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
+const legacySrc = path.join(FESTIVALS_DIR, defaultId, 'data')
+const legacyDest = path.join('src', 'data')
 
-if (fs.existsSync(assetSrc)) {
-  assetsToSync.forEach(asset => {
-    const s = path.join(assetSrc, asset.from)
-    const d = path.join(publicDest, asset.to)
-    if (fs.existsSync(s)) {
-      fs.copyFileSync(s, d)
-      console.log(`✓ Synced asset: ${asset.from}`)
+if (fs.existsSync(legacySrc)) {
+  if (!fs.existsSync(legacyDest)) fs.mkdirSync(legacyDest, { recursive: true })
+  for (const file of fs.readdirSync(legacySrc)) {
+    if (file.endsWith('.json')) {
+      fs.copyFileSync(path.join(legacySrc, file), path.join(legacyDest, file))
     }
-  })
+  }
+  console.log(`✓ Synced legacy data for: ${defaultId}`)
 }
-
-console.log(`Data package synced for: ${festivalId}`)

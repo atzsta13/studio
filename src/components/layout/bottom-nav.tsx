@@ -4,24 +4,27 @@ import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/material';
 import { Icon } from '@/components/ui/icon';
-import { navItems } from '@/config/nav';
+import { getNavItems } from '@/config/nav';
 
-export default function BottomNav() {
+export default function BottomNav({ festivalId }: { festivalId?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [mounted, setMounted] = React.useState(false);
+  const navItems = getNavItems(festivalId);
 
   React.useEffect(() => {
     setMounted(true);
   }, []);
 
+  const rootHref = festivalId ? `/${festivalId}` : '/';
+
   const activeIndex = React.useMemo(() => {
     const idx = navItems.findIndex(item =>
-      (item.href === '/' && pathname === '/') ||
-      (item.href !== '/' && pathname.startsWith(item.href))
+      (item.href === rootHref && pathname === rootHref) ||
+      (item.href !== rootHref && pathname.startsWith(item.href))
     );
     return idx === -1 ? 0 : idx;
-  }, [pathname]);
+  }, [pathname, navItems, rootHref]);
 
   if (!mounted) return null;
 

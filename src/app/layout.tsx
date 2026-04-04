@@ -2,48 +2,22 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import PwaLoader from '@/components/pwa-loader';
-import Header from '@/components/layout/header';
-import BottomNav from '@/components/layout/bottom-nav';
 import MuiRegistry from '@/components/mui-registry';
 import InstallPrompt from '@/components/install-prompt';
 import { ThemeProvider } from '@/components/theme-provider';
-import { FESTIVAL } from '@/config/festival';
-import { OfflineBanner } from '@/components/layout/offline-banner';
-import { InsiderProvider } from '@/components/insider-provider';
-import { ErrorBoundary } from '@/components/error-boundary';
-
-const themeStyle = `
-  :root {
-    --primary: ${FESTIVAL.theme.primaryHsl};
-    --primary-foreground: 0 0% 100%;
-    --secondary: ${FESTIVAL.theme.secondaryHsl};
-    --secondary-foreground: 0 0% 100%;
-    --accent: ${FESTIVAL.theme.accentHsl};
-    --accent-foreground: 0 0% 0%;
-    --background: ${FESTIVAL.theme.backgroundHsl};
-    --card: ${FESTIVAL.theme.cardHsl};
-    --card-foreground: 0 0% 100%;
-    --muted: 240 4% 16%;
-    --muted-foreground: 0 0% 63%;
-    --border: 240 4% 16%;
-  }
-  .text-glow {
-    text-shadow: 0 0 20px ${FESTIVAL.theme.glowColor};
-  }
-`;
 
 export const metadata: Metadata = {
-  applicationName: FESTIVAL.appName,
+  applicationName: 'Festival Insider',
   title: {
-    default: FESTIVAL.appName,
-    template: `%s | ${FESTIVAL.name} ${FESTIVAL.dates.year}`,
+    default: 'Festival Insider Hub',
+    template: `%s | Festival Insider`,
   },
-  description: FESTIVAL.description,
+  description: 'Your tactical companion for global festivals.',
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: FESTIVAL.appName,
+    title: 'Festival Insider',
   },
   formatDetection: {
     telephone: false,
@@ -51,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: FESTIVAL.theme.primaryHex,
+  themeColor: '#000000',
 };
 
 export default function RootLayout({
@@ -65,25 +39,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Varela+Round&display=swap" rel="stylesheet" />
-        <style dangerouslySetInnerHTML={{ __html: themeStyle }} />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <InsiderProvider>
-            <MuiRegistry>
-              <PwaLoader />
-              {FESTIVAL.features.offlineBanner && <OfflineBanner />}
-              <InstallPrompt />
-              <div className="relative flex min-h-screen w-full flex-col">
-                <Header />
-                <main className="flex-1 pb-24 md:pb-0">
-                  <ErrorBoundary>{children}</ErrorBoundary>
-                </main>
-                <BottomNav />
-              </div>
-              <Toaster />
-            </MuiRegistry>
-          </InsiderProvider>
+          <MuiRegistry>
+            <PwaLoader />
+            <InstallPrompt />
+            {children}
+            <Toaster />
+          </MuiRegistry>
         </ThemeProvider>
       </body>
     </html>

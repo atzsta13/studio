@@ -177,14 +177,20 @@ export const FESTIVAL_CONFIGS: Record<string, FestivalConfig> = {
   'frequency-2026': frequency as FestivalConfig,
 }
 
-export function loadFestivalConfig(): FestivalConfig {
-  const id = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
-  const config = FESTIVAL_CONFIGS[id]
+export function getFestivalConfig(id: string | undefined): FestivalConfig {
+  const finalId = id ?? process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
+  const config = FESTIVAL_CONFIGS[finalId]
   if (!config) {
-    const valid = Object.keys(FESTIVAL_CONFIGS).join(', ')
-    throw new Error(`Unknown FESTIVAL_ID: \"${id}\". Valid options: ${valid}`)
+    // If we're in the hub, we might not have a specific festival
+    // return sziget as a safe default for types, but this shouldn't happen in [festivalId] routes
+    return sziget as FestivalConfig
   }
   return config
+}
+
+export function loadFestivalConfig(): FestivalConfig {
+  const id = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
+  return getFestivalConfig(id)
 }
 
 export const FESTIVAL = loadFestivalConfig()

@@ -128,6 +128,7 @@ dependencies {
     implementation(libs.androidx.camera.view)
     implementation(libs.mlkit.barcode.scanning)
     implementation(libs.zxing.core)
+    implementation(libs.google.ai.edge.genai)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

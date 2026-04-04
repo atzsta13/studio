@@ -30,8 +30,12 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material3.*
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.runtime.*
@@ -123,6 +127,13 @@ fun DiscoverScreen(
     val selectedVibe by discoverViewModel.selectedVibe.collectAsStateWithLifecycle()
     val selectedStage by discoverViewModel.selectedStage.collectAsStateWithLifecycle()
     val searchQuery by discoverViewModel.searchQuery.collectAsStateWithLifecycle()
+    
+    val isLocalAiDownloaded by discoverViewModel.isLocalAiDownloaded.collectAsStateWithLifecycle()
+    val localAiDownloadProgress by discoverViewModel.downloadProgress.collectAsStateWithLifecycle()
+    val localAiResponse by discoverViewModel.localAiResponse.collectAsStateWithLifecycle()
+    val isLocalAiLoading by discoverViewModel.isLocalAiLoading.collectAsStateWithLifecycle()
+    
+    val config = FestivalConfig.current
     val isLoading by discoverViewModel.isLoading.collectAsStateWithLifecycle()
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
     val countryFilter by discoverViewModel.countryFilter.collectAsStateWithLifecycle()
@@ -240,6 +251,22 @@ fun DiscoverScreen(
                             .background(Color.White.copy(alpha = 0.05f))
                             .padding(horizontal = 14.dp, vertical = 8.dp)
                     ) {
+                        // ... Existing Search UI ...
+                    }
+
+                    // Local AI Scout Section
+                    LocalAiScoutCard(
+                        isDownloaded = isLocalAiDownloaded,
+                        progress = localAiDownloadProgress,
+                        isLoading = isLocalAiLoading,
+                        response = localAiResponse,
+                        onDownload = { 
+                            val modelUrl = "${config.productionUrl}/ai/gemma4-2b-android.bin"
+                            discoverViewModel.downloadModel(modelUrl) 
+                        },
+                        onSearch = { discoverViewModel.runLocalScout(it) },
+                        onClear = { discoverViewModel.clearLocalScout() }
+                    )
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Filled.Search, contentDescription = null, tint = TextMuted, modifier = Modifier.size(16.dp))
                             Spacer(modifier = Modifier.width(10.dp))
@@ -454,6 +481,143 @@ fun DiscoverScreen(
             },
             onDismiss = { serendipityArtist = null }
         )
+    }
+}
+
+@Composable
+fun LocalAiScoutCard(
+    isDownloaded: Boolean,
+    progress: Float,
+    isLoading: Boolean,
+    response: String?,
+    onDownload: () -> Unit,
+    onSearch: (String) -> Unit,
+    onClear: () -> Unit
+) {
+    var prompt by remember { mutableStateOf("") }
+    
+    Card(
+        colors = CardDefaults.cardColors(containerColor = if (isDownloaded) Color(0xFF1A1A1D) else CardBackground),
+        shape = RoundedCornerShape(24.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .border(
+                width = 1.dp,
+                brush = if (isDownloaded) Brush.linearGradient(listOf(CyanPulse, ToxicGreen)) else SolidColor(Color.White.copy(alpha = 0.05f)),
+                shape = RoundedCornerShape(24.dp)
+            )
+    ) {
+        Column(modifier = Modifier.padding(20.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.AutoAwesome,
+                    contentDescription = null,
+                    tint = if (isDownloaded) ToxicGreen else TextMuted,
+                    modifier = Modifier.size(20.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Text(
+                    text = if (isDownloaded) "OFFLINE AI SCOUT" else "AI SCOUT (OFFLINE)",
+                    color = TextPrimary,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 1.sp
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
+            
+            if (!isDownloaded) {
+                Text(
+                    text = "Download the Gemma 4 intelligence model to find artists without any signal. (~1.2GB)",
+                    color = TextMuted,
+                    fontSize = 12.sp,
+                    lineHeight = 18.sp
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                if (progress > 0f) {
+                    Column {
+                        LinearProgressIndicator(
+                            progress = { progress },
+                            modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
+                            color = ToxicGreen,
+                            trackColor = OLEDBlack
+                        )
+                        Text(
+                            text = "DOWNLOADING: ${(progress * 100).toInt()}%",
+                            color = ToxicGreen,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Black,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+                } else {
+                    Button(
+                        onClick = onDownload,
+                        modifier = Modifier.fillMaxWidth().height(48.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = OLEDBlack)
+                    ) {
+                        Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("PREPARE OFFLINE AI", fontWeight = FontWeight.Black, fontSize = 12.sp)
+                    }
+                }
+            } else {
+                if (response == null) {
+                    OutlinedTextField(
+                        value = prompt,
+                        onValueChange = { prompt = it },
+                        placeholder = { Text("e.g. late night techno sets...", color = TextMuted, fontSize = 13.sp) },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(16.dp),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = CyanPulse,
+                            unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                            focusedContainerColor = OLEDBlack.copy(alpha = 0.5f),
+                            unfocusedContainerColor = OLEDBlack.copy(alpha = 0.3f)
+                        ),
+                        textStyle = BrutalistTypography.bodyMedium.copy(fontSize = 14.sp, color = Color.White),
+                        trailingIcon = {
+                            if (isLoading) {
+                                CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(20.dp))
+                            } else {
+                                IconButton(onClick = { onSearch(prompt) }, enabled = prompt.isNotBlank()) {
+                                    Icon(Icons.Default.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
+                                }
+                            }
+                        }
+                    )
+                } else {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(OLEDBlack.copy(alpha = 0.5f))
+                            .padding(16.dp)
+                    ) {
+                        Text(
+                            text = response,
+                            color = Color.White.copy(alpha = 0.9f),
+                            fontSize = 13.sp,
+                            lineHeight = 20.sp,
+                            fontStyle = FontStyle.Italic
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Button(
+                            onClick = onClear,
+                            modifier = Modifier.height(36.dp),
+                            shape = RoundedCornerShape(8.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.1f))
+                        ) {
+                            Text("CLEAR", fontSize = 10.sp, fontWeight = FontWeight.Black)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

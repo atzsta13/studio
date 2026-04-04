@@ -21,7 +21,7 @@ import {
   Zap,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { SpotifyConnect } from '@/components/SpotifyConnect';
 import {
@@ -44,48 +44,13 @@ import { GenreBreakdown } from '@/components/discover/genre-breakdown';
 import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
-import { FESTIVAL } from '@/config/festival';
-
-// Curated hidden gem artist IDs — non-headliners with unusual/diverse vibes
-const HIDDEN_GEM_IDS = FESTIVAL.content.hiddenGems || [];
-
-const SEEN_KEY = `${FESTIVAL.id}-seen`;
-
-function loadSeenIds(): Set<string> {
-  try {
-    const raw = typeof window !== 'undefined' ? localStorage.getItem(SEEN_KEY) : null;
-    if (raw) return new Set(JSON.parse(raw) as string[]);
-  } catch { /* ignore */ }
-  return new Set();
-}
-
-
-const allArtistsCurrent = (lineup as LineupItem[]).map(a => ({
-  ...a,
-  vibes: a.vibes ?? [],
-  returningHero: !!a.returningHero,
-}));
-
-const getFlagEmoji = (countryCode: string | undefined) => {
-  if (!countryCode || countryCode === 'Unknown') return '';
-  const trimmedCode = countryCode.trim().toUpperCase();
-  const code = trimmedCode === 'UK' ? 'GB' : trimmedCode;
-  try {
-    const codePoints = code
-      .split('')
-      .map(char => 127397 + char.charCodeAt(0));
-    return String.fromCodePoint(...codePoints);
-  } catch (e) {
-    return '';
-  }
-};
-
-const DAY_ORDER = FESTIVAL.dates.days;
-
-type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
+import { useFestivalData } from '@/hooks/use-festival-data';
 
 export default function DiscoverPage() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const { config, lineup, isLoading: isDataLoading } = useFestivalData(festivalId);
   const haptic = useHaptic();
+  
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
   const [selectedStage, setSelectedStage] = useState<string | null>(null);
@@ -95,8 +60,19 @@ export default function DiscoverPage() {
   const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  const allArtistsCurrent = useMemo(() => {
+    return (lineup as LineupItem[]).map(a => ({
+      ...a,
+      vibes: a.vibes ?? [],
+      returningHero: !!a.returningHero,
+    }));
+  }, [lineup]);
+
   const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent);
   const router = useRouter();
+  
+  const HIDDEN_GEM_IDS = config.content.hiddenGems || [];
+  const SEEN_KEY = `${config.id}-seen`;
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -108,12 +84,21 @@ export default function DiscoverPage() {
   const [aiResult, setAiResult] = useState<RecommendOutput | null>(null);
   const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
 
-  const [serendipityArtist, setSerendipityArtist] = useState<LineupItem | null>(null);
-  const [serendipityHistory, setSerendipityHistory] = useState<Set<string>>(new Set());
+  const getFlagEmoji = (countryCode: string | undefined) => {
+    if (!countryCode || countryCode === 'Unknown') return '';
+    const trimmedCode = countryCode.trim().toUpperCase();
+    const code = trimmedCode === 'UK' ? 'GB' : trimmedCode;
+    try {
+      const codePoints = code
+        .split('')
+        .map(char => 127397 + char.charCodeAt(0));
+      return String.fromCodePoint(...codePoints);
+    } catch (e) {
+      return '';
+    }
+  };
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const DAY_ORDER = config.dates.days;
 
   const allArtists = allArtistsCurrent;
 
@@ -159,7 +144,7 @@ export default function DiscoverPage() {
       const matchesGenre = !selectedGenre || artist.genres?.includes(selectedGenre);
       const matchesVibe = !selectedVibe || artist.vibes?.includes(selectedVibe);
       const matchesStage = !selectedStage || (() => {
-        const focus = FESTIVAL.content.radarFocuses?.find(f => f.id === selectedStage);
+        const focus = config.content.radarFocuses?.find(f => f.id === selectedStage);
         if (focus) {
           return (
             (focus.targetStages && focus.targetStages.some(s => artist.stage?.toLowerCase().includes(s.toLowerCase()))) ||
@@ -175,7 +160,7 @@ export default function DiscoverPage() {
 
       return matchesGenre && matchesVibe && matchesStage && matchesSearch;
     });
-  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery]);
+  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery, config]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -253,6 +238,14 @@ export default function DiscoverPage() {
     haptic.lightTap();
     setSelectedVibe(vibe);
   };
+
+  if (isDataLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   const ArtistCard = ({ artist, size = 'default' }: { artist: typeof filteredArtists[0], size?: 'large' | 'default' }) => {
     const isHeadliner = artist.isHeadliner;
@@ -402,10 +395,10 @@ export default function DiscoverPage() {
           Music <span className="text-primary text-glow">Finder</span>
         </h1>
         <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed opacity-70 italic">
-          Curate your personal journey at {FESTIVAL.name}.
+          Curate your personal journey at {config.name}.
         </p>
 
-        {FESTIVAL.features.vibeOfTheHour && (
+        {config.features.vibeOfTheHour && (
           <div className="mt-16 max-w-5xl mx-auto px-6">
              <VibeOfTheHour artists={allArtists} />
           </div>
@@ -413,7 +406,7 @@ export default function DiscoverPage() {
 
         <div className="mt-16 max-w-lg mx-auto px-6">
           <div className="flex justify-between items-end mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-            <span>{FESTIVAL.name} Discovery</span>
+            <span>{config.name} Discovery</span>
             <span className="text-primary">{favorites.size} / {allArtists.length} Artists Saved</span>
           </div>
           <Progress value={progress} className="h-2.5 bg-muted/20" />
@@ -421,7 +414,7 @@ export default function DiscoverPage() {
 
         <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8">
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            {FESTIVAL.features.spotifyIntegration && (
+            {config.features.spotifyIntegration && (
               <>
                 <SpotifyConnect onMatchesFound={(ids) => {
                   setSpotifyMatches(ids);
@@ -444,13 +437,13 @@ export default function DiscoverPage() {
             </button>
 
             {/* Surprise Roulette */}
-            {FESTIVAL.features.surpriseRoulette && (
+            {config.features.surpriseRoulette && (
               <button
                 onClick={() => {
                   haptic.successBurst();
                   const unvisited = allArtists.filter(a => !allFavoriteIds.has(a.id));
                   const random = unvisited[Math.floor(Math.random() * unvisited.length)];
-                  if (random) router.push(`/artist/${random.id}`);
+                  if (random) router.push(`/${config.id}/artist/${random.id}`);
                 }}
                 className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-accent/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
@@ -460,7 +453,7 @@ export default function DiscoverPage() {
             )}
 
             {/* Speed Discovery */}
-            <Link href="/discover/speed">
+            <Link href={`/${config.id}/discover/speed`}>
               <button
                 className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-white hover:bg-zinc-200 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-white/10 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
@@ -469,14 +462,14 @@ export default function DiscoverPage() {
               </button>
             </Link>
 
-            {FESTIVAL.features.vibeQuiz && (
-              <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+            {config.features.vibeQuiz && (
+              <Link href={`/${config.id}/vibe-quiz`} className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
                 <Sparkles className="h-6 w-6" />
                 Vibe Quiz
               </Link>
             )}
 
-            {FESTIVAL.features.aiRecommendations && (
+            {config.features.aiRecommendations && (
               <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
                 <DialogTrigger asChild>
                   <button className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
@@ -523,7 +516,7 @@ export default function DiscoverPage() {
             <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
               {[
                 { id: null, label: 'GLOBAL RADAR' },
-                ...(FESTIVAL.content.radarFocuses || [])
+                ...(config.content.radarFocuses || [])
               ].map(focus => (
                 <button
                   key={focus.label}

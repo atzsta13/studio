@@ -16,8 +16,19 @@ class DiscoverViewModel(
 ) : ViewModel() {
 
     private val aiRepository = context?.let { AiRecommendationRepository(it) }
+    private val localScoutRepository = context?.let { com.example.szigerinsider2026.data.repository.LocalScoutRepository(it) }
 
     private val _allArtists = MutableStateFlow<List<Artist>>(emptyList())
+    
+    // Local AI States
+    val isLocalAiDownloaded = localScoutRepository?.isModelDownloaded ?: MutableStateFlow(false)
+    val downloadProgress = localScoutRepository?.downloadProgress ?: MutableStateFlow(0f)
+    
+    private val _localAiResponse = MutableStateFlow<String?>(null)
+    val localAiResponse = _localAiResponse.asStateFlow()
+
+    private val _isLocalAiLoading = MutableStateFlow(false)
+    val isLocalAiLoading = _isLocalAiLoading.asStateFlow()
     private val _sortMode = MutableStateFlow("headliners") // "headliners" | "az"
     private val _selectedDay = MutableStateFlow<String?>(null)
     private val _selectedGenre = MutableStateFlow<String?>(null)
@@ -105,6 +116,35 @@ class DiscoverViewModel(
 
     init {
         loadArtists()
+        if (isLocalAiDownloaded.value) {
+            initializeLocalScout()
+        }
+    }
+
+    fun downloadModel(url: String) {
+        viewModelScope.launch {
+            val success = localScoutRepository?.downloadModel(url) == true
+            if (success) {
+                initializeLocalScout()
+            }
+        }
+    }
+
+    fun initializeLocalScout() {
+        localScoutRepository?.initializeLlm()
+    }
+
+    fun runLocalScout(prompt: String) {
+        viewModelScope.launch {
+            _isLocalAiLoading.value = true
+            val response = localScoutRepository?.getLocalRecommendations(prompt, _allArtists.value)
+            _localAiResponse.value = response
+            _isLocalAiLoading.value = false
+        }
+    }
+
+    fun clearLocalScout() {
+        _localAiResponse.value = null
     }
 
     private fun loadArtists() {

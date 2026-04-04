@@ -4,14 +4,16 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Music2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { navItems } from '@/config/nav';
+import { getNavItems } from '@/config/nav';
 import { ModeToggle } from './mode-toggle';
-import { FESTIVAL } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival';
 import { useState, useEffect } from 'react';
 
-export default function Header() {
+export default function Header({ festivalId }: { festivalId?: string }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const config = getFestivalConfig(festivalId);
+  const navItems = getNavItems(festivalId);
 
   useEffect(() => {
     setMounted(true);
@@ -23,22 +25,24 @@ export default function Header() {
     );
   }
 
+  const rootHref = festivalId ? `/${festivalId}` : '/';
+
   return (
     <header className="sticky top-0 z-50 hidden w-full border-b border-border/10 bg-background/80 backdrop-blur-3xl md:block transition-all duration-500">
       <div className="container flex h-18 items-center justify-between">
         <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href={rootHref} className="flex items-center gap-2.5 group">
             <div className="bg-primary/10 p-2 rounded-2xl group-hover:scale-110 transition-transform duration-500 shadow-xl shadow-primary/5 border border-primary/10">
               <Music2 className="h-6 w-6 text-primary" />
             </div>
             <span className="hidden font-headline font-black text-2xl tracking-tighter sm:inline-block uppercase italic">
-              {FESTIVAL.name} <span className="text-primary text-glow">Insider</span>
+              {config.name} <span className="text-primary text-glow">Insider</span>
             </span>
           </Link>
           
           <nav className="flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.25em]">
             {navItems.map((item) => {
-              const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+              const isActive = item.href === rootHref ? pathname === rootHref : pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}

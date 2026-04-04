@@ -1,5 +1,5 @@
 import { IconName } from "@/components/ui/icon";
-import { FESTIVAL, FestivalConfig } from "@/config/festival";
+import { FESTIVAL, FESTIVAL_CONFIGS, FestivalConfig, getFestivalConfig } from "@/config/festival";
 
 export interface NavItem {
   href: string;
@@ -8,16 +8,24 @@ export interface NavItem {
   feature?: keyof FestivalConfig['features'];
 }
 
-const allNavItems: NavItem[] = [
-  { href: '/', label: 'Home', icon: 'home' },
-  { href: '/discover', label: 'Artists', icon: 'wand-2' },
-  { href: '/map', label: 'Map', icon: 'map', feature: 'weatherRadar' }, // Map is almost always true, but we could use a better flag
-  { href: '/merch', label: 'Merch', icon: 'shopping-bag', feature: 'merchCatalog' },
-  { href: '/passport', label: 'Passport', icon: 'trophy', feature: 'passport' },
-  { href: '/tools', label: 'Tools', icon: 'zap' },
-];
+export const getNavItems = (festivalId: string | undefined): NavItem[] => {
+  const config = getFestivalConfig(festivalId);
+  const prefix = festivalId ? `/${festivalId}` : '';
 
-export const navItems = allNavItems.filter(item => {
-  if (!item.feature) return true;
-  return FESTIVAL.features[item.feature];
-});
+  const items: NavItem[] = [
+    { href: `${prefix}/`, label: 'Home', icon: 'home' },
+    { href: `${prefix}/discover`, label: 'Artists', icon: 'wand-2' },
+    { href: `${prefix}/map`, label: 'Map', icon: 'map', feature: 'weatherRadar' },
+    { href: `${prefix}/merch`, label: 'Merch', icon: 'shopping-bag', feature: 'merchCatalog' },
+    { href: `${prefix}/passport`, label: 'Passport', icon: 'trophy', feature: 'passport' },
+    { href: `${prefix}/tools`, label: 'Tools', icon: 'zap' },
+  ];
+
+  return items.filter(item => {
+    if (!item.feature) return true;
+    return config.features[item.feature];
+  });
+};
+
+// Keep legacy export for now to avoid breaking builds during refactor
+export const navItems = getNavItems(process.env.NEXT_PUBLIC_FESTIVAL_ID);
