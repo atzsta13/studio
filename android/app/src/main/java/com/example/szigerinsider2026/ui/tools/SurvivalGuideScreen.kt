@@ -39,11 +39,23 @@ import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import com.example.szigerinsider2026.ui.utils.HapticManager
 import kotlinx.coroutines.launch
 
+import com.example.szigerinsider2026.data.model.GuideData
+import com.example.szigerinsider2026.data.model.GuideSection
+import com.example.szigerinsider2026.data.model.GuideItem
+import com.example.szigerinsider2026.data.repository.GuideRepository
+
 @Composable
 fun SurvivalGuideScreen(navController: NavController) {
+    val context = LocalContext.current
     val haptic = rememberHapticManager()
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val repository = remember { GuideRepository(context) }
+    var guideData by remember { mutableStateOf<GuideData?>(null) }
+
+    LaunchedEffect(Unit) {
+        guideData = repository.getGuideData()
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -70,7 +82,7 @@ fun SurvivalGuideScreen(navController: NavController) {
                     Spacer(modifier = Modifier.width(8.dp))
                     Column {
                         Text(
-                            text = "SURVIVAL GUIDE",
+                            text = guideData?.title?.uppercase() ?: "SURVIVAL GUIDE",
                             color = TextPrimary,
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Black,
@@ -86,41 +98,34 @@ fun SurvivalGuideScreen(navController: NavController) {
                         )
                     }
                 }
-                // Summary stat
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(CardBackground)
-                        .border(1.dp, AcidYellow.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
-                        .padding(16.dp)
-                ) {
+                
+                guideData?.description?.let { desc ->
                     Text(
-                        text = "84 TIPS FOR ISLAND SURVIVAL",
-                        color = AcidYellow,
+                        text = desc,
+                        color = TextMuted,
                         fontSize = 14.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp
+                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp)
                     )
                 }
+
                 Spacer(modifier = Modifier.height(16.dp))
             }
 
-            items(SURVIVAL_SECTIONS, key = { it.id }) { section ->
-                GuideSectionCard(
-                    section = section,
-                    isHungarianSection = section.id == "hungarian",
-                    haptic = haptic,
-                    onCopyPhrase = { phrase ->
-                        scope.launch {
-                            snackbarHostState.showSnackbar(
-                                message = "Copied to clipboard!",
-                                duration = SnackbarDuration.Short
-                            )
+            guideData?.let { data ->
+                items(data.sections) { section ->
+                    GuideSectionCard(
+                        section = section,
+                        haptic = haptic,
+                        onCopyPhrase = { phrase ->
+                            scope.launch {
+                                snackbarHostState.showSnackbar(
+                                    message = "Copied to clipboard!",
+                                    duration = SnackbarDuration.Short
+                                )
+                            }
                         }
-                    }
-                )
+                    )
+                }
             }
         }
     }
@@ -129,7 +134,6 @@ fun SurvivalGuideScreen(navController: NavController) {
 @Composable
 private fun GuideSectionCard(
     section: GuideSection,
-    isHungarianSection: Boolean,
     haptic: HapticManager,
     onCopyPhrase: (String) -> Unit
 ) {
@@ -156,7 +160,8 @@ private fun GuideSectionCard(
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = section.icon, fontSize = 28.sp)
+            // Check if icon is an emoji or should be mapped to an icon
+            Text(text = section.icon.let { if (it.length <= 2) it else "ℹ️" }, fontSize = 28.sp)
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = section.title,
@@ -188,28 +193,29 @@ private fun GuideSectionCard(
                 HorizontalDivider(color = Color.White.copy(alpha = 0.06f))
                 Spacer(modifier = Modifier.height(4.dp))
                 section.items.forEach { item ->
-                    if (isHungarianSection) {
-                        HungarianPhraseRow(item, haptic, onCopyPhrase)
-                    } else {
-                        Row(verticalAlignment = Alignment.Top) {
-                            Text(
-                                "•",
-                                color = AcidYellow,
-                                fontWeight = FontWeight.Black,
-                                fontSize = 14.sp,
-                                modifier = Modifier.padding(top = 2.dp, end = 8.dp)
-                            )
-                            Text(
-                                item,
-                                color = Color.White.copy(alpha = 0.7f),
-                                fontSize = 14.sp,
-                                lineHeight = 20.sp
-                            )
-                        }
-                    }
+                    GuideItemRow(item, haptic, onCopyPhrase)
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun GuideItemRow(
+    item: GuideItem,
+    haptic: HapticManager,
+    onCopyPhrase: (String) -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(OLEDBlack.copy(alpha = 0.5f))
+            .padding(12.dp)
+    ) {
+        Text(item.title, color = AcidYellow, fontWeight = FontWeight.Black, fontSize = 15.sp)
+        Spacer(modifier = Modifier.height(4.dp))
+        Text(item.content, color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp, lineHeight = 18.sp)
     }
 }
 
