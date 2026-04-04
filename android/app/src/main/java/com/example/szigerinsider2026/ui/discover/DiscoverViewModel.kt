@@ -22,6 +22,7 @@ class DiscoverViewModel(
     private val _selectedDay = MutableStateFlow<String?>(null)
     private val _selectedGenre = MutableStateFlow<String?>(null)
     private val _selectedVibe = MutableStateFlow<String?>(null)
+    private val _selectedStage = MutableStateFlow<String?>(null)
     private val _searchQuery = MutableStateFlow("")
     private val _isLoading = MutableStateFlow(true)
     private val _countryFilter = MutableStateFlow<String?>(null)
@@ -68,14 +69,27 @@ class DiscoverViewModel(
 
     val filteredArtists: StateFlow<List<Artist>> = combine(
         combine(_allArtists, _sortMode, _selectedDay) { artists, sort, day -> Triple(artists, sort, day) },
-        combine(_selectedGenre, _selectedVibe, _searchQuery) { genre, vibe, query -> Triple(genre, vibe, query) },
-        combine(_countryFilter, _spotifyMatchedIds, _showSpotifyOnly) { country, spotify, showOnly -> Triple(country, spotify, showOnly) }
-    ) { (artists, sort, day), (genre, vibe, query), (country, spotify, showOnly) ->
+        combine(_selectedGenre, _selectedVibe, _selectedStage) { genre, vibe, stage -> Triple(genre, vibe, stage) },
+        combine(_searchQuery, _countryFilter, _spotifyMatchedIds) { query, country, spotify -> Triple(query, country, spotify) },
+        _showSpotifyOnly
+    ) { (artists, sort, day), (genre, vibe, stage), (query, country, spotify), showOnly ->
         var result = artists
         country?.let { c -> result = result.filter { it.countryCode == c } }
         day?.let { d -> result = result.filter { it.day?.equals(d, ignoreCase = true) == true } }
         genre?.let { g -> result = result.filter { it.genres.any { gen -> gen.equals(g, ignoreCase = true) } } }
         vibe?.let { v -> result = result.filter { it.vibes.any { vi -> vi.equals(v, ignoreCase = true) } } }
+        stage?.let { s -> 
+            val configFocus = FestivalConfig.current.content?.radarFocuses?.find { it.id == s }
+            result = if (configFocus != null) {
+                result.filter { artist ->
+                    val matchesStage = configFocus.targetStages?.any { artist.stage?.contains(it, ignoreCase = true) == true } == true
+                    val matchesGenre = configFocus.targetGenres?.any { g -> artist.genres.any { ag -> ag.contains(g, ignoreCase = true) } } == true
+                    matchesStage || matchesGenre
+                }
+            } else {
+                result.filter { it.stage?.equals(s, ignoreCase = true) == true }
+            }
+        }
         if (query.isNotBlank()) {
             result = result.filter { it.artist.contains(query.trim(), ignoreCase = true) }
         }
@@ -119,6 +133,7 @@ class DiscoverViewModel(
     fun selectDay(day: String?) { _selectedDay.value = day }
     fun selectGenre(genre: String?) { _selectedGenre.value = genre }
     fun selectVibe(vibe: String?) { _selectedVibe.value = vibe }
+    fun selectStage(stage: String?) { _selectedStage.value = stage }
     fun setSearchQuery(query: String) { _searchQuery.value = query }
     fun setCountryFilter(code: String?) { _countryFilter.value = code }
     fun setYear(year: String) {
@@ -141,6 +156,35 @@ class DiscoverViewModel(
 
     fun clearAiRecommendations() {
         _aiRecommendations.value = null
+    }
+
+    fun updateSpotifyMatches(matchedIds: Set<String>) {
+        _spotifyMatchedIds.value = matchedIds
+    }
+
+    fun setShowSpotifyOnly(show: Boolean) {
+        _showSpotifyOnly.value = show
+    }
+
+    fun clearSpotifyMatches() {
+        _spotifyMatchedIds.value = emptySet()
+        _showSpotifyOnly.value = false
+    }
+
+    private val _serendipityHistory = mutableSetOf<String>()
+
+    fun getRandomUnfavoritedArtist(allArtistsList: List<Artist>, favoritedIds: Set<String>): Artist? {
+        if (allArtistsList.isEmpty()) return null
+        val pool = allArtistsList
+            .filter { it.id !in favoritedIds && it.id !in _serendipityHistory }
+            .ifEmpty { allArtistsList.filter { it.id !in favoritedIds } }
+            .ifEmpty { allArtistsList }
+        val pick = pool.random()
+        _serendipityHistory.add(pick.id)
+        return pick
+    }
+}
+ons.value = null
     }
 
     fun updateSpotifyMatches(matchedIds: Set<String>) {

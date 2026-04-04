@@ -121,6 +121,7 @@ fun DiscoverScreen(
     val selectedDay by discoverViewModel.selectedDay.collectAsStateWithLifecycle()
     val selectedGenre by discoverViewModel.selectedGenre.collectAsStateWithLifecycle()
     val selectedVibe by discoverViewModel.selectedVibe.collectAsStateWithLifecycle()
+    val selectedStage by discoverViewModel.selectedStage.collectAsStateWithLifecycle()
     val searchQuery by discoverViewModel.searchQuery.collectAsStateWithLifecycle()
     val isLoading by discoverViewModel.isLoading.collectAsStateWithLifecycle()
     val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
@@ -187,9 +188,51 @@ fun DiscoverScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                        .padding(bottom = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+                    Text(
+                        text = "RADAR FOCUS",
+                        color = TextMuted.copy(alpha = 0.6f),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 2.sp,
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                    
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(horizontal = 4.dp)
+                    ) {
+                        val focusOptions = mutableListOf<Pair<String?, String>>()
+                        focusOptions.add(null to "GLOBAL RADAR")
+                        FestivalConfig.current.content?.radarFocuses?.forEach {
+                            focusOptions.add(it.id to it.label)
+                        }
+                        
+                        items(focusOptions) { (id, label) ->
+                            val isSelected = selectedStage == id
+                            FilterChip(
+                                selected = isSelected,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectStage(id) },
+                                label = { Text(label, fontSize = 10.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp) },
+                                shape = RoundedCornerShape(12.dp),
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = Color.White,
+                                    selectedLabelColor = OLEDBlack,
+                                    containerColor = Color.White.copy(alpha = 0.05f),
+                                    labelColor = TextMuted
+                                ),
+                                border = FilterChipDefaults.filterChipBorder(
+                                    enabled = true,
+                                    selected = isSelected,
+                                    borderColor = Color.White.copy(alpha = 0.1f),
+                                    selectedBorderColor = Color.White
+                                )
+                            )
+                        }
+                    }
+
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()

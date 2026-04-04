@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -116,7 +117,9 @@ fun ToolsScreen(navController: NavController) {
             if (selectedTab == 0) {
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                        FestivalCountdownCard()
+                        if (config.features.setCountdowns) {
+                            FestivalCountdownCard()
+                        }
 
                         if (isLoadingWeather) {
                             Box(modifier = Modifier.fillMaxWidth().height(120.dp), contentAlignment = Alignment.Center) {
@@ -130,6 +133,7 @@ fun ToolsScreen(navController: NavController) {
                             TentFinderCard()
                         }
 
+                        // Packing list is usually always available but could be flagged
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -150,51 +154,64 @@ fun ToolsScreen(navController: NavController) {
                             }
                         }
 
-                        SOSBeaconButton(onClick = { isFlashOn = true })
+                        if (config.features.sosMorseCode) {
+                            SOSBeaconButton(onClick = { isFlashOn = true })
+                        }
+
+                        if (config.features.audioMonitor) {
+                            AudioMonitorCard()
+                        }
                     }
                 }
             } else {
                 item {
+                    val contacts = config.content?.emergencyContacts
                     Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
-                        EmergencyCard(
-                            title = "SECURITY ALERT",
-                            description = "Tap to instantly dial the festival main security dispatch. Have your location ready.",
-                            buttonText = "DIAL SECURITY",
-                            phoneNumber = "112",
-                            containerColor = Color(0xFFDC2626),
-                            icon = Icons.Default.Shield
-                        )
+                        contacts?.security?.let { security ->
+                            EmergencyCard(
+                                title = "SECURITY ALERT",
+                                description = "Tap to instantly dial the ${security.label}. Have your location ready.",
+                                buttonText = "DIAL SECURITY",
+                                phoneNumber = security.phone,
+                                containerColor = Color(0xFFDC2626),
+                                icon = Icons.Default.Shield
+                            )
+                        }
 
-                        EmergencyCard(
-                            title = "MEDICAL HELP",
-                            description = "Tap to instantly dial the on-site emergency medical responders. Available 24/7.",
-                            buttonText = "DIAL MEDICAL",
-                            phoneNumber = "104",
-                            containerColor = Color(0xFF2563EB),
-                            icon = Icons.Default.MedicalServices
-                        )
+                        contacts?.medical?.let { medical ->
+                            EmergencyCard(
+                                title = "MEDICAL HELP",
+                                description = "Tap to instantly dial the ${medical.label}. Available 24/7.",
+                                buttonText = "DIAL MEDICAL",
+                                phoneNumber = medical.phone,
+                                containerColor = Color(0xFF2563EB),
+                                icon = Icons.Default.MedicalServices
+                            )
+                        }
                     }
                 }
             }
 
-            item {
-                Spacer(modifier = Modifier.height(16.dp))
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(CardBackground)
-                        .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
-                        .clickable { haptic.mediumTap(); navController.navigate("guide") }
-                        .padding(20.dp)
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text("♻️", fontSize = 32.sp)
-                        Spacer(modifier = Modifier.width(16.dp))
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text("SURVIVAL GUIDE", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
-                            Text("Camping · Phrases · Money · Safety", color = TextMuted, fontSize = 13.sp)
-                            Text("ESSENTIAL INTELLIGENCE FOR ${config.name.uppercase()}", color = ToxicGreen, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 4.dp))
+            if (config.features.survivalGuide) {
+                item {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(CardBackground)
+                            .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                            .clickable { haptic.mediumTap(); navController.navigate("guide") }
+                            .padding(20.dp)
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text("♻️", fontSize = 32.sp)
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text("SURVIVAL GUIDE", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                Text("Camping · Phrases · Money · Safety", color = TextMuted, fontSize = 13.sp)
+                                Text("ESSENTIAL INTELLIGENCE FOR ${config.name.uppercase()}", color = ToxicGreen, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 4.dp))
+                            }
                         }
                     }
                 }
@@ -268,6 +285,39 @@ fun EmergencyCard(title: String, description: String, buttonText: String, phoneN
             Text(text = description, color = Color.White.copy(alpha = 0.9f), fontSize = 17.sp, fontStyle = FontStyle.Italic, lineHeight = 24.sp, modifier = Modifier.padding(bottom = 32.dp))
             Button(onClick = dialAction, colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = containerColor), shape = RoundedCornerShape(20.dp), modifier = Modifier.fillMaxWidth().height(72.dp)) {
                 Text(text = buttonText, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
+            }
+        }
+    }
+}
+
+@Composable
+fun AudioMonitorCard() {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(Color.Red.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Red, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(text = "AUDIO MONITOR", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+            }
+            
+            // Simulated Meter
+            Box(modifier = Modifier.fillMaxWidth().height(12.dp).clip(RoundedCornerShape(6.dp)).background(OLEDBlack)) {
+                Box(modifier = Modifier.fillMaxWidth(0.85f).fillMaxHeight().background(Brush.horizontalGradient(listOf(Color.Green, Color.Yellow, Color.Red))))
+            }
+            
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                Text(text = "EST. EXPOSURE: 102dB", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
+                Box(modifier = Modifier.clip(RoundedCornerShape(100)).background(Color.Red.copy(alpha = 0.15f)).border(1.dp, Color.Red.copy(alpha = 0.3f), RoundedCornerShape(100)).padding(horizontal = 10.dp, vertical = 4.dp)) {
+                    Text(text = "WEAR PLUGS", color = Color.Red, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+                }
             }
         }
     }

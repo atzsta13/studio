@@ -56,16 +56,38 @@ data class Stamp(
     val color: Color
 )
 
-val STAMPS = listOf(
-    Stamp("s1", "Main Stage Legend", Icons.Default.Star, "Visit the Main Stage during a headliner set.", "stage", Color(0xFFFFD700)),
-    Stamp("s2", "Power Raver", Icons.Default.Whatshot, "Dance at a major stage for at least 1 hour.", "stage", Color(0xFFFF4500)),
-    Stamp("s3", "Water Finder", Icons.Default.WaterDrop, "Locate 3 different water refill points on your map.", "utility", Color(0xFF00BFFF)),
-    Stamp("s4", "Global Gourmet", Icons.Default.Restaurant, "Eat at 3 different international stalls.", "food", Color(0xFF50C878)),
-    Stamp("s5", "Midnight Dreamer", Icons.Default.LocationOn, "Visit a secret spot at midnight.", "secret", Color(0xFF9370DB)),
-    Stamp("s6", "Gate Crusher", Icons.Default.Place, "Enter the festival grounds at dawn.", "secret", Color(0xFFFF69B4)),
-    Stamp("s7", "Early Bird", Icons.Default.Schedule, "Be the first at a stage before 4 PM.", "utility", Color(0xFF00CED1)),
-    Stamp("s8", "Scout Master", Icons.Default.AutoAwesome, "Follow 3 AI Scout recommendations.", "secret", Color(0xFF4B0082))
-)
+fun getIconForName(name: String): ImageVector {
+    return when (name) {
+        "star" -> Icons.Default.Star
+        "flame" -> Icons.Default.Whatshot
+        "droplet" -> Icons.Default.WaterDrop
+        "utensils" -> Icons.Default.Restaurant
+        "map-pin" -> Icons.Default.LocationOn
+        "navigation" -> Icons.Default.Place // Or similar
+        "clock" -> Icons.Default.Schedule
+        "wand-2" -> Icons.Default.AutoAwesome
+        else -> Icons.Default.EmojiEvents
+    }
+}
+
+fun parseAndroidColor(colorStr: String): Color {
+    return try {
+        Color(colorStr.removePrefix("0x").toLong(16))
+    } catch (e: Exception) {
+        Color.Gray
+    }
+}
+
+val STAMPS = FestivalConfig.current.content?.passport?.stamps?.map { s ->
+    Stamp(
+        id = s.id,
+        title = s.title,
+        icon = getIconForName(s.icon),
+        description = s.description,
+        category = s.category,
+        color = parseAndroidColor(s.androidColor)
+    )
+} ?: emptyList()
 
 @Composable
 fun PassportScreen(navController: NavController? = null) {

@@ -29,10 +29,13 @@ import com.example.szigerinsider2026.data.model.FoodVendor
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 
+import com.example.szigerinsider2026.data.config.FestivalConfig
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FoodScreen() {
     val context = LocalContext.current
+    val config = FestivalConfig.current
     val vm: FoodViewModel = viewModel(factory = FoodViewModel.Factory(context))
     val haptic = rememberHapticManager()
 
@@ -53,7 +56,7 @@ fun FoodScreen() {
                     fontStyle = FontStyle.Italic, letterSpacing = (-2).sp, lineHeight = 38.sp
                 )
                 Text(
-                    "${vendors.size} vendors on the Island",
+                    "${vendors.size} vendors at ${config.location.venue}",
                     color = TextMuted, fontSize = 14.sp,
                     modifier = Modifier.padding(top = 4.dp, bottom = 20.dp)
                 )
@@ -112,11 +115,13 @@ fun FoodScreen() {
                     )
                 }
 
-                val tagDefs = listOf(
-                    Triple("vegan", "VEGAN", ToxicGreen),
-                    Triple("gluten-free", "GLUTEN-FREE", CyanPulse),
-                    Triple("budget", "BUDGET HERO", AcidYellow)
-                )
+                val tagDefs = buildList {
+                    add(Triple("vegan", "VEGAN", ToxicGreen))
+                    add(Triple("gluten-free", "GLUTEN-FREE", CyanPulse))
+                    if (config.features.budgetTracker) {
+                        add(Triple("budget", "BUDGET HERO", AcidYellow))
+                    }
+                }
                 items(tagDefs) { (tag, label, color) ->
                     val isActive = activeTags.contains(tag)
                     FilterChip(

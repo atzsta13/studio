@@ -66,16 +66,16 @@ import com.example.szigerinsider2026.ui.food.FoodScreen
 import com.example.szigerinsider2026.ui.highlights.HighlightsScreen
 import com.example.szigerinsider2026.ui.packing.PackingListScreen
 
-sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
+sealed class Screen(val route: String, val label: String, val icon: ImageVector, val featureCheck: ((com.example.szigerinsider2026.data.config.FestivalFeatures) -> Boolean)? = null) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
-    object Discover : Screen("discover", "BROWSE", Icons.Filled.Search)
-    object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event)
-    object Map : Screen("map", "MAP", Icons.Filled.LocationOn)
+    object Discover : Screen("discover", "BROWSE", Icons.Filled.Search, { it.vibeQuiz || it.aiRecommendations })
+    object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event, { it.timetable })
+    object Map : Screen("map", "MAP", Icons.Filled.LocationOn, { it.weatherRadar })
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
-    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents)
+    object Passport : Screen("passport", "PASSPORT", Icons.Filled.EmojiEvents, { it.passport })
 }
 
-val bottomNavItems = listOf(
+val allBottomNavItems = listOf(
     Screen.Home,
     Screen.Map,
     Screen.Discover,
@@ -125,13 +125,15 @@ fun AppNavigation() {
             }
         }
     ) { innerPadding ->
-        NavHost(
-            navController = navController,
-            startDestination = "splash",
-            modifier = Modifier.padding(innerPadding),
-            enterTransition = { fadeIn(animationSpec = tween(300)) },
-            exitTransition = { fadeOut(animationSpec = tween(200)) }
-        ) {
+        Column(modifier = Modifier.padding(innerPadding)) {
+            com.example.szigerinsider2026.ui.components.OfflineBanner()
+            NavHost(
+                navController = navController,
+                startDestination = "splash",
+                modifier = Modifier.weight(1f),
+                enterTransition = { fadeIn(animationSpec = tween(300)) },
+                exitTransition = { fadeOut(animationSpec = tween(200)) }
+            ) {
             composable("splash") {
                 SplashScreen(navController)
             }
@@ -237,6 +239,11 @@ fun FluidBottomNavigation(navController: NavHostController) {
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = rememberHapticManager()
     val accentColor = MaterialTheme.colorScheme.secondary
+    val features = FestivalConfig.FEATURES
+
+    val activeNavItems = remember(features) {
+        allBottomNavItems.filter { it.featureCheck?.invoke(features) ?: true }
+    }
 
     NavigationBar(
         modifier = Modifier
@@ -247,7 +254,7 @@ fun FluidBottomNavigation(navController: NavHostController) {
         tonalElevation = 3.dp,
         windowInsets = androidx.compose.foundation.layout.WindowInsets(0)
     ) {
-        bottomNavItems.forEach { screen ->
+        activeNavItems.forEach { screen ->
             val isSelected = currentRoute == screen.route
             val fontScale = LocalConfiguration.current.fontScale
             val labelFontSize = if (fontScale > 1.2f) 8.sp else 10.sp

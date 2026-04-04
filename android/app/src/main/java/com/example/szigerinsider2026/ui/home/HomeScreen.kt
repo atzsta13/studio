@@ -241,15 +241,23 @@ fun HomeScreen(navController: NavController? = null) {
             SectionHeader(title = "EXPLORE")
         }
         item {
+            val features = FestivalConfig.FEATURES
             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
-                QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, MaterialTheme.colorScheme.primary, Modifier.weight(1f)) { navController?.navigate("passport") }
+                if (features.weatherRadar) {
+                    QuickNavCard("MAP", Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
+                }
+                if (features.passport) {
+                    QuickNavCard("PASSPORT", Icons.Default.EmojiEvents, MaterialTheme.colorScheme.primary, Modifier.weight(1f)) { navController?.navigate("passport") }
+                }
             }
         }
         item {
+            val features = FestivalConfig.FEATURES
             Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 QuickNavCard("TOOLS", Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
-                QuickNavCard("SCHEDULE", Icons.Default.Schedule, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("schedule") }
+                if (features.timetable) {
+                    QuickNavCard("SCHEDULE", Icons.Default.Schedule, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("schedule") }
+                }
             }
         }
     }
