@@ -187,6 +187,7 @@ data class FestivalConfigData(
     val tagline: String,
     val description: String,
     val officialWebsite: String,
+    val productionUrl: String? = null,
     val deepLinkScheme: String,
     val aiPersona: String,
     val location: FestivalLocation,

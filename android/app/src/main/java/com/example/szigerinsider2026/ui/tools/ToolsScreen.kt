@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -49,25 +50,40 @@ import java.util.Locale
 fun ToolsScreen(navController: NavController) {
     val haptic = rememberHapticManager()
     val context = LocalContext.current
-    val vm: ToolsViewModel = viewModel()
+    val vm: ToolsViewModel = viewModel(factory = ToolsViewModel.Factory(context))
     val weather by vm.weather.collectAsStateWithLifecycle()
     val isLoadingWeather by vm.isLoadingWeather.collectAsStateWithLifecycle()
+    val isSyncing by vm.isSyncing.collectAsStateWithLifecycle()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(Unit) {
+        vm.syncResult.collect { success ->
+            snackbarHostState.showSnackbar(
+                if (success) "Lineup updated from cloud!" else "Sync failed. Try again later."
+            )
+        }
+    }
     
     val config = FestivalConfig.current
     var localAmount by remember { mutableStateOf(if (config.currency.localCode == "HUF") "1000" else "10") }
     var selectedTab by remember { mutableIntStateOf(0) }
     var isFlashOn by remember { mutableStateOf(false) }
 
-    if (isFlashOn) {
-        FlashOverlay(onDismiss = { isFlashOn = false })
-    } else {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(OLEDBlack)
-                .padding(horizontal = 20.dp),
-            contentPadding = PaddingValues(top = 48.dp, bottom = 120.dp)
-        ) {
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        containerColor = OLEDBlack
+    ) { padding ->
+        if (isFlashOn) {
+            FlashOverlay(onDismiss = { isFlashOn = false })
+        } else {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(OLEDBlack)
+                    .padding(padding)
+                    .padding(horizontal = 20.dp),
+                contentPadding = PaddingValues(top = 48.dp, bottom = 120.dp)
+            ) {
             item {
                 Text(
                     text = "SURVIVAL TOOLKIT",
@@ -187,6 +203,33 @@ fun ToolsScreen(navController: NavController) {
                                 containerColor = Color(0xFF2563EB),
                                 icon = Icons.Default.MedicalServices
                             )
+                        }
+
+                        // Cloud Sync Card
+                        Card(
+                            colors = CardDefaults.cardColors(containerColor = CardBackground),
+                            shape = RoundedCornerShape(24.dp),
+                            modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(24.dp))
+                        ) {
+                            Column(modifier = Modifier.padding(20.dp)) {
+                                Text("LINEUP CLOUD SYNC", color = TextPrimary, fontSize = 14.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+                                Text("Update artist data from production server.", color = TextMuted, fontSize = 12.sp, modifier = Modifier.padding(vertical = 8.dp))
+                                Button(
+                                    onClick = { haptic.mediumTap(); vm.syncData() },
+                                    enabled = !isSyncing,
+                                    modifier = Modifier.fillMaxWidth().height(56.dp),
+                                    shape = RoundedCornerShape(16.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = if (isSyncing) MutedBackground else Color.White, contentColor = OLEDBlack)
+                                ) {
+                                    if (isSyncing) {
+                                        CircularProgressIndicator(color = TextMuted, modifier = Modifier.size(24.dp))
+                                    } else {
+                                        Icon(Icons.Default.CloudDownload, contentDescription = null)
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text("REFRESH DATA", fontWeight = FontWeight.Black)
+                                    }
+                                }
+                            }
                         }
                     }
                 }

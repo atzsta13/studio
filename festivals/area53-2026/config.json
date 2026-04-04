@@ -6,8 +6,10 @@
   "appName": "dev Area 53 Insider",
   "tagline": "Austria's Biggest Heavy Metal Festival",
   "description": "Your unofficial guide to Area 53 Metal Festival 2026 in Leoben, Austria.",
-  "officialWebsite": "https://area53festival.at/en/",
-  "deepLinkScheme": "area532026",
+  "officialWebsite": "https://area53festival.at",
+  "productionUrl": "https://area53-2026.vercel.app",
+  "deepLinkScheme": "area53-2026",
+
   "aiPersona": "the 'Area 53 Metal Scout', a battle-hardened metalhead who has attended every edition since 2017 and knows every riff and corner of the Tenne Leoben",
   "location": {
     "city": "Leoben",

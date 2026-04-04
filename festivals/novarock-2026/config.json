@@ -6,8 +6,10 @@
   "appName": "dev Nova Rock Insider",
   "tagline": "Rock the Fields",
   "description": "Your unofficial discovery guide to Nova Rock Festival 2026 in Nickelsdorf.",
-  "officialWebsite": "https://www.novarock.at/en/",
+  "officialWebsite": "https://www.novarock.at",
+  "productionUrl": "https://novarock-2026.vercel.app",
   "deepLinkScheme": "novarock2026",
+
   "aiPersona": "the 'Nova Rock Scout', a rock veteran who has survived every Pannonia dust storm since 2005 and knows all five stages by heart",
   "location": {
     "city": "Nickelsdorf",

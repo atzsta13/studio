@@ -23,16 +23,6 @@ class MapViewModel(
     private val _activeCategory = MutableStateFlow("all")
     val activeCategory: StateFlow<String> = _activeCategory
 
-    // Hardcoded stages as POIs
-    private val stages = listOf(
-        POI("stage-main", "Main Stage", "stage", mapCoords = MapCoords(42, 48)),
-        POI("stage-revolut", "Revolut Stage", "stage", mapCoords = MapCoords(28, 38)),
-        POI("stage-colosseum", "Colosseum", "stage", mapCoords = MapCoords(35, 22)),
-        POI("stage-bolt", "Bolt Party Arena", "stage", mapCoords = MapCoords(22, 55)),
-        POI("stage-a38", "A38 Stage", "stage", mapCoords = MapCoords(12, 42)),
-        POI("stage-world", "World Music Stage", "stage", mapCoords = MapCoords(62, 72))
-    )
-
     init {
         loadData()
     }
@@ -46,7 +36,7 @@ class MapViewModel(
                 POI(f.id, f.name, "food", mapCoords = f.mapCoords)
             }
             
-            _allPois.value = stages + foodPois + pois
+            _allPois.value = foodPois + pois
         }
     }
 

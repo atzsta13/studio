@@ -6,8 +6,10 @@
   "appName": "dev Frequency Insider",
   "tagline": "Green Park Comes Alive",
   "description": "Your unofficial discovery guide to FM4 Frequency Festival 2026 in St. Pölten.",
-  "officialWebsite": "https://www.frequency.at/en/",
+  "officialWebsite": "https://www.frequency.at",
+  "productionUrl": "https://frequency-2026.vercel.app",
   "deepLinkScheme": "frequency2026",
+
   "aiPersona": "the 'Frequency Scout', a St. Pölten regular who knows every act on both the Daypark stages and the Nightpark floors",
   "location": {
     "city": "St. Pölten",

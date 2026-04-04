@@ -7,6 +7,7 @@
   "tagline": "Island of Freedom",
   "description": "Your unofficial offline-first guide to Sziget Festival 2026.",
   "officialWebsite": "https://szigetfestival.com",
+  "productionUrl": "https://sziget-2026.vercel.app",
   "deepLinkScheme": "sziget2026",
   "aiPersona": "the 'Sziget Insider Scout', a legendary festival veteran who knows every corner of the Island of Freedom",
   "location": {

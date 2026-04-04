@@ -187,8 +187,9 @@ fun MapScreen(navController: NavController? = null) {
                 .padding(24.dp)
                 .align(Alignment.TopStart)
         ) {
+            val config = FestivalConfig.current
             Text(
-                text = "ISLAND RADAR",
+                text = "${config.location.venue.uppercase()} RADAR",
                 style = BrutalistTypography.headlineLarge
             )
             Text(

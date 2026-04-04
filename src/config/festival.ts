@@ -14,6 +14,7 @@ export interface FestivalConfig {
   tagline: string
   description: string
   officialWebsite: string
+  productionUrl?: string
   deepLinkScheme: string
   aiPersona: string
   location: {
