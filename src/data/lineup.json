@@ -72,7 +72,7 @@
   {
     "id": "3",
     "artist": "6363",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -104,8 +104,64 @@
   },
   {
     "id": "4",
+    "artist": "Adis Is Ok",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082129-adis-is-ok?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/adisisok",
+      "instagram": "https://www.instagram.com/adisisok"
+    },
+    "description": "The takeaway of the moniker fix up is a smooth sound revival of the bouncy bass, bubbly harmony and arpeggio dynamo of the gilded age of the synthesizer - be that then or now.\nScanning shores of italo and indie and overlooking iridescent blue skies of hedone dotted with leftfield edits and picks unearthed from Japan to Italy keep Adis ever busy. In the time remaining he goes by Andris ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614807_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "5",
+    "artist": "Akac",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT",
+      "TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081953-akac?from=%2F",
+    "socials": {
+      "spotify": null,
+      "instagram": "https://www.instagram.com/akac___"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614443_performance_960.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Uplifting",
+      "Euphoric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "6",
     "artist": "Alizade",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -137,9 +193,9 @@
     "returningHero": false
   },
   {
-    "id": "5",
+    "id": "7",
     "artist": "Alt Blk Era",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -180,7 +236,7 @@
     "returningHero": false
   },
   {
-    "id": "6",
+    "id": "8",
     "artist": "Altin Gun",
     "stage": null,
     "day": "Friday",
@@ -215,7 +271,7 @@
     "returningHero": false
   },
   {
-    "id": "7",
+    "id": "9",
     "artist": "Ana Frango Eletrico",
     "stage": null,
     "day": "Tuesday",
@@ -251,7 +307,7 @@
     "returningHero": false
   },
   {
-    "id": "8",
+    "id": "10",
     "artist": "Analog Balaton",
     "stage": null,
     "day": "Saturday",
@@ -288,7 +344,7 @@
     "lastYearStage": "The Buzz"
   },
   {
-    "id": "9",
+    "id": "11",
     "artist": "Anetha",
     "stage": null,
     "day": "Saturday",
@@ -324,7 +380,39 @@
     "returningHero": false
   },
   {
-    "id": "10",
+    "id": "12",
+    "artist": "Anfisa Letyago",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "IT",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT",
+      "GROOVY TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082285-anfisa-letyago?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7icoOm5fKKPo49jVxoj1Cq",
+      "facebook": "https://www.facebook.com/AnfisaLetyagoMusic",
+      "instagram": "https://www.instagram.com/anfisaletyago",
+      "youtube": "https://www.youtube.com/channel/UCJuAd47ONxiIg3Gl5ZJSjow"
+    },
+    "description": "Anfisa Letyago is a DJ, producer, and vocal talent based in Naples, Italy. Her musical journey began in the vibrant local club scene, evolving from clubber to disc selector in 2009. Anfisa’s sound is shaped by the city's dynamic energy and her strong connection to the sea, her primal influence as a Pisces.\nShe gained recognition after a pivotal meeting with Carl Cox, leading to releases on his Intec Digital ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615051_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "13",
     "artist": "Anna",
     "stage": null,
     "day": "Saturday",
@@ -359,7 +447,7 @@
     "returningHero": false
   },
   {
-    "id": "11",
+    "id": "14",
     "artist": "Annisokay",
     "stage": null,
     "day": "Friday",
@@ -395,9 +483,9 @@
     "returningHero": false
   },
   {
-    "id": "12",
+    "id": "15",
     "artist": "Antony Szmierek",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -431,7 +519,7 @@
     "returningHero": false
   },
   {
-    "id": "13",
+    "id": "16",
     "artist": "Argy",
     "stage": null,
     "day": "Wednesday",
@@ -467,9 +555,9 @@
     "returningHero": false
   },
   {
-    "id": "14",
+    "id": "17",
     "artist": "Ashnikko",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -503,7 +591,63 @@
     "returningHero": false
   },
   {
-    "id": "15",
+    "id": "18",
+    "artist": "Atrip",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "DE",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "BASS HOUSE",
+      "STUTTER HOUSE",
+      "GARAGE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081639-atrip?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4fu0Er7pG6kZZa7Awf3NMI",
+      "facebook": "https://www.facebook.com/itsatripmusic",
+      "youtube": "https://www.youtube.com/channel/UCboD9lPpFpI_s9TEVp2Y2ag"
+    },
+    "description": "Rising electronic producer and DJ ATRIP returns with his highly anticipated mixtape TANZPARTEI II, marking a bold evolution of his sound. Building on the success of the first instalment, the project expands his creative vision through collaborations with artists like KAM-BU, TeaMarrr, Bawo, and Poté, blending electronic music with rap and vocal-driven elements.\nDefined by its dynamic energy — from euphoric club moments to introspective moods — the mixtape ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613667_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "19",
+    "artist": "Autoflower",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082300-autoflower?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/2IKowdBSQcHnaA0HpwUmm7",
+      "instagram": "https://www.instagram.com/autoflower.official",
+      "youtube": "https://www.youtube.com/@search"
+    },
+    "description": "AUTOFLOWER channels the energy of ‘90s House with a trancy edge while moving fluently between peak-time intensity and late-night depth.\nHis shows have taken him across Europe, the USA, Australia and beyond - with appearances at KitKatClub, Virgo New York, ÆDEN, BUT Madrid, and Smolna - to name a few. With major support by various leading artists AUTOFLOWER continues to leave his progressive footprint in the underground circuit.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615118_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "20",
     "artist": "Avralize",
     "stage": null,
     "day": "Tuesday",
@@ -538,7 +682,7 @@
     "returningHero": false
   },
   {
-    "id": "16",
+    "id": "21",
     "artist": "Aws",
     "stage": null,
     "day": "Friday",
@@ -573,7 +717,7 @@
     "returningHero": false
   },
   {
-    "id": "17",
+    "id": "22",
     "artist": "Baby Lasagna",
     "stage": null,
     "day": "Wednesday",
@@ -612,7 +756,7 @@
     "returningHero": false
   },
   {
-    "id": "18",
+    "id": "23",
     "artist": "Bad Nerves",
     "stage": null,
     "day": "Thursday",
@@ -648,9 +792,9 @@
     "returningHero": false
   },
   {
-    "id": "19",
+    "id": "24",
     "artist": "Bbno$",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -681,9 +825,9 @@
     "returningHero": false
   },
   {
-    "id": "20",
+    "id": "25",
     "artist": "Belga",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -714,9 +858,74 @@
     "returningHero": false
   },
   {
-    "id": "21",
+    "id": "26",
+    "artist": "Benkane",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "GROOVY-HOUSE",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2077748-benkane?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4dShRfw3KRf5NMKlfjarqm",
+      "facebook": "https://www.facebook.com/benkanebooks",
+      "instagram": "https://www.instagram.com/benkane_official",
+      "youtube": "https://www.youtube.com/@BenKanemusic"
+    },
+    "description": "BenKane is an active figure in Budapest’s underground house scene and a member of the Back To Basics collective. Since 2020, he has been a constant presence in the nightlife, performing at numerous clubs both in Hungary and abroad, as well as at major domestic festivals such as Balaton Sound, EFOTT, and Strand Festival etc.\nHis DJ sets are characterized by playful, groovy, and occasionally tight sounds, always responding to ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/06/thumb_5605678_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "27",
+    "artist": "Bernathy Live",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "BREAKBEAT",
+      "DELTA DISTRICT",
+      "PSY-TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082102-bernathy-live?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/28R7xAH4k7WxYjfPM6g1l8",
+      "facebook": "https://www.facebook.com/BernathyLive",
+      "instagram": "https://www.instagram.com/bernathy",
+      "youtube": "https://www.youtube.com/channel/UCvFTIL80Ouu-GXaYpWWiGXg"
+    },
+    "description": "Zsiga Bernáthy is an iconic figure of the Hungarian electronic music scene. He began performing live acts in the 1990s together with his father under the name BERNATH/Y & SON, and since 2012 he has continued as a solo act called BERNATHY LIVE. Twisting knobs on a thousand different, both new and ancient machines, he hypnotizes audiences with his distinctive acid-house sets. He pops up everywhere from major festivals to ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614722_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Uplifting",
+      "Euphoric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "28",
     "artist": "Beton.Hofi",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -750,7 +959,37 @@
     "lastYearStage": "The Buzz"
   },
   {
-    "id": "22",
+    "id": "29",
+    "artist": "Bibi Seck",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "BE",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "FUNK",
+      "DELTA DISTRICT",
+      "DISCO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2077770-bibi-seck?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3jANByuh8HmbbGdFR1BrEr",
+      "facebook": "https://www.facebook.com/bibiseckmusic",
+      "instagram": "https://www.instagram.com/bibisck"
+    },
+    "description": "Bibi Seck’s thrilling energy and mixing skills have taken Belgium by storm, and she is now conquering Europe. Bibi is the perfect example of a self-made star in the world of electronic music.Her talent and passion are undeniable, her back catalogue is diverse and often surprising and she has a unique ability to connect with the crowd. As a multidisciplinary creative, she blends various influences of electronic music to create ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/06/thumb_5605754_performance_1080.jpeg",
+    "vibes": [
+      "Groove",
+      "Dance",
+      "Feel-Good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "30",
     "artist": "Biffy Clyro",
     "stage": null,
     "day": "Wednesday",
@@ -785,7 +1024,7 @@
     "returningHero": false
   },
   {
-    "id": "23",
+    "id": "31",
     "artist": "Biia",
     "stage": null,
     "day": "Friday",
@@ -820,7 +1059,7 @@
     "returningHero": false
   },
   {
-    "id": "24",
+    "id": "32",
     "artist": "Black Country, New Road",
     "stage": null,
     "day": "Thursday",
@@ -855,7 +1094,7 @@
     "returningHero": false
   },
   {
-    "id": "25",
+    "id": "33",
     "artist": "Blahalousiana",
     "stage": null,
     "day": "Saturday",
@@ -888,9 +1127,9 @@
     "returningHero": false
   },
   {
-    "id": "26",
+    "id": "34",
     "artist": "Bohemian Betyars X Parno Graszt",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -919,9 +1158,9 @@
     "returningHero": false
   },
   {
-    "id": "27",
+    "id": "35",
     "artist": "Bongor",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -952,7 +1191,7 @@
     "returningHero": false
   },
   {
-    "id": "28",
+    "id": "36",
     "artist": "Boys Noize",
     "stage": null,
     "day": "Thursday",
@@ -989,7 +1228,7 @@
     "returningHero": false
   },
   {
-    "id": "29",
+    "id": "37",
     "artist": "Bratri",
     "stage": null,
     "day": "Friday",
@@ -1026,9 +1265,9 @@
     "returningHero": false
   },
   {
-    "id": "30",
+    "id": "38",
     "artist": "Bring Me The Horizon",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -1062,7 +1301,7 @@
     "returningHero": false
   },
   {
-    "id": "31",
+    "id": "39",
     "artist": "Brooke Combe",
     "stage": null,
     "day": "Saturday",
@@ -1097,7 +1336,33 @@
     "returningHero": false
   },
   {
-    "id": "32",
+    "id": "40",
+    "artist": "Bug",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "DNB",
+      "DELTA DISTRICT",
+      "JUNGLE",
+      "GRIME"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082333-bug?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/bugsound",
+      "instagram": "https://www.instagram.com/bug.mp3_"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615211_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "41",
     "artist": "Bunt.",
     "stage": null,
     "day": "Friday",
@@ -1131,7 +1396,7 @@
     "returningHero": false
   },
   {
-    "id": "33",
+    "id": "42",
     "artist": "Byealex Es A Slepp",
     "stage": null,
     "day": "Thursday",
@@ -1163,9 +1428,9 @@
     "returningHero": false
   },
   {
-    "id": "34",
+    "id": "43",
     "artist": "Calle Mambo",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -1195,7 +1460,7 @@
     "returningHero": false
   },
   {
-    "id": "35",
+    "id": "44",
     "artist": "Cassia",
     "stage": null,
     "day": "Tuesday",
@@ -1228,9 +1493,38 @@
     "returningHero": false
   },
   {
-    "id": "36",
+    "id": "45",
+    "artist": "Cc:disco!",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "AU",
+    "genres": [
+      "MUSIC",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "DISCO",
+      "BOOGIE",
+      "PLAYING DISCO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081691-cc%3Adisco!?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/37fxVoFAMzet5CiiDg7SL7"
+    },
+    "description": "From rural Victoria to the global stage, CC:DISCO! has built her career around one core idea: music first. From radio host to headliner, she has stayed true to her warm, uplifting and playful sound, connecting with audiences through emotion and movement rather than ego.\nShe has performed worldwide, from intimate clubs to major festivals like Glastonbury, Sonar, Kala and Pitch, while also appearing on platforms such as Boiler Room, NTS, ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613675_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "46",
     "artist": "Chadia",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -1261,7 +1555,37 @@
     "returningHero": false
   },
   {
-    "id": "37",
+    "id": "47",
+    "artist": "Charlie Sparks",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HARD TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081961-charlie-sparks?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1lsjQdGrRe2D1nmvCVB7JZ",
+      "facebook": "https://www.facebook.com/people",
+      "instagram": "https://www.instagram.com/charliesparksmusic"
+    },
+    "description": "Charlie Sparks az „ENERGY SELECTA”. Intenzív, magával ragadó hangzásáról ismert, amelyben az acid, az industrial, a rave és a psytrance elemeit ötvözi. Ezek tudatos használatával képes megteremteni azt a könyörtelen lendületet, ami mind a zenéiben, mind a fellépéseiben jelen van.\n\nEgyedi, „veszélyes” zenei identitása gyorsan elterjedt világszerte. Mindez az építészeti tanulmányai alatt kezdődött, amikor elmerült a sötét, kemény techno világában, és felismerte a két alkotói terület közötti erős kapcsolatot. Akárcsak ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614707_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "48",
     "artist": "Charlotte Cardin",
     "stage": null,
     "day": "Wednesday",
@@ -1298,7 +1622,7 @@
     "returningHero": false
   },
   {
-    "id": "38",
+    "id": "49",
     "artist": "Chet Faker",
     "stage": null,
     "day": "Wednesday",
@@ -1331,9 +1655,9 @@
     "returningHero": false
   },
   {
-    "id": "39",
+    "id": "50",
     "artist": "Co Lee",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -1364,7 +1688,7 @@
     "lastYearStage": "Revolut Stage"
   },
   {
-    "id": "40",
+    "id": "51",
     "artist": "Coco & Breezy",
     "stage": null,
     "day": "Tuesday",
@@ -1399,9 +1723,37 @@
     "returningHero": false
   },
   {
-    "id": "41",
+    "id": "52",
+    "artist": "Crb",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "FR",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082101-crb?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": "CRB is a French DJ based in Budapest, with over ten years of presence in the international electronic music scene. His sound blends Hardgroove, Trance, Techno and Oldschool influences, delivered through dynamic sets that move fluidly across genres.\nHe has performed in key venues such as RSO and Club Ost in Berlin, Nexus in Paris, Das Werk and Sass in Vienna, alongside appearances in cities including Madrid, Tbilisi, Antalya and ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614811_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "53",
     "artist": "Curtisy",
-    "stage": null,
+    "stage": "dropYard",
     "day": null,
     "startTime": null,
     "endTime": null,
@@ -1432,9 +1784,71 @@
     "returningHero": false
   },
   {
-    "id": "42",
+    "id": "54",
+    "artist": "Cvrdwell Live",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "FAST_PACED",
+      "GROOVY",
+      "ANALOG-FUELLED TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082120-cvrdwell-live?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7xqZP6LpU1L583igjbjpNE",
+      "facebook": "https://www.facebook.com/cvrdwell",
+      "instagram": "https://www.instagram.com/cvrdwell"
+    },
+    "description": "Budapest-born DJ, producer, and modular live performer with over 20 years of experience in the electronic music scene. Known for fast-paced, groovy, analog-driven techno infused with melancholic and futuristic elements. He has released on respected labels such as Secession, BCCO, Illegal Alien, Warok, Diffuse Reality, Gordo Trax, PRX Records, BRVTAL, and Postdynamic.\nIn recent years, he has focused on improvised, hardware-only modular live sets — both as a solo act ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614777_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "55",
+    "artist": "Daniel Moritz",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082290-daniel-moritz?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/6OQESVuobnjx8WfYm0N1LV",
+      "facebook": "https://www.facebook.com/danielxxmoritz",
+      "instagram": "https://www.instagram.com/danielxmoritz"
+    },
+    "description": "Budapest-based DJ and producer Daniel Moritz blends groovy techno, house, hard groove, raw techno and dark disco into a signature sound rooted in underground energy. His dynamic sets, characterized by vibrant rhythms and an unmistakable edge, have earned him recognition.\nDaniel has played in cities like Berlin, Helsinki, Stockholm, Vienna, and Wroclaw, as well as at renowned festivals such as Sziget Festival. In Budapest, he’s become a fixture on the ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615060_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "56",
     "artist": "De'wayne",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -1473,9 +1887,9 @@
     "returningHero": false
   },
   {
-    "id": "43",
+    "id": "57",
     "artist": "Deki Alem",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -1509,7 +1923,7 @@
     "returningHero": false
   },
   {
-    "id": "44",
+    "id": "58",
     "artist": "Dijon",
     "stage": null,
     "day": "Thursday",
@@ -1544,9 +1958,9 @@
     "returningHero": false
   },
   {
-    "id": "45",
+    "id": "59",
     "artist": "Dimension",
-    "stage": null,
+    "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -1554,7 +1968,8 @@
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "DNB"
+      "DNB",
+      "DELTA DISTRICT"
     ],
     "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068361-dimension?from=%2F",
     "socials": {
@@ -1580,9 +1995,9 @@
     "returningHero": false
   },
   {
-    "id": "46",
+    "id": "60",
     "artist": "Dixon",
-    "stage": null,
+    "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -1592,7 +2007,8 @@
       "ELECTRONIC",
       "TECHNO",
       "DEEP-HOUSE",
-      "MELODIC TECHNO"
+      "MELODIC TECHNO",
+      "DELTA DISTRICT"
     ],
     "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2069924-dixon?from=%2F",
     "socials": {
@@ -1618,7 +2034,7 @@
     "returningHero": false
   },
   {
-    "id": "47",
+    "id": "61",
     "artist": "Dom Dolla",
     "stage": null,
     "day": "Friday",
@@ -1653,7 +2069,31 @@
     "returningHero": false
   },
   {
-    "id": "48",
+    "id": "62",
+    "artist": "Dorota",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081968-dorota?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/dorotafrometem",
+      "instagram": "https://www.instagram.com/dorotax_"
+    },
+    "description": "Dorota is a Budapest-based DJ and founder of ETEM (Expressing Through Electronic Music), an event series launched in 2023 to create intimate and conscious electronic music experiences.\nHer sound is rooted in hypnotic, raw textures, often infused with deep, atmospheric and minimalist elements.\nFor her, music is a healing vibration — a force that evokes profound connection through resonance.\nAs both a DJ and curator, her intention is to create ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614710_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "63",
     "artist": "Dressed Like Boys",
     "stage": null,
     "day": "Saturday",
@@ -1690,9 +2130,63 @@
     "returningHero": false
   },
   {
-    "id": "49",
+    "id": "64",
+    "artist": "Dtnb.",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082298-dtnb.?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1Wz1DzuW8R7zpCaF4gpojY",
+      "facebook": "https://www.facebook.com/dtnb.dj",
+      "instagram": "https://www.instagram.com/dtnb.dj",
+      "youtube": "https://www.youtube.com/channel/UCxHW73ljy6Ewhc9Uqa3s76g"
+    },
+    "description": "Budapest-based duo dtnb. b2b LAU have been sharing the booth since 2019, crafting sets\nthat move fluidly between house, techno, electro and breakbeats. Their connection goes\nback further — LAU's DJ workshop in 2018 was what first sparked dtnb.'s passion for DJing,\ngiving their partnership a rare depth that comes through in every performance.\nBoth rooted in classical music and seasoned on international stages: LAU across festivals\nand clubs from ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615104_performance_1440.png",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "65",
+    "artist": "Dub Personal",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082124-dub-personal?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/35BN3dEzYSocH9jS4Wc2Ql",
+      "facebook": "https://www.facebook.com/DubPersonal"
+    },
+    "description": "Dub Personal has been an active force in Budapest’s electronic music scene since 2009, bringing a deep and powerful blend of drum & bass and dubstep to the city’s soundscape.\nHe began his journey as a producer, carefully shaping his own sonic identity, before stepping behind the decks in 2010 and translating that energy into dynamic DJ sets.\nHis productions have been released on a range of respected international and ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614889_performance_1080.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "66",
     "artist": "Duckshell",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -1720,7 +2214,7 @@
     "returningHero": false
   },
   {
-    "id": "50",
+    "id": "67",
     "artist": "Elefant",
     "stage": null,
     "day": "Friday",
@@ -1759,7 +2253,39 @@
     "returningHero": false
   },
   {
-    "id": "51",
+    "id": "68",
+    "artist": "Eliezer",
+    "stage": "Yettel Colosseum",
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "GROOVY TECHNO",
+      "PROGRESSIVE TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082100-eliezer?from=%2F",
+    "socials": {
+      "spotify": null,
+      "instagram": "https://www.instagram.com/___e_l_i_e_z_e_r___"
+    },
+    "description": "Syndanz collective’s two defining figures, Jáky Chan and Eliézer, have formed a tight-knit b2b duo since crossing paths in 2024. Their sets seamlessly blend the 90s progressive trance aesthetic with modern groovy techno, dominated by acid-driven sounds and layered transitions. They bring a deep creative synergy and raw energy to the Colosseum arena.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614715_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Uplifting",
+      "Euphoric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "69",
     "artist": "Emma Nolde",
     "stage": null,
     "day": "Wednesday",
@@ -1795,7 +2321,30 @@
     "returningHero": false
   },
   {
-    "id": "52",
+    "id": "70",
+    "artist": "Ential",
+    "stage": "Delta District",
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082295-ential?from=%2F",
+    "socials": {
+      "spotify": null,
+      "instagram": "https://www.instagram.com/_ential"
+    },
+    "description": "ENTIAL is an intriguing DJ and producer from Budapest. He entered the world of drum and bass around 2004, gravitating toward the futuristic and forward-thinking side of the genre from the very beginning.\nHe joined Cybershot in 2007 and remained on the podium of broken beats until 2019, performing over 200 DJ gigs across five different countries.\nAfter that, he began developing his own sound, which led to his first ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615091_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "71",
     "artist": "Esti Kornel",
     "stage": null,
     "day": "Saturday",
@@ -1830,7 +2379,7 @@
     "returningHero": false
   },
   {
-    "id": "53",
+    "id": "72",
     "artist": "Evening Elephants",
     "stage": null,
     "day": "Saturday",
@@ -1869,7 +2418,7 @@
     "returningHero": false
   },
   {
-    "id": "54",
+    "id": "73",
     "artist": "Faeda",
     "stage": null,
     "day": "Saturday",
@@ -1905,7 +2454,7 @@
     "returningHero": false
   },
   {
-    "id": "55",
+    "id": "74",
     "artist": "Fcukers",
     "stage": null,
     "day": "Thursday",
@@ -1940,9 +2489,41 @@
     "returningHero": false
   },
   {
-    "id": "56",
+    "id": "75",
+    "artist": "Fka.M4a (Jay Jackson)",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HOUSE",
+      "HARD TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081967-fka.m4a-(jay-jackson)?from=%2F",
+    "socials": {
+      "spotify": null,
+      "instagram": "https://www.instagram.com/fka.m4a"
+    },
+    "description": "Berlin-based, London born DJ fka.m4a has become a stalwart of underground music with a heady blend of Italo Disco, high NRG and leftfield techno. With several Boiler Room appearances under his belt - clocking up over half a million streams combined - plus shows everywhere from Timewarp to Awakenings, features in Mixmag and Electronic Beats, plus Peggy Gou in his corner as a mentor, his stock is firmly on the ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614709_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "76",
     "artist": "Florence + The Machine",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -1978,7 +2559,34 @@
     "returningHero": false
   },
   {
-    "id": "57",
+    "id": "77",
+    "artist": "Flux Pavilion",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DUBSTEP",
+      "DELTA DISTRICT",
+      "BASS-MUSIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082108-flux-pavilion?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7muzHifhMdnfN1xncRLOqk",
+      "facebook": "https://www.facebook.com/fluxpavilion",
+      "instagram": "https://www.instagram.com/fluxpavilion",
+      "youtube": "https://www.youtube.com/@FluxPavilion"
+    },
+    "description": "Co-founder of Circus Records and Dubstep pioneer. Flux Pavilion has produced some of the most successful tracks in electronic music history and launched the careers of scores of new talent in the process. From Glastonbury to Coachella, he has racked up performances at the world's greatest stages, headlining multiple world tours.\nInfluenced by the likes of David Bowie, The Beatles and Frank Zappa in the early years iit was when ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614735_performance_960.png",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "78",
     "artist": "Funk Tribu",
     "stage": null,
     "day": "Saturday",
@@ -2013,7 +2621,7 @@
     "returningHero": false
   },
   {
-    "id": "58",
+    "id": "79",
     "artist": "Giant Rooks",
     "stage": null,
     "day": "Saturday",
@@ -2052,7 +2660,7 @@
     "returningHero": false
   },
   {
-    "id": "59",
+    "id": "80",
     "artist": "Golden Hours",
     "stage": null,
     "day": "Wednesday",
@@ -2085,7 +2693,7 @@
     "returningHero": false
   },
   {
-    "id": "60",
+    "id": "81",
     "artist": "Haai",
     "stage": null,
     "day": "Wednesday",
@@ -2120,7 +2728,96 @@
     "returningHero": false
   },
   {
-    "id": "61",
+    "id": "82",
+    "artist": "Hamdi",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DUBSTEP",
+      "DELTA DISTRICT",
+      "BASS-MUSIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082112-hamdi?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7vvicoei9BbKpZix8qSeLg",
+      "instagram": "https://www.instagram.com/hamdimusic",
+      "youtube": "https://www.youtube.com/channel/UCsvs03ZW_Mko0LP4HerZG_w"
+    },
+    "description": "Hamdi has become one of the most exciting and versatile producers in global electronic music, blending a signature dubstep weight with genre‐bending productions that push the boundaries of modern dance music. Born in Oxford, Hamdi (real name Alexander Hamdi) has been producing electronic music for over a decade, first getting into DJing soon after his eighteenth birthday. He quickly established himself as one of the most in‐demand young producers in ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614741_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "83",
+    "artist": "Hank",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DEEP-HOUSE",
+      "FUNK",
+      "DELTA DISTRICT",
+      "DISCO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081724-hank?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/5ZJ9QoSO3GSF3IaMaA6xrs",
+      "instagram": "https://www.instagram.com/hankkorsan"
+    },
+    "description": "As DJ Buck once said... “this party just got good. ” Los Angeles native and Stüssy tribe member, Hank, has DJ’d in just about every environment you can think of and traveled the world doing so. His own label Kopa Records, founded a couple years back, is a creative vehicle and ode to the early 2000’s west coast house movement. Hank, being closely tied to the late Virgil Abloh’s world ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613871_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting",
+      "Groove"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "84",
+    "artist": "Hated",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "DRUM&BASS",
+      "GROOVY TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082204-hated?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/5onr1r02jYAJmMbaJpATIk",
+      "facebook": "https://www.facebook.com/hated.dnb",
+      "instagram": "https://www.instagram.com/hated.dnb",
+      "youtube": "https://www.youtube.com/channel/UCkjIGazIl8EI7TwynWBBA6Q"
+    },
+    "description": "Hated first encountered the Drum & Bass genre in 2006 and was quickly captivated by its darkest beats. He started DJing in 2011 and began producing music in 2015. Today, he primarily dedicates himself to the realm of neurofunk, though his sets still feature harder tracks – and in the early morning hours, tempos exceeding 200 BPM are not unusual for him.\n\nHis tracks have been released by several well-known ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614903_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "85",
     "artist": "Health",
     "stage": null,
     "day": "Wednesday",
@@ -2153,7 +2850,7 @@
     "returningHero": false
   },
   {
-    "id": "62",
+    "id": "86",
     "artist": "House Of Circus Carnivale Royale",
     "stage": null,
     "day": null,
@@ -2184,9 +2881,9 @@
     "returningHero": false
   },
   {
-    "id": "63",
+    "id": "87",
     "artist": "I Patagarri",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -2221,7 +2918,7 @@
     "returningHero": false
   },
   {
-    "id": "64",
+    "id": "88",
     "artist": "Idiotape",
     "stage": null,
     "day": "Saturday",
@@ -2257,7 +2954,7 @@
     "returningHero": false
   },
   {
-    "id": "65",
+    "id": "89",
     "artist": "Ikkimel",
     "stage": null,
     "day": "Wednesday",
@@ -2289,9 +2986,9 @@
     "returningHero": false
   },
   {
-    "id": "66",
+    "id": "90",
     "artist": "Illbucks",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -2322,7 +3019,7 @@
     "returningHero": false
   },
   {
-    "id": "67",
+    "id": "91",
     "artist": "Indira Paganotto",
     "stage": null,
     "day": "Saturday",
@@ -2357,7 +3054,37 @@
     "returningHero": false
   },
   {
-    "id": "68",
+    "id": "92",
+    "artist": "Indirect Movement",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "FAST-PACED TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082105-indirect-movement?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3nUZhlV2nLytwFjgrqNUYk",
+      "facebook": "https://www.facebook.com/indirectmovement",
+      "instagram": "https://www.instagram.com/indirectmovement"
+    },
+    "description": "Indirect Movement, a 24-year-old DJ / producer from the vibrant country of Hungary. As a skilled producer, Indirect Movement's unique style is characterized by a blend of fast-paced grooves, hypnotic synths, and rough breaks that instantly captivate the\nlistener. His music is a true reflection of the modern techno scene, with each track exuding electric energy that simply cannot be ignored. Despite his relatively young age, Indirect Movement has already ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614812_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "93",
     "artist": "Irie Maffia",
     "stage": null,
     "day": "Tuesday",
@@ -2388,7 +3115,36 @@
     "returningHero": false
   },
   {
-    "id": "69",
+    "id": "94",
+    "artist": "Isu",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "MINIMAL",
+      "INDUSTRIAL TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081969-isu?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ISU (István Kántor) is a key figure in Hungary’s underground electronic music scene, active since the early 1990s. Starting as a cassette DJ and organizer, he became known for his dedication to music discovery and community building. His long-running radio show Eat da Beat on Tilos Rádió and the founding of Minimalheadz helped introduce electro and techno to local audiences.\nAs the founder of AktRecords and co-creator of influential series ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614539_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "95",
     "artist": "Ivan & The Parazol",
     "stage": null,
     "day": "Wednesday",
@@ -2425,9 +3181,9 @@
     "lastYearStage": "The Buzz"
   },
   {
-    "id": "70",
+    "id": "96",
     "artist": "Jazzbois",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -2458,7 +3214,7 @@
     "returningHero": false
   },
   {
-    "id": "71",
+    "id": "97",
     "artist": "Jazzy",
     "stage": null,
     "day": "Tuesday",
@@ -2492,7 +3248,63 @@
     "returningHero": false
   },
   {
-    "id": "72",
+    "id": "98",
+    "artist": "Jessica Audiffred",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "MX",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DUBSTEP",
+      "DELTA DISTRICT",
+      "BASS-MUSIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082110-jessica-audiffred?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4odLDriBk6oEZotzLPTSnD",
+      "facebook": "https://www.facebook.com/JessicaAudiffred",
+      "instagram": "https://www.instagram.com/jessica_audiffred"
+    },
+    "description": "Jessica Audiffred is one of the most powerful forces in global bass music, known for her explosive, high-energy sets and genre-blending sound. Hailing from Mexico City, she has taken over major festivals like Tomorrowland, EDC, Ultra, and Lollapalooza with her raw, instinct-driven performances.\nFounder of A Records, she has built a platform spotlighting Latin American electronic talent, shaping a new wave of the scene. Her debut album Rave New World ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614739_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "99",
+    "artist": "Johanna Bozai",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HARD TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082335-johanna-bozai?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/bozaijohanna",
+      "instagram": "https://www.instagram.com/johannabozai"
+    },
+    "description": "Budapest based DJ passionate about hard techno and industrial sounds. I create intense, driving atmospheres on the dancefloor and also organize events for the underground community.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615213_performance_1080.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "100",
     "artist": "John Coffey",
     "stage": null,
     "day": "Thursday",
@@ -2528,7 +3340,7 @@
     "returningHero": false
   },
   {
-    "id": "73",
+    "id": "101",
     "artist": "Joris Voorn",
     "stage": null,
     "day": "Wednesday",
@@ -2565,9 +3377,9 @@
     "returningHero": false
   },
   {
-    "id": "74",
+    "id": "102",
     "artist": "Jorja Smith (Party Set)",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -2597,7 +3409,71 @@
     "returningHero": false
   },
   {
-    "id": "75",
+    "id": "103",
+    "artist": "Julya Karma",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "MODERN HOUSE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081693-julya-karma?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/51MwQSwnbEaNXYkYczhagn",
+      "instagram": "https://www.instagram.com/julya_karma"
+    },
+    "description": "A voyage through uplifting melodies and hypnotic grooves, Julya's music tells what words cannot...\nEmerging from the pulse of Brooklyn’s underground, Julya Karma has quickly established herself as a force that refuses to be defined. Known for her dynamic selections and infectious energy behind the decks, she has been invited to dancefloors worldwide, including Coachella, Cercle, Lost Village, Innervisions, The Brooklyn Mirage, DGTL, Time Warp, Audio Obscura, Afterlife, and Mayan ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613729_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "104",
+    "artist": "Kamafaka",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HARD TECHNO",
+      "DELTA DISTRICT",
+      "INDUSTRIAL TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082336-kamafaka?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/p",
+      "instagram": "https://www.instagram.com/kamafaka_"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615214_performance_1080.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "105",
     "artist": "Karen Dio",
     "stage": null,
     "day": "Thursday",
@@ -2638,9 +3514,9 @@
     "returningHero": false
   },
   {
-    "id": "76",
+    "id": "106",
     "artist": "Killakikitt",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -2670,7 +3546,7 @@
     "returningHero": false
   },
   {
-    "id": "77",
+    "id": "107",
     "artist": "Kim Dracula",
     "stage": null,
     "day": "Friday",
@@ -2708,7 +3584,7 @@
     "returningHero": false
   },
   {
-    "id": "78",
+    "id": "108",
     "artist": "Kispal Es A Borz",
     "stage": null,
     "day": "Wednesday",
@@ -2743,7 +3619,38 @@
     "returningHero": false
   },
   {
-    "id": "79",
+    "id": "109",
+    "artist": "Kitti Kay",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HARD TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081971-kitti-kay?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3bAsqlL8wrkJtYcrp6wC0r",
+      "facebook": "https://www.facebook.com/kittikayofficial",
+      "instagram": "https://www.instagram.com/kittikay_official",
+      "youtube": "https://www.youtube.com/channel/UCs-oY1H1F-AJzpsSrSmoqKw"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614541_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "110",
     "artist": "Koikoi",
     "stage": null,
     "day": "Tuesday",
@@ -2778,9 +3685,9 @@
     "returningHero": false
   },
   {
-    "id": "80",
+    "id": "111",
     "artist": "Kolibri",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -2815,7 +3722,87 @@
     "lastYearStage": "Jukebox"
   },
   {
-    "id": "81",
+    "id": "112",
+    "artist": "Koven",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "DRUM&BASS"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081965-koven?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3UCbp6D1lvILlxRJT9LnFa",
+      "facebook": "https://www.facebook.com/KOVENUK",
+      "instagram": "https://www.instagram.com/kovenuk",
+      "youtube": "https://www.youtube.com/channel/UCgt4LLJrIx633gecCwAFd1Q"
+    },
+    "description": "One of the most unique and exciting bass music outfits to emerge in recent times, Koven is the production alias of Writer / Producer Max Rowat and fronted live by Writer / DJ / Vocalist Katie Boyle. Spotted as one of the pioneering artists to back cinematic bass music Koven have been collating millions of online streams as well as a string of high profile music placements in Film / ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615215_performance_1080.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "113",
+    "artist": "Krudy C",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081962-krudy-c?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Minimal & house Dj, resident of Kommenzi Budapest",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614522_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "114",
+    "artist": "Lacchesi",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "FR",
+    "genres": [
+      "MUSIC",
+      "TECHNO",
+      "DELTA DISTRICT",
+      "DISCO",
+      "DARK-TECHNO",
+      "POST-DISCO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081936-lacchesi?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/5o4fYRhRy7bjAnroRtj5Qs",
+      "facebook": "https://www.facebook.com/lorenzolacchesi",
+      "instagram": "https://www.instagram.com/lacchesi___"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614394_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "115",
     "artist": "Lambrini Girls",
     "stage": null,
     "day": "Saturday",
@@ -2850,7 +3837,67 @@
     "returningHero": false
   },
   {
-    "id": "82",
+    "id": "116",
+    "artist": "Lammer",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HOUSE",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081934-lammer?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/5XCMynHbftLKbZ0Mp6iHdc",
+      "facebook": "https://www.facebook.com/lammermusic",
+      "instagram": "https://www.instagram.com/lammermusic",
+      "youtube": "https://www.youtube.com/@lammerghini"
+    },
+    "description": "LAMMER is an emerging force in the high-energy dance music scene, based in Rotterdam, Netherlands. His dynamic sound has quickly captured the attention of industry tastemakers such as Job Jobse, Benwal and Trym, placing him firmly on the radar.\nRenowned for his electrifying DJ sets, LAMMER has proven his ability to captivate audiences, whether in intimate underground venues or on grand festival stages. With a background in art and a ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614350_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "117",
+    "artist": "Lau",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082299-lau?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/LAUMUSIKK",
+      "instagram": "https://www.instagram.com/tothlau"
+    },
+    "description": "Budapest-based duo dtnb. b2b LAU have been sharing the booth since 2019, crafting sets\nthat move fluidly between house, techno, electro and breakbeats. Their connection goes\nback further — LAU's DJ workshop in 2018 was what first sparked dtnb.'s passion for DJing,\ngiving their partnership a rare depth that comes through in every performance.\nBoth rooted in classical music and seasoned on international stages: LAU across festivals\nand clubs from ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615107_performance_1440.png",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "118",
     "artist": "Lazarvs",
     "stage": null,
     "day": "Friday",
@@ -2886,7 +3933,7 @@
     "lastYearStage": "Jukebox"
   },
   {
-    "id": "83",
+    "id": "119",
     "artist": "Leap",
     "stage": null,
     "day": "Thursday",
@@ -2925,9 +3972,9 @@
     "returningHero": false
   },
   {
-    "id": "84",
+    "id": "120",
     "artist": "Lewis Capaldi",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -2959,9 +4006,9 @@
     "returningHero": false
   },
   {
-    "id": "85",
+    "id": "121",
     "artist": "Libra",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -2992,9 +4039,35 @@
     "returningHero": false
   },
   {
-    "id": "86",
+    "id": "122",
+    "artist": "Lou Nour",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DUBSTEP",
+      "DELTA DISTRICT",
+      "BASS-MUSIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082113-lou-nour?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/0V65nhWqP22ZAbTd1qNL27",
+      "facebook": "https://www.facebook.com/lounouronline",
+      "instagram": "https://www.instagram.com/lounouronline"
+    },
+    "description": "Lou Nour is a London-based DJ and emerging presenter whose work exists at the intersection of underground club culture and contemporary cultural storytelling.\nOf Moroccan heritage and shaped by UK soundsystem traditions, her approach to DJing extends beyond a single genre or tempo. While rooted in bass culture, her sets move fluidly across rhythm-driven club music, percussive textures, refined dance edits, and unexpected turns, always adapting to the time, space, ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614749_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "123",
     "artist": "Loyle Carner",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -3027,7 +4100,40 @@
     "returningHero": false
   },
   {
-    "id": "87",
+    "id": "124",
+    "artist": "Lucky Done Gone",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "NL",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT",
+      "TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081720-lucky-done-gone?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1eKMhcfR1J5oGdmcOiVA1n",
+      "facebook": "https://www.facebook.com/luckydonegone",
+      "instagram": "https://www.instagram.com/luckydonegone"
+    },
+    "description": "Lucky Done Gone has steadily risen as a standout name in the DJ scene, known for his energetic sets, warm presence, and strong connection with audiences. Performing across Europe and Asia, he blends house, ’90s techno, ’00s trance and leftfield sounds into dynamic, emotional dancefloor journeys. As a producer, he has released music on DGTL Records and Paradiso Vinyl Club, alongside notable remixes. In recent years, he has played major ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613864_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Uplifting",
+      "Euphoric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "125",
     "artist": "Luke Black",
     "stage": null,
     "day": "Friday",
@@ -3061,9 +4167,9 @@
     "returningHero": false
   },
   {
-    "id": "88",
+    "id": "126",
     "artist": "Majka",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -3094,7 +4200,7 @@
     "returningHero": false
   },
   {
-    "id": "89",
+    "id": "127",
     "artist": "Makrohang",
     "stage": null,
     "day": "Tuesday",
@@ -3127,7 +4233,7 @@
     "returningHero": false
   },
   {
-    "id": "90",
+    "id": "128",
     "artist": "Manuel",
     "stage": null,
     "day": "Tuesday",
@@ -3159,7 +4265,37 @@
     "returningHero": false
   },
   {
-    "id": "91",
+    "id": "129",
+    "artist": "Marsh",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "MELODIC HOUSE",
+      "DELTA DISTRICT",
+      "PROGRESSIVE HOUSE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081637-marsh?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1eucLGnPT27tdEh6MU29wp",
+      "facebook": "https://www.facebook.com/marshmusician",
+      "instagram": "https://www.instagram.com/marshmusician",
+      "youtube": "https://www.youtube.com/channel/UC0A_lGU0Hw_mA1SGvl34Gfg"
+    },
+    "description": "Tom Marshall, known as Marsh, is one of the standout names of the melodic house scene and a fan favourite on Anjunadeep. Since emerging in the mid-2010s, he has developed a warm, emotional sound inspired by early 2000s trance and melodic drum & bass.\nWith three albums – Life On The Shore (2017), Lailonie (2020), and Endless (2023) – Marsh has built a catalogue of widely supported tracks with millions ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613662_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "130",
     "artist": "Max Baby",
     "stage": null,
     "day": "Thursday",
@@ -3191,7 +4327,7 @@
     "returningHero": false
   },
   {
-    "id": "92",
+    "id": "131",
     "artist": "Mehringer",
     "stage": null,
     "day": "Tuesday",
@@ -3224,9 +4360,9 @@
     "returningHero": false
   },
   {
-    "id": "93",
+    "id": "132",
     "artist": "Melina",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -3255,9 +4391,71 @@
     "returningHero": false
   },
   {
-    "id": "94",
+    "id": "133",
+    "artist": "Mestiza",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "ES",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "FLAMENCO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081940-mestiza?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1l6pQ0SDItjXzbG9zloE2n",
+      "facebook": "https://www.facebook.com/mestizaexperience",
+      "instagram": "https://www.instagram.com/mestiza.music",
+      "youtube": "https://www.youtube.com/channel/UCMmsN7oLWtwRzlm3d-9OqSw"
+    },
+    "description": "MËSTIZA is the perfect combination of music, fashion, and female empowerment. This Spanish duo has known how to perfectly mix electronic music with the best flamenco. After several years of friendship, in 2021, these two DJs and producers decided to join forces to delve into their roots and discover a world of traditional Spanish sounds that fuse music, aesthetics, and fashion.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614404_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "134",
+    "artist": "Metha",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE",
+      "MELODIC TECHNO",
+      "DELTA DISTRICT",
+      "PROGRESSIVE HOUSE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078754-metha?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/2uLD6GY1GDr9egmrQ8axBW",
+      "facebook": "https://www.facebook.com/methaDJ",
+      "instagram": "https://www.instagram.com/methadj",
+      "youtube": "https://www.youtube.com/@Methamorphozis"
+    },
+    "description": "Metha (Mátyás Végh) has been an influential figure in the Hungarian electronic music scene for more than two decades. Guided by the philosophy that “good music matters more than genres,” his productions have been played by artists such as Solomun, Richie Hawtin, Joseph Capriati and Egbert, while his releases regularly appear on Beatport charts.\nIn recent years his international presence has grown significantly, sharing line-ups with artists like Paul Kalkbrenner, ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/08/thumb_5607379_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "135",
     "artist": "Mikee Mykanic",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -3287,9 +4485,9 @@
     "returningHero": false
   },
   {
-    "id": "95",
+    "id": "136",
     "artist": "Mirror Glimpse",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -3322,7 +4520,7 @@
     "lastYearStage": "dropYard"
   },
   {
-    "id": "96",
+    "id": "137",
     "artist": "Missio",
     "stage": null,
     "day": "Saturday",
@@ -3357,7 +4555,32 @@
     "returningHero": false
   },
   {
-    "id": "97",
+    "id": "138",
+    "artist": "Mph",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "GB",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "GARAGE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081960-mph?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/62SCu33InHVq97VaWw3eof",
+      "facebook": "https://www.facebook.com/mphukofficial",
+      "instagram": "https://www.instagram.com/mph_uk"
+    },
+    "description": "MPH is at the forefront of the new wave of UK Garage, rapidly becoming one of the scene’s most exciting and in-demand producers. With standout releases on influential labels such as Black Book Records, Atlantic Records, Sony and Nightbass, he's built an impressive discography that spans high-energy originals, chart-worthy collaborations, and remixes for global stars including Calvin Harris, Chris Lake, Foster The People, Anderson .Paak. Whether it’s bass-heavy club tracks ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614519_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "139",
     "artist": "Naika",
     "stage": null,
     "day": "Friday",
@@ -3389,7 +4612,7 @@
     "returningHero": false
   },
   {
-    "id": "98",
+    "id": "140",
     "artist": "Natascha Polke",
     "stage": null,
     "day": "Thursday",
@@ -3426,7 +4649,7 @@
     "returningHero": false
   },
   {
-    "id": "99",
+    "id": "141",
     "artist": "Natasha Bedingfield",
     "stage": null,
     "day": "Wednesday",
@@ -3459,7 +4682,7 @@
     "returningHero": false
   },
   {
-    "id": "100",
+    "id": "142",
     "artist": "Nation Of Language",
     "stage": null,
     "day": "Friday",
@@ -3495,7 +4718,58 @@
     "returningHero": false
   },
   {
-    "id": "101",
+    "id": "143",
+    "artist": "Next Level: Dublic",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "DUBSTEP",
+      "DELTA DISTRICT",
+      "BASS-MUSIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081945-next-level%3A-dublic?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/grandovermusic",
+      "instagram": "https://www.instagram.com/grandovermusic",
+      "youtube": "https://www.youtube.com/channel/UCZ5A9lYkmZ7qVgHPXigPflg"
+    },
+    "description": "Dublic is a Hungarian DJ and producer duo of twin brothers, co-founders of Next Level and Next Level Music School, who have been a driving force in Budapest’s underground scene with their high-energy sets and productions blending trap, dubstep, riddim, future bass, hip-hop, and drum and bass - always believing in future music.\nThey have performed at every major festival in Hungary and toured Europe in countries such as the ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614416_performance_1080.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "144",
+    "artist": "Next Level: Grandover",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "BASS-MUSIC",
+      "UK CLUB"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081947-next-level%3A-grandover?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7KL6l5OG5PfOlQM37qmujL",
+      "instagram": "https://www.instagram.com/grandovermusic"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614426_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "145",
     "artist": "Nia Archives",
     "stage": null,
     "day": "Friday",
@@ -3521,7 +4795,7 @@
       "soundcloud": "https://soundcloud.com/nia-archives"
     },
     "description": null,
-    "imageUrl": "https://media.appmiral.com/prod/performance/0056/88/thumb_5587827_performance_1440.jpeg",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/13/thumb_5612150_performance_960.png",
     "vibes": [
       "Dance",
       "Rave",
@@ -3533,7 +4807,7 @@
     "returningHero": false
   },
   {
-    "id": "102",
+    "id": "146",
     "artist": "Night Tapes",
     "stage": null,
     "day": "Thursday",
@@ -3565,9 +4839,9 @@
     "returningHero": false
   },
   {
-    "id": "103",
+    "id": "147",
     "artist": "Nks",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -3597,7 +4871,7 @@
     "returningHero": false
   },
   {
-    "id": "104",
+    "id": "148",
     "artist": "Olympe",
     "stage": null,
     "day": "Thursday",
@@ -3633,7 +4907,69 @@
     "returningHero": false
   },
   {
-    "id": "105",
+    "id": "149",
+    "artist": "Omiki",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "IL",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "TRANCE",
+      "PROGRESSIVE TRANCE",
+      "PSY-TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2078752-omiki?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/7pHwBqsYULdAdHgSwf1q9f",
+      "facebook": "https://www.facebook.com/omikimusic",
+      "instagram": "https://www.instagram.com/omikimusic",
+      "youtube": "https://www.youtube.com/channel/UCrktSiofrVs4UX396_fHViA"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/08/thumb_5607373_performance_1080.jpeg",
+    "vibes": [
+      "Dance",
+      "Uplifting",
+      "Euphoric"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "150",
+    "artist": "Onyvaa",
+    "stage": "Delta District",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081935-onyvaa?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/6llL2cv7SDY7OnpzCQu8Pf",
+      "facebook": "https://www.facebook.com/onyvaa",
+      "instagram": "https://www.instagram.com/onyvaa"
+    },
+    "description": "California native, DJ and producer, ONYVAA is one of Europe’s newest imports known for her driving melodic techno with Detroit influences and raw analog touches. Based in Paris, France, she is the founder/owner of vinyl and digital underground label, Passeport Records, which is distributed and pressed by Word and Sound in Hamburg, Germany. With a deep love for obscure field recording, she captures organic sounds from around the globe, encapsulating ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614371_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "151",
     "artist": "Oskar Med K",
     "stage": null,
     "day": "Wednesday",
@@ -3668,7 +5004,7 @@
     "returningHero": false
   },
   {
-    "id": "106",
+    "id": "152",
     "artist": "Pal Utcai Fiuk",
     "stage": null,
     "day": "Saturday",
@@ -3703,7 +5039,7 @@
     "returningHero": false
   },
   {
-    "id": "107",
+    "id": "153",
     "artist": "Pan Pot",
     "stage": null,
     "day": "Thursday",
@@ -3740,7 +5076,38 @@
     "returningHero": false
   },
   {
-    "id": "108",
+    "id": "154",
+    "artist": "Paralich",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "GROOVY",
+      "FUNKY TRANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082337-paralich?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/16vu24n9aWVAB8yLzweuxe",
+      "instagram": "https://www.instagram.com/paralich00"
+    },
+    "description": "Her love for music started at a very young age when she attended dance classes. Later, she went to art school to learn photography and her friends introduced her techno, but something was always missing for her: she realized she wanted to learn to play and express herself her own way.\nHowever, music was not her priority at this point and her plans to make music were put aside for ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615216_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Uplifting",
+      "Euphoric",
+      "Groove",
+      "Feel-Good"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "155",
     "artist": "Parcels",
     "stage": null,
     "day": "Thursday",
@@ -3779,7 +5146,7 @@
     "returningHero": false
   },
   {
-    "id": "109",
+    "id": "156",
     "artist": "Paris Paloma",
     "stage": null,
     "day": "Friday",
@@ -3814,7 +5181,7 @@
     "returningHero": false
   },
   {
-    "id": "110",
+    "id": "157",
     "artist": "Peggy Gou",
     "stage": null,
     "day": "Friday",
@@ -3848,7 +5215,7 @@
     "returningHero": false
   },
   {
-    "id": "111",
+    "id": "158",
     "artist": "Perturbator",
     "stage": null,
     "day": "Tuesday",
@@ -3881,7 +5248,7 @@
     "returningHero": false
   },
   {
-    "id": "112",
+    "id": "159",
     "artist": "Peterfy Bori & Love Band",
     "stage": null,
     "day": "Wednesday",
@@ -3916,7 +5283,39 @@
     "returningHero": false
   },
   {
-    "id": "113",
+    "id": "160",
+    "artist": "Pizza Amore & Switch Nollie",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "UNDERGROUND"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082116-pizza-amore-%26-switch-nollie?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": "'Apollonia from northern Hungary'",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614888_performance_1440.png",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "161",
     "artist": "Platon Karataev",
     "stage": null,
     "day": "Thursday",
@@ -3953,9 +5352,9 @@
     "lastYearStage": "The Buzz"
   },
   {
-    "id": "114",
+    "id": "162",
     "artist": "Pogany Indulo",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -3987,7 +5386,41 @@
     "returningHero": false
   },
   {
-    "id": "115",
+    "id": "163",
+    "artist": "Quest",
+    "stage": "Delta District",
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "IT",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "MINIMAL"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082322-quest?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/xdjquest",
+      "instagram": "https://www.instagram.com/djquest_official"
+    },
+    "description": "Quest is a rare breed - an artist whose name moves quietly but powerfully through the electronic underground. Influenced early on by Italy’s Alien Army and the precision of shadowboxing, his sets are driven by tension, dissonance, and a deep commitment to musical craft.\nLabel owner of La Nota Del Diablo - a label named after the “Devil’s Interval,” a historically ominous tritone used to stir emotion through sound. That ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615131_performance_1080.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "164",
     "artist": "Quimby",
     "stage": null,
     "day": "Saturday",
@@ -4022,7 +5455,61 @@
     "returningHero": false
   },
   {
-    "id": "116",
+    "id": "165",
+    "artist": "Raasa",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081970-raasa?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/raasaofficial",
+      "instagram": "https://www.instagram.com/david_raday"
+    },
+    "description": "Raasa is a Budapest-based DJ with over a decade of experience, known for navigating the full spectrum of house music — from indie dance through minimal and deep tech to more driving, high-energy house — always with a strong focus on groove and atmosphere.\nOver the years, he has performed at many of Budapest’s key venues and underground spaces, including Turbina, Aether, Toldi, Palazzo Permanens, Heavy and Dugattyús. For nearly ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614810_performance_500.png",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "166",
+    "artist": "Raise Spirit",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082122-raise-spirit?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3zMGdRuxGm1rwOIUsiKpjq",
+      "facebook": "https://www.facebook.com/RaiseSpirit",
+      "instagram": "https://www.instagram.com/raisespiritgreg"
+    },
+    "description": "Raise Spirit was founded by Gergő Varga and Richárd Gödöllei in the spring of 2012. They went to the same school, but only met during a party which was hosted by Gergő. They were both into the same kind of music, so they became friends very quickly. Richárd was more experienced in DJing, while Gergő had 6 years of experience in producing, although in a very different genre. After one ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614784_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "167",
     "artist": "Richie Hawtin",
     "stage": null,
     "day": "Thursday",
@@ -4057,7 +5544,7 @@
     "returningHero": false
   },
   {
-    "id": "117",
+    "id": "168",
     "artist": "Rose Gray",
     "stage": null,
     "day": "Friday",
@@ -4094,7 +5581,7 @@
     "returningHero": false
   },
   {
-    "id": "118",
+    "id": "169",
     "artist": "Rossi.",
     "stage": null,
     "day": "Thursday",
@@ -4128,7 +5615,7 @@
     "returningHero": false
   },
   {
-    "id": "119",
+    "id": "170",
     "artist": "Sara Landry",
     "stage": null,
     "day": "Tuesday",
@@ -4164,9 +5651,46 @@
     "returningHero": false
   },
   {
-    "id": "120",
+    "id": "171",
+    "artist": "Secret Factory",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HOUSE",
+      "MELODIC TECHNO",
+      "DELTA DISTRICT",
+      "EXPERIMENTAL STYLES"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081694-secret-factory?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1qXKhCrbpUVtwf24RneHyq",
+      "facebook": "https://www.facebook.com/secretfactorymusic",
+      "instagram": "https://www.instagram.com/secretfactory_official"
+    },
+    "description": "Secret Factory BiographyWith a career spanning nearly three decades, Secret Factory stand among the mostambitious and deeply rooted acts in Hungarian electronic music. Their uncompromisingvision, experimental sound, and constant drive for innovationhave made them one of thescene’s most compelling and distinctive productions.\n\nThis eclectic approach is what allows Secret Factory to connect with a wide spectrum of thetechno subculture. It has also made them a natural fit both as warm-up ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/14/thumb_5613732_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Eclectic",
+      "Unusual",
+      "Challenging"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "172",
     "artist": "Sef",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -4198,7 +5722,92 @@
     "returningHero": false
   },
   {
-    "id": "121",
+    "id": "173",
+    "artist": "Sephx",
+    "stage": "Delta District",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082296-sephx?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/sephxdnb",
+      "instagram": "https://www.instagram.com/sephxmusic"
+    },
+    "description": "Sephx is a Budapest-based drum & bass DJ and producer who has been an active force in the Hungarian electronic music scene for over seven years. As a resident of The Hive Budapest, he regularly performs at clubs and events across the city and beyond.\nHis sound is driven by melodic rhythms layered with darker, more aggressive elements. Blending deep, weighty basslines with intense, propulsive percussion, Sephx aims to create ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615093_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "174",
+    "artist": "Shaymi",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT",
+      "DRUM&BASS",
+      "GROOVY TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082203-shaymi?from=%2F",
+    "socials": {
+      "spotify": null,
+      "facebook": "https://www.facebook.com/shaymidnb",
+      "instagram": "https://www.instagram.com/shaymidnb"
+    },
+    "description": "Shaymi (Bladerunnaz)\n\nI’ve been an active DJ and producer in the drum and bass scene since 2018. I mainly play dancefloor and neuro styles, but I also enjoy mixing harder, more energetic music. I live in the Budapest area, Hungary, but my music has been heard in Slovakia, the Czech Republic, Romania, Malta, Austria, and Portugal, where I’ve also had the opportunity to perform.\n\nI’ve played at numerous domestic and ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614902_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "175",
+    "artist": "Shonky",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "FR",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECH-HOUSE",
+      "DELTA DISTRICT",
+      "GROOVY"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082338-shonky?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1waWwt8cVCJgqLItlQJz14",
+      "instagram": "https://www.instagram.com/shonky__",
+      "youtube": "https://www.youtube.com/channel/UCtEVkgWW0XHajY5zo6L1zBw"
+    },
+    "description": "Since releasing his first 12-inch in 2005 Shonky has cultivated a signature sound, a style all of his own that has been part of his continuing success. He is one of the key exponents from his hometown Paris, helping to re establish the city’s prominence on the global stage alongside his Apollonia co-dees, Dan Ghenacia and Dyed Soundorom. Shonky has traversed the globe, delivering his brand of groovy, techy house ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615217_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "176",
     "artist": "Sigrid",
     "stage": null,
     "day": "Friday",
@@ -4231,7 +5840,32 @@
     "returningHero": false
   },
   {
-    "id": "122",
+    "id": "177",
+    "artist": "Sikztah",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082118-sikztah?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4DdvGsSFH0n6Kpwcb8FyRj",
+      "facebook": "https://www.facebook.com/sikztah",
+      "instagram": "https://www.instagram.com/sikztah",
+      "youtube": "https://www.youtube.com/@sikztah"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614772_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false
+  },
+  {
+    "id": "178",
     "artist": "Sim0ne",
     "stage": null,
     "day": "Saturday",
@@ -4268,9 +5902,9 @@
     "returningHero": false
   },
   {
-    "id": "123",
+    "id": "179",
     "artist": "Sisi",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -4302,9 +5936,9 @@
     "lastYearStage": "dropYard"
   },
   {
-    "id": "124",
+    "id": "180",
     "artist": "Skepta",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -4336,9 +5970,9 @@
     "returningHero": false
   },
   {
-    "id": "125",
+    "id": "181",
     "artist": "Ski Aggu",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -4370,7 +6004,7 @@
     "returningHero": false
   },
   {
-    "id": "126",
+    "id": "182",
     "artist": "Soft Loft",
     "stage": null,
     "day": "Tuesday",
@@ -4405,9 +6039,9 @@
     "returningHero": false
   },
   {
-    "id": "127",
+    "id": "183",
     "artist": "Sombr",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
     "endTime": null,
@@ -4449,7 +6083,7 @@
     "returningHero": false
   },
   {
-    "id": "128",
+    "id": "184",
     "artist": "Soulwax",
     "stage": null,
     "day": "Saturday",
@@ -4483,9 +6117,9 @@
     "returningHero": false
   },
   {
-    "id": "129",
+    "id": "185",
     "artist": "Sub Focus",
-    "stage": null,
+    "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -4493,7 +6127,8 @@
     "genres": [
       "MUSIC",
       "ELECTRONIC",
-      "DNB"
+      "DELTA DISTRICT",
+      "DRUM&BASS"
     ],
     "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2068360-sub-focus?from=%2F",
     "socials": {
@@ -4519,7 +6154,37 @@
     "returningHero": false
   },
   {
-    "id": "130",
+    "id": "186",
+    "artist": "Svetec",
+    "stage": "Delta District",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082106-svetec?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/2IOR06B1bFw3KTm2UADPY4",
+      "facebook": "https://www.facebook.com/deejaysvetec",
+      "instagram": "https://www.instagram.com/svetec_official"
+    },
+    "description": "SveTec's musical journey began in the musical primary school, where he developed his musical skills by learning the music rules and various instruments. His interest in electronic music ignited in 1996, and by the age of 12, he realized he wanted to become a DJ.\nIn 2000, he fully immersed himself in electronic music production, dedicating almost all of his free time to this passion.\nBy 2005, he had gained ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614731_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "187",
     "artist": "Swimming Paul",
     "stage": null,
     "day": "Wednesday",
@@ -4556,7 +6221,39 @@
     "returningHero": false
   },
   {
-    "id": "131",
+    "id": "188",
+    "artist": "Switch Nollie",
+    "stage": "Delta District",
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE",
+      "DELTA DISTRICT",
+      "UNDERGROUND"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082117-switch-nollie?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://widget.szigetfestival.com/v2/artist_placeholder_large.png",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark",
+      "Feel-Good",
+      "Uplifting"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "189",
     "artist": "Sylvie Kreusch",
     "stage": null,
     "day": "Thursday",
@@ -4592,7 +6289,7 @@
     "returningHero": false
   },
   {
-    "id": "132",
+    "id": "190",
     "artist": "Syreeta",
     "stage": null,
     "day": "Tuesday",
@@ -4629,7 +6326,7 @@
     "returningHero": false
   },
   {
-    "id": "133",
+    "id": "191",
     "artist": "Sziami Es A Vendegek & Agi Es Fiuk",
     "stage": null,
     "day": "Saturday",
@@ -4664,7 +6361,7 @@
     "returningHero": false
   },
   {
-    "id": "134",
+    "id": "192",
     "artist": "Tankcsapda",
     "stage": null,
     "day": "Wednesday",
@@ -4696,9 +6393,9 @@
     "returningHero": false
   },
   {
-    "id": "135",
+    "id": "193",
     "artist": "Tash Sultana",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -4732,7 +6429,69 @@
     "returningHero": false
   },
   {
-    "id": "136",
+    "id": "194",
+    "artist": "Tdj",
+    "stage": "Delta District",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "CA",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "TECHNO",
+      "DELTA DISTRICT",
+      "MODERN TECHNO"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2082119-tdj?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/540RtWfpQokIlaRgMDjU9v",
+      "facebook": "https://www.facebook.com/teedeejayyy",
+      "instagram": "https://www.instagram.com/teedeejayyy",
+      "youtube": "https://www.youtube.com/channel/UCmPDCth2v6TjfazgMoG8-_Q"
+    },
+    "description": "From melancholy to bittersweet euphoria, TDJ's vaporous and acidulous universe is an incongruous amalgam between Geneviève Ryan-Martel’s years of composing guitar ballads and experimenting with electronic music production.\nThe materialization of her first loves for techno, trance and eurodance; Geneviève takes from her nostalgia of the classics signed by Tiestö, Gamemaster, Signum or ATB, but also from her emo youth influenced by artists like Blink-182, From First To Last, and ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615218_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "195",
+    "artist": "Technokool",
+    "stage": "Delta District",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "HU",
+    "genres": [
+      "MUSIC",
+      "ELECTRONIC",
+      "HARD TECHNO",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2081972-technokool?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/0neOMwBTyo0mb4TDSB0dsK",
+      "facebook": "https://www.facebook.com/technokool",
+      "instagram": "https://www.instagram.com/technokool"
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614542_performance_1440.jpeg",
+    "vibes": [
+      "Dance",
+      "Hard",
+      "Rave",
+      "Dark"
+    ],
+    "isHeadliner": false
+  },
+  {
+    "id": "196",
     "artist": "Teen Mortgage",
     "stage": null,
     "day": "Thursday",
@@ -4766,9 +6525,9 @@
     "returningHero": false
   },
   {
-    "id": "137",
+    "id": "197",
     "artist": "The Zawose Queens",
-    "stage": null,
+    "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -4800,7 +6559,7 @@
     "returningHero": false
   },
   {
-    "id": "138",
+    "id": "198",
     "artist": "Tomora",
     "stage": null,
     "day": "Wednesday",
@@ -4836,7 +6595,7 @@
     "returningHero": false
   },
   {
-    "id": "139",
+    "id": "199",
     "artist": "Tripolism",
     "stage": null,
     "day": "Wednesday",
@@ -4876,7 +6635,7 @@
     "returningHero": false
   },
   {
-    "id": "140",
+    "id": "200",
     "artist": "Trym",
     "stage": null,
     "day": "Tuesday",
@@ -4911,9 +6670,9 @@
     "returningHero": false
   },
   {
-    "id": "141",
+    "id": "201",
     "artist": "Twenty One Pilots",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
     "endTime": null,
@@ -4948,7 +6707,7 @@
     "returningHero": false
   },
   {
-    "id": "142",
+    "id": "202",
     "artist": "Underworld",
     "stage": null,
     "day": "Thursday",
@@ -4983,7 +6742,7 @@
     "returningHero": false
   },
   {
-    "id": "143",
+    "id": "203",
     "artist": "Vintage Culture",
     "stage": null,
     "day": "Tuesday",
@@ -5019,9 +6778,9 @@
     "returningHero": false
   },
   {
-    "id": "144",
+    "id": "204",
     "artist": "Wavy",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -5052,7 +6811,7 @@
     "returningHero": false
   },
   {
-    "id": "145",
+    "id": "205",
     "artist": "Whomadewho (Hybrid Dj Set)",
     "stage": null,
     "day": "Wednesday",
@@ -5085,9 +6844,9 @@
     "returningHero": false
   },
   {
-    "id": "146",
+    "id": "206",
     "artist": "Wild Wild Women",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -5118,7 +6877,7 @@
     "returningHero": false
   },
   {
-    "id": "147",
+    "id": "207",
     "artist": "Wolf Alice",
     "stage": null,
     "day": "Tuesday",
@@ -5158,7 +6917,7 @@
     "returningHero": false
   },
   {
-    "id": "148",
+    "id": "208",
     "artist": "Yarima",
     "stage": null,
     "day": "Friday",
@@ -5191,9 +6950,9 @@
     "returningHero": false
   },
   {
-    "id": "149",
+    "id": "209",
     "artist": "Yt",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
     "endTime": null,
@@ -5225,9 +6984,9 @@
     "returningHero": false
   },
   {
-    "id": "150",
+    "id": "210",
     "artist": "Zara Larsson",
-    "stage": null,
+    "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
     "endTime": null,
@@ -5258,9 +7017,9 @@
     "returningHero": false
   },
   {
-    "id": "151",
+    "id": "211",
     "artist": "Zep",
-    "stage": null,
+    "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
     "endTime": null,
@@ -5293,7 +7052,7 @@
     "returningHero": false
   },
   {
-    "id": "152",
+    "id": "212",
     "artist": "Zimmer90",
     "stage": null,
     "day": "Thursday",

@@ -14,7 +14,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const LINEUP_FILE = path.join(__dirname, '../data/lineup.json');
+const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026';
+const LINEUP_FILE = path.join(__dirname, `../../festivals/${festivalId}/data/lineup.json`);
 const DAYS = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
 
 // Known artist country codes - add new artists here when needed
@@ -244,6 +245,41 @@ function cleanLineup() {
             }
         }
     });
+
+    // Step 4.7: Delta District Stage Assignment
+    console.log('🔺 Assigning stages...');
+    let stagesAssigned = 0;
+    merged.forEach(a => {
+        const key = a.artist.toLowerCase();
+        if (!a.stage) {
+            if (HEADLINERS.includes(key)) {
+                a.stage = 'Main Stage';
+                stagesAssigned++;
+            } else if (a.genres?.includes('DELTA DISTRICT')) {
+                const desc = (a.description || '').toLowerCase();
+                if (desc.includes('colosseum')) {
+                    a.stage = 'Yettel Colosseum';
+                } else if (desc.includes('the club')) {
+                    a.stage = 'The Club';
+                } else if (desc.includes('bolt')) {
+                    a.stage = 'BOLT Night Stage';
+                } else {
+                    a.stage = 'Delta District';
+                }
+                stagesAssigned++;
+            } else if (a.genres?.some(g => ['WORLD MUSIC', 'GLOBAL VILLAGE', 'FOLK', 'TRADITIONAL'].includes(g.toUpperCase())) || (a.description || '').toLowerCase().includes('global village')) {
+                a.stage = 'Global Village';
+                stagesAssigned++;
+            } else if (a.genres?.some(g => ['HIP-HOP', 'RAP', 'BASS', 'D&B', 'DRUM & BASS'].includes(g.toUpperCase())) || (a.description || '').toLowerCase().includes('dropyard')) {
+                a.stage = 'dropYard';
+                stagesAssigned++;
+            } else if ((a.description || '').toLowerCase().includes('revolut stage') || (a.description || '').toLowerCase().includes('freedome')) {
+                a.stage = 'Revolut Stage';
+                stagesAssigned++;
+            }
+        }
+    });
+    console.log(`   ✓ Assigned ${stagesAssigned} stages\n`);
 
     // Step 5: Mark headliners
     console.log('5️⃣  Marking headliners...');
