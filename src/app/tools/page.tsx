@@ -176,21 +176,23 @@ export default function ToolsPage() {
                   </div>
                 </Card>
 
-                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
-                  <div className="flex items-center gap-6 mb-8">
-                    <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
-                      <Ear size={40} />
+                {FESTIVAL.features.audioMonitor && (
+                  <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                    <div className="flex items-center gap-6 mb-8">
+                      <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
+                        <Ear size={40} />
+                      </div>
+                      <h4 className="font-black text-2xl uppercase italic tracking-tighter">Audio Monitor</h4>
                     </div>
-                    <h4 className="font-black text-2xl uppercase italic tracking-tighter">Audio Monitor</h4>
-                  </div>
-                  <div className="h-10 bg-muted/20 rounded-full overflow-hidden mb-6 shadow-inner p-1">
-                    <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500 rounded-full" />
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
-                    <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
-                  </div>
-                </Card>
+                    <div className="h-10 bg-muted/20 rounded-full overflow-hidden mb-6 shadow-inner p-1">
+                      <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500 rounded-full" />
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
+                      <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
+                    </div>
+                  </Card>
+                )}
               </div>
 
               {FESTIVAL.features.sosMorseCode && <SOSMorse />}
@@ -227,45 +229,55 @@ export default function ToolsPage() {
             <TabsContent value="safety" className="space-y-10">
               {FESTIVAL.features.feedbackSystem && <FeedbackSystem />}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <Card className="p-10 bg-red-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
-                  <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
-                    <ShieldAlert size={160} />
-                  </div>
-                  <div className="flex flex-col h-full justify-between relative z-10">
-                    <div className="flex items-start gap-8">
-                      <div className="p-5 rounded-[2rem] bg-white/20 text-white shadow-inner mb-6">
-                        <ShieldAlert size={40} />
+                {FESTIVAL.content.emergencyContacts?.security && (
+                  <Card 
+                    onClick={() => window.location.href = `tel:${FESTIVAL.content.emergencyContacts?.security.phone}`}
+                    className="p-10 bg-red-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+                  >
+                    <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
+                      <ShieldAlert size={160} />
+                    </div>
+                    <div className="flex flex-col h-full justify-between relative z-10">
+                      <div className="flex items-start gap-8">
+                        <div className="p-5 rounded-[2rem] bg-white/20 text-white shadow-inner mb-6">
+                          <ShieldAlert size={40} />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Security Alert</h4>
+                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {FESTIVAL.content.emergencyContacts.security.label}. Have your location ready.</p>
+                        <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-red-600 bg-white hover:bg-white/90">
+                          DIAL SECURITY
+                        </Button>
                       </div>
                     </div>
-                    <div>
-                      <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Security Alert</h4>
-                      <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the festival main security dispatch. Have your location ready.</p>
-                      <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-red-600 bg-white hover:bg-white/90">
-                        DIAL SECURITY
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                )}
 
-                <Card className="p-10 bg-blue-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95">
-                  <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
-                    <Phone size={160} />
-                  </div>
-                  <div className="flex flex-col h-full justify-between relative z-10">
-                    <div className="flex items-start gap-8">
-                      <div className="p-5 rounded-[2rem] bg-white/20 text-white shadow-inner mb-6">
-                        <Phone size={40} />
+                {FESTIVAL.content.emergencyContacts?.medical && (
+                  <Card 
+                    onClick={() => window.location.href = `tel:${FESTIVAL.content.emergencyContacts?.medical.phone}`}
+                    className="p-10 bg-blue-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+                  >
+                    <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
+                      <Phone size={160} />
+                    </div>
+                    <div className="flex flex-col h-full justify-between relative z-10">
+                      <div className="flex items-start gap-8">
+                        <div className="p-5 rounded-[2rem] bg-white/20 text-white shadow-inner mb-6">
+                          <Phone size={40} />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Medical Help</h4>
+                        <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {FESTIVAL.content.emergencyContacts.medical.label}. Available 24/7.</p>
+                        <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-blue-600 bg-white hover:bg-white/90">
+                          DIAL MEDICAL
+                        </Button>
                       </div>
                     </div>
-                    <div>
-                      <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Medical Help</h4>
-                      <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the on-site emergency medical responders. Available 24/7.</p>
-                      <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-blue-600 bg-white hover:bg-white/90">
-                        DIAL MEDICAL
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                )}
               </div>
 
               {FESTIVAL.features.shuttleTimetable && (

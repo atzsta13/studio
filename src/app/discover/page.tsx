@@ -46,8 +46,8 @@ import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/useHaptic';
 import { FESTIVAL } from '@/config/festival';
 
-// Hard-coded hidden gem artist IDs — non-headliners with unusual/diverse vibes
-const HIDDEN_GEM_IDS = ['1', '4', '5', '47', '57', '70'];
+// Curated hidden gem artist IDs — non-headliners with unusual/diverse vibes
+const HIDDEN_GEM_IDS = FESTIVAL.content.hiddenGems || [];
 
 const SEEN_KEY = `${FESTIVAL.id}-seen`;
 
@@ -88,6 +88,7 @@ export default function DiscoverPage() {
   const haptic = useHaptic();
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
+  const [selectedStage, setSelectedStage] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [searchQuery, setSearchQuery] = useState('');
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
@@ -130,6 +131,14 @@ export default function DiscoverPage() {
     return Array.from(vibes).sort();
   }, [allArtists]);
 
+  const allStages = useMemo(() => {
+    const stages = new Set<string>();
+    allArtists.forEach(item => {
+      if (item.stage) stages.add(item.stage);
+    });
+    return Array.from(stages).sort();
+  }, [allArtists]);
+
   const filteredArtists = useMemo(() => {
     let base = [...allArtists];
 
@@ -149,14 +158,24 @@ export default function DiscoverPage() {
     return base.filter(artist => {
       const matchesGenre = !selectedGenre || artist.genres?.includes(selectedGenre);
       const matchesVibe = !selectedVibe || artist.vibes?.includes(selectedVibe);
+      const matchesStage = !selectedStage || (() => {
+        const focus = FESTIVAL.content.radarFocuses?.find(f => f.id === selectedStage);
+        if (focus) {
+          return (
+            (focus.targetStages && focus.targetStages.some(s => artist.stage?.toLowerCase().includes(s.toLowerCase()))) ||
+            (focus.targetGenres && focus.targetGenres.some(g => artist.genres?.some(ag => ag.toLowerCase().includes(g.toLowerCase()))))
+          );
+        }
+        return artist.stage === selectedStage;
+      })();
       const matchesSearch = !searchQuery ||
         artist.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
         artist.genres?.some(g => g.toLowerCase().includes(searchQuery.toLowerCase())) ||
         artist.description?.toLowerCase().includes(searchQuery.toLowerCase());
 
-      return matchesGenre && matchesVibe && matchesSearch;
+      return matchesGenre && matchesVibe && matchesStage && matchesSearch;
     });
-  }, [allArtists, selectedGenre, selectedVibe, viewMode, aiResult, spotifyMatches, searchQuery]);
+  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -402,13 +421,17 @@ export default function DiscoverPage() {
 
         <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8">
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            <SpotifyConnect onMatchesFound={(ids) => {
-              setSpotifyMatches(ids);
-              setIsSpotifyConnected(true);
-              if (ids.length > 0) setViewMode('spotify');
-            }} />
-            {isSpotifyConnected && spotifyMatches.length > 0 && (
-              <PlaylistBuilder matchedArtistIds={spotifyMatches} />
+            {FESTIVAL.features.spotifyIntegration && (
+              <>
+                <SpotifyConnect onMatchesFound={(ids) => {
+                  setSpotifyMatches(ids);
+                  setIsSpotifyConnected(true);
+                  if (ids.length > 0) setViewMode('spotify');
+                }} />
+                {isSpotifyConnected && spotifyMatches.length > 0 && (
+                  <PlaylistBuilder matchedArtistIds={spotifyMatches} />
+                )}
+              </>
             )}
 
             {/* Surprise Me */}
@@ -446,48 +469,73 @@ export default function DiscoverPage() {
               </button>
             </Link>
 
-            <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
-              <Sparkles className="h-6 w-6" />
-              Vibe Quiz
-            </Link>
+            {FESTIVAL.features.vibeQuiz && (
+              <Link href="/vibe-quiz" className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                <Sparkles className="h-6 w-6" />
+                Vibe Quiz
+              </Link>
+            )}
 
-            <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
-              <DialogTrigger asChild>
-                <button className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
-                  <Wand2 className="h-6 w-6" />
-                  AI Scout
-                </button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3.5rem] p-8 backdrop-blur-3xl">
-                <DialogHeader>
-                  <DialogTitle className="text-4xl font-black uppercase italic tracking-tighter">The Scout</DialogTitle>
-                  <DialogDescription className="text-muted-foreground font-medium text-lg leading-snug">
-                    Describe your perfect festival vibe.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-6 py-8">
-                  <Input
-                    placeholder="e.g. late night hard techno rave..."
-                    value={aiPrompt}
-                    onChange={(e) => setAiPrompt(e.target.value)}
-                    className="h-20 rounded-[1.5rem] border-white/10 bg-muted/20 text-xl font-bold focus-visible:ring-indigo-500"
-                  />
-                  <Button
-                    className="w-full h-20 rounded-[1.5rem] bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.3em] text-xl shadow-2xl"
-                    onClick={handleAiScout}
-                    disabled={isAiLoading || !aiPrompt.trim()}
-                  >
-                    {isAiLoading ? <Loader2 className="h-8 w-8 animate-spin" /> : 'UNLEASH'}
-                  </Button>
-                </div>
-              </DialogContent>
-            </Dialog>
+            {FESTIVAL.features.aiRecommendations && (
+              <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+                    <Wand2 className="h-6 w-6" />
+                    AI Scout
+                  </button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3.5rem] p-8 backdrop-blur-3xl">
+                  <DialogHeader>
+                    <DialogTitle className="text-4xl font-black uppercase italic tracking-tighter">The Scout</DialogTitle>
+                    <DialogDescription className="text-muted-foreground font-medium text-lg leading-snug">
+                      Describe your perfect festival vibe.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-6 py-8">
+                    <Input
+                      placeholder="e.g. late night hard techno rave..."
+                      value={aiPrompt}
+                      onChange={(e) => setAiPrompt(e.target.value)}
+                      className="h-20 rounded-[1.5rem] border-white/10 bg-muted/20 text-xl font-bold focus-visible:ring-indigo-500"
+                    />
+                    <Button
+                      className="w-full h-20 rounded-[1.5rem] bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.3em] text-xl shadow-2xl"
+                      onClick={handleAiScout}
+                      disabled={isAiLoading || !aiPrompt.trim()}
+                    >
+                      {isAiLoading ? <Loader2 className="h-8 w-8 animate-spin" /> : 'UNLEASH'}
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
         </div>
       </header>
 
       <div className="sticky top-0 z-40 -mx-4 mb-16 px-4 pb-10 pt-8 backdrop-blur-3xl border-b border-white/5">
         <div className="max-w-7xl mx-auto w-full space-y-8">
+          {/* Radar Focus / Territory Selector */}
+          <div className="flex flex-col gap-4">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 ml-2">
+              Radar Focus
+            </p>
+            <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
+              {[
+                { id: null, label: 'GLOBAL RADAR' },
+                ...(FESTIVAL.content.radarFocuses || [])
+              ].map(focus => (
+                <button
+                  key={focus.label}
+                  onClick={() => { haptic.lightTap(); setSelectedStage(focus.id); }}
+                  className={`px-8 py-4 rounded-[1.5rem] text-[11px] font-black uppercase tracking-[0.2em] whitespace-nowrap border transition-all duration-500 ${selectedStage === focus.id ? 'bg-foreground text-background border-foreground shadow-2xl scale-105' : 'bg-muted/10 border-white/5 text-muted-foreground hover:border-primary/40'}`}
+                >
+                  {focus.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="flex flex-col gap-8 lg:flex-row justify-between items-center">
             <div className="relative w-full lg:max-w-md">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground/40" />

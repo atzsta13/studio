@@ -35,13 +35,14 @@ import { FanPoll } from '@/components/home/fan-poll';
 import { PhotoWall } from '@/components/home/photo-wall';
 import { Badge } from '@/components/ui/badge';
 
-const features = [
+const allFeatures = [
   {
     title: 'Discovery',
     description: 'AI Scouting & Lineup',
     href: '/discover',
     icon: Wand2,
     color: FESTIVAL.theme.accentHex,
+    feature: 'vibeQuiz'
   },
   {
     title: 'Tactical Map',
@@ -49,6 +50,7 @@ const features = [
     href: '/map',
     icon: MapIcon,
     color: FESTIVAL.theme.secondaryHex,
+    feature: 'weatherRadar'
   },
   {
     title: 'Toolkit',
@@ -63,8 +65,11 @@ const features = [
     href: '/passport',
     icon: Trophy,
     color: FESTIVAL.theme.primaryHex,
+    feature: 'passport'
   },
 ];
+
+const features = allFeatures.filter(f => !f.feature || (FESTIVAL.features as any)[f.feature]);
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -305,38 +310,40 @@ export default function Home() {
         {FESTIVAL.features.photoWall && <PhotoWall />}
 
         {/* Strategic Tactical Sections */}
-        <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>
-          <Grid size={{ xs: 12, md: 8 }}>
-            <Card sx={{
-              bgcolor: alpha('#4ade80', 0.01),
-              border: `1px dashed ${alpha('#4ade80', 0.15)}`,
-              borderRadius: '3.5rem',
-              transition: 'all 0.4s ease',
-              '&:hover': {
-                bgcolor: alpha('#4ade80', 0.03),
-                borderColor: '#4ade80'
-              }
-            }}>
-              <CardActionArea component={Link} href="/food" sx={{ p: 0 }}>
-                <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
-                  <Box sx={{
-                    p: 3,
-                    bgcolor: alpha('#4ade80', 0.08),
-                    color: '#4ade80',
-                    borderRadius: '2rem',
-                    boxShadow: '0 15px 30px rgba(74,222,128,0.05)'
-                  }}>
-                    <Utensils size={40} strokeWidth={2.5} />
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Food Finder</Typography>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Filter for the best budget meals.</Typography>
-                  </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+        {FESTIVAL.features.foodRatings && (
+          <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>
+            <Grid size={{ xs: 12, md: 8 }}>
+              <Card sx={{
+                bgcolor: alpha('#4ade80', 0.01),
+                border: `1px dashed ${alpha('#4ade80', 0.15)}`,
+                borderRadius: '3.5rem',
+                transition: 'all 0.4s ease',
+                '&:hover': {
+                  bgcolor: alpha('#4ade80', 0.03),
+                  borderColor: '#4ade80'
+                }
+              }}>
+                <CardActionArea component={Link} href="/food" sx={{ p: 0 }}>
+                  <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
+                    <Box sx={{
+                      p: 3,
+                      bgcolor: alpha('#4ade80', 0.08),
+                      color: '#4ade80',
+                      borderRadius: '2rem',
+                      boxShadow: '0 15px 30px rgba(74,222,128,0.05)'
+                    }}>
+                      <Utensils size={40} strokeWidth={2.5} />
+                    </Box>
+                    <Box>
+                      <Typography variant="h6" sx={{ fontWeight: 900, textTransform: 'uppercase', fontSize: '1.4rem', fontStyle: 'italic', mb: 0.5 }}>Food Finder</Typography>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: '1rem', opacity: 0.6 }}>Filter for the best budget meals.</Typography>
+                    </Box>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           </Grid>
-        </Grid>
+        )}
       </Container>
 
       {/* Global CSS for Animations */}

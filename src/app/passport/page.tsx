@@ -36,26 +36,28 @@ interface Stamp {
   color: string;
 }
 
-const STAMPS: Stamp[] = [
-  { id: 's1', title: 'Main Stage Legend', icon: Star, description: 'Visit the Main Stage during a headliner set.', category: 'stage', color: 'text-yellow-500' },
-  { id: 's2', title: 'Power Raver', icon: Flame, description: 'Dance at a major stage for at least 1 hour.', category: 'stage', color: 'text-orange-500' },
-  { id: 's3', title: 'Water Finder', icon: Droplet, description: 'Locate 3 different water refill points on your map.', category: 'utility', color: 'text-blue-500' },
-  { id: 's4', title: 'Global Gourmet', icon: Utensils, description: 'Eat at 3 different international stalls.', category: 'food', color: 'text-emerald-500' },
-  { id: 's5', title: 'Late Night Dreamer', icon: MapPin, description: 'Visit a secret spot at midnight.', category: 'secret', color: 'text-purple-500' },
-  { id: 's6', title: 'Bridge Crosser', icon: Navigation, description: 'Cross the main entrance at dawn.', category: 'secret', color: 'text-pink-500' },
-  { id: 's7', title: 'Early Bird', icon: Clock, description: 'Be the first at a stage before 4 PM.', category: 'utility', color: 'text-cyan-500' },
-  { id: 's8', title: 'Scout Master', icon: Wand2, description: 'Follow 3 AI Scout recommendations.', category: 'secret', color: 'text-indigo-500' },
-];
+const STAMP_ICONS: Record<string, ElementType> = {
+  'star': Star,
+  'flame': Flame,
+  'droplet': Droplet,
+  'utensils': Utensils,
+  'map-pin': MapPin,
+  'navigation': Navigation,
+  'clock': Clock,
+  'wand-2': Wand2
+};
+
+const STAMPS = (FESTIVAL.content.passport?.stamps || []).map(s => ({
+  ...s,
+  icon: STAMP_ICONS[s.icon] || Star
+}));
 
 const STORAGE_KEY = `${FESTIVAL.id}_passport_v1`;
 
-const RANKS = [
-  { title: 'Tourist', minXP: 0 },
-  { title: 'Festival Explorer', minXP: 200 },
-  { title: 'Superfan', minXP: 500 },
-  { title: 'Main Stage Hero', minXP: 1000 },
-  { title: `${FESTIVAL.name} Legend`, minXP: 2000 },
-];
+const RANKS = (FESTIVAL.content.passport?.ranks || []).map(r => ({
+  ...r,
+  title: r.title === 'Legend' ? `${FESTIVAL.name} Legend` : r.title
+}));
 
 export default function PassportPage() {
   const [unlocked, setUnlocked] = useState<string[]>([]);
