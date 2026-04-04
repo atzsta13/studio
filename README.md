@@ -38,7 +38,8 @@ Use Gradle Product Flavors:
 ---
 
 ## 🛠️ Project Navigation
-- **[docs/white-label/README.md](docs/white-label/README.md)**: 🗺️ **White-Label Roadmap & Architecture** (Start here).
+- **[docs/DEVELOPER_QUICKSTART.md](docs/DEVELOPER_QUICKSTART.md)**: ⚡ **Developer Quickstart** (Start here for local setup).
+- **[docs/white-label/README.md](docs/white-label/README.md)**: 🗺️ **White-Label Roadmap & Architecture**.
 - **[STATUS.md](STATUS.md)**: Current health, state, and recent milestones.
 - **[PROJECT_MAP.md](docs/PROJECT_MAP.md)**: High-level overview of where the "brains" are.
 - **[SCHEMA.md](docs/SCHEMA.md)**: Data structure definitions for Lineup, POI, and Guide data.
