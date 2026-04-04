@@ -1,13 +1,9 @@
 package com.example.szigerinsider2026.ui.discover
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -24,36 +20,35 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Public
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Shuffle
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Bolt
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Public
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.outlined.MusicNote
 import androidx.compose.material3.*
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.SpotifyRepository
@@ -61,18 +56,7 @@ import com.example.szigerinsider2026.ui.components.ArtistCard
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import com.example.szigerinsider2026.ui.utils.t
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MediumTopAppBar
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
-import com.example.szigerinsider2026.data.config.FestivalConfig
-
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import android.Manifest
-import android.content.pm.PackageManager
-import androidx.core.content.ContextCompat
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -115,6 +99,7 @@ fun DiscoverScreen(
             }
         }
     }
+    
     val artistViewModel: ArtistViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -123,6 +108,7 @@ fun DiscoverScreen(
             }
         }
     )
+    
     val spotifyViewModel: SpotifyViewModel = viewModel(
         factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
@@ -157,7 +143,6 @@ fun DiscoverScreen(
     val selectedYear by discoverViewModel.selectedYear.collectAsStateWithLifecycle()
     val spotifyAuthState by spotifyViewModel.authState.collectAsStateWithLifecycle()
     val spotifyMatchedIds by spotifyViewModel.matchedArtistIds.collectAsStateWithLifecycle()
-    val showSpotifyOnly by discoverViewModel.showSpotifyOnly.collectAsStateWithLifecycle()
 
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
@@ -260,17 +245,6 @@ fun DiscoverScreen(
                         }
                     }
 
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(Color.White.copy(alpha = 0.05f))
-                            .padding(horizontal = 14.dp, vertical = 8.dp)
-                    ) {
-                        // ... Existing Search UI ...
-                    }
-
-                    // Local AI Scout Section
                     LocalAiScoutCard(
                         isDownloaded = isLocalAiDownloaded,
                         progress = localAiDownloadProgress,
@@ -291,22 +265,72 @@ fun DiscoverScreen(
                         },
                         onClear = { discoverViewModel.clearLocalScout() }
                     )
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Filled.Search, contentDescription = null, tint = TextMuted, modifier = Modifier.size(16.dp))
-                            Spacer(modifier = Modifier.width(10.dp))
-                            BasicTextField(
-                                value = searchQuery,
-                                onValueChange = { discoverViewModel.setSearchQuery(it) },
-                                singleLine = true,
-                                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                                textStyle = TextStyle(color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Medium),
-                                decorationBox = { inner ->
-                                    if (searchQuery.isEmpty()) {
-                                        Text("SEARCH ARTISTS…", color = TextMuted, fontSize = 11.sp, letterSpacing = 1.sp)
-                                    }
-                                    inner()
-                                },
-                                modifier = Modifier.weight(1f)
+                }
+            }
+
+            item(span = { GridItemSpan(2) }) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(MutedBackground.copy(alpha = 0.5f))
+                        .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(20.dp))
+                        .padding(16.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(Icons.Filled.Search, contentDescription = null, tint = TextMuted, modifier = Modifier.size(16.dp))
+                        Spacer(modifier = Modifier.width(10.dp))
+                        BasicTextField(
+                            value = searchQuery,
+                            onValueChange = { discoverViewModel.setSearchQuery(it) },
+                            singleLine = true,
+                            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                            textStyle = TextStyle(color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Medium),
+                            decorationBox = { inner ->
+                                if (searchQuery.isEmpty()) {
+                                    Text("SEARCH ARTISTS...", color = TextMuted, fontSize = 11.sp, letterSpacing = 1.sp)
+                                }
+                                inner()
+                            },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+            }
+
+            item(span = { GridItemSpan(2) }) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        item {
+                            FilterChip(
+                                selected = sortMode == "headliners",
+                                onClick = { haptic.lightTap(); discoverViewModel.setSortMode("headliners") },
+                                label = { Text("HEADLINERS", fontSize = 10.sp, fontWeight = FontWeight.Black) }
+                            )
+                        }
+                        item {
+                            FilterChip(
+                                selected = sortMode == "az",
+                                onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") },
+                                label = { Text("A – Z", fontSize = 10.sp, fontWeight = FontWeight.Black) }
+                            )
+                        }
+                        item {
+                            FilterChip(
+                                selected = selectedYear == "2026",
+                                onClick = { haptic.lightTap(); discoverViewModel.setYear("2026") },
+                                label = { Text("2026", fontSize = 10.sp, fontWeight = FontWeight.Black) }
+                            )
+                        }
+                        item {
+                            FilterChip(
+                                selected = selectedYear == "2025",
+                                onClick = { haptic.lightTap(); discoverViewModel.setYear("2025") },
+                                label = { Text("2025", fontSize = 10.sp, fontWeight = FontWeight.Black) }
                             )
                         }
                     }
@@ -317,34 +341,16 @@ fun DiscoverScreen(
                     ) {
                         item {
                             FilterChip(
-                                text = "HEADLINERS",
-                                isSelected = sortMode == "headliners",
-                                selectedColor = MaterialTheme.colorScheme.secondary,
-                                onClick = { haptic.lightTap(); discoverViewModel.setSortMode("headliners") }
+                                selected = selectedDay == null,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(null) },
+                                label = { Text("ALL DAYS", fontSize = 10.sp, fontWeight = FontWeight.Black) }
                             )
                         }
-                        item {
+                        items(availableDays) { day ->
                             FilterChip(
-                                text = "A – Z",
-                                isSelected = sortMode == "az",
-                                selectedColor = MaterialTheme.colorScheme.secondary,
-                                onClick = { haptic.lightTap(); discoverViewModel.setSortMode("az") }
-                            )
-                        }
-                        item {
-                            FilterChip(
-                                text = selectedDay ?: "ALL DAYS",
-                                isSelected = selectedDay != null,
-                                selectedColor = CyanPulse,
-                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(null) }
-                            )
-                        }
-                        items(availableDays.take(3)) { day ->
-                            FilterChip(
-                                text = day.take(3).uppercase(),
-                                isSelected = selectedDay == day,
-                                selectedColor = CyanPulse,
-                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(if (selectedDay == day) null else day) }
+                                selected = selectedDay == day,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectDay(if (selectedDay == day) null else day) },
+                                label = { Text(day.uppercase(), fontSize = 10.sp, fontWeight = FontWeight.Black) }
                             )
                         }
                     }
@@ -354,35 +360,17 @@ fun DiscoverScreen(
                         horizontalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         item {
-                                FilterChip(
-                                    text = "2026",
-                                    isSelected = selectedYear == "2026",
-                                    selectedColor = CyanPulse,
-                                    onClick = { haptic.lightTap(); discoverViewModel.setYear("2026") }
-                                )
-                        }
-                        item {
                             FilterChip(
-                                text = "2025",
-                                isSelected = selectedYear == "2025",
-                                selectedColor = Color.White.copy(alpha = 0.2f),
-                                onClick = { haptic.lightTap(); discoverViewModel.setYear("2025") }
-                            )
-                        }
-                        item {
-                            FilterChip(
-                                text = selectedGenre ?: "ALL GENRES",
-                                isSelected = selectedGenre != null,
-                                selectedColor = ToxicGreen,
-                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(null) }
+                                selected = selectedGenre == null,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(null) },
+                                label = { Text("ALL GENRES", fontSize = 10.sp, fontWeight = FontWeight.Black) }
                             )
                         }
                         items(availableGenres) { genre ->
                             FilterChip(
-                                text = genre.uppercase(),
-                                isSelected = selectedGenre == genre,
-                                selectedColor = ToxicGreen,
-                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(if (selectedGenre == genre) null else genre) }
+                                selected = selectedGenre == genre,
+                                onClick = { haptic.lightTap(); discoverViewModel.selectGenre(if (selectedGenre == genre) null else genre) },
+                                label = { Text(genre.uppercase(), fontSize = 10.sp, fontWeight = FontWeight.Black) }
                             )
                         }
                     }
@@ -410,14 +398,6 @@ fun DiscoverScreen(
                                 ) {
                                     Text("${countryFilter?.uppercase()} ×", color = CyanPulse, fontSize = 8.sp, fontWeight = FontWeight.Black)
                                 }
-                            }
-                            if (spotifyAuthState is SpotifyAuthState.Connected) {
-                                Text(
-                                    text = "· ${spotifyMatchedIds.size} MATCHES",
-                                    color = MaterialTheme.colorScheme.secondary,
-                                    fontSize = 8.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
                             }
                         }
                         
@@ -452,16 +432,6 @@ fun DiscoverScreen(
                         }
                     }
                 }
-            }
-
-            item(span = { GridItemSpan(2) }) {
-                TagCloud(
-                    artists = allArtists,
-                    selectedGenre = selectedGenre,
-                    onGenreSelect = { discoverViewModel.selectGenre(it) },
-                    selectedVibe = selectedVibe,
-                    onVibeSelect = { discoverViewModel.selectVibe(it) }
-                )
             }
 
             if (isLoading) {
@@ -551,17 +521,6 @@ fun LocalAiScoutCard(
                     letterSpacing = 1.sp,
                     modifier = Modifier.weight(1f)
                 )
-                if (isDownloaded) {
-                    Box(
-                        modifier = Modifier
-                            .clip(RoundedCornerShape(4.dp))
-                            .background(ToxicGreen.copy(alpha = 0.1f))
-                            .border(0.5.dp, ToxicGreen.copy(alpha = 0.4f), RoundedCornerShape(4.dp))
-                            .padding(horizontal = 6.dp, vertical = 2.dp)
-                    ) {
-                        Text("SECURE ON-DEVICE", color = ToxicGreen, fontSize = 7.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                    }
-                }
             }
             
             Spacer(modifier = Modifier.height(12.dp))
@@ -575,32 +534,50 @@ fun LocalAiScoutCard(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 
-                if (progress > 0f) {
+                if (progress != 0f) {
                     Column {
-                        LinearProgressIndicator(
-                            progress = { progress },
-                            modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
-                            color = ToxicGreen,
-                            trackColor = OLEDBlack
-                        )
-                        Text(
-                            text = "DOWNLOADING: ${(progress * 100).toInt()}%",
-                            color = ToxicGreen,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Black,
-                            modifier = Modifier.padding(top = 4.dp)
-                        )
+                        if (progress > 0f) {
+                            LinearProgressIndicator(
+                                progress = { progress },
+                                modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
+                                color = ToxicGreen,
+                                trackColor = OLEDBlack
+                            )
+                            Text(
+                                text = "DOWNLOADING: ${(progress * 100).toInt()}%",
+                                color = ToxicGreen,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Black,
+                                modifier = Modifier.padding(top = 4.dp)
+                            )
+                        } else {
+                            // Indeterminate state
+                            LinearProgressIndicator(
+                                modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
+                                color = ToxicGreen,
+                                trackColor = OLEDBlack
+                            )
+                            Text(
+                                text = "DOWNLOADING...",
+                                color = ToxicGreen,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Black,
+                                modifier = Modifier.padding(top = 4.dp)
+                            )
+                        }
                     }
                 } else {
                     Button(
-                        onClick = onDownload,
+                        onClick = {
+                            onDownload()
+                        },
                         modifier = Modifier.fillMaxWidth().height(48.dp),
                         shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = OLEDBlack)
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black)
                     ) {
-                        Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.Black)
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("PREPARE OFFLINE AI", fontWeight = FontWeight.Black, fontSize = 12.sp)
+                        Text("PREPARE OFFLINE AI", fontWeight = FontWeight.Black, fontSize = 12.sp, color = Color.Black)
                     }
                 }
             } else {
@@ -687,29 +664,5 @@ fun LocalAiScoutCard(
                 }
             }
         }
-    }
-}
-
-@Composable
-fun FilterChip(
-    text: String,
-    isSelected: Boolean,
-    selectedColor: Color = PrimaryMagenta,
-    onClick: () -> Unit
-) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
-            .background(if (isSelected) selectedColor else Color.White.copy(alpha = 0.05f))
-            .clickable { onClick() }
-            .padding(horizontal = 14.dp, vertical = 7.dp)
-    ) {
-        Text(
-            text = text,
-            style = BrutalistTypography.labelSmall,
-            color = if (isSelected) Color.Black else Color.White.copy(alpha = 0.6f),
-            fontWeight = if (isSelected) FontWeight.Black else FontWeight.Normal,
-            fontSize = 10.sp
-        )
     }
 }

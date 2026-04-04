@@ -26,14 +26,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.szigerinsider2026.data.content.SURVIVAL_SECTIONS
-import com.example.szigerinsider2026.data.content.GuideSection
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import com.example.szigerinsider2026.ui.utils.HapticManager
@@ -161,7 +160,8 @@ private fun GuideSectionCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Check if icon is an emoji or should be mapped to an icon
-            Text(text = section.icon.let { if (it.length <= 2) it else "ℹ️" }, fontSize = 28.sp)
+            val displayIcon = section.icon.let { if (it.length <= 2) it else "ℹ️" }
+            Text(text = displayIcon, fontSize = 28.sp)
             Spacer(modifier = Modifier.width(12.dp))
             Text(
                 text = section.title,
@@ -216,53 +216,5 @@ private fun GuideItemRow(
         Text(item.title, color = AcidYellow, fontWeight = FontWeight.Black, fontSize = 15.sp)
         Spacer(modifier = Modifier.height(4.dp))
         Text(item.content, color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp, lineHeight = 18.sp)
-    }
-}
-
-@Composable
-private fun HungarianPhraseRow(
-    item: String,
-    haptic: HapticManager,
-    onCopyPhrase: (String) -> Unit
-) {
-    val clipboard = LocalClipboardManager.current
-    // item format: "Hungarian • pronunciation • English"
-    val parts = item.split(" • ")
-    val hungarian = parts.getOrElse(0) { item }
-    val pronunciation = parts.getOrElse(1) { "" }
-    val english = parts.getOrElse(2) { "" }
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .background(OLEDBlack.copy(alpha = 0.5f))
-            .padding(12.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(hungarian, color = AcidYellow, fontWeight = FontWeight.Black, fontSize = 15.sp)
-            if (pronunciation.isNotEmpty()) {
-                Text(pronunciation, color = TextMuted, fontSize = 11.sp, fontStyle = FontStyle.Italic)
-            }
-            if (english.isNotEmpty()) {
-                Text(english, color = Color.White.copy(alpha = 0.7f), fontSize = 13.sp)
-            }
-        }
-        IconButton(
-            onClick = {
-                haptic.successBurst()
-                clipboard.setText(AnnotatedString(hungarian))
-                onCopyPhrase(hungarian)
-            },
-            modifier = Modifier.size(36.dp)
-        ) {
-            Icon(
-                Icons.Default.ContentCopy,
-                contentDescription = "Copy",
-                tint = CyanPulse,
-                modifier = Modifier.size(18.dp)
-            )
-        }
     }
 }

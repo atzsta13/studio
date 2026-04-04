@@ -8,7 +8,7 @@ import com.example.szigerinsider2026.data.model.Socials
 @Entity(tableName = "artists")
 data class ArtistEntity(
     @PrimaryKey val id: String,
-    val artist: String,
+    val name: String,
     val stage: String?,
     val day: String?,
     val startTime: String?,
@@ -29,7 +29,7 @@ data class ArtistEntity(
 
 fun ArtistEntity.toModel() = Artist(
     id = id,
-    artist = artist,
+    name = name,
     stage = stage,
     day = day,
     startTime = startTime,
@@ -49,7 +49,7 @@ fun ArtistEntity.toModel() = Artist(
 
 fun Artist.toEntity(year: String) = ArtistEntity(
     id = id,
-    artist = artist,
+    name = name,
     stage = stage,
     day = day,
     startTime = startTime,

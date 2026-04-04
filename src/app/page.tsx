@@ -7,6 +7,7 @@ import { Music2, ArrowRight, MapPin, Calendar, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GlobalSearch } from '@/components/home/global-search';
 import { GlobalMatchmaker } from '@/components/home/global-matchmaker';
+import { GlobalRadar } from '@/components/home/global-radar';
 
 export default function HubPage() {
   const festivals = Object.values(FESTIVAL_CONFIGS);
@@ -33,7 +34,7 @@ export default function HubPage() {
           </div>
 
           <div className="flex items-center gap-12 text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 border-y border-white/5 py-6 px-12">
-            <div><span className="text-white text-lg mr-2 tracking-tighter">04</span> Festivals</div>
+            <div><span className="text-white text-lg mr-2 tracking-tighter">05</span> Festivals</div>
             <div className="h-1 w-1 rounded-full bg-primary/20" />
             <div><span className="text-white text-lg mr-2 tracking-tighter">800+</span> Artists</div>
             <div className="h-1 w-1 rounded-full bg-primary/20" />
@@ -43,6 +44,15 @@ export default function HubPage() {
           <GlobalSearch />
         </motion.div>
       </header>
+
+      {/* Global Tactical Radar */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <p className="text-[10px] font-black uppercase tracking-[0.5em] text-primary mb-4">Satellite Intelligence</p>
+          <h2 className="text-4xl font-black uppercase italic tracking-tighter">Tactical Ecosystem Radar</h2>
+        </div>
+        <GlobalRadar />
+      </section>
 
       {/* Festival Grid */}
       <main className="container mx-auto px-4 py-12">

@@ -134,7 +134,7 @@ fun ArtistDetailScreen(
                 Box(modifier = Modifier.fillMaxWidth().height(440.dp)) {
                     AsyncImage(
                         model = a.imageUrl,
-                        contentDescription = a.artist,
+                        contentDescription = a.name,
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
@@ -230,7 +230,7 @@ fun ArtistDetailScreen(
                             )
                         }
                         Text(
-                            text = a.artist.uppercase(),
+                            text = a.name.uppercase(),
                             fontSize = 40.sp,
                             style = BrutalistTypography.headlineLarge,
                             color = Color.White,
@@ -257,34 +257,38 @@ fun ArtistDetailScreen(
 
             // SAW THIS SET toggle (Moved higher for accessibility)
             item {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 24.dp, vertical = 8.dp)
-                ) {
-                    if (isSeen) {
-                        BrutalistButton(
-                            text = "✓ SAW THIS SET",
-                            onClick = {
-                                haptic.lightTap()
-                                isSeen = toggleSeenArtist(context, a.id)
-                            },
-                            color = ToxicGreen,
-                            textColor = Color.Black,
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    } else {
-                        BrutalistButton(
-                            text = "SAW THIS SET?",
-                            onClick = {
-                                haptic.successBurst()
-                                isSeen = toggleSeenArtist(context, a.id)
-                            },
-                            color = AcidYellow.copy(alpha = 0.1f),
-                            textColor = AcidYellow,
-                            modifier = Modifier.fillMaxWidth()
-                                .border(1.dp, AcidYellow.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
-                        )
+                val showSeenButton = remember(a) { com.example.szigerinsider2026.ui.utils.hasSetStarted(a) }
+                
+                if (showSeenButton || isSeen) {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 24.dp, vertical = 8.dp)
+                    ) {
+                        if (isSeen) {
+                            BrutalistButton(
+                                text = "✓ SAW THIS SET",
+                                onClick = {
+                                    haptic.lightTap()
+                                    isSeen = toggleSeenArtist(context, a.id)
+                                },
+                                color = ToxicGreen,
+                                textColor = Color.Black,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        } else {
+                            BrutalistButton(
+                                text = "SAW THIS SET?",
+                                onClick = {
+                                    haptic.successBurst()
+                                    isSeen = toggleSeenArtist(context, a.id)
+                                },
+                                color = AcidYellow.copy(alpha = 0.1f),
+                                textColor = AcidYellow,
+                                modifier = Modifier.fillMaxWidth()
+                                    .border(1.dp, AcidYellow.copy(alpha = 0.4f), RoundedCornerShape(16.dp))
+                            )
+                        }
                     }
                 }
             }
@@ -409,7 +413,7 @@ fun ArtistDetailScreen(
             if (spotifyId != null) {
                 item {
                     SpotifyIsland(
-                        artistName = a.artist,
+                        artistName = a.name,
                         spotifyId = spotifyId,
                         onOpenSpotify = {
                             haptic.successBurst()
@@ -559,7 +563,7 @@ private fun SimilarArtistCard(
         Column {
             AsyncImage(
                 model = artist.imageUrl,
-                contentDescription = artist.artist,
+                contentDescription = artist.name,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(130.dp)
@@ -568,7 +572,7 @@ private fun SimilarArtistCard(
             )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
-                    text = artist.artist,
+                    text = artist.name,
                     color = TextPrimary,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Black,

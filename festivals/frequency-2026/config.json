@@ -140,7 +140,6 @@
     "setlistLinks": true,
     "collabPlaylists": true,
     "arStageView": false,
-    "stickerBook": true,
     "fanPolls": true,
     "photoWall": true,
     "clashResolver": true,
@@ -149,7 +148,6 @@
     "waterCounter": true,
     "carFinder": true,
     "notesJournal": true,
-    "socialFeed": true,
     "newsBulletin": true,
     "setCountdowns": true,
     "surpriseRoulette": true,
@@ -158,7 +156,6 @@
     "accessibilityMap": true,
     "quietZones": true,
     "crowdHeatmap": false,
-    "merchPriceWatch": true,
     "ecoWarrior": true,
     "secretStages": false,
     "afterMovie": true,
@@ -168,6 +165,24 @@
     "highContrast": true
   },
   "content": {
+    "emergencyContacts": {
+      "security": { "phone": "112", "label": "Security Dispatch" },
+      "medical": { "phone": "144", "label": "Medical Response" }
+    },
+    "radarFocuses": [
+      {
+        "id": "daypark",
+        "label": "DAYPARK (ROCK & INDIE)",
+        "targetStages": ["Space Stage", "Green Stage"],
+        "targetGenres": ["ROCK", "INDIE", "ALTERNATIVE"]
+      },
+      {
+        "id": "nightpark",
+        "label": "NIGHTPARK (EDM)",
+        "targetStages": ["Nightpark", "Tenne"],
+        "targetGenres": ["ELECTRONIC", "D&B", "TECHNO"]
+      }
+    ],
     "shuttleRoutes": [],
     "dictionaryTerms": []
   }

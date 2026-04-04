@@ -157,7 +157,6 @@
     "accessibilityMap": true,
     "quietZones": true,
     "crowdHeatmap": false,
-    "merchPriceWatch": true,
     "ecoWarrior": true,
     "secretStages": false,
     "afterMovie": true,

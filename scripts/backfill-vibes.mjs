@@ -35,8 +35,9 @@ function inferVibes(genres) {
 
 let filledCount = 0
 const updated = lineup.map(artist => {
-  // Only fill if empty or if we want to re-run (for now, only if empty)
-  if (!artist.vibes || artist.vibes.length === 0) {
+  // Only fill if empty or if force is enabled
+  const shouldFill = !artist.vibes || artist.vibes.length === 0 || process.env.FORCE_VIBES === 'true'
+  if (shouldFill) {
     const inferred = inferVibes(artist.genres)
     if (inferred.length > 0) {
       filledCount++

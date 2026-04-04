@@ -1,0 +1,31 @@
+[
+  {
+    "id": "halle-e",
+    "name": "Halle E",
+    "type": "stage",
+    "description": "The main and only stage of Ernte Punk Festival 2026. Non-stop punk and hardcore action.",
+    "location": {
+      "lat": 47.0583,
+      "lng": 15.4461
+    },
+    "mapCoords": {
+      "x": 50,
+      "y": 50
+    },
+    "amenities": ["Bar", "Moshpit Area", "Merch nearby"]
+  },
+  {
+    "id": "merch-area",
+    "name": "Merch Pit",
+    "type": "shop",
+    "description": "Get your vinyl and band shirts here.",
+    "location": {
+      "lat": 47.0584,
+      "lng": 15.4462
+    },
+    "mapCoords": {
+      "x": 45,
+      "y": 45
+    }
+  }
+]

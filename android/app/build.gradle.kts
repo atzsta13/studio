@@ -63,6 +63,15 @@ android {
             manifestPlaceholders["deepLinkScheme"] = "frequency2026"
             manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
         }
+        create("erntepunk") {
+            dimension = "festival"
+            applicationId = "com.example.erntepunkinsider"
+            versionName = "1.0"
+            resValue("string", "app_name", "dev_Ernte Punk Insider")
+            buildConfigField("String", "FESTIVAL_ID", "\"ernte-punk-2026\"")
+            manifestPlaceholders["deepLinkScheme"] = "erntepunk2026"
+            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
+        }
     }
 
     // ── Per-flavor asset source sets ─────────────────────────────────────────
@@ -71,6 +80,7 @@ android {
         getByName("area53")    { assets.srcDirs("src/area53/assets") }
         getByName("novarock")  { assets.srcDirs("src/novarock/assets") }
         getByName("frequency") { assets.srcDirs("src/frequency/assets") }
+        getByName("erntepunk") { assets.srcDirs("src/erntepunk/assets") }
     }
 
     buildTypes {

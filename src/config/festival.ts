@@ -3,6 +3,7 @@ import sziget from '../../festivals/sziget-2026/config.json'
 import area53 from '../../festivals/area53-2026/config.json'
 import novarock from '../../festivals/novarock-2026/config.json'
 import frequency from '../../festivals/frequency-2026/config.json'
+import erntepunk from '../../festivals/ernte-punk-2026/config.json'
 
 // Ensure TypeScript knows the structure of our unified config
 export interface FestivalConfig {
@@ -59,8 +60,8 @@ export interface FestivalConfig {
     backgroundHsl: string
     cardHex: string
     cardHsl: string
-    glowColor: string
-    aesthetic: 'brutalist' | 'metal' | 'rock' | 'mainstream'
+    glowColor: string,
+    aesthetic: 'brutalist' | 'metal' | 'rock' | 'mainstream' | 'punk'
     androidPrimaryLong: string
     androidAccentLong: string
     androidSecondaryLong: string
@@ -119,7 +120,6 @@ export interface FestivalConfig {
     accessibilityMap: boolean
     quietZones: boolean
     crowdHeatmap: boolean
-    merchPriceWatch: boolean
     ecoWarrior: boolean
     secretStages: boolean
     afterMovie: boolean
@@ -160,6 +160,7 @@ export const FESTIVAL_CONFIGS: Record<string, FestivalConfig> = {
   'area53-2026': area53 as FestivalConfig,
   'novarock-2026': novarock as FestivalConfig,
   'frequency-2026': frequency as FestivalConfig,
+  'ernte-punk-2026': erntepunk as FestivalConfig,
 }
 
 export const FESTIVAL_IDS = Object.keys(FESTIVAL_CONFIGS)

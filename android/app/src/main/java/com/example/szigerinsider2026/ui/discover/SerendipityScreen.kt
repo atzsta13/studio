@@ -193,7 +193,7 @@ fun SerendipityScreen(
                                 ) {
                                     AsyncImage(
                                         model = artist.imageUrl,
-                                        contentDescription = artist.artist,
+                                        contentDescription = artist.name,
                                         modifier = Modifier.fillMaxSize(),
                                         contentScale = ContentScale.Crop
                                     )
@@ -225,7 +225,7 @@ fun SerendipityScreen(
 
                                 Column(modifier = Modifier.padding(20.dp)) {
                                     Text(
-                                        text = artist.artist.uppercase(),
+                                        text = artist.name.uppercase(),
                                         color = TextPrimary,
                                         fontSize = 26.sp,
                                         fontWeight = FontWeight.Black,

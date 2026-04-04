@@ -705,7 +705,7 @@ private fun ArtistGridBlock(
             Spacer(modifier = Modifier.height(2.dp))
 
             Text(
-                text = artist.artist.uppercase(),
+                text = artist.name.uppercase(),
                 color = if (isFavorite) MaterialTheme.colorScheme.secondary else Color.White,
                 fontWeight = FontWeight.Black,
                 fontSize = if (width < 100f) 10.sp else 12.sp,
@@ -772,7 +772,7 @@ private fun ScheduleRow(
                 Box(modifier = Modifier.width(1.dp).height(36.dp).background(Color.White.copy(alpha = 0.07f)))
                 Spacer(modifier = Modifier.width(12.dp))
                 Box(modifier = Modifier.size(44.dp).clip(RoundedCornerShape(12.dp)).background(MutedBackground), contentAlignment = Alignment.Center) {
-                    if (artist.imageUrl != null) { AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop) }
+                    if (artist.imageUrl != null) { AsyncImage(model = artist.imageUrl, contentDescription = artist.name, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop) }
                 }
                 Spacer(modifier = Modifier.width(14.dp))
                 Column(modifier = Modifier.weight(1f)) {
@@ -781,7 +781,7 @@ private fun ScheduleRow(
                         if (nowPlaying) { BrutalistBadge(text = "LIVE NOW", color = ToxicGreen) }
                     }
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                        Text(text = artist.artist.uppercase(), fontWeight = FontWeight.Black, color = Color.White, fontSize = 15.sp, letterSpacing = (-0.3).sp, modifier = Modifier.weight(1f, fill = false))
+                        Text(text = artist.name.uppercase(), fontWeight = FontWeight.Black, color = Color.White, fontSize = 15.sp, letterSpacing = (-0.3).sp, modifier = Modifier.weight(1f, fill = false))
                         if (nowPlaying) { Box(modifier = Modifier.size(8.dp).graphicsLayer { alpha = pulsingAlpha }.clip(CircleShape).background(ToxicGreen)) }
                     }
                     if (artist.genres.filter { it != "MUSIC" }.isNotEmpty()) { Text(text = artist.genres.filter { it != "MUSIC" }.take(2).joinToString(" · "), color = TextMuted, fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp)) }
@@ -815,7 +815,7 @@ private fun ClashBanner(clashes: List<ClashPair>) {
                 Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
                     BrutalistBadge(text = if (isHard) "HARD CLASH" else "TIGHT TRANSITION", color = color, isOutlined = true)
                     Spacer(modifier = Modifier.width(12.dp))
-                    Text(text = "${clash.a.artist} vs ${clash.b.artist}", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
+                    Text(text = "${clash.a.name} vs ${clash.b.name}", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
                     if (!isHard) { Text(text = "${clash.gapMinutes} MINS GAP", color = TextMuted, fontSize = 9.sp, fontWeight = FontWeight.Black) }
                 }
             }
@@ -851,15 +851,15 @@ private fun ArtistDetailSheet(artist: Artist, isFavorite: Boolean, onToggleFavor
     androidx.compose.material3.ModalBottomSheet(onDismissRequest = onDismiss, containerColor = OLEDBlack, dragHandle = { androidx.compose.material3.BottomSheetDefaults.DragHandle(color = Color.White.copy(alpha = 0.2f)) }) {
         Column(modifier = Modifier.fillMaxWidth().padding(24.dp).padding(bottom = 32.dp)) {
             if (artist.imageUrl != null) {
-                AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.fillMaxWidth().height(240.dp).clip(RoundedCornerShape(20.dp)).background(Color.White.copy(alpha = 0.05f)), contentScale = ContentScale.Crop)
+                AsyncImage(model = artist.imageUrl, contentDescription = artist.name, modifier = Modifier.fillMaxWidth().height(240.dp).clip(RoundedCornerShape(20.dp)).background(Color.White.copy(alpha = 0.05f)), contentScale = ContentScale.Crop)
                 Spacer(modifier = Modifier.height(20.dp))
             } else {
                  Box(modifier = Modifier.fillMaxWidth().height(180.dp).clip(RoundedCornerShape(20.dp)).background(Color.White.copy(alpha = 0.05f)), contentAlignment = Alignment.Center) {
-                     Text(artist.artist.take(1), color = TextMuted, fontSize = 48.sp, fontWeight = FontWeight.Black)
+                     Text(artist.name.take(1), color = TextMuted, fontSize = 48.sp, fontWeight = FontWeight.Black)
                  }
                  Spacer(modifier = Modifier.height(20.dp))
             }
-            Text(text = artist.artist.uppercase(), color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White, fontWeight = FontWeight.Black, fontSize = 28.sp, letterSpacing = (-1).sp)
+            Text(text = artist.name.uppercase(), color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White, fontWeight = FontWeight.Black, fontSize = 28.sp, letterSpacing = (-1).sp)
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 8.dp)) {
                  BrutalistBadge(text = (artist.stage ?: "MAIN STAGE").uppercase(), color = MaterialTheme.colorScheme.primary)
                  Spacer(modifier = Modifier.width(10.dp))

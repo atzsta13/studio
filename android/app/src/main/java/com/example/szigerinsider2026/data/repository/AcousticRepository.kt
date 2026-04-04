@@ -37,7 +37,12 @@ class AcousticRepository(private val context: Context) {
         }
 
         val buffer = ShortArray(bufferSize)
-        audioRecord.startRecording()
+        try {
+            audioRecord.startRecording()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return@withContext "Microphone access failed: ${e.localizedMessage}"
+        }
 
         var sumSquare = 0.0
         var totalSamples = 0L

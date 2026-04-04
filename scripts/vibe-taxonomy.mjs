@@ -14,6 +14,15 @@ export const VIBE_TAXONOMY = {
   TRAP:            ['Urban', 'Hype', 'Bass'],
   FUTURE_BASS:     ['Uplifting', 'Melodic', 'Dance'],
   HYPERPOP:        ['Eclectic', 'Intense', 'Energetic'],
+  DNB:             ['Dance', 'Fast', 'Energetic', 'Bass'],
+  DRUM_BASS:       ['Dance', 'Fast', 'Energetic', 'Bass'],
+  DUBSTEP:         ['Bass', 'Heavy', 'Intense'],
+  BASS_MUSIC:      ['Bass', 'Hype', 'Electronic'],
+  JUNGLE:          ['Dance', 'Fast', 'Rhythmic', 'Raw'],
+  GRIME:           ['Urban', 'Aggressive', 'Rhythmic'],
+  GARAGE:          ['Dance', 'Rhythmic', 'Urban'],
+  UK_CLUB:         ['Dance', 'Electronic', 'Rhythmic'],
+  DELTA_DISTRICT:  ['Dance', 'Electronic', 'Rave'],
 
   // ── Rock / Guitar ────────────────────────────────────────────────────────
   ROCK:            ['Raw', 'Energetic', 'Guitar'],
@@ -58,6 +67,7 @@ export const VIBE_TAXONOMY = {
   WORLD_MUSIC:     ['Eclectic', 'Cultural', 'Laid-Back'],
   FOLK:            ['Acoustic', 'Emotional', 'Storytelling'],
   REGGAE:          ['Laid-Back', 'Feel-Good', 'Groove'],
+  FLAMENCO:        ['Cultural', 'Acoustic', 'Passionate'],
 
   // ── Jazz / Blues / Soul ──────────────────────────────────────────────────
   JAZZ:            ['Chill', 'Sophisticated', 'Improvisational'],

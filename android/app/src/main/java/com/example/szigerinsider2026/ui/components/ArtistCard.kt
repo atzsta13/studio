@@ -116,7 +116,7 @@ fun ArtistCard(
                 detectTapGestures(
                     onLongPress = {
                         haptic.successBurst()
-                        val shareText = "🎵 ${artist.artist}\n" +
+                        val shareText = "🎵 ${artist.name}\n" +
                             "📅 ${artist.day ?: "TBA"} · ${artist.stage ?: "Main Stage"}\n" +
                             "⏰ ${artist.startTime ?: ""} – ${artist.endTime ?: ""}\n\n" +
                             "${FestivalConfig.NAME} ${FestivalConfig.current.dates.year} · ${FestivalConfig.current.location.city} · ${FestivalConfig.current.tagline}"
@@ -155,7 +155,7 @@ fun ArtistCard(
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = artist.artist.split(" ").filter { it.isNotEmpty() }.take(2).map { it.first().uppercaseChar() }.joinToString(""),
+                                text = artist.name.split(" ").filter { it.isNotEmpty() }.take(2).map { it.first().uppercaseChar() }.joinToString(""),
                                 fontSize = 64.sp,
                                 fontWeight = FontWeight.Black,
                                 fontStyle = FontStyle.Italic,
@@ -165,7 +165,7 @@ fun ArtistCard(
                         if (artist.imageUrl != null) {
                             AsyncImage(
                                 model = artist.imageUrl,
-                                contentDescription = artist.artist,
+                                contentDescription = artist.name,
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.Crop
                             )
@@ -247,7 +247,7 @@ fun ArtistCard(
                             .padding(20.dp)
                     ) {
                         Text(
-                            text = artist.artist.uppercase(),
+                            text = artist.name.uppercase(),
                             style = BrutalistTypography.titleLarge,
                             color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White,
                             modifier = Modifier.padding(bottom = 4.dp),

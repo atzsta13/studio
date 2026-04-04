@@ -252,7 +252,7 @@ fun ArtistSwipeCard(artist: Artist, modifier: Modifier = Modifier) {
     ) {
         AsyncImage(
             model = artist.imageUrl,
-            contentDescription = artist.artist,
+            contentDescription = artist.name,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )
@@ -285,7 +285,7 @@ fun ArtistSwipeCard(artist: Artist, modifier: Modifier = Modifier) {
             }
             
             Text(
-                text = artist.artist.uppercase(),
+                text = artist.name.uppercase(),
                 style = BrutalistTypography.headlineLarge,
                 color = Color.White,
                 maxLines = 2,

@@ -108,14 +108,14 @@ class DiscoverViewModel(
             }
         }
         if (query.isNotBlank()) {
-            result = result.filter { it.artist.contains(query.trim(), ignoreCase = true) }
+            result = result.filter { it.name.contains(query.trim(), ignoreCase = true) }
         }
         if (showOnly && spotify.isNotEmpty()) {
             result = result.filter { it.spotifyId in spotify }
         }
         when (sort) {
-            "headliners" -> result.sortedWith(compareByDescending<Artist> { it.isHeadliner }.thenBy { it.artist })
-            "az" -> result.sortedBy { it.artist }
+            "headliners" -> result.sortedWith(compareByDescending<Artist> { it.isHeadliner }.thenBy { it.name })
+            "az" -> result.sortedBy { it.name }
             else -> result
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())

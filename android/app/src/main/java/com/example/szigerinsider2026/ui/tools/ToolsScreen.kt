@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -68,23 +69,34 @@ fun ToolsScreen(navController: NavController) {
     val config = FestivalConfig.current
     var localAmount by remember { mutableStateOf(if (config.currency.localCode == "HUF") "1000" else "10") }
     var selectedTab by remember { mutableIntStateOf(0) }
-    var isFlashOn by remember { mutableStateOf(false) }
+    var toolMode by remember { mutableStateOf<ToolMode?>(null) }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         containerColor = OLEDBlack
     ) { padding ->
-        if (isFlashOn) {
-            FlashOverlay(onDismiss = { isFlashOn = false })
-        } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(OLEDBlack)
-                    .padding(padding)
-                    .padding(horizontal = 20.dp),
-                contentPadding = PaddingValues(top = 48.dp, bottom = 120.dp)
-            ) {
+        when (toolMode) {
+            ToolMode.SOS -> {
+                FlashOverlay(onDismiss = { toolMode = null })
+            }
+            ToolMode.COLOR_FLASH -> {
+                ColorFlashOverlay(onDismiss = { toolMode = null })
+            }
+            ToolMode.BIG_TEXT -> {
+                BigTextOverlay(onDismiss = { toolMode = null })
+            }
+            ToolMode.CANDLE -> {
+                CandleOverlay(onDismiss = { toolMode = null })
+            }
+            null -> {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(OLEDBlack)
+                        .padding(padding)
+                        .padding(horizontal = 20.dp),
+                    contentPadding = PaddingValues(top = 48.dp, bottom = 120.dp)
+                ) {
             item {
                 Text(
                     text = t("toolkit_title"),
@@ -150,6 +162,18 @@ fun ToolsScreen(navController: NavController) {
                             TentFinderCard()
                         }
 
+                        if (config.features.carFinder) {
+                            CarFinderCard()
+                        }
+
+                        if (config.features.hydrationTracker) {
+                            HydrationTrackerCard()
+                        }
+
+                        if (config.features.batterySaver) {
+                            BatterySaverCard()
+                        }
+
                         // Packing list is usually always available but could be flagged
                         Box(
                             modifier = Modifier
@@ -172,8 +196,26 @@ fun ToolsScreen(navController: NavController) {
                         }
 
                         if (config.features.sosMorseCode) {
-                            SOSBeaconButton(onClick = { isFlashOn = true })
+                            SOSBeaconButton(onClick = { toolMode = ToolMode.SOS })
                         }
+
+                        SafetyToolButton(
+                            title = "COLOR SIGNAL",
+                            icon = Icons.Default.Palette,
+                            onClick = { toolMode = ToolMode.COLOR_FLASH }
+                        )
+
+                        SafetyToolButton(
+                            title = "BIG TEXT MODE",
+                            icon = Icons.Default.TextFormat,
+                            onClick = { toolMode = ToolMode.BIG_TEXT }
+                        )
+
+                        SafetyToolButton(
+                            title = "CANDLE MODE",
+                            icon = Icons.Default.WbSunny,
+                            onClick = { toolMode = ToolMode.CANDLE }
+                        )
 
                         if (config.features.audioMonitor) {
                             AudioMonitorCard()
@@ -262,6 +304,8 @@ fun ToolsScreen(navController: NavController) {
             }
         }
     }
+}
+}
 }
 
 @Composable
@@ -374,6 +418,188 @@ fun SOSBeaconButton(onClick: () -> Unit) {
             Icon(Icons.Default.FlashOn, contentDescription = null, modifier = Modifier.size(32.dp))
             Spacer(modifier = Modifier.width(16.dp))
             Text(text = "SOS BEACON", fontSize = 26.sp, fontWeight = FontWeight.Black, letterSpacing = 4.sp)
+        }
+    }
+}
+
+@Composable
+fun CarFinderCard() {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(CyanPulse.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.DirectionsCar, contentDescription = null, tint = CyanPulse, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(text = "CAR FINDER", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+            }
+            Text(text = "Save your parking spot to find your way back after the festival.", color = TextMuted, fontSize = 13.sp, lineHeight = 18.sp)
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = { /* TODO: GPS Save */ },
+                modifier = Modifier.fillMaxWidth().height(56.dp),
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = OLEDBlack)
+            ) {
+                Text("SAVE CURRENT LOCATION", fontWeight = FontWeight.Black)
+            }
+        }
+    }
+}
+
+@Composable
+fun HydrationTrackerCard() {
+    var cups by remember { mutableIntStateOf(0) }
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(CyanPulse.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.WaterDrop, contentDescription = null, tint = CyanPulse, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Text(text = "HYDRATION", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+            }
+            
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(text = "$cups CUPS TODAY", color = Color.White, fontSize = 24.sp, fontWeight = FontWeight.Black)
+                    Text(text = "GOAL: 8 CUPS", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                }
+                IconButton(
+                    onClick = { cups++ },
+                    modifier = Modifier.size(56.dp).clip(CircleShape).background(CyanPulse)
+                ) {
+                    Icon(Icons.Default.Add, contentDescription = "Add Water", tint = Color.Black)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun BatterySaverCard() {
+    var isEnabled by remember { mutableStateOf(false) }
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(AcidYellow.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.BatteryChargingFull, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = "BATTERY SAVER", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                    Text(text = "Reduce background sync", color = TextMuted, fontSize = 12.sp)
+                }
+                Switch(
+                    checked = isEnabled,
+                    onCheckedChange = { isEnabled = it },
+                    colors = SwitchDefaults.colors(checkedThumbColor = AcidYellow, checkedTrackColor = AcidYellow.copy(alpha = 0.3f))
+                )
+            }
+        }
+    }
+}
+
+enum class ToolMode {
+    SOS, COLOR_FLASH, BIG_TEXT, CANDLE
+}
+
+@Composable
+fun SafetyToolButton(title: String, icon: ImageVector, onClick: () -> Unit) {
+    Button(
+        onClick = {
+            onClick()
+        },
+        colors = ButtonDefaults.buttonColors(containerColor = CardBackground),
+        shape = RoundedCornerShape(24.dp),
+        modifier = Modifier.fillMaxWidth().height(72.dp).border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(24.dp))
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+            Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(24.dp))
+            Spacer(modifier = Modifier.width(16.dp))
+            Text(text = title, color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+        }
+    }
+}
+
+@Composable
+fun ColorFlashOverlay(onDismiss: () -> Unit) {
+    var selectedColor by remember { mutableStateOf(Color.Red) }
+    val colors = listOf(Color.Red, Color.Green, Color.Blue, Color.Yellow, Color.Magenta, Color.Cyan, Color.White)
+    
+    Box(modifier = Modifier.fillMaxSize().background(selectedColor).clickable(onClick = onDismiss), contentAlignment = Alignment.BottomCenter) {
+        Row(
+            modifier = Modifier.padding(bottom = 48.dp).background(Color.Black.copy(alpha = 0.5f), RoundedCornerShape(32.dp)).padding(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            colors.forEach { color ->
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(color)
+                        .border(if (selectedColor == color) 3.dp else 0.dp, Color.White, CircleShape)
+                        .clickable { selectedColor = color }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun BigTextOverlay(onDismiss: () -> Unit) {
+    var text by remember { mutableStateOf("FIND ME") }
+    Box(modifier = Modifier.fillMaxSize().background(Color.White).clickable(onClick = onDismiss), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            BasicTextField(
+                value = text,
+                onValueChange = { text = it.uppercase() },
+                textStyle = TextStyle(color = Color.Black, fontSize = 80.sp, fontWeight = FontWeight.Black, textAlign = androidx.compose.ui.text.style.TextAlign.Center),
+                modifier = Modifier.fillMaxWidth().padding(24.dp)
+            )
+            Text("TAP TO CLOSE", color = Color.Black.copy(alpha = 0.3f), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+fun CandleOverlay(onDismiss: () -> Unit) {
+    val infiniteTransition = rememberInfiniteTransition(label = "candle")
+    val flicker by infiniteTransition.animateFloat(
+        initialValue = 0.8f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(animation = tween(150, easing = LinearEasing), repeatMode = RepeatMode.Reverse),
+        label = "flicker"
+    )
+    
+    Box(modifier = Modifier.fillMaxSize().background(OLEDBlack).clickable(onClick = onDismiss), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // The Flame
+            Box(
+                modifier = Modifier
+                    .size(120.dp)
+                    .scale(flicker)
+                    .background(
+                        Brush.radialGradient(
+                            listOf(Color(0xFFFFA500), Color(0xFFFF4500), Color.Transparent)
+                        )
+                    )
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            // The Candle
+            Box(modifier = Modifier.width(40.dp).height(150.dp).background(Color.White, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)))
         }
     }
 }

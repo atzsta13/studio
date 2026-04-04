@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "artist": "¥øu$uk€ ¥uk1mat$u",
+    "name": "¥øu$uk€ ¥uk1mat$u",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -37,7 +37,7 @@
   },
   {
     "id": "2",
-    "artist": "2manydjs (Dj Set)",
+    "name": "2manydjs (Dj Set)",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -71,7 +71,7 @@
   },
   {
     "id": "3",
-    "artist": "6363",
+    "name": "6363",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -104,7 +104,7 @@
   },
   {
     "id": "4",
-    "artist": "Adis Is Ok",
+    "name": "Adis Is Ok",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -123,12 +123,16 @@
     },
     "description": "The takeaway of the moniker fix up is a smooth sound revival of the bouncy bass, bubbly harmony and arpeggio dynamo of the gilded age of the synthesizer - be that then or now.\nScanning shores of italo and indie and overlooking iridescent blue skies of hedone dotted with leftfield edits and picks unearthed from Japan to Italy keep Adis ever busy. In the time remaining he goes by Andris ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614807_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "5",
-    "artist": "Akac",
+    "name": "Akac",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -160,7 +164,7 @@
   },
   {
     "id": "6",
-    "artist": "Alizade",
+    "name": "Alizade",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -194,7 +198,7 @@
   },
   {
     "id": "7",
-    "artist": "Alt Blk Era",
+    "name": "Alt Blk Era",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -237,7 +241,7 @@
   },
   {
     "id": "8",
-    "artist": "Altin Gun",
+    "name": "Altin Gun",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -272,7 +276,7 @@
   },
   {
     "id": "9",
-    "artist": "Ana Frango Eletrico",
+    "name": "Ana Frango Eletrico",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -308,7 +312,7 @@
   },
   {
     "id": "10",
-    "artist": "Analog Balaton",
+    "name": "Analog Balaton",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -345,7 +349,7 @@
   },
   {
     "id": "11",
-    "artist": "Anetha",
+    "name": "Anetha",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -381,7 +385,7 @@
   },
   {
     "id": "12",
-    "artist": "Anfisa Letyago",
+    "name": "Anfisa Letyago",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -413,7 +417,7 @@
   },
   {
     "id": "13",
-    "artist": "Anna",
+    "name": "Anna",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -448,7 +452,7 @@
   },
   {
     "id": "14",
-    "artist": "Annisokay",
+    "name": "Annisokay",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -484,7 +488,7 @@
   },
   {
     "id": "15",
-    "artist": "Antony Szmierek",
+    "name": "Antony Szmierek",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -520,7 +524,7 @@
   },
   {
     "id": "16",
-    "artist": "Argy",
+    "name": "Argy",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -556,7 +560,7 @@
   },
   {
     "id": "17",
-    "artist": "Ashnikko",
+    "name": "Ashnikko",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -592,7 +596,7 @@
   },
   {
     "id": "18",
-    "artist": "Atrip",
+    "name": "Atrip",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -624,7 +628,7 @@
   },
   {
     "id": "19",
-    "artist": "Autoflower",
+    "name": "Autoflower",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -643,12 +647,16 @@
     },
     "description": "AUTOFLOWER channels the energy of ‘90s House with a trancy edge while moving fluently between peak-time intensity and late-night depth.\nHis shows have taken him across Europe, the USA, Australia and beyond - with appearances at KitKatClub, Virgo New York, ÆDEN, BUT Madrid, and Smolna - to name a few. With major support by various leading artists AUTOFLOWER continues to leave his progressive footprint in the underground circuit.",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615118_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "20",
-    "artist": "Avralize",
+    "name": "Avralize",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -683,7 +691,7 @@
   },
   {
     "id": "21",
-    "artist": "Aws",
+    "name": "Aws",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -718,7 +726,7 @@
   },
   {
     "id": "22",
-    "artist": "Baby Lasagna",
+    "name": "Baby Lasagna",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -757,7 +765,7 @@
   },
   {
     "id": "23",
-    "artist": "Bad Nerves",
+    "name": "Bad Nerves",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -793,7 +801,7 @@
   },
   {
     "id": "24",
-    "artist": "Bbno$",
+    "name": "Bbno$",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -826,7 +834,7 @@
   },
   {
     "id": "25",
-    "artist": "Belga",
+    "name": "Belga",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -859,7 +867,7 @@
   },
   {
     "id": "26",
-    "artist": "Benkane",
+    "name": "Benkane",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -889,7 +897,7 @@
   },
   {
     "id": "27",
-    "artist": "Bernathy Live",
+    "name": "Bernathy Live",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -924,7 +932,7 @@
   },
   {
     "id": "28",
-    "artist": "Beton.Hofi",
+    "name": "Beton.Hofi",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -960,7 +968,7 @@
   },
   {
     "id": "29",
-    "artist": "Bibi Seck",
+    "name": "Bibi Seck",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -990,7 +998,7 @@
   },
   {
     "id": "30",
-    "artist": "Biffy Clyro",
+    "name": "Biffy Clyro",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -1025,7 +1033,7 @@
   },
   {
     "id": "31",
-    "artist": "Biia",
+    "name": "Biia",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -1060,7 +1068,7 @@
   },
   {
     "id": "32",
-    "artist": "Black Country, New Road",
+    "name": "Black Country, New Road",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -1095,7 +1103,7 @@
   },
   {
     "id": "33",
-    "artist": "Blahalousiana",
+    "name": "Blahalousiana",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -1128,7 +1136,7 @@
   },
   {
     "id": "34",
-    "artist": "Bohemian Betyars X Parno Graszt",
+    "name": "Bohemian Betyars X Parno Graszt",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -1159,7 +1167,7 @@
   },
   {
     "id": "35",
-    "artist": "Bongor",
+    "name": "Bongor",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1192,7 +1200,7 @@
   },
   {
     "id": "36",
-    "artist": "Boys Noize",
+    "name": "Boys Noize",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -1229,7 +1237,7 @@
   },
   {
     "id": "37",
-    "artist": "Bratri",
+    "name": "Bratri",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -1266,7 +1274,7 @@
   },
   {
     "id": "38",
-    "artist": "Bring Me The Horizon",
+    "name": "Bring Me The Horizon",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -1302,7 +1310,7 @@
   },
   {
     "id": "39",
-    "artist": "Brooke Combe",
+    "name": "Brooke Combe",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -1337,7 +1345,7 @@
   },
   {
     "id": "40",
-    "artist": "Bug",
+    "name": "Bug",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -1358,12 +1366,23 @@
     },
     "description": null,
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615211_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Fast",
+      "Energetic",
+      "Bass",
+      "Electronic",
+      "Rave",
+      "Rhythmic",
+      "Raw",
+      "Urban",
+      "Aggressive"
+    ],
     "isHeadliner": false
   },
   {
     "id": "41",
-    "artist": "Bunt.",
+    "name": "Bunt.",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -1397,7 +1416,7 @@
   },
   {
     "id": "42",
-    "artist": "Byealex Es A Slepp",
+    "name": "Byealex Es A Slepp",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -1429,7 +1448,7 @@
   },
   {
     "id": "43",
-    "artist": "Calle Mambo",
+    "name": "Calle Mambo",
     "stage": "Global Village",
     "day": "Tuesday",
     "startTime": null,
@@ -1461,7 +1480,7 @@
   },
   {
     "id": "44",
-    "artist": "Cassia",
+    "name": "Cassia",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -1494,7 +1513,7 @@
   },
   {
     "id": "45",
-    "artist": "Cc:disco!",
+    "name": "Cc:disco!",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -1523,7 +1542,7 @@
   },
   {
     "id": "46",
-    "artist": "Chadia",
+    "name": "Chadia",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -1556,7 +1575,7 @@
   },
   {
     "id": "47",
-    "artist": "Charlie Sparks",
+    "name": "Charlie Sparks",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -1586,7 +1605,7 @@
   },
   {
     "id": "48",
-    "artist": "Charlotte Cardin",
+    "name": "Charlotte Cardin",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -1623,7 +1642,7 @@
   },
   {
     "id": "49",
-    "artist": "Chet Faker",
+    "name": "Chet Faker",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -1656,7 +1675,7 @@
   },
   {
     "id": "50",
-    "artist": "Co Lee",
+    "name": "Co Lee",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1689,7 +1708,7 @@
   },
   {
     "id": "51",
-    "artist": "Coco & Breezy",
+    "name": "Coco & Breezy",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -1724,7 +1743,7 @@
   },
   {
     "id": "52",
-    "artist": "Crb",
+    "name": "Crb",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -1752,7 +1771,7 @@
   },
   {
     "id": "53",
-    "artist": "Curtisy",
+    "name": "Curtisy",
     "stage": "dropYard",
     "day": null,
     "startTime": null,
@@ -1785,7 +1804,7 @@
   },
   {
     "id": "54",
-    "artist": "Cvrdwell Live",
+    "name": "Cvrdwell Live",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -1817,7 +1836,7 @@
   },
   {
     "id": "55",
-    "artist": "Daniel Moritz",
+    "name": "Daniel Moritz",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -1847,7 +1866,7 @@
   },
   {
     "id": "56",
-    "artist": "De'wayne",
+    "name": "De'wayne",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1888,7 +1907,7 @@
   },
   {
     "id": "57",
-    "artist": "Deki Alem",
+    "name": "Deki Alem",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1924,7 +1943,7 @@
   },
   {
     "id": "58",
-    "artist": "Dijon",
+    "name": "Dijon",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -1959,7 +1978,7 @@
   },
   {
     "id": "59",
-    "artist": "Dimension",
+    "name": "Dimension",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -1996,7 +2015,7 @@
   },
   {
     "id": "60",
-    "artist": "Dixon",
+    "name": "Dixon",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -2035,7 +2054,7 @@
   },
   {
     "id": "61",
-    "artist": "Dom Dolla",
+    "name": "Dom Dolla",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -2070,7 +2089,7 @@
   },
   {
     "id": "62",
-    "artist": "Dorota",
+    "name": "Dorota",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -2089,12 +2108,16 @@
     },
     "description": "Dorota is a Budapest-based DJ and founder of ETEM (Expressing Through Electronic Music), an event series launched in 2023 to create intimate and conscious electronic music experiences.\nHer sound is rooted in hypnotic, raw textures, often infused with deep, atmospheric and minimalist elements.\nFor her, music is a healing vibration — a force that evokes profound connection through resonance.\nAs both a DJ and curator, her intention is to create ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614710_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "63",
-    "artist": "Dressed Like Boys",
+    "name": "Dressed Like Boys",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2131,7 +2154,7 @@
   },
   {
     "id": "64",
-    "artist": "Dtnb.",
+    "name": "Dtnb.",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -2162,7 +2185,7 @@
   },
   {
     "id": "65",
-    "artist": "Dub Personal",
+    "name": "Dub Personal",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -2180,12 +2203,16 @@
     },
     "description": "Dub Personal has been an active force in Budapest’s electronic music scene since 2009, bringing a deep and powerful blend of drum & bass and dubstep to the city’s soundscape.\nHe began his journey as a producer, carefully shaping his own sonic identity, before stepping behind the decks in 2010 and translating that energy into dynamic DJ sets.\nHis productions have been released on a range of respected international and ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614889_performance_1080.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "66",
-    "artist": "Duckshell",
+    "name": "Duckshell",
     "stage": "Global Village",
     "day": "Saturday",
     "startTime": null,
@@ -2215,7 +2242,7 @@
   },
   {
     "id": "67",
-    "artist": "Elefant",
+    "name": "Elefant",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -2254,7 +2281,7 @@
   },
   {
     "id": "68",
-    "artist": "Eliezer",
+    "name": "Eliezer",
     "stage": "Yettel Colosseum",
     "day": null,
     "startTime": null,
@@ -2286,7 +2313,7 @@
   },
   {
     "id": "69",
-    "artist": "Emma Nolde",
+    "name": "Emma Nolde",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2322,7 +2349,7 @@
   },
   {
     "id": "70",
-    "artist": "Ential",
+    "name": "Ential",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -2340,12 +2367,16 @@
     },
     "description": "ENTIAL is an intriguing DJ and producer from Budapest. He entered the world of drum and bass around 2004, gravitating toward the futuristic and forward-thinking side of the genre from the very beginning.\nHe joined Cybershot in 2007 and remained on the podium of broken beats until 2019, performing over 200 DJ gigs across five different countries.\nAfter that, he began developing his own sound, which led to his first ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615091_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "71",
-    "artist": "Esti Kornel",
+    "name": "Esti Kornel",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2380,7 +2411,7 @@
   },
   {
     "id": "72",
-    "artist": "Evening Elephants",
+    "name": "Evening Elephants",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2419,7 +2450,7 @@
   },
   {
     "id": "73",
-    "artist": "Faeda",
+    "name": "Faeda",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2455,7 +2486,7 @@
   },
   {
     "id": "74",
-    "artist": "Fcukers",
+    "name": "Fcukers",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -2490,7 +2521,7 @@
   },
   {
     "id": "75",
-    "artist": "Fka.M4a (Jay Jackson)",
+    "name": "Fka.M4a (Jay Jackson)",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2522,7 +2553,7 @@
   },
   {
     "id": "76",
-    "artist": "Florence + The Machine",
+    "name": "Florence + The Machine",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -2560,7 +2591,7 @@
   },
   {
     "id": "77",
-    "artist": "Flux Pavilion",
+    "name": "Flux Pavilion",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2582,12 +2613,20 @@
     },
     "description": "Co-founder of Circus Records and Dubstep pioneer. Flux Pavilion has produced some of the most successful tracks in electronic music history and launched the careers of scores of new talent in the process. From Glastonbury to Coachella, he has racked up performances at the world's greatest stages, headlining multiple world tours.\nInfluenced by the likes of David Bowie, The Beatles and Frank Zappa in the early years iit was when ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614735_performance_960.png",
-    "vibes": [],
+    "vibes": [
+      "Bass",
+      "Heavy",
+      "Intense",
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Hype"
+    ],
     "isHeadliner": false
   },
   {
     "id": "78",
-    "artist": "Funk Tribu",
+    "name": "Funk Tribu",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2622,7 +2661,7 @@
   },
   {
     "id": "79",
-    "artist": "Giant Rooks",
+    "name": "Giant Rooks",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2661,7 +2700,7 @@
   },
   {
     "id": "80",
-    "artist": "Golden Hours",
+    "name": "Golden Hours",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2694,7 +2733,7 @@
   },
   {
     "id": "81",
-    "artist": "Haai",
+    "name": "Haai",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2729,7 +2768,7 @@
   },
   {
     "id": "82",
-    "artist": "Hamdi",
+    "name": "Hamdi",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2750,12 +2789,20 @@
     },
     "description": "Hamdi has become one of the most exciting and versatile producers in global electronic music, blending a signature dubstep weight with genre‐bending productions that push the boundaries of modern dance music. Born in Oxford, Hamdi (real name Alexander Hamdi) has been producing electronic music for over a decade, first getting into DJing soon after his eighteenth birthday. He quickly established himself as one of the most in‐demand young producers in ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614741_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Bass",
+      "Heavy",
+      "Intense",
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Hype"
+    ],
     "isHeadliner": false
   },
   {
     "id": "83",
-    "artist": "Hank",
+    "name": "Hank",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -2786,7 +2833,7 @@
   },
   {
     "id": "84",
-    "artist": "Hated",
+    "name": "Hated",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2818,7 +2865,7 @@
   },
   {
     "id": "85",
-    "artist": "Health",
+    "name": "Health",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2851,7 +2898,7 @@
   },
   {
     "id": "86",
-    "artist": "House Of Circus Carnivale Royale",
+    "name": "House Of Circus Carnivale Royale",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2882,7 +2929,7 @@
   },
   {
     "id": "87",
-    "artist": "I Patagarri",
+    "name": "I Patagarri",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -2919,7 +2966,7 @@
   },
   {
     "id": "88",
-    "artist": "Idiotape",
+    "name": "Idiotape",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2955,7 +3002,7 @@
   },
   {
     "id": "89",
-    "artist": "Ikkimel",
+    "name": "Ikkimel",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2987,7 +3034,7 @@
   },
   {
     "id": "90",
-    "artist": "Illbucks",
+    "name": "Illbucks",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -3020,7 +3067,7 @@
   },
   {
     "id": "91",
-    "artist": "Indira Paganotto",
+    "name": "Indira Paganotto",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -3055,7 +3102,7 @@
   },
   {
     "id": "92",
-    "artist": "Indirect Movement",
+    "name": "Indirect Movement",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -3085,7 +3132,7 @@
   },
   {
     "id": "93",
-    "artist": "Irie Maffia",
+    "name": "Irie Maffia",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -3116,7 +3163,7 @@
   },
   {
     "id": "94",
-    "artist": "Isu",
+    "name": "Isu",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -3145,7 +3192,7 @@
   },
   {
     "id": "95",
-    "artist": "Ivan & The Parazol",
+    "name": "Ivan & The Parazol",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -3182,7 +3229,7 @@
   },
   {
     "id": "96",
-    "artist": "Jazzbois",
+    "name": "Jazzbois",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -3215,7 +3262,7 @@
   },
   {
     "id": "97",
-    "artist": "Jazzy",
+    "name": "Jazzy",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -3249,7 +3296,7 @@
   },
   {
     "id": "98",
-    "artist": "Jessica Audiffred",
+    "name": "Jessica Audiffred",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -3270,12 +3317,20 @@
     },
     "description": "Jessica Audiffred is one of the most powerful forces in global bass music, known for her explosive, high-energy sets and genre-blending sound. Hailing from Mexico City, she has taken over major festivals like Tomorrowland, EDC, Ultra, and Lollapalooza with her raw, instinct-driven performances.\nFounder of A Records, she has built a platform spotlighting Latin American electronic talent, shaping a new wave of the scene. Her debut album Rave New World ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614739_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Bass",
+      "Heavy",
+      "Intense",
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Hype"
+    ],
     "isHeadliner": false
   },
   {
     "id": "99",
-    "artist": "Johanna Bozai",
+    "name": "Johanna Bozai",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3305,7 +3360,7 @@
   },
   {
     "id": "100",
-    "artist": "John Coffey",
+    "name": "John Coffey",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -3341,7 +3396,7 @@
   },
   {
     "id": "101",
-    "artist": "Joris Voorn",
+    "name": "Joris Voorn",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -3378,7 +3433,7 @@
   },
   {
     "id": "102",
-    "artist": "Jorja Smith (Party Set)",
+    "name": "Jorja Smith (Party Set)",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
@@ -3410,7 +3465,7 @@
   },
   {
     "id": "103",
-    "artist": "Julya Karma",
+    "name": "Julya Karma",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -3443,7 +3498,7 @@
   },
   {
     "id": "104",
-    "artist": "Kamafaka",
+    "name": "Kamafaka",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3474,7 +3529,7 @@
   },
   {
     "id": "105",
-    "artist": "Karen Dio",
+    "name": "Karen Dio",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -3515,7 +3570,7 @@
   },
   {
     "id": "106",
-    "artist": "Killakikitt",
+    "name": "Killakikitt",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -3547,7 +3602,7 @@
   },
   {
     "id": "107",
-    "artist": "Kim Dracula",
+    "name": "Kim Dracula",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -3585,7 +3640,7 @@
   },
   {
     "id": "108",
-    "artist": "Kispal Es A Borz",
+    "name": "Kispal Es A Borz",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -3620,7 +3675,7 @@
   },
   {
     "id": "109",
-    "artist": "Kitti Kay",
+    "name": "Kitti Kay",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -3651,7 +3706,7 @@
   },
   {
     "id": "110",
-    "artist": "Koikoi",
+    "name": "Koikoi",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -3686,7 +3741,7 @@
   },
   {
     "id": "111",
-    "artist": "Kolibri",
+    "name": "Kolibri",
     "stage": "Global Village",
     "day": "Thursday",
     "startTime": null,
@@ -3723,7 +3778,7 @@
   },
   {
     "id": "112",
-    "artist": "Koven",
+    "name": "Koven",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -3744,12 +3799,19 @@
     },
     "description": "One of the most unique and exciting bass music outfits to emerge in recent times, Koven is the production alias of Writer / Producer Max Rowat and fronted live by Writer / DJ / Vocalist Katie Boyle. Spotted as one of the pioneering artists to back cinematic bass music Koven have been collating millions of online streams as well as a string of high profile music placements in Film / ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615215_performance_1080.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Fast",
+      "Energetic",
+      "Bass"
+    ],
     "isHeadliner": false
   },
   {
     "id": "113",
-    "artist": "Krudy C",
+    "name": "Krudy C",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3766,12 +3828,16 @@
     },
     "description": "Minimal & house Dj, resident of Kommenzi Budapest",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614522_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "114",
-    "artist": "Lacchesi",
+    "name": "Lacchesi",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -3803,7 +3869,7 @@
   },
   {
     "id": "115",
-    "artist": "Lambrini Girls",
+    "name": "Lambrini Girls",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -3838,7 +3904,7 @@
   },
   {
     "id": "116",
-    "artist": "Lammer",
+    "name": "Lammer",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -3868,7 +3934,7 @@
   },
   {
     "id": "117",
-    "artist": "Lau",
+    "name": "Lau",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -3898,7 +3964,7 @@
   },
   {
     "id": "118",
-    "artist": "Lazarvs",
+    "name": "Lazarvs",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -3934,7 +4000,7 @@
   },
   {
     "id": "119",
-    "artist": "Leap",
+    "name": "Leap",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -3973,7 +4039,7 @@
   },
   {
     "id": "120",
-    "artist": "Lewis Capaldi",
+    "name": "Lewis Capaldi",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -4007,7 +4073,7 @@
   },
   {
     "id": "121",
-    "artist": "Libra",
+    "name": "Libra",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -4040,7 +4106,7 @@
   },
   {
     "id": "122",
-    "artist": "Lou Nour",
+    "name": "Lou Nour",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4061,12 +4127,20 @@
     },
     "description": "Lou Nour is a London-based DJ and emerging presenter whose work exists at the intersection of underground club culture and contemporary cultural storytelling.\nOf Moroccan heritage and shaped by UK soundsystem traditions, her approach to DJing extends beyond a single genre or tempo. While rooted in bass culture, her sets move fluidly across rhythm-driven club music, percussive textures, refined dance edits, and unexpected turns, always adapting to the time, space, ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614749_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Bass",
+      "Heavy",
+      "Intense",
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Hype"
+    ],
     "isHeadliner": false
   },
   {
     "id": "123",
-    "artist": "Loyle Carner",
+    "name": "Loyle Carner",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -4101,7 +4175,7 @@
   },
   {
     "id": "124",
-    "artist": "Lucky Done Gone",
+    "name": "Lucky Done Gone",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4134,7 +4208,7 @@
   },
   {
     "id": "125",
-    "artist": "Luke Black",
+    "name": "Luke Black",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -4168,7 +4242,7 @@
   },
   {
     "id": "126",
-    "artist": "Majka",
+    "name": "Majka",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -4201,7 +4275,7 @@
   },
   {
     "id": "127",
-    "artist": "Makrohang",
+    "name": "Makrohang",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -4234,7 +4308,7 @@
   },
   {
     "id": "128",
-    "artist": "Manuel",
+    "name": "Manuel",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -4266,7 +4340,7 @@
   },
   {
     "id": "129",
-    "artist": "Marsh",
+    "name": "Marsh",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -4296,7 +4370,7 @@
   },
   {
     "id": "130",
-    "artist": "Max Baby",
+    "name": "Max Baby",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4328,7 +4402,7 @@
   },
   {
     "id": "131",
-    "artist": "Mehringer",
+    "name": "Mehringer",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -4361,7 +4435,7 @@
   },
   {
     "id": "132",
-    "artist": "Melina",
+    "name": "Melina",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -4392,7 +4466,7 @@
   },
   {
     "id": "133",
-    "artist": "Mestiza",
+    "name": "Mestiza",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -4413,12 +4487,19 @@
     },
     "description": "MËSTIZA is the perfect combination of music, fashion, and female empowerment. This Spanish duo has known how to perfectly mix electronic music with the best flamenco. After several years of friendship, in 2021, these two DJs and producers decided to join forces to delve into their roots and discover a world of traditional Spanish sounds that fuse music, aesthetics, and fashion.",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614404_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Cultural",
+      "Acoustic",
+      "Passionate"
+    ],
     "isHeadliner": false
   },
   {
     "id": "134",
-    "artist": "Metha",
+    "name": "Metha",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -4454,7 +4535,7 @@
   },
   {
     "id": "135",
-    "artist": "Mikee Mykanic",
+    "name": "Mikee Mykanic",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -4486,7 +4567,7 @@
   },
   {
     "id": "136",
-    "artist": "Mirror Glimpse",
+    "name": "Mirror Glimpse",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -4521,7 +4602,7 @@
   },
   {
     "id": "137",
-    "artist": "Missio",
+    "name": "Missio",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -4556,7 +4637,7 @@
   },
   {
     "id": "138",
-    "artist": "Mph",
+    "name": "Mph",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -4576,12 +4657,18 @@
     },
     "description": "MPH is at the forefront of the new wave of UK Garage, rapidly becoming one of the scene’s most exciting and in-demand producers. With standout releases on influential labels such as Black Book Records, Atlantic Records, Sony and Nightbass, he's built an impressive discography that spans high-energy originals, chart-worthy collaborations, and remixes for global stars including Calvin Harris, Chris Lake, Foster The People, Anderson .Paak. Whether it’s bass-heavy club tracks ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614519_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Rhythmic",
+      "Urban"
+    ],
     "isHeadliner": false
   },
   {
     "id": "139",
-    "artist": "Naika",
+    "name": "Naika",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -4613,7 +4700,7 @@
   },
   {
     "id": "140",
-    "artist": "Natascha Polke",
+    "name": "Natascha Polke",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4650,7 +4737,7 @@
   },
   {
     "id": "141",
-    "artist": "Natasha Bedingfield",
+    "name": "Natasha Bedingfield",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -4683,7 +4770,7 @@
   },
   {
     "id": "142",
-    "artist": "Nation Of Language",
+    "name": "Nation Of Language",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -4719,7 +4806,7 @@
   },
   {
     "id": "143",
-    "artist": "Next Level: Dublic",
+    "name": "Next Level: Dublic",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4740,12 +4827,20 @@
     },
     "description": "Dublic is a Hungarian DJ and producer duo of twin brothers, co-founders of Next Level and Next Level Music School, who have been a driving force in Budapest’s underground scene with their high-energy sets and productions blending trap, dubstep, riddim, future bass, hip-hop, and drum and bass - always believing in future music.\nThey have performed at every major festival in Hungary and toured Europe in countries such as the ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614416_performance_1080.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Bass",
+      "Heavy",
+      "Intense",
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Hype"
+    ],
     "isHeadliner": false
   },
   {
     "id": "144",
-    "artist": "Next Level: Grandover",
+    "name": "Next Level: Grandover",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4765,12 +4860,19 @@
     },
     "description": null,
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614426_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave",
+      "Bass",
+      "Hype",
+      "Rhythmic"
+    ],
     "isHeadliner": false
   },
   {
     "id": "145",
-    "artist": "Nia Archives",
+    "name": "Nia Archives",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -4808,7 +4910,7 @@
   },
   {
     "id": "146",
-    "artist": "Night Tapes",
+    "name": "Night Tapes",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4840,7 +4942,7 @@
   },
   {
     "id": "147",
-    "artist": "Nks",
+    "name": "Nks",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -4872,7 +4974,7 @@
   },
   {
     "id": "148",
-    "artist": "Olympe",
+    "name": "Olympe",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4908,7 +5010,7 @@
   },
   {
     "id": "149",
-    "artist": "Omiki",
+    "name": "Omiki",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -4940,7 +5042,7 @@
   },
   {
     "id": "150",
-    "artist": "Onyvaa",
+    "name": "Onyvaa",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -4970,7 +5072,7 @@
   },
   {
     "id": "151",
-    "artist": "Oskar Med K",
+    "name": "Oskar Med K",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -5005,7 +5107,7 @@
   },
   {
     "id": "152",
-    "artist": "Pal Utcai Fiuk",
+    "name": "Pal Utcai Fiuk",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -5040,7 +5142,7 @@
   },
   {
     "id": "153",
-    "artist": "Pan Pot",
+    "name": "Pan Pot",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -5077,7 +5179,7 @@
   },
   {
     "id": "154",
-    "artist": "Paralich",
+    "name": "Paralich",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -5108,7 +5210,7 @@
   },
   {
     "id": "155",
-    "artist": "Parcels",
+    "name": "Parcels",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -5147,7 +5249,7 @@
   },
   {
     "id": "156",
-    "artist": "Paris Paloma",
+    "name": "Paris Paloma",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -5182,7 +5284,7 @@
   },
   {
     "id": "157",
-    "artist": "Peggy Gou",
+    "name": "Peggy Gou",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -5216,7 +5318,7 @@
   },
   {
     "id": "158",
-    "artist": "Perturbator",
+    "name": "Perturbator",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -5249,7 +5351,7 @@
   },
   {
     "id": "159",
-    "artist": "Peterfy Bori & Love Band",
+    "name": "Peterfy Bori & Love Band",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -5284,7 +5386,7 @@
   },
   {
     "id": "160",
-    "artist": "Pizza Amore & Switch Nollie",
+    "name": "Pizza Amore & Switch Nollie",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5316,7 +5418,7 @@
   },
   {
     "id": "161",
-    "artist": "Platon Karataev",
+    "name": "Platon Karataev",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -5353,7 +5455,7 @@
   },
   {
     "id": "162",
-    "artist": "Pogany Indulo",
+    "name": "Pogany Indulo",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -5387,7 +5489,7 @@
   },
   {
     "id": "163",
-    "artist": "Quest",
+    "name": "Quest",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -5421,7 +5523,7 @@
   },
   {
     "id": "164",
-    "artist": "Quimby",
+    "name": "Quimby",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -5456,7 +5558,7 @@
   },
   {
     "id": "165",
-    "artist": "Raasa",
+    "name": "Raasa",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5486,7 +5588,7 @@
   },
   {
     "id": "166",
-    "artist": "Raise Spirit",
+    "name": "Raise Spirit",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5505,12 +5607,16 @@
     },
     "description": "Raise Spirit was founded by Gergő Varga and Richárd Gödöllei in the spring of 2012. They went to the same school, but only met during a party which was hosted by Gergő. They were both into the same kind of music, so they became friends very quickly. Richárd was more experienced in DJing, while Gergő had 6 years of experience in producing, although in a very different genre. After one ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614784_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "167",
-    "artist": "Richie Hawtin",
+    "name": "Richie Hawtin",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -5545,7 +5651,7 @@
   },
   {
     "id": "168",
-    "artist": "Rose Gray",
+    "name": "Rose Gray",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -5582,7 +5688,7 @@
   },
   {
     "id": "169",
-    "artist": "Rossi.",
+    "name": "Rossi.",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -5616,7 +5722,7 @@
   },
   {
     "id": "170",
-    "artist": "Sara Landry",
+    "name": "Sara Landry",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -5652,7 +5758,7 @@
   },
   {
     "id": "171",
-    "artist": "Secret Factory",
+    "name": "Secret Factory",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5689,7 +5795,7 @@
   },
   {
     "id": "172",
-    "artist": "Sef",
+    "name": "Sef",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -5723,7 +5829,7 @@
   },
   {
     "id": "173",
-    "artist": "Sephx",
+    "name": "Sephx",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5742,12 +5848,16 @@
     },
     "description": "Sephx is a Budapest-based drum & bass DJ and producer who has been an active force in the Hungarian electronic music scene for over seven years. As a resident of The Hive Budapest, he regularly performs at clubs and events across the city and beyond.\nHis sound is driven by melodic rhythms layered with darker, more aggressive elements. Blending deep, weighty basslines with intense, propulsive percussion, Sephx aims to create ...",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/16/thumb_5615093_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "174",
-    "artist": "Shaymi",
+    "name": "Shaymi",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5778,7 +5888,7 @@
   },
   {
     "id": "175",
-    "artist": "Shonky",
+    "name": "Shonky",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5808,7 +5918,7 @@
   },
   {
     "id": "176",
-    "artist": "Sigrid",
+    "name": "Sigrid",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -5841,7 +5951,7 @@
   },
   {
     "id": "177",
-    "artist": "Sikztah",
+    "name": "Sikztah",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -5861,12 +5971,16 @@
     },
     "description": null,
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/15/thumb_5614772_performance_1440.jpeg",
-    "vibes": [],
+    "vibes": [
+      "Dance",
+      "Electronic",
+      "Rave"
+    ],
     "isHeadliner": false
   },
   {
     "id": "178",
-    "artist": "Sim0ne",
+    "name": "Sim0ne",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -5903,7 +6017,7 @@
   },
   {
     "id": "179",
-    "artist": "Sisi",
+    "name": "Sisi",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -5937,7 +6051,7 @@
   },
   {
     "id": "180",
-    "artist": "Skepta",
+    "name": "Skepta",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -5971,7 +6085,7 @@
   },
   {
     "id": "181",
-    "artist": "Ski Aggu",
+    "name": "Ski Aggu",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -6005,7 +6119,7 @@
   },
   {
     "id": "182",
-    "artist": "Soft Loft",
+    "name": "Soft Loft",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6040,7 +6154,7 @@
   },
   {
     "id": "183",
-    "artist": "Sombr",
+    "name": "Sombr",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
@@ -6084,7 +6198,7 @@
   },
   {
     "id": "184",
-    "artist": "Soulwax",
+    "name": "Soulwax",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -6118,7 +6232,7 @@
   },
   {
     "id": "185",
-    "artist": "Sub Focus",
+    "name": "Sub Focus",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -6155,7 +6269,7 @@
   },
   {
     "id": "186",
-    "artist": "Svetec",
+    "name": "Svetec",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -6185,7 +6299,7 @@
   },
   {
     "id": "187",
-    "artist": "Swimming Paul",
+    "name": "Swimming Paul",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -6222,7 +6336,7 @@
   },
   {
     "id": "188",
-    "artist": "Switch Nollie",
+    "name": "Switch Nollie",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -6254,7 +6368,7 @@
   },
   {
     "id": "189",
-    "artist": "Sylvie Kreusch",
+    "name": "Sylvie Kreusch",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -6290,7 +6404,7 @@
   },
   {
     "id": "190",
-    "artist": "Syreeta",
+    "name": "Syreeta",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6327,7 +6441,7 @@
   },
   {
     "id": "191",
-    "artist": "Sziami Es A Vendegek & Agi Es Fiuk",
+    "name": "Sziami Es A Vendegek & Agi Es Fiuk",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -6362,7 +6476,7 @@
   },
   {
     "id": "192",
-    "artist": "Tankcsapda",
+    "name": "Tankcsapda",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -6394,7 +6508,7 @@
   },
   {
     "id": "193",
-    "artist": "Tash Sultana",
+    "name": "Tash Sultana",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -6430,7 +6544,7 @@
   },
   {
     "id": "194",
-    "artist": "Tdj",
+    "name": "Tdj",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -6462,7 +6576,7 @@
   },
   {
     "id": "195",
-    "artist": "Technokool",
+    "name": "Technokool",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -6492,7 +6606,7 @@
   },
   {
     "id": "196",
-    "artist": "Teen Mortgage",
+    "name": "Teen Mortgage",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -6526,7 +6640,7 @@
   },
   {
     "id": "197",
-    "artist": "The Zawose Queens",
+    "name": "The Zawose Queens",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -6560,7 +6674,7 @@
   },
   {
     "id": "198",
-    "artist": "Tomora",
+    "name": "Tomora",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -6596,7 +6710,7 @@
   },
   {
     "id": "199",
-    "artist": "Tripolism",
+    "name": "Tripolism",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -6636,7 +6750,7 @@
   },
   {
     "id": "200",
-    "artist": "Trym",
+    "name": "Trym",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6671,7 +6785,7 @@
   },
   {
     "id": "201",
-    "artist": "Twenty One Pilots",
+    "name": "Twenty One Pilots",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -6708,7 +6822,7 @@
   },
   {
     "id": "202",
-    "artist": "Underworld",
+    "name": "Underworld",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -6743,7 +6857,7 @@
   },
   {
     "id": "203",
-    "artist": "Vintage Culture",
+    "name": "Vintage Culture",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6779,7 +6893,7 @@
   },
   {
     "id": "204",
-    "artist": "Wavy",
+    "name": "Wavy",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -6812,7 +6926,7 @@
   },
   {
     "id": "205",
-    "artist": "Whomadewho (Hybrid Dj Set)",
+    "name": "Whomadewho (Hybrid Dj Set)",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -6845,7 +6959,7 @@
   },
   {
     "id": "206",
-    "artist": "Wild Wild Women",
+    "name": "Wild Wild Women",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -6878,7 +6992,7 @@
   },
   {
     "id": "207",
-    "artist": "Wolf Alice",
+    "name": "Wolf Alice",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6918,7 +7032,7 @@
   },
   {
     "id": "208",
-    "artist": "Yarima",
+    "name": "Yarima",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -6951,7 +7065,7 @@
   },
   {
     "id": "209",
-    "artist": "Yt",
+    "name": "Yt",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -6985,7 +7099,7 @@
   },
   {
     "id": "210",
-    "artist": "Zara Larsson",
+    "name": "Zara Larsson",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -7018,7 +7132,7 @@
   },
   {
     "id": "211",
-    "artist": "Zep",
+    "name": "Zep",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -7053,7 +7167,7 @@
   },
   {
     "id": "212",
-    "artist": "Zimmer90",
+    "name": "Zimmer90",
     "stage": null,
     "day": "Thursday",
     "startTime": null,

@@ -6,18 +6,10 @@ import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Event
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -48,8 +40,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.core.tween
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalConfiguration
@@ -58,6 +48,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.szigerinsider2026.data.repository.LineupRepository
+import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.quiz.VibeQuizScreen
 import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
 import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
@@ -71,6 +62,7 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector,
     object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event, { it.timetable })
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn, { it.weatherRadar })
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
+    object Highlights : Screen("highlights", "WINS", Icons.Default.EmojiEvents)
 }
 
 val allBottomNavItems = listOf(
@@ -132,97 +124,98 @@ fun AppNavigation() {
                 enterTransition = { fadeIn(animationSpec = tween(300)) },
                 exitTransition = { fadeOut(animationSpec = tween(200)) }
             ) {
-            composable("splash") {
-                SplashScreen(navController)
-            }
-            composable(Screen.Home.route) {
-                HomeScreen(navController = navController)
-            }
-            composable(Screen.Discover.route) {
-                val discoverViewModel: DiscoverViewModel = viewModel(
-                    factory = object : ViewModelProvider.Factory {
-                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                            return DiscoverViewModel(LineupRepository(context), context) as T
+                composable("splash") {
+                    SplashScreen(navController)
+                }
+                composable(Screen.Home.route) {
+                    HomeScreen(navController = navController)
+                }
+                composable(Screen.Discover.route) {
+                    val discoverViewModel: DiscoverViewModel = viewModel(
+                        factory = object : ViewModelProvider.Factory {
+                            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                                return DiscoverViewModel(LineupRepository(context), context) as T
+                            }
                         }
-                    }
-                )
-                DiscoverScreen(
-                    onArtistClick = { id -> navController.navigate("artist/$id") },
-                    navController = navController,
-                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
-                    viewModel = discoverViewModel
-                )
-            }
-            composable(Screen.Map.route) {
-                MapScreen(navController = navController)
-            }
-            composable(Screen.Tools.route) {
-                ToolsScreen(navController = navController)
-            }
-            composable("guide") {
-                SurvivalGuideScreen(navController)
-            }
-            composable("schedule") {
-                ScheduleScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
-            }
-            composable("artist/{artistId}") { backStackEntry ->
-                val artistId = backStackEntry.arguments?.getString("artistId") ?: return@composable
-                ArtistDetailScreen(
-                    artistId = artistId,
-                    onBack = { navController.popBackStack() },
-                    onArtistNavigate = { id -> navController.navigate("artist/$id") },
-                    onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
-                    onGenreClick = { genre ->
-                        navController.previousBackStackEntry?.savedStateHandle?.set("filter_genre", genre)
-                        navController.popBackStack(Screen.Discover.route, false)
-                    },
-                    onVibeClick = { vibe ->
-                        navController.previousBackStackEntry?.savedStateHandle?.set("filter_vibe", vibe)
-                        navController.popBackStack(Screen.Discover.route, false)
-                    }
-                )
-            }
-            composable("speed_discovery") {
-                val discoverViewModel: DiscoverViewModel = viewModel(
-                    factory = object : ViewModelProvider.Factory {
-                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                            return DiscoverViewModel(LineupRepository(context), context) as T
+                    )
+                    DiscoverScreen(
+                        onArtistClick = { id -> navController.navigate("artist/$id") },
+                        navController = navController,
+                        onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
+                        viewModel = discoverViewModel
+                    )
+                }
+                composable(Screen.Map.route) {
+                    MapScreen(navController = navController)
+                }
+                composable(Screen.Tools.route) {
+                    ToolsScreen(navController = navController)
+                }
+                composable("guide") {
+                    SurvivalGuideScreen(navController)
+                }
+                composable(Screen.Schedule.route) {
+                    ScheduleScreen(onArtistClick = { id -> navController.navigate("artist/$id") })
+                }
+                composable("artist/{artistId}") { backStackEntry ->
+                    val artistId = backStackEntry.arguments?.getString("artistId") ?: return@composable
+                    ArtistDetailScreen(
+                        artistId = artistId,
+                        onBack = { navController.popBackStack() },
+                        onArtistNavigate = { id -> navController.navigate("artist/$id") },
+                        onScrollStateChanged = { isScrolling -> showBottomNavBar.value = !isScrolling },
+                        onGenreClick = { genre ->
+                            navController.previousBackStackEntry?.savedStateHandle?.set("filter_genre", genre)
+                            navController.popBackStack(Screen.Discover.route, false)
+                        },
+                        onVibeClick = { vibe ->
+                            navController.previousBackStackEntry?.savedStateHandle?.set("filter_vibe", vibe)
+                            navController.popBackStack(Screen.Discover.route, false)
                         }
-                    }
-                )
-                val artistViewModel: ArtistViewModel = viewModel(
-                    factory = object : ViewModelProvider.Factory {
-                        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                            val db = com.example.szigerinsider2026.data.local.AppDatabase.getDatabase(context)
-                            return ArtistViewModel(db.userDao()) as T
+                    )
+                }
+                composable("speed_discovery") {
+                    val discoverViewModel: DiscoverViewModel = viewModel(
+                        factory = object : ViewModelProvider.Factory {
+                            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                                return DiscoverViewModel(LineupRepository(context), context) as T
+                            }
                         }
-                    }
-                )
-                val artists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
-                val favorites by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
-                
-                SpeedDiscoveryScreen(
-                    artists = artists,
-                    favoriteIds = favorites,
-                    onToggleFavorite = { artistViewModel.toggleFavorite(it) },
-                    onArtistClick = { id -> navController.navigate("artist/$id") },
-                    onBack = { navController.popBackStack() }
-                )
-            }
-            composable("vibe_quiz") {
-                VibeQuizScreen(navController = navController, quizViewModel = quizViewModel)
-            }
-            composable("vibe_results") {
-                VibeResultScreen(navController = navController, quizViewModel = quizViewModel)
-            }
-            composable("food") {
-                FoodScreen()
-            }
-            composable("highlights") {
-                HighlightsScreen(onBack = { navController.popBackStack() })
-            }
-            composable("packing_list") {
-                PackingListScreen(navController)
+                    )
+                    val artistViewModel: ArtistViewModel = viewModel(
+                        factory = object : ViewModelProvider.Factory {
+                            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                                val db = com.example.szigerinsider2026.data.local.AppDatabase.getDatabase(context)
+                                return ArtistViewModel(db.userDao()) as T
+                            }
+                        }
+                    )
+                    val artists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
+                    val favorites by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
+                    
+                    SpeedDiscoveryScreen(
+                        artists = artists,
+                        favoriteIds = favorites,
+                        onToggleFavorite = { artistViewModel.toggleFavorite(it) },
+                        onArtistClick = { id -> navController.navigate("artist/$id") },
+                        onBack = { navController.popBackStack() }
+                    )
+                }
+                composable("vibe_quiz") {
+                    VibeQuizScreen(navController = navController, quizViewModel = quizViewModel)
+                }
+                composable("vibe_results") {
+                    VibeResultScreen(navController = navController, quizViewModel = quizViewModel)
+                }
+                composable("food") {
+                    FoodScreen()
+                }
+                composable("highlights") {
+                    HighlightsScreen(onBack = { navController.popBackStack() })
+                }
+                composable("packing_list") {
+                    PackingListScreen(navController)
+                }
             }
         }
     }
@@ -234,7 +227,8 @@ fun FluidBottomNavigation(navController: NavHostController) {
     val currentRoute = navBackStackEntry?.destination?.route
     val haptic = rememberHapticManager()
     val accentColor = MaterialTheme.colorScheme.secondary
-    val features = FestivalConfig.FEATURES
+    val config = FestivalConfig.current
+    val features = config.features
 
     val activeNavItems = remember(features) {
         allBottomNavItems.filter { it.featureCheck?.invoke(features) ?: true }

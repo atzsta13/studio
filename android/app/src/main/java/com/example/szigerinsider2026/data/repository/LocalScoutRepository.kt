@@ -46,7 +46,7 @@ class LocalScoutRepository(private val context: Context) {
             val connection = url.openConnection()
             connection.connect()
             
-            val totalSize = connection.contentLength
+            val totalSize = connection.contentLengthLong
             val inputStream = connection.getInputStream()
             val outputStream = modelFile.outputStream()
             
@@ -57,7 +57,12 @@ class LocalScoutRepository(private val context: Context) {
             while (inputStream.read(buffer).also { bytesRead = it } != -1) {
                 outputStream.write(buffer, 0, bytesRead)
                 totalBytesRead += bytesRead
-                _downloadProgress.value = totalBytesRead.toFloat() / totalSize.toFloat()
+                if (totalSize > 0) {
+                    _downloadProgress.value = totalBytesRead.toFloat() / totalSize.toFloat()
+                } else {
+                    // Fallback for unknown size: show something is happening
+                    _downloadProgress.value = -1f 
+                }
             }
             
             outputStream.close()
@@ -111,7 +116,7 @@ class LocalScoutRepository(private val context: Context) {
         
         // Context pruning (RAG-Lite)
         val artistsContext = artists.joinToString("\n") { 
-            "- ${it.artist} (${it.genres.joinToString()}): ${it.description?.take(120)}..."
+            "- ${it.name} (${it.genres.joinToString()}): ${it.description?.take(120)}..."
         }
         
         val fullPrompt = """

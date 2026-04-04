@@ -1,7 +1,7 @@
 [
   {
     "id": "behemoth",
-    "artist": "Behemoth",
+    "name": "Behemoth",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2026-07-17T22:30:00",
@@ -26,7 +26,7 @@
   },
   {
     "id": "machine-head",
-    "artist": "Machine Head",
+    "name": "Machine Head",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2026-07-18T22:00:00",
@@ -53,7 +53,7 @@
   },
   {
     "id": "heaven-shall-burn",
-    "artist": "Heaven Shall Burn",
+    "name": "Heaven Shall Burn",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2026-07-16T21:00:00",

@@ -7,6 +7,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.WbSunny
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -48,71 +50,31 @@ import com.example.szigerinsider2026.data.repository.LineupDiffRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
-import com.example.szigerinsider2026.ui.utils.t
-import com.example.szigerinsider2026.ui.tools.FestivalCountdownCard
-import kotlinx.coroutines.delay
-import java.util.Calendar
-import java.util.TimeZone
-import java.time.LocalDate
-import com.example.szigerinsider2026.data.config.FestivalConfig
-
-private fun getFestivalDay(): String {
-    val config = FestivalConfig.current
-    val now = Calendar.getInstance(TimeZone.getTimeZone(config.location.timezone))
-    val year = now.get(Calendar.YEAR)
-    val month = now.get(Calendar.MONTH)
-    val dom = now.get(Calendar.DAY_OF_MONTH)
-
-    val start = LocalDate.parse(config.dates.startDate)
-    if (year < start.year || (year == start.year && month < (start.monthValue - 1))) return config.dates.days.first()
-    
-    // Simple offset-based day picker
-    val currentLocalDate = LocalDate.of(year, month + 1, dom)
-    val diff = java.time.temporal.ChronoUnit.DAYS.between(start, currentLocalDate).toInt()
-    
-    return config.dates.days.getOrNull(diff) ?: config.dates.days.first()
-}
-
-private fun isArtistLive(artist: Artist): Boolean {
-    val config = FestivalConfig.current
-    val day = artist.day ?: return false
-    val startTime = artist.startTime ?: return false
-    val endTime = artist.endTime ?: return false
-
-    val dayIndex = config.dates.days.indexOf(day)
-    if (dayIndex == -1) return false
-
-    val start = LocalDate.parse(config.dates.startDate)
-    val targetDate = start.plusDays(dayIndex.toLong())
-    val now = Calendar.getInstance(TimeZone.getTimeZone(config.location.timezone))
-    val currentLocalDate = LocalDate.of(now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH))
-
-    if (currentLocalDate != targetDate) return false
-
-    return try {
-        val (startH, startM) = startTime.split(":").map { it.toInt() }
-        val (endH, endM) = endTime.split(":").map { it.toInt() }
-        val nowH = now.get(Calendar.HOUR_OF_DAY)
-        val nowM = now.get(Calendar.MINUTE)
-        
-        val nowMinutes = nowH * 60 + nowM
-        val startMinutes = startH * 60 + startM
-        val endMinutes = endH * 60 + endM
-        nowMinutes in startMinutes until endMinutes
-    } catch (e: Exception) {
-        false
-    }
-}
+import com.example.szigerinsider2026.ui.discover.ArtistViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.szigerinsider2026.ui.utils.getFestivalDay
 
 @Composable
-fun HomeScreen(navController: NavController? = null) {
+fun HomeScreen(navController: NavController) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
     val repository = remember { LineupRepository(context) }
     val db = remember { AppDatabase.getDatabase(context) }
 
+    val artistViewModel: ArtistViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return ArtistViewModel(db.userDao()) as T
+            }
+        }
+    )
+
     var allArtists by remember { mutableStateOf<List<Artist>>(emptyList()) }
-    var favoriteArtistIds by remember { mutableStateOf<Set<String>>(emptySet()) }
+    val favoriteArtistIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
     var newArtistPreview by remember { mutableStateOf<List<Artist>>(emptyList()) }
 
     LaunchedEffect(Unit) {
@@ -120,17 +82,11 @@ fun HomeScreen(navController: NavController? = null) {
     }
 
     LaunchedEffect(Unit) {
-        db.userDao().getAllFavorites().collect { favs ->
-            favoriteArtistIds = favs.map { it.artistId }.toSet()
-        }
-    }
-
-    LaunchedEffect(Unit) {
         val diff = LineupDiffRepository(context).computeDiff()
         newArtistPreview = diff.newArtists.take(4)
     }
 
-    val festivalDay = remember { getFestivalDay() }
+    val festivalDay = remember(allArtists) { getFestivalDay() }
     val headliner = remember(allArtists) { allArtists.firstOrNull { it.isHeadliner } }
     val nowPlaying = remember(allArtists, festivalDay) {
         allArtists.filter { it.day == festivalDay }.take(3)
@@ -150,112 +106,50 @@ fun HomeScreen(navController: NavController? = null) {
         label = "countdownGradientFloat"
     )
 
-    LazyColumn(
-        modifier = Modifier.fillMaxSize().background(OLEDBlack),
-        contentPadding = PaddingValues(bottom = 120.dp)
-    ) {
-        item {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 20.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column {
-                    Text(
-                        text = "${FestivalConfig.NAME.uppercase()} ${FestivalConfig.current.dates.year}",
-                        style = BrutalistTypography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary,
-                        letterSpacing = 3.sp
-                    )
-                    Text(
-                        text = t("home_tagline"),
-                        color = TextMuted,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-                Box(
-                    modifier = Modifier
-                        .size(36.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f))
-                        .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f), CircleShape),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(Icons.Default.Star, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(18.dp))
-                }
-            }
-        }
-
-        item {
-            Box(modifier = Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp)) {
-                FestivalCountdownCard()
-            }
-        }
-
-        item { WeatherCard() }
-
-        item { SectionHeader(title = "YOUR LINEUP", count = favoriteArtists.size.takeIf { it > 0 }) }
-        item {
-            if (favoriteArtists.isEmpty()) {
-                Box(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
-                        .clip(RoundedCornerShape(20.dp)).background(CardBackground)
-                        .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(20.dp))
-                        .padding(24.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = "Star artists to build your lineup", color = TextMuted, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                }
-            } else {
-                LazyRow(contentPadding = PaddingValues(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), modifier = Modifier.padding(bottom = 8.dp)) {
-                    items(favoriteArtists) { artist -> FavoriteArtistChip(artist) }
-                }
-            }
-        }
-
-        headliner?.let { artist ->
-            item { SectionHeader(title = "HEADLINER SPOTLIGHT") }
+    Scaffold(
+        containerColor = OLEDBlack
+    ) { padding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
+            contentPadding = PaddingValues(bottom = 100.dp)
+        ) {
+            // Header
             item {
-                Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 16.dp).height(240.dp).clip(RoundedCornerShape(32.dp))) {
-                    AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
-                    Box(modifier = Modifier.fillMaxSize().background(Brush.verticalGradient(colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.85f)))))
-                    Column(modifier = Modifier.align(Alignment.BottomStart).padding(24.dp)) {
-                        Text(text = "HEADLINER", fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp, color = MaterialTheme.colorScheme.secondary)
-                        Text(text = artist.artist.uppercase(), fontSize = 30.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, color = Color.White, lineHeight = 32.sp)
-                        if (artist.day != null) { Text(text = artist.day.uppercase(), fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color.White.copy(alpha = 0.6f), modifier = Modifier.padding(top = 2.dp)) }
-                    }
+                HomeHeader(navController)
+            }
+
+            // Quick Actions
+            item {
+                QuickActionsRow(navController)
+            }
+
+            // Headliner Highlight
+            headliner?.let {
+                item {
+                    HeadlinerCard(it) { navController.navigate("artist/${it.id}") }
                 }
             }
-        }
 
-        item {
-            val stage = nowPlaying.firstOrNull()?.stage ?: "Main Stage"
-            SectionHeader(title = "${FestivalConfig.NAME.uppercase()} PULSE", subtitle = "$festivalDay · $stage")
-        }
-        items(nowPlaying) { artist -> IslandPulseRow(artist) }
-
-        item {
-            Spacer(modifier = Modifier.height(8.dp))
-            SectionHeader(title = "EXPLORE")
-        }
-        item {
-            val features = FestivalConfig.FEATURES
-            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                if (features.weatherRadar) {
-                    QuickNavCard(t("nav_map"), Icons.Default.LocationOn, CyanPulse, Modifier.weight(1f)) { navController?.navigate("map") }
+            // Pulse / Now Playing
+            if (nowPlaying.isNotEmpty()) {
+                item {
+                    PulseSection(nowPlaying) { navController.navigate("artist/${it.id}") }
                 }
-                QuickNavCard(t("nav_artists"), Icons.Default.Search, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("discover") }
             }
-        }
-        item {
-            val features = FestivalConfig.FEATURES
-            Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                QuickNavCard(t("nav_tools"), Icons.Default.Build, ToxicGreen, Modifier.weight(1f)) { navController?.navigate("tools") }
-                if (features.timetable) {
-                    QuickNavCard("SCHEDULE", Icons.Default.Schedule, MaterialTheme.colorScheme.secondary, Modifier.weight(1f)) { navController?.navigate("schedule") }
+
+            // Favorites Preview
+            if (favoriteArtists.isNotEmpty()) {
+                item {
+                    FavoritesPreviewSection(favoriteArtists) { navController.navigate("artist/${it.id}") }
+                }
+            }
+
+            // New Discovery
+            if (newArtistPreview.isNotEmpty()) {
+                item {
+                    NewDiscoverySection(newArtistPreview) { navController.navigate("artist/${it.id}") }
                 }
             }
         }
@@ -263,76 +157,343 @@ fun HomeScreen(navController: NavController? = null) {
 }
 
 @Composable
-private fun WeatherCard() {
-    Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 4.dp).clip(RoundedCornerShape(24.dp)).background(Brush.linearGradient(colors = listOf(Color(0xFF1A1A1A), OLEDBlack))).border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(24.dp)).padding(horizontal = 20.dp, vertical = 16.dp)) {
-        Column {
-            Text(text = "${FestivalConfig.current.location.city.uppercase()} FORECAST", fontSize = 8.sp, fontWeight = FontWeight.Black, letterSpacing = 3.sp, color = TextMuted)
-            Spacer(modifier = Modifier.height(10.dp))
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Column(modifier = Modifier.weight(1f)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "28°C", fontSize = 28.sp, fontWeight = FontWeight.Black, color = MaterialTheme.colorScheme.secondary)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Icon(Icons.Default.WbSunny, contentDescription = "Sunny", tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(24.dp))
-                    }
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(text = "Sunny · Perfect festival weather", fontSize = 12.sp, fontWeight = FontWeight.Medium, color = TextMuted)
-                }
+fun HomeHeader(navController: NavController) {
+    Column(modifier = Modifier.padding(24.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column {
+                Text(
+                    text = "ISLAND",
+                    style = BrutalistTypography.headlineLarge,
+                    color = Color.White,
+                    fontSize = 42.sp,
+                    lineHeight = 38.sp
+                )
+                Text(
+                    text = "PULSE",
+                    style = BrutalistTypography.headlineLarge,
+                    color = PrimaryMagenta,
+                    fontSize = 42.sp,
+                    lineHeight = 38.sp
+                )
+            }
+            
+            IconButton(
+                onClick = { navController.navigate("search") },
+                modifier = Modifier
+                    .size(56.dp)
+                    .clip(CircleShape)
+                    .background(CardBackground)
+                    .border(1.dp, Color.White.copy(alpha = 0.1f), CircleShape)
+            ) {
+                Icon(Icons.Default.Search, contentDescription = "Search", tint = Color.White)
             }
         }
     }
 }
 
 @Composable
-private fun SectionHeader(title: String, subtitle: String? = null, count: Int? = null) {
-    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp).padding(top = 24.dp, bottom = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
-        Column {
-            Text(text = title, style = BrutalistTypography.labelSmall, color = TextMuted, letterSpacing = 3.sp)
-            if (subtitle != null) { Text(text = subtitle, color = Color.White.copy(alpha = 0.4f), fontSize = 11.sp, modifier = Modifier.padding(top = 2.dp)) }
+fun QuickActionsRow(navController: NavController) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        QuickActionChip(
+            icon = Icons.Default.LocationOn,
+            label = "MAP",
+            color = CyanPulse,
+            modifier = Modifier.weight(1f)
+        ) { navController.navigate("map") }
+        
+        QuickActionChip(
+            icon = Icons.Default.Build,
+            label = "TOOLS",
+            color = ToxicGreen,
+            modifier = Modifier.weight(1f)
+        ) { navController.navigate("tools") }
+    }
+}
+
+@Composable
+fun QuickActionChip(
+    icon: ImageVector,
+    label: String,
+    color: Color,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Surface(
+        onClick = onClick,
+        modifier = modifier.height(52.dp),
+        shape = RoundedCornerShape(16.dp),
+        color = CardBackground,
+        border = BorderStroke(1.dp, color.copy(alpha = 0.2f))
+    ) {
+        Row(
+            modifier = Modifier.padding(horizontal = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(icon, contentDescription = null, tint = color, modifier = Modifier.size(18.dp))
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = label,
+                color = Color.White,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Black,
+                letterSpacing = 1.sp
+            )
         }
-        if (count != null) {
-            Box(modifier = Modifier.clip(RoundedCornerShape(100)).background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)).padding(horizontal = 10.dp, vertical = 4.dp)) {
-                Text(text = "$count", color = MaterialTheme.colorScheme.primary, fontSize = 11.sp, fontWeight = FontWeight.Black)
+    }
+}
+
+@Composable
+fun HeadlinerCard(artist: Artist, onClick: () -> Unit) {
+    Card(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(24.dp)
+            .height(200.dp),
+        shape = RoundedCornerShape(32.dp)
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            AsyncImage(
+                model = artist.imageUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(Color.Transparent, OLEDBlack.copy(alpha = 0.8f))
+                        )
+                    )
+            )
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .padding(24.dp)
+            ) {
+                Text(
+                    text = "TONIGHT'S HEADLINER",
+                    color = PrimaryMagenta,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 2.sp
+                )
+                Text(
+                    text = artist.name.uppercase(),
+                    color = Color.White,
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Black,
+                    fontStyle = FontStyle.Italic
+                )
             }
         }
     }
 }
 
 @Composable
-private fun FavoriteArtistChip(artist: Artist) {
-    val shape = RoundedCornerShape(topStart = 20.dp, bottomEnd = 20.dp)
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(72.dp)) {
-        Box(modifier = Modifier.size(64.dp).clip(shape).background(MutedBackground).border(2.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.4f), shape)) {
-            AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Crop)
+fun PulseSection(artists: List<Artist>, onArtistClick: (Artist) -> Unit) {
+    Column(modifier = Modifier.padding(vertical = 16.dp)) {
+        SectionHeader(title = "LIVE PULSE", actionLabel = "FULL SCHEDULE") { }
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            items(artists) { artist ->
+                PulseCard(artist) { onArtistClick(artist) }
+            }
         }
-        Text(text = artist.artist.uppercase(), style = BrutalistTypography.labelSmall, color = TextPrimary, fontSize = 8.sp, maxLines = 1, modifier = Modifier.padding(top = 6.dp))
     }
 }
 
 @Composable
-private fun IslandPulseRow(artist: Artist) {
-    val live = remember(artist) { isArtistLive(artist) }
-    Card(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 5.dp), shape = RoundedCornerShape(20.dp), colors = CardDefaults.cardColors(containerColor = CardBackground), border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.05f))) {
-        Row(modifier = Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(modifier = Modifier.size(4.dp).clip(CircleShape).background(if (live) ToxicGreen else MaterialTheme.colorScheme.primary))
-            Spacer(modifier = Modifier.width(12.dp))
-            AsyncImage(model = artist.imageUrl, contentDescription = artist.artist, modifier = Modifier.size(52.dp).clip(RoundedCornerShape(12.dp)), contentScale = ContentScale.Crop)
-            Spacer(modifier = Modifier.width(14.dp))
+fun PulseCard(artist: Artist, onClick: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .width(140.dp)
+            .clickable { onClick() }
+    ) {
+        Box(
+            modifier = Modifier
+                .size(140.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(CardBackground)
+        ) {
+            AsyncImage(
+                model = artist.imageUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+            // Live indicator
+            Box(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .align(Alignment.TopEnd)
+                    .size(8.dp)
+                    .clip(CircleShape)
+                    .background(Color.Red)
+            )
+        }
+        Spacer(modifier = Modifier.height(12.dp))
+        Text(
+            text = artist.name.uppercase(),
+            color = Color.White,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Black,
+            maxLines = 1
+        )
+        Text(
+            text = (artist.stage ?: "MAIN STAGE").uppercase(),
+            color = TextMuted,
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Bold
+        )
+    }
+}
+
+@Composable
+fun FavoritesPreviewSection(artists: List<Artist>, onArtistClick: (Artist) -> Unit) {
+    Column(modifier = Modifier.padding(vertical = 16.dp)) {
+        SectionHeader(title = "MY LINEUP", actionLabel = "SEE ALL") { }
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            items(artists) { artist ->
+                FavoriteCircle(artist) { onArtistClick(artist) }
+            }
+        }
+    }
+}
+
+@Composable
+fun FavoriteCircle(artist: Artist, onClick: () -> Unit) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.width(80.dp).clickable { onClick() }
+    ) {
+        Box(
+            modifier = Modifier
+                .size(64.dp)
+                .clip(CircleShape)
+                .background(CardBackground)
+                .border(2.dp, PrimaryMagenta.copy(alpha = 0.5f), CircleShape)
+        ) {
+            AsyncImage(
+                model = artist.imageUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = artist.name.split(" ").first().uppercase(),
+            color = Color.White,
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Black,
+            maxLines = 1
+        )
+    }
+}
+
+@Composable
+fun NewDiscoverySection(artists: List<Artist>, onArtistClick: (Artist) -> Unit) {
+    Column(modifier = Modifier.padding(vertical = 16.dp)) {
+        SectionHeader(title = "NEW ADDITIONS", actionLabel = "EXPLORE") { }
+        Column(
+            modifier = Modifier.padding(horizontal = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            artists.forEach { artist ->
+                DiscoveryRow(artist) { onArtistClick(artist) }
+            }
+        }
+    }
+}
+
+@Composable
+fun DiscoveryRow(artist: Artist, onClick: () -> Unit) {
+    Surface(
+        onClick = onClick,
+        modifier = Modifier.fillMaxWidth().height(72.dp),
+        shape = RoundedCornerShape(20.dp),
+        color = CardBackground
+    ) {
+        Row(
+            modifier = Modifier.padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(OLEDBlack)
+            ) {
+                AsyncImage(
+                    model = artist.imageUrl,
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
+            }
+            Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = artist.artist.uppercase(), style = BrutalistTypography.titleLarge, fontSize = 16.sp)
-                Text(text = (artist.stage ?: "Main Stage").uppercase(), style = BrutalistTypography.labelSmall, color = MaterialTheme.colorScheme.primary, fontSize = 9.sp)
+                Text(
+                    text = artist.name.uppercase(),
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Black
+                )
+                Text(
+                    text = artist.genres.firstOrNull()?.uppercase() ?: "PUNK",
+                    color = ToxicGreen,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold
+                )
             }
+            Icon(Icons.Default.Schedule, contentDescription = null, tint = TextMuted, modifier = Modifier.size(16.dp))
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(text = (artist.day ?: "FRI").take(3).uppercase(), color = TextMuted, fontSize = 10.sp, fontWeight = FontWeight.Black)
         }
     }
 }
 
 @Composable
-private fun QuickNavCard(label: String, icon: ImageVector, color: Color, modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
-    Box(modifier = modifier.height(80.dp).clip(RoundedCornerShape(20.dp)).background(color.copy(alpha = 0.08f)).border(1.dp, color.copy(alpha = 0.2f), RoundedCornerShape(20.dp)).clickable(onClick = onClick).padding(16.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(icon, contentDescription = label, tint = color, modifier = Modifier.size(22.dp))
-            Spacer(modifier = Modifier.width(10.dp))
-            Text(text = label, style = BrutalistTypography.labelSmall, color = color, fontSize = 11.sp)
-        }
+fun SectionHeader(title: String, actionLabel: String, onAction: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 12.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom
+    ) {
+        Text(
+            text = title,
+            color = Color.White,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Black,
+            letterSpacing = 1.sp
+        )
+        Text(
+            text = actionLabel,
+            color = PrimaryMagenta,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Black,
+            letterSpacing = 1.sp,
+            modifier = Modifier.clickable { onAction() }
+        )
     }
 }

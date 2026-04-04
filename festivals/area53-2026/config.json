@@ -9,7 +9,44 @@
   "officialWebsite": "https://area53festival.at",
   "productionUrl": "https://area53-2026.vercel.app",
   "deepLinkScheme": "area53-2026",
-
+  "i18n": {
+    "defaultLocale": "de",
+    "locales": ["de", "en"],
+    "translations": {
+      "de": {
+        "nav_home": "Home",
+        "nav_artists": "Lineup",
+        "nav_map": "Karte",
+        "nav_merch": "Merch",
+        "nav_tools": "Tools",
+        "home_tagline": "Metal in den Bergen",
+        "home_opening_acts": "Opening Acts",
+        "toolkit_title": "Survival Toolkit",
+        "toolkit_safety": "Sicherheit",
+        "toolkit_tactical": "Taktik",
+        "toolkit_refresh": "DATEN AKTUALISIEREN",
+        "map_title": "RADAR NAVIGATION",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Bands oder Vibes..."
+      },
+      "en": {
+        "nav_home": "Home",
+        "nav_artists": "Artists",
+        "nav_map": "Map",
+        "nav_merch": "Merch",
+        "nav_tools": "Tools",
+        "home_tagline": "Metal in the Mountains",
+        "home_opening_acts": "Opening Acts",
+        "toolkit_title": "Survival Toolkit",
+        "toolkit_safety": "Safety",
+        "toolkit_tactical": "Tactical",
+        "toolkit_refresh": "REFRESH DATA",
+        "map_title": "RADAR NAVIGATION",
+        "scout_title": "AI SCOUT",
+        "scout_placeholder": "Search bands or vibes..."
+      }
+    }
+  },
   "aiPersona": "the 'Area 53 Metal Scout', a battle-hardened metalhead who has attended every edition since 2017 and knows every riff and corner of the Tenne Leoben",
   "location": {
     "city": "Leoben",
@@ -123,6 +160,18 @@
     "highContrast": true
   },
   "content": {
+    "emergencyContacts": {
+      "security": { "phone": "112", "label": "Security Dispatch" },
+      "medical": { "phone": "144", "label": "Medical Response" }
+    },
+    "radarFocuses": [
+      {
+        "id": "main",
+        "label": "TENNE MAIN STAGE",
+        "targetStages": ["Main Stage", "Tenne"],
+        "targetGenres": ["METAL", "ROCK"]
+      }
+    ],
     "shuttleRoutes": [],
     "dictionaryTerms": []
   }

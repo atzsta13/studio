@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ArtistDao {
-    @Query("SELECT * FROM artists WHERE year = :year ORDER BY artist ASC")
+    @Query("SELECT * FROM artists WHERE year = :year ORDER BY name ASC")
     fun getArtistsByYear(year: String): Flow<List<ArtistEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

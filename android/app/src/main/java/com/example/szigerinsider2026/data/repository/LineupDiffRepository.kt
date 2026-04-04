@@ -18,11 +18,11 @@ class LineupDiffRepository(private val context: Context) {
         val artists2026 = repo.getLineup("2026")
         val artists2025 = repo.getLineup("2025")
 
-        val names2026 = artists2026.map { it.artist.trim().lowercase() }.toSet()
-        val names2025 = artists2025.map { it.artist.trim().lowercase() }.toSet()
+        val names2026 = artists2026.map { it.name.trim().lowercase() }.toSet()
+        val names2025 = artists2025.map { it.name.trim().lowercase() }.toSet()
 
-        val newArtists = artists2026.filter { it.artist.trim().lowercase() !in names2025 }
-        val returning = artists2026.filter { it.artist.trim().lowercase() in names2025 }
+        val newArtists = artists2026.filter { it.name.trim().lowercase() !in names2025 }
+        val returning = artists2026.filter { it.name.trim().lowercase() in names2025 }
 
         // Genre delta
         fun genreCount(list: List<Artist>) =

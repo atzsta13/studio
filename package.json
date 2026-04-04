@@ -12,6 +12,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "pulse": "node scripts/pulse-check.mjs",
     "lineup:sync": "node scripts/sync-data.mjs",
     "lineup:scrape": "node src/scripts/scrape_all_artists.js",
     "lineup:clean": "node src/scripts/clean_lineup.js",
@@ -25,7 +26,8 @@
     "android:sync:sziget": "NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:sync-android",
     "android:sync:area53": "NEXT_PUBLIC_FESTIVAL_ID=area53-2026 npm run lineup:sync-android",
     "android:sync:novarock": "NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run lineup:sync-android",
-    "android:sync:frequency": "NEXT_PUBLIC_FESTIVAL_ID=frequency-2026 npm run lineup:sync-android"
+    "android:sync:frequency": "NEXT_PUBLIC_FESTIVAL_ID=frequency-2026 npm run lineup:sync-android",
+    "android:sync:erntepunk": "NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:sync-android"
     },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

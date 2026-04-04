@@ -1,231 +1,124 @@
 package com.example.szigerinsider2026.ui.quiz
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import com.example.szigerinsider2026.data.local.AppDatabase
-import com.example.szigerinsider2026.data.local.FavoriteArtist
 import com.example.szigerinsider2026.data.model.Artist
+import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
-import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VibeResultScreen(navController: NavController, quizViewModel: VibeQuizViewModel) {
     val context = LocalContext.current
     val haptic = rememberHapticManager()
-    val scope = rememberCoroutineScope()
-    val results by quizViewModel.results.collectAsStateWithLifecycle()
-    val userDao = remember { AppDatabase.getDatabase(context).userDao() }
-
-    LazyColumn(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(OLEDBlack),
-        contentPadding = PaddingValues(bottom = 120.dp)
-    ) {
-        item {
-            // Header
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp, vertical = 48.dp)
-            ) {
-                Text(
-                    text = "YOUR SOUND",
-                    color = TextMuted,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 4.sp
-                )
-                Text(
-                    text = "UNLOCKED",
-                    color = AcidYellow,
-                    fontSize = 52.sp,
-                    fontWeight = FontWeight.Black,
-                    fontStyle = FontStyle.Italic,
-                    letterSpacing = (-2).sp,
-                    lineHeight = 50.sp
-                )
-                Text(
-                    text = "${results.size} artists matched your DNA",
-                    color = TextMuted,
-                    fontSize = 14.sp,
-                    modifier = Modifier.padding(top = 8.dp)
-                )
+    val db = remember { AppDatabase.getDatabase(context) }
+    
+    val artistViewModel: ArtistViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return ArtistViewModel(db.userDao()) as T
             }
         }
+    )
 
-        itemsIndexed(results) { index, artist ->
-            ResultArtistCard(
-                artist = artist,
-                index = index,
-                onArtistClick = { navController.navigate("artist/${artist.id}") },
-                onFavorite = {
-                    scope.launch {
-                        haptic.favoriteTap()
-                        userDao.addFavorite(FavoriteArtist(artistId = artist.id, timestamp = System.currentTimeMillis()))
+    val results by quizViewModel.results.collectAsStateWithLifecycle()
+    val favoriteIds by artistViewModel.favoriteArtistIds.collectAsStateWithLifecycle()
+
+    Scaffold(
+        containerColor = OLEDBlack,
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("YOUR MATCHES", style = BrutalistTypography.headlineSmall, color = Color.White) },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = OLEDBlack)
+            )
+        }
+    ) { padding ->
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().padding(padding),
+            contentPadding = PaddingValues(20.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            item {
+                Text(
+                    text = "BASED ON YOUR VIBE...",
+                    color = ToxicGreen,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Black,
+                    letterSpacing = 2.sp
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+            }
+
+            items(results) { artist ->
+                val isFavorite = favoriteIds.contains(artist.id)
+                
+                Card(
+                    modifier = Modifier.fillMaxWidth().clickable { navController.navigate("artist/${artist.id}") },
+                    colors = CardDefaults.cardColors(containerColor = CardBackground),
+                    shape = RoundedCornerShape(24.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.padding(20.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(artist.name.uppercase(), color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Black)
+                            Text(artist.genres.joinToString(" · "), color = TextMuted, fontSize = 12.sp)
+                        }
+                        
+                        IconButton(
+                            onClick = {
+                                haptic.mediumTap()
+                                artistViewModel.toggleFavorite(artist.id)
+                            }
+                        ) {
+                            Icon(
+                                if (isFavorite) Icons.Filled.Star else Icons.Filled.AutoAwesome,
+                                contentDescription = null,
+                                tint = if (isFavorite) AcidYellow else Color.White.copy(alpha = 0.2f)
+                            )
+                        }
                     }
                 }
-            )
-        }
-
-        item {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                // Save all button
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(PrimaryMagenta)
-                        .clickable {
-                            haptic.successBurst()
-                            scope.launch {
-                                results.forEach { artist ->
-                                    userDao.addFavorite(FavoriteArtist(artistId = artist.id, timestamp = System.currentTimeMillis()))
-                                }
-                            }
-                        }
-                        .padding(20.dp),
-                    contentAlignment = Alignment.Center
+            }
+            
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
+                Button(
+                    onClick = { navController.navigate("discover") },
+                    modifier = Modifier.fillMaxWidth().height(64.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
+                    shape = RoundedCornerShape(16.dp)
                 ) {
-                    Text(
-                        "★  SAVE ALL AS FAVORITES",
-                        color = Color.White,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp
-                    )
+                    Text("EXPLORE ALL ARTISTS", fontWeight = FontWeight.Black)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Icon(Icons.Default.ChevronRight, contentDescription = null)
                 }
-
-                TextButton(onClick = {
-                    haptic.lightTap()
-                    quizViewModel.reset()
-                    navController.popBackStack()
-                }) {
-                    Text("RETAKE QUIZ", color = TextMuted, fontSize = 13.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ResultArtistCard(
-    artist: Artist,
-    index: Int,
-    onArtistClick: () -> Unit,
-    onFavorite: () -> Unit
-) {
-    var favorited by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 6.dp)
-            .clip(RoundedCornerShape(20.dp))
-            .background(CardBackground)
-            .border(1.dp, Color.White.copy(alpha = 0.06f), RoundedCornerShape(20.dp))
-            .clickable(onClick = onArtistClick)
-    ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Rank number
-            Box(
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(OLEDBlack),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "#${index + 1}",
-                    color = AcidYellow,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Black
-                )
-            }
-            Spacer(modifier = Modifier.width(12.dp))
-            // Artist image
-            AsyncImage(
-                model = artist.imageUrl,
-                contentDescription = artist.artist,
-                modifier = Modifier
-                    .size(64.dp)
-                    .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.width(14.dp))
-            // Info
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = artist.artist.uppercase(),
-                    color = TextPrimary,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Black,
-                    letterSpacing = 0.3.sp
-                )
-                if (artist.genres.isNotEmpty()) {
-                    Text(
-                        text = artist.genres.take(3).joinToString(" · "),
-                        color = TextMuted,
-                        fontSize = 11.sp,
-                        modifier = Modifier.padding(top = 3.dp)
-                    )
-                }
-                if (artist.day != null) {
-                    Text(
-                        text = artist.day.uppercase(),
-                        color = CyanPulse,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Bold,
-                        letterSpacing = 1.sp,
-                        modifier = Modifier.padding(top = 2.dp)
-                    )
-                }
-            }
-            // Favorite button
-            IconButton(
-                onClick = {
-                    favorited = true
-                    onFavorite()
-                }
-            ) {
-                Icon(
-                    Icons.Default.Star,
-                    contentDescription = "Favorite",
-                    tint = if (favorited) AcidYellow else TextMuted,
-                    modifier = Modifier.size(22.dp)
-                )
             }
         }
     }
