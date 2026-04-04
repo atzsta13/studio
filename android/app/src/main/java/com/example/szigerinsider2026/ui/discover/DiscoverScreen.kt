@@ -132,6 +132,7 @@ fun DiscoverScreen(
     val localAiDownloadProgress by discoverViewModel.downloadProgress.collectAsStateWithLifecycle()
     val localAiResponse by discoverViewModel.localAiResponse.collectAsStateWithLifecycle()
     val isLocalAiLoading by discoverViewModel.isLocalAiLoading.collectAsStateWithLifecycle()
+    val isListening by discoverViewModel.isListening.collectAsStateWithLifecycle()
     
     val config = FestivalConfig.current
     val isLoading by discoverViewModel.isLoading.collectAsStateWithLifecycle()
@@ -259,12 +260,14 @@ fun DiscoverScreen(
                         isDownloaded = isLocalAiDownloaded,
                         progress = localAiDownloadProgress,
                         isLoading = isLocalAiLoading,
+                        isListening = isListening,
                         response = localAiResponse,
                         onDownload = { 
                             val modelUrl = "${config.productionUrl}/ai/gemma4-2b-android.bin"
                             discoverViewModel.downloadModel(modelUrl) 
                         },
                         onSearch = { discoverViewModel.runLocalScout(it) },
+                        onListen = { discoverViewModel.startAcousticScout() },
                         onClear = { discoverViewModel.clearLocalScout() }
                     )
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -489,23 +492,14 @@ fun LocalAiScoutCard(
     isDownloaded: Boolean,
     progress: Float,
     isLoading: Boolean,
+    isListening: Boolean,
     response: String?,
     onDownload: () -> Unit,
     onSearch: (String) -> Unit,
+    onListen: () -> Unit,
     onClear: () -> Unit
 ) {
     var prompt by remember { mutableStateOf("") }
-    var isListening by remember { mutableStateOf(false) }
-    
-    LaunchedEffect(isListening) {
-        if (isListening) {
-            // Simulate 3 seconds of listening
-            kotlinx.coroutines.delay(3000)
-            isListening = false
-            // Send a simulated "Acoustic Fingerprint" prompt
-            onSearch("I am listening to music right now. It has a heavy, fast 145 BPM techno beat with dark industrial synths. Which artist on the lineup sounds exactly like this?")
-        }
-    }
     
     Card(
         colors = CardDefaults.cardColors(containerColor = if (isDownloaded) Color(0xFF1A1A1D) else CardBackground),
@@ -533,8 +527,20 @@ fun LocalAiScoutCard(
                     color = TextPrimary,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Black,
-                    letterSpacing = 1.sp
+                    letterSpacing = 1.sp,
+                    modifier = Modifier.weight(1f)
                 )
+                if (isDownloaded) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(ToxicGreen.copy(alpha = 0.1f))
+                            .border(0.5.dp, ToxicGreen.copy(alpha = 0.4f), RoundedCornerShape(4.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp)
+                    ) {
+                        Text("SECURE ON-DEVICE", color = ToxicGreen, fontSize = 7.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+                    }
+                }
             }
             
             Spacer(modifier = Modifier.height(12.dp))
@@ -621,7 +627,7 @@ fun LocalAiScoutCard(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             IconButton(
-                                onClick = { isListening = true },
+                                onClick = onListen,
                                 modifier = Modifier
                                     .size(56.dp)
                                     .clip(RoundedCornerShape(16.dp))

@@ -231,8 +231,16 @@ export default function DiscoverPage() {
     if (!aiPrompt.trim()) return;
     haptic.mediumTap();
     setIsAiLoading(true);
+    
+    const contextPrefix = selectedStage 
+      ? `The user is currently focused on the ${selectedStage} area. ` 
+      : '';
+
     try {
-      const result = await recommendArtists({ prompt: aiPrompt });
+      const result = await recommendArtists({ 
+        prompt: contextPrefix + aiPrompt,
+        festivalId: festivalId 
+      });
       setAiResult(result);
       setViewMode('ai');
       setIsAiDialogOpen(false);

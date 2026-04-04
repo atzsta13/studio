@@ -1,0 +1,81 @@
+[
+  {
+    "id": "behemoth",
+    "artist": "Behemoth",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "2026-07-17T22:30:00",
+    "endTime": "2026-07-17T23:59:00",
+    "isHeadliner": true,
+    "genres": [
+      "Blackened Death Metal",
+      "Metal"
+    ],
+    "countryCode": "PL",
+    "description": "The kings of extreme metal return to Leoben.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1Sqrvdb99pbmv8Yn693m7T"
+    },
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Brutal",
+      "Dark"
+    ]
+  },
+  {
+    "id": "machine-head",
+    "artist": "Machine Head",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T22:00:00",
+    "endTime": "2026-07-18T23:30:00",
+    "isHeadliner": true,
+    "genres": [
+      "Groove Metal",
+      "Thrash Metal"
+    ],
+    "countryCode": "US",
+    "description": "An explosive finale for the 2026 edition.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/699OTQXzgjt6pe4p9px987"
+    },
+    "vibes": [
+      "Heavy",
+      "Rhythmic",
+      "Aggressive",
+      "Energetic",
+      "Intense",
+      "Fast",
+      "Raw"
+    ]
+  },
+  {
+    "id": "heaven-shall-burn",
+    "artist": "Heaven Shall Burn",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-07-16T21:00:00",
+    "endTime": "2026-07-16T22:15:00",
+    "isHeadliner": true,
+    "genres": [
+      "Melodic Death Metal",
+      "Metalcore"
+    ],
+    "countryCode": "DE",
+    "description": "Unmatched intensity from the German metalcore titans.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4997pAbSp6SIn99Z66InSa"
+    },
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Brutal",
+      "Dark",
+      "Aggressive",
+      "Melodic"
+    ]
+  }
+]

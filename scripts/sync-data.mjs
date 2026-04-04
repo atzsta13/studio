@@ -21,19 +21,30 @@ for (const id of festivalFolders) {
   const festDir = path.join(FESTIVALS_DIR, id)
   if (!fs.statSync(festDir).isDirectory()) continue
 
-  const src = path.join(festDir, 'data')
+  const srcData = path.join(festDir, 'data')
+  const srcAssets = path.join(festDir, 'assets')
   const dest = path.join(PUBLIC_DATA_DIR, id)
 
-  if (fs.existsSync(src)) {
+  if (fs.existsSync(srcData)) {
     if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
     
     // Copy JSON files to public/data/[id]
-    for (const file of fs.readdirSync(src)) {
+    for (const file of fs.readdirSync(srcData)) {
       if (file.endsWith('.json')) {
-        fs.copyFileSync(path.join(src, file), path.join(dest, file))
+        fs.copyFileSync(path.join(srcData, file), path.join(dest, file))
       }
     }
     console.log(`✓ Synced data for: ${id}`)
+  }
+
+  if (fs.existsSync(srcAssets)) {
+    const assetDest = path.join(dest, 'assets')
+    if (!fs.existsSync(assetDest)) fs.mkdirSync(assetDest, { recursive: true })
+    
+    for (const file of fs.readdirSync(srcAssets)) {
+      fs.copyFileSync(path.join(srcAssets, file), path.join(assetDest, file))
+    }
+    console.log(`✓ Synced assets for: ${id}`)
   }
 }
 

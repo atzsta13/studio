@@ -1,0 +1,7 @@
+[
+  { "id": "stage-main", "name": "Main Stage", "category": "stage", "mapCoords": { "x": 50, "y": 50 } },
+  { "id": "stage-side", "name": "Metal Stage", "category": "stage", "mapCoords": { "x": 20, "y": 30 } },
+  { "id": "water-1", "name": "Water Station", "category": "water", "mapCoords": { "x": 10, "y": 80 } },
+  { "id": "medical-1", "name": "Red Cross", "category": "medical", "mapCoords": { "x": 80, "y": 10 } },
+  { "id": "toilet-1", "name": "Toilets", "category": "toilet", "mapCoords": { "x": 90, "y": 90 } }
+]

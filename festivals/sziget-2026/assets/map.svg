@@ -1,0 +1,46 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100" height="100" fill="#09090b" />
+  
+  <!-- Stylized Island Shape -->
+  <path d="M20,10 Q50,5 80,10 Q95,40 85,80 Q50,95 15,80 Q5,40 20,10" fill="#131315" stroke="#ffffff10" stroke-width="0.5" />
+  
+  <!-- Danube River -->
+  <path d="M0,20 Q10,15 20,10 M80,10 Q90,5 100,0" stroke="#00c3ff20" stroke-width="2" fill="none" />
+  <path d="M0,80 Q10,85 15,80 M85,80 Q95,85 100,90" stroke="#00c3ff20" stroke-width="2" fill="none" />
+
+  <!-- Grid Overlay -->
+  <g stroke="#ffffff05" stroke-width="0.1">
+    <line x1="0" y1="20" x2="100" y2="20" />
+    <line x1="0" y1="40" x2="100" y2="40" />
+    <line x1="0" y1="60" x2="100" y2="60" />
+    <line x1="0" y1="80" x2="100" y2="80" />
+    <line x1="20" y1="0" x2="20" y2="100" />
+    <line x1="40" y1="0" x2="40" y2="100" />
+    <line x1="60" y1="0" x2="60" y2="100" />
+    <line x1="80" y1="0" x2="80" y2="100" />
+  </g>
+
+  <!-- Key Districts (Brutalist Blocks) -->
+  
+  <!-- Main Arena (Center) -->
+  <rect x="38" y="44" width="8" height="8" fill="#ff008010" stroke="#ff008040" stroke-width="0.5" rx="1" />
+  
+  <!-- Delta District (West) -->
+  <path d="M18,50 L26,50 L26,60 L18,60 Z" fill="#00c3ff10" stroke="#00c3ff40" stroke-width="0.5" />
+  
+  <!-- Szoho District (North West) -->
+  <path d="M12,25 L20,25 L20,35 L12,35 Z" fill="#4ade8010" stroke="#4ade8040" stroke-width="0.5" />
+  
+  <!-- Global Village (South East) -->
+  <circle cx="62" cy="72" r="6" fill="#ffee0010" stroke="#ffee0040" stroke-width="0.5" />
+  
+  <!-- Colosseum (North) -->
+  <rect x="32" y="18" width="6" height="8" fill="#ffffff05" stroke="#ffffff20" stroke-width="0.5" rx="0.5" />
+
+  <!-- Labels (Subtle) -->
+  <text x="42" y="42" fill="#ffffff20" font-size="2" font-weight="900" text-anchor="middle">MAIN ARENA</text>
+  <text x="22" y="62" fill="#ffffff20" font-size="2" font-weight="900" text-anchor="middle">DELTA DISTRICT</text>
+  <text x="62" y="80" fill="#ffffff20" font-size="2" font-weight="900" text-anchor="middle">GLOBAL VILLAGE</text>
+  <text x="16" y="23" fill="#ffffff20" font-size="2" font-weight="900" text-anchor="middle">SZOHO</text>
+</svg>

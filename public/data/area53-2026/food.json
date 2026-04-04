@@ -1,0 +1,24 @@
+[
+  {
+    "id": "v-1",
+    "name": "Metal Burgers",
+    "location": "Main Food Court",
+    "mapCoords": { "x": 40, "y": 20 },
+    "categories": ["food"],
+    "dietary": ["vegetarian"],
+    "priceRange": "mid",
+    "currency": "EUR",
+    "description": "Juicy burgers for hungry headliners."
+  },
+  {
+    "id": "v-2",
+    "name": "BILLA Food Stage",
+    "location": "Entrance Plaza",
+    "mapCoords": { "x": 15, "y": 15 },
+    "categories": ["food", "drink"],
+    "dietary": ["vegan", "vegetarian", "gluten-free"],
+    "priceRange": "budget",
+    "currency": "EUR",
+    "description": "Official supermarket partner with fresh snacks."
+  }
+]

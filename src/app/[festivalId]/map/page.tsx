@@ -248,9 +248,13 @@ export default function MapPage() {
             
             {/* Dynamic Map Asset */}
             <img 
-              src="/map.svg" 
-              alt="Festival Map" 
+              src={`/data/${festivalId}/assets/map.svg`} 
+              alt={`${config.name} Map`} 
               className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${hydrationMode ? 'opacity-20' : 'opacity-100'}`}
+              onError={(e) => {
+                // Fallback to a generic map if specific one is missing
+                (e.target as HTMLImageElement).src = '/map.svg';
+              }}
             />
 
             {/* Coordinate Layer */}

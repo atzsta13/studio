@@ -18,6 +18,7 @@ class DiscoverViewModel(
 
     private val aiRepository = context?.let { AiRecommendationRepository(it) }
     private val localScoutRepository = context?.let { com.example.szigerinsider2026.data.repository.LocalScoutRepository(it) }
+    private val acousticRepository = context?.let { com.example.szigerinsider2026.data.repository.AcousticRepository(it) }
 
     private val _allArtists = MutableStateFlow<List<Artist>>(emptyList())
     
@@ -25,6 +26,9 @@ class DiscoverViewModel(
     val isLocalAiDownloaded = localScoutRepository?.isModelDownloaded ?: MutableStateFlow(false)
     val downloadProgress = localScoutRepository?.downloadProgress ?: MutableStateFlow(0f)
     
+    private val _isListening = MutableStateFlow(false)
+    val isListening = _isListening.asStateFlow()
+
     private val _localAiResponse = MutableStateFlow<String?>(null)
     val localAiResponse = _localAiResponse.asStateFlow()
 
@@ -136,11 +140,30 @@ class DiscoverViewModel(
         localScoutRepository?.initializeLlm()
     }
 
+    fun startAcousticScout() {
+        viewModelScope.launch {
+            if (acousticRepository == null) return@launch
+            _isListening.value = true
+            try {
+                val signature = acousticRepository.captureAcousticSignature()
+                runLocalScout("I am at a stage listening to this: $signature. Based on the lineup, who is performing and what is their vibe?")
+            } finally {
+                _isListening.value = false
+            }
+        }
+    }
+
     fun runLocalScout(prompt: String) {
         viewModelScope.launch {
             _isLocalAiLoading.value = true
             _localAiResponse.value = "" // Start with empty string
-            localScoutRepository?.getLocalRecommendationsStreaming(prompt, _allArtists.value)
+            
+            val currentFocus = _selectedStage.value
+            val contextPrefix = if (currentFocus != null) {
+                "The user is currently focusing on the '$currentFocus' territory. "
+            } else ""
+
+            localScoutRepository?.getLocalRecommendationsStreaming(contextPrefix + prompt, _allArtists.value)
                 ?.collect { chunk ->
                     _localAiResponse.value = (_localAiResponse.value ?: "") + chunk
                 }

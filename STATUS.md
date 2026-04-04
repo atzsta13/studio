@@ -1,30 +1,30 @@
 # 🚀 Project Status: Festival Insider Platform
 
-**Last Updated:** 2026-04-04 (Configurability Pass)
-**Current Phase:** Phase 4: Ecosystem Dominance
-**Health:** 🟢 Green (50+ Features Implemented, 98% Configurable White-Label Engine)
+**Last Updated:** 2026-04-04 (The Immersive AI & Hub Pass)
+**Current Phase:** Phase 5: The Meta-Hub / Phase 6: Immersive AI
+**Health:** 🟢 Green (Architecture Refactored to Monolith, Local LLM Active)
 
 ## 🏁 Major Milestones Reached
-- **100% Configurable UI**: Refactored Navigation, Discovery, Passport, and Tools screens to strictly respect `config.json` feature flags and content.
-- **Dynamic Content Injection**: Moved hardcoded emergency contacts, survival guide sections, hidden gems, and passport stamps into the JSON schema.
-- **Unified Config Architecture**: Moved the master brain to `config.json`. Web and Android are now 100% synchronized via a single JSON source of truth.
-- **Massive Code Cleanup**: Deleted **25,000+ lines** of redundant hardcoded configuration objects across both platforms.
-- **Production Data Packages**: Scraped and refined full lineups for **Nova Rock** (84 acts) and **Frequency** (47 acts), including bios and high-res images.
-- **AI Taxonomic Vibe Engine**: Centralized Genre-to-Vibe mapping powers discovery for all four festivals automatically.
-- **Harmonic Note Identity**: Established a unified "♫" DNA across all festivals with festival-specific monogram cutouts (SZ, FQ, NR, 53).
-- **Vector Core Sharpness**: Replaced blurry PNGs with mathematical Android Vector Drawables for 100% sharpness on high-density 2026 hardware.
-- **Next.js Type-Safety**: Resolved `useHydration` and `lucide-react` mismatches, ensuring a 100% "Green Build" baseline.
-- **Hardware Verified**: Built and deployed 4 independent branded apps to physical SM-S931B hardware via ADB.
+- **Monolithic Hub Architecture**: Migrated Web to `/[festivalId]` structure. Root `/` is now a cross-festival discovery portal.
+- **Global Vibe Scout**: Implemented Genkit-powered cross-festival matchmaker (Replacing Spotify API).
+- **Acoustic AI Scout**: Integrated Google AI Edge (Gemma 4) UI and infra for offline sound identity on Android.
+- **Dynamic Routing & Data**: Refactored all 8+ core pages to load data dynamically based on URL params.
+- **Unified Schema 2.0**: All festivals now share `radarFocuses`, `emergencyContacts`, and `passport` JSON schemas.
+- **Hardware Verified**: Local Gemma 4 inference tested on Galaxy S25 (Snapdragon 8 Gen 4).
+
+## 🚨 Feature Holds (Suspended)
+- **Spotify Integration**: **ON HOLD**. Restrictive Spotify Dev policies (manual user allow-listing) make this unfeasible for a white-label public app. Pivoted to "Natural Language Scouting."
 
 ## 🛠️ Unified Hot Zones
-1. **Master Config**: `festivals/<id>/config.json` (Change one file to rebrand the entire platform).
-2. **Data Packages**: `festivals/<id>/data/` (Lineup, POI, Guide).
-3. **Asset Sync**: `scripts/sync-data.mjs` (Handles icons, maps, and JSON bundles).
+1. **Master Config**: `festivals/<id>/config.json` (The "Brains").
+2. **Data Packages**: `festivals/<id>/data/` (Lineup, POI, Guide, Food).
+3. **Asset Sync**: `scripts/sync-data.mjs` (Now prepares Hub-wide data in `public/data/`).
 
-## 🔜 Future Priorities (Phase 3 Cont.)
-- [ ] **Venue Map Design**: Actual coordinate-mapped SVG layouts for Austrian venues.
-- [ ] **Android Production Signing**: Prepare `.jks` and release flavors for Play Store submission.
-- [ ] **Data Sync Button**: Optional Android feature to pull latest JSON from the hosted web app.
+## 🔜 Next Quality Priorities
+- [ ] **SVG Map Precision**: Actual coordinate-mapped SVG layouts for Sziget and Austrian venues.
+- [ ] **Acoustic Conformer**: Real microphone sampling logic for the local Gemma engine.
+- [ ] **Follow Your Artist**: Hub-wide search results showing artist dates across multiple festivals.
+- [ ] **Android Multi-Flavor**: Finalizing build variants for all production festivals.
 
 ## 📝 LLM / Agent Context
-The platform is now **Data-Driven and Streamlined**. Never hardcode config in Kotlin or TypeScript. All branding lives in the festival-specific `config.json`.
+The platform is now **Monolithic and Agentic**. Use `useFestivalData` on Web and `LocalScoutRepository` on Android. Never assume a static festival context.

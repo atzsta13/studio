@@ -38,6 +38,19 @@ export function GlobalMatchmaker() {
       <Sparkles className="h-16 w-16 text-primary mx-auto mb-8 relative z-10" />
       <h3 className="text-4xl font-black uppercase italic tracking-tighter mb-6 relative z-10">Global Vibe Scout</h3>
       
+      {!result && (
+        <div className="flex justify-center gap-4 mb-10 relative z-10">
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+            <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-muted-foreground">Privacy Shield Active</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+            <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+            <span className="text-[8px] font-black uppercase tracking-[0.2em] text-muted-foreground">Genkit Core 2.0</span>
+          </div>
+        </div>
+      )}
+      
       {!result ? (
         <div className="relative z-10 max-w-2xl mx-auto">
           <p className="text-xl text-muted-foreground italic mb-10 leading-relaxed">

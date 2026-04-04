@@ -14,8 +14,17 @@ interface GlobalResult {
   artist: LineupItem;
 }
 
+import { useRouter } from 'next/navigation';
+
 export function GlobalSearch() {
+  const router = useRouter();
   const [query, setSearchQuery] = useState('');
+  
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && query.trim().length >= 2) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
+  };
   const [allLineups, setAllLineups] = useState<Record<string, LineupItem[]>>({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -73,6 +82,7 @@ export function GlobalSearch() {
             placeholder="Search 4 festivals and 800+ artists..."
             value={query}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
             className="h-20 pl-16 pr-8 rounded-[2rem] bg-card/50 border-white/5 text-xl font-bold focus-visible:ring-primary/50 backdrop-blur-3xl transition-all"
           />
           {isLoading && <Loader2 className="absolute right-6 h-6 w-6 animate-spin text-primary/40" />}
