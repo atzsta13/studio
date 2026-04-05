@@ -1,10 +1,29 @@
-import { FESTIVAL_CONFIGS, getFestivalConfig } from '@/config/festival';
+import { FESTIVAL_CONFIGS, getFestivalConfig } from '@/config/festival-engine';
 import Header from '@/components/layout/header';
 import BottomNav from '@/components/layout/bottom-nav';
 import { OfflineBanner } from '@/components/layout/offline-banner';
-import { InsiderProvider } from '@/components/insider-provider';
-import { ErrorBoundary } from '@/components/error-boundary';
+import { InsiderProvider } from '@/components/layout/insider-provider';
+import { ErrorBoundary } from '@/components/layout/error-boundary';
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ festivalId: string }>;
+}): Promise<Metadata> {
+  const { festivalId } = await params;
+  const config = getFestivalConfig(festivalId);
+
+  return {
+    title: {
+      template: `%s | ${config.appName}`,
+      default: `${config.appName} — ${config.tagline}`,
+    },
+    description: config.description,
+    manifest: `/api/${festivalId}/manifest.json`,
+  };
+}
 
 export async function generateStaticParams() {
   return Object.keys(FESTIVAL_CONFIGS).map((id) => ({

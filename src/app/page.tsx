@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FESTIVAL_CONFIGS } from '@/config/festival';
+import { FESTIVAL_CONFIGS } from '@/config/festival-engine';
 import { Card, CardContent } from '@/components/ui/card';
 import { Music2, ArrowRight, MapPin, Calendar, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';

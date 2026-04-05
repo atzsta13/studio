@@ -175,7 +175,7 @@ export default function ArtistDetailPage() {
           </div>
 
           <div className="mb-10">
-            <FavoriteButton artistId={artist.id} />
+            <FavoriteButton artistId={artist.id} festivalId={festivalId} />
           </div>
 
           <Button asChild size="lg" className="w-full h-20 rounded-[2rem] shadow-2xl shadow-primary/20 font-black uppercase tracking-[0.3em] text-base transition-all hover:scale-[1.02] active:scale-95">
@@ -221,7 +221,7 @@ export default function ArtistDetailPage() {
               <h3 className="mb-8 text-3xl font-black uppercase italic tracking-tighter">Ecosystem Appearances</h3>
               <div className="space-y-4">
                 {appearances.filter(a => a.festivalId !== festivalId).map(app => (
-                  <Link key={app.festivalId} href={`/${app.festivalId}/artist/${artist.artist.toLowerCase().replace(/ /g, '-')}`}>
+                  <Link key={app.festivalId} href={`/${app.festivalId}/artist/${app.artistId}`}>
                     <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:border-primary/30 transition-all group flex items-center justify-between">
                       <div className="flex items-center gap-4">
                         <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform">

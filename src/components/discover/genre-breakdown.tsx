@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { PieChart, Pie, Cell as PieCell } from 'recharts';
 import { LineChart, Line } from 'recharts';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 import { Zap, PieChart as PieIcon } from 'lucide-react';
 import type { LineupItem } from '@/types';
 

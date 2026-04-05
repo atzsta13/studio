@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Clock, Zap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
 
 export function VibeOfTheHour({ artists }: { artists: LineupItem[] }) {

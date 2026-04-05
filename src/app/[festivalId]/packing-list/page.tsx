@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -28,7 +29,7 @@ import {
   CreditCard
 } from 'lucide-react';
 import { PageHeader } from '@/components/layout/page-header';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 interface PackingItem {
   id: string;
@@ -61,9 +62,10 @@ const DEFAULT_ITEMS: PackingItem[] = [
   { id: '90', text: 'Power Bank (20,000mAh+ recommended)', checked: false, category: 'electronics' },
 ];
 
-const STORAGE_KEY = `${FESTIVAL.id}_packing_checklist_v2`;
-
 export default function PackingChecklistPage() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const STORAGE_KEY = `${festivalId}_packing_checklist_v2`;
+  
   const [items, setItems] = useState<PackingItem[]>([]);
   const [newItemText, setNewItemText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('essentials');

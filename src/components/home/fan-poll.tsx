@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card';
 import { BarChart2 } from 'lucide-react';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 export function FanPoll({ festivalId }: { festivalId: string }) {
   const config = getFestivalConfig(festivalId);

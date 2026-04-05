@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LineupItem } from '@/types';
 import { Heart, ChevronRight, X } from 'lucide-react';
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 
 interface SerendipityModalProps {
   artist: LineupItem | null;

@@ -37,8 +37,8 @@ import { SOSMorse } from '@/components/tools/sos-morse';
 import { FeedbackSystem } from '@/components/tools/feedback-system';
 import { CarFinder } from '@/components/tools/car-finder';
 import { useParams } from 'next/navigation';
-import { getFestivalConfig } from '@/config/festival';
-import { useInsider } from '@/components/insider-provider';
+import { getFestivalConfig } from '@/config/festival-engine';
+import { useInsider } from '@/components/layout/insider-provider';
 
 export default function ToolsPage() {
   const { festivalId } = useParams() as { festivalId: string };

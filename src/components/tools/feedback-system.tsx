@@ -6,9 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { MessageSquare, Send, Heart, Skull } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 export function FeedbackSystem() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
   const { toast } = useToast();
   const [text, setText] = useState('');
   const [sent, setSent] = useState(false);
@@ -31,7 +34,7 @@ export function FeedbackSystem() {
          </div>
          <h3 className="text-3xl font-black uppercase italic tracking-tighter mb-4">Transmission Success</h3>
          <p className="text-muted-foreground font-medium italic opacity-80 leading-relaxed mb-8">
-            The Scouts thank you. Your feedback helps make {FESTIVAL.name} even more legendary.
+            The Scouts thank you. Your feedback helps make {config.name} even more legendary.
          </p>
          <Button onClick={() => setSent(false)} variant="outline" className="rounded-xl font-black uppercase tracking-widest text-[10px] border-emerald-500/20 hover:bg-emerald-500/10">Send Another</Button>
       </Card>
@@ -49,7 +52,7 @@ export function FeedbackSystem() {
       <CardContent className="p-10">
         <div className="space-y-8">
           <p className="text-lg font-medium text-muted-foreground italic leading-relaxed opacity-80">
-             Found a bug? Have a suggestion? Spotted a secret stage? Report it directly to the {FESTIVAL.name} Insider team.
+             Found a bug? Have a suggestion? Spotted a secret stage? Report it directly to the {config.name} Insider team.
           </p>
           <Textarea 
             placeholder="Report your findings..." 

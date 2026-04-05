@@ -13,8 +13,8 @@ import {
 const MIN_TIME = 12; // 12 PM
 const MAX_TIME = 36; // 12 PM (the next day)
 
-export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
-    const { favorites, toggleFavorite, conflicts } = useFavorites(lineup);
+export default function TimetableView({ lineup, festivalId }: { lineup: LineupItem[], festivalId?: string }) {
+    const { favorites, toggleFavorite, conflicts } = useFavorites(lineup, festivalId);
 
     const [notificationsSupported, setNotificationsSupported] = useState(false);
     const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');

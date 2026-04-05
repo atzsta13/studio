@@ -3,20 +3,21 @@
 import { useState, useEffect } from 'react';
 import { Heart, Eye, CheckCircle2 } from 'lucide-react';
 import { useFavorites } from '@/hooks/use-favorites';
-import { useHaptic } from '@/hooks/useHaptic';
-import { FESTIVAL } from '@/config/festival';
+import { useHaptic } from '@/hooks/use-haptic';
+import { FESTIVAL } from '@/config/festival-engine';
 
 interface FavoriteButtonProps {
     artistId: string;
     size?: 'sm' | 'lg';
+    festivalId?: string;
 }
 
-const SEEN_KEY = `${FESTIVAL.id}-seen`;
-
-export function FavoriteButton({ artistId, size = 'lg' }: FavoriteButtonProps) {
-    const { isFavorite, toggleFavorite } = useFavorites();
+export function FavoriteButton({ artistId, size = 'lg', festivalId }: FavoriteButtonProps) {
+    const { isFavorite, toggleFavorite } = useFavorites([], festivalId);
     const [isSeen, setIsSeen] = useState(false);
     const haptic = useHaptic();
+
+    const SEEN_KEY = `${festivalId || 'default'}-seen`;
 
     useEffect(() => {
         const raw = localStorage.getItem(SEEN_KEY);

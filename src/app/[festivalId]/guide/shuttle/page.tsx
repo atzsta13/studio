@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bus, Train, Ship, Info } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 export const metadata: Metadata = {
   title: 'Shuttle & Transport',

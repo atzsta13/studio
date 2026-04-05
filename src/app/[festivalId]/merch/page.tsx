@@ -3,7 +3,7 @@
 import { PageHeader } from '@/components/layout/page-header';
 import { Card } from '@/components/ui/card';
 import { ShoppingBag } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 export default function MerchPage() {
   return (

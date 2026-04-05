@@ -3,7 +3,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Newspaper, Bell } from 'lucide-react';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 export function NewsBulletin({ festivalId }: { festivalId: string }) {
   const config = getFestivalConfig(festivalId);

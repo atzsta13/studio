@@ -423,35 +423,6 @@ fun SOSBeaconButton(onClick: () -> Unit) {
 }
 
 @Composable
-fun CarFinderCard() {
-    Card(
-        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(32.dp),
-        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
-    ) {
-        Column(modifier = Modifier.padding(24.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
-                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(CyanPulse.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Default.DirectionsCar, contentDescription = null, tint = CyanPulse, modifier = Modifier.size(24.dp))
-                }
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(text = "CAR FINDER", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
-            }
-            Text(text = "Save your parking spot to find your way back after the festival.", color = TextMuted, fontSize = 13.sp, lineHeight = 18.sp)
-            Spacer(modifier = Modifier.height(20.dp))
-            Button(
-                onClick = { /* TODO: GPS Save */ },
-                modifier = Modifier.fillMaxWidth().height(56.dp),
-                shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = OLEDBlack)
-            ) {
-                Text("SAVE CURRENT LOCATION", fontWeight = FontWeight.Black)
-            }
-        }
-    }
-}
-
-@Composable
 fun HydrationTrackerCard() {
     var cups by remember { mutableIntStateOf(0) }
     Card(

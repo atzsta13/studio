@@ -1,4 +1,4 @@
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 import { MoodTagOption } from '@/types';
 import { QuizOptionCard } from './QuizOptionCard';
 

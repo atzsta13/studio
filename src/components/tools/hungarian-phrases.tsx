@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 interface Phrase {
   english: string;
@@ -62,6 +63,8 @@ const PHRASE_CATEGORIES: PhraseCategory[] = [
 ];
 
 function PhraseRow({ phrase }: { phrase: Phrase }) {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -99,7 +102,7 @@ function PhraseRow({ phrase }: { phrase: Phrase }) {
           <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '0.75rem' }}>→</span>
           <span
             style={{
-              color: FESTIVAL.theme.accentHex,
+              color: config.theme.accentHex,
               fontWeight: 900,
               fontSize: '0.95rem',
               letterSpacing: '-0.01em',

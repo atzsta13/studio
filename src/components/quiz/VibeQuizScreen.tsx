@@ -3,8 +3,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
 import { LineupItem } from '@/types';
-import { useVibeQuiz } from '@/hooks/useVibeQuiz';
-import { useHaptic } from '@/hooks/useHaptic';
+import { useVibeQuiz } from '@/hooks/use-vibe-quiz';
+import { useHaptic } from '@/hooks/use-haptic';
 import { EnergyStep } from './EnergyStep';
 import { GenreStep } from './GenreStep';
 import { CrowdVibeStep } from './CrowdVibeStep';

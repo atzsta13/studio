@@ -8,7 +8,6 @@ export interface LineupItem {
   countryCode?: string;
   genres?: string[];
   festivalUrl?: string;
-  szigetUrl?: string;
   imageUrl?: string;
   socials?: {
     spotify?: string;

@@ -2,23 +2,29 @@
 
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent } from '@/components/ui/card';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
+import { useFestivalData } from '@/hooks/use-festival-data';
 import { Bus, ArrowRight } from 'lucide-react';
 
 export default function ShuttlePage() {
-  const shuttles = FESTIVAL.content.shuttleRoutes;
+  const { festivalId } = useParams() as { festivalId: string };
+  const { config, isLoading } = useFestivalData(festivalId);
+
+  if (isLoading || !config) return null;
+
+  const shuttles = config.content.shuttleRoutes;
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-20 pb-32">
       <PageHeader
         title="Shuttle Network"
-        description={`Rapid transport across the ${FESTIVAL.name} ecosystem. Synchronize your movements.`}
+        description={`Rapid transport across the ${config.name} ecosystem. Synchronize your movements.`}
       />
 
       {shuttles.length === 0 ? (
         <Card className="mt-16 bg-card/30 border-white/5 rounded-[3rem] p-12 text-center">
           <p className="text-lg font-medium text-muted-foreground/60 italic">
-            Shuttle routes for {FESTIVAL.name} have not been published yet.
+            Shuttle routes for {config.name} have not been published yet.
           </p>
         </Card>
       ) : (
@@ -42,7 +48,7 @@ export default function ShuttlePage() {
                   </div>
                   <div className="flex gap-4">
                     <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/5 text-center">
-                      <p className="text-[8px] font-black uppercase tracking-widest text-muted-foreground mb-1">Frequency</p>
+                      <p className="text-[8px] font-black uppercase tracking-widest text-muted-foreground mb-1">{config.name}</p>
                       <p className="font-bold text-sm italic">{s.freq}</p>
                     </div>
                     <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/5 text-center">
@@ -60,7 +66,7 @@ export default function ShuttlePage() {
       {shuttles.length > 0 && (
         <Card className="mt-12 bg-emerald-600/10 border border-emerald-500/20 rounded-[3rem] p-10 text-center italic">
           <p className="text-emerald-500 font-bold leading-relaxed">
-            * Shuttle schedules are subject to local traffic and {FESTIVAL.name} security protocols.
+            * Shuttle schedules are subject to local traffic and {config.name} security protocols.
             Check live notifications for delays.
           </p>
         </Card>

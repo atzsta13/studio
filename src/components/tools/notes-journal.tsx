@@ -5,10 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { FileText, Save, Trash2, Clock } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
-
-const STORAGE_KEY = `${FESTIVAL.id}-notes`;
 
 interface Note {
   id: string;
@@ -17,6 +15,8 @@ interface Note {
 }
 
 export function NotesJournal() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const STORAGE_KEY = `${festivalId}-notes`;
   const { toast } = useToast();
   const [notes, setNotes] = useState<Note[]>([]);
   const [currentNote, setCurrentNote] = useState('');

@@ -7,7 +7,6 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Event
-import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -53,7 +52,6 @@ import com.example.szigerinsider2026.ui.quiz.VibeQuizScreen
 import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
 import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
 import com.example.szigerinsider2026.ui.food.FoodScreen
-import com.example.szigerinsider2026.ui.highlights.HighlightsScreen
 import com.example.szigerinsider2026.ui.packing.PackingListScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector, val featureCheck: ((com.example.szigerinsider2026.data.config.FestivalFeatures) -> Boolean)? = null) {
@@ -62,7 +60,6 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector,
     object Schedule : Screen("schedule", "TIMETABLE", Icons.Filled.Event, { it.timetable })
     object Map : Screen("map", "MAP", Icons.Filled.LocationOn, { it.weatherRadar })
     object Tools : Screen("tools", "TOOLS", Icons.Filled.Build)
-    object Highlights : Screen("highlights", "WINS", Icons.Default.EmojiEvents)
 }
 
 val allBottomNavItems = listOf(
@@ -209,9 +206,6 @@ fun AppNavigation() {
                 }
                 composable("food") {
                     FoodScreen()
-                }
-                composable("highlights") {
-                    HighlightsScreen(onBack = { navController.popBackStack() })
                 }
                 composable("packing_list") {
                     PackingListScreen(navController)

@@ -62,7 +62,6 @@ data class FestivalFeatures(
     val quietZones: Boolean = false,
     val crowdHeatmap: Boolean = false,
     val merchPriceWatch: Boolean = false,
-    val ecoWarrior: Boolean = false,
     val secretStages: Boolean = false,
     val afterMovie: Boolean = false,
     val feedbackSystem: Boolean = false,

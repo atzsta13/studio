@@ -1,4 +1,4 @@
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 import { QuizOptionCard } from './QuizOptionCard';
 
 interface WildcardsStepProps {

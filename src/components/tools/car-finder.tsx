@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Car, MapPin, Trash2, Navigation } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
 import { useToast } from '@/hooks/use-toast';
-
-const STORAGE_KEY = `${FESTIVAL.id}-car-location`;
+import { useParams } from 'next/navigation';
 
 export function CarFinder() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const STORAGE_KEY = `${festivalId}-car-location`;
   const { toast } = useToast();
   const [location, setLocation] = useState<{ lat: number, lng: number } | null>(null);
 

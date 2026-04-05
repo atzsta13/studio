@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
 import { Search, Music2, MapPin, ArrowRight, Loader2 } from 'lucide-react';
-import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival';
+import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { LineupItem } from '@/types';

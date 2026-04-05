@@ -28,9 +28,8 @@ class LineupRepository(private val context: Context) {
         }
 
         // Fallback to assets
-        val fileName = if (year == "2025") "lineup_2025.json" else "lineup.json"
         try {
-            val inputStream = context.assets.open(fileName)
+            val inputStream = context.assets.open("lineup.json")
             val jsonString = InputStreamReader(inputStream).readText()
             val artists = json.decodeFromString<List<Artist>>(jsonString)
             

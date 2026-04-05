@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 interface TimeLeft {
   days: number;

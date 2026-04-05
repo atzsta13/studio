@@ -2,7 +2,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import lineup from '@/data/lineup.json';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
 
 interface SpotifyTrackItem {

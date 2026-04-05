@@ -2,9 +2,13 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Radar } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 export function WeatherRadar() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
+
   return (
     <Card className="bg-blue-600/10 border-blue-500/20 shadow-2xl overflow-hidden rounded-[3rem] backdrop-blur-3xl">
       <CardHeader className="bg-blue-500/10 border-b border-blue-500/10 px-10 py-8 flex flex-row items-center justify-between">
@@ -19,8 +23,8 @@ export function WeatherRadar() {
             Radar unavailable pre-festival
           </p>
           <p className="text-lg font-medium text-muted-foreground/60 italic">
-            Live precipitation radar for {FESTIVAL.location.weatherDisplayName} will be
-            available when {FESTIVAL.name} begins.
+            Live precipitation radar for {config.location.weatherDisplayName} will be
+            available when {config.name} begins.
           </p>
         </div>
       </CardContent>

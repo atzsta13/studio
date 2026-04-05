@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 let cachedData: unknown = null;
 let cacheTimestamp = 0;

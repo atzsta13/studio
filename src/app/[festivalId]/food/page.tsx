@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 import { Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/layout/page-header';

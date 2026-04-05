@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Droplets, Plus, RotateCcw, GlassWater } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
-import { FESTIVAL } from '@/config/festival';
-
-const STORAGE_KEY = `${FESTIVAL.id}-hydration`;
+import { useParams } from 'next/navigation';
 
 export function HydrationTracker() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const STORAGE_KEY = `${festivalId}-hydration`;
   const { toast } = useToast();
   const [glasses, setGlasses] = useState(0);
   const goal = 10; // 10 glasses of water per day target

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Icon, IconName } from "@/components/ui/icon";
 import { PageHeader } from "@/components/layout/page-header";
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 import { Loader2 } from 'lucide-react';
 
 interface GuideItem {

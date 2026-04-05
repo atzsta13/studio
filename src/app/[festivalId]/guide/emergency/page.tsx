@@ -3,7 +3,7 @@ import { HeartPulse, Phone, Shield, Navigation } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/layout/page-header';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 export const metadata: Metadata = {
   title: 'Emergency & Safety',

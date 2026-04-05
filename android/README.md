@@ -23,7 +23,6 @@ Assets (JSON) + Room DB (SQLite)
 ### Key architectural decisions
 
 - **No Hilt** — ViewModels use the factory pattern. Always pass dependencies through the constructor, never use `LocalContext` inside a ViewModel.
-- **Room for user state only** — artist/POI/food data comes from bundled JSON assets, never written to Room. Room stores only `UserProgress` (XP, rank, stamps, challenges) and `FavoriteArtist` records.
 - **Offline-first** — all content is bundled. No network calls at runtime except for artist images (loaded via Coil from `imageUrl`).
 - **`fallbackToDestructiveMigration()`** is set on Room — incrementing the DB version wipes local data. Always bump `@Database(version = N)` in `AppDatabase.kt` when changing entities.
 
@@ -44,7 +43,6 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   ├── Converters.kt               # List<String> ↔ JSON for Room
 │   │   ├── FavoriteArtist.kt           # Entity: artistId, timestamp
 │   │   ├── UserDao.kt                  # All Room queries
-│   │   └── UserProgress.kt             # Entity: legendXp, currentRank, stampsCollected, completedChallengeIds, quizCompleted
 │   ├── model/
 │   │   ├── Artist.kt                   # @Serializable — mirrors lineup.json schema
 │   │   ├── DailyForecast.kt            # Weather forecast day (part of WeatherData)
@@ -71,9 +69,6 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   ├── food/
 │   │   ├── FoodScreen.kt               # Vendor list: search, category + dietary FilterChips
 │   │   └── FoodViewModel.kt            # Combines allVendors + searchQuery + category + tags flows
-│   ├── highlights/
-│   │   ├── HighlightsScreen.kt         # Post-festival wrap: rank, XP, top genres/vibes, artist list, share
-│   │   └── HighlightsViewModel.kt      # Joins Room favorites + lineup JSON, computes summary
 │   ├── home/
 │   │   ├── HomeScreen.kt               # Countdown, headliners, quick nav, mood feed
 │   │   └── LineupDiffSheet.kt          # 2025 vs 2026 comparison sheet
@@ -82,11 +77,8 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   └── MapViewModel.kt             # POI/food loading, category filter
 │   ├── navigation/
 │   │   └── Navigation.kt               # NavHost + bottom bar, all routes defined here
-│   ├── passport/
 │   │   ├── ChallengeEngine.kt          # Pure function: favorites + artists → List<Challenge>
 │   │   ├── ChallengeListScreen.kt      # Embeddable challenge card list
-│   │   ├── PassportScreen.kt           # Tabs: STAMPS / CHALLENGES + "MY HIGHLIGHTS →" button
-│   │   └── PassportViewModel.kt        # Loads progress, evaluates challenges, awards XP
 │   ├── quiz/
 │   │   ├── VibeQuizScreen.kt           # 5-step mood quiz
 │   │   ├── VibeQuizViewModel.kt        # Quiz state + artist scoring algorithm
@@ -110,7 +102,6 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   └── QRUtils.kt                  # ZXing QR Generator + Sqaud Link logic
 │
 ├── widget/
-│   ├── SzigetWidget.kt                 # Glance widget: rank, XP, favorites count, tap-to-open
 │   └── SzigetWidgetReceiver.kt         # GlanceAppWidgetReceiver
 │
 └── MainActivity.kt
@@ -138,7 +129,6 @@ All routes are defined in `ui/navigation/Navigation.kt`.
 | `home` | `HomeScreen` | Yes | Bottom nav |
 | `discover` | `DiscoverScreen` | Yes | Bottom nav |
 | `map` | `MapScreen` | Yes | Bottom nav |
-| `passport` | `PassportScreen` | Yes | Bottom nav |
 | `tools` | `ToolsScreen` | Yes | Bottom nav |
 | `schedule` | `ScheduleScreen` | No | HomeScreen card |
 | `artist/{artistId}` | `ArtistDetailScreen` | No | Discover / Home / Similar artists |
@@ -146,7 +136,6 @@ All routes are defined in `ui/navigation/Navigation.kt`.
 | `vibe_results` | `VibeResultScreen` | No | After quiz |
 | `guide` | `SurvivalGuideScreen` | No | Tools screen card |
 | `food` | `FoodScreen` | No | Map → FOOD chip → "SEE ALL VENDORS →" |
-| `highlights` | `HighlightsScreen` | No | Passport screen → "MY HIGHLIGHTS →" |
 
 Bottom bar visibility is controlled by `showBottomBar` in `Navigation.kt`. Any new full-screen route that replaces a tab should be added to the exclusion list.
 
@@ -158,13 +147,9 @@ Bottom bar visibility is controlled by `showBottomBar` in `Navigation.kt`. Any n
 
 Entities:
 
-### `UserProgress` (table: `user_progress`)
 | Column | Type | Notes |
 |--------|------|-------|
 | `id` | Int | Always 1 (singleton row) |
-| `legendXp` | Int | Accumulated XP |
-| `currentRank` | String | e.g. `"Tourist"`, `"Island Scout"`, `"Legend"` |
-| `stampsCollected` | List\<String\> | Stamp IDs — stored as JSON via `Converters.kt` |
 | `completedChallengeIds` | String | Comma-separated challenge IDs |
 | `quizCompleted` | Boolean | True after first Vibe Quiz completion |
 
@@ -246,7 +231,6 @@ The `kotlin-serialization` plugin is applied in `build.gradle.kts`. Data classes
 ```kotlin
 OLEDBlack       // #000000 — all screen backgrounds
 CardBackground  // ~#111111 — card surfaces, bottom nav
-AcidYellow      // #FFEE00 — primary CTA, active state, XP text
 PrimaryMagenta  // #FF0080 — favorites, Vibe Quiz accent
 ToxicGreen      // #4ADE80 — success, money, Survival Guide accent
 CyanPulse       // #00C3FF — hydration, medical, water UI

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { LineupItem } from '@/types';
 import { Heart, ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 
 interface VibeResultsScreenProps {
   results: LineupItem[];

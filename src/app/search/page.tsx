@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Search, Music2, MapPin, Calendar, ArrowRight, Loader2, Filter } from 'lucide-react';
-import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival';
+import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { LineupItem } from '@/types';
@@ -14,6 +14,7 @@ interface GlobalArtistMatch {
   artistName: string;
   festivals: Array<{
     id: string;
+    artistId: string;
     name: string;
     day: string | null;
     stage: string | null;
@@ -22,7 +23,7 @@ interface GlobalArtistMatch {
   }>;
 }
 
-export default function HubSearchPage() {
+function HubSearchContent() {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get('q') || '';
   const [query, setQuery] = useState(initialQuery);
@@ -64,6 +65,7 @@ export default function HubSearchPage() {
           const existing = artistMap.get(artist.artist.toLowerCase());
           const festInfo = {
             id: festId,
+            artistId: artist.id,
             name: config.name,
             day: artist.day ?? null,
             stage: artist.stage ?? null,
@@ -134,7 +136,7 @@ export default function HubSearchPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {match.festivals.map(fest => (
-                      <Link key={fest.id} href={`/${fest.id}/artist/${match.artistName.toLowerCase().replace(/ /g, '-')}`}>
+                      <Link key={fest.id} href={`/${fest.id}/artist/${fest.artistId}`}>
                         <Card className="group bg-card/30 border-white/5 hover:border-primary/30 transition-all rounded-[2rem] overflow-hidden cursor-pointer hover:scale-[1.02]">
                           <CardContent className="p-6 space-y-4">
                             <div className="flex justify-between items-start">
@@ -170,5 +172,17 @@ export default function HubSearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function HubSearchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    }>
+      <HubSearchContent />
+    </Suspense>
   );
 }

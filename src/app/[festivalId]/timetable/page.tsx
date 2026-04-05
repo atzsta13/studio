@@ -9,8 +9,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import { useTheme, alpha } from '@mui/material/styles';
-import { FESTIVAL } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { useFavorites } from '@/hooks/use-favorites';
 import { ClashResolver } from '@/components/timetable/clash-resolver';
 import type { LineupItem } from '@/types';
@@ -19,7 +20,9 @@ export default function TimetablePage() {
   const [mounted, setMounted] = useState(false);
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<'daypark' | 'nightpark'>('daypark');
   const theme = useTheme();
-  const { allFavoriteIds } = useFavorites(lineupCurrent as LineupItem[]);
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
+  const { allFavoriteIds } = useFavorites(lineupCurrent as LineupItem[], festivalId);
 
   useEffect(() => {
     setMounted(true);
@@ -27,11 +30,12 @@ export default function TimetablePage() {
 
   const currentLineup = useMemo(() => {
     const base = lineupCurrent as LineupItem[];
-    if (FESTIVAL.features.dayparkNightpark) {
+    if (config.features.dayparkNightpark) {
       return base.filter((a: LineupItem & { timeSlot?: string }) => a.timeSlot === selectedTimeSlot);
     }
     return base;
-  }, [selectedTimeSlot]);
+  }, [selectedTimeSlot, config.features.dayparkNightpark]);
+
 
   const hasSchedule = useMemo(() => {
     return currentLineup.some(item => item.startTime && item.endTime && item.day && item.stage);
@@ -46,8 +50,8 @@ export default function TimetablePage() {
         pb: 8, 
         textAlign: 'center', 
         background: theme.palette.mode === 'dark' 
-          ? `linear-gradient(to bottom, ${alpha(FESTIVAL.theme.primaryHex, 0.05)}, transparent)` 
-          : `linear-gradient(to bottom, ${alpha(FESTIVAL.theme.primaryHex, 0.02)}, #f8f8f8)`,
+          ? `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.05)}, transparent)` 
+          : `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.02)}, #f8f8f8)`,
         borderBottom: `1px solid ${theme.palette.divider}`
       }}>
         <Container maxWidth="md">
@@ -64,7 +68,7 @@ export default function TimetablePage() {
               lineHeight: 0.85
             }}
           >
-            TIMETABLE <span style={{ color: FESTIVAL.theme.primaryHex }}>{FESTIVAL.dates.year}</span>
+            TIMETABLE <span style={{ color: config.theme.primaryHex }}>{config.dates.year}</span>
           </Typography>
           <Typography
             variant="h6"
@@ -82,7 +86,7 @@ export default function TimetablePage() {
           </Typography>
 
           {/* Daypark / Nightpark Toggle (Frequency) */}
-          {FESTIVAL.features.dayparkNightpark && (
+          {config.features.dayparkNightpark && (
             <Box sx={{ 
               display: 'inline-flex', 
               p: 0.5, 
@@ -115,9 +119,9 @@ export default function TimetablePage() {
                   height: '3rem',
                   fontWeight: 900,
                   letterSpacing: '0.1em',
-                  bgcolor: selectedTimeSlot === 'nightpark' ? FESTIVAL.theme.accentHex : 'transparent',
+                  bgcolor: selectedTimeSlot === 'nightpark' ? config.theme.accentHex : 'transparent',
                   color: selectedTimeSlot === 'nightpark' ? '#000' : 'text.secondary',
-                  '&:hover': { bgcolor: selectedTimeSlot === 'nightpark' ? FESTIVAL.theme.accentHex : 'rgba(255,255,255,0.05)', opacity: 0.9 }
+                  '&:hover': { bgcolor: selectedTimeSlot === 'nightpark' ? config.theme.accentHex : 'rgba(255,255,255,0.05)', opacity: 0.9 }
                 }}
                 startIcon={<Moon size={18} />}
               >
@@ -130,7 +134,7 @@ export default function TimetablePage() {
 
       <Box sx={{ flex: 1, position: 'relative' }}>
         <Container maxWidth="lg" sx={{ mt: 4 }}>
-           {FESTIVAL.features.clashResolver && (
+           {config.features.clashResolver && (
              <ClashResolver favorites={(lineupCurrent as LineupItem[]).filter(a => allFavoriteIds.has(a.id))} />
            )}
         </Container>
@@ -151,13 +155,13 @@ export default function TimetablePage() {
               justifyContent: 'center',
               border: '1px solid rgba(255,255,255,0.05)'
             }}>
-              <Clock size={40} color={FESTIVAL.theme.primaryHex} style={{ opacity: 0.5 }} />
+              <Clock size={40} color={config.theme.primaryHex} style={{ opacity: 0.5 }} />
             </Box>
             <Typography variant="h4" sx={{ fontWeight: 900, textTransform: 'uppercase', fontStyle: 'italic', mb: 2 }}>
-              {FESTIVAL.features.dayparkNightpark ? `${selectedTimeSlot.toUpperCase()} PENDING` : 'Announcing Soon'}
+              {config.features.dayparkNightpark ? `${selectedTimeSlot.toUpperCase()} PENDING` : 'Announcing Soon'}
             </Typography>
             <Typography sx={{ color: 'text.secondary', fontWeight: 500, lineHeight: 1.6, opacity: 0.7 }}>
-              The official stage times for {FESTIVAL.name} {selectedTimeSlot} have not been published yet. 
+              The official stage times for {config.name} {selectedTimeSlot} have not been published yet. 
               Check back closer to the festival dates.
             </Typography>
             <Button
@@ -173,8 +177,8 @@ export default function TimetablePage() {
                 borderColor: 'rgba(255,255,255,0.1)',
                 color: 'text.primary',
                 '&:hover': {
-                  borderColor: FESTIVAL.theme.primaryHex,
-                  bgcolor: alpha(FESTIVAL.theme.primaryHex, 0.05)
+                  borderColor: config.theme.primaryHex,
+                  bgcolor: alpha(config.theme.primaryHex, 0.05)
                 }
               }}
             >

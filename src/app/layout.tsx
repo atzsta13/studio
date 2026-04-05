@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import PwaLoader from '@/components/pwa-loader';
-import MuiRegistry from '@/components/mui-registry';
-import InstallPrompt from '@/components/install-prompt';
-import { ThemeProvider } from '@/components/theme-provider';
+import PwaLoader from '@/components/layout/pwa-loader';
+import MuiRegistry from '@/components/layout/mui-registry';
+import InstallPrompt from '@/components/layout/install-prompt';
+import { ThemeProvider } from '@/components/layout/theme-provider';
 
 export const metadata: Metadata = {
   applicationName: 'Festival Insider',

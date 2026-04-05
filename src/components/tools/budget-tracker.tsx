@@ -5,9 +5,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Coins, Plus, Trash2, Wallet } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival-engine';
 
-const STORAGE_KEY = `${FESTIVAL.id}-budget`;
+const STORAGE_KEY_PFX = 'budget';
 
 interface Entry {
   id: string;
@@ -16,6 +17,9 @@ interface Entry {
 }
 
 export function BudgetTracker() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
+  const STORAGE_KEY = `${festivalId}-${STORAGE_KEY_PFX}`;
   const [entries, setEntries] = useState<Entry[]>([]);
   const [label, setLabel] = useState('');
   const [amount, setAmount] = useState('');
@@ -54,7 +58,7 @@ export function BudgetTracker() {
       <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
         <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
           <Wallet size={32} />
-          Budget Tracker ({FESTIVAL.currency.localCode})
+          Budget Tracker ({config.currency.localCode})
         </CardTitle>
       </CardHeader>
       <CardContent className="p-10">
@@ -83,7 +87,7 @@ export function BudgetTracker() {
           <div className="p-8 rounded-[2rem] bg-emerald-500/10 border border-emerald-500/20 text-center">
             <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-500/60 mb-2">Total Spent</p>
             <p className="text-5xl font-black italic tracking-tighter text-emerald-500">
-              {FESTIVAL.currency.localCode} {total.toLocaleString()}
+              {config.currency.localCode} {total.toLocaleString()}
             </p>
           </div>
 
@@ -92,7 +96,7 @@ export function BudgetTracker() {
               <div key={entry.id} className="flex items-center justify-between p-6 rounded-[1.5rem] bg-background border border-white/5 shadow-inner">
                 <div>
                   <p className="text-[11px] font-black uppercase tracking-widest text-muted-foreground/60">{entry.label}</p>
-                  <p className="text-xl font-bold tracking-tight">{entry.amount.toLocaleString()} {FESTIVAL.currency.localCode}</p>
+                  <p className="text-xl font-bold tracking-tight">{entry.amount.toLocaleString()} {config.currency.localCode}</p>
                 </div>
                 <Button variant="ghost" onClick={() => deleteEntry(entry.id)} className="text-muted-foreground hover:text-red-500 rounded-full">
                   <Trash2 size={20} />

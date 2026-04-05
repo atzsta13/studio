@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useParams } from 'next/navigation';
 import type { LineupItem } from '@/types';
 import lineupData from '@/data/lineup.json';
 import { VibeQuizScreen } from '@/components/quiz/VibeQuizScreen';
@@ -12,7 +13,8 @@ const lineup = lineupData as unknown as LineupItem[];
 export default function VibeQuizPage() {
   const [results, setResults] = useState<LineupItem[]>([]);
   const [showResults, setShowResults] = useState(false);
-  const { toggleFavorite } = useFavorites(lineup);
+  const { festivalId } = useParams() as { festivalId: string };
+  const { toggleFavorite } = useFavorites(lineup, festivalId);
 
   const handleComplete = (quizResults: LineupItem[]) => {
     setResults(quizResults);

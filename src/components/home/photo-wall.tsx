@@ -2,7 +2,7 @@
 
 import { Card } from '@/components/ui/card';
 import { Camera } from 'lucide-react';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 export function PhotoWall({ festivalId }: { festivalId: string }) {
   const config = getFestivalConfig(festivalId);

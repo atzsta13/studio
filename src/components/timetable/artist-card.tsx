@@ -5,7 +5,7 @@ import { Heart, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
 import Link from 'next/link';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 interface ArtistCardProps {
   artist: LineupItem;

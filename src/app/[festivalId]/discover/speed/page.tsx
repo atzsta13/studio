@@ -4,15 +4,15 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { X, Heart, ChevronLeft, Music, Info, Zap, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFavorites } from '@/hooks/use-favorites';
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 import lineupData from '@/data/lineup.json';
 import { LineupItem } from '@/types';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 const allArtists = (lineupData as LineupItem[]).map(a => ({
   ...a,
@@ -23,7 +23,8 @@ const allArtists = (lineupData as LineupItem[]).map(a => ({
 export default function SpeedDiscoveryPage() {
   const haptic = useHaptic();
   const router = useRouter();
-  const { toggleFavorite, isFavorite } = useFavorites(allArtists);
+  const { festivalId } = useParams() as { festivalId: string };
+  const { toggleFavorite, isFavorite } = useFavorites(allArtists, festivalId);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<number>(0);
   

@@ -23,7 +23,7 @@ import {
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { SpotifyConnect } from '@/components/SpotifyConnect';
+import { SpotifyConnect } from '@/components/spotify/spotify-connect';
 import {
   Dialog,
   DialogContent,
@@ -43,7 +43,7 @@ import { TagCloud } from '@/components/discover/tag-cloud';
 import { GenreBreakdown } from '@/components/discover/genre-breakdown';
 import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
-import { useHaptic } from '@/hooks/useHaptic';
+import { useHaptic } from '@/hooks/use-haptic';
 import { useFestivalData } from '@/hooks/use-festival-data';
 
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
@@ -73,7 +73,7 @@ export default function DiscoverPage() {
     }));
   }, [lineup]);
 
-  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent);
+  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent, festivalId);
   const router = useRouter();
   
   const HIDDEN_GEM_IDS = config?.content?.hiddenGems || [];

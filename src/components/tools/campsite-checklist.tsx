@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Progress } from '@/components/ui/progress';
-import { FESTIVAL } from '@/config/festival';
-
-const STORAGE_KEY = `${FESTIVAL.id}-camp-checklist`;
+import { useParams } from 'next/navigation';
 
 const CAMP_ITEMS = [
   { id: 'tent', label: 'Double-layer Tent', weight: 20 },
@@ -21,6 +19,8 @@ const CAMP_ITEMS = [
 ];
 
 export function CampsiteChecklist() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const STORAGE_KEY = `${festivalId}-camp-checklist`;
   const [checked, setChecked] = useState<string[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
