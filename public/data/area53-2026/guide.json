@@ -1,34 +1,32 @@
-{
-  "title": "Area 53 Survival Guide",
-  "description": "Essential tips and information for Area 53 Metal Festival in Leoben.",
-  "sections": [
-    {
-      "id": "arrival",
-      "title": "Getting There",
-      "icon": "train",
-      "items": [
-        { "title": "Train from Vienna", "content": "The festival is held at VAZ Schladnitz in Leoben. Trains from Vienna take ~2.5 hours." },
-        { "title": "Local Shuttle", "content": "Local shuttle buses run from Leoben Hauptbahnhof to the festival grounds every 30 minutes." }
-      ]
-    },
-    {
-      "id": "emergency",
-      "title": "Emergency",
-      "icon": "shield-alert",
-      "items": [
-        { "title": "Universal Emergency", "content": "European emergency number: 112" },
-        { "title": "Austrian Services", "content": "Police: 133 | Ambulance: 144 | Fire: 122" },
-        { "title": "Medical Center", "content": "The on-site Medical Center is located next to the main entrance." }
-      ]
-    },
-    {
-      "id": "cashless",
-      "title": "Payment",
-      "icon": "credit-card",
-      "items": [
-        { "title": "Cashless System", "content": "Area 53 uses a cashless system. You can top up your wristband at any of the 4 stations." },
-        { "title": "Top-up Methods", "content": "Debit and Credit cards are accepted for the initial top-up." }
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": "weather",
+    "title": "Mountain Weather",
+    "icon": "Sun",
+    "content": "Area 53 is in the Styrian mountains. Expect intense sun during the day and rapid temperature drops at night. Pack a jacket even if it's 30°C at noon."
+  },
+  {
+    "id": "distances",
+    "title": "Short Distances",
+    "icon": "MapPin",
+    "content": "One of Area 53's best features is the 'cozy' layout. You can reach the main stage from most camping spots in under 10 minutes. No need for heavy tactical planning."
+  },
+  {
+    "id": "jazz-gitti",
+    "title": "Jazz Gitti Etiquette",
+    "icon": "Music",
+    "content": "The Saturday morning session is a cult tradition. It's Austro-Pop, not Metal, but the moshpits are surprisingly intense. Wear your battle vest with pride and bring a beer."
+  },
+  {
+    "id": "showers",
+    "title": "Pro Showers",
+    "icon": "Droplet",
+    "content": "The Schutzhaus building offers renovated indoor showers and real toilets. It's the highest quality sanitation you'll find at an Austrian metal festival."
+  },
+  {
+    "id": "drinking",
+    "title": "Local Fuel",
+    "icon": "Utensils",
+    "content": "The festival is fueled by Murauer beer. Support the local brewery and stay hydrated with the free spring water points near the Schutzhaus."
+  }
+]

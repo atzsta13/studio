@@ -1,81 +1,345 @@
 [
   {
-    "id": "behemoth",
-    "artist": "Behemoth",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T22:30:00",
-    "endTime": "2026-07-17T23:59:00",
-    "isHeadliner": true,
-    "genres": [
-      "Blackened Death Metal",
-      "Metal"
-    ],
-    "countryCode": "PL",
-    "description": "The kings of extreme metal return to Leoben.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/1Sqrvdb99pbmv8Yn693m7T"
-    },
-    "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense",
-      "Brutal",
-      "Dark"
-    ]
-  },
-  {
-    "id": "machine-head",
-    "artist": "Machine Head",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T22:00:00",
-    "endTime": "2026-07-18T23:30:00",
-    "isHeadliner": true,
-    "genres": [
-      "Groove Metal",
-      "Thrash Metal"
-    ],
-    "countryCode": "US",
-    "description": "An explosive finale for the 2026 edition.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/699OTQXzgjt6pe4p9px987"
-    },
-    "vibes": [
-      "Heavy",
-      "Rhythmic",
-      "Aggressive",
-      "Energetic",
-      "Intense",
-      "Fast",
-      "Raw"
-    ]
-  },
-  {
-    "id": "heaven-shall-burn",
-    "artist": "Heaven Shall Burn",
+    "id": "a53-th-1",
+    "artist": "W.A.S.P.",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T21:00:00",
-    "endTime": "2026-07-16T22:15:00",
-    "isHeadliner": true,
-    "genres": [
-      "Melodic Death Metal",
-      "Metalcore"
-    ],
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "US",
+    "genres": ["HEAVY METAL", "SHOCK ROCK"],
+    "imageUrl": "https://images.unsplash.com/photo-1514525253361-b83f859b73c0?auto=format&fit=crop&q=80&w=800",
+    "description": "Blackie Lawless bringing the iconic shock rock intensity to the mountains.",
+    "vibes": ["INTENSE", "DARK", "CLASSIC"],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-th-2",
+    "artist": "dArtagnan",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "20:45",
+    "endTime": "22:00",
     "countryCode": "DE",
-    "description": "Unmatched intensity from the German metalcore titans.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/4997pAbSp6SIn99Z66InSa"
-    },
-    "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense",
-      "Brutal",
-      "Dark",
-      "Aggressive",
-      "Melodic"
-    ]
+    "genres": ["FOLK ROCK", "MUSKETEER ROCK"],
+    "vibes": ["FUN", "SING-ALONG", "EPIC"]
+  },
+  {
+    "id": "a53-th-3",
+    "artist": "Warkings",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "INT",
+    "genres": ["POWER METAL"],
+    "vibes": ["EPIC", "BATTLE", "POWER"]
+  },
+  {
+    "id": "a53-th-4",
+    "artist": "Evil Invaders",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "BE",
+    "genres": ["SPEED METAL", "THRASH METAL"],
+    "vibes": ["FAST", "INTENSE", "HEADBANGING"]
+  },
+  {
+    "id": "a53-th-5",
+    "artist": "South Of Salem",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "GB",
+    "genres": ["HARD ROCK"],
+    "vibes": ["DARK", "CATCHY"]
+  },
+  {
+    "id": "a53-th-6",
+    "artist": "Darkfall",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "AT",
+    "genres": ["THRASH METAL", "DEATH METAL"],
+    "vibes": ["HEAVY", "LOCAL-HEROES"]
+  },
+  {
+    "id": "a53-th-7",
+    "artist": "Leons Massacre",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "AT",
+    "genres": ["METALCORE"],
+    "vibes": ["MODERN", "LOUD"]
+  },
+  {
+    "id": "a53-th-8",
+    "artist": "Scarecrow NWA",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "AT",
+    "genres": ["HEAVY METAL"],
+    "vibes": ["OLD-SCHOOL"]
+  },
+  {
+    "id": "a53-th-9",
+    "artist": "Story Of A Stranger",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "12:30",
+    "endTime": "13:00",
+    "countryCode": "AT",
+    "genres": ["MODERN METAL"],
+    "description": "Band Contest Winner 2025.",
+    "vibes": ["FRESH", "TALENT"]
+  },
+  {
+    "id": "a53-fr-1",
+    "artist": "Gloryhammer",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "GB",
+    "genres": ["POWER METAL", "INTERGALACTIC"],
+    "imageUrl": "https://images.unsplash.com/photo-1459749411177-042180ceea72?auto=format&fit=crop&q=80&w=800",
+    "description": "Intergalactic space metal combat in the heart of Austria.",
+    "vibes": ["EPIC", "CHEESY", "HYPED"],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-fr-2",
+    "artist": "Korpiklaani",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "20:45",
+    "endTime": "22:00",
+    "countryCode": "FI",
+    "genres": ["FOLK METAL"],
+    "vibes": ["DRINKING", "FOLK", "HIGH-ENERGY"]
+  },
+  {
+    "id": "a53-fr-3",
+    "artist": "Battle Beast",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "FI",
+    "genres": ["POWER METAL"],
+    "vibes": ["POWERFUL-VOCALS", "80S-VIBE"]
+  },
+  {
+    "id": "a53-fr-4",
+    "artist": "Kanonenfieber",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "DE",
+    "genres": ["BLACK METAL", "DEATH METAL"],
+    "vibes": ["DARK", "ATMOSPHERIC", "HEAVY"]
+  },
+  {
+    "id": "a53-fr-5",
+    "artist": "Steve 'n' Seagulls",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "FI",
+    "genres": ["BLUEGRASS METAL"],
+    "vibes": ["FUN", "BANJO", "CULT"]
+  },
+  {
+    "id": "a53-fr-6",
+    "artist": "Vulvarine",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "AT",
+    "genres": ["STUNER ROCK"],
+    "vibes": ["GRITTY", "LOUD"]
+  },
+  {
+    "id": "a53-fr-7",
+    "artist": "Silius",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "AT",
+    "genres": ["THRASH METAL"],
+    "vibes": ["HEAVY", "LOCAL-HEROES"]
+  },
+  {
+    "id": "a53-fr-8",
+    "artist": "Crossbones",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "AL",
+    "genres": ["HEAVY METAL"],
+    "vibes": ["OLD-SCHOOL"]
+  },
+  {
+    "id": "a53-fr-9",
+    "artist": "Senntus",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "12:30",
+    "endTime": "13:00",
+    "countryCode": "AT",
+    "genres": ["PROGRESSIVE METAL"],
+    "vibes": ["TECHNICAL", "FRESH"]
+  },
+  {
+    "id": "a53-sa-1",
+    "artist": "Saxon",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "GB",
+    "genres": ["HEAVY METAL", "NWOBHM"],
+    "imageUrl": "https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?auto=format&fit=crop&q=80&w=800",
+    "description": "The legends of British Heavy Metal returning to the Styrian mountains.",
+    "vibes": ["EPIC", "CLASSIC", "POWER"],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-sa-2",
+    "artist": "Lordi",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "20:45",
+    "endTime": "22:00",
+    "countryCode": "FI",
+    "genres": ["HARD ROCK", "SHOCK ROCK"],
+    "vibes": ["DARK", "FUN", "LOUD"]
+  },
+  {
+    "id": "a53-sa-3",
+    "artist": "Phil Campbell and the Bastard Sons",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "GB",
+    "genres": ["ROCK", "HARD ROCK"],
+    "vibes": ["LEGENDARY", "LOUD", "RAW"]
+  },
+  {
+    "id": "a53-sa-4",
+    "artist": "Varg",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "DE",
+    "genres": ["PAGAN METAL"],
+    "vibes": ["WOLF-VIBE", "BATTLE", "HEAVY"]
+  },
+  {
+    "id": "a53-sa-5",
+    "artist": "Unleash The Archers",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "CA",
+    "genres": ["POWER METAL"],
+    "vibes": ["EPIC", "MELODIC", "FAST"]
+  },
+  {
+    "id": "a53-sa-6",
+    "artist": "Mastic Scum",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "AT",
+    "genres": ["DEATH METAL", "GRINDCORE"],
+    "vibes": ["BRUTAL", "TECHNICAL"]
+  },
+  {
+    "id": "a53-sa-7",
+    "artist": "Erzsebét",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "AT",
+    "genres": ["BLACK METAL"],
+    "vibes": ["DARK", "ATMOSPHERIC"]
+  },
+  {
+    "id": "a53-sa-8",
+    "artist": "Vandans",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "AT",
+    "genres": ["METAL"],
+    "vibes": ["LOCAL-HEROES"]
+  },
+  {
+    "id": "a53-sa-9",
+    "artist": "Morituri",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "12:30",
+    "endTime": "13:00",
+    "countryCode": "AT",
+    "genres": ["METAL"],
+    "description": "Band Contest Winner 2025.",
+    "vibes": ["FRESH", "TALENT"]
+  },
+  {
+    "id": "a53-sa-10",
+    "artist": "Jazz Gitti",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "11:00",
+    "endTime": "12:30",
+    "countryCode": "AT",
+    "genres": ["AUSTRO-POP", "CULT"],
+    "description": "The mandatory Styrian morning Pint.",
+    "vibes": ["CULT", "FUN", "SING-ALONG"],
+    "returningHero": true
+  },
+  {
+    "id": "a53-after-1",
+    "artist": "Horny Monkeys",
+    "stage": "The Tenne",
+    "day": "Thursday",
+    "startTime": "23:59",
+    "endTime": "02:00",
+    "countryCode": "AT",
+    "genres": ["ROCK", "PARTY"],
+    "vibes": ["PARTY", "LATE-NIGHT", "UNHINGED"]
+  },
+  {
+    "id": "a53-after-2",
+    "artist": "Burnout Grannys",
+    "stage": "The Tenne",
+    "day": "Friday",
+    "startTime": "23:59",
+    "endTime": "02:00",
+    "countryCode": "AT",
+    "genres": ["ROCK", "PARTY"],
+    "vibes": ["PARTY", "LATE-NIGHT", "UNHINGED"]
   }
 ]
