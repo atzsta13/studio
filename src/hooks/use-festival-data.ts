@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getFestivalConfig, FestivalConfig } from '@/config/festival';
+import { getFestivalConfig, FestivalConfig } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
 
 interface FestivalData {

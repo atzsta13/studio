@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Music, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
 interface PlaylistBuilderProps {
     matchedArtistIds: string[];

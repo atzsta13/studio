@@ -1,6 +1,6 @@
 'use client';
 
-import { useInsider } from '@/components/insider-provider';
+import { useInsider } from '@/components/layout/insider-provider';
 import { useCallback, useState, useEffect } from 'react';
 
 export function useTranslation() {

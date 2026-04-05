@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { FESTIVAL } from '@/config/festival';
+import { FESTIVAL } from '@/config/festival-engine';
 
-const STORAGE_KEY = `${FESTIVAL.id}_hydration_v1`;
-
-export function useHydration() {
+export function useHydration(festivalId?: string) {
   const [glassCount, setHydrationCount] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const STORAGE_KEY = `${festivalId || 'default'}_hydration_v1`;
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);

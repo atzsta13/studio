@@ -120,7 +120,6 @@ export interface FestivalConfig {
     accessibilityMap: boolean
     quietZones: boolean
     crowdHeatmap: boolean
-    ecoWarrior: boolean
     secretStages: boolean
     afterMovie: boolean
     feedbackSystem: boolean

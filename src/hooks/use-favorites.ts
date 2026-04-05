@@ -1,66 +1,65 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import type { LineupItem } from '@/types';
-import { FESTIVAL } from '@/config/festival';
-
-const FAVORITES_KEY_V1 = `${FESTIVAL.id}-favorites`;
-const FAVORITES_KEY_V2 = `${FESTIVAL.id}-favorites-v2`;
 
 export type FavoriteTier = 'must_see' | 'interested';
 
-function loadTieredFavorites(): Record<string, FavoriteTier> {
-  try {
-    const v2Raw = localStorage.getItem(FAVORITES_KEY_V2);
-    if (v2Raw) {
-      return JSON.parse(v2Raw) as Record<string, FavoriteTier>;
-    }
-
-    // Migration: treat all v1 favorites as "must_see"
-    const v1Raw = localStorage.getItem(FAVORITES_KEY_V1);
-    if (v1Raw) {
-      const v1Ids: string[] = JSON.parse(v1Raw);
-      const migrated: Record<string, FavoriteTier> = {};
-      v1Ids.forEach(id => { migrated[id] = 'must_see'; });
-      localStorage.setItem(FAVORITES_KEY_V2, JSON.stringify(migrated));
-      return migrated;
-    }
-  } catch (error) {
-    console.error('Failed to load favorites from localStorage', error);
-  }
-  return {};
-}
-
-function saveTieredFavorites(data: Record<string, FavoriteTier>) {
-  try {
-    localStorage.setItem(FAVORITES_KEY_V2, JSON.stringify(data));
-  } catch (error) {
-    console.error('Failed to save favorites to localStorage', error);
-  }
-}
-
-export const useFavorites = (lineup: LineupItem[] = []) => {
+export const useFavorites = (lineup: LineupItem[] = [], festivalId?: string) => {
   const [tieredFavorites, setTieredFavorites] = useState<Record<string, FavoriteTier>>({});
   const [conflicts, setConflicts] = useState<Set<string>>(new Set());
 
+  const keys = useMemo(() => {
+    const id = festivalId || 'default';
+    return {
+      v1: `${id}-favorites`,
+      v2: `${id}-favorites-v2`
+    };
+  }, [festivalId]);
+
   useEffect(() => {
-    setTieredFavorites(loadTieredFavorites());
-  }, []);
+    try {
+      const v2Raw = localStorage.getItem(keys.v2);
+      if (v2Raw) {
+        setTieredFavorites(JSON.parse(v2Raw));
+        return;
+      }
+
+      const v1Raw = localStorage.getItem(keys.v1);
+      if (v1Raw) {
+        const v1Ids: string[] = JSON.parse(v1Raw);
+        const migrated: Record<string, FavoriteTier> = {};
+        v1Ids.forEach(id => { migrated[id] = 'must_see'; });
+        localStorage.setItem(keys.v2, JSON.stringify(migrated));
+        setTieredFavorites(migrated);
+      }
+    } catch (error) {
+      console.error('Failed to load favorites', error);
+    }
+  }, [keys]);
+
+  const save = useCallback((data: Record<string, FavoriteTier>) => {
+    try {
+      localStorage.setItem(keys.v2, JSON.stringify(data));
+    } catch (error) {
+      console.error('Failed to save favorites', error);
+    }
+  }, [keys]);
 
   const addFavorite = useCallback((id: string, tier: FavoriteTier) => {
     setTieredFavorites(prev => {
       const updated = { ...prev, [id]: tier };
-      saveTieredFavorites(updated);
+      save(updated);
       return updated;
     });
-  }, []);
+  }, [save]);
 
   const removeFavorite = useCallback((id: string) => {
     setTieredFavorites(prev => {
       const updated = { ...prev };
       delete updated[id];
-      saveTieredFavorites(updated);
+      save(updated);
       return updated;
     });
-  }, []);
+  }, [save]);
 
   const getFavoriteTier = useCallback(
     (id: string): FavoriteTier | null => tieredFavorites[id] ?? null,

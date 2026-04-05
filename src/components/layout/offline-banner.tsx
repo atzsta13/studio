@@ -1,7 +1,7 @@
 'use client';
 
 import { WifiOff, AlertTriangle } from 'lucide-react';
-import { useInsider } from '@/components/insider-provider';
+import { useInsider } from '@/components/layout/insider-provider';
 
 export function OfflineBanner() {
   const { isOnline } = useInsider();

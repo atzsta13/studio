@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Music2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { getNavItems } from '@/config/nav';
+import { getNavItems } from '@/config/nav-config';
 import { ModeToggle } from './mode-toggle';
-import { getFestivalConfig } from '@/config/festival';
+import { getFestivalConfig } from '@/config/festival-engine';
 import { useState, useEffect } from 'react';
 import { useTranslation } from '@/hooks/use-translation';
 

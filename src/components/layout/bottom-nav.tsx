@@ -4,7 +4,7 @@ import * as React from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { BottomNavigation, BottomNavigationAction, Box, Paper } from '@mui/material';
 import { Icon } from '@/components/ui/icon';
-import { getNavItems } from '@/config/nav';
+import { getNavItems } from '@/config/nav-config';
 import { useTranslation } from '@/hooks/use-translation';
 
 export default function BottomNav({ festivalId }: { festivalId?: string }) {

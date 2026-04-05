@@ -5,8 +5,10 @@ import path from 'path'
 const FESTIVALS_DIR = 'festivals'
 const PUBLIC_DATA_DIR = path.join('public', 'data')
 
+console.log('🚀 Starting White-Label Data Sync...')
+
 if (!fs.existsSync(FESTIVALS_DIR)) {
-  console.error(`Festivals directory not found: ${FESTIVALS_DIR}`)
+  console.error(`❌ Festivals directory not found: ${FESTIVALS_DIR}`)
   process.exit(1)
 }
 
@@ -23,28 +25,39 @@ for (const id of festivalFolders) {
 
   const srcData = path.join(festDir, 'data')
   const srcAssets = path.join(festDir, 'assets')
+  const srcConfig = path.join(festDir, 'config.json')
   const dest = path.join(PUBLIC_DATA_DIR, id)
 
+  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
+
+  // 1. Sync config.json
+  if (fs.existsSync(srcConfig)) {
+    fs.copyFileSync(srcConfig, path.join(dest, 'config.json'))
+    console.log(`✓ [${id}] Synced config.json`)
+  } else {
+    console.warn(`⚠️ [${id}] config.json missing in source!`)
+  }
+
+  // 2. Sync lineup/data JSONs
   if (fs.existsSync(srcData)) {
-    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true })
-    
-    // Copy JSON files to public/data/[id]
     for (const file of fs.readdirSync(srcData)) {
       if (file.endsWith('.json')) {
         fs.copyFileSync(path.join(srcData, file), path.join(dest, file))
       }
     }
-    console.log(`✓ Synced data for: ${id}`)
+    console.log(`✓ [${id}] Synced data package`)
   }
 
+  // 3. Sync Assets (Recursive)
   if (fs.existsSync(srcAssets)) {
     const assetDest = path.join(dest, 'assets')
-    if (!fs.existsSync(assetDest)) fs.mkdirSync(assetDest, { recursive: true })
-    
-    for (const file of fs.readdirSync(srcAssets)) {
-      fs.copyFileSync(path.join(srcAssets, file), path.join(assetDest, file))
+    // Node 20+ supports recursive cpSync
+    try {
+      fs.cpSync(srcAssets, assetDest, { recursive: true, force: true })
+      console.log(`✓ [${id}] Synced assets (recursive)`)
+    } catch (e) {
+      console.error(`❌ [${id}] Failed to sync assets: ${e.message}`)
     }
-    console.log(`✓ Synced assets for: ${id}`)
   }
 }
 
@@ -60,5 +73,7 @@ if (fs.existsSync(legacySrc)) {
       fs.copyFileSync(path.join(legacySrc, file), path.join(legacyDest, file))
     }
   }
-  console.log(`✓ Synced legacy data for: ${defaultId}`)
+  console.log(`✓ [${defaultId}] Synced legacy data (src/data)`)
 }
+
+console.log('✨ Data Sync Complete.')

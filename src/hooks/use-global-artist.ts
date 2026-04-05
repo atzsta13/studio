@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival';
+import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
 
 export interface EcosystemAppearance {
   festivalId: string;
   festivalName: string;
+  artistId: string;
   day: string | null;
   stage: string | null;
   startTime: string | null;
@@ -35,6 +36,7 @@ export function useGlobalArtist(artistName: string | undefined) {
                 results.push({
                   festivalId: id,
                   festivalName: config.name,
+                  artistId: match.id,
                   day: match.day ?? null,
                   stage: match.stage ?? null,
                   startTime: match.startTime ?? null
