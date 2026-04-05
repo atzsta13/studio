@@ -6,7 +6,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
-import { FESTIVAL_IDS, FESTIVAL_CONFIGS } from '@/config/festival';
+import { FESTIVAL_IDS, FESTIVAL_CONFIGS } from '@/config/festival-engine';
 import fs from 'fs';
 import path from 'path';
 
