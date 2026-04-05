@@ -26,7 +26,6 @@ Both platforms share a "Neon Brutalist" design system.
 - **Sync Mechanism**: `sync.sh` bridges the web assets to the Android `assets/` folder.
 - **Persistence**:
   - **Web**: LocalStorage / IndexedDB for user favorites and progress.
-  - **Android**: Room Database (`AppDatabase.kt`) for XP, Stamps, and Favorites.
 
 ---
 
@@ -39,7 +38,6 @@ Both platforms share a "Neon Brutalist" design system.
 | **Home Screen** | `ui.home.HomeScreen` | ✅ Done | Includes "Island Pulse" (Now Playing) logic. |
 | **Discover Grid** | `ui.discover.DiscoverScreen` | ✅ Done | High-density TopAppBar + consolidated filters. |
 | **Tactical Map** | `ui.map.MapScreen` | 🚧 Partial | UI is high-fidelity; POI filtering logic is wired but needs verification. |
-| **Passport** | `ui.passport.PassportScreen` | ✅ Done | XP/Rank logic linked to Room via `PassportViewModel`. |
 | **Schedule Screen** | `ui.schedule.ScheduleScreen` | ✅ Done | Grid 2.0: 2D Scroll, Zoom, Pinned Headers. |
 | **Squad Link** | `ui.utils.QRUtils` | ✅ Done | Peer-to-Peer QR sharing & Scanning via ML Kit. |
 | **Database** | `data.local.*` | ✅ Done | Entities, DAOs, and TypeConverters complete. |
@@ -66,7 +64,6 @@ The sub-agents have finished writing the logic, but the **entire app needs a cle
 - **Expectation**: There might be minor import conflicts in `Navigation.kt` or `ToolsScreen.kt` regarding Extended Material Icons. Fix these immediately by explicitly importing the icons in the file header rather than using wildcards (`*`).
 
 ### 2. Logic Verification Tasks
-- **Verify**: Does clicking a "Stamp" in `PassportScreen` write to the Room DB?
 - **Verify**: Does the `DiscoverScreen` correctly filter by vibe?
 - **Verify**: Does the `ArtistCard` favoriting state persist after minimizing/reopening?
 

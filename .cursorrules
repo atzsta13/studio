@@ -8,10 +8,10 @@ You are a senior full-stack engineer and festival logistics expert. You are work
 - **Tactical UX**: Brutalist, high-contrast UI optimized for outdoor visibility and battery saving.
 
 ## Next.js (Web) Rules
-- **No Brand Literals**: Never type "Sziget" or "Nova Rock". Use `FESTIVAL.name` or `FESTIVAL.appName`.
-- **Config Pattern**: Always import `FESTIVAL` from `@/config/festival`.
-- **Theming**: Use Tailwind colors like `primary`, `accent`, `secondary` which are CSS variables injected in `layout.tsx`.
-- **Data**: Static JSON from `src/data/` only. Never add `fetch()` calls to external festival APIs.
+- **No Brand Literals**: Never type "Sziget" or "Nova Rock". Use `config.name` or `config.appName` from the active festival config.
+- **Config Pattern**: Always use the `useFestivalData(festivalId)` hook in UI components to access the active configuration. Avoid statically importing `FESTIVAL` from `@/config/festival` in the App Router UI.
+- **Theming**: Use Tailwind colors like `primary`, `accent`, `secondary` which are CSS variables injected dynamically.
+- **Data**: Static JSON from `public/data/<id>/` only. Never add `fetch()` calls to external festival APIs.
 - **Strict Types**: No `any`. Define interfaces in `src/types/` if they are shared.
 
 ## Jetpack Compose (Android) Rules

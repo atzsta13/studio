@@ -40,4 +40,3 @@ For use in `src/scripts/clean_lineup.js`:
 ## 💡 Feature Opportunity: "Tribe Mode"
 The "Radar Focus" feature can be evolved into "Tribe Mode". Instead of just filtering by stage, it re-skins the discovery experience:
 - **Delta Mode**: Turns the UI dark/neon, focuses on BPM and night-slots.
-- **Global Mode**: Highlights world-music discovery and "Off-the-beaten-path" POIs.

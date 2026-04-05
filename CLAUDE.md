@@ -18,12 +18,8 @@ This is a **Config-First** platform. **NEVER** hardcode brand names (Sziget, Nov
 
 ### Web (Next.js)
 ```bash
-# Development (defaults to Sziget; predev auto-runs sync-data.mjs)
+# Development (Runs the Monolithic Hub serving all festivals)
 npm run dev
-
-# Build/Dev for specific festival
-NEXT_PUBLIC_FESTIVAL_ID=area53-2026 npm run dev
-NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run build
 
 # Quality Control (typecheck must pass before any merge)
 npm run typecheck
@@ -55,7 +51,7 @@ npm run genkit:dev    # starts Genkit dev UI
 
 ### Data Pipeline
 ```bash
-# Sync active festival data to src/data/ (runs automatically on dev/build)
+# Sync all festival data to public/data/ (runs automatically on dev/build)
 npm run lineup:sync
 
 # Full lineup update for a specific festival (scrape → clean → vibes → sync)
@@ -70,10 +66,10 @@ npm run android:sync:sziget
 
 ## Architecture Patterns
 
-### 1. Web Configuration
+### 1. Web Configuration (Hub Architecture)
 - **Interface**: `FestivalConfig` in `src/config/festival.ts`.
-- **Injection**: `FESTIVAL` object is exported based on `process.env.NEXT_PUBLIC_FESTIVAL_ID`.
-- **Theming**: `src/app/layout.tsx` injects CSS variables (`--primary`, `--accent`, etc.) from the config.
+- **Dynamic Routing**: The UI lives in `src/app/[festivalId]/`. Use `useFestivalData()` to load the active config.
+- **Theming**: Config colors are applied dynamically based on the active route.
 
 ### 2. Android Configuration
 - **Product Flavors**: Defined in `android/app/build.gradle.kts`.
@@ -82,7 +78,7 @@ npm run android:sync:sziget
 
 ### 3. Data Flow
 - **Source of truth**: `festivals/<id>/data/*.json` (one directory per festival ID).
-- **Sync**: `scripts/sync-data.mjs` → `src/data/` (Web); `scripts/sync-android-assets.mjs` → Android assets.
+- **Sync**: `scripts/sync-data.mjs` → `public/data/<id>/` (Web); `scripts/sync-android-assets.mjs` → Android assets.
 - **Format**: Static JSON only. `stage`/`startTime`/`endTime` are always `null` — do not build UI that assumes they exist.
 
 ### 4. Storage & Persistence
@@ -101,7 +97,7 @@ npm run android:sync:sziget
 ## Coding Standards
 - **TypeScript**: Strict mode. No `any`. Use interfaces from `src/types/index.ts`.
 - **Offline-First**: All features (except Spotify matching) must work without an internet connection.
-- **Brutalist UI**: Follow the high-contrast, bold aesthetic defined in `docs/UI_GUIDE.md`.
+- **Brutalist UI**: Follow the high-contrast, bold aesthetic defined in `docs/guides/UI_GUIDE.md`.
 - **Haptics**: Required on all interactive elements in Android via `rememberHapticManager()`.
 - **Icons**: Lucide (Web). Import individually to avoid HMR module factory errors. Android uses Vector Drawables.
 - **Android ViewModel**: Manual `ViewModelProvider.Factory` pattern — no Hilt DI.
