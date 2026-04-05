@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Cloud, Sun, Umbrella, Snowflake, Zap, Droplets } from 'lucide-react';
-import { FESTIVAL } from '@/config/festival-engine';
+import { useParams } from 'next/navigation';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 interface DailyForecast {
     date: string;
@@ -40,6 +41,9 @@ function weatherColor(code: number): string {
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export function WeatherWidget() {
+    const { festivalId } = useParams() as { festivalId: string };
+    const config = getFestivalConfig(festivalId);
+
     const [weather, setWeather] = useState<WeatherData | null>(null);
     const [loading, setLoading] = useState(true);
 

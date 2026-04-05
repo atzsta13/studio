@@ -79,10 +79,10 @@ export const useFavorites = (lineup: LineupItem[] = [], festivalId?: string) => 
       } else {
         updated[artistId] = tier;
       }
-      saveTieredFavorites(updated);
+      save(updated);
       return updated;
     });
-  }, []);
+  }, [save]);
 
   // Derived sets
   const favorites = new Set(Object.keys(tieredFavorites));

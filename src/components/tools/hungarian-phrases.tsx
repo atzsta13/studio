@@ -161,6 +161,9 @@ function PhraseRow({ phrase }: { phrase: Phrase }) {
 }
 
 export function HungarianPhrases() {
+  const { festivalId } = useParams() as { festivalId: string };
+  const config = getFestivalConfig(festivalId);
+
   return (
     <div
       style={{
@@ -173,7 +176,7 @@ export function HungarianPhrases() {
         <div key={cat.title}>
           <p
             style={{
-              color: FESTIVAL.theme.accentHex,
+              color: config.theme.accentHex,
               fontSize: '0.6rem',
               fontWeight: 900,
               letterSpacing: '0.4em',
