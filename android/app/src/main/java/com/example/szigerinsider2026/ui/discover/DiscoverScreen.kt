@@ -51,7 +51,6 @@ import androidx.navigation.NavController
 import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.repository.LineupRepository
-import com.example.szigerinsider2026.data.repository.SpotifyRepository
 import com.example.szigerinsider2026.ui.components.ArtistCard
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
@@ -109,15 +108,6 @@ fun DiscoverScreen(
         }
     )
     
-    val spotifyViewModel: SpotifyViewModel = viewModel(
-        factory = object : ViewModelProvider.Factory {
-            @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return SpotifyViewModel(SpotifyRepository(context)) as T
-            }
-        }
-    )
-
     val filteredArtists by discoverViewModel.filteredArtists.collectAsStateWithLifecycle()
     val availableDays by discoverViewModel.availableDays.collectAsStateWithLifecycle()
     val availableGenres by discoverViewModel.availableGenres.collectAsStateWithLifecycle()
@@ -141,9 +131,6 @@ fun DiscoverScreen(
     val countryFilter by discoverViewModel.countryFilter.collectAsStateWithLifecycle()
     val allArtists by discoverViewModel.allArtists.collectAsStateWithLifecycle()
     val selectedYear by discoverViewModel.selectedYear.collectAsStateWithLifecycle()
-    val spotifyAuthState by spotifyViewModel.authState.collectAsStateWithLifecycle()
-    val spotifyMatchedIds by spotifyViewModel.matchedArtistIds.collectAsStateWithLifecycle()
-
     var showCountrySheet by remember { mutableStateOf(false) }
     var serendipityArtist by remember { mutableStateOf<com.example.szigerinsider2026.data.model.Artist?>(null) }
     
@@ -247,13 +234,16 @@ fun DiscoverScreen(
 
                     LocalAiScoutCard(
                         isDownloaded = isLocalAiDownloaded,
+                        canDownload = config.productionUrl != null,
                         progress = localAiDownloadProgress,
                         isLoading = isLocalAiLoading,
                         isListening = isListening,
                         response = localAiResponse,
-                        onDownload = { 
-                            val modelUrl = "${config.productionUrl}/ai/gemma4-2b-android.bin"
-                            discoverViewModel.downloadModel(modelUrl) 
+                        onDownload = {
+                            val base = config.productionUrl
+                            if (base != null) {
+                                discoverViewModel.downloadModel("$base/ai/gemma4-2b-android.bin")
+                            }
                         },
                         onSearch = { discoverViewModel.runLocalScout(it) },
                         onListen = { 
@@ -481,6 +471,7 @@ fun DiscoverScreen(
 @Composable
 fun LocalAiScoutCard(
     isDownloaded: Boolean,
+    canDownload: Boolean,
     progress: Float,
     isLoading: Boolean,
     isListening: Boolean,
@@ -532,8 +523,18 @@ fun LocalAiScoutCard(
                     fontSize = 12.sp,
                     lineHeight = 18.sp
                 )
+                if (!canDownload) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "AI model unavailable for this festival build.",
+                        color = TextMuted.copy(alpha = 0.5f),
+                        fontSize = 11.sp,
+                        fontStyle = FontStyle.Italic
+                    )
+                    return@Column
+                }
                 Spacer(modifier = Modifier.height(16.dp))
-                
+
                 if (progress != 0f) {
                     Column {
                         if (progress > 0f) {

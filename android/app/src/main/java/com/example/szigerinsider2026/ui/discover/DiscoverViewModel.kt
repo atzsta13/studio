@@ -42,7 +42,7 @@ class DiscoverViewModel(
     private val _searchQuery = MutableStateFlow("")
     private val _isLoading = MutableStateFlow(true)
     private val _countryFilter = MutableStateFlow<String?>(null)
-    private val _selectedYear = MutableStateFlow("2026")
+    private val _selectedYear = MutableStateFlow(FestivalConfig.current.dates.year.toString())
     private val _aiRecommendations = MutableStateFlow<AiRecommendationResult?>(null)
     private val _aiLoading = MutableStateFlow(false)
     private val _spotifyMatchedIds = MutableStateFlow<Set<String>>(emptySet())

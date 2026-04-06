@@ -133,17 +133,11 @@ class LocalScoutRepository(private val context: Context) {
         """.trimIndent()
         
         try {
-            // MediaPipe 2026 support for partial responses
-            llm.generateResponseAsync(fullPrompt)
-            
-            // This is a simplified mock of the async flow for the MediaPipe 0.10.x API
-            // In a real device environment, you'd use the provided callback.
             val response = llm.generateResponse(fullPrompt)
-            
-            // To simulate streaming for better UX in this refactor pass:
+            // Word-by-word emit to give a typing effect in the UI
             response.split(" ").forEach { word ->
                 trySend("$word ")
-                kotlinx.coroutines.delay(30) // Simulate typing speed
+                kotlinx.coroutines.delay(30)
             }
             close()
         } catch (e: Exception) {
