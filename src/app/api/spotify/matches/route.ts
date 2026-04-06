@@ -1,3 +1,4 @@
+// SUSPENDED: Spotify API access paused. See docs/features/SPOTIFY_INTEGRATION.md
 
 import { type NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';

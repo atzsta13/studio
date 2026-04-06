@@ -54,7 +54,7 @@ Android uses Gradle Product Flavors to build dedicated APKs per festival:
 ## 💎 Platform Capabilities
 
 - **AI Artist Discovery** — Personalized scouting using Google Genkit based on user mood and preferences.
-- **Spotify Integration** — Match festival lineups against user's top tracks and generate "Must See" playlists.
+- **Spotify Integration** — ⚠️ *Suspended* — Spotify API closed public access. See `docs/features/SPOTIFY_INTEGRATION.md`.
 - **Vibe DNA Quiz** — A gamified mood quiz that curates a personal short-list of artists.
 - **Tactical Map** — High-performance SVG map with coordinate-mapped POIs (water, food, stages).
 - **Survival Toolkit** — Currency converters, SOS beacons, and essential local phrases.
@@ -77,7 +77,7 @@ npm run prebuild
 |-----------|------------|
 | **Web Core** | Next.js 16 / React 19 / TypeScript |
 | **Styling** | Tailwind CSS 4 / CSS Variables Theme |
-| **Android** | Jetpack Compose / Kotlin / Room / Hilt |
+| **Android** | Jetpack Compose / Kotlin / Room (manual factory pattern, no DI framework) |
 | **AI Layer** | Google Genkit / Gemini 1.5 Flash |
 | **Data** | Offline-first JSON bundles / LocalStorage |
 

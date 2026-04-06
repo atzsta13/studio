@@ -1,4 +1,6 @@
 
+// SUSPENDED: Spotify API access paused. See docs/features/SPOTIFY_INTEGRATION.md
+
 'use client';
 
 import { useState, useEffect } from 'react';

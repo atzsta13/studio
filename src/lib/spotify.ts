@@ -1,3 +1,6 @@
+// SUSPENDED: Spotify Web API turned off public access for new apps (2024).
+// This integration is paused indefinitely. See docs/features/SPOTIFY_INTEGRATION.md
+// Do not build new features on top of this file.
 
 export const SPOTIFY_CLIENT_ID = process.env.SPOTIFY_CLIENT_ID || 'd27e168c2c3746f7a22c075ce1a49dc2';
 export const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
