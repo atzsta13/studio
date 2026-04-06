@@ -2,8 +2,8 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import TimetableView from '@/components/timetable/timetable-view';
-import lineupCurrent from '@/data/lineup.json';
 import { History, Calendar, Clock, Sun, Moon } from 'lucide-react';
+import { useFestivalData } from '@/hooks/use-festival-data';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -22,19 +22,19 @@ export default function TimetablePage() {
   const theme = useTheme();
   const { festivalId } = useParams() as { festivalId: string };
   const config = getFestivalConfig(festivalId);
-  const { allFavoriteIds } = useFavorites(lineupCurrent as LineupItem[], festivalId);
+  const { lineup: festivalLineup } = useFestivalData(festivalId);
+  const { allFavoriteIds } = useFavorites(festivalLineup, festivalId);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const currentLineup = useMemo(() => {
-    const base = lineupCurrent as LineupItem[];
     if (config.features.dayparkNightpark) {
-      return base.filter((a: LineupItem & { timeSlot?: string }) => a.timeSlot === selectedTimeSlot);
+      return festivalLineup.filter((a: LineupItem & { timeSlot?: string }) => a.timeSlot === selectedTimeSlot);
     }
-    return base;
-  }, [selectedTimeSlot, config.features.dayparkNightpark]);
+    return festivalLineup;
+  }, [festivalLineup, selectedTimeSlot, config.features.dayparkNightpark]);
 
 
   const hasSchedule = useMemo(() => {
@@ -135,7 +135,7 @@ export default function TimetablePage() {
       <Box sx={{ flex: 1, position: 'relative' }}>
         <Container maxWidth="lg" sx={{ mt: 4 }}>
            {config.features.clashResolver && (
-             <ClashResolver favorites={(lineupCurrent as LineupItem[]).filter(a => allFavoriteIds.has(a.id))} />
+             <ClashResolver favorites={festivalLineup.filter(a => allFavoriteIds.has(a.id))} />
            )}
         </Container>
 

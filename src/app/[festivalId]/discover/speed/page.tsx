@@ -10,20 +10,19 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFavorites } from '@/hooks/use-favorites';
 import { useHaptic } from '@/hooks/use-haptic';
-import lineupData from '@/data/lineup.json';
 import { LineupItem } from '@/types';
-import { FESTIVAL } from '@/config/festival-engine';
-
-const allArtists = (lineupData as LineupItem[]).map(a => ({
-  ...a,
-  vibes: a.vibes ?? [],
-  returningHero: !!a.returningHero,
-}));
+import { useFestivalData } from '@/hooks/use-festival-data';
 
 export default function SpeedDiscoveryPage() {
   const haptic = useHaptic();
   const router = useRouter();
   const { festivalId } = useParams() as { festivalId: string };
+  const { lineup: rawLineup, config } = useFestivalData(festivalId);
+  const allArtists = useMemo(() => rawLineup.map(a => ({
+    ...a,
+    vibes: a.vibes ?? [],
+    returningHero: !!a.returningHero,
+  })), [rawLineup]);
   const { toggleFavorite, isFavorite } = useFavorites(allArtists, festivalId);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<number>(0);
@@ -61,13 +60,13 @@ export default function SpeedDiscoveryPage() {
   if (!currentArtist || currentIndex >= pool.length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-4 text-center bg-black">
-        <Sparkles className="w-16 h-16 mb-6" style={{ color: FESTIVAL.theme.accentHex }} />
+        <Sparkles className="w-16 h-16 mb-6" style={{ color: config.theme.accentHex }} />
         <h1 className="text-4xl font-black mb-4 uppercase italic">YOU&apos;VE SEEN IT ALL!</h1>
-        <p className="text-muted-foreground mb-8 max-w-xs">You processed the entire lineup. Time to head to {FESTIVAL.name}.</p>
+        <p className="text-muted-foreground mb-8 max-w-xs">You processed the entire lineup. Time to head to {config.name}.</p>
         <Button 
           variant="outline" 
           className="border-2 font-bold uppercase italic"
-          onClick={() => router.push('/discover')}
+          onClick={() => router.push(`/${festivalId}/discover`)}
         >
           BACK TO GRID
         </Button>
@@ -84,7 +83,7 @@ export default function SpeedDiscoveryPage() {
         </Button>
         <div className="flex flex-col items-center">
           <span className="text-[10px] font-black uppercase text-muted-foreground tracking-tighter">Speed Discovery</span>
-          <span className="text-xs font-bold" style={{ color: FESTIVAL.theme.accentHex }}>{currentIndex + 1} / {pool.length}</span>
+          <span className="text-xs font-bold" style={{ color: config.theme.accentHex }}>{currentIndex + 1} / {pool.length}</span>
         </div>
         <div className="w-10" />
       </div>
@@ -113,7 +112,7 @@ export default function SpeedDiscoveryPage() {
           >
             {/* Indicators */}
             <motion.div style={{ scale: heartScale }} className="absolute top-10 right-10 z-20 pointer-events-none">
-              <div className="p-4 rounded-full" style={{ background: FESTIVAL.theme.accentHex }}>
+              <div className="p-4 rounded-full" style={{ background: config.theme.accentHex }}>
                 <Heart className="w-12 h-12 text-black fill-black" />
               </div>
             </motion.div>
@@ -145,7 +144,7 @@ export default function SpeedDiscoveryPage() {
               <div className="absolute bottom-0 left-0 right-0 p-6 space-y-3">
                 <div className="space-y-1">
                   {currentArtist.returningHero && (
-                    <Badge className="text-black font-black italic border-none text-[10px] py-0 px-2" style={{ background: FESTIVAL.theme.accentHex }}>
+                    <Badge className="text-black font-black italic border-none text-[10px] py-0 px-2" style={{ background: config.theme.accentHex }}>
                       RETURNING HERO
                     </Badge>
                   )}
@@ -159,8 +158,8 @@ export default function SpeedDiscoveryPage() {
                   </div>
                 </div>
 
-                <p className="text-sm text-zinc-300 line-clamp-3 font-medium italic border-l-2 pl-3" style={{ borderColor: FESTIVAL.theme.accentHex }}>
-                  {currentArtist.description || `The ${FESTIVAL.name} vibe is calling. Don't miss this one.`}
+                <p className="text-sm text-zinc-300 line-clamp-3 font-medium italic border-l-2 pl-3" style={{ borderColor: config.theme.accentHex }}>
+                  {currentArtist.description || `The ${config.name} vibe is calling. Don't miss this one.`}
                 </p>
 
                 <div className="flex gap-2 pt-2">
@@ -188,12 +187,12 @@ export default function SpeedDiscoveryPage() {
         <Button
           size="icon"
           className="w-20 h-20 rounded-full border-4 border-black hover:scale-105 transition-transform active:scale-95 shadow-2xl"
-          style={{ background: FESTIVAL.theme.accentHex, boxShadow: `0 0 20px ${FESTIVAL.theme.accentHex}44` }}
+          style={{ background: config.theme.accentHex, boxShadow: `0 0 20px ${config.theme.accentHex}44` }}
           onClick={() => handleNext(true)}
         >
           <Heart className="w-10 h-10 text-black fill-black" />
         </Button>
-        <Link href={`/artist/${currentArtist.id}`}>
+        <Link href={`/${festivalId}/artist/${currentArtist.id}`}>
           <Button
             size="icon"
             className="w-16 h-16 rounded-full bg-transparent border-4 border-white hover:bg-white/10 transition-transform active:scale-90"

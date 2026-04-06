@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
-import lineup from '@/data/lineup.json';
 import {
   Music,
   Search,
