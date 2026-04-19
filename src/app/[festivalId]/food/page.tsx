@@ -4,7 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star } from 'lucide-react';
+import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star, Sprout } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
 import { Loader2 } from 'lucide-react';
@@ -30,7 +30,15 @@ const filters = {
     DRINK: { label: 'Drink', icon: GlassWater, category: 'Drink' },
     BUDGET: { label: 'Budget Hero', icon: Coins, isBudget: true },
     VEGAN: { label: 'Vegan', icon: Leaf, tag: 'vegan' },
+    VEGETARIAN: { label: 'Vegetarian', icon: Sprout, tag: 'vegetarian' },
     'GLUTEN-FREE': { label: 'Gluten-Free', icon: WheatOff, tag: 'gluten-free' },
+};
+
+const DIETARY_BADGE_CONFIG: Record<string, { label: string; className: string }> = {
+    vegan: { label: 'Vegan', className: 'bg-green-500/15 text-green-400 border-green-500/20' },
+    vegetarian: { label: 'Vegetarian', className: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20' },
+    'gluten-free': { label: 'GF', className: 'bg-amber-500/15 text-amber-400 border-amber-500/20' },
+    halal: { label: 'Halal', className: 'bg-blue-500/15 text-blue-400 border-blue-500/20' },
 };
 
 export default function FoodFinderPage() {
@@ -163,9 +171,18 @@ export default function FoodFinderPage() {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="flex-grow px-6 pb-6">
-                                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                                     {vendor.description}
                                 </p>
+                                {vendor.tags.some(t => t in DIETARY_BADGE_CONFIG) && (
+                                    <div className="flex flex-wrap gap-1.5 mb-4">
+                                        {vendor.tags.filter(t => t in DIETARY_BADGE_CONFIG).map(tag => (
+                                            <span key={tag} className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border ${DIETARY_BADGE_CONFIG[tag].className}`}>
+                                                {DIETARY_BADGE_CONFIG[tag].label}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
 
                                 {config.features.foodRatings && (
                                     <div className="flex items-center gap-2 mb-6 p-3 rounded-xl bg-white/5 border border-white/5">

@@ -39,12 +39,14 @@ import { CarFinder } from '@/components/tools/car-finder';
 import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
 import { useInsider } from '@/components/layout/insider-provider';
+import { useTranslation } from '@/hooks/use-translation';
 
 export default function ToolsPage() {
   const { festivalId } = useParams() as { festivalId: string };
   const config = getFestivalConfig(festivalId);
   const { toast } = useToast();
   const { batterySaver, toggleBatterySaver: toggleBattery } = useInsider();
+  const { t } = useTranslation();
   const [localAmount, setLocalAmount] = useState<string>(config.currency.localCode === 'HUF' ? '1000' : '10');
   const [isFlashOn, setIsFlashOn] = useState(false);
 
@@ -82,7 +84,7 @@ export default function ToolsPage() {
         <>
           <div className="mb-20">
             <PageHeader
-              title="Survival Toolkit"
+              title={t('toolkit_title') !== 'toolkit_title' ? t('toolkit_title') : 'Survival Toolkit'}
               description={`Elite tactical utilities for the ${config.tagline}. No signal required.`}
             />
           </div>
@@ -142,8 +144,8 @@ export default function ToolsPage() {
 
           <Tabs defaultValue="survival" className="w-full">
             <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${config.location.countryCode === 'HU' ? 'grid-cols-4' : 'grid-cols-3'}`}>
-              <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Tactical</TabsTrigger>
-              <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Safety</TabsTrigger>
+              <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">{t('toolkit_tactical') !== 'toolkit_tactical' ? t('toolkit_tactical') : 'Tactical'}</TabsTrigger>
+              <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">{t('toolkit_safety') !== 'toolkit_safety' ? t('toolkit_safety') : 'Safety'}</TabsTrigger>
               {config.location.countryCode === 'HU' && (
                 <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
               )}

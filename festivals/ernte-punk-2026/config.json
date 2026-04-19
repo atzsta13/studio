@@ -11,7 +11,10 @@
   "deepLinkScheme": "erntepunk2026",
   "i18n": {
     "defaultLocale": "de",
-    "locales": ["de", "en"],
+    "locales": [
+      "de",
+      "en"
+    ],
     "translations": {
       "de": {
         "nav_home": "Home",
@@ -30,7 +33,8 @@
         "tip_mosh": "Moshpit-Etikette: Wenn wer hinfällt, aufhelfen!",
         "tip_ear": "Gehörschutz nicht vergessen, es wird laut in Halle E.",
         "tip_cashless": "Eventuell Cash mitnehmen für Merch-Stände.",
-        "tip_tram": "Die Linie 4 bringt dich direkt zur Messe."
+        "tip_tram": "Die Linie 4 bringt dich direkt zur Messe.",
+        "nav_highlights": "Rückblick"
       },
       "en": {
         "nav_home": "Home",
@@ -49,7 +53,8 @@
         "tip_mosh": "Moshpit etiquette: If someone falls, pick them up!",
         "tip_ear": "Don't forget ear protection, it's gonna be loud in Hall E.",
         "tip_cashless": "Bring some cash for independent merch stalls.",
-        "tip_tram": "Tram line 4 takes you directly to the venue."
+        "tip_tram": "Tram line 4 takes you directly to the venue.",
+        "nav_highlights": "Wrap"
       }
     }
   },

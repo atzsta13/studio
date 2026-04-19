@@ -44,6 +44,7 @@ import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/use-haptic';
 import { useFestivalData } from '@/hooks/use-festival-data';
+import { NotificationBanner } from '@/components/layout/notification-banner';
 
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
@@ -426,6 +427,7 @@ export default function DiscoverPage() {
         )}
 
         <div className="mt-16 max-w-lg mx-auto px-6">
+          <NotificationBanner festivalId={festivalId} hasFavorites={favorites.size > 0} />
           <div className="flex justify-between items-end mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
             <span>{config.name} Discovery</span>
             <span className="text-primary">{favorites.size} / {allArtists.length} Artists Saved</span>

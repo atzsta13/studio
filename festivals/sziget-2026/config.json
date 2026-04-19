@@ -11,7 +11,10 @@
   "deepLinkScheme": "sziget2026",
   "i18n": {
     "defaultLocale": "en",
-    "locales": ["en", "hu"],
+    "locales": [
+      "en",
+      "hu"
+    ],
     "translations": {
       "en": {
         "nav_home": "Home",
@@ -27,7 +30,8 @@
         "toolkit_refresh": "REFRESH DATA",
         "map_title": "ISLAND RADAR",
         "scout_title": "AI SCOUT",
-        "scout_placeholder": "Search artists or vibes..."
+        "scout_placeholder": "Search artists or vibes...",
+        "nav_highlights": "Wrap"
       },
       "hu": {
         "nav_home": "Főoldal",
@@ -43,7 +47,8 @@
         "toolkit_refresh": "ADATOK FRISSÍTÉSE",
         "map_title": "SZIGET RADAR",
         "scout_title": "AI SCOUT",
-        "scout_placeholder": "Keress előadót vagy stílust..."
+        "scout_placeholder": "Keress előadót vagy stílust...",
+        "nav_highlights": "Visszatekintés"
       }
     }
   },
@@ -166,53 +171,122 @@
   },
   "content": {
     "emergencyContacts": {
-      "security": { "phone": "112", "label": "Security Dispatch" },
-      "medical": { "phone": "104", "label": "Medical Response" }
+      "security": {
+        "phone": "112",
+        "label": "Security Dispatch"
+      },
+      "medical": {
+        "phone": "104",
+        "label": "Medical Response"
+      }
     },
     "radarFocuses": [
       {
         "id": "main",
         "label": "MAIN STAGE HEROES",
-        "targetStages": ["Main Stage"],
+        "targetStages": [
+          "Main Stage"
+        ],
         "targetGenres": []
       },
       {
         "id": "delta",
         "label": "DELTA DISTRICT (EDM)",
-        "targetStages": ["Delta District", "Yettel Colosseum", "The Club", "BOLT Night Stage"],
-        "targetGenres": ["DELTA DISTRICT"]
+        "targetStages": [
+          "Delta District",
+          "Yettel Colosseum",
+          "The Club",
+          "BOLT Night Stage"
+        ],
+        "targetGenres": [
+          "DELTA DISTRICT"
+        ]
       },
       {
         "id": "szoho",
         "label": "SZOHO (HIP-HOP & INDIE)",
-        "targetStages": ["dropYard", "The Buzz", "The Cypher"],
+        "targetStages": [
+          "dropYard",
+          "The Buzz",
+          "The Cypher"
+        ],
         "targetGenres": []
       },
       {
         "id": "global",
         "label": "GLOBAL VILLAGE",
-        "targetStages": ["Global Village", "Magic Mirror", "Cirque"],
+        "targetStages": [
+          "Global Village",
+          "Magic Mirror",
+          "Cirque"
+        ],
         "targetGenres": []
       },
       {
         "id": "revolut",
         "label": "THE REVOLUT STAGE",
-        "targetStages": ["Revolut Stage", "FreeDome"],
+        "targetStages": [
+          "Revolut Stage",
+          "FreeDome"
+        ],
         "targetGenres": []
       }
     ],
-    "hiddenGems": ["1", "4", "5", "47", "57", "70"],
+    "hiddenGems": [
+      "1",
+      "4",
+      "5",
+      "47",
+      "57",
+      "70"
+    ],
     "shuttleRoutes": [
-      { "id": "1", "route": "City Center Express", "from": "Deák Ferenc tér", "to": "Bridge of Freedom", "freq": "Every 15m", "active": "24/7" },
-      { "id": "2", "route": "Airport Shuttle", "from": "Budapest Airport (BUD)", "to": "Island Entrance", "freq": "Every 30m", "active": "08:00 – 22:00" },
-      { "id": "3", "route": "Camping North", "from": "H-HÉV Station", "to": "North Camping Gate", "freq": "Every 20m", "active": "10:00 – 02:00" }
+      {
+        "id": "1",
+        "route": "City Center Express",
+        "from": "Deák Ferenc tér",
+        "to": "Bridge of Freedom",
+        "freq": "Every 15m",
+        "active": "24/7"
+      },
+      {
+        "id": "2",
+        "route": "Airport Shuttle",
+        "from": "Budapest Airport (BUD)",
+        "to": "Island Entrance",
+        "freq": "Every 30m",
+        "active": "08:00 – 22:00"
+      },
+      {
+        "id": "3",
+        "route": "Camping North",
+        "from": "H-HÉV Station",
+        "to": "North Camping Gate",
+        "freq": "Every 20m",
+        "active": "10:00 – 02:00"
+      }
     ],
     "dictionaryTerms": [
-      { "term": "Colosseum", "def": "A circular venue built from wooden pallets, the heart of Sziget techno." },
-      { "term": "Island Eye", "def": "The giant ferris wheel offering panoramic views of the entire festival." },
-      { "term": "Main Stage", "def": "The massive centerpiece where headliners perform each night." },
-      { "term": "Siesta", "def": "Taking a nap during the hottest hours (13:00–16:00) to survive the night." },
-      { "term": "Bridge of Freedom", "def": "The iconic K-bridge entry point to the island." }
+      {
+        "term": "Colosseum",
+        "def": "A circular venue built from wooden pallets, the heart of Sziget techno."
+      },
+      {
+        "term": "Island Eye",
+        "def": "The giant ferris wheel offering panoramic views of the entire festival."
+      },
+      {
+        "term": "Main Stage",
+        "def": "The massive centerpiece where headliners perform each night."
+      },
+      {
+        "term": "Siesta",
+        "def": "Taking a nap during the hottest hours (13:00–16:00) to survive the night."
+      },
+      {
+        "term": "Bridge of Freedom",
+        "def": "The iconic K-bridge entry point to the island."
+      }
     ]
   }
 }

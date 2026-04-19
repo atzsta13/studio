@@ -16,6 +16,7 @@ export const getNavItems = (festivalId: string | undefined): NavItem[] => {
   const items: NavItem[] = [
     { href: `${prefix}/`, label: 'Home', tKey: 'nav_home', icon: 'home' },
     { href: `${prefix}/discover`, label: 'Artists', tKey: 'nav_artists', icon: 'wand-2' },
+    { href: `${prefix}/highlights`, label: 'Wrap', tKey: 'nav_highlights', icon: 'trophy' },
     { href: `${prefix}/map`, label: 'Map', tKey: 'nav_map', icon: 'map', feature: 'weatherRadar' },
     { href: `${prefix}/merch`, label: 'Merch', tKey: 'nav_merch', icon: 'shopping-bag', feature: 'merchCatalog' },
     { href: `${prefix}/tools`, label: 'Tools', tKey: 'nav_tools', icon: 'zap' },

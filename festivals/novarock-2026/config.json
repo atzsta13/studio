@@ -11,7 +11,10 @@
   "deepLinkScheme": "novarock2026",
   "i18n": {
     "defaultLocale": "de",
-    "locales": ["de", "en"],
+    "locales": [
+      "de",
+      "en"
+    ],
     "translations": {
       "de": {
         "nav_home": "Home",
@@ -31,7 +34,8 @@
         "tip_dust": "Bandana/Maske gegen Staub einpacken.",
         "tip_water": "Trinkwasser an den Spültoiletten ist gratis.",
         "tip_cashless": "Wristband online aufladen um Warteschlangen zu vermeiden.",
-        "tip_greencamping": "Green Camping ist am nächsten zu den Stages."
+        "tip_greencamping": "Green Camping ist am nächsten zu den Stages.",
+        "nav_highlights": "Rückblick"
       },
       "en": {
         "nav_home": "Home",
@@ -51,11 +55,11 @@
         "tip_dust": "Pack a bandana for the dust storms.",
         "tip_water": "Tap water at the toilets is free.",
         "tip_cashless": "Top up online to skip the gate lines.",
-        "tip_greencamping": "Green Camping is closest to the arena."
+        "tip_greencamping": "Green Camping is closest to the arena.",
+        "nav_highlights": "Wrap"
       }
     }
   },
-
   "aiPersona": "the 'Nova Rock Scout', a rock veteran who has survived every Pannonia dust storm since 2005 and knows all five stages by heart",
   "location": {
     "city": "Nickelsdorf",

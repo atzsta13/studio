@@ -11,7 +11,10 @@
   "deepLinkScheme": "area53insider",
   "i18n": {
     "defaultLocale": "de",
-    "locales": ["de", "en"],
+    "locales": [
+      "de",
+      "en"
+    ],
     "translations": {
       "de": {
         "nav_home": "Home",
@@ -27,7 +30,8 @@
         "toolkit_refresh": "DATEN LADEN",
         "map_title": "RADAR NAVIGATION",
         "scout_title": "METAL SCOUT",
-        "scout_placeholder": "Bands oder Vibes..."
+        "scout_placeholder": "Bands oder Vibes...",
+        "nav_highlights": "Rückblick"
       },
       "en": {
         "nav_home": "Home",
@@ -43,7 +47,8 @@
         "toolkit_refresh": "REFRESH DATA",
         "map_title": "RADAR NAVIGATION",
         "scout_title": "AI SCOUT",
-        "scout_placeholder": "Search bands or vibes..."
+        "scout_placeholder": "Search bands or vibes...",
+        "nav_highlights": "Wrap"
       }
     }
   },
@@ -62,7 +67,11 @@
     "year": 2026,
     "startDate": "2026-07-16",
     "endDate": "2026-07-18",
-    "days": ["Thursday", "Friday", "Saturday"],
+    "days": [
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
     "dayLabels": {
       "Thursday": "THU",
       "Friday": "FRI",
@@ -155,33 +164,82 @@
   },
   "content": {
     "emergencyContacts": {
-      "security": { "phone": "133", "label": "Polizei / Security" },
-      "medical": { "phone": "144", "label": "Rotes Kreuz" }
+      "security": {
+        "phone": "133",
+        "label": "Polizei / Security"
+      },
+      "medical": {
+        "phone": "144",
+        "label": "Rotes Kreuz"
+      }
     },
     "radarFocuses": [
       {
         "id": "main",
         "label": "OPEN AIR STAGE",
-        "targetStages": ["Main Stage", "Open Air"],
-        "targetGenres": ["METAL", "POWER METAL", "FOLK METAL"]
+        "targetStages": [
+          "Main Stage",
+          "Open Air"
+        ],
+        "targetGenres": [
+          "METAL",
+          "POWER METAL",
+          "FOLK METAL"
+        ]
       },
       {
         "id": "tenne",
         "label": "THE TENNE (AFTERSHOW)",
-        "targetStages": ["Tenne", "Indoor Stage"],
-        "targetGenres": ["PARTY", "ROCK", "METAL"]
+        "targetStages": [
+          "Tenne",
+          "Indoor Stage"
+        ],
+        "targetGenres": [
+          "PARTY",
+          "ROCK",
+          "METAL"
+        ]
       }
     ],
     "shuttleRoutes": [
-      { "id": "1", "route": "Leoben Station Express", "from": "Leoben Hauptbahnhof", "to": "VAZ Schladnitz", "freq": "Every 30m", "active": "10:00 - 04:00" },
-      { "id": "2", "route": "City Loop", "from": "Hauptplatz Leoben", "to": "VAZ Schladnitz", "freq": "Every 60m", "active": "12:00 - 00:00" }
+      {
+        "id": "1",
+        "route": "Leoben Station Express",
+        "from": "Leoben Hauptbahnhof",
+        "to": "VAZ Schladnitz",
+        "freq": "Every 30m",
+        "active": "10:00 - 04:00"
+      },
+      {
+        "id": "2",
+        "route": "City Loop",
+        "from": "Hauptplatz Leoben",
+        "to": "VAZ Schladnitz",
+        "freq": "Every 60m",
+        "active": "12:00 - 00:00"
+      }
     ],
     "dictionaryTerms": [
-      { "term": "Murauer", "def": "The local Styrian beer of choice. Essential fuel for headbanging." },
-      { "term": "The Tenne", "def": "The indoor stage/barn where the legendary aftershow parties happen until dawn." },
-      { "term": "Schutzhaus", "def": "The shelter building providing actual toilets, showers, and a mattress dormitory." },
-      { "term": "Jazz Gitti", "def": "An Austrian pop legend who traditionally performs a cult morning session on Saturday. Not metal, but mandatory." },
-      { "term": "Bavarian Village", "def": "The themed camping area with its own elected Mayor. Elite level camping." }
+      {
+        "term": "Murauer",
+        "def": "The local Styrian beer of choice. Essential fuel for headbanging."
+      },
+      {
+        "term": "The Tenne",
+        "def": "The indoor stage/barn where the legendary aftershow parties happen until dawn."
+      },
+      {
+        "term": "Schutzhaus",
+        "def": "The shelter building providing actual toilets, showers, and a mattress dormitory."
+      },
+      {
+        "term": "Jazz Gitti",
+        "def": "An Austrian pop legend who traditionally performs a cult morning session on Saturday. Not metal, but mandatory."
+      },
+      {
+        "term": "Bavarian Village",
+        "def": "The themed camping area with its own elected Mayor. Elite level camping."
+      }
     ]
   }
 }

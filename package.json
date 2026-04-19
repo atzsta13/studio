@@ -12,6 +12,9 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "pulse": "node scripts/pulse-check.mjs",
     "lineup:sync": "node scripts/sync-data.mjs",
     "lineup:scrape": "node scripts/scrape-all-artists.mjs",
@@ -28,7 +31,7 @@
     "android:sync:novarock": "NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run lineup:sync-android",
     "android:sync:frequency": "NEXT_PUBLIC_FESTIVAL_ID=frequency-2026 npm run lineup:sync-android",
     "android:sync:erntepunk": "NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:sync-android"
-    },
+  },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
@@ -86,13 +89,20 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.9",
-    "@types/node": "^22.13.5",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.19.17",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.4.20",
     "genkit-cli": "^1.27.0",
+    "jsdom": "^29.0.2",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.9",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vitest": "^4.1.4"
   }
 }

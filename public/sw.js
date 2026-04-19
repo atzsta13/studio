@@ -1,8 +1,30 @@
-const CACHE_NAME = 'festival-insider-cache-v3';
+const CACHE_NAME = 'festival-insider-cache-v4';
+
+// Static assets to pre-cache on install (maps + icons)
+const PRECACHE_URLS = [
+  '/icons/icon-192x192.png',
+  '/data/sziget-2026/assets/map.svg',
+  '/data/area53-2026/assets/map.svg',
+  '/data/novarock-2026/assets/map.svg',
+  '/data/frequency-2026/assets/map.svg',
+  '/data/ernte-punk-2026/assets/map.svg',
+];
 
 // --- Lifecycle: Install ---
 self.addEventListener('install', (event) => {
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      // Pre-cache critical offline assets; ignore failures for missing maps
+      return Promise.allSettled(
+        PRECACHE_URLS.map((url) =>
+          fetch(url).then((res) => {
+            if (res.ok) return cache.put(url, res);
+          }).catch(() => {})
+        )
+      );
+    })
+  );
 });
 
 // --- Lifecycle: Activate ---
@@ -39,6 +61,7 @@ self.addEventListener('fetch', (event) => {
   // 3. API CHECK: Cache weather (stale-while-revalidate), skip all other API calls
   if (url.pathname.startsWith('/api/')) {
     if (url.pathname === '/api/weather') {
+      // Cache keyed by full URL (includes ?festivalId= param)
       event.respondWith(
         caches.match(request).then((cached) => {
           const networkFetch = fetch(request).then((response) => {

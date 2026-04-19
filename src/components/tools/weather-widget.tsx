@@ -48,12 +48,12 @@ export function WeatherWidget() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/weather')
+        fetch(`/api/weather?festivalId=${encodeURIComponent(festivalId)}`)
             .then((r) => r.json())
             .then(setWeather)
             .catch(() => {})
             .finally(() => setLoading(false));
-    }, []);
+    }, [festivalId]);
 
     if (loading) {
         return (
