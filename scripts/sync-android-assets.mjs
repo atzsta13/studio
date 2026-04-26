@@ -25,6 +25,10 @@ for (const file of fs.readdirSync(srcDataDir)) {
       // Streamline Alignment: Transform "artist" key to "name" for Android compatibility
       try {
         const raw = fs.readFileSync(srcPath, 'utf8')
+        // Skip HTML/Clashfinder files incorrectly ending in .json
+        if (raw.trim().startsWith('<')) {
+          throw new Error('File appears to be HTML, not JSON')
+        }
         const data = JSON.parse(raw)
         
         const transformArtist = (obj) => {
