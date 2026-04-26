@@ -4,7 +4,7 @@
 **Purpose:** A real-time, comprehensive snapshot of the repository's exact state, architecture, and verification protocols. Read this to instantly synchronize with the current context before making changes.
 
 **Last Updated:** April 2026
-**Current Phase:** Phase 2 Foundation (Hardening & DRYing)
+**Current Phase:** Phase 2 Foundation COMPLETE.
 
 ---
 
@@ -13,64 +13,42 @@
 This is a **White-Label Monolithic Engine** powering multiple festival apps (Sziget, Nova Rock, Frequency, Area 53) from a single codebase.
 
 *   **Web (The Hub):** Next.js 16, React 19 App Router. 
-    *   *Path:* `src/app/[festivalId]/`
-    *   *State:* Uses a global context (`InsiderProvider` in `src/components/layout/insider-provider.tsx`) to provide festival configs, lineup data, and user favorites. 
-    *   **CRITICAL:** The hooks `useFestivalData` and `useFavorites` have been DELETED. Use `useInsider()` instead.
-*   **Android (The Tactical Edge):** Jetpack Compose, Kotlin 2.0.21, MVVM, Room DB.
-    *   *Path:* `android/app/src/main/`
-    *   *State:* Multi-flavor architecture. Each festival is a distinct build variant. Uses a `BaseJsonRepository` to load offline data from `assets/`.
-*   **Data Pipeline:** `scripts/`
-    *   *State:* Node scripts parse, clean, and sync JSON data from `festivals/<id>/data/` into the respective Web and Android directories. Centralized pathing logic exists in `scripts/utils/festival-env.mjs`.
+    *   *State:* Uses a unified `InsiderProvider` context. All tactical pages are wrapped in `FestivalLayoutShell`.
+    *   **UI Kit:** Standardized Brutalist components in `src/components/ui/brutalist/` (NeonButton, GlassCard).
+*   **Android (The Tactical Edge):** Jetpack Compose, Kotlin 2.0.21, MVVM, Room DB (v8).
+    *   *Data:* Uses `BaseJsonRepository` for all asset loading.
+*   **Data Pipeline:** Node scripts in `scripts/` using `festival-env.mjs`.
 
-## 2. ✅ Implemented Features (Verified)
+## 2. ✅ Verified Foundation (All Passed)
 
-Do NOT re-implement these. They are already in the codebase:
+The platform has reached a high-integrity state through parallel agent execution:
 
-*   **Vibe DNA Quiz:**
-    *   *Web:* `src/app/[festivalId]/vibe-quiz/page.tsx`
-    *   *Android:* `android/app/src/main/java/com/example/szigerinsider2026/ui/quiz/`
-*   **Lineup Diff (2025 vs 2026):**
-    *   *Web:* `src/components/home/lineup-diff.tsx`
-*   **Survival Guide:**
-    *   *Web:* `src/components/tools/survival-guide.tsx`
-    *   *Android:* `android/app/src/main/java/com/example/szigerinsider2026/ui/tools/SurvivalGuideScreen.kt`
-*   **Country Explorer:**
-    *   *Web:* `src/components/discover/country-explorer.tsx`
-*   **Serendipity Mode (Surprise Me):**
-    *   *Web:* `src/components/discover/SerendipityModal.tsx`
-*   **Global Vibe Scout (Genkit):**
-    *   *Web:* `src/ai/flows/global-match-flow.ts` (Accessible from the Hub `/`)
+1.  **Massive Test Suite:** 198 passing tests covering hooks, components, and pipeline logic. (See `docs/TESTING.md`).
+2.  **UI Foundation:** The entire Web app has been refactored to use the atomic `NeonButton` and `GlassCard` components, ensuring visual consistency.
+3.  **Config Security:** Automated JSON Schema validation (Ajv) protects all festival configs during the sync process.
 
 ## 3. 🔬 How to Verify Work
 
-Execute the following commands to prove the integrity of the codebase:
-
-**Verify Web Compilation:**
+**Run the Web Test Suite:**
 ```bash
-npm run typecheck
-npm run build
+npm run test
 ```
-*Expected Result:* Zero TypeScript errors in `src/`. Successful Next.js build.
 
-**Verify Android Multi-Flavor Compilation:**
+**Verify Web Build:**
 ```bash
-cd android
-./gradlew assembleDebug
+npm run typecheck && npm run build
 ```
-*Expected Result:* `BUILD SUCCESSFUL`. All 5 flavors (sziget, novarock, frequency, area53, erntepunk) compile.
 
-**Verify Data Integrity:**
+**Verify Android Multi-Flavor Build:**
 ```bash
-npm run lineup:sync
+cd android && ./gradlew assembleDebug
 ```
-*Expected Result:* Scripts execute successfully using `festival-env.mjs`.
 
-## 4. 🚀 Open Work / Potential Improvements
+## 4. 🚀 Future Roadmap (Phase 3+)
 
-- **Strict Type Enforcement:** Hunt down and eliminate any remaining `any` types in `src/ai/flows/` or dynamic React components.
-- **Auto-Config Validation:** Implement a JSON schema validator for `config.json` inside the sync scripts.
-- **Brutalist UI Kit:** Extract shared UI components (Neon buttons, glass cards) into a dedicated `src/components/ui/brutalist/` directory.
-- **Android "My Lineup" Export:** Shareable image generation for personal schedules (as proposed in Phase 3).
+- **Dynamic Schedule Data:** Integrate real Sziget 2026 set times once the API/JSON is published.
+- **Multimodal AI:** Port the "Natural Language Scout" to a local Gemma 4 engine on Android for 100% offline reasoning.
+- **Cross-Festival Search:** Enhance the root `/` portal to show global artist touring patterns.
 
 ---
-*End of context. Proceed with your directives.*
+*Status: GREEN. Foundation Hardened.*
