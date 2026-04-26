@@ -59,10 +59,28 @@ cd android
 
 Use this sequence whenever you update a festival's source data (`festivals/<id>/data/`).
 
-1.  **Enrich Data**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:update`
-2.  **Sync Mobile**: `npm run android:sync:sziget`
-3.  **Validate Web**: `npm run typecheck`
-4.  **Validate Android**: `cd android && ./gradlew assembleSzigetDebug`
+1.  **Update Data**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:scrape`
+2.  **Clean & Merge**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:clean`
+3.  **Enrich Vibes**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:vibes`
+4.  **Sync Local**: `npm run lineup:sync`
+5.  **Sync Mobile**: `npm run android:sync:sziget`
+6.  **Validate Web**: `npm run typecheck`
+7.  **Validate Android**: `cd android && ./gradlew assembleSzigetDebug`
+
+---
+
+## 🔬 Advanced Verification (Chrome DevTools MCP)
+
+For high-fidelity verification of the white-label UI and performance, we utilize the `chrome-devtools-mcp` integration.
+
+### Automated UI Audits
+Use the MCP tools to verify that theme configurations (colors, fonts, brutalist aesthetics) render correctly across all dynamic routes.
+- **Tools:** `navigate_page`, `take_screenshot`, `get_dom_snapshot`
+- **Reference:** `docs/integration/CHROME_DEVTOOLS_MCP.md`
+
+### Performance Survival Checks
+Ensure the app meets "On-Site Survival" standards under emulated network conditions.
+- **Tools:** `emulate_network_conditions`, `record_performance_trace`
 
 ---
 

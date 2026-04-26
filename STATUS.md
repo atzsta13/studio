@@ -13,6 +13,7 @@
 
 ## 🚨 Feature Holds (Suspended)
 - **Spotify Integration**: **ON HOLD**. Restrictive Spotify Dev policies (manual user allow-listing) make this unfeasible for a white-label public app. Pivoted to "Natural Language Scouting."
+- **Gamification & Badges**: **CANCELLED**. Removed from project scope due to user feedback.
 
 ## 🛠️ Unified Hot Zones
 1. **Master Config**: `festivals/<id>/config.json` (The "Brains").
@@ -22,6 +23,9 @@
 ## 🔜 Next Quality Priorities
 - [x] **Acoustic Conformer**: Real microphone sampling logic for the local Gemma engine. (✅ VERIFIED)
 - [x] **Follow Your Artist**: Hub-wide search results showing artist dates across multiple festivals. (✅ POLISHED)
+- [x] **Phase 3 Web Discovery Features**: Vibe DNA Quiz, Serendipity Mode, Lineup Diff, and Country Explorer implemented. (✅ DONE)
+- [x] **Web Survival Guide**: Dedicated practical information section utilizing new offline data structures. (✅ DONE)
+- [x] **Phase 5 Meta-Hub Features**: Global Search, Global Vibe Scout (Spotify Matchmaker equivalent), and Global Radar (Interactive Map) implemented. (✅ DONE)
 - [ ] **Android Multi-Flavor**: Finalizing build variants for all production festivals.
 - [!] **SVG Map Precision**: **ON HOLD**. Accurate coordinate-mapped SVG layouts are not available from organizers. Fallback generic map implemented.
 

@@ -26,5 +26,5 @@ The root path is a premium dashboard designed for "Festival Shoppers."
 2.  [x] **Dynamic Config Engine**: `InsiderProvider` supports per-festival themes.
 3.  [x] **Cross-Festival Sync**: `public/data/` architecture implemented.
 4.  [x] **Global Search Component**: Implement a search engine that iterates over all `lineup.json` files in `public/data/*/`. (✅ DONE)
-5.  [ ] **Spotify Matchmaker**: Port the Vibe Quiz logic to work at a global level (output = Festival Recommendation).
-6.  [ ] **Interactive Map**: A 3D or SVG globe showing geo-markers for all active festivals.
+5.  [x] **Spotify Matchmaker**: Port the Vibe Quiz logic to work at a global level (output = Festival Recommendation). (✅ DONE - Implemented as Global Vibe Scout)
+6.  [x] **Interactive Map**: A 3D or SVG globe showing geo-markers for all active festivals. (✅ DONE - Implemented as Global Radar)
