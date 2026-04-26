@@ -8,9 +8,8 @@ import { FESTIVAL } from '@/config/festival-engine';
 export default function MerchPage() {
   return (
     <div className="container mx-auto max-w-6xl px-4 py-20 pb-32">
-      <PageHeader
-        title="Merch Catalog"
-        description={`The official ${FESTIVAL.name} ${FESTIVAL.dates.year} collection.`}
+      <PageHeader title="Merch Catalog"
+        subtitle={`The official ${FESTIVAL.name} ${FESTIVAL.dates.year} collection.`}
       />
 
       <Card className="mt-20 bg-card/30 border-white/5 rounded-[3.5rem] p-16 text-center relative overflow-hidden">

@@ -207,17 +207,14 @@ describe('useTranslation — with i18n config', () => {
     }))
   })
 
-  it('returns the correct translation string for a known key', async () => {
-    // We need to re-import after the doMock override
+  it('returns the key itself when i18n mock override cannot override the cached module', async () => {
+    // vi.doMock does not flush the already-cached module, so the static
+    // vi.mock (no i18n config) remains active. The hook's t() must return
+    // the key verbatim when config.i18n is absent.
     const { useTranslation: useT } = await import('@/hooks/use-translation')
-
-    // The module-level vi.mock for insider-provider is still in effect here
-    // (doMock only affects dynamic imports after this call). For the purpose
-    // of this test we verify the hook returns keys when no dynamic re-import
-    // has flushed the cache — this is a belt-and-suspenders check.
     const { result } = renderHook(() => useT())
-    // With the static mock (no i18n), t() returns the key
-    expect(typeof result.current.t('nav_home')).toBe('string')
+    // With the static mock (no i18n), t() returns the key, NOT a translated value
+    expect(result.current.t('nav_home')).toBe('nav_home')
   })
 
   it('t() returns the key when a key is missing from translations', async () => {

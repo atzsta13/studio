@@ -19,9 +19,8 @@ const rules = [
 export default function CampingPage() {
   return (
     <div className="container mx-auto max-w-4xl py-20 px-4">
-      <PageHeader
-        title="Camping Guide"
-        description={`Elite survival tips for living on the Island of Freedom.`}
+      <PageHeader title="Camping Guide"
+        subtitle={`Elite survival tips for living on the Island of Freedom.`}
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">

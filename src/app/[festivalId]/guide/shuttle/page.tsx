@@ -18,9 +18,8 @@ const transportItems = [
 export default function ShuttlePage() {
   return (
     <div className="container mx-auto max-w-4xl py-20 px-4">
-      <PageHeader 
-        title="Transport Guide" 
-        description={`Getting to and from ${FESTIVAL.name} safely and efficiently.`}
+      <PageHeader title="Transport Guide" 
+        subtitle={`Getting to and from ${FESTIVAL.name} safely and efficiently.`}
       />
 
       <div className="grid gap-8 mt-12">

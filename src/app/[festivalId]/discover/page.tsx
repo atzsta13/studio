@@ -45,6 +45,10 @@ import { CountryExplorer } from '@/components/discover/country-explorer';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/use-haptic';
 import { NotificationBanner } from '@/components/layout/notification-banner';
+import { NeonButton, GlassCard } from '@/components/ui/brutalist';
+
+import { cn } from '@/lib/utils';
+import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
@@ -264,13 +268,6 @@ export default function DiscoverPage() {
     setSelectedVibe(vibe);
   };
 
-  if (isDataLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-      </div>
-    );
-  }
 
   const ArtistCard = ({ artist, size = 'default' }: { artist: typeof filteredArtists[0], size?: 'large' | 'default' }) => {
     const isHeadliner = artist.isHeadliner;
@@ -283,109 +280,114 @@ export default function DiscoverPage() {
 
     return (
       <div className="relative group h-full">
-        <Link
-          href={`/artist/${artist.id}`}
-          className={`relative flex flex-col h-full overflow-hidden rounded-[2.5rem] transition-all duration-700 bg-card border ${isHeadliner
-            ? 'border-primary/40 shadow-2xl shadow-primary/10 scale-[1.02]'
-            : 'border-white/5 hover:border-primary/40 hover:shadow-2xl'
-            }`}
+        <GlassCard
+          variant={isHeadliner ? 'primary' : 'default'}
+          className={cn(
+            'flex flex-col h-full rounded-[2.5rem] transition-all duration-700',
+            isHeadliner && 'scale-[1.02] border-primary/40'
+          )}
         >
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted shrink-0">
-            {artist.imageUrl ? (
-              <img
-                src={artist.imageUrl}
-                alt={artist.artist}
-                className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center bg-muted">
-                <Music className="h-16 w-16 text-muted-foreground/10" />
-              </div>
-            )}
+          <Link
+            href={`/${config.id}/artist/${artist.id}`}
+            className="relative flex flex-col h-full"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted shrink-0">
+              {artist.imageUrl ? (
+                <img
+                  src={artist.imageUrl}
+                  alt={artist.artist}
+                  className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-muted">
+                  <Music className="h-16 w-16 text-muted-foreground/10" />
+                </div>
+              )}
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/20 to-transparent opacity-90 transition-opacity group-hover:opacity-100" />
 
-            <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
-              <div className="flex flex-col gap-1.5">
-                {artist.returningHero && (
-                  <Badge className="bg-[var(--accent)] text-black font-black italic border-none text-[8px] py-0 px-2 rounded-sm w-fit">
-                    RETURNING HERO
-                  </Badge>
-                )}
-                {artist.day && (
-                  <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[8px] font-black uppercase tracking-[0.2em] backdrop-blur-3xl px-2.5 py-1 rounded-full w-fit">
-                    {artist.day}
-                  </Badge>
-                )}
-                {hasConflict && isFave && (
-                  <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-2 py-1 text-[8px] font-black rounded-full">
-                    <AlertTriangle size={10} /> CLASH
-                  </Badge>
+              <div className="absolute top-4 left-4 right-4 flex justify-between items-start z-20">
+                <div className="flex flex-col gap-1.5">
+                  {artist.returningHero && (
+                    <Badge className="bg-[var(--accent)] text-black font-black italic border-none text-[8px] py-0 px-2 rounded-sm w-fit">
+                      RETURNING HERO
+                    </Badge>
+                  )}
+                  {artist.day && (
+                    <Badge variant="secondary" className="bg-black/60 text-white border-white/10 text-[8px] font-black uppercase tracking-[0.2em] backdrop-blur-3xl px-2.5 py-1 rounded-full w-fit">
+                      {artist.day}
+                    </Badge>
+                  )}
+                  {hasConflict && isFave && (
+                    <Badge variant="destructive" className="animate-pulse flex gap-1 items-center px-2 py-1 text-[8px] font-black rounded-full">
+                      <AlertTriangle size={10} /> CLASH
+                    </Badge>
+                  )}
+                </div>
+                {isMounted && (
+                  <div className="flex flex-col gap-1.5 items-end">
+                    {isMustSee && (
+                      <span className="text-sm drop-shadow-[0_0_8px_hsl(var(--accent)/0.9)]" title="Must See">⭐</span>
+                    )}
+                    {isInterested && (
+                      <span className="text-sm drop-shadow-[0_0_8px_rgba(0,229,255,0.9)]" title="Interested">🔖</span>
+                    )}
+                    {isSeen && (
+                      <span className="bg-emerald-400 text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">SEEN</span>
+                    )}
+                  </div>
                 )}
               </div>
-              {isMounted && (
-                <div className="flex flex-col gap-1.5 items-end">
-                  {isMustSee && (
-                    <span className="text-sm drop-shadow-[0_0_8px_hsl(var(--accent)/0.9)]" title="Must See">⭐</span>
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                <div className="flex items-center gap-2 mb-2">
+                  {isMounted && (
+                    <span className="text-xl drop-shadow-2xl" suppressHydrationWarning>
+                      {getFlagEmoji(artist.countryCode)}
+                    </span>
                   )}
-                  {isInterested && (
-                    <span className="text-sm drop-shadow-[0_0_8px_rgba(0,229,255,0.9)]" title="Interested">🔖</span>
-                  )}
-                  {isSeen && (
-                    <span className="bg-emerald-400 text-black text-[7px] font-black uppercase tracking-widest px-1.5 py-0.5 rounded">SEEN</span>
-                  )}
+                  <h3 className={`font-black uppercase tracking-tighter text-balance transition-all duration-500 text-white italic ${size === 'large' ? 'text-[1.6rem] md:text-[2rem] leading-[0.85]' : 'text-[1.4rem] md:text-[1.8rem] leading-[0.9]'
+                    } ${isHeadliner ? 'text-primary group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,0,128,0.8)]' : 'group-hover:text-primary'}`}>
+                    {artist.artist}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 opacity-80">
+                  {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
+                    <span
+                      key={genre}
+                      className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.15em] border bg-white/5 backdrop-blur-3xl text-white border-white/10"
+                    >
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-90 group-hover:scale-100 pointer-events-none">
+                <div className="bg-white/10 backdrop-blur-3xl border border-white/20 p-5 rounded-full shadow-2xl">
+                  <ChevronRight className="h-8 w-8 text-white" />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-between">
+              {aiReason ? (
+                <div className="px-6 py-4 bg-primary/5 border-t border-primary/10 h-full flex items-center">
+                  <p className="text-[11px] font-bold text-primary leading-tight italic opacity-90">
+                    "{aiReason}"
+                  </p>
+                </div>
+              ) : artist.vibes && artist.vibes.length > 0 && (
+                <div className="px-6 py-3 bg-card/50 backdrop-blur-3xl border-t border-white/5">
+                  <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-40">
+                    {artist.vibes.slice(0, 2).join(' • ')}
+                  </p>
                 </div>
               )}
             </div>
-
-            <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
-              <div className="flex items-center gap-2 mb-2">
-                {isMounted && (
-                  <span className="text-xl drop-shadow-2xl" suppressHydrationWarning>
-                    {getFlagEmoji(artist.countryCode)}
-                  </span>
-                )}
-                <h3 className={`font-black uppercase tracking-tighter text-balance transition-all duration-500 text-white italic ${size === 'large' ? 'text-[1.6rem] md:text-[2rem] leading-[0.85]' : 'text-[1.4rem] md:text-[1.8rem] leading-[0.9]'
-                  } ${isHeadliner ? 'text-primary group-hover:text-white group-hover:drop-shadow-[0_0_15px_rgba(255,0,128,0.8)]' : 'group-hover:text-primary'}`}>
-                  {artist.artist}
-                </h3>
-              </div>
-
-              <div className="flex flex-wrap gap-1.5 opacity-80">
-                {artist.genres?.filter(g => g !== 'MUSIC').slice(0, 2).map(genre => (
-                  <span
-                    key={genre}
-                    className="inline-flex items-center rounded-full px-2 py-0.5 text-[8px] font-black uppercase tracking-[0.15em] border bg-white/5 backdrop-blur-3xl text-white border-white/10"
-                  >
-                    {genre}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 transform scale-90 group-hover:scale-100 pointer-events-none">
-              <div className="bg-white/10 backdrop-blur-3xl border border-white/20 p-5 rounded-full shadow-2xl">
-                <ChevronRight className="h-8 w-8 text-white" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex-1 flex flex-col justify-between">
-            {aiReason ? (
-              <div className="px-6 py-4 bg-primary/5 border-t border-primary/10 h-full flex items-center">
-                <p className="text-[11px] font-bold text-primary leading-tight italic opacity-90">
-                  "{aiReason}"
-                </p>
-              </div>
-            ) : artist.vibes && artist.vibes.length > 0 && (
-              <div className="px-6 py-3 bg-card/50 backdrop-blur-3xl border-t border-white/5">
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-40">
-                  {artist.vibes.slice(0, 2).join(' • ')}
-                </p>
-              </div>
-            )}
-          </div>
-        </Link>
+          </Link>
+        </GlassCard>
 
         <button
           onClick={(e) => {
@@ -410,26 +412,17 @@ export default function DiscoverPage() {
   const progress = Math.round((favorites.size / allArtists.length) * 100) || 0;
 
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-16 pb-32">
-      <header className="mb-20 text-center relative">
-        <div className="absolute top-[-40px] left-1/2 -translate-x-1/2 opacity-5 blur-[100px] bg-primary w-80 h-80 rounded-full" />
-        <div className="mx-auto mb-12 flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-primary/5 shadow-2xl border border-primary/10 ring-1 ring-primary/20">
-          <Sparkles className="h-12 w-12 text-primary" />
-        </div>
-        <h1 className="font-headline text-7xl font-black tracking-tighter text-foreground sm:text-9xl uppercase italic leading-[0.8] mb-6">
-          Music <span className="text-primary text-glow">Finder</span>
-        </h1>
-        <p className="mx-auto mt-8 max-w-2xl text-xl font-medium text-muted-foreground leading-relaxed opacity-70 italic">
-          Curate your personal journey at {config.name}.
-        </p>
-
+    <FestivalLayoutShell
+      headerTitle="Music Finder"
+      headerSubtitle={`Curate your personal journey at ${config.name}.`}
+      headerIcon={Sparkles}
+    >
+      <div className="max-w-5xl mx-auto px-6 mb-16">
         {config.features.vibeOfTheHour && (
-          <div className="mt-16 max-w-5xl mx-auto px-6">
-             <VibeOfTheHour artists={allArtists} />
-          </div>
+           <VibeOfTheHour artists={allArtists} />
         )}
 
-        <div className="mt-16 max-w-lg mx-auto px-6">
+        <div className="mt-16 max-w-lg mx-auto">
           <NotificationBanner festivalId={festivalId} hasFavorites={favorites.size > 0} />
           <div className="flex justify-between items-end mb-3 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
             <span>{config.name} Discovery</span>
@@ -454,54 +447,65 @@ export default function DiscoverPage() {
             )}
 
             {/* Surprise Me */}
-            <button
+            <NeonButton
+              variant="accent"
+              size="xl"
               onClick={handleSurpriseMe}
-              className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-accent/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
             >
-              <Shuffle className="h-6 w-6" />
+              <Shuffle className="h-6 w-6 mr-4" />
               SURPRISE ME
-            </button>
+            </NeonButton>
 
             {/* Surprise Roulette */}
             {config.features.surpriseRoulette && (
-              <button
+              <NeonButton
+                variant="accent"
+                size="xl"
                 onClick={() => {
                   haptic.successBurst();
                   const unvisited = allArtists.filter(a => !allFavoriteIds.has(a.id));
                   const random = unvisited[Math.floor(Math.random() * unvisited.length)];
                   if (random) router.push(`/${config.id}/artist/${random.id}`);
                 }}
-                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-accent/30 transition-all hover:scale-105 active:scale-95 cursor-pointer"
               >
-                <Shuffle className="h-6 w-6" />
+                <Shuffle className="h-6 w-6 mr-4" />
                 ROULETTE
-              </button>
+              </NeonButton>
             )}
 
             {/* Speed Discovery */}
             <Link href={`/${config.id}/discover/speed`}>
-              <button
-                className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-white hover:bg-zinc-200 text-black font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-white/10 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              <NeonButton
+                variant="white"
+                size="xl"
               >
-                <Zap className="h-6 w-6 fill-black" />
+                <Zap className="h-6 w-6 fill-black mr-4" />
                 SPEED DISCOVERY
-              </button>
+              </NeonButton>
             </Link>
 
             {config.features.vibeQuiz && (
-              <Link href={`/${config.id}/vibe-quiz`} className="inline-flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-primary hover:bg-primary/90 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
-                <Sparkles className="h-6 w-6" />
-                Vibe Quiz
+              <Link href={`/${config.id}/vibe-quiz`}>
+                <NeonButton
+                  variant="primary"
+                  size="xl"
+                >
+                  <Sparkles className="h-6 w-6 mr-4" />
+                  Vibe Quiz
+                </NeonButton>
               </Link>
             )}
 
             {config.features.aiRecommendations && (
               <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
                 <DialogTrigger asChild>
-                  <button className="flex items-center justify-center rounded-[1.5rem] h-16 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.25em] gap-4 shadow-2xl shadow-indigo-500/30 transition-all hover:scale-105 active:scale-95 cursor-pointer">
-                    <Wand2 className="h-6 w-6" />
+                  <NeonButton
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-500/30"
+                    size="xl"
+                  >
+                    <Wand2 className="h-6 w-6 mr-4" />
                     AI Scout
-                  </button>
+                  </NeonButton>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3.5rem] p-8 backdrop-blur-3xl">
                   <DialogHeader>
@@ -517,26 +521,26 @@ export default function DiscoverPage() {
                       onChange={(e) => setAiPrompt(e.target.value)}
                       className="h-20 rounded-[1.5rem] border-white/10 bg-muted/20 text-xl font-bold focus-visible:ring-indigo-500"
                     />
-                    <Button
-                      className="w-full h-20 rounded-[1.5rem] bg-indigo-600 hover:bg-indigo-700 text-white font-black uppercase tracking-[0.3em] text-xl shadow-2xl"
+                    <NeonButton
+                      className="w-full h-20 bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xl"
                       onClick={handleAiScout}
                       disabled={isAiLoading || !aiPrompt.trim()}
                     >
                       {isAiLoading ? <Loader2 className="h-8 w-8 animate-spin" /> : 'UNLEASH'}
-                    </Button>
+                    </NeonButton>
                   </div>
                 </DialogContent>
               </Dialog>
             )}
           </div>
         </div>
-      </header>
+      </div>
 
       <div className="sticky top-0 z-40 -mx-4 mb-16 px-4 pb-10 pt-8 backdrop-blur-3xl border-b border-white/5">
         <div className="max-w-7xl mx-auto w-full space-y-8">
           {/* Radar Focus / Territory Selector */}
-          <div className="flex flex-col gap-4">
-            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 ml-2">
+          <GlassCard className="p-6 border-white/10" blur="lg">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 ml-2 mb-4">
               Radar Focus
             </p>
             <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2">
@@ -553,16 +557,16 @@ export default function DiscoverPage() {
                 </button>
               ))}
             </div>
-          </div>
+          </GlassCard>
 
           <div className="flex flex-col gap-8 lg:flex-row justify-between items-center">
-            <div className="relative w-full lg:max-w-md">
+            <GlassCard className="relative w-full lg:max-w-md p-1.5 rounded-[1.8rem] border-white/10" blur="md">
               <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-6 w-6 text-muted-foreground/40" />
               <Input
                 placeholder="Search artists, bios, or vibes..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="h-16 pl-14 pr-14 rounded-[1.5rem] bg-muted/20 border-white/5 text-base font-bold focus-visible:ring-primary shadow-inner"
+                className="h-16 pl-14 pr-14 rounded-[1.5rem] bg-transparent border-none text-base font-bold focus-visible:ring-0 shadow-none"
               />
               {searchQuery && (
                 <button
@@ -572,9 +576,9 @@ export default function DiscoverPage() {
                   <X size={20} />
                 </button>
               )}
-            </div>
+            </GlassCard>
 
-            <div className="inline-flex rounded-[1.5rem] bg-muted/20 p-1.5 border border-white/5 shadow-inner shrink-0 overflow-x-auto no-scrollbar max-w-full">
+            <GlassCard className="inline-flex rounded-[1.8rem] p-1.5 border-white/10 shrink-0 overflow-x-auto no-scrollbar max-w-full" blur="md">
               {[
                 { id: 'discover', icon: Sparkles, label: 'Discover' },
                 { id: 'az', icon: SortAsc, label: 'A-Z' },
@@ -604,7 +608,7 @@ export default function DiscoverPage() {
                   Matches
                 </button>
               )}
-            </div>
+            </GlassCard>
           </div>
 
           <div className="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
@@ -821,17 +825,18 @@ export default function DiscoverPage() {
       </div>
 
       {filteredArtists.length === 0 && (
-        <div className="py-48 text-center bg-muted/10 rounded-[5rem] border border-dashed border-white/5 max-w-5xl mx-auto shadow-inner">
-          <div className="mx-auto mb-12 flex h-32 w-32 items-center justify-center rounded-full bg-muted/20 shadow-inner opacity-20">
+        <GlassCard className="py-32 text-center border-dashed border-white/20 max-w-5xl mx-auto" blur="lg">
+          <div className="mx-auto mb-12 flex h-32 w-32 items-center justify-center rounded-full bg-white/5 shadow-inner opacity-20">
             <LayoutGrid className="h-16 w-16 text-muted-foreground" />
           </div>
           <h3 className="text-5xl font-black uppercase italic text-foreground tracking-tighter">Zero Matches</h3>
           <p className="mt-8 text-muted-foreground text-2xl font-medium max-w-md mx-auto opacity-60 leading-relaxed italic">
             Your filters are too strict. Loosen up to find the magic.
           </p>
-          <Button
+          <NeonButton
             variant="outline"
-            className="mt-16 rounded-[2rem] px-16 h-20 font-black uppercase tracking-[0.3em] border-white/10 text-base hover:bg-muted shadow-2xl transition-all hover:scale-105 active:scale-95"
+            size="xl"
+            className="mt-16 px-16 h-20"
             onClick={() => {
               setSelectedGenre(null);
               setSelectedVibe(null);
@@ -840,8 +845,8 @@ export default function DiscoverPage() {
             }}
           >
             Reset Radar
-          </Button>
-        </div>
+          </NeonButton>
+        </GlassCard>
       )}
 
       <SerendipityModal
@@ -863,6 +868,6 @@ export default function DiscoverPage() {
         }}
         selectedCountry={selectedCountry}
       />
-    </div>
+    </FestivalLayoutShell>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useState, useEffect, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -33,6 +34,7 @@ import { NewsBulletin } from '@/components/home/news-bulletin';
 import { FanPoll } from '@/components/home/fan-poll';
 import { PhotoWall } from '@/components/home/photo-wall';
 import { LineupDiff } from '@/components/home/lineup-diff';
+import { GlassCard, NeonButton } from '@/components/ui/brutalist';
 
 export default function Home() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -50,7 +52,7 @@ export default function Home() {
       description: 'AI Scouting & Lineup',
       href: `/${festivalId}/discover`,
       icon: Wand2,
-      color: config.theme.accentHex,
+      variant: 'accent' as const,
       feature: 'vibeQuiz'
     },
     {
@@ -58,7 +60,7 @@ export default function Home() {
       description: 'Find Water & Vibes',
       href: `/${festivalId}/map`,
       icon: MapIcon,
-      color: config.theme.secondaryHex,
+      variant: 'secondary' as const,
       feature: 'weatherRadar'
     },
     {
@@ -66,9 +68,9 @@ export default function Home() {
       description: 'SOS & Survival Gear',
       href: `/${festivalId}/tools`,
       icon: Zap,
-      color: '#4ade80',
+      variant: 'primary' as const,
     },
-  ], [festivalId, config]);
+  ], [festivalId]);
 
   const features = useMemo(() => 
     allFeatures.filter(f => !f.feature || (config.features as any)[f.feature]),
@@ -148,23 +150,7 @@ export default function Home() {
           </Typography>
 
           <Container maxWidth="sm">
-            <Paper sx={{
-              p: 4,
-              bgcolor: alpha(theme.palette.background.paper, 0.01),
-              backdropFilter: 'blur(60px)',
-              border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
-              borderRadius: '3rem',
-              textAlign: 'left',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 2,
-              boxShadow: theme.palette.mode === 'dark' ? '0 40px 80px rgba(0,0,0,0.3)' : '0 20px 40px rgba(0,0,0,0.05)',
-              transition: 'all 0.5s ease',
-              '&:hover': {
-                borderColor: alpha(theme.palette.primary.main, 0.3),
-                transform: 'translateY(-4px)'
-              }
-            }}>
+            <GlassCard className="p-10 text-left flex flex-col gap-4 border-primary/20">
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Newspaper size={20} color={config.theme.primaryHex} />
                 <Typography variant="caption" sx={{ fontWeight: 900, color: 'primary.main', textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.7rem' }}>
@@ -177,7 +163,7 @@ export default function Home() {
               <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.5, fontSize: '1rem', fontWeight: 500, opacity: 0.8 }}>
                 {config.location.venue} · {config.location.city}
               </Typography>
-            </Paper>
+            </GlassCard>
           </Container>
         </Container>
       </Box>
@@ -205,19 +191,7 @@ export default function Home() {
         <Grid container spacing={4}>
           {openingActs.map((artist) => (
             <Grid key={artist.id} size={{ xs: 12, md: 4 }}>
-              <Card sx={{
-                bgcolor: alpha(theme.palette.background.paper, 0.02),
-                borderRadius: '2.5rem',
-                overflow: 'hidden',
-                border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
-                transition: 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-                '&:hover': {
-                  transform: 'scale(1.03) translateY(-8px)',
-                  borderColor: 'primary.main',
-                  boxShadow: `0 30px 60px ${alpha(theme.palette.primary.main, 0.15)}`,
-                  bgcolor: alpha(theme.palette.background.paper, 0.04)
-                }
-              }}>
+              <GlassCard className="h-full">
                 <CardActionArea component={Link} href={`/${festivalId}/artist/${artist.id}`}>
                   <Box sx={{ p: 4, display: 'flex', gap: 4, alignItems: 'center' }}>
                     <Box sx={{
@@ -242,7 +216,7 @@ export default function Home() {
                     <ChevronRight size={24} color="rgba(255,255,255,0.15)" />
                   </Box>
                 </CardActionArea>
-              </Card>
+              </GlassCard>
             </Grid>
           ))}
         </Grid>
@@ -267,33 +241,18 @@ export default function Home() {
               <Grid container spacing={3}>
                 {features.map((feature) => (
                   <Grid key={feature.title} size={{ xs: 6 }}>
-                     <Card
-                        sx={{
-                          height: '100%',
-                          bgcolor: alpha(theme.palette.background.paper, 0.01),
-                          backgroundImage: 'none',
-                          borderRadius: '2.5rem',
-                          border: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
-                          transition: 'all 0.5s ease',
-                          overflow: 'hidden',
-                          '&:hover': {
-                            borderColor: feature.color,
-                            bgcolor: alpha(theme.palette.background.paper, 0.03),
-                            transform: 'translateY(-8px)'
-                          }
-                        }}
-                      >
+                     <GlassCard variant={feature.variant} className="h-full">
                         <CardActionArea component={Link} href={feature.href} sx={{ height: '100%', p: 4 }}>
                             <Box sx={{
                               width: 56,
                               height: 56,
                               borderRadius: '1.5rem',
-                              bgcolor: alpha(feature.color, 0.1),
+                              bgcolor: 'rgba(255,255,255,0.05)',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
                               mb: 2,
-                              color: feature.color
+                              color: feature.variant === 'accent' ? config.theme.accentHex : (feature.variant === 'secondary' ? config.theme.secondaryHex : config.theme.primaryHex)
                             }}>
                               <feature.icon size={28} />
                             </Box>
@@ -301,7 +260,7 @@ export default function Home() {
                               {feature.title}
                             </Typography>
                         </CardActionArea>
-                      </Card>
+                      </GlassCard>
                   </Grid>
                 ))}
               </Grid>
@@ -315,18 +274,9 @@ export default function Home() {
 
         {/* Strategic Tactical Sections */}
         {config.features.foodRatings && (
-          <Grid container spacing={4} sx={{ mt: 6, justifyContent: 'center' }}>
+          <Grid container spacing={4} sx={{ mt: 16, justifyContent: 'center' }}>
             <Grid size={{ xs: 12, md: 8 }}>
-              <Card sx={{
-                bgcolor: alpha('#4ade80', 0.01),
-                border: `1px dashed ${alpha('#4ade80', 0.15)}`,
-                borderRadius: '3.5rem',
-                transition: 'all 0.4s ease',
-                '&:hover': {
-                  bgcolor: alpha('#4ade80', 0.03),
-                  borderColor: '#4ade80'
-                }
-              }}>
+              <GlassCard className="border-dashed border-emerald-500/30">
                 <CardActionArea component={Link} href={`/${festivalId}/food`} sx={{ p: 0 }}>
                   <CardContent sx={{ p: 5, display: 'flex', alignItems: 'center', gap: 5 }}>
                     <Box sx={{
@@ -344,7 +294,7 @@ export default function Home() {
                     </Box>
                   </CardContent>
                 </CardActionArea>
-              </Card>
+              </GlassCard>
             </Grid>
           </Grid>
         )}

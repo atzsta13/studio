@@ -3,12 +3,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { useHaptic } from '@/hooks/use-haptic';
+import { Slot } from '@radix-ui/react-slot';
 
 interface NeonButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'accent' | 'secondary' | 'outline' | 'white';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   glow?: boolean;
   haptic?: 'light' | 'medium' | 'success';
+  asChild?: boolean;
 }
 
 export function NeonButton({
@@ -18,6 +20,7 @@ export function NeonButton({
   size = 'md',
   glow = true,
   haptic = 'medium',
+  asChild = false,
   onClick,
   ...props
 }: NeonButtonProps) {
@@ -46,8 +49,10 @@ export function NeonButton({
     xl: 'h-16 px-12 text-[12px]',
   };
 
+  const Comp = asChild ? Slot : 'button';
+
   return (
-    <button
+    <Comp
       onClick={handleOnClick}
       className={cn(
         'inline-flex items-center justify-center rounded-[1.5rem] font-black uppercase tracking-[0.25em] transition-all hover:scale-105 active:scale-95 cursor-pointer disabled:opacity-50 disabled:pointer-events-none',
@@ -59,6 +64,6 @@ export function NeonButton({
       {...props}
     >
       {children}
-    </button>
+    </Comp>
   );
 }

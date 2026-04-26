@@ -33,15 +33,15 @@ This document tracks the parallel foundation-hardening efforts. Tasks are assign
 
 ## 🟨 Task C: Brutalist Component Extraction (DRY UI)
 **Assigned to:** Gemini
-**Status:** 🏃 In Progress
+**Status:** ✅ Complete
 **Domain:** `src/components/ui/brutalist/`
 
 **Goal:** Centralize the visual identity to ensure consistency across all festivals.
 - [x] Create `src/components/ui/brutalist/` directory.
-- [x] Implement reusable `NeonButton` with haptic support.
+- [x] Implement reusable `NeonButton` with haptic support and `asChild` (Slot) capability.
 - [x] Implement reusable `GlassCard` with blur variants.
-- [ ] Refactor existing pages (Discover, Home) to use these components.
-- [ ] Create a documented UI Storyboard (internal reference).
+- [x] Refactor existing pages (Home, Discover, Map, Tools) to use these components.
+- [x] Create a documented UI Storyboard in `src/components/ui/brutalist/STORYBOARD.md`.
 
 ---
 

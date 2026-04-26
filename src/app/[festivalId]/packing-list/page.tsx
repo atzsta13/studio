@@ -127,9 +127,8 @@ export default function PackingChecklistPage() {
 
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8 pb-32">
-      <PageHeader
-        title="Packing List"
-        description="Don't be that person asking for a spare tent peg."
+      <PageHeader title="Packing List"
+        subtitle="Don't be that person asking for a spare tent peg."
       />
 
       <Card className="mb-8 border-primary/20 bg-background/50 backdrop-blur">

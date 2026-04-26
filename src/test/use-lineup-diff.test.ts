@@ -189,16 +189,21 @@ describe('useLineupDiff — genreShifts', () => {
 describe('useLineupDiff — empty / edge cases', () => {
   afterEach(() => vi.restoreAllMocks())
 
-  it('returns empty diff arrays when current lineup is empty', async () => {
-    // When currentLineup is empty the useEffect guard returns early before
-    // calling setIsLoading(false), so isLoading stays true indefinitely.
-    // We wait one tick for the effect to fire and check only the diff values.
-    mockFetch(PREV_LINEUP)
+  it('returns empty diff arrays and skips fetch when current lineup is empty', async () => {
+    // When currentLineup is empty the useEffect guard returns early without
+    // calling fetch or setIsLoading(false), so isLoading stays true.
+    const fetchSpy = mockFetch(PREV_LINEUP)
     const { result } = renderHook(() => useLineupDiff('sziget-2026', []))
+    // Wait one tick for the effect to fire
     await new Promise((r) => setTimeout(r, 20))
+    // fetch must NOT be called (guard returns early)
+    expect(fetchSpy).not.toHaveBeenCalled()
+    // diff values are always empty when current lineup is empty
     expect(result.current.newArrivals).toHaveLength(0)
     expect(result.current.returningHeroes).toHaveLength(0)
     expect(result.current.genreShifts).toHaveLength(0)
+    // isLoading stays true because setIsLoading(false) is never called
+    expect(result.current.isLoading).toBe(true)
   })
 
   it('returns empty diff arrays when previous lineup fetch returns empty array', async () => {

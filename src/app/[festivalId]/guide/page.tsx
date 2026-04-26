@@ -65,9 +65,8 @@ export default function GuidePage() {
 
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4 sm:px-6 lg:px-8">
-      <PageHeader 
-        title={guideData.title} 
-        description={guideData.description} 
+      <PageHeader title={guideData.title} 
+        subtitle={guideData.description} 
       />
 
       <div className="space-y-6">

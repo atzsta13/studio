@@ -19,9 +19,8 @@ const contacts = [
 export default function EmergencyPage() {
   return (
     <div className="container mx-auto max-w-4xl py-20 px-4">
-      <PageHeader 
-        title="Emergency Info" 
-        description="Available 24/7 on-site. These numbers work even without a data connection."
+      <PageHeader title="Emergency Info" 
+        subtitle="Available 24/7 on-site. These numbers work even without a data connection."
       />
 
       <div className="grid gap-6 mt-12">

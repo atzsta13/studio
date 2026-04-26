@@ -18,9 +18,8 @@ export default function DictionaryPage() {
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-20 pb-32">
-      <PageHeader
-        title="Festival Dictionary"
-        description={`Master the lingo of ${FESTIVAL.name}. Understand the secrets of the territory.`}
+      <PageHeader title="Festival Dictionary"
+        subtitle={`Master the lingo of ${FESTIVAL.name}. Understand the secrets of the territory.`}
       />
 
       {terms.length === 0 ? (

@@ -16,9 +16,8 @@ export default function ShuttlePage() {
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-20 pb-32">
-      <PageHeader
-        title="Shuttle Network"
-        description={`Rapid transport across the ${config.name} ecosystem. Synchronize your movements.`}
+      <PageHeader title="Shuttle Network"
+        subtitle={`Rapid transport across the ${config.name} ecosystem. Synchronize your movements.`}
       />
 
       {shuttles.length === 0 ? (

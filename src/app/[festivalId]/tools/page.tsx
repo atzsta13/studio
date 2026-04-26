@@ -41,6 +41,9 @@ import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
 import { useInsider } from '@/components/layout/insider-provider';
 import { useTranslation } from '@/hooks/use-translation';
+import { GlassCard, NeonButton } from '@/components/ui/brutalist';
+
+import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 
 export default function ToolsPage() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -69,29 +72,30 @@ export default function ToolsPage() {
     }
   };
 
+  if (isFlashOn) {
+    return (
+      <div className="fixed inset-0 z-[1000] bg-white flex flex-col items-center justify-center p-10 animate-pulse">
+        <button
+          onClick={toggleFlash}
+          className="rounded-full h-56 w-56 border-[16px] border-black text-black font-black text-5xl uppercase shadow-2xl flex items-center justify-center bg-transparent transition-transform hover:scale-110 active:scale-95"
+        >
+          OFF
+        </button>
+        <p className="mt-16 text-black font-black text-7xl text-center uppercase italic tracking-tighter leading-none">Find Me!</p>
+      </div>
+    );
+  }
+
   return (
-    <div className={`container mx-auto max-w-5xl px-4 py-20 pb-32 transition-colors duration-1000 ${isFlashOn ? 'bg-white' : ''}`}>
-      {isFlashOn ? (
-        <div className="fixed inset-0 z-[1000] bg-white flex flex-col items-center justify-center p-10 animate-pulse">
-          <button
-            onClick={toggleFlash}
-            className="rounded-full h-56 w-56 border-[16px] border-black text-black font-black text-5xl uppercase shadow-2xl flex items-center justify-center bg-transparent transition-transform hover:scale-110 active:scale-95"
-          >
-            OFF
-          </button>
-          <p className="mt-16 text-black font-black text-7xl text-center uppercase italic tracking-tighter leading-none">Find Me!</p>
-        </div>
-      ) : (
-        <>
-          <div className="mb-20">
-            <PageHeader
-              title={t('toolkit_title') !== 'toolkit_title' ? t('toolkit_title') : 'Survival Toolkit'}
-              description={`Elite tactical utilities for the ${config.tagline}. No signal required.`}
-            />
-          </div>
+    <FestivalLayoutShell
+      headerTitle={t('toolkit_title') !== 'toolkit_title' ? t('toolkit_title') : 'Survival Toolkit'}
+      headerSubtitle={`Elite tactical utilities for the ${config.tagline}. No signal required.`}
+      headerIcon={Zap}
+    >
+      <div className="max-w-5xl mx-auto">
 
           {config.features.sunscreenAlert && (
-            <Card className="mb-10 bg-orange-500 text-black border-none shadow-2xl rounded-[2.5rem] p-6 flex items-center gap-6 animate-in slide-in-from-top-4 duration-1000">
+            <GlassCard className="mb-10 bg-orange-500 text-black border-none p-6 flex items-center gap-6 animate-in slide-in-from-top-4 duration-1000" hoverEffect={false}>
                <div className="p-4 bg-black/10 rounded-2xl">
                  <Sun size={32} />
                </div>
@@ -99,8 +103,8 @@ export default function ToolsPage() {
                  <p className="font-black uppercase tracking-widest text-[10px] mb-1">UV Alert</p>
                  <p className="font-bold text-lg leading-tight">Extreme Exposure. Reapply SPF 50 now.</p>
                </div>
-               <Button variant="ghost" className="rounded-full h-12 w-12 border-2 border-black/20 p-0 font-black text-lg">✕</Button>
-            </Card>
+               <button className="rounded-full h-12 w-12 border-2 border-black/20 p-0 font-black text-lg flex items-center justify-center hover:bg-black/5">✕</button>
+            </GlassCard>
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
@@ -109,14 +113,14 @@ export default function ToolsPage() {
             )}
 
             {config.features.currencyConverter && (
-              <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[3rem]">
-                <CardHeader className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
-                  <CardTitle className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
+              <GlassCard className="overflow-hidden" variant="secondary">
+                <div className="bg-emerald-500/10 border-b border-emerald-500/10 px-10 py-8">
+                  <h3 className="flex items-center gap-4 text-emerald-500 text-2xl font-black uppercase italic tracking-tighter">
                     <Coins size={32} />
                     {config.currency.localCode} Converter
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-10">
+                  </h3>
+                </div>
+                <div className="p-10">
                   <div className="space-y-8">
                     <div>
                       <label className="text-[11px] font-black uppercase tracking-[0.4em] text-muted-foreground/60 mb-3 block">{config.currency.localName} ({config.currency.localCode})</label>
@@ -138,8 +142,8 @@ export default function ToolsPage() {
                       </div>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             )}
           </div>
 
@@ -168,7 +172,7 @@ export default function ToolsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {config.features.carFinder && <CarFinder />}
-                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl relative overflow-hidden group backdrop-blur-3xl">
+                <GlassCard className="p-10 relative overflow-hidden group">
                   <div className="absolute right-[-20px] top-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-1000">
                     <Sun size={160} />
                   </div>
@@ -185,10 +189,10 @@ export default function ToolsPage() {
                       </p>
                     </div>
                   </div>
-                </Card>
+                </GlassCard>
 
                 {config.features.audioMonitor && (
-                  <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl">
+                  <GlassCard className="p-10">
                     <div className="flex items-center gap-6 mb-8">
                       <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
                         <Ear size={40} />
@@ -202,14 +206,14 @@ export default function ToolsPage() {
                       <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
                       <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
                     </div>
-                  </Card>
+                  </GlassCard>
                 )}
               </div>
 
               {config.features.sosMorseCode && <SOSMorse />}
 
               {config.features.batterySaver && (
-                <Card className="p-10 bg-card/50 border-white/5 rounded-[3.5rem] shadow-2xl backdrop-blur-3xl mt-10">
+                <GlassCard className="p-10 mt-10">
                   <div className="flex items-center justify-between gap-6">
                     <div className="flex items-center gap-6">
                       <div className={`p-5 rounded-[2rem] ${batterySaver ? 'bg-emerald-500/10 text-emerald-500' : 'bg-yellow-500/10 text-yellow-500'} shadow-inner`}>
@@ -220,30 +224,31 @@ export default function ToolsPage() {
                         <p className="text-sm font-medium text-muted-foreground opacity-60 italic leading-snug">Disables animations and effects to save power.</p>
                       </div>
                     </div>
-                    <Button 
+                    <NeonButton 
                       onClick={toggleBattery}
-                      variant={batterySaver ? "secondary" : "outline"}
-                      className={`h-16 px-10 rounded-2xl font-black uppercase tracking-widest text-[11px] ${batterySaver ? 'bg-emerald-600 text-white border-none' : ''}`}
+                      variant={batterySaver ? "accent" : "outline"}
+                      className="h-16 px-10"
                     >
                       {batterySaver ? 'ENABLED' : 'ACTIVATE'}
-                    </Button>
+                    </NeonButton>
                   </div>
-                </Card>
+                </GlassCard>
               )}
               
-              <Button onClick={toggleFlash} variant="destructive" className="mt-8 w-full h-24 rounded-[2.5rem] font-black uppercase tracking-[0.4em] text-2xl shadow-2xl gap-6 transition-all hover:scale-[1.02] active:scale-95">
+              <NeonButton onClick={toggleFlash} className="mt-8 w-full h-24 text-2xl gap-6" variant="white">
                 <Zap size={32} />
                 SOS BEACON
-              </Button>
+              </NeonButton>
             </TabsContent>
 
             <TabsContent value="safety" className="space-y-10">
               {config.features.feedbackSystem && <FeedbackSystem />}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {config.content.emergencyContacts?.security && (
-                  <Card 
+                  <GlassCard 
                     onClick={() => window.location.href = `tel:${config.content.emergencyContacts?.security.phone}`}
-                    className="p-10 bg-red-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+                    className="p-10 bg-red-600 border-none text-white group cursor-pointer"
+                    hoverEffect={true}
                   >
                     <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
                       <ShieldAlert size={160} />
@@ -257,18 +262,19 @@ export default function ToolsPage() {
                       <div>
                         <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Security Alert</h4>
                         <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {config.content.emergencyContacts.security.label}. Have your location ready.</p>
-                        <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-red-600 bg-white hover:bg-white/90">
+                        <NeonButton variant="white" className="w-full h-16 text-lg text-red-600">
                           DIAL SECURITY
-                        </Button>
+                        </NeonButton>
                       </div>
                     </div>
-                  </Card>
+                  </GlassCard>
                 )}
 
                 {config.content.emergencyContacts?.medical && (
-                  <Card 
+                  <GlassCard 
                     onClick={() => window.location.href = `tel:${config.content.emergencyContacts?.medical.phone}`}
-                    className="p-10 bg-blue-600 border-none shadow-2xl rounded-[3.5rem] relative overflow-hidden text-white backdrop-blur-3xl group cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+                    className="p-10 bg-blue-600 border-none text-white group cursor-pointer"
+                    hoverEffect={true}
                   >
                     <div className="absolute right-[-20px] top-[-20px] opacity-20 group-hover:scale-110 transition-transform duration-1000">
                       <Phone size={160} />
@@ -282,18 +288,18 @@ export default function ToolsPage() {
                       <div>
                         <h4 className="font-black text-4xl mb-4 uppercase italic tracking-tighter">Medical Help</h4>
                         <p className="text-lg font-medium opacity-90 leading-relaxed italic mb-8">Tap to instantly dial the {config.content.emergencyContacts.medical.label}. Available 24/7.</p>
-                        <Button variant="secondary" className="w-full h-16 rounded-[1.5rem] font-black uppercase tracking-[0.3em] text-lg text-blue-600 bg-white hover:bg-white/90">
+                        <NeonButton variant="white" className="w-full h-16 text-lg text-blue-600">
                           DIAL MEDICAL
-                        </Button>
+                        </NeonButton>
                       </div>
                     </div>
-                  </Card>
+                  </GlassCard>
                 )}
               </div>
 
               {config.features.shuttleTimetable && (
                 <Link href={`/${festivalId}/tools/shuttle`} className="block mt-10">
-                  <Card className="p-10 bg-emerald-600/20 border border-emerald-500/20 shadow-2xl rounded-[3.5rem] hover:bg-emerald-600/30 transition-all group">
+                  <GlassCard className="p-10 border-emerald-500/20 hover:bg-emerald-600/10 group" variant="secondary">
                     <div className="flex items-center justify-between">
                        <div className="flex items-center gap-6">
                           <div className="p-5 rounded-[2rem] bg-emerald-500/20 text-emerald-400 group-hover:scale-110 transition-transform shadow-inner"><Bus size={40} /></div>
@@ -304,13 +310,13 @@ export default function ToolsPage() {
                        </div>
                        <ArrowRight className="text-emerald-400/40 group-hover:translate-x-2 transition-transform" />
                     </div>
-                  </Card>
+                  </GlassCard>
                 </Link>
               )}
 
               {config.features.festivalDictionary && (
                 <Link href={`/${festivalId}/tools/dictionary`} className="block mt-10">
-                  <Card className="p-10 bg-indigo-600/20 border border-indigo-500/20 shadow-2xl rounded-[3.5rem] hover:bg-indigo-600/30 transition-all group">
+                  <GlassCard className="p-10 border-indigo-500/20 hover:bg-indigo-600/10 group">
                     <div className="flex items-center justify-between">
                        <div className="flex items-center gap-6">
                           <div className="p-5 rounded-[2rem] bg-indigo-500/20 text-indigo-400 group-hover:scale-110 transition-transform shadow-inner"><BookOpen size={40} /></div>
@@ -321,7 +327,7 @@ export default function ToolsPage() {
                        </div>
                        <ArrowRight className="text-indigo-400/40 group-hover:translate-x-2 transition-transform" />
                     </div>
-                  </Card>
+                  </GlassCard>
                 </Link>
               )}
             </TabsContent>
@@ -346,8 +352,7 @@ export default function ToolsPage() {
               </div>
             </TabsContent>
           </Tabs>
-        </>
-      )}
-    </div>
+        </div>
+    </FestivalLayoutShell>
   );
 }

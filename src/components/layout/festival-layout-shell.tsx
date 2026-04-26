@@ -3,14 +3,14 @@ import { useInsider } from '@/components/layout/insider-provider';
 
 import { ReactNode } from 'react';
 import { PageHeader } from '@/components/layout/page-header';
-import { Loader2 } from 'lucide-react';
+import { Loader2, LucideIcon } from 'lucide-react';
 import { useParams } from 'next/navigation';
 
 interface FestivalLayoutShellProps {
   children: ReactNode;
   headerTitle: string;
   headerSubtitle: string;
-  headerIcon?: React.ElementType;
+  headerIcon?: LucideIcon;
 }
 
 export function FestivalLayoutShell({ 
