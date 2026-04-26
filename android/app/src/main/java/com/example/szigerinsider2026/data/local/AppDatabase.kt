@@ -12,6 +12,7 @@ import com.example.szigerinsider2026.data.config.FestivalConfig
 @androidx.room.TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun artistDao(): ArtistDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile

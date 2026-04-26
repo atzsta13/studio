@@ -34,7 +34,6 @@ class SzigetWidget : GlanceAppWidget() {
         FestivalConfig.initialize(context)
         
         val db = AppDatabase.getDatabase(context)
-        val progress = db.userDao().getUserProgress().first()
         val favorites = db.userDao().getAllFavorites().first()
         
         val config = FestivalConfig.current
@@ -60,7 +59,7 @@ class SzigetWidget : GlanceAppWidget() {
                     )
                     Spacer(modifier = GlanceModifier.height(4.dp))
                     Text(
-                        text = progress?.currentRank?.uppercase() ?: "TOURIST",
+                        text = "FESTIVAL INSIDER",
                         style = TextStyle(
                             color = ColorProvider(Color(0xFFFFFFFF)),
                             fontWeight = FontWeight.Bold,
@@ -69,7 +68,7 @@ class SzigetWidget : GlanceAppWidget() {
                     )
                     Spacer(modifier = GlanceModifier.height(2.dp))
                     Text(
-                        text = "${progress?.legendXp ?: 0} XP  ·  ${favorites.size} saved",
+                        text = "${favorites.size} artists saved",
                         style = TextStyle(
                             color = ColorProvider(Color(0xFF888888)),
                             fontSize = 11.sp
