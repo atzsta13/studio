@@ -1,19 +1,18 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import type { LineupItem } from '@/types';
 import { VibeQuizScreen } from '@/components/quiz/VibeQuizScreen';
 import { VibeResultsScreen } from '@/components/quiz/VibeResultsScreen';
-import { useFavorites } from '@/hooks/use-favorites';
-import { useFestivalData } from '@/hooks/use-festival-data';
 
 export default function VibeQuizPage() {
   const [results, setResults] = useState<LineupItem[]>([]);
   const [showResults, setShowResults] = useState(false);
   const { festivalId } = useParams() as { festivalId: string };
-  const { lineup } = useFestivalData(festivalId);
-  const { toggleFavorite } = useFavorites(lineup, festivalId);
+  const { lineup } = useInsider();
+  const { toggleFavorite } = useInsider();
 
   const handleComplete = (quizResults: LineupItem[]) => {
     setResults(quizResults);

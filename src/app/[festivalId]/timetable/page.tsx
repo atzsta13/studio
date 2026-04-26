@@ -1,9 +1,9 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useMemo, useEffect } from 'react';
 import TimetableView from '@/components/timetable/timetable-view';
 import { History, Calendar, Clock, Sun, Moon } from 'lucide-react';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
@@ -12,7 +12,6 @@ import { useTheme, alpha } from '@mui/material/styles';
 import { getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useFavorites } from '@/hooks/use-favorites';
 import { ClashResolver } from '@/components/timetable/clash-resolver';
 import type { LineupItem } from '@/types';
 
@@ -22,8 +21,8 @@ export default function TimetablePage() {
   const theme = useTheme();
   const { festivalId } = useParams() as { festivalId: string };
   const config = getFestivalConfig(festivalId);
-  const { lineup: festivalLineup } = useFestivalData(festivalId);
-  const { allFavoriteIds } = useFavorites(festivalLineup, festivalId);
+  const { lineup: festivalLineup } = useInsider();
+  const { allFavoriteIds } = useInsider();
 
   useEffect(() => {
     setMounted(true);

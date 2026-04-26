@@ -11,7 +11,10 @@
   "deepLinkScheme": "frequency2026",
   "i18n": {
     "defaultLocale": "de",
-    "locales": ["de", "en"],
+    "locales": [
+      "de",
+      "en"
+    ],
     "translations": {
       "de": {
         "nav_home": "Home",
@@ -30,7 +33,8 @@
         "scout_placeholder": "Bands oder Vibes...",
         "tip_shuttle": "Shuttlebus-Flatrate für €10 beim Bahnhof.",
         "tip_nighttrain": "Sonderzug nach Wien um 02:10 (extra Ticket).",
-        "tip_walk": "Der Weg zw. Day- und Nightpark dauert ca. 10 Min."
+        "tip_walk": "Der Weg zw. Day- und Nightpark dauert ca. 10 Min.",
+        "nav_highlights": "Rückblick"
       },
       "en": {
         "nav_home": "Home",
@@ -49,11 +53,11 @@
         "scout_placeholder": "Search bands or vibes...",
         "tip_shuttle": "Shuttle bus flatrate for €10 at the station.",
         "tip_nighttrain": "Special night train to Vienna at 02:10 (needs extra ticket).",
-        "tip_walk": "Walk between Daypark and Nightpark takes ~10 min."
+        "tip_walk": "Walk between Daypark and Nightpark takes ~10 min.",
+        "nav_highlights": "Wrap"
       }
     }
   },
-
   "aiPersona": "the 'Frequency Scout', a St. Pölten regular who knows every act on both the Daypark stages and the Nightpark floors",
   "location": {
     "city": "St. Pölten",
@@ -148,6 +152,7 @@
     "waterCounter": true,
     "carFinder": true,
     "notesJournal": true,
+    "socialFeed": true,
     "newsBulletin": true,
     "setCountdowns": true,
     "surpriseRoulette": true,
@@ -156,7 +161,6 @@
     "accessibilityMap": true,
     "quietZones": true,
     "crowdHeatmap": false,
-    "ecoWarrior": true,
     "secretStages": false,
     "afterMovie": true,
     "feedbackSystem": true,
@@ -166,21 +170,41 @@
   },
   "content": {
     "emergencyContacts": {
-      "security": { "phone": "112", "label": "Security Dispatch" },
-      "medical": { "phone": "144", "label": "Medical Response" }
+      "security": {
+        "phone": "112",
+        "label": "Security Dispatch"
+      },
+      "medical": {
+        "phone": "144",
+        "label": "Medical Response"
+      }
     },
     "radarFocuses": [
       {
         "id": "daypark",
         "label": "DAYPARK (ROCK & INDIE)",
-        "targetStages": ["Space Stage", "Green Stage"],
-        "targetGenres": ["ROCK", "INDIE", "ALTERNATIVE"]
+        "targetStages": [
+          "Space Stage",
+          "Green Stage"
+        ],
+        "targetGenres": [
+          "ROCK",
+          "INDIE",
+          "ALTERNATIVE"
+        ]
       },
       {
         "id": "nightpark",
         "label": "NIGHTPARK (EDM)",
-        "targetStages": ["Nightpark", "Tenne"],
-        "targetGenres": ["ELECTRONIC", "D&B", "TECHNO"]
+        "targetStages": [
+          "Nightpark",
+          "Tenne"
+        ],
+        "targetGenres": [
+          "ELECTRONIC",
+          "D&B",
+          "TECHNO"
+        ]
       }
     ],
     "shuttleRoutes": [],

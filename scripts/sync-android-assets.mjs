@@ -1,12 +1,10 @@
 // scripts/sync-android-assets.mjs
 import fs from 'fs'
 import path from 'path'
+import { getFestivalPaths } from './utils/festival-env.mjs'
 
-const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
-const slug = festivalId.replace(/-\d{4}$/, '').replace(/-/g, '') // "ernte-punk-2026" → "erntepunk"
-const srcDataDir = path.join('festivals', festivalId, 'data')
-const srcConfig = path.join('festivals', festivalId, 'config.json')
-const destDir = path.join('android', 'app', 'src', slug, 'assets')
+const paths = getFestivalPaths()
+const { festivalId, slug, srcDataDir, srcConfig, androidAssetsDir: destDir } = paths
 
 if (!fs.existsSync(srcDataDir)) {
   console.error(`Festival data directory not found: ${srcDataDir}`)

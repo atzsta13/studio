@@ -1,4 +1,5 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useMemo, useEffect } from 'react';
 import {
@@ -20,7 +21,6 @@ import {
   Crosshair
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -60,7 +60,7 @@ interface MapPin {
 
 export default function MapPage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading: isDataLoading } = useFestivalData(festivalId);
+  const { config, lineup, isLoading: isDataLoading } = useInsider();
   const [poiData, setPoiData] = useState<POIItem[]>([]);
   const [foodData, setFoodData] = useState<FoodItem[]>([]);
   const [isLocalLoading, setIsLocalLoading] = useState(true);

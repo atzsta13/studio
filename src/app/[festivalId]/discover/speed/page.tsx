@@ -1,4 +1,5 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
@@ -8,22 +9,20 @@ import { useRouter, useParams } from 'next/navigation';
 import { X, Heart, ChevronLeft, Music, Info, Zap, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useFavorites } from '@/hooks/use-favorites';
 import { useHaptic } from '@/hooks/use-haptic';
 import { LineupItem } from '@/types';
-import { useFestivalData } from '@/hooks/use-festival-data';
 
 export default function SpeedDiscoveryPage() {
   const haptic = useHaptic();
   const router = useRouter();
   const { festivalId } = useParams() as { festivalId: string };
-  const { lineup: rawLineup, config } = useFestivalData(festivalId);
+  const { lineup: rawLineup, config } = useInsider();
   const allArtists = useMemo(() => rawLineup.map(a => ({
     ...a,
     vibes: a.vibes ?? [],
     returningHero: !!a.returningHero,
   })), [rawLineup]);
-  const { toggleFavorite, isFavorite } = useFavorites(allArtists, festivalId);
+  const { toggleFavorite, isFavorite } = useInsider();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<number>(0);
   

@@ -1,4 +1,5 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useMemo, useEffect } from 'react';
 import type { LineupItem } from '@/types';
@@ -33,7 +34,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from '@/components/ui/input';
 import { recommendArtists, type RecommendOutput } from '@/ai/flows/recommend-artists-flow';
-import { useFavorites } from '@/hooks/use-favorites';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
@@ -44,14 +44,13 @@ import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
 import { CountryExplorer } from '@/components/discover/country-explorer';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/use-haptic';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import { NotificationBanner } from '@/components/layout/notification-banner';
 
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
 
 export default function DiscoverPage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading: isDataLoading } = useFestivalData(festivalId);
+  const { config, lineup, isLoading: isDataLoading } = useInsider();
   const haptic = useHaptic();
   
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
@@ -75,7 +74,7 @@ export default function DiscoverPage() {
     }));
   }, [lineup]);
 
-  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useFavorites(allArtistsCurrent, festivalId);
+  const { favorites, allFavoriteIds, mustSeeIds, interestedIds, toggleFavorite, isFavorite, conflicts } = useInsider();
   const router = useRouter();
   
   const HIDDEN_GEM_IDS = config?.content?.hiddenGems || [];

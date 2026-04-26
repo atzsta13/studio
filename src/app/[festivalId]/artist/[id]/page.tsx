@@ -1,4 +1,5 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useParams, notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -30,14 +31,13 @@ import { FavoriteButton } from '@/components/artist/favorite-button';
 import { ArtistTrivia } from '@/components/artist/artist-trivia';
 import { SetCountdown } from '@/components/artist/set-countdown';
 import { SetlistLinks } from '@/components/artist/setlist-links';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import type { LineupItem } from '@/types';
 
 import { useGlobalArtist } from '@/hooks/use-global-artist';
 
 export default function ArtistDetailPage() {
   const { festivalId, id } = useParams() as { festivalId: string; id: string };
-  const { config, lineup, isLoading } = useFestivalData(festivalId);
+  const { config, lineup, isLoading } = useInsider();
   
   const artist = lineup.find((artist) => artist.id === id) as (LineupItem & { vibes?: string[] }) | undefined;
   const { appearances, isLoading: isGlobalLoading } = useGlobalArtist(artist?.artist);

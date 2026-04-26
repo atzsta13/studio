@@ -26,8 +26,7 @@ import {
   Utensils
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
-import { useFestivalData } from '@/hooks/use-festival-data';
-import { useState, useEffect, useMemo } from 'react';
+import { useInsider } from '@/components/layout/insider-provider';
 import type { LineupItem } from '@/types';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
 import { NewsBulletin } from '@/components/home/news-bulletin';
@@ -37,7 +36,7 @@ import { LineupDiff } from '@/components/home/lineup-diff';
 
 export default function Home() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading } = useFestivalData(festivalId);
+  const { config, lineup, isLoading } = useInsider();
   const [mounted, setMounted] = useState(false);
   const theme = useTheme();
 

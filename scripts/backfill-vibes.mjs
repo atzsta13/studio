@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { getFestivalPaths } from './utils/festival-env.mjs';
 
-const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026';
-const LINEUP_FILE = path.join(process.cwd(), `festivals/${festivalId}/data/lineup.json`);
+const { festivalId, lineupFile: LINEUP_FILE } = getFestivalPaths();
 
 const GENRE_VIBE_MAP = {
   'TECHNO': ['Dance', 'Hard', 'Rave'],

@@ -1,13 +1,18 @@
-# Festival Insider Platform
+# 🎪 Festival Insider Ecosystem
 
-A high-performance, offline-first white-label engine for festival companion apps. Originally built for **Sziget Festival**, this platform now supports multiple festivals via a unified configuration-driven architecture.
+A high-performance, offline-first white-label engine for festival companion apps.
+
+## 🚀 Current Status: Phase 2 Foundation
+We have successfully reached **Phase 1 (Stable)**. The engine is fully monolithic, multi-flavor, and data-driven. We are now hardening the foundation, condensing code (DRY), and improving scalability for 100+ festivals.
 
 | Supported Festivals | Status | ID |
 |--------------------|--------|----|
-| **Sziget 2026** | ✅ Live | `sziget-2026` |
-| **Area 53** | 🔵 Phase 1 | `area53-2026` |
-| **Nova Rock 2026** | 🔵 Phase 1 | `novarock-2026` |
-| **Frequency 2026** | 🔵 Phase 1 | `frequency-2026` |
+| **Sziget 2026** | ✅ Stable | `sziget-2026` |
+| **Area 53** | ✅ Stable | `area53-2026` |
+| **Nova Rock 2026** | ✅ Stable | `novarock-2026` |
+| **Frequency 2026** | ✅ Stable | `frequency-2026` |
+
+See [docs/milestones/PHASE_1_STABLE.md](./docs/milestones/PHASE_1_STABLE.md) for the milestone summary.
 
 ## 🎯 Philosophy & Strategy
 

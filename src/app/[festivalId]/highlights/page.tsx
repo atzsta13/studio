@@ -1,11 +1,11 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Star, Trophy, Music, Globe, Share2, Sparkles, Loader2 } from 'lucide-react';
 import { getFestivalConfig } from '@/config/festival-engine';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import type { LineupItem } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -14,7 +14,7 @@ type FavoriteTier = 'must_see' | 'interested';
 
 export default function HighlightsPage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading } = useFestivalData(festivalId);
+  const { config, lineup, isLoading } = useInsider();
   const { toast } = useToast();
 
   const [isMounted, setIsMounted] = useState(false);

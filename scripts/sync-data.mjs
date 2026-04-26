@@ -1,6 +1,7 @@
 // scripts/sync-data.mjs
 import fs from 'fs'
 import path from 'path'
+import { getFestivalId } from './utils/festival-env.mjs'
 
 const FESTIVALS_DIR = 'festivals'
 const PUBLIC_DATA_DIR = path.join('public', 'data')
@@ -62,7 +63,7 @@ for (const id of festivalFolders) {
 }
 
 // Legacy support: sync default festival to src/data
-const defaultId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
+const defaultId = getFestivalId()
 const legacySrc = path.join(FESTIVALS_DIR, defaultId, 'data')
 const legacyDest = path.join('src', 'data')
 

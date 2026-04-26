@@ -1,14 +1,14 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { useParams } from 'next/navigation';
-import { useFestivalData } from '@/hooks/use-festival-data';
 import { Bus, ArrowRight } from 'lucide-react';
 
 export default function ShuttlePage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, isLoading } = useFestivalData(festivalId);
+  const { config, isLoading } = useInsider();
 
   if (isLoading || !config) return null;
 

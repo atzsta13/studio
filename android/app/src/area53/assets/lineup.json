@@ -1,81 +1,511 @@
 [
   {
-    "id": "behemoth",
-    "name": "Behemoth",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T22:30:00",
-    "endTime": "2026-07-17T23:59:00",
-    "isHeadliner": true,
-    "genres": [
-      "Blackened Death Metal",
-      "Metal"
-    ],
-    "countryCode": "PL",
-    "description": "The kings of extreme metal return to Leoben.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/1Sqrvdb99pbmv8Yn693m7T"
-    },
-    "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense",
-      "Brutal",
-      "Dark"
-    ]
-  },
-  {
-    "id": "machine-head",
-    "name": "Machine Head",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T22:00:00",
-    "endTime": "2026-07-18T23:30:00",
-    "isHeadliner": true,
-    "genres": [
-      "Groove Metal",
-      "Thrash Metal"
-    ],
-    "countryCode": "US",
-    "description": "An explosive finale for the 2026 edition.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/699OTQXzgjt6pe4p9px987"
-    },
-    "vibes": [
-      "Heavy",
-      "Rhythmic",
-      "Aggressive",
-      "Energetic",
-      "Intense",
-      "Fast",
-      "Raw"
-    ]
-  },
-  {
-    "id": "heaven-shall-burn",
-    "name": "Heaven Shall Burn",
+    "id": "a53-2026-th-1",
+    "name": "In Flames",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T21:00:00",
-    "endTime": "2026-07-16T22:15:00",
-    "isHeadliner": true,
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "SE",
     "genres": [
-      "Melodic Death Metal",
-      "Metalcore"
+      "MELODIC DEATH METAL"
     ],
-    "countryCode": "DE",
-    "description": "Unmatched intensity from the German metalcore titans.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/4997pAbSp6SIn99Z66InSa"
-    },
     "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense",
-      "Brutal",
-      "Dark",
-      "Aggressive",
-      "Melodic"
+      "INTENSE",
+      "MELODIC",
+      "LEGENDARY"
+    ],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-2026-th-2",
+    "name": "Pain",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "20:45",
+    "endTime": "22:00",
+    "countryCode": "SE",
+    "genres": [
+      "INDUSTRIAL METAL"
+    ],
+    "vibes": [
+      "CYBER",
+      "HEAVY",
+      "PARTY"
+    ]
+  },
+  {
+    "id": "a53-2026-th-3",
+    "name": "Bleed From Within",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "GB",
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "HEAVY",
+      "MODERN"
+    ]
+  },
+  {
+    "id": "a53-2026-th-4",
+    "name": "Voivod",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "CA",
+    "genres": [
+      "PROG THRASH"
+    ],
+    "vibes": [
+      "TECHNICAL",
+      "WEIRD",
+      "CULT"
+    ]
+  },
+  {
+    "id": "a53-2026-th-5",
+    "name": "Ad Infinitum",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "CH",
+    "genres": [
+      "SYMPHONIC METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "MELODIC"
+    ]
+  },
+  {
+    "id": "a53-2026-th-6",
+    "name": "Agathodaimon",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "DE",
+    "genres": [
+      "DARK METAL",
+      "GOTHIC"
+    ],
+    "vibes": [
+      "DARK",
+      "ATMOSPHERIC"
+    ]
+  },
+  {
+    "id": "a53-2026-th-7",
+    "name": "Never Obey Again",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "IT",
+    "genres": [
+      "MODERN METAL"
+    ],
+    "vibes": [
+      "MODERN",
+      "LOUD"
+    ]
+  },
+  {
+    "id": "a53-2026-th-8",
+    "name": "Watch Them Fail",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "AT",
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "LOCAL-HEROES",
+      "HEAVY"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-1",
+    "name": "Arch Enemy",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "SE",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "INTENSE",
+      "MELODIC",
+      "POWER"
+    ],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-2026-fr-2",
+    "name": "Dirkschneider",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "20:45",
+    "endTime": "22:00",
+    "countryCode": "DE",
+    "genres": [
+      "HEAVY METAL"
+    ],
+    "description": "Balls To The Wall Special Set.",
+    "vibes": [
+      "CLASSIC",
+      "ANIMAL",
+      "POWER"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-3",
+    "name": "Self Deception",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "SE",
+    "genres": [
+      "MODERN ROCK"
+    ],
+    "vibes": [
+      "CATCHY",
+      "MODERN"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-4",
+    "name": "Hiraes",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "DE",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
+      "MELODIC"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-5",
+    "name": "Firewind",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "GR",
+    "genres": [
+      "POWER METAL"
+    ],
+    "vibes": [
+      "POWER",
+      "GUITAR-SHREDDING"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-6",
+    "name": "Kontrust",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "AT",
+    "genres": [
+      "CROSSOVER"
+    ],
+    "vibes": [
+      "FUN",
+      "CRAZY",
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-7",
+    "name": "Vinegar Hill",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "AT",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-8",
+    "name": "Brutal Sphincter",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "BE",
+    "genres": [
+      "GOREGRIND"
+    ],
+    "vibes": [
+      "BRUTAL",
+      "PARTY"
+    ]
+  },
+  {
+    "id": "a53-2026-fr-9",
+    "name": "All Will Know",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "12:30",
+    "endTime": "13:00",
+    "countryCode": "DE",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "MELODIC",
+      "HEAVY"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-1",
+    "name": "Saxon",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "22:30",
+    "endTime": "00:00",
+    "countryCode": "GB",
+    "genres": [
+      "HEAVY METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "CLASSIC",
+      "POWER"
+    ],
+    "isHeadliner": true
+  },
+  {
+    "id": "a53-2026-sa-2",
+    "name": "Visions Of Atlantis",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "20:45",
+    "endTime": "22:00",
+    "countryCode": "AT",
+    "genres": [
+      "SYMPHONIC METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "MELODIC",
+      "OCEAN"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-3",
+    "name": "Temptations For The Weak",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "19:15",
+    "endTime": "20:15",
+    "countryCode": "BE",
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "HEAVY",
+      "CATCHY"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-4",
+    "name": "Igel vs Shark",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "17:45",
+    "endTime": "18:45",
+    "countryCode": "AT",
+    "genres": [
+      "ROCK 'N' ROLL"
+    ],
+    "vibes": [
+      "HIGH-VOLTAGE",
+      "LOUD",
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-5",
+    "name": "Patriarcha",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "16:30",
+    "endTime": "17:15",
+    "countryCode": "AT",
+    "genres": [
+      "DEATH METAL",
+      "THRASH"
+    ],
+    "vibes": [
+      "HEAVY",
+      "OLD-SCHOOL"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-6",
+    "name": "Matter of Taste",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "15:15",
+    "endTime": "16:00",
+    "countryCode": "AT",
+    "genres": [
+      "METAL"
+    ],
+    "vibes": [
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-7",
+    "name": "Aris",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "14:15",
+    "endTime": "14:45",
+    "countryCode": "AT",
+    "genres": [
+      "METAL"
+    ],
+    "vibes": [
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-8",
+    "name": "Morituri",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "13:15",
+    "endTime": "13:45",
+    "countryCode": "AT",
+    "genres": [
+      "METAL"
+    ],
+    "description": "Bandcontest Winner 2026.",
+    "vibes": [
+      "FRESH",
+      "LOCAL-HEROES"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-morning",
+    "name": "Jazz Gitti",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "11:00",
+    "endTime": "12:30",
+    "countryCode": "AT",
+    "genres": [
+      "AUSTRO-POP",
+      "CULT"
+    ],
+    "description": "Samstag Frühschoppen. MANDATORY.",
+    "vibes": [
+      "CULT",
+      "FUN",
+      "SING-ALONG"
+    ]
+  },
+  {
+    "id": "a53-2026-aftershow-wed",
+    "name": "Horny Monkeys",
+    "stage": "The Tenne",
+    "day": "Wednesday",
+    "startTime": "20:00",
+    "endTime": "00:00",
+    "countryCode": "AT",
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
+    "description": "Mittwoch Warm-up Party.",
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
+  },
+  {
+    "id": "a53-2026-aftershow-thu",
+    "name": "Horny Monkeys",
+    "stage": "The Tenne",
+    "day": "Thursday",
+    "startTime": "23:59",
+    "endTime": "02:00",
+    "countryCode": "AT",
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
+    "description": "Täglich Aftershow nach dem Headliner.",
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
+  },
+  {
+    "id": "a53-2026-aftershow-fri",
+    "name": "Horny Monkeys",
+    "stage": "The Tenne",
+    "day": "Friday",
+    "startTime": "23:59",
+    "endTime": "02:00",
+    "countryCode": "AT",
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
+    "description": "Täglich Aftershow nach dem Headliner.",
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
+  },
+  {
+    "id": "a53-2026-aftershow-sat",
+    "name": "Horny Monkeys",
+    "stage": "The Tenne",
+    "day": "Saturday",
+    "startTime": "23:59",
+    "endTime": "02:00",
+    "countryCode": "AT",
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
+    "description": "Täglich Aftershow nach dem Headliner.",
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
     ]
   }
 ]

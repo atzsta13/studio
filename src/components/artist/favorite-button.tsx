@@ -1,8 +1,8 @@
 'use client';
+import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useEffect } from 'react';
 import { Heart, Eye, CheckCircle2 } from 'lucide-react';
-import { useFavorites } from '@/hooks/use-favorites';
 import { useHaptic } from '@/hooks/use-haptic';
 import { FESTIVAL } from '@/config/festival-engine';
 
@@ -13,7 +13,7 @@ interface FavoriteButtonProps {
 }
 
 export function FavoriteButton({ artistId, size = 'lg', festivalId }: FavoriteButtonProps) {
-    const { isFavorite, toggleFavorite } = useFavorites([], festivalId);
+    const { isFavorite, toggleFavorite } = useInsider();
     const [isSeen, setIsSeen] = useState(false);
     const haptic = useHaptic();
 

@@ -58,15 +58,13 @@ const SCRAPER_CONFIGS = {
     }
 };
 
-const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026';
+const { festivalId, lineupFile: LINEUP_FILE } = getFestivalPaths();
 const config = SCRAPER_CONFIGS[festivalId];
 
 if (!config) {
     console.error(`Unknown FESTIVAL_ID: ${festivalId}`);
     process.exit(1);
 }
-
-const LINEUP_FILE = path.join(process.cwd(), `festivals/${festivalId}/data/lineup.json`);
 
 // Helper to convert URL slug to proper artist name
 function slugToName(slug) {
@@ -283,6 +281,11 @@ async function scrapeAllArtists() {
 
     console.log(`\n💾 Saving to ${LINEUP_FILE}...`);
     fs.writeFileSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
+    console.log(`✅ Done! Total: ${existingArtists.length}`);
+}
+
+scrapeAllArtists();
+leSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
     console.log(`✅ Done! Total: ${existingArtists.length}`);
 }
 
