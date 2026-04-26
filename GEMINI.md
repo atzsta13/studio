@@ -17,7 +17,7 @@ This is a **Config-First** platform. Never hardcode festival names, dates, color
 
 ## Key Files & Hot Zones
 - `festivals/`: Source of truth for all branding and data.
-- `src/hooks/use-festival-data.ts`: The bridge between JSON config and the Web app UI.
+- `src/components/layout/insider-provider.tsx`: The `InsiderProvider` context — consume via `useInsider()`. `use-festival-data.ts` no longer exists.
 - `scripts/sync-data.mjs`: Orchestrates data and asset movement.
 - `src/app/`: Next.js UI implementation (Root is Hub, `[festivalId]` is specific).
 - `android/`: Kotlin/Compose source.
