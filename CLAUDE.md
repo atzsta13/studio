@@ -68,7 +68,7 @@ npm run android:sync:sziget
 
 ### 1. Web Configuration (Hub Architecture)
 - **Interface**: `FestivalConfig` in `src/config/festival.ts`.
-- **Dynamic Routing**: The UI lives in `src/app/[festivalId]/`. Use `useFestivalData()` to load the active config.
+- **Dynamic Routing**: The UI lives in `src/app/[festivalId]/`. Use `useInsider()` to load the active config and lineup.
 - **Theming**: Config colors are applied dynamically based on the active route.
 
 ### 2. Android Configuration

@@ -30,5 +30,5 @@ The `scripts/pulse-check.mjs` is the ecosystem gatekeeper.
 
 ## 6. Monolithic Routing
 Never hardcode festival-specific logic into the `main` source sets.
-*   **Web**: Use `useFestivalData()` and dynamic `/[festivalId]` routes.
+*   **Web**: Use `useInsider()` and dynamic `/[festivalId]` routes.
 *   **Android**: Use `FestivalConfig.current` and Gradle Flavors to handle branding and feature flags.

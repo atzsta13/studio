@@ -34,7 +34,7 @@ Unlike the Web, the Android apps are built as **isolated units** (Product Flavor
     /data/              # Lineup, POIs, Survival Guide
 /src/                   # Web (Next.js) Source
   /app/[festivalId]/    # Dynamic festival routes
-  /hooks/               # useFestivalData, useFavorites, etc.
+  /hooks/               # useInsider (Unified Context), useTranslation, etc.
 /android/               # Android (Jetpack Compose) Source
   /app/src/[flavor]/    # Festival-specific Android assets
 /scripts/               # Cross-platform sync & cleanup logic

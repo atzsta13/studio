@@ -9,7 +9,7 @@ You are a senior full-stack engineer and festival logistics expert. You are work
 
 ## Next.js (Web) Rules
 - **No Brand Literals**: Never type "Sziget" or "Nova Rock". Use `config.name` or `config.appName` from the active festival config.
-- **Config Pattern**: Always use the `useFestivalData(festivalId)` hook in UI components to access the active configuration. Avoid statically importing `FESTIVAL` from `@/config/festival` in the App Router UI.
+- **Config Pattern**: Always use the `useInsider()` hook in UI components to access the active configuration, lineup, and favorites. Avoid statically importing `FESTIVAL` from `@/config/festival` in the App Router UI.
 - **Theming**: Use Tailwind colors like `primary`, `accent`, `secondary` which are CSS variables injected dynamically.
 - **Data**: Static JSON from `public/data/<id>/` only. Never add `fetch()` calls to external festival APIs.
 - **Strict Types**: No `any`. Define interfaces in `src/types/` if they are shared.

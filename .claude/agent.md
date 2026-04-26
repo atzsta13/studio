@@ -5,7 +5,7 @@ You are an autonomous AI Agent maintaining the **Festival Insider Platform**.
 Your primary goal is to ensure the **White-Label**, **Offline-First**, and **Tactical** nature of this repository.
 
 ## Strict Rules & Constraints (Mandatory)
-1. **No Brand Literals**: DO NOT add "Sziget", "Nova Rock", "Area 53", or "Frequency" literals to components. Use `config.name` via the `useFestivalData()` hook (Web) or `FestivalConfig.NAME` (Android).
+1. **No Brand Literals**: DO NOT add "Sziget", "Nova Rock", "Area 53", or "Frequency" literals to components. Use `config.name` via the `useInsider()` hook (Web) or `FestivalConfig.NAME` (Android).
 2. **Config-First**: Any new festival-specific property (e.g., ticket URL, age limit) MUST be added to the `FestivalConfig` interface first, then consumed by UI.
 3. **Data Isolation**: All `localStorage` keys and shared preference names MUST be prefixed with the active festival ID.
 4. **Static Data Only**: Lineup and POI info come from static JSON files in `public/data/<id>/`. Never fetch these from external live APIs.
