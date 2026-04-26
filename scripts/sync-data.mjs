@@ -2,11 +2,15 @@
 import fs from 'fs'
 import path from 'path'
 import { getFestivalId } from './utils/festival-env.mjs'
+import { validateAllConfigs } from './utils/validate-configs.mjs'
 
 const FESTIVALS_DIR = 'festivals'
 const PUBLIC_DATA_DIR = path.join('public', 'data')
 
 console.log('🚀 Starting White-Label Data Sync...')
+
+// Ensure all configs are valid before proceeding
+validateAllConfigs();
 
 if (!fs.existsSync(FESTIVALS_DIR)) {
   console.error(`❌ Festivals directory not found: ${FESTIVALS_DIR}`)

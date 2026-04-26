@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Festival Config Schema",
+  "type": "object",
+  "required": ["id", "slug", "name", "fullName", "tagline", "location", "dates", "currency", "theme", "features"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+-202[0-9]$" },
+    "slug": { "type": "string" },
+    "name": { "type": "string" },
+    "fullName": { "type": "string" },
+    "appName": { "type": "string" },
+    "tagline": { "type": "string" },
+    "description": { "type": "string" },
+    "officialWebsite": { "type": "string", "format": "uri" },
+    "productionUrl": { "type": "string", "format": "uri" },
+    "location": {
+      "type": "object",
+      "required": ["city", "country", "countryCode", "lat", "lng"],
+      "properties": {
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "countryCode": { "type": "string", "minLength": 2, "maxLength": 2 },
+        "lat": { "type": "number" },
+        "lng": { "type": "number" }
+      }
+    },
+    "dates": {
+      "type": "object",
+      "required": ["year", "startDate", "endDate", "days"],
+      "properties": {
+        "year": { "type": "integer", "minimum": 2024 },
+        "startDate": { "type": "string", "format": "date" },
+        "endDate": { "type": "string", "format": "date" },
+        "days": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "currency": {
+      "type": "object",
+      "required": ["localCode", "eurRate"],
+      "properties": {
+        "localCode": { "type": "string" },
+        "eurRate": { "type": "number" }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "required": ["primaryHex", "backgroundHex", "aesthetic"],
+      "properties": {
+        "primaryHex": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" },
+        "backgroundHex": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" },
+        "aesthetic": { "type": "string" }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "cashlessUrl": { "type": "string" }
+      },
+      "additionalProperties": { "type": "boolean" }
+    }
+  }
+}
