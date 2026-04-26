@@ -90,9 +90,9 @@
   "currency": {
     "localCode": "HUF",
     "localName": "Forint",
-    "eurRate": 400,
-    "usdRate": 370,
-    "gbpRate": 470,
+    "eurRate": 410,
+    "usdRate": 380,
+    "gbpRate": 485,
     "showConverter": true
   },
   "theme": {

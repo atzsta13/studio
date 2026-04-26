@@ -1,58 +1,66 @@
-// scripts/backfill-vibes.mjs
-import fs from 'fs'
-import path from 'path'
-import { VIBE_TAXONOMY } from './vibe-taxonomy.mjs'
+import fs from 'fs';
+import path from 'path';
 
-const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026'
-const lineupPath = path.join('festivals', festivalId, 'data', 'lineup.json')
+const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID ?? 'sziget-2026';
+const LINEUP_FILE = path.join(process.cwd(), `festivals/${festivalId}/data/lineup.json`);
 
-if (!fs.existsSync(lineupPath)) {
-  console.error(`lineup.json not found at ${lineupPath}`)
-  process.exit(1)
-}
+const GENRE_VIBE_MAP = {
+  'TECHNO': ['Dance', 'Hard', 'Rave'],
+  'ELECTRONIC': ['Dance', 'Flow', 'Rave'],
+  'AMBIENT': ['Chill', 'Flow'],
+  'METAL': ['Hard', 'High Energy', 'Mosh'],
+  'ROCK': ['High Energy', 'Anthemic'],
+  'INDIE': ['Feel-good', 'Nostalgic'],
+  'HIP-HOP': ['Party', 'Anthemic', 'Sing-along'],
+  'RAP': ['Party', 'Hard'],
+  'POP': ['Sing-along', 'Feel-good', 'Party'],
+  'JAZZ': ['Chill', 'Flow'],
+  'PUNK': ['Hard', 'High Energy', 'Mosh'],
+  'HOUSE': ['Dance', 'Feel-good', 'Flow'],
+  'ELECTRO-HOUSE': ['Dance', 'Party'],
+  'BREAKBEAT': ['Dance', 'Rave'],
+  'DRUM & BASS': ['Rave', 'High Energy', 'Dance'],
+  'PSYTRANCE': ['Rave', 'Flow'],
+  'REGGAE': ['Feel-good', 'Chill'],
+  'FOLK': ['Acoustic', 'Chill', 'Nostalgic'],
+};
 
-const lineup = JSON.parse(fs.readFileSync(lineupPath, 'utf8'))
+function backfillVibes() {
+  console.log(`🌀 Backfilling vibes for ${festivalId}...`);
 
-function inferVibes(genres) {
-  const vibes = new Set()
-  for (const genre of genres ?? []) {
-    const normalized = genre.toUpperCase().replace(/[^A-Z0-9]/g, '_')
-    
-    // Direct match
-    if (VIBE_TAXONOMY[normalized]) {
-      VIBE_TAXONOMY[normalized].forEach(v => vibes.add(v))
-    }
-    
-    // Partial match (e.g. "Heavy Metal" includes "METAL")
-    for (const [key, tags] of Object.entries(VIBE_TAXONOMY)) {
-      if (normalized.includes(key)) {
-        tags.forEach(t => vibes.add(t))
+  if (!fs.existsSync(LINEUP_FILE)) {
+    console.error(`❌ Lineup file not found: ${LINEUP_FILE}`);
+    return;
+  }
+
+  const data = JSON.parse(fs.readFileSync(LINEUP_FILE, 'utf8'));
+  let updatedCount = 0;
+
+  data.forEach(artist => {
+    // Only backfill if vibes is empty or null
+    if (!artist.vibes || artist.vibes.length === 0) {
+      const newVibes = new Set();
+      
+      artist.genres?.forEach(genre => {
+        const mappedVibes = GENRE_VIBE_MAP[genre.toUpperCase()];
+        if (mappedVibes) {
+          mappedVibes.forEach(v => newVibes.add(v));
+        }
+      });
+
+      if (newVibes.size > 0) {
+        artist.vibes = Array.from(newVibes);
+        updatedCount++;
+      } else {
+        // Fallback for unknown genres
+        artist.vibes = ['Discover'];
+        updatedCount++;
       }
     }
-  }
-  return [...vibes]
+  });
+
+  console.log(`✅ Vibes backfilled for ${updatedCount} artists.`);
+  fs.writeFileSync(LINEUP_FILE, JSON.stringify(data, null, 2), 'utf8');
 }
 
-let filledCount = 0
-const updated = lineup.map(artist => {
-  // Only fill if empty or if force is enabled
-  const shouldFill = !artist.vibes || artist.vibes.length === 0 || process.env.FORCE_VIBES === 'true'
-  if (shouldFill) {
-    const inferred = inferVibes(artist.genres)
-    if (inferred.length > 0) {
-      filledCount++
-      return { ...artist, vibes: inferred }
-    }
-  }
-  return artist
-})
-
-fs.writeFileSync(lineupPath, JSON.stringify(updated, null, 2))
-console.log(`✓ Vibes backfilled for ${filledCount} artists in ${festivalId} data package.`)
-
-// Also sync to src/data immediately if this is the active festival
-const destPath = path.join('src', 'data', 'lineup.json')
-if (process.env.NEXT_PUBLIC_FESTIVAL_ID === festivalId || !process.env.NEXT_PUBLIC_FESTIVAL_ID) {
-  fs.copyFileSync(lineupPath, destPath)
-  console.log(`✓ Synced to src/data/lineup.json`)
-}
+backfillVibes();

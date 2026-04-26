@@ -25,7 +25,7 @@
         "id": "p3",
         "name": "First Aid HQ",
         "type": "first-aid",
-        "location": "Main Entrance",
+        "location": "Main Entrance (K-Bridge)",
         "mapCoords": { "x": 10, "y": 92 }
     },
     {
@@ -62,5 +62,19 @@
         "type": "water",
         "location": "Near Circus",
         "mapCoords": { "x": 60, "y": 20 }
+    },
+    {
+        "id": "p9",
+        "name": "Aldi Supermarket",
+        "type": "camping",
+        "location": "Central Area",
+        "mapCoords": { "x": 50, "y": 40 }
+    },
+    {
+        "id": "p10",
+        "name": "Boat Transfer Dock",
+        "type": "camping",
+        "location": "River Side",
+        "mapCoords": { "x": 95, "y": 50 }
     }
 ]

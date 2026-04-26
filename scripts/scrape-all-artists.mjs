@@ -1,7 +1,10 @@
-// src/scripts/scrape_all_artists.js
-const fs = require('fs');
-const path = require('path');
-const puppeteer = require('puppeteer');
+import fs from 'fs';
+import path from 'path';
+import puppeteer from 'puppeteer';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Multi-festival Scraper Configuration.
@@ -63,7 +66,7 @@ if (!config) {
     process.exit(1);
 }
 
-const LINEUP_FILE = path.join(__dirname, `../../festivals/${festivalId}/data/lineup.json`);
+const LINEUP_FILE = path.join(process.cwd(), `festivals/${festivalId}/data/lineup.json`);
 
 // Helper to convert URL slug to proper artist name
 function slugToName(slug) {
@@ -179,8 +182,9 @@ async function scrapeAllArtists() {
             const artist = existingArtists[i];
             if (!artist.festivalUrl) continue;
 
-            // Only fetch if data is missing or empty
-            if (artist.description && artist.imageUrl && artist.genres.length > 0) continue;
+            // Only fetch if data is missing or empty - updated to allow stage/day updates
+            const needsUpdate = !artist.description || !artist.imageUrl || artist.genres.length === 0 || !artist.stage || !artist.day;
+            if (!needsUpdate) continue;
 
             if (consecutiveFailures >= MAX_CONSECUTIVE_FAILURES) {
                 console.log(`\n🛑 Circuit breaker triggered after ${MAX_CONSECUTIVE_FAILURES} consecutive failures. stopping detail scrape.`);
@@ -193,24 +197,50 @@ async function scrapeAllArtists() {
                 await page.goto(artist.festivalUrl, { waitUntil: 'networkidle2', timeout: 30000 });
                 await page.waitForSelector(config.contentSelector, { timeout: 10000 });
 
-                artist.genres = await page.evaluate((sel) => {
-                    return Array.from(document.querySelectorAll(sel)).map(t => t.innerText.trim().toUpperCase()).filter(t => t.length > 0);
+                const rawTags = await page.evaluate((sel) => {
+                    return Array.from(document.querySelectorAll(sel)).map(t => t.innerText.trim());
                 }, config.tagSelector);
 
-                artist.countryCode = await page.evaluate((sel) => {
+                // Smart Tag Parsing for Sziget
+                if (festivalId === 'sziget-2026') {
+                    const days = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'];
+                    const stageKeywords = ['STAGE', 'COLOSSEUM', 'DROPYARD', 'VILLAGE', 'MIRROR', 'CIRQUE', 'THE CLUB', 'THE BUZZ', 'THE CYPHER', 'FREEDOME'];
+                    
+                    const filteredGenres = [];
+                    rawTags.forEach(tag => {
+                        const upperTag = tag.toUpperCase();
+                        if (days.includes(upperTag)) {
+                            // Capitalize Day (e.g. FRIDAY -> Friday)
+                            artist.day = upperTag.charAt(0) + upperTag.slice(1).toLowerCase();
+                        } else if (stageKeywords.some(kw => upperTag.includes(kw))) {
+                            artist.stage = tag;
+                        } else if (upperTag !== 'MUSIC') {
+                            filteredGenres.push(upperTag);
+                        }
+                    });
+                    if (filteredGenres.length > 0) artist.genres = filteredGenres;
+                } else {
+                    const genres = rawTags.map(t => t.toUpperCase()).filter(t => t !== 'MUSIC');
+                    if (genres.length > 0) artist.genres = genres;
+                }
+
+                const scrapedCountryCode = await page.evaluate((sel) => {
                     const el = document.querySelector(sel);
                     return el ? el.innerText.trim().toUpperCase() : null;
                 }, config.countrySelector);
+                if (scrapedCountryCode) artist.countryCode = scrapedCountryCode;
 
-                artist.description = await page.evaluate((sel) => {
+                const scrapedDescription = await page.evaluate((sel) => {
                     const el = document.querySelector(sel);
                     return el ? el.innerText.trim() : null;
                 }, config.descriptionSelector);
+                if (scrapedDescription) artist.description = scrapedDescription;
 
-                artist.imageUrl = await page.evaluate((sel) => {
+                const scrapedImageUrl = await page.evaluate((sel) => {
                     const el = document.querySelector(sel);
                     return el ? (el.src || el.getAttribute('src')) : null;
                 }, config.imageSelector);
+                if (scrapedImageUrl) artist.imageUrl = scrapedImageUrl;
 
                 // Socials
                 const socialsMap = await page.evaluate((sel) => {
@@ -229,6 +259,12 @@ async function scrapeAllArtists() {
                 artist.socials = { ...artist.socials, ...socialsMap };
                 
                 consecutiveFailures = 0; // Reset on success
+
+                // Periodically save progress every 5 artists
+                if (i % 5 === 0) {
+                    fs.writeFileSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
+                    console.log(`  💾 Progress saved at index ${i}`);
+                }
 
             } catch (err) {
                 consecutiveFailures++;
