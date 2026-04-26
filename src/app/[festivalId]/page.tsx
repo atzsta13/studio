@@ -33,6 +33,7 @@ import { FestivalCountdown } from '@/components/home/festival-countdown';
 import { NewsBulletin } from '@/components/home/news-bulletin';
 import { FanPoll } from '@/components/home/fan-poll';
 import { PhotoWall } from '@/components/home/photo-wall';
+import { LineupDiff } from '@/components/home/lineup-diff';
 
 export default function Home() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -308,6 +309,8 @@ export default function Home() {
             </Box>
           </Grid>
         </Grid>
+
+        <LineupDiff festivalId={festivalId} lineup={lineup} />
 
         {config.features.photoWall && <PhotoWall festivalId={festivalId} />}
 

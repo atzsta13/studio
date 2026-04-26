@@ -36,6 +36,7 @@ import { NotesJournal } from '@/components/tools/notes-journal';
 import { SOSMorse } from '@/components/tools/sos-morse';
 import { FeedbackSystem } from '@/components/tools/feedback-system';
 import { CarFinder } from '@/components/tools/car-finder';
+import { SurvivalGuide } from '@/components/tools/survival-guide';
 import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
 import { useInsider } from '@/components/layout/insider-provider';
@@ -143,14 +144,19 @@ export default function ToolsPage() {
           </div>
 
           <Tabs defaultValue="survival" className="w-full">
-            <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${config.location.countryCode === 'HU' ? 'grid-cols-4' : 'grid-cols-3'}`}>
+            <TabsList className={`grid w-full rounded-[2rem] bg-muted/20 p-2 h-20 border border-white/5 backdrop-blur-3xl mb-12 ${config.location.countryCode === 'HU' ? 'grid-cols-5' : 'grid-cols-4'}`}>
               <TabsTrigger value="survival" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">{t('toolkit_tactical') !== 'toolkit_tactical' ? t('toolkit_tactical') : 'Tactical'}</TabsTrigger>
+              <TabsTrigger value="guide" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Guide</TabsTrigger>
               <TabsTrigger value="safety" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">{t('toolkit_safety') !== 'toolkit_safety' ? t('toolkit_safety') : 'Safety'}</TabsTrigger>
               {config.location.countryCode === 'HU' && (
                 <TabsTrigger value="phrases" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Phrases</TabsTrigger>
               )}
               <TabsTrigger value="camp" className="rounded-[1.5rem] font-black text-[11px] uppercase tracking-[0.3em] transition-all data-[state=active]:bg-background data-[state=active]:shadow-2xl data-[state=active]:scale-105">Camp</TabsTrigger>
             </TabsList>
+
+            <TabsContent value="guide" className="space-y-10">
+              <SurvivalGuide />
+            </TabsContent>
 
             <TabsContent value="survival" className="space-y-10">
               <WeatherWidget />

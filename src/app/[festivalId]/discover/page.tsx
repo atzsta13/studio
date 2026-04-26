@@ -41,6 +41,7 @@ import { SerendipityModal } from '@/components/discover/SerendipityModal';
 import { TagCloud } from '@/components/discover/tag-cloud';
 import { GenreBreakdown } from '@/components/discover/genre-breakdown';
 import { VibeOfTheHour } from '@/components/discover/vibe-of-the-hour';
+import { CountryExplorer } from '@/components/discover/country-explorer';
 import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/use-haptic';
 import { useFestivalData } from '@/hooks/use-festival-data';
@@ -56,6 +57,7 @@ export default function DiscoverPage() {
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const [selectedVibe, setSelectedVibe] = useState<string | null>(null);
   const [selectedStage, setSelectedStage] = useState<string | null>(null);
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [searchQuery, setSearchQuery] = useState('');
   const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
@@ -97,6 +99,7 @@ export default function DiscoverPage() {
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [aiResult, setAiResult] = useState<RecommendOutput | null>(null);
   const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
+  const [isCountryExplorerOpen, setIsCountryExplorerOpen] = useState(false);
 
   const getFlagEmoji = (countryCode: string | undefined) => {
     if (!countryCode || countryCode === 'Unknown') return '';
@@ -157,6 +160,7 @@ export default function DiscoverPage() {
     return base.filter(artist => {
       const matchesGenre = !selectedGenre || artist.genres?.includes(selectedGenre);
       const matchesVibe = !selectedVibe || artist.vibes?.includes(selectedVibe);
+      const matchesCountry = !selectedCountry || artist.countryCode === selectedCountry;
       const matchesStage = !selectedStage || (() => {
         const focus = config.content.radarFocuses?.find(f => f.id === selectedStage);
         if (focus) {
@@ -172,9 +176,9 @@ export default function DiscoverPage() {
         artist.genres?.some(g => g.toLowerCase().includes(searchQuery.toLowerCase())) ||
         artist.description?.toLowerCase().includes(searchQuery.toLowerCase());
 
-      return matchesGenre && matchesVibe && matchesStage && matchesSearch;
+      return matchesGenre && matchesVibe && matchesStage && matchesSearch && matchesCountry;
     });
-  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery, config]);
+  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery, config, selectedCountry]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -580,7 +584,13 @@ export default function DiscoverPage() {
               ].map(mode => (
                 <button
                   key={mode.id}
-                  onClick={() => handleViewModeChange(mode.id as ViewMode)}
+                  onClick={() => {
+                    if (mode.id === 'by-country') {
+                      setIsCountryExplorerOpen(true);
+                    } else {
+                      handleViewModeChange(mode.id as ViewMode);
+                    }
+                  }}
                   className={`flex items-center gap-3 rounded-[1.2rem] px-8 py-4 text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap ${viewMode === mode.id ? 'bg-background text-foreground shadow-2xl border border-white/10 scale-105' : 'text-muted-foreground hover:text-foreground'}`}
                 >
                   <mode.icon className="h-4 w-4" />
@@ -614,6 +624,14 @@ export default function DiscoverPage() {
                 {vibe}
               </button>
             ))}
+            {selectedCountry && (
+              <button
+                onClick={() => setSelectedCountry(null)}
+                className="px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] whitespace-nowrap border bg-orange-500 border-orange-500 text-white shadow-2xl scale-105 flex items-center gap-2"
+              >
+                {selectedCountry} <X size={12} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -834,6 +852,17 @@ export default function DiscoverPage() {
         onExplore={handleSerendipityExplore}
         isFavorite={serendipityArtist ? isFavorite(serendipityArtist.id) : false}
         onToggleFavorite={(artistId) => toggleFavorite(artistId, 'interested')}
+      />
+
+      <CountryExplorer
+        isOpen={isCountryExplorerOpen}
+        onClose={() => setIsCountryExplorerOpen(false)}
+        artists={allArtists}
+        onCountrySelect={(c) => {
+          setSelectedCountry(c);
+          setViewMode('by-country');
+        }}
+        selectedCountry={selectedCountry}
       />
     </div>
   );
