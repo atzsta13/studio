@@ -47,7 +47,7 @@ class HapticManager(context: Context) {
         }
     }
 
-    /** Duolingo-style ascending triple burst — stamp unlock, achievement */
+    /** Duolingo-style ascending triple burst — status unlock, major interaction confirmation */
     fun successBurst() {
         vibrator.vibrate(
             VibrationEffect.createWaveform(

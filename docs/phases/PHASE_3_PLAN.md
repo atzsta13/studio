@@ -24,11 +24,11 @@ When schedule data becomes available, features designed here (My Lineup, Schedul
 | Screen | Status | Real Data? | Known Issues |
 |--------|--------|-----------|--------------|
 | Splash | ✅ Complete | — | — |
-| Home | ✅ Complete | Headliners from JSON, countdown real | — |
-| Discover | ✅ Complete | All 80 artists, 4 filter rows, search | Vibes filter skips 42 artists with no vibes |
-| Artist Detail | ✅ Complete | Full JSON data, socials | — |
-| Map | ✅ Complete | POI/Food from JSON | **Coordinate scaling broken** (1000dp offset) |
-| Tools | ✅ Complete | Static rates, SOS UI | HUF rate is hardcoded |
+| Home | ✅ Complete | Headliners from JSON, countdown real | Lineup diff added (Web) |
+| Discover | ✅ Complete | All 80 artists, 4 filter rows, search | Vibe backfill script resolved missing vibes |
+| Artist Detail | ✅ Complete | Full JSON data, socials | Similar artists added (Web) |
+| Map | ✅ Complete | POI/Food from JSON | **Coordinate scaling broken** (1000dp offset - Android) |
+| Tools | ✅ Complete | Static rates, SOS UI | Survival Guide added (Web) |
 | Schedule | ✅ Exists | Day filter from JSON | **No time/stage data** — clash detection is built but inert |
 
 ---
@@ -163,31 +163,6 @@ Compares `lineup_2025.json` (82 artists) with `lineup.json` (80 artists) to show
 **Files to modify:**
 - `ui/home/HomeScreen.kt` (add "NEW THIS YEAR" card)
 - `data/repository/LineupRepository.kt` (expose `loadPreviousYear()`)
-
----
-
-
-**What it does:**
-
-|-----------|-----|---------|
-| First Favorite | 50 | Favorite any artist |
-| Genre Explorer | 75 | Favorite artists from 3 different genres |
-| Globe Trotter | 100 | Favorite artists from 5 different countries |
-| Headliner Fan | 150 | Favorite all 6 headliners |
-| Vibe Curator | 75 | Favorite 3 artists with the same vibe |
-| Must-See Committed | 100 | Mark 5 artists as must-see |
-| DNA Match | 50 | Complete the Vibe Quiz |
-| Discovery Machine | 125 | Favorite an artist from Vibe Quiz results |
-| Full Week | 200 | Have at least 1 favorite for every festival day |
-| Social Stalker | 75 | Tap a social link on any artist detail |
-
-`CIVILIAN` → `ISLAND SCOUT` → `STAGE HUNTER` → `VIBE ARCHITECT` → `FESTIVAL GOD`
-
-
-**Files to create:**
-
-**Files to modify:**
-- `data/local/AppDatabase.kt` (version bump)
 
 ---
 

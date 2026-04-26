@@ -69,7 +69,7 @@ A metal/hard rock niche festival in Austria. No existing app. At ~10,000 capacit
 
 ### Nova Rock 2026
 
-Austria's largest rock festival, held at the Pannonia Fields airfield in Nickelsdorf (near the Hungarian border). Runs June 18–21, 2026. Headliners have historically included Metallica, Rammstein, Green Day, and similarly scaled acts. Currently served by the Greencopper platform (`com.greencopper.novarock`, App Store ID 1374567174). Strategy: companion app positioning — discovery and gamification alongside, not replacing, the operational Greencopper timetable.
+Austria's largest rock festival, held at the Pannonia Fields airfield in Nickelsdorf (near the Hungarian border). Runs June 18–21, 2026. Headliners have historically included Metallica, Rammstein, Green Day, and similarly scaled acts. Currently served by the Greencopper platform (`com.greencopper.novarock`, App Store ID 1374567174). Strategy: companion app positioning — discovery and tactical utility alongside, not replacing, the operational Greencopper timetable.
 
 ### Frequency 2026
 

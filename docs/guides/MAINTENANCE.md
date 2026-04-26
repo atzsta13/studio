@@ -8,7 +8,7 @@
 
 ## 🍔 Updating Food Vendors
 Edit `src/data/food.json`. 
-- Ensure `budgetPrice` is populated to trigger the **Budget Hero** badge.
+- Ensure `budgetPrice` is populated to allow cost tracking.
 - `mapCoords` (x,y) are percentages (0-100) relative to the map container.
 
 ## 📍 Updating Map Points (POIs)

@@ -33,7 +33,7 @@ export interface FestivalFeatureFlags {
   batterySaver: boolean        // Global "No Animations" mode
   friendFinder: boolean        // Squad QR code sharing
   groupSchedules: boolean      // Shared friend timetables
-  artistTrivia: boolean        // Discovery gamification
+  artistTrivia: boolean        // Interactive artist knowledge quiz
   similarArtists: boolean      // "More Like This" on Artist pages
   vibeOfTheHour: boolean       // Featured artist based on time
   stageCapacity: boolean       // Real-time density indicators
@@ -50,7 +50,6 @@ export interface FestivalFeatureFlags {
   setlistLinks: boolean        // Direct links to setlist.fm
   collabPlaylists: boolean     // Shared Spotify folders
   arStageView: boolean         // Mocked tactical radar overlay
-  stickerBook: boolean         // Digital stamp collection
   fanPolls: boolean            // Live crowd voting
   photoWall: boolean           // Community photo stream
   clashResolver: boolean       // Overlap detection logic
