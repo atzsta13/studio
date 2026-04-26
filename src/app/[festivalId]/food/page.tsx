@@ -2,45 +2,10 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { UtensilsCrossed, GlassWater, Leaf, WheatOff, Coins, Search, Star, Sprout } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
-import { Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { PageHeader } from '@/components/layout/page-header';
-
-// Define the type for a vendor item
-interface Vendor {
-    id: string;
-    name: string;
-    category: 'Food' | 'Drink';
-    cuisine: string;
-    tags: string[];
-    priceRange: string;
-    location: string;
-    description: string;
-    budgetOption?: string;
-    budgetPrice?: string;
-}
-
-const filters = {
-    FOOD: { label: 'Food', icon: UtensilsCrossed, category: 'Food' },
-    DRINK: { label: 'Drink', icon: GlassWater, category: 'Drink' },
-    BUDGET: { label: 'Budget Hero', icon: Coins, isBudget: true },
-    VEGAN: { label: 'Vegan', icon: Leaf, tag: 'vegan' },
-    VEGETARIAN: { label: 'Vegetarian', icon: Sprout, tag: 'vegetarian' },
-    'GLUTEN-FREE': { label: 'Gluten-Free', icon: WheatOff, tag: 'gluten-free' },
-};
-
-const DIETARY_BADGE_CONFIG: Record<string, { label: string; className: string }> = {
-    vegan: { label: 'Vegan', className: 'bg-green-500/15 text-green-400 border-green-500/20' },
-    vegetarian: { label: 'Vegetarian', className: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20' },
-    'gluten-free': { label: 'GF', className: 'bg-amber-500/15 text-amber-400 border-amber-500/20' },
-    halal: { label: 'Halal', className: 'bg-blue-500/15 text-blue-400 border-blue-500/20' },
-};
-
 import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 import { NeonButton, GlassCard } from '@/components/ui/brutalist';
 
