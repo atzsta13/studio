@@ -9,6 +9,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./src/test/setup.ts'],
     testTimeout: 10000,
+    exclude: ['**/node_modules/**', '**/dist/**', '**/.claude/worktrees/**'],
   },
   resolve: {
     alias: {
