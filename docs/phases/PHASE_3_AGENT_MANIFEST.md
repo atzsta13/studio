@@ -1,5 +1,7 @@
 # Sziget Insider 2026 — Phase 3: Agent Manifest
 
+**Status: ✅ COMPLETE (all 6 agents shipped)**
+
 Atomic tasks for parallel agent execution. Each block is self-contained.
 
 **GLOBAL RULES (all agents):**

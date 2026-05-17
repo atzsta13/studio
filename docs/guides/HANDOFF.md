@@ -1,7 +1,7 @@
 # Sziget Insider 2026 — Agent Handoff
 
 Full context dump for a new agent picking up this codebase cold.
-Last updated: April 2026.
+Last updated: May 2026.
 
 ---
 
@@ -51,12 +51,13 @@ Both read from `src/data/lineup.json` (and `public/data/` at runtime) — 240+ S
 |-------|-------|
 | `/` | Hub Home — Global Search, Global Matchmaker, Lineup Diff |
 | `/[festivalId]` | Festival Home — headliners, mood feed |
-| `/discover` | Artist grid, all filters, Country Explorer, Serendipity, AI Scout |
+| `/discover` | Artist grid, all filters, Country Explorer, Serendipity modal, AI Scout, Vibe DNA Quiz entry |
 | `/artist/[id]` | Static. Spotify iframe embed ("Island Listen"), similar artists |
 | `/map` | POI map — stages, food, water/toilets/first-aid |
 | `/timetable` | Schedule grid — ⏳ no time data yet |
 | `/food` | Food vendor list with dietary filters |
-| `/tools` | HUF converter, live weather, SOS beacon, Survival Guide |
+| `/tools` | HUF converter, live weather, SOS beacon, Survival Guide, Car Finder, Tent Finder |
+| `/vibe-quiz` | 5-step genre/mood quiz → ranked artist results with save-all FAB |
 
 ---
 
@@ -116,6 +117,18 @@ npm run lineup:sync  # moves data from festivals/ to public/data and src/data
 
 ---
 
+## Platform integrity (as of May 2026)
+
+| Check | Status |
+|-------|--------|
+| `npm run typecheck` | ✅ 0 errors |
+| `npm test -- --run` | ✅ 198/198 passing |
+| White-label compliance | ✅ No hardcoded hex colors in components |
+| Vibe coverage | ✅ 100% (239 artists) |
+| Android Room version | v8 |
+
+---
+
 ## Docs map
 
 | File | Purpose |
@@ -125,6 +138,6 @@ npm run lineup:sync  # moves data from festivals/ to public/data and src/data
 | `docs/architecture/ARCHITECTURE.md` | Dual-platform architecture, data schema, API routes, what's NOT here |
 | `docs/features/FEATURES.md` | Current build status table (✅/⏳/❌) per feature per platform |
 | `docs/guides/UI_GUIDE.md` | Color tokens, typography rules, haptic patterns, new-screen checklists |
-| `docs/phases/PHASE_3_PLAN.md` | Phase 3 planning doc — mostly complete |
+| `docs/phases/PHASE_3_AGENT_MANIFEST.md` | Phase 3 plan — ✅ complete (Vibe Quiz, Serendipity, Country Explorer, Survival Guide, Map fix, Vibe backfill) |
 | `FEATURES.md` | Full ~165 feature backlog ranked S→D tier |
 | `docs/guides/HANDOFF.md` | This file |

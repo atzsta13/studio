@@ -1,16 +1,16 @@
 # Testing Strategy & Setup
 
-**Last updated:** 2026-03-20
-**Status:** ⏳ Partially implemented (Web only)
-**Goal:** Achieve 70% coverage on critical paths
+**Last updated:** 2026-05-17
+**Status:** ✅ Web suite complete. Android unit tests: 1 file (ArtistTest.kt).
+**Current count:** 198 passing tests (Web), see `docs/TESTING.md` for full breakdown.
 
 ---
 
 ## TLDR
 
-- **Web:** Vitest + React Testing Library (partially implemented)
-- **Android:** JUnit + Espresso (not yet implemented)
-- **Target coverage:** 70% critical paths; defer edge cases
+- **Web:** Vitest + React Testing Library — 198 tests across 17 files ✅
+- **Android:** JUnit4 — ArtistTest.kt covers model parsing ✅ (ViewModels not yet tested)
+- **Authoritative test guide:** `docs/TESTING.md` (kept current, full table of all test files)
 - **Run tests:** `npm test` (Web), `./gradlew test` (Android)
 
 ---
