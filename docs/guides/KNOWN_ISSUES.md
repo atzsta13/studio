@@ -1,6 +1,6 @@
 # Known Issues & Tech Debt Log
 
-**Last updated:** 2026-03-31
+**Last updated:** 2026-05-17
 **Format:** Severity (Critical/High/Medium/Low) + Status (Open/Workaround/Accepted)
 
 ---
@@ -10,7 +10,8 @@
 - **1 critical:** Unencrypted Android tokens (MVP accepted, deferred to production)
 - **1 high:** Missing Android tests (needs dedicated sprint)
 - **3 medium:** No automated service worker update prompt, accessibility audit pending, prop drilling in discover
-- **White-label compliance:** ✅ Fully resolved — all hardcoded colors, festival names, and branding replaced with config-driven values
+- **TypeScript:** ✅ 0 errors — all previously accepted TS issues fully resolved (2026-05-17)
+- **White-label compliance:** ✅ Fully resolved — all hardcoded colors (#FFED4E, #0a0a0a etc.) replaced with CSS vars and FESTIVAL.theme.* (2026-05-17)
 - **All actively tracked:** No hidden bugs
 
 ---
@@ -30,11 +31,10 @@
 ### Issue #1: Pre-existing TypeScript Errors
 
 **Severity:** 🔴 Critical
-**Status:** ⏳ Accepted (low impact, documented)
+**Status:** ✅ Fixed (2026-05-17) — 0 TypeScript errors. GenreOption union extended with JAZZ/AMBIENT, test component return types corrected.
 **Files Affected:**
-- `src/ai/flows/recommend-artists-flow.ts:63` — `artists` prop doesn't exist on flow request
-- `src/app/vibe-quiz/page.tsx:13, 48` — Type mismatch (stage field nullable)
-- `src/components/timetable/artist-card.tsx:17, 19` — Date parsing with undefined values
+- `src/types/index.ts` — GenreOption now includes JAZZ and AMBIENT
+- `src/test/error-boundary.test.tsx` — Bomb/BombNoMsg typed as React.ReactNode
 
 **Root Cause:**
 - Schema changed (stage nullable) but types not updated
