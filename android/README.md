@@ -1,8 +1,8 @@
-# Sziget Insider 2026 — Android
+# Festival Insider — Android
 
 Jetpack Compose / Kotlin native app. Standalone — shares lineup data with the web app but has no runtime dependency on it.
 
-**Key versions:** AGP 8.13.2 · Kotlin 2.0.21 · compileSdk 35 · minSdk 26 · Compose BOM latest · Room 2.x
+**Key versions:** AGP 8.13.2 · Kotlin 2.0.21 · compileSdk 35 · minSdk 26 · Compose BOM latest · Room v8
 
 ---
 
@@ -23,8 +23,35 @@ Assets (JSON) + Room DB (SQLite)
 ### Key architectural decisions
 
 - **No Hilt** — ViewModels use the factory pattern. Always pass dependencies through the constructor, never use `LocalContext` inside a ViewModel.
-- **Offline-first** — all content is bundled. No network calls at runtime except for artist images (loaded via Coil from `imageUrl`).
-- **`fallbackToDestructiveMigration()`** is set on Room — incrementing the DB version wipes local data. Always bump `@Database(version = N)` in `AppDatabase.kt` when changing entities.
+- **ILineupRepository interface** — `DiscoverViewModel`, `VibeQuizViewModel`, and `LineupStatsViewModel` all take `ILineupRepository`, not the concrete class. Use `FakeLineupRepository` in tests (no Robolectric needed).
+- **Offline-first** — all content is bundled. No network calls at runtime except artist images (Coil) and weather (Open-Meteo).
+- **`fallbackToDestructiveMigration()`** is set on Room — always bump `@Database(version = N)` in `AppDatabase.kt` when changing entities.
+- **SharedPreferences** for lightweight persistence: budget entries, notes, friend codes, tent location. Room is only for favorites.
+
+---
+
+## Navigation routes (18 total)
+
+| Route | Screen | Bottom bar? |
+|-------|--------|-------------|
+| `splash` | SplashScreen | No |
+| `home` | HomeScreen | Yes |
+| `discover` | DiscoverScreen | Yes |
+| `map` | MapScreen | Yes |
+| `tools` | ToolsScreen | Yes |
+| `schedule` | ScheduleScreen | No — blocked (no startTime/endTime) |
+| `guide` | SurvivalGuideScreen | No |
+| `artist/{id}` | ArtistDetailScreen | No |
+| `vibe_quiz` | VibeQuizScreen | No |
+| `vibe_results` | VibeResultScreen | No |
+| `food` | FoodScreen | No |
+| `packing_list` | PackingListScreen | No |
+| `notes_journal` | NotesJournalScreen | No |
+| `budget_tracker` | BudgetTrackerScreen | No |
+| `genre_breakdown` | GenreBreakdownScreen | No |
+| `vibe_radar` | VibeRadarScreen | No |
+| `friend_finder` | FriendFinderScreen | No |
+| `speed_discovery` | SpeedDiscoveryScreen | No |
 
 ---
 
@@ -35,83 +62,93 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │
 ├── data/
 │   ├── config/
-│   │   └── FestivalConfig.kt           # Currency rates, festival constants
+│   │   └── FestivalConfig.kt             # Currency rates, festival constants
 │   ├── local/
-│   │   ├── AppDatabase.kt              # Room DB singleton, version 8
-│   │   ├── Converters.kt               # List<String> ↔ JSON for Room
-│   │   ├── FavoriteArtist.kt           # Entity: artistId, timestamp, tier
-│   │   ├── UserDao.kt                  # All Room queries (favorites)
+│   │   ├── AppDatabase.kt                # Room DB singleton, version 8
+│   │   ├── Converters.kt                 # List<String> ↔ JSON for Room
+│   │   ├── FavoriteArtist.kt             # Entity: artistId, timestamp, tier
+│   │   └── UserDao.kt                    # All Room queries (favorites)
 │   ├── model/
-│   │   ├── Artist.kt                   # @Serializable — mirrors lineup.json schema
-│   │   ├── DailyForecast.kt            # Weather forecast day (part of WeatherData)
-│   │   ├── FoodVendor.kt               # @Serializable — mirrors food.json schema
-│   │   ├── MapCoords.kt                # {x: Int, y: Int} normalized 0–100
-│   │   ├── POI.kt                      # @Serializable — mirrors poi.json schema
-│   │   └── WeatherData.kt              # WeatherData(daily, rainAlert) + DailyForecast
+│   │   ├── Artist.kt                     # @Serializable — mirrors lineup.json schema
+│   │   ├── DailyForecast.kt              # Weather forecast day
+│   │   ├── FoodVendor.kt                 # @Serializable — mirrors food.json schema
+│   │   ├── MapCoords.kt                  # {x: Int, y: Int} normalized 0–100
+│   │   ├── POI.kt                        # @Serializable — mirrors poi.json schema
+│   │   └── WeatherData.kt                # WeatherData(daily, rainAlert)
 │   └── repository/
-│       ├── FoodRepository.kt           # Loads food.json from assets
-│       ├── LineupRepository.kt         # Loads lineup.json (or lineup_2025.json)
-│       ├── POIRepository.kt            # Loads poi.json from assets
-│       └── WeatherRepository.kt        # Open-Meteo API fetch, 30-min in-memory cache
+│       ├── ILineupRepository.kt          # Interface — always use this in ViewModels
+│       ├── LineupRepository.kt           # Implements ILineupRepository, loads lineup.json
+│       ├── FoodRepository.kt             # Loads food.json from assets
+│       ├── POIRepository.kt              # Loads poi.json from assets
+│       └── WeatherRepository.kt          # Open-Meteo API fetch, 30-min in-memory cache
 │
 ├── ui/
 │   ├── artist/
-│   │   └── ArtistDetailScreen.kt       # Hero, socials, Spotify WebView embed, "more like this"
+│   │   └── ArtistDetailScreen.kt         # Hero, socials, Spotify WebView, "more like this"
 │   ├── components/
-│   │   └── ArtistCard.kt               # Reusable card used in Discover + Quiz results
+│   │   └── ArtistCard.kt                 # Reusable card — Discover + Quiz results
 │   ├── discover/
-│   │   ├── ArtistViewModel.kt          # Manages favorites via Room UserDao
-│   │   ├── DiscoverScreen.kt           # Compact TopAppBar, 2-row consolidated filters
-│   │   ├── DiscoverViewModel.kt        # Filter state, search, country filter
-│   │   └── CountryExplorerSheet.kt     # Bottom sheet: artists grouped by country
+│   │   ├── ArtistViewModel.kt            # Manages favorites via Room UserDao
+│   │   ├── CountryExplorerSheet.kt       # Bottom sheet: artists grouped by country
+│   │   ├── DiscoverScreen.kt             # Filters, search, speed discovery entry, AI Scout
+│   │   ├── DiscoverViewModel.kt          # Filter/search state (uses ILineupRepository)
+│   │   ├── GenreBreakdownScreen.kt       # Animated bar chart — top 12 genres; tap → filter
+│   │   ├── LineupStatsViewModel.kt       # genreStats + vibeStats StateFlows
+│   │   ├── SerendipityScreen.kt          # Full-screen random artist modal
+│   │   ├── SpeedDiscoveryScreen.kt       # Swipe-card discovery
+│   │   └── VibeRadarScreen.kt            # Canvas spider chart — 8 vibe dimensions
 │   ├── food/
-│   │   ├── FoodScreen.kt               # Vendor list: search, category + dietary FilterChips
-│   │   └── FoodViewModel.kt            # Combines allVendors + searchQuery + category + tags flows
+│   │   ├── FoodScreen.kt                 # Vendor list with search + dietary filters
+│   │   └── FoodViewModel.kt
 │   ├── home/
-│   │   ├── HomeScreen.kt               # Countdown, headliners, quick nav, mood feed
-│   │   └── LineupDiffSheet.kt          # 2025 vs 2026 comparison sheet
+│   │   ├── HomeScreen.kt                 # Countdown, headliners, quick nav, mood feed
+│   │   └── LineupDiffSheet.kt            # 2025 vs 2026 comparison sheet
 │   ├── map/
-│   │   ├── MapScreen.kt                # Tactical dot map; "SEE ALL VENDORS →" when FOOD active
-│   │   └── MapViewModel.kt             # POI/food loading, category filter
+│   │   ├── MapScreen.kt                  # Tactical dot map — stages, water, first-aid
+│   │   └── MapViewModel.kt
 │   ├── navigation/
-│   │   └── Navigation.kt               # NavHost + bottom bar, all routes defined here
+│   │   └── Navigation.kt                 # NavHost + bottom bar — all 18 routes here
 │   ├── quiz/
-│   │   ├── VibeQuizScreen.kt           # 5-step mood quiz
-│   │   ├── VibeQuizViewModel.kt        # Quiz state + artist scoring algorithm
-│   │   └── VibeResultScreen.kt         # Matched artist reveal + bulk-favorite
+│   │   ├── VibeQuizScreen.kt             # 5-step mood quiz
+│   │   ├── VibeQuizViewModel.kt          # Scoring algorithm (uses ILineupRepository)
+│   │   └── VibeResultScreen.kt           # Results + bulk-favorite FAB
 │   ├── schedule/
-│   │   └── ScheduleScreen.kt           # GRID 2.0: 2D Drag, Pinch-to-Zoom, SQUAD LINK
+│   │   └── ScheduleScreen.kt             # Placeholder — awaiting startTime/endTime data
 │   ├── splash/
-│   │   └── SplashScreen.kt             # Brutalist entrance, 2s delay → home
+│   │   └── SplashScreen.kt               # Brutalist entrance, 2s → home
 │   ├── theme/
-│   │   ├── Color.kt                    # All color tokens
+│   │   ├── Color.kt                      # OLEDBlack, AcidYellow, PrimaryMagenta, CyanPulse, ToxicGreen
 │   │   ├── Theme.kt
-│   │   └── Type.kt                     # BrutalistTypography
+│   │   └── Type.kt                       # BrutalistTypography
 │   ├── tools/
-│   │   ├── SurvivalGuideScreen.kt      # Collapsible guide sections
-│   │   ├── TentFinderCard.kt           # GPS tent marker, SharedPreferences, compass bearing
-│   │   ├── ToolsScreen.kt              # HUF converter, WeatherCard, TentFinderCard, SOS, emergency
-│   │   ├── ToolsViewModel.kt           # Loads weather via WeatherRepository
-│   │   └── WeatherCard.kt              # 5-day forecast strip + animated rain alert banner
-│   ├── utils/
-│   │   └── HapticManager.kt            # lightTap / mediumTap / favoriteTap / successBurst
+│   │   ├── BudgetTrackerScreen.kt        # Arc ring, quick-add chips, entry log
+│   │   ├── BudgetTrackerViewModel.kt     # BudgetEntry @Serializable, SharedPreferences
+│   │   ├── FriendFinderScreen.kt         # ZXing QR squad code, manual entry (NO camera)
+│   │   ├── NotesJournalScreen.kt         # FAB compose, category chips, long-press delete
+│   │   ├── NotesJournalViewModel.kt      # NoteEntry @Serializable, SharedPreferences
+│   │   ├── SurvivalGuideScreen.kt        # Collapsible guide sections
+│   │   ├── TentFinderCard.kt             # GPS tent marker, compass bearing
+│   │   ├── ToolsScreen.kt                # All cards — gated by config.features flags
+│   │   ├── ToolsViewModel.kt             # Loads weather via WeatherRepository
+│   │   └── WeatherCard.kt                # 5-day forecast + rain alert banner
+│   └── utils/
+│       └── HapticManager.kt              # lightTap / mediumTap / favoriteTap / successBurst
 │
 ├── widget/
-│   └── SzigetWidget.kt                # Glance Widget UI
-│   └── SzigetWidgetReceiver.kt         # GlanceAppWidgetReceiver
+│   ├── SzigetWidget.kt                   # Glance Widget — countdown + saved artist count
+│   └── SzigetWidgetReceiver.kt           # GlanceAppWidgetReceiver
 │
 └── MainActivity.kt
 ```
 
 ### Assets (White-Label)
 
-Each flavor has its own `assets` directory:
-`android/app/src/[flavor]/assets/`
-- `config.json`
-- `lineup.json`
-- `poi.json`
-- `food.json`
-- `survival.json`
+Each flavor has its own `assets` directory: `android/app/src/[flavor]/assets/`
+- `config.json` — feature flags, theme colors, festival metadata
+- `lineup.json` — all artists
+- `poi.json` — map POIs (stages, water, first-aid)
+- `food.json` — food vendors
+- `survival.json` — guide content + pricing
 
 ---
 
@@ -124,27 +161,28 @@ Each flavor has its own `assets` directory:
 |--------|------|-------|
 | `artistId` | String | Primary key, matches `Artist.id` |
 | `timestamp` | Long | System.currentTimeMillis() |
-| `tier` | String | "must_see" or "interested" |
+| `tier` | String | `"must_see"` or `"interested"` |
 
 ---
 
-## Design system (Android)
+## Design system
 
 ### Colors (`ui/theme/Color.kt`)
 ```kotlin
 OLEDBlack       // #000000 — all screen backgrounds
 CardBackground  // ~#111111 — card surfaces, bottom nav
+AcidYellow      // #FFED4E — primary accent (genre bars, quiz highlights)
 PrimaryMagenta  // #FF0080 — favorites, Vibe Quiz accent
-ToxicGreen      // #4ADE80 — success, money, Survival Guide accent
+ToxicGreen      // #4ADE80 — success, money, Survival Guide
 CyanPulse       // #00C3FF — hydration, medical, water UI
 TextPrimary     // White
-TextMuted       // ~65% white — labels, secondary info
+TextMuted       // ~65% white — secondary info
 ```
 
 ### Typography (`BrutalistTypography` in `ui/theme/Type.kt`)
-- Headlines: `Black`, `Italic`, negative spacing
-- Labels: uppercase, wide spacing
-- Body: regular, 22sp line height
+- Headlines: `Black`, `Italic`, negative letter spacing
+- Labels: uppercase, wide letter spacing
+- Body: regular weight, 22sp line height
 
 ---
 
@@ -154,5 +192,6 @@ From `android/` directory:
 ```bash
 ./gradlew assembleSzigetDebug      # Build Sziget variant
 ./gradlew assembleDebug            # Build ALL variants
-./gradlew test                     # Unit tests
+./gradlew test                     # Unit tests (no device needed)
+./gradlew installSzigetDebug       # Build + install to connected device/ADB
 ```

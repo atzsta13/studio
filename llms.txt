@@ -1,0 +1,33 @@
+# Festival Insider Platform
+
+Multi-festival companion app engine. Two standalone apps sharing one data source.
+
+## What it is
+White-label platform powering 4 festival apps (Sziget 2026, Nova Rock, Frequency, Area 53) from a single codebase. Config-first: all branding, colors, dates, and feature flags live in `festivals/<id>/config.json`.
+
+## Platforms
+- **Web**: Next.js 16 / React 19 App Router — repo root
+- **Android**: Jetpack Compose / Kotlin 2.0.21 — `android/` directory
+
+## Key constraints
+- `startTime` and `endTime` are null for all artists — schedule not yet published. Do not build UI that assumes they exist.
+- No camera features (hard mandate)
+- Offline-first: every core feature works with no signal
+- No hardcoded colors, names, or coordinates in components
+
+## Canonical docs
+- `AGENTS.md` — coding rules, architecture patterns, commands
+- `CURRENT.md` — full platform state snapshot (routes, integrity checks, open items)
+- `docs/features/FEATURES.md` — build status per feature per platform
+- `docs/guides/MANDATES.md` — hard constraints (privacy, offline, config-first)
+- `docs/guides/HANDOFF.md` — agent onboarding guide
+- `android/README.md` — Android file tree, Room schema, design system
+
+## Data
+Source of truth: `festivals/<id>/data/*.json`. Sync to app: `npm run lineup:sync`. 412 artists across 4 festivals, 100% vibe coverage.
+
+## Verify before committing
+```
+npm run typecheck   # must return 0 errors
+npm test -- --run   # 198/198 must pass
+```

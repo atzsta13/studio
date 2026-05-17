@@ -101,3 +101,11 @@ npm run android:sync:sziget
 - **Haptics**: Required on all interactive elements in Android via `rememberHapticManager()`.
 - **Icons**: Lucide (Web). Import individually to avoid HMR module factory errors. Android uses Vector Drawables.
 - **Android ViewModel**: Manual `ViewModelProvider.Factory` pattern — no Hilt DI.
+
+## Hard Constraints
+
+See `docs/guides/MANDATES.md` for the full list. Key rules:
+- **NO CAMERA** — no AR, no QR scanning, no visual recognition. Ever.
+- **NO DATA COLLECTION** — all user data (favorites, location, budget) stays 100% local.
+- **OFFLINE FIRST** — Map, Guide, Lineup, and all core features must work with zero signal.
+- **CONFIG FIRST** — no hardcoded festival names, colors, coordinates, or dates in any component.
