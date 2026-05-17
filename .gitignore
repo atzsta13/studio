@@ -43,3 +43,13 @@ next-env.d.ts
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# tools & ides
+.idea/
+.vscode/
+.claude/
+.agent/
+.idx/
+.cursor/
+.cursorrules
+.github/copilot-instructions.md
