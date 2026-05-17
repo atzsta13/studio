@@ -59,7 +59,7 @@ export function SerendipityModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#0a0a0a]/97 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-background/97 z-50 flex items-center justify-center p-4"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -102,7 +102,7 @@ export function SerendipityModal({
                 <motion.div
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 0.6, repeat: Infinity }}
-                  className="relative z-10 w-16 h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center border-2 border-[#FFED4E]"
+                  className="relative z-10 w-16 h-16 rounded-full bg-background flex items-center justify-center border-2 border-primary"
                 >
                   <div className="text-2xl">✨</div>
                 </motion.div>
@@ -123,10 +123,10 @@ export function SerendipityModal({
                 initial={{ y: 40, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ type: 'spring', damping: 15, stiffness: 200 }}
-                className="relative rounded-2xl overflow-hidden bg-[#1a1a1a] border border-[#333333]"
+                className="relative rounded-2xl overflow-hidden bg-card border border-border"
               >
                 {/* Hero Image */}
-                <div className="relative w-full h-72 bg-gradient-to-b from-transparent to-[#0a0a0a]">
+                <div className="relative w-full h-72 bg-gradient-to-b from-transparent to-background">
                   {artist.imageUrl ? (
                     <Image
                       src={artist.imageUrl}
@@ -171,7 +171,7 @@ export function SerendipityModal({
                       {artist.vibes.slice(0, 3).map((vibe) => (
                         <span
                           key={vibe}
-                          className="text-xs px-3 py-1 bg-[#0a0a0a] text-[#FFED4E] rounded-full"
+                          className="text-xs px-3 py-1 bg-background text-primary rounded-full"
                         >
                           {vibe}
                         </span>

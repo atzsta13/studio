@@ -22,8 +22,8 @@ export function QuizOptionCard({
         'flex flex-col items-center justify-center gap-2 p-4 rounded-lg border-2 transition-all',
         'hover:scale-105 active:scale-95',
         selected
-          ? 'border-[#FFED4E] bg-[#1a1a1a] text-white'
-          : 'border-[#333333] bg-[#0a0a0a] text-gray-400 hover:border-[#FFED4E]'
+          ? 'border-primary bg-card text-white'
+          : 'border-border bg-background text-muted-foreground hover:border-primary'
       )}
     >
       {emoji && <span className="text-3xl">{emoji}</span>}

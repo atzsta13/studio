@@ -52,16 +52,13 @@ describe('QuizOptionCard', () => {
   it('applies selected border color class when selected=true', () => {
     const { container } = render(<QuizOptionCard {...baseProps} selected={true} />)
     const button = container.querySelector('button') as HTMLButtonElement
-    expect(button.className).toMatch(/border-\[#FFED4E\]/)
+    expect(button.className).toMatch(/border-primary/)
   })
 
   it('does not apply selected border color when selected=false', () => {
     const { container } = render(<QuizOptionCard {...baseProps} selected={false} />)
     const button = container.querySelector('button') as HTMLButtonElement
-    // The unselected state uses a dark border, not the yellow selected border
-    // (the hover class also contains FFED4E; we check that the non-hover
-    //  bg class for selected — bg-[#1a1a1a] — is absent)
-    expect(button.className).not.toMatch(/bg-\[#1a1a1a\]/)
+    expect(button.className).not.toMatch(/bg-card.*text-white/)
   })
 
   it('is rendered as a <button> element', () => {

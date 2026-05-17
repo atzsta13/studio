@@ -89,11 +89,11 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <Link href="/discover" className="p-2 hover:bg-[#1a1a1a] rounded-lg transition">
+          <Link href="/discover" className="p-2 hover:bg-card rounded-lg transition">
             <ChevronLeft className="w-6 h-6 text-accent" />
           </Link>
           <h1 className="text-3xl font-bold uppercase tracking-wider">VIBE DNA</h1>
@@ -111,7 +111,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
                 while (state.step < i) nextStep();
               }}
               className={`flex-1 h-2 rounded-full transition-all ${
-                i <= state.step ? 'bg-[#FFED4E]' : 'bg-[#1a1a1a]'
+                i <= state.step ? 'bg-primary' : 'bg-card'
               }`}
               disabled={showResults}
             />
@@ -119,7 +119,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
         </div>
 
         {/* Content */}
-        <div className="bg-[#1a1a1a] border border-[#333333] rounded-lg p-8 mb-8 min-h-96">
+        <div className="bg-card border border-border rounded-lg p-8 mb-8 min-h-96">
           {!showResults ? (
             <>
               {state.step === 0 && (
@@ -159,7 +159,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
             {state.step > 0 && (
               <button
                 onClick={handlePrevStep}
-                className="flex items-center gap-2 px-6 py-3 bg-[#1a1a1a] border border-[#333333] rounded-lg hover:border-[#FFED4E] transition-colors"
+                className="flex items-center gap-2 px-6 py-3 bg-card border border-border rounded-lg hover:border-primary transition-colors"
               >
                 <ChevronLeft className="w-5 h-5" />
                 Back
@@ -173,7 +173,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
                 className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all ${
                   canProceed()
                     ? 'bg-accent text-black hover:bg-accent/80 cursor-pointer'
-                    : 'bg-[#1a1a1a] text-gray-600 cursor-not-allowed border border-[#333333]'
+                    : 'bg-card text-muted-foreground cursor-not-allowed border border-border'
                 }`}
               >
                 Next
@@ -186,7 +186,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
                 className={`flex items-center gap-2 px-8 py-3 rounded-lg font-semibold transition-all uppercase tracking-wide ${
                   canProceed()
                     ? 'bg-primary text-white hover:bg-primary/90 cursor-pointer'
-                    : 'bg-[#1a1a1a] text-gray-600 cursor-not-allowed border border-[#333333]'
+                    : 'bg-card text-muted-foreground cursor-not-allowed border border-border'
                 }`}
               >
                 Find Artists

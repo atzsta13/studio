@@ -167,7 +167,7 @@ export function HungarianPhrases() {
   return (
     <div
       style={{
-        background: '#0a0a0a',
+        background: config.theme.backgroundHex,
         border: '1px solid rgba(255,255,255,0.06)',
         overflow: 'hidden',
       }}

@@ -46,6 +46,6 @@ export interface VibeQuizState {
 }
 
 export type EnergyLevel = 'CHILL' | 'BALANCED' | 'UNHINGED';
-export type GenreOption = 'ELECTRONIC' | 'ROCK' | 'HIP-HOP' | 'INDIE' | 'TECHNO' | 'POP' | 'METAL' | 'EXPERIMENTAL';
+export type GenreOption = 'ELECTRONIC' | 'ROCK' | 'HIP-HOP' | 'INDIE' | 'TECHNO' | 'POP' | 'METAL' | 'EXPERIMENTAL' | 'AMBIENT' | 'JAZZ';
 export type CrowdVibeOption = 'DANCE_FLOOR' | 'MOSH_PIT' | 'FESTIVAL_FIELD' | 'INTIMATE_STAGE';
 export type MoodTagOption = 'EUPHORIC' | 'DARK' | 'NOSTALGIC' | 'FRESH' | 'HARD';

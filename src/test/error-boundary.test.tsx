@@ -1,3 +1,4 @@
+import React from 'react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ErrorBoundary } from '@/components/layout/error-boundary'
@@ -13,7 +14,7 @@ afterEach(() => {
 })
 
 // A component that throws unconditionally
-function Bomb({ message }: { message?: string }) {
+function Bomb({ message }: { message?: string }): React.ReactNode {
   throw new Error(message ?? 'boom')
 }
 
@@ -91,7 +92,7 @@ describe('ErrorBoundary', () => {
   })
 
   it('does not show error message paragraph when error has no message', () => {
-    function BombNoMsg() {
+    function BombNoMsg(): React.ReactNode {
       throw new Error('')
     }
     render(

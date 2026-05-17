@@ -49,17 +49,17 @@ export function VibeResultsScreen({
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] py-8 px-4">
+    <div className="min-h-screen bg-background py-8 px-4">
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <Link href="/vibe-quiz" className="p-2 hover:bg-[#1a1a1a] rounded-lg transition">
+          <Link href="/vibe-quiz" className="p-2 hover:bg-card rounded-lg transition">
             <ChevronLeft className="w-6 h-6 text-accent" />
           </Link>
           <h1 className="text-3xl font-bold uppercase tracking-wider">
             Your Sound
           </h1>
-          <span className="text-sm text-gray-400 px-4 py-2 bg-[#1a1a1a] rounded-full">
+          <span className="text-sm text-muted-foreground px-4 py-2 bg-card rounded-full">
             {results.length} matches
           </span>
         </div>
@@ -69,7 +69,7 @@ export function VibeResultsScreen({
           {results.map((artist, index) => (
             <div
               key={artist.id}
-              className="bg-[#1a1a1a] border border-[#333333] rounded-lg p-4 hover:border-[#FFED4E] transition-colors group"
+              className="bg-card border border-border rounded-lg p-4 hover:border-primary transition-colors group"
             >
               <div className="flex gap-4">
                 {/* Rank Badge */}
@@ -79,7 +79,7 @@ export function VibeResultsScreen({
 
                 {/* Artist Image */}
                 {artist.imageUrl && (
-                  <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-[#0a0a0a]">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-background">
                     <Image
                       src={artist.imageUrl}
                       alt={artist.artist}
@@ -99,7 +99,7 @@ export function VibeResultsScreen({
                     {artist.genres?.slice(0, 3).map((genre) => (
                       <span
                         key={genre}
-                        className="text-xs px-2 py-1 bg-[#0a0a0a] border border-[#333333] rounded text-gray-400"
+                        className="text-xs px-2 py-1 bg-background border border-border rounded text-muted-foreground"
                       >
                         {genre}
                       </span>
@@ -147,7 +147,7 @@ export function VibeResultsScreen({
           </button>
           <button
             onClick={handleRetake}
-            className="flex-1 px-6 py-3 bg-[#1a1a1a] border border-[#333333] text-white font-semibold rounded-lg hover:border-[#FFED4E] transition-colors uppercase tracking-wide"
+            className="flex-1 px-6 py-3 bg-card border border-border text-foreground font-semibold rounded-lg hover:border-primary transition-colors uppercase tracking-wide"
           >
             Retake Quiz
           </button>

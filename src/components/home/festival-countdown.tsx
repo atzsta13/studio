@@ -49,7 +49,7 @@ export function FestivalCountdown({ festivalId }: { festivalId: string }) {
   return (
     <div
       style={{
-        background: '#1a1a1a',
+        background: config.theme.backgroundHex,
         border: `1px solid ${config.theme.accentHex}`,
         borderRadius: 0,
         padding: '2rem 2.5rem',

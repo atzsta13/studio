@@ -33,14 +33,14 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
         justifyContent: isSmall ? 'center' : 'space-between',
         p: 1.5,
         borderRadius: '0.75rem',
-        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : '#0a0a0a',
+        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : FESTIVAL.theme.backgroundHex,
         border: '1px solid rgba(255,255,255,0.06)',
         borderLeft: isConflicting ? '4px solid #ef4444' : isFavorite ? `4px solid ${FESTIVAL.theme.primaryHex}` : '1px solid rgba(255,255,255,0.06)',
         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
         boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isFavorite ? `0 10px 30px ${FESTIVAL.theme.glowColor}` : 'none',
         '&:hover': {
-          bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : '#141414',
+          bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : FESTIVAL.theme.backgroundHex,
           borderColor: isConflicting ? '#ef4444' : isFavorite ? FESTIVAL.theme.primaryHex : 'rgba(255,255,255,0.2)',
           zIndex: 50,
           transform: 'scale(1.02)'
