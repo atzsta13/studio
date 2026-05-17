@@ -4,12 +4,35 @@ import { useEffect } from 'react';
 
 const PwaLoader = () => {
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(registration => console.log('Service Worker registered with scope:', registration.scope))
-        .catch(error => console.error('Service Worker registration failed:', error));
-    }
+    if (!('serviceWorker' in navigator)) return;
+
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => {
+        const notifyUpdate = () => {
+          if (registration.waiting) {
+            window.dispatchEvent(new CustomEvent('sw-update-available'));
+          }
+        };
+
+        // Catch updates that arrive while the page is open
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (!newWorker) return;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed') notifyUpdate();
+          });
+        });
+
+        // Catch a waiting SW that was already there on first load
+        if (registration.waiting) notifyUpdate();
+      })
+      .catch((err) => console.error('SW registration failed:', err));
+
+    // When the controller changes (new SW took over) reload the page
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
   }, []);
 
   return null;

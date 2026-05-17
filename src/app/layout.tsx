@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import PwaLoader from '@/components/layout/pwa-loader';
+import { SwUpdateBanner } from '@/components/layout/sw-update-banner';
 import MuiRegistry from '@/components/layout/mui-registry';
 import InstallPrompt from '@/components/layout/install-prompt';
 import { ThemeProvider } from '@/components/layout/theme-provider';
@@ -44,6 +45,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <MuiRegistry>
             <PwaLoader />
+            <SwUpdateBanner />
             <InstallPrompt />
             {children}
             <Toaster />
