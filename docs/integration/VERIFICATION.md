@@ -1,92 +1,47 @@
-# ✅ Quality Assurance & Verification Guide
+# ✅ Verification & Quality Guide
 
-This guide defines the commands and workflows required to verify the health of the white-label engine across Web and Android.
+This document outlines the protocols for maintaining platform integrity across both Web and Android.
 
----
+## 1. Automated Testing
 
-## 🌐 Web Hub Verification (Next.js)
+### **Web (Vitest / RTL)**
+Every PR must pass the full test suite (190+ tests).
+```bash
+npm test -- --run
+```
+- **Coverage focus**: `InsiderProvider`, translation logic, and core UI components.
 
-Run these commands from the root directory to ensure the Monolithic Hub is stable.
+### **Android (JUnit / Turbine)**
+All ViewModels must have 100% test coverage using In-Memory fakes.
+```bash
+cd android
+./gradlew testSzigetDebugUnitTest
+```
+- **Fakes used**: `InMemorySharedPreferences`, `FakeUserDao`, `IWeatherRepository`.
 
-### 1. Type Integrity Check
-Ensures all festival `config.json` files and component props match the master TypeScript interfaces.
+## 2. Integrity Checks
+
+### **Type Safety**
+Strict TypeScript mode is enforced. No `any` allowed.
 ```bash
 npm run typecheck
 ```
 
-### 2. Linting & Code Quality
-Checks for code smells, security risks, and unused imports.
+### **Config Validation**
+All festival configurations are validated against a JSON Schema before sync.
 ```bash
-npm run lint
+npm run lineup:sync
 ```
 
-### 3. Production Compilation
-Verifies that the entire hub (including all dynamic `[festivalId]` routes) can be pre-rendered for Vercel deployment.
+### **Android Resource Compilation**
+Always verify that the AAPT compiler is happy with new assets.
 ```bash
-npm run build
+./gradlew assembleSzigetDebug
 ```
 
----
-
-## 📱 Android Verification (Jetpack Compose)
-
-Run these commands to ensure the Survival Utility remains hardened and offline-ready.
-
-### 1. Logic & Repository Tests
-Runs all unit tests for ViewModels, Repositories (Acoustic, Lineup), and Room Database logic.
-```bash
-cd android
-./gradlew test
-```
-
-### 2. Static Analysis (Linting)
-Checks for performance bottlenecks, accessibility issues, and Compose-specific best practices for a specific flavor.
-```bash
-cd android
-./gradlew lintSzigetDebug
-```
-
-### 3. Multi-Flavor Smoke Test
-Compiles the APKs for **all** production festivals. This is the ultimate test for flavor-set and asset integrity.
-```bash
-cd android
-./gradlew assembleDebug
-```
-
----
-
-## 🔄 Data Pipeline Verification
-
-Use this sequence whenever you update a festival's source data (`festivals/<id>/data/`).
-
-1.  **Update Data**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:scrape`
-2.  **Clean & Merge**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:clean`
-3.  **Enrich Vibes**: `NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:vibes`
-4.  **Sync Local**: `npm run lineup:sync`
-5.  **Sync Mobile**: `npm run android:sync:sziget`
-6.  **Validate Web**: `npm run typecheck`
-7.  **Validate Android**: `cd android && ./gradlew assembleSzigetDebug`
-
----
-
-## 🔬 Advanced Verification (Chrome DevTools MCP)
-
-For high-fidelity verification of the white-label UI and performance, we utilize the `chrome-devtools-mcp` integration.
-
-### Automated UI Audits
-Use the MCP tools to verify that theme configurations (colors, fonts, brutalist aesthetics) render correctly across all dynamic routes.
-- **Tools:** `navigate_page`, `take_screenshot`, `get_dom_snapshot`
-- **Reference:** `docs/integration/CHROME_DEVTOOLS_MCP.md`
-
-### Performance Survival Checks
-Ensure the app meets "On-Site Survival" standards under emulated network conditions.
-- **Tools:** `emulate_network_conditions`, `record_performance_trace`
-
----
-
-## 🛡️ Mandate Checklist
-Before pushing to `main`, ensure your changes adhere to `docs/guides/MANDATES.md`:
-- [ ] No Camera/Vision features added.
-- [ ] No personal financial trackers implemented.
-- [ ] UI is 100% config-driven (No hardcoded strings).
-- [ ] Feature is wrapped in a `FESTIVAL.features` or `FestivalConfig.FEATURES` toggle.
+## 3. The "Main Stage" Stress Test
+Before certifying a feature as "Stable," it must pass these criteria:
+1. **0 Bars of Signal**: Feature functions with airplane mode enabled.
+2. **High Density**: UI remains responsive during background local AI inference.
+3. **No Account**: Feature is accessible without any login or personal data.
+4. **Offline First**: All necessary data is either bundled or cached from a previous session.
