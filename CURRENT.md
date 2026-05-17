@@ -85,7 +85,9 @@
 
 ### Scope Refinement & Feature Cleanup
 - ✅ **Merch Purge**: Completely removed 'Merch Catalog' and 'Merch Price Watch' features.
-- ✅ **Signal Purge**: Removed 'Crowd Heatmap', 'Social Feed', and other signal-dependent features to ensure 100% offline reliability.
+- ✅ **Signal Purge**: Removed 'Crowd Heatmap', 'Social Feed', and other signal-dependent features.
+- ✅ **Cloud AI Purge**: Removed all cloud-based LLM integrations (Genkit/Gemini Flash). 
+- ✅ **Local AI Only**: Verified Android uses strictly local **Gemma 4** inference via MediaPipe. Web AI features disabled.
 - ✅ **Clean UI**: Deleted `src/app/[festivalId]/merch` and removed stale features from navigation.
 - ✅ **Main Stage Stress Test**: Formalized the philosophy that the app must function with 0 bars of signal.
 

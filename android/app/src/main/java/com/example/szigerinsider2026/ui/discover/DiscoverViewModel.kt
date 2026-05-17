@@ -4,10 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import android.content.Context
 import com.example.szigerinsider2026.data.model.Artist
-import com.example.szigerinsider2026.data.model.AiRecommendationResult
 import com.example.szigerinsider2026.data.repository.ILineupRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
-import com.example.szigerinsider2026.data.repository.AiRecommendationRepository
 import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -17,7 +15,6 @@ class DiscoverViewModel(
     private val context: Context? = null
 ) : ViewModel() {
 
-    private val aiRepository = context?.let { AiRecommendationRepository(it) }
     private val localScoutRepository = context?.let { com.example.szigerinsider2026.data.repository.LocalScoutRepository(it) }
     private val acousticRepository = context?.let { com.example.szigerinsider2026.data.repository.AcousticRepository(it) }
 
@@ -35,6 +32,7 @@ class DiscoverViewModel(
 
     private val _isLocalAiLoading = MutableStateFlow(false)
     val isLocalAiLoading = _isLocalAiLoading.asStateFlow()
+
     private val _sortMode = MutableStateFlow("headliners") // "headliners" | "az"
     private val _selectedDay = MutableStateFlow<String?>(null)
     private val _selectedGenre = MutableStateFlow<String?>(null)
@@ -44,10 +42,6 @@ class DiscoverViewModel(
     private val _isLoading = MutableStateFlow(true)
     private val _countryFilter = MutableStateFlow<String?>(null)
     private val _selectedYear = MutableStateFlow(FestivalConfig.current.dates.year.toString())
-    private val _aiRecommendations = MutableStateFlow<AiRecommendationResult?>(null)
-    private val _aiLoading = MutableStateFlow(false)
-    private val _spotifyMatchedIds = MutableStateFlow<Set<String>>(emptySet())
-    private val _showSpotifyOnly = MutableStateFlow(false)
 
     val allArtists: StateFlow<List<Artist>> = _allArtists.asStateFlow()
     val sortMode = _sortMode.asStateFlow()
@@ -59,10 +53,6 @@ class DiscoverViewModel(
     val isLoading = _isLoading.asStateFlow()
     val countryFilter: StateFlow<String?> = _countryFilter.asStateFlow()
     val selectedYear: StateFlow<String> = _selectedYear.asStateFlow()
-    val aiRecommendations: StateFlow<AiRecommendationResult?> = _aiRecommendations.asStateFlow()
-    val aiLoading: StateFlow<Boolean> = _aiLoading.asStateFlow()
-    val spotifyMatchedIds: StateFlow<Set<String>> = _spotifyMatchedIds.asStateFlow()
-    val showSpotifyOnly: StateFlow<Boolean> = _showSpotifyOnly.asStateFlow()
 
     private val dayOrder = listOf("Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday")
 
@@ -88,9 +78,9 @@ class DiscoverViewModel(
     val filteredArtists: StateFlow<List<Artist>> = combine(
         combine(_allArtists, _sortMode, _selectedDay) { artists, sort, day -> Triple(artists, sort, day) },
         combine(_selectedGenre, _selectedVibe, _selectedStage) { genre, vibe, stage -> Triple(genre, vibe, stage) },
-        combine(_searchQuery, _countryFilter, _spotifyMatchedIds) { query, country, spotify -> Triple(query, country, spotify) },
-        _showSpotifyOnly
-    ) { (artists, sort, day), (genre, vibe, stage), (query, country, spotify), showOnly ->
+        _searchQuery,
+        _countryFilter
+    ) { (artists, sort, day), (genre, vibe, stage), query, country ->
         var result = artists
         country?.let { c -> result = result.filter { it.countryCode == c } }
         day?.let { d -> result = result.filter { it.day?.equals(d, ignoreCase = true) == true } }
@@ -111,9 +101,7 @@ class DiscoverViewModel(
         if (query.isNotBlank()) {
             result = result.filter { it.name.contains(query.trim(), ignoreCase = true) }
         }
-        if (showOnly && spotify.isNotEmpty()) {
-            result = result.filter { it.spotifyId in spotify }
-        }
+        
         when (sort) {
             "headliners" -> result.sortedWith(compareByDescending<Artist> { it.isHeadliner }.thenBy { it.name })
             "az" -> result.sortedBy { it.name }
@@ -208,36 +196,6 @@ class DiscoverViewModel(
     fun setYear(year: String) {
         _selectedYear.value = year
         loadArtists()
-    }
-
-    fun fetchAiRecommendations(prompt: String) {
-        viewModelScope.launch {
-            if (aiRepository == null) return@launch
-            _aiLoading.value = true
-            try {
-                val result = aiRepository.getRecommendations(prompt)
-                _aiRecommendations.value = result
-            } finally {
-                _aiLoading.value = false
-            }
-        }
-    }
-
-    fun clearAiRecommendations() {
-        _aiRecommendations.value = null
-    }
-
-    fun updateSpotifyMatches(matchedIds: Set<String>) {
-        _spotifyMatchedIds.value = matchedIds
-    }
-
-    fun setShowSpotifyOnly(show: Boolean) {
-        _showSpotifyOnly.value = show
-    }
-
-    fun clearSpotifyMatches() {
-        _spotifyMatchedIds.value = emptySet()
-        _showSpotifyOnly.value = false
     }
 
     private val _serendipityHistory = mutableSetOf<String>()

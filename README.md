@@ -64,7 +64,7 @@ cd android
 | **Web Core** | Next.js 16 / React 19 / TypeScript (Strict) |
 | **Styling** | Tailwind CSS 4 / Brutalist UI Kit |
 | **Android** | Jetpack Compose / Kotlin 2.0 / Room (v8) |
-| **AI Layer** | Google Genkit / Gemini 1.5 Flash (Cloud) / Gemma 4 (Local) |
+| **AI Layer** | Gemma 4 (Local Inference ONLY) |
 | **Philosophy** | Offline-First / Manual DI / Functional UI |
 
 ---

@@ -7,6 +7,7 @@ These rules are foundational to the project's philosophy and must **NEVER** be v
 - **NO SOCIAL**: No public feeds, photo walls, fan polls, or community boards. All interaction must be local or P2P (e.g., Squad Link QR).
 - **NO CAMERA**: Under no circumstances shall the app implement camera-based features (AR, QR scanning for non-tactical use, or visual recognition). 
 - **NO DATA COLLECTION**: User data (favorites, location) must remain 100% local.
+- **NO CLOUD AI**: Absolutely no external LLM API calls. All AI must be local inference (e.g., Gemma 4 on Android). Web AI features are strictly prohibited unless strictly local.
 - **Microphone Use**: Strictly limited to the "Acoustic Scout" (Local Inference ONLY). No audio is ever stored or transmitted.
 
 ## 2. Signal & Connectivity Mandates

@@ -6,7 +6,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Music2, ArrowRight, MapPin, Calendar, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GlobalSearch } from '@/components/home/global-search';
-import { GlobalMatchmaker } from '@/components/home/global-matchmaker';
 import { GlobalRadar } from '@/components/home/global-radar';
 
 export default function HubPage() {
@@ -119,11 +118,6 @@ export default function HubPage() {
             </motion.div>
           ))}
         </div>
-
-        {/* Global Tools Section */}
-        <section className="mt-32 max-w-4xl mx-auto text-center">
-          <GlobalMatchmaker />
-        </section>
       </main>
 
       <footer className="container mx-auto px-4 py-20 text-center border-t border-white/5 mt-20">

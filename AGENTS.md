@@ -90,9 +90,10 @@ npm run android:sync:sziget
 - **Complex layouts**: MUI 6. MUI theme is synced to Tailwind CSS variables via `MuiRegistry` component — do not set MUI colors directly.
 - **Hydration safety**: Use `isMounted` pattern or `suppressHydrationWarning` for browser-only values (GPS, flags).
 
-### 6. AI (Genkit)
-- Flow at `src/ai/flows/recommend-artists-flow.ts`: accepts a free-text mood string, injects full `lineup.json` as context, returns up to 5 artist IDs.
-- Requires `GOOGLE_GENAI_API_KEY`. Does **not** call external music APIs.
+### 6. AI (Local-Only)
+- **Android**: Uses `LlmInference` with **Gemma 4 Small (1.2GB)** for local-only artist discovery.
+- **Web**: AI features are disabled to enforce 100% offline/local privacy.
+- **No Cloud**: Absolutely no calls to external LLM APIs (Gemini, OpenAI, Anthropic).
 
 ## Coding Standards
 - **TypeScript**: Strict mode. No `any`. Use interfaces from `src/types/index.ts`.

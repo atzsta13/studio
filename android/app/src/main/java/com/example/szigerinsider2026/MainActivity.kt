@@ -51,22 +51,5 @@ class MainActivity : ComponentActivity() {
 
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
-        handleSpotifyCallback(intent.data)
-    }
-
-    private fun handleSpotifyCallback(uri: Uri?) {
-        if (uri?.scheme == FestivalConfig.DEEP_LINK_SCHEME && uri.host == "spotify-callback") {
-            val code = uri.getQueryParameter("code")
-            val error = uri.getQueryParameter("error")
-
-            if (code != null) {
-                // Store code and verifier for later processing in SpotifyViewModel
-                val prefs = getSharedPreferences("spotify_callback", MODE_PRIVATE)
-                prefs.edit().apply {
-                    putString("pending_code", code)
-                    apply()
-                }
-            }
-        }
     }
 }

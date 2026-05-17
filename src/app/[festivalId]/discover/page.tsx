@@ -33,7 +33,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from '@/components/ui/input';
-import { recommendArtists, type RecommendOutput } from '@/ai/flows/recommend-artists-flow';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
@@ -50,7 +49,7 @@ import { NeonButton, GlassCard } from '@/components/ui/brutalist';
 import { cn } from '@/lib/utils';
 import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 
-type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify' | 'ai';
+type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify';
 
 export default function DiscoverPage() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -98,10 +97,6 @@ export default function DiscoverPage() {
     setSeenIds(loadSeenIds());
   }, []);
 
-  const [aiPrompt, setAiPrompt] = useState('');
-  const [isAiLoading, setIsAiLoading] = useState(false);
-  const [aiResult, setAiResult] = useState<RecommendOutput | null>(null);
-  const [isAiDialogOpen, setIsAiDialogOpen] = useState(false);
   const [isCountryExplorerOpen, setIsCountryExplorerOpen] = useState(false);
 
   const getFlagEmoji = (countryCode: string | undefined) => {
@@ -147,10 +142,7 @@ export default function DiscoverPage() {
   const filteredArtists = useMemo(() => {
     let base = [...allArtists];
 
-    if (viewMode === 'ai' && aiResult) {
-      const ids = aiResult.recommendations.map(r => r.artistId);
-      base = base.filter(a => ids.includes(a.id));
-    } else if (viewMode === 'spotify') {
+    if (viewMode === 'spotify') {
       base = base.filter(a => spotifyMatches.includes(a.id));
     }
 
@@ -181,7 +173,7 @@ export default function DiscoverPage() {
 
       return matchesGenre && matchesVibe && matchesStage && matchesSearch && matchesCountry;
     });
-  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, aiResult, spotifyMatches, searchQuery, config, selectedCountry]);
+  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, spotifyMatches, searchQuery, config, selectedCountry]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -234,35 +226,10 @@ export default function DiscoverPage() {
     setSerendipityArtist(null);
   };
 
-  const handleAiScout = async () => {
-    if (!aiPrompt.trim()) return;
-    haptic.mediumTap();
-    setIsAiLoading(true);
-    
-    const contextPrefix = selectedStage 
-      ? `The user is currently focused on the ${selectedStage} area. ` 
-      : '';
-
-    try {
-      const result = await recommendArtists({ 
-        prompt: contextPrefix + aiPrompt,
-        festivalId: festivalId 
-      });
-      setAiResult(result);
-      setViewMode('ai');
-      setIsAiDialogOpen(false);
-    } catch (error) {
-      console.error('AI Scout failed', error);
-    } finally {
-      setIsAiLoading(false);
-    }
-  };
-
   const handleViewModeChange = (mode: ViewMode) => {
     haptic.lightTap();
     setViewMode(mode);
   };
-
   const handleVibeSelect = (vibe: string | null) => {
     haptic.lightTap();
     setSelectedVibe(vibe);
@@ -271,7 +238,6 @@ export default function DiscoverPage() {
 
   const ArtistCard = ({ artist, size = 'default' }: { artist: typeof filteredArtists[0], size?: 'large' | 'default' }) => {
     const isHeadliner = artist.isHeadliner;
-    const aiReason = aiResult?.recommendations.find(r => r.artistId === artist.id)?.reason;
     const isFave = favorites.has(artist.id);
     const isMustSee = mustSeeIds.has(artist.id);
     const isInterested = interestedIds.has(artist.id);
@@ -372,13 +338,7 @@ export default function DiscoverPage() {
             </div>
 
             <div className="flex-1 flex flex-col justify-between">
-              {aiReason ? (
-                <div className="px-6 py-4 bg-primary/5 border-t border-primary/10 h-full flex items-center">
-                  <p className="text-[11px] font-bold text-primary leading-tight italic opacity-90">
-                    "{aiReason}"
-                  </p>
-                </div>
-              ) : artist.vibes && artist.vibes.length > 0 && (
+              {artist.vibes && artist.vibes.length > 0 && (
                 <div className="px-6 py-3 bg-card/50 backdrop-blur-3xl border-t border-white/5">
                   <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest truncate opacity-40">
                     {artist.vibes.slice(0, 2).join(' • ')}
@@ -494,43 +454,6 @@ export default function DiscoverPage() {
                   Vibe Quiz
                 </NeonButton>
               </Link>
-            )}
-
-            {config.features.aiRecommendations && (
-              <Dialog open={isAiDialogOpen} onOpenChange={setIsAiDialogOpen}>
-                <DialogTrigger asChild>
-                  <NeonButton
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-indigo-500/30"
-                    size="xl"
-                  >
-                    <Wand2 className="h-6 w-6 mr-4" />
-                    AI Scout
-                  </NeonButton>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md bg-card border-indigo-500/20 rounded-[3.5rem] p-8 backdrop-blur-3xl">
-                  <DialogHeader>
-                    <DialogTitle className="text-4xl font-black uppercase italic tracking-tighter">The Scout</DialogTitle>
-                    <DialogDescription className="text-muted-foreground font-medium text-lg leading-snug">
-                      Describe your perfect festival vibe.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-6 py-8">
-                    <Input
-                      placeholder="e.g. late night hard techno rave..."
-                      value={aiPrompt}
-                      onChange={(e) => setAiPrompt(e.target.value)}
-                      className="h-20 rounded-[1.5rem] border-white/10 bg-muted/20 text-xl font-bold focus-visible:ring-indigo-500"
-                    />
-                    <NeonButton
-                      className="w-full h-20 bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xl"
-                      onClick={handleAiScout}
-                      disabled={isAiLoading || !aiPrompt.trim()}
-                    >
-                      {isAiLoading ? <Loader2 className="h-8 w-8 animate-spin" /> : 'UNLEASH'}
-                    </NeonButton>
-                  </div>
-                </DialogContent>
-              </Dialog>
             )}
           </div>
         </div>
@@ -722,34 +645,6 @@ export default function DiscoverPage() {
       )}
 
       <div className="min-h-[600px]">
-        {viewMode === 'ai' && aiResult && (
-          <div className="space-y-20 mb-24 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <div className="bg-indigo-600/10 border border-indigo-500/20 p-10 md:p-16 rounded-[4rem] relative overflow-hidden shadow-2xl">
-              <div className="absolute right-[-60px] top-[-60px] opacity-10 rotate-12">
-                <Wand2 size={320} className="text-indigo-500" />
-              </div>
-              <div className="relative z-10 flex flex-col md:flex-row items-start gap-10">
-                <div className="bg-indigo-600 p-6 rounded-[2.5rem] text-white shadow-2xl shrink-0">
-                  <Wand2 className="h-12 w-12" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-5xl font-black uppercase italic text-foreground tracking-tighter">Scout Analysis</h2>
-                  <p className="text-indigo-500 font-black uppercase tracking-[0.3em] text-xs mt-3">Mood: "{aiPrompt}"</p>
-                  <p className="mt-10 text-muted-foreground text-2xl leading-relaxed max-w-4xl font-medium opacity-90 italic">
-                    {aiResult.scoutMessage}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 sm:gap-8">
-              {filteredArtists.map(artist => (
-                <ArtistCard key={artist.id} artist={artist} />
-              ))}
-            </div>
-          </div>
-        )}
-
         {viewMode === 'by-day' && (
           <div className="space-y-32">
             {DAY_ORDER.map(day => {
