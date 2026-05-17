@@ -53,6 +53,11 @@ import com.example.szigerinsider2026.ui.quiz.VibeQuizViewModel
 import com.example.szigerinsider2026.ui.quiz.VibeResultScreen
 import com.example.szigerinsider2026.ui.food.FoodScreen
 import com.example.szigerinsider2026.ui.packing.PackingListScreen
+import com.example.szigerinsider2026.ui.tools.FriendFinderScreen
+import com.example.szigerinsider2026.ui.tools.NotesJournalScreen
+import com.example.szigerinsider2026.ui.tools.BudgetTrackerScreen
+import com.example.szigerinsider2026.ui.discover.GenreBreakdownScreen
+import com.example.szigerinsider2026.ui.discover.VibeRadarScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector, val featureCheck: ((com.example.szigerinsider2026.data.config.FestivalFeatures) -> Boolean)? = null) {
     object Home : Screen("home", "HOME", Icons.Filled.Home)
@@ -91,7 +96,12 @@ fun AppNavigation() {
         && currentRoute != "highlights"
         && currentRoute != "food"
         && currentRoute != "packing_list"
+        && currentRoute != "notes_journal"
+        && currentRoute != "budget_tracker"
         && currentRoute != "speed_discovery"
+        && currentRoute != "genre_breakdown"
+        && currentRoute != "vibe_radar"
+        && currentRoute != "friend_finder"
 
     Scaffold(
         bottomBar = {
@@ -209,6 +219,18 @@ fun AppNavigation() {
                 }
                 composable("packing_list") {
                     PackingListScreen(navController)
+                }
+                composable("notes_journal") {
+                    NotesJournalScreen(navController)
+                }
+                composable("budget_tracker") {
+                    BudgetTrackerScreen(navController)
+                }
+                composable("genre_breakdown") {
+                    GenreBreakdownScreen(navController)
+                }
+                composable("vibe_radar") {
+                    VibeRadarScreen(navController)
                 }
             }
         }

@@ -22,6 +22,8 @@ import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material.icons.filled.CloudDownload
+import androidx.compose.material.icons.filled.AccountBalanceWallet
+import androidx.compose.material.icons.filled.NoteAdd
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -192,6 +194,66 @@ fun ToolsScreen(navController: NavController) {
                                     Text("CHECK YOUR GEAR BEFORE YOU GO", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
                                 }
                                 Icon(Icons.Default.ChevronRight, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(24.dp))
+                            }
+                        }
+
+                        if (config.features.notesJournal) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(CardBackground)
+                                    .border(1.dp, AcidYellow.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                                    .clickable { haptic.mediumTap(); navController.navigate("notes_journal") }
+                                    .padding(20.dp)
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(RoundedCornerShape(14.dp))
+                                            .background(AcidYellow.copy(alpha = 0.12f)),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(Icons.Default.NoteAdd, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(26.dp))
+                                    }
+                                    Spacer(modifier = Modifier.width(16.dp))
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text("MY JOURNAL", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                        Text("PRIVATE OFFLINE MEMORY VAULT", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
+                                    }
+                                    Icon(Icons.Default.ChevronRight, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
+                                }
+                            }
+                        }
+
+                        if (config.features.budgetTracker) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(CardBackground)
+                                    .border(1.dp, AcidYellow.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                                    .clickable { haptic.mediumTap(); navController.navigate("budget_tracker") }
+                                    .padding(20.dp)
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(RoundedCornerShape(14.dp))
+                                            .background(AcidYellow.copy(alpha = 0.12f)),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(Icons.Default.AccountBalanceWallet, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(26.dp))
+                                    }
+                                    Spacer(modifier = Modifier.width(16.dp))
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text("BUDGET TRACKER", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                        Text("DAILY SPENDING LEDGER · ${config.currency.localCode}", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
+                                    }
+                                    Icon(Icons.Default.ChevronRight, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
+                                }
                             }
                         }
 
