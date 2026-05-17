@@ -232,6 +232,9 @@ fun AppNavigation() {
                 composable("vibe_radar") {
                     VibeRadarScreen(navController)
                 }
+                composable("friend_finder") {
+                    FriendFinderScreen(navController)
+                }
             }
         }
     }

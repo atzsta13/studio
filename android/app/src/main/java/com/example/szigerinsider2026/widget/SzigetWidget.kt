@@ -26,18 +26,34 @@ import com.example.szigerinsider2026.MainActivity
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.config.FestivalConfig
 import kotlinx.coroutines.flow.first
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class SzigetWidget : GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
         // Ensure config is initialized even for widget process
         FestivalConfig.initialize(context)
-        
+
         val db = AppDatabase.getDatabase(context)
         val favorites = db.userDao().getAllFavorites().first()
-        
+
         val config = FestivalConfig.current
         val accentColor = Color(java.lang.Long.decode(config.theme.androidAccentLong))
+
+        // Countdown calculation
+        val today = LocalDate.now()
+        val startDate = LocalDate.parse(config.dates.startDate)
+        val endDate = LocalDate.parse(config.dates.endDate)
+        val daysUntil = ChronoUnit.DAYS.between(today, startDate)
+
+        val countdownText = when {
+            today.isBefore(startDate) -> "${daysUntil} DAYS"
+            today.isAfter(endDate) -> "SEE YOU NEXT YEAR"
+            else -> "NOW 🔥" // NOW 🔥
+        }
+        val isLive = !today.isBefore(startDate) && !today.isAfter(endDate)
+        val countdownColor = if (isLive || today.isBefore(startDate)) accentColor else Color(0xFFA1A1AA)
 
         provideContent {
             GlanceTheme {
@@ -49,28 +65,32 @@ class SzigetWidget : GlanceAppWidget() {
                         .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    // Festival name — small, muted, uppercase
                     Text(
-                        text = "${config.name.uppercase()} ${config.dates.year}",
+                        text = config.fullName.uppercase(),
                         style = TextStyle(
-                            color = ColorProvider(accentColor),
+                            color = ColorProvider(Color(0xFFA1A1AA)),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 11.sp
+                            fontSize = 10.sp
                         )
                     )
                     Spacer(modifier = GlanceModifier.height(4.dp))
+                    // Countdown — large, AcidYellow if future/live
                     Text(
-                        text = "FESTIVAL INSIDER",
+                        text = countdownText,
+                        style = TextStyle(
+                            color = ColorProvider(countdownColor),
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 22.sp
+                        )
+                    )
+                    Spacer(modifier = GlanceModifier.height(6.dp))
+                    // Favorites count
+                    Text(
+                        text = "♥ ${favorites.size} SAVED",
                         style = TextStyle(
                             color = ColorProvider(Color(0xFFFFFFFF)),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 18.sp
-                        )
-                    )
-                    Spacer(modifier = GlanceModifier.height(2.dp))
-                    Text(
-                        text = "${favorites.size} artists saved",
-                        style = TextStyle(
-                            color = ColorProvider(Color(0xFF888888)),
                             fontSize = 11.sp
                         )
                     )

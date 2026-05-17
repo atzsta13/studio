@@ -257,6 +257,36 @@ fun ToolsScreen(navController: NavController) {
                             }
                         }
 
+                        if (config.features.friendFinder) {
+                            Box(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(CardBackground)
+                                    .border(1.dp, AcidYellow.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                                    .clickable { haptic.mediumTap(); navController.navigate("friend_finder") }
+                                    .padding(20.dp)
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(RoundedCornerShape(14.dp))
+                                            .background(AcidYellow.copy(alpha = 0.12f)),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(Icons.Default.Group, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(26.dp))
+                                    }
+                                    Spacer(modifier = Modifier.width(16.dp))
+                                    Column(modifier = Modifier.weight(1f)) {
+                                        Text("SQUAD FINDER", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                        Text("QR CODE · FIND YOUR CREW", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
+                                    }
+                                    Icon(Icons.Default.ChevronRight, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
+                                }
+                            }
+                        }
+
                         if (config.features.sosMorseCode) {
                             SOSBeaconButton(onClick = { toolMode = ToolMode.SOS })
                         }

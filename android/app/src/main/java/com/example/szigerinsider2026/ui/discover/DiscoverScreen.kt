@@ -20,7 +20,9 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Bolt
+import androidx.compose.material.icons.filled.BubbleChart
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Search
@@ -156,6 +158,12 @@ fun DiscoverScreen(
                     }
                 },
                 actions = {
+                    IconButton(onClick = { haptic.lightTap(); navController?.navigate("genre_breakdown") }) {
+                        Icon(Icons.Filled.BarChart, contentDescription = "Genre DNA", tint = AcidYellow, modifier = Modifier.size(20.dp))
+                    }
+                    IconButton(onClick = { haptic.lightTap(); navController?.navigate("vibe_radar") }) {
+                        Icon(Icons.Filled.BubbleChart, contentDescription = "Vibe Radar", tint = PrimaryMagenta, modifier = Modifier.size(20.dp))
+                    }
                     IconButton(onClick = { haptic.lightTap(); navController?.navigate("vibe_quiz") }) {
                         Icon(Icons.Filled.AutoAwesome, contentDescription = "Quiz", tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(20.dp))
                     }
