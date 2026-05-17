@@ -12,7 +12,6 @@ const PRECACHE_URLS = [
 
 // --- Lifecycle: Install ---
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       // Pre-cache critical offline assets; ignore failures for missing maps
@@ -119,6 +118,13 @@ self.addEventListener('fetch', (event) => {
       });
     })
   );
+});
+
+// --- Skip Waiting (triggered by update banner) ---
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // --- Notifications ---
