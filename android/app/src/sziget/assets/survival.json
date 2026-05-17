@@ -1,0 +1,38 @@
+{
+  "camping": {
+    "basic": "Included for free with any 3-day or 5-day pass. Pitch your tent in designated 'free' zones.",
+    "upgraded": [
+      { "name": "Siesta Camping", "price": "€42+", "features": ["Fenced area", "Better toilets/showers", "Near Siesta stage"] },
+      { "name": "Park Camping", "price": "€55+", "features": ["Shaded areas", "Wi-Fi", "Quiet zone"] },
+      { "name": "Sziget Ville", "price": "€99+", "features": ["Glamping", "Pre-pitched tents", "Premium amenities"] }
+    ],
+    "deposit": "€30 'Leave-no-tent' deposit (refundable if you take your tent with you)."
+  },
+  "transport": {
+    "shuttleBoat": {
+      "route": "Jászai Mari Square (Dock 10) to Sziget Dock",
+      "schedule": "14:40 to 02:00 (every 15-20 mins)",
+      "price": "2,200 HUF (€5.50) one-way"
+    },
+    "publicTransport": {
+      "train": "H5 HÉV to Filatorigát (24/7 service during festival)",
+      "cityPass": "Sziget-Budapest Citypass covers all public transport, shuttle boat, and airport transfers."
+    }
+  },
+  "pricing": {
+    "drinks": [
+      { "item": "Beer (0.5L)", "price": "1,600 – 2,000 HUF" },
+      { "item": "Water (0.5L)", "price": "500 – 1,100 HUF" }
+    ],
+    "food": [
+      { "item": "Main Meals (Burgers/Gyros/Pizza)", "price": "2,500 – 4,500 HUF" },
+      { "item": "Lángos", "price": "2,500 – 4,000 HUF" }
+    ],
+    "dailyBudget": "Plan for €35 – €55 per day for food and drinks."
+  },
+  "safety": {
+    "medical": "Main HQ near K-Bridge (Main Entrance), open 24/7.",
+    "payments": "100% Cashless. Use contactless card, phone, or wristband.",
+    "grocery": "Aldi supermarket on-site for cheap groceries. Auchan (10 min walk from K-Bridge) for bulk buys."
+  }
+}

@@ -86,7 +86,6 @@ export interface FestivalConfig {
     batterySaver: boolean
     friendFinder: boolean
     groupSchedules: boolean
-    artistTrivia: boolean
     similarArtists: boolean
     vibeOfTheHour: boolean
     stageCapacity: boolean

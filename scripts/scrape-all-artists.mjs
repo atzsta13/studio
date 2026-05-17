@@ -58,6 +58,12 @@ const SCRAPER_CONFIGS = {
     }
 };
 
+function getFestivalPaths() {
+    const festivalId = process.env.NEXT_PUBLIC_FESTIVAL_ID || 'sziget-2026';
+    const lineupFile = path.join(__dirname, '..', 'festivals', festivalId, 'data', 'lineup.json');
+    return { festivalId, lineupFile };
+}
+
 const { festivalId, lineupFile: LINEUP_FILE } = getFestivalPaths();
 const config = SCRAPER_CONFIGS[festivalId];
 
@@ -281,11 +287,6 @@ async function scrapeAllArtists() {
 
     console.log(`\n💾 Saving to ${LINEUP_FILE}...`);
     fs.writeFileSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
-    console.log(`✅ Done! Total: ${existingArtists.length}`);
-}
-
-scrapeAllArtists();
-leSync(LINEUP_FILE, JSON.stringify(existingArtists, null, 2), 'utf8');
     console.log(`✅ Done! Total: ${existingArtists.length}`);
 }
 

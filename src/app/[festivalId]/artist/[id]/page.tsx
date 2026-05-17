@@ -28,7 +28,6 @@ import {
 } from 'react-icons/si';
 import { FaGlobe } from 'react-icons/fa6';
 import { FavoriteButton } from '@/components/artist/favorite-button';
-import { ArtistTrivia } from '@/components/artist/artist-trivia';
 import { SetCountdown } from '@/components/artist/set-countdown';
 import { SetlistLinks } from '@/components/artist/setlist-links';
 import type { LineupItem } from '@/types';
@@ -130,15 +129,6 @@ export default function ArtistDetailPage() {
               <div><p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">Stage</p><p className="font-black italic uppercase">{artist.stage || 'TBA'}</p></div>
             </div>
           </div>
-
-          {config.features.artistTrivia && (
-            <ArtistTrivia
-              artistName={artist.artist}
-              description={artist.description || ''}
-              countryCode={artist.countryCode}
-              vibes={artist.vibes}
-            />
-          )}
 
           {config.features.setlistLinks && (
             <SetlistLinks artistName={artist.artist} />

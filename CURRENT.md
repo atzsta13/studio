@@ -101,7 +101,7 @@
 
 ### Android Features (Flagged in config but UI missing)
 - ⏳ `crowdHeatmap`, `newsBulletin`, `afterMovie`, `merchCatalog`.
-- ⏳ `artistTrivia`, `setlistLinks` in `ArtistDetailScreen`.
+- ⏳ `setlistLinks` in `ArtistDetailScreen`.
 
 ### Deferred / Future
 | Item | Status |

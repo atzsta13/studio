@@ -27,7 +27,6 @@ data class FestivalFeatures(
     val batterySaver: Boolean = false,
     val squadLink: Boolean = false,
     val groupSchedules: Boolean = false,
-    val artistTrivia: Boolean = false,
     val similarArtists: Boolean = false,
     val vibeOfTheHour: Boolean = false,
     val stageCapacity: Boolean = false,
