@@ -241,27 +241,31 @@ fun DiscoverScreen(
                     }
 
                     LocalAiScoutCard(
-                        isDownloaded = isLocalAiDownloaded,
-                        canDownload = config.productionUrl != null,
-                        progress = localAiDownloadProgress,
-                        isLoading = isLocalAiLoading,
-                        isListening = isListening,
-                        response = localAiResponse,
-                        onDownload = {
-                            val base = config.productionUrl
-                            if (base != null) {
-                                discoverViewModel.downloadModel("$base/ai/gemma4-2b-android.bin")
-                            }
-                        },
-                        onSearch = { discoverViewModel.runLocalScout(it) },
-                        onListen = { 
-                            if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                                discoverViewModel.startAcousticScout() 
-                            } else {
-                                permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
-                            }
-                        },
-                        onClear = { discoverViewModel.clearLocalScout() }
+                        state = LocalAiScoutUiState(
+                            isDownloaded = isLocalAiDownloaded,
+                            canDownload = config.productionUrl != null,
+                            progress = localAiDownloadProgress,
+                            isLoading = isLocalAiLoading,
+                            isListening = isListening,
+                            response = localAiResponse
+                        ),
+                        actions = LocalAiScoutActions(
+                            onDownload = {
+                                val base = config.productionUrl
+                                if (base != null) {
+                                    discoverViewModel.downloadModel("$base/ai/gemma4-2b-android.bin")
+                                }
+                            },
+                            onSearch = { discoverViewModel.runLocalScout(it) },
+                            onListen = { 
+                                if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                                    discoverViewModel.startAcousticScout() 
+                                } else {
+                                    permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
+                                }
+                            },
+                            onClear = { discoverViewModel.clearLocalScout() }
+                        )
                     )
                 }
             }
@@ -476,30 +480,38 @@ fun DiscoverScreen(
     }
 }
 
+data class LocalAiScoutUiState(
+    val isDownloaded: Boolean,
+    val canDownload: Boolean,
+    val progress: Float,
+    val isLoading: Boolean,
+    val isListening: Boolean,
+    val response: String?
+)
+
+data class LocalAiScoutActions(
+    val onDownload: () -> Unit,
+    val onSearch: (String) -> Unit,
+    val onListen: () -> Unit,
+    val onClear: () -> Unit
+)
+
 @Composable
 fun LocalAiScoutCard(
-    isDownloaded: Boolean,
-    canDownload: Boolean,
-    progress: Float,
-    isLoading: Boolean,
-    isListening: Boolean,
-    response: String?,
-    onDownload: () -> Unit,
-    onSearch: (String) -> Unit,
-    onListen: () -> Unit,
-    onClear: () -> Unit
+    state: LocalAiScoutUiState,
+    actions: LocalAiScoutActions
 ) {
     var prompt by remember { mutableStateOf("") }
     
     Card(
-        colors = CardDefaults.cardColors(containerColor = if (isDownloaded) Color(0xFF1A1A1D) else CardBackground),
+        colors = CardDefaults.cardColors(containerColor = if (state.isDownloaded) Color(0xFF1A1A1D) else CardBackground),
         shape = RoundedCornerShape(24.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
             .border(
                 width = 1.dp,
-                brush = if (isDownloaded) Brush.linearGradient(listOf(CyanPulse, ToxicGreen)) else SolidColor(Color.White.copy(alpha = 0.05f)),
+                brush = if (state.isDownloaded) Brush.linearGradient(listOf(CyanPulse, ToxicGreen)) else SolidColor(Color.White.copy(alpha = 0.05f)),
                 shape = RoundedCornerShape(24.dp)
             )
     ) {
@@ -508,12 +520,12 @@ fun LocalAiScoutCard(
                 Icon(
                     imageVector = Icons.Default.AutoAwesome,
                     contentDescription = null,
-                    tint = if (isDownloaded) ToxicGreen else TextMuted,
+                    tint = if (state.isDownloaded) ToxicGreen else TextMuted,
                     modifier = Modifier.size(20.dp)
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Text(
-                    text = if (isDownloaded) t("scout_title") else "${t("scout_title")} (OFFLINE)",
+                    text = if (state.isDownloaded) t("scout_title") else "${t("scout_title")} (OFFLINE)",
                     color = TextPrimary,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Black,
@@ -524,14 +536,14 @@ fun LocalAiScoutCard(
             
             Spacer(modifier = Modifier.height(12.dp))
             
-            if (!isDownloaded) {
+            if (!state.isDownloaded) {
                 Text(
                     text = "Download the Gemma 4 intelligence model to find artists without any signal. (~1.2GB)",
                     color = TextMuted,
                     fontSize = 12.sp,
                     lineHeight = 18.sp
                 )
-                if (!canDownload) {
+                if (!state.canDownload) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
                         text = "AI model unavailable for this festival build.",
@@ -543,17 +555,17 @@ fun LocalAiScoutCard(
                 }
                 Spacer(modifier = Modifier.height(16.dp))
 
-                if (progress != 0f) {
+                if (state.progress != 0f) {
                     Column {
-                        if (progress > 0f) {
+                        if (state.progress > 0f) {
                             LinearProgressIndicator(
-                                progress = { progress },
+                                progress = { state.progress },
                                 modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
                                 color = ToxicGreen,
                                 trackColor = OLEDBlack
                             )
                             Text(
-                                text = "DOWNLOADING: ${(progress * 100).toInt()}%",
+                                text = "DOWNLOADING: ${(state.progress * 100).toInt()}%",
                                 color = ToxicGreen,
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Black,
@@ -578,7 +590,7 @@ fun LocalAiScoutCard(
                 } else {
                     Button(
                         onClick = {
-                            onDownload()
+                            actions.onDownload()
                         },
                         modifier = Modifier.fillMaxWidth().height(48.dp),
                         shape = RoundedCornerShape(12.dp),
@@ -590,8 +602,8 @@ fun LocalAiScoutCard(
                     }
                 }
             } else {
-                if (response == null) {
-                    if (isListening) {
+                if (state.response == null) {
+                    if (state.isListening) {
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -623,10 +635,10 @@ fun LocalAiScoutCard(
                                 ),
                                 textStyle = BrutalistTypography.bodyMedium.copy(fontSize = 14.sp, color = Color.White),
                                 trailingIcon = {
-                                    if (isLoading) {
+                                    if (state.isLoading) {
                                         CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(20.dp))
                                     } else {
-                                        IconButton(onClick = { onSearch(prompt) }, enabled = prompt.isNotBlank()) {
+                                        IconButton(onClick = { actions.onSearch(prompt) }, enabled = prompt.isNotBlank()) {
                                             Icon(Icons.Default.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
                                         }
                                     }
@@ -634,7 +646,7 @@ fun LocalAiScoutCard(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             IconButton(
-                                onClick = onListen,
+                                onClick = actions.onListen,
                                 modifier = Modifier
                                     .size(56.dp)
                                     .clip(RoundedCornerShape(16.dp))
@@ -654,7 +666,7 @@ fun LocalAiScoutCard(
                             .padding(16.dp)
                     ) {
                         Text(
-                            text = response,
+                            text = state.response,
                             color = Color.White.copy(alpha = 0.9f),
                             fontSize = 13.sp,
                             lineHeight = 20.sp,
@@ -662,7 +674,7 @@ fun LocalAiScoutCard(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Button(
-                            onClick = onClear,
+                            onClick = actions.onClear,
                             modifier = Modifier.height(36.dp),
                             shape = RoundedCornerShape(8.dp),
                             colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.1f))

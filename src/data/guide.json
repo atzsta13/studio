@@ -1,33 +1,77 @@
 {
-  "title": "Frequency Survival Guide",
-  "description": "Essential tips and information for Frequency Festival at St. Pölten VAZ.",
+  "title": "Szitizen Survival Guide",
+  "description": "Essential tips and information to make your Sziget experience amazing, safe, and unforgettable. Everything here works offline, so you'll never be stranded.",
   "sections": [
     {
-      "id": "arrival",
-      "title": "Getting There",
-      "icon": "train",
+      "title": "Green Sziget Mission",
+      "icon": "sparkles",
       "items": [
-        { "title": "Train from Vienna", "content": "Train from Vienna (Wien Hbf) to St. Pölten Hbf takes ~30 min. Regular services run throughout the day." },
-        { "title": "Shuttle Buses", "content": "Shuttle buses run from St. Pölten Hbf to the festival grounds. Free with ticket wristband." }
+        {
+          "title": "Cup Recycling",
+          "content": "Sziget uses a ReCup system. Do not throw cups away! Every cup can be returned for a token or reused to save money and the environment."
+        },
+        {
+          "title": "Eco-Toilets",
+          "content": "Look for the Green Sziget zones for composting toilets. They save thousands of liters of water daily."
+        },
+        {
+          "title": "Don't Waste",
+          "content": "If you see a tap left running or a full recycling bin, report it to a 'Green Scout' volunteer."
+        }
       ]
     },
     {
-      "id": "daynight",
-      "title": "Daypark vs Nightpark",
-      "icon": "sun",
+      "title": "Island of Art & Circus",
+      "icon": "camera",
       "items": [
-        { "title": "Daypark", "content": "Space Stage + Green Stage: runs ~14:00–22:00. Rock, indie, pop acts." },
-        { "title": "Nightpark", "content": "Separate venue area, opens ~22:00 until ~05:00. Electronic, DJ sets." },
-        { "title": "The Walk", "content": "The walk between Daypark and Nightpark areas is ~5–10 min." }
+        {
+          "title": "Cirque du Sziget",
+          "content": "A massive outdoor venue featuring world-class contemporary circus acts from 2 PM until midnight daily."
+        },
+        {
+          "title": "Art Garden",
+          "content": "Explore large-scale interactive installations hidden in the woods near the A38 stage."
+        },
+        {
+          "title": "Theater and Dance",
+          "content": "Don't miss the morning yoga sessions and afternoon contemporary dance performances at the Giant Street Theater."
+        }
       ]
     },
     {
-      "id": "emergency",
-      "title": "Emergency",
-      "icon": "shield-alert",
+      "title": "Health & Safety",
+      "icon": "heart-pulse",
       "items": [
-        { "title": "Universal Emergency", "content": "European emergency number: 112" },
-        { "title": "Austrian Services", "content": "Police: 133 | Ambulance: 144 | Fire: 122" }
+        {
+          "title": "First Aid & Medical",
+          "content": "First aid tents are clearly marked on the festival map. Don't hesitate to visit them for any issue, big or small. The staff is there to help."
+        },
+        {
+          "title": "Emergency Services",
+          "content": "In a serious emergency, find the nearest security guard or staff member. The general emergency number in Hungary is 112."
+        },
+        {
+          "title": "Sun Protection",
+          "content": "Budapest sun is intense. Use the UV Alert tool in the Toolkit and find shade between 1 PM and 4 PM."
+        }
+      ]
+    },
+    {
+      "title": "Logistics & Rules",
+      "icon": "gavel",
+      "items": [
+        {
+          "title": "CityPass Benefits",
+          "content": "The Sziget CityPass by BKK includes free public transport, airport shuttle, and boat parties. Highly recommended."
+        },
+        {
+          "title": "Cashless System",
+          "content": "Sziget is 100% cashless. Your wristband is your wallet. Top up via the official app or at points marked with 'TOP UP'."
+        },
+        {
+          "title": "Prohibited Items",
+          "content": "Glass bottles, gas canisters, and professional cameras without permits are confiscated at the K-Bridge entrance."
+        }
       ]
     }
   ]

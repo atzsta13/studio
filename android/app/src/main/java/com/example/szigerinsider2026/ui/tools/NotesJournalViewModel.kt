@@ -1,6 +1,7 @@
 package com.example.szigerinsider2026.ui.tools
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,9 +22,9 @@ data class NoteEntry(
 private const val PREFS_NAME = "notes_journal"
 private const val KEY_ENTRIES = "notes_journal_entries"
 
-class NotesJournalViewModel(private val appContext: Context) : ViewModel() {
+class NotesJournalViewModel(private val prefs: SharedPreferences) : ViewModel() {
 
-    private val prefs = appContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    constructor(context: Context) : this(context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE))
 
     private val _notes = MutableStateFlow<List<NoteEntry>>(loadNotes())
     val notes: StateFlow<List<NoteEntry>> = _notes

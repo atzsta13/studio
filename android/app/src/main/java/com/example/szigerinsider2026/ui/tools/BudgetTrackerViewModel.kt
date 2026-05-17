@@ -1,6 +1,7 @@
 package com.example.szigerinsider2026.ui.tools
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,9 +23,10 @@ data class BudgetEntry(
     val timestamp: Long = System.currentTimeMillis()
 )
 
-class BudgetTrackerViewModel(private val context: Context) : ViewModel() {
+class BudgetTrackerViewModel(private val prefs: SharedPreferences) : ViewModel() {
 
-    private val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    constructor(context: Context) : this(context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE))
+
     private val json = Json { ignoreUnknownKeys = true }
 
     private val _entries = MutableStateFlow<List<BudgetEntry>>(loadEntries())

@@ -257,14 +257,14 @@ fun ToolsScreen(navController: NavController) {
                             }
                         }
 
-                        if (config.features.friendFinder) {
+                        if (config.features.squadLink) {
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .clip(RoundedCornerShape(20.dp))
                                     .background(CardBackground)
                                     .border(1.dp, AcidYellow.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
-                                    .clickable { haptic.mediumTap(); navController.navigate("friend_finder") }
+                                    .clickable { haptic.mediumTap(); navController.navigate("squad_link") }
                                     .padding(20.dp)
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -279,8 +279,8 @@ fun ToolsScreen(navController: NavController) {
                                     }
                                     Spacer(modifier = Modifier.width(16.dp))
                                     Column(modifier = Modifier.weight(1f)) {
-                                        Text("SQUAD FINDER", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
-                                        Text("QR CODE · FIND YOUR CREW", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
+                                        Text("SQUAD LINK", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                        Text("QR CODE · SYNC LOCAL GROUP", color = TextMuted, fontSize = 12.sp, letterSpacing = 0.5.sp)
                                     }
                                     Icon(Icons.Default.ChevronRight, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
                                 }
@@ -308,6 +308,22 @@ fun ToolsScreen(navController: NavController) {
                             icon = Icons.Default.WbSunny,
                             onClick = { toolMode = ToolMode.CANDLE }
                         )
+
+                        if (config.features.sunscreenAlert) {
+                            SunscreenAlertCard()
+                        }
+
+                        if (config.features.quietZones) {
+                            QuietZonesCard()
+                        }
+
+                        if (config.features.vibeOfTheHour) {
+                            VibeOfTheHourCard()
+                        }
+
+                        if (config.features.highContrast) {
+                            HighContrastCard()
+                        }
 
                         if (config.features.audioMonitor) {
                             AudioMonitorCard()
@@ -663,6 +679,115 @@ fun CandleOverlay(onDismiss: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
             // The Candle
             Box(modifier = Modifier.width(40.dp).height(150.dp).background(Color.White, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)))
+        }
+    }
+}
+
+@Composable
+fun SunscreenAlertCard() {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(AcidYellow.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.WbSunny, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = "SUNSCREEN ALERT", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                    Text(text = "UV Index: 7 (High)", color = TextMuted, fontSize = 12.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(AcidYellow.copy(alpha = 0.15f))
+                    .padding(12.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(text = "REAPPLY IN: 45 MIN", color = AcidYellow, fontWeight = FontWeight.Black, fontSize = 14.sp)
+            }
+        }
+    }
+}
+
+@Composable
+fun QuietZonesCard() {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(CyanPulse.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.HeadsetOff, contentDescription = null, tint = CyanPulse, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = "QUIET ZONES", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                    Text(text = "Find a place to chill", color = TextMuted, fontSize = 12.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "Nearest: ArtZone Garden (5 min walk)", color = CyanPulse, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+fun VibeOfTheHourCard() {
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(PrimaryMagenta.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = PrimaryMagenta, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = "VIBE OF THE HOUR", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                    Text(text = "Current island energy", color = TextMuted, fontSize = 12.sp)
+                }
+            }
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(text = "✨ UNHINGED TECHNO RAVE", color = PrimaryMagenta, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+        }
+    }
+}
+
+@Composable
+fun HighContrastCard() {
+    var isEnabled by remember { mutableStateOf(false) }
+    Card(
+        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+        shape = RoundedCornerShape(32.dp),
+        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+    ) {
+        Column(modifier = Modifier.padding(24.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(Color.White.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Default.InvertColors, contentDescription = null, tint = Color.White, modifier = Modifier.size(24.dp))
+                }
+                Spacer(modifier = Modifier.width(16.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(text = "HIGH CONTRAST", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
+                    Text(text = "Maximum legibility", color = TextMuted, fontSize = 12.sp)
+                }
+                Switch(
+                    checked = isEnabled,
+                    onCheckedChange = { isEnabled = it },
+                    colors = SwitchDefaults.colors(checkedThumbColor = Color.White, checkedTrackColor = Color.White.copy(alpha = 0.3f))
+                )
+            }
         }
     }
 }

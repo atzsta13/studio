@@ -31,7 +31,7 @@ export default function BottomNav({ festivalId }: { festivalId?: string }) {
   if (!mounted) return null;
 
   return (
-    <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+    <Box component="nav" aria-label="Mobile Navigation" sx={{ display: { xs: 'block', md: 'none' } }}>
       <Paper
         elevation={0}
         sx={{

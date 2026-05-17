@@ -42,12 +42,17 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Varela+Round&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased" suppressHydrationWarning>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-primary focus:text-white focus:rounded-full focus:font-black focus:uppercase focus:tracking-widest">
+          Skip to content
+        </a>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <MuiRegistry>
             <PwaLoader />
             <SwUpdateBanner />
             <InstallPrompt />
-            {children}
+            <main id="main-content">
+              {children}
+            </main>
             <Toaster />
           </MuiRegistry>
         </ThemeProvider>

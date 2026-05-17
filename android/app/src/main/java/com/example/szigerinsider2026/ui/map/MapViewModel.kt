@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.szigerinsider2026.data.model.MapCoords
 import com.example.szigerinsider2026.data.model.POI
-import com.example.szigerinsider2026.data.repository.FoodRepository
-import com.example.szigerinsider2026.data.repository.POIRepository
+import com.example.szigerinsider2026.data.repository.IFoodRepository
+import com.example.szigerinsider2026.data.repository.IPOIRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class MapViewModel(
-    private val poiRepository: POIRepository,
-    private val foodRepository: FoodRepository
+    private val poiRepository: IPOIRepository,
+    private val foodRepository: IFoodRepository
 ) : ViewModel() {
 
     private val _allPois = MutableStateFlow<List<POI>>(emptyList())

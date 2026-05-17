@@ -46,6 +46,11 @@
     --input: 242 20% 12%;
     --ring: 314 100% 50%;
   }
+
+  *:focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
 }
 
 @layer utilities {

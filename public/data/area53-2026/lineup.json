@@ -7,9 +7,16 @@
     "startTime": "22:30",
     "endTime": "00:00",
     "countryCode": "SE",
-    "genres": ["MELODIC DEATH METAL"],
-    "vibes": ["INTENSE", "MELODIC", "LEGENDARY"],
-    "isHeadliner": true
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "INTENSE",
+      "MELODIC",
+      "LEGENDARY"
+    ],
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/7e/0d/d6/mzi.erqdieqp.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-2",
@@ -19,8 +26,15 @@
     "startTime": "20:45",
     "endTime": "22:00",
     "countryCode": "SE",
-    "genres": ["INDUSTRIAL METAL"],
-    "vibes": ["CYBER", "HEAVY", "PARTY"]
+    "genres": [
+      "INDUSTRIAL METAL"
+    ],
+    "vibes": [
+      "CYBER",
+      "HEAVY",
+      "PARTY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/48/da/5c48daee-d1ce-a5cd-e271-a3600213ba34/artwork.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-3",
@@ -30,8 +44,14 @@
     "startTime": "19:15",
     "endTime": "20:15",
     "countryCode": "GB",
-    "genres": ["METALCORE"],
-    "vibes": ["HEAVY", "MODERN"]
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "HEAVY",
+      "MODERN"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/c5/ba/76c5ba35-3e43-a0ac-3177-3ae4d56907cb/886448350705.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-4",
@@ -41,8 +61,15 @@
     "startTime": "17:45",
     "endTime": "18:45",
     "countryCode": "CA",
-    "genres": ["PROG THRASH"],
-    "vibes": ["TECHNICAL", "WEIRD", "CULT"]
+    "genres": [
+      "PROG THRASH"
+    ],
+    "vibes": [
+      "TECHNICAL",
+      "WEIRD",
+      "CULT"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/27/b3/9f27b32a-1267-ddcf-a761-5bc1c0a31d95/823000447183.png/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-5",
@@ -52,8 +79,14 @@
     "startTime": "16:30",
     "endTime": "17:15",
     "countryCode": "CH",
-    "genres": ["SYMPHONIC METAL"],
-    "vibes": ["EPIC", "MELODIC"]
+    "genres": [
+      "SYMPHONIC METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "MELODIC"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f5/af/a5/f5afa5c3-656b-79f2-c51e-29ffe129f9bb/840588150496.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-6",
@@ -63,8 +96,15 @@
     "startTime": "15:15",
     "endTime": "16:00",
     "countryCode": "DE",
-    "genres": ["DARK METAL", "GOTHIC"],
-    "vibes": ["DARK", "ATMOSPHERIC"]
+    "genres": [
+      "DARK METAL",
+      "GOTHIC"
+    ],
+    "vibes": [
+      "DARK",
+      "ATMOSPHERIC"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/e3/f3/0d/e3f30dfc-5b15-91f5-550d-9094a65de62d/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-7",
@@ -74,8 +114,14 @@
     "startTime": "14:15",
     "endTime": "14:45",
     "countryCode": "IT",
-    "genres": ["MODERN METAL"],
-    "vibes": ["MODERN", "LOUD"]
+    "genres": [
+      "MODERN METAL"
+    ],
+    "vibes": [
+      "MODERN",
+      "LOUD"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/50/d7/b1/50d7b1b5-c777-7c21-2fcf-9bd186bfad9a/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-8",
@@ -85,8 +131,14 @@
     "startTime": "13:15",
     "endTime": "13:45",
     "countryCode": "AT",
-    "genres": ["METALCORE"],
-    "vibes": ["LOCAL-HEROES", "HEAVY"]
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "LOCAL-HEROES",
+      "HEAVY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/60/2c/3e/602c3e6a-8839-6607-1f15-33adc2c2d128/196925226608.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-1",
@@ -96,9 +148,16 @@
     "startTime": "22:30",
     "endTime": "00:00",
     "countryCode": "SE",
-    "genres": ["MELODIC DEATH METAL"],
-    "vibes": ["INTENSE", "MELODIC", "POWER"],
-    "isHeadliner": true
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "INTENSE",
+      "MELODIC",
+      "POWER"
+    ],
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ef/99/8c/ef998ca5-ac5a-1d16-61c7-a1c05fb30527/196874084991.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-2",
@@ -108,9 +167,16 @@
     "startTime": "20:45",
     "endTime": "22:00",
     "countryCode": "DE",
-    "genres": ["HEAVY METAL"],
+    "genres": [
+      "HEAVY METAL"
+    ],
     "description": "Balls To The Wall Special Set.",
-    "vibes": ["CLASSIC", "ANIMAL", "POWER"]
+    "vibes": [
+      "CLASSIC",
+      "ANIMAL",
+      "POWER"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c9/86/de/c986debc-9f29-cdf0-0b89-2c136e3c8023/190296279539.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-3",
@@ -120,8 +186,14 @@
     "startTime": "19:15",
     "endTime": "20:15",
     "countryCode": "SE",
-    "genres": ["MODERN ROCK"],
-    "vibes": ["CATCHY", "MODERN"]
+    "genres": [
+      "MODERN ROCK"
+    ],
+    "vibes": [
+      "CATCHY",
+      "MODERN"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a6/bf/c0/a6bfc055-7351-c7c9-6a1b-aa5de9b07f8d/5063072618295.png/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-4",
@@ -131,8 +203,14 @@
     "startTime": "17:45",
     "endTime": "18:45",
     "countryCode": "DE",
-    "genres": ["MELODIC DEATH METAL"],
-    "vibes": ["HEAVY", "MELODIC"]
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
+      "MELODIC"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/35/08/a3350820-1cfd-56d5-01bf-dfdd2b68cabf/810135715362.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-5",
@@ -142,8 +220,14 @@
     "startTime": "16:30",
     "endTime": "17:15",
     "countryCode": "GR",
-    "genres": ["POWER METAL"],
-    "vibes": ["POWER", "GUITAR-SHREDDING"]
+    "genres": [
+      "POWER METAL"
+    ],
+    "vibes": [
+      "POWER",
+      "GUITAR-SHREDDING"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/02/e1/eb/02e1eb05-cf5a-78e0-75d7-05618ee5f314/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-6",
@@ -153,8 +237,15 @@
     "startTime": "15:15",
     "endTime": "16:00",
     "countryCode": "AT",
-    "genres": ["CROSSOVER"],
-    "vibes": ["FUN", "CRAZY", "LOCAL-HEROES"]
+    "genres": [
+      "CROSSOVER"
+    ],
+    "vibes": [
+      "FUN",
+      "CRAZY",
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6d/c0/26/6dc026b3-587f-c84b-9098-593da01cb995/191018548247.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-7",
@@ -164,8 +255,14 @@
     "startTime": "14:15",
     "endTime": "14:45",
     "countryCode": "AT",
-    "genres": ["MELODIC DEATH METAL"],
-    "vibes": ["HEAVY", "LOCAL-HEROES"]
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/8c/a9/9f8ca94c-4e24-2f43-2571-ea437d6f4670/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-8",
@@ -175,8 +272,13 @@
     "startTime": "13:15",
     "endTime": "13:45",
     "countryCode": "BE",
-    "genres": ["GOREGRIND"],
-    "vibes": ["BRUTAL", "PARTY"]
+    "genres": [
+      "GOREGRIND"
+    ],
+    "vibes": [
+      "BRUTAL",
+      "PARTY"
+    ]
   },
   {
     "id": "a53-2026-fr-9",
@@ -186,8 +288,14 @@
     "startTime": "12:30",
     "endTime": "13:00",
     "countryCode": "DE",
-    "genres": ["MELODIC DEATH METAL"],
-    "vibes": ["MELODIC", "HEAVY"]
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "MELODIC",
+      "HEAVY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/be/65/b0be65b5-e08a-51af-d0f1-0e4f49af30ff/8721416157615_cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-1",
@@ -197,9 +305,16 @@
     "startTime": "22:30",
     "endTime": "00:00",
     "countryCode": "GB",
-    "genres": ["HEAVY METAL"],
-    "vibes": ["EPIC", "CLASSIC", "POWER"],
-    "isHeadliner": true
+    "genres": [
+      "HEAVY METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "CLASSIC",
+      "POWER"
+    ],
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a5/ee/c2/a5eec22b-4d17-0338-7e78-487a7fae169d/5054197747694.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-2",
@@ -209,8 +324,15 @@
     "startTime": "20:45",
     "endTime": "22:00",
     "countryCode": "AT",
-    "genres": ["SYMPHONIC METAL"],
-    "vibes": ["EPIC", "MELODIC", "OCEAN"]
+    "genres": [
+      "SYMPHONIC METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "MELODIC",
+      "OCEAN"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/26/a5/e8/26a5e867-924e-d463-5ee9-225f35e6d4ca/810135715836.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-3",
@@ -220,8 +342,14 @@
     "startTime": "19:15",
     "endTime": "20:15",
     "countryCode": "BE",
-    "genres": ["METALCORE"],
-    "vibes": ["HEAVY", "CATCHY"]
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "HEAVY",
+      "CATCHY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/44/e1/2c/44e12c24-4432-6853-58c5-22a6210e964b/artwork.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-4",
@@ -231,8 +359,14 @@
     "startTime": "17:45",
     "endTime": "18:45",
     "countryCode": "AT",
-    "genres": ["ROCK 'N' ROLL"],
-    "vibes": ["HIGH-VOLTAGE", "LOUD", "LOCAL-HEROES"]
+    "genres": [
+      "ROCK 'N' ROLL"
+    ],
+    "vibes": [
+      "HIGH-VOLTAGE",
+      "LOUD",
+      "LOCAL-HEROES"
+    ]
   },
   {
     "id": "a53-2026-sa-5",
@@ -242,8 +376,14 @@
     "startTime": "16:30",
     "endTime": "17:15",
     "countryCode": "AT",
-    "genres": ["DEATH METAL", "THRASH"],
-    "vibes": ["HEAVY", "OLD-SCHOOL"]
+    "genres": [
+      "DEATH METAL",
+      "THRASH"
+    ],
+    "vibes": [
+      "HEAVY",
+      "OLD-SCHOOL"
+    ]
   },
   {
     "id": "a53-2026-sa-6",
@@ -253,8 +393,13 @@
     "startTime": "15:15",
     "endTime": "16:00",
     "countryCode": "AT",
-    "genres": ["METAL"],
-    "vibes": ["LOCAL-HEROES"]
+    "genres": [
+      "METAL"
+    ],
+    "vibes": [
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/07/c0/6a/07c06a16-aae2-73ac-1e5c-cd74ff15c59d/5059137225782_cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-7",
@@ -264,8 +409,12 @@
     "startTime": "14:15",
     "endTime": "14:45",
     "countryCode": "AT",
-    "genres": ["METAL"],
-    "vibes": ["LOCAL-HEROES"]
+    "genres": [
+      "METAL"
+    ],
+    "vibes": [
+      "LOCAL-HEROES"
+    ]
   },
   {
     "id": "a53-2026-sa-8",
@@ -275,9 +424,15 @@
     "startTime": "13:15",
     "endTime": "13:45",
     "countryCode": "AT",
-    "genres": ["METAL"],
+    "genres": [
+      "METAL"
+    ],
     "description": "Bandcontest Winner 2026.",
-    "vibes": ["FRESH", "LOCAL-HEROES"]
+    "vibes": [
+      "FRESH",
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/90/d2/7d/90d27d00-78f1-c056-64e6-0bd80aa44fdc/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-morning",
@@ -287,9 +442,16 @@
     "startTime": "11:00",
     "endTime": "12:30",
     "countryCode": "AT",
-    "genres": ["AUSTRO-POP", "CULT"],
+    "genres": [
+      "AUSTRO-POP",
+      "CULT"
+    ],
     "description": "Samstag Frühschoppen. MANDATORY.",
-    "vibes": ["CULT", "FUN", "SING-ALONG"]
+    "vibes": [
+      "CULT",
+      "FUN",
+      "SING-ALONG"
+    ]
   },
   {
     "id": "a53-2026-aftershow-wed",
@@ -299,9 +461,16 @@
     "startTime": "20:00",
     "endTime": "00:00",
     "countryCode": "AT",
-    "genres": ["ROCK", "PARTY"],
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
     "description": "Mittwoch Warm-up Party.",
-    "vibes": ["PARTY", "UNHINGED", "LATE-NIGHT"]
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
   },
   {
     "id": "a53-2026-aftershow-thu",
@@ -311,9 +480,16 @@
     "startTime": "23:59",
     "endTime": "02:00",
     "countryCode": "AT",
-    "genres": ["ROCK", "PARTY"],
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
     "description": "Täglich Aftershow nach dem Headliner.",
-    "vibes": ["PARTY", "UNHINGED", "LATE-NIGHT"]
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
   },
   {
     "id": "a53-2026-aftershow-fri",
@@ -323,9 +499,16 @@
     "startTime": "23:59",
     "endTime": "02:00",
     "countryCode": "AT",
-    "genres": ["ROCK", "PARTY"],
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
     "description": "Täglich Aftershow nach dem Headliner.",
-    "vibes": ["PARTY", "UNHINGED", "LATE-NIGHT"]
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
   },
   {
     "id": "a53-2026-aftershow-sat",
@@ -335,8 +518,15 @@
     "startTime": "23:59",
     "endTime": "02:00",
     "countryCode": "AT",
-    "genres": ["ROCK", "PARTY"],
+    "genres": [
+      "ROCK",
+      "PARTY"
+    ],
     "description": "Täglich Aftershow nach dem Headliner.",
-    "vibes": ["PARTY", "UNHINGED", "LATE-NIGHT"]
+    "vibes": [
+      "PARTY",
+      "UNHINGED",
+      "LATE-NIGHT"
+    ]
   }
 ]

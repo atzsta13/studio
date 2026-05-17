@@ -105,7 +105,10 @@ npm run android:sync:sziget
 ## Hard Constraints
 
 See `docs/guides/MANDATES.md` for the full list. Key rules:
-- **NO CAMERA** — no AR, no QR scanning, no visual recognition. Ever.
+- **NO ACCOUNTS** — no login, no email, no phone numbers. 100% anonymous.
+- **NO SOCIAL** — no feeds, no photo walls, no moderation liability.
+- **NO CAMERA** — no AR, no QR scanning (except tactical P2P link). Ever.
 - **NO DATA COLLECTION** — all user data (favorites, location, budget) stays 100% local.
 - **OFFLINE FIRST** — Map, Guide, Lineup, and all core features must work with zero signal.
 - **CONFIG FIRST** — no hardcoded festival names, colors, coordinates, or dates in any component.
+

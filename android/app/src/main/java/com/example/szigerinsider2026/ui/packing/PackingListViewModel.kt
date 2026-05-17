@@ -1,6 +1,7 @@
 package com.example.szigerinsider2026.ui.packing
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,9 +50,9 @@ private val ALL_ITEMS: List<PackingItem> = listOf(
 private const val PREFS_NAME = "packing_list"
 private const val KEY_CHECKED_IDS = "checked_ids"
 
-class PackingListViewModel(private val appContext: Context) : ViewModel() {
+class PackingListViewModel(private val prefs: SharedPreferences) : ViewModel() {
 
-    private val prefs = appContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    constructor(context: Context) : this(context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE))
 
     val items: StateFlow<List<PackingItem>> = MutableStateFlow(ALL_ITEMS)
 

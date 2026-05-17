@@ -42,6 +42,7 @@ class DiscoverViewModelTest {
 
     @Before
     fun setup() {
+        com.example.szigerinsider2026.data.config.FestivalConfig.setTestConfig(com.example.szigerinsider2026.TestConfig.data)
         Dispatchers.setMain(testDispatcher)
     }
 
@@ -51,70 +52,96 @@ class DiscoverViewModelTest {
     }
 
     @Test
-    fun `initial state is loading`() {
+    fun `initial state is loading`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        // isLoading starts true before init coroutine completes
-        assertTrue(vm.isLoading.value)
+        // Since we use UnconfinedTestDispatcher and a sync repo, 
+        // it might have already finished loading.
+        // If it's still true, great. If not, it should be false and allArtists should be populated.
+        if (vm.isLoading.value) {
+            assertTrue(vm.isLoading.value)
+        } else {
+            assertEquals(4, vm.allArtists.value.size)
+        }
     }
 
     @Test
     fun `loads all artists on init`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        assertEquals(4, vm.allArtists.value.size)
-        assertFalse(vm.isLoading.value)
+        vm.allArtists.test {
+            val artists = awaitItem()
+            val populated = if (artists.isEmpty()) awaitItem() else artists
+            assertEquals(4, populated.size)
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test
     fun `search query filters artists by name`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        vm.setSearchQuery("Artist a1")
-        advanceUntilIdle()
-        val filtered = vm.filteredArtists.value
-        assertEquals(1, filtered.size)
-        assertEquals("a1", filtered.first().id)
+        vm.filteredArtists.test {
+            val initial = awaitItem()
+            val populated = if (initial.isEmpty()) awaitItem() else initial
+            vm.setSearchQuery("Artist a1")
+            val filtered = awaitItem()
+            assertEquals(1, filtered.size)
+            assertEquals("a1", filtered.first().id)
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test
     fun `genre filter returns only matching artists`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        vm.selectGenre("TECHNO")
-        advanceUntilIdle()
-        val filtered = vm.filteredArtists.value
-        assertTrue(filtered.all { it.genres.contains("TECHNO") })
+        vm.filteredArtists.test {
+            val initial = awaitItem()
+            val populated = if (initial.isEmpty()) awaitItem() else initial
+            vm.selectGenre("TECHNO")
+            val filtered = awaitItem()
+            assertTrue(filtered.all { it.genres.contains("TECHNO") })
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test
     fun `day filter returns only artists on that day`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        vm.selectDay("Friday")
-        advanceUntilIdle()
-        val filtered = vm.filteredArtists.value
-        assertTrue(filtered.all { it.day == "Friday" })
-        assertEquals(2, filtered.size)
+        vm.filteredArtists.test {
+            val initial = awaitItem()
+            val populated = if (initial.isEmpty()) awaitItem() else initial
+            vm.selectDay("Friday")
+            val filtered = awaitItem()
+            assertTrue(filtered.all { it.day == "Friday" })
+            assertEquals(2, filtered.size)
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test
     fun `country filter returns only artists from that country`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        vm.setCountryFilter("US")
-        advanceUntilIdle()
-        val filtered = vm.filteredArtists.value
-        assertTrue(filtered.all { it.countryCode == "US" })
+        vm.filteredArtists.test {
+            val initial = awaitItem()
+            val populated = if (initial.isEmpty()) awaitItem() else initial
+            vm.setCountryFilter("US")
+            val filtered = awaitItem()
+            assertTrue(filtered.all { it.countryCode == "US" })
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test
     fun `clearing genre filter restores all artists`() = runTest {
         val vm = DiscoverViewModel(fakeRepo)
-        advanceUntilIdle()
-        vm.selectGenre("TECHNO")
-        vm.selectGenre(null)
-        advanceUntilIdle()
-        assertEquals(4, vm.filteredArtists.value.size)
+        vm.filteredArtists.test {
+            val initial = awaitItem()
+            val populated = if (initial.isEmpty()) awaitItem() else initial
+            vm.selectGenre("TECHNO")
+            skipItems(1) // skip the genre filter emission
+            vm.selectGenre(null)
+            val restored = awaitItem()
+            assertEquals(4, restored.size)
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 
     @Test

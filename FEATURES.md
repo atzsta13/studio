@@ -145,7 +145,7 @@ Removed: live streaming (rights/bandwidth), privacy-invasive social tracking, dr
 | 95 | "Acts seen" counter | B | [ ] | |
 | 96 | Genre diversity score ("You explored 7 genres!") | B | [ ] | |
 | 97 | Festival bingo card | B | [ ] | |
-| 98 | Photo challenge stamps ("selfie at Main Stage") | B | [ ] | |
+| 98 | Post-festival wrap | B | [ ] | |
 | 99 | "Festival veteran" badge for returning years | A | [ ] | Builds multi-year loyalty |
 | 100 | Year-over-year comparison ("In 2025 you saw 8 acts, this year: 12") | A | [ ] | For returning attendees |
 | 101 | "Acts you almost missed" post-festival recap | B | [ ] | Clever content |

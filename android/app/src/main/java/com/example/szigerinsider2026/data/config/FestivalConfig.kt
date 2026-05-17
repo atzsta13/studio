@@ -25,7 +25,7 @@ data class FestivalFeatures(
     val hydrationTracker: Boolean = false,
     val sunscreenAlert: Boolean = false,
     val batterySaver: Boolean = false,
-    val friendFinder: Boolean = false,
+    val squadLink: Boolean = false,
     val groupSchedules: Boolean = false,
     val artistTrivia: Boolean = false,
     val similarArtists: Boolean = false,
@@ -194,6 +194,10 @@ object FestivalConfig {
             e.printStackTrace()
             // Fallback or crash gracefully
         }
+    }
+
+    fun setTestConfig(config: FestivalConfigData) {
+        _current = config
     }
 
     // Direct accessors for frequently used fields

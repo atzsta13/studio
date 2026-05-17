@@ -6,11 +6,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.szigerinsider2026.data.model.FoodVendor
 import com.example.szigerinsider2026.data.repository.FoodRepository
+import com.example.szigerinsider2026.data.repository.IFoodRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class FoodViewModel(private val repository: FoodRepository) : ViewModel() {
+class FoodViewModel(private val repository: IFoodRepository) : ViewModel() {
 
     private val _allVendors = MutableStateFlow<List<FoodVendor>>(emptyList())
 

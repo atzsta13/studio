@@ -88,9 +88,9 @@ export default function ArtistCard({ artist, isFavorite, isConflicting, onToggle
           )}
           {!isSmall && (
             <Link href={`/map?stage=${encodeURIComponent(artist.stage || "")}`} style={{ textDecoration: 'none' }}>
-              <IconButton size="small" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: FESTIVAL.theme.secondaryHex } }}>
+            <IconButton size="small" aria-label="View on map" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: FESTIVAL.theme.secondaryHex } }}>
                 <MapPin size={14} />
-              </IconButton>
+            </IconButton>
             </Link>
           )}
         </Box>

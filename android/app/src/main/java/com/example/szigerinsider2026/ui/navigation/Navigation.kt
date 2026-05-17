@@ -101,7 +101,7 @@ fun AppNavigation() {
         && currentRoute != "speed_discovery"
         && currentRoute != "genre_breakdown"
         && currentRoute != "vibe_radar"
-        && currentRoute != "friend_finder"
+        && currentRoute != "squad_link"
 
     Scaffold(
         bottomBar = {
@@ -232,7 +232,7 @@ fun AppNavigation() {
                 composable("vibe_radar") {
                     VibeRadarScreen(navController)
                 }
-                composable("friend_finder") {
+                composable("squad_link") {
                     FriendFinderScreen(navController)
                 }
             }

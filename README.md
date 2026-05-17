@@ -1,99 +1,76 @@
-# 🎪 Festival Insider Ecosystem
+# 🎪 Festival Insider Platform
 
-A high-performance, offline-first white-label engine for festival companion apps.
-
-## 🚀 Current Status: Phase 2 Foundation
-We have successfully reached **Phase 1 (Stable)**. The engine is fully monolithic, multi-flavor, and data-driven. We are now hardening the foundation, condensing code (DRY), and improving scalability for 100+ festivals.
-
-| Supported Festivals | Status | ID |
-|--------------------|--------|----|
-| **Sziget 2026** | ✅ Stable | `sziget-2026` |
-| **Area 53** | ✅ Stable | `area53-2026` |
-| **Nova Rock 2026** | ✅ Stable | `novarock-2026` |
-| **Frequency 2026** | ✅ Stable | `frequency-2026` |
-
-See [docs/milestones/PHASE_1_STABLE.md](./docs/milestones/PHASE_1_STABLE.md) for the milestone summary.
-
-## 🎯 Philosophy & Strategy
-
-The Festival Insider Platform is designed as a dual-purpose ecosystem:
-
-*   **Web: The Strategic Hub** — Built for **Planning & Discovery**. A monolithic portal (`/`) to compare all festivals in the ecosystem, search global lineups, and scout vibes before buying a ticket.
-*   **Android: The Tactical Edge** — Built for **On-Site Survival & Identity**. High-performance native flavors with hardware-linked AI (Acoustic Scout), 100% offline-first utility, and haptic-driven feedback for high-density, 0-signal environments.
+A professional, high-performance **White-Label Engine** for festival companion apps. Built for the elite attendee who demands a better experience than the official apps.
 
 ---
 
-## 🚀 Getting Started
+## ⚡ Core Mandates
+- **100% OFFLINE FIRST**: Map, Guide, Lineup, and AI tools work with zero signal.
+- **NO ACCOUNTS**: Zero logins, zero emails, zero tracking. 100% anonymous utility.
+- **NO SOCIAL**: No feeds, no moderation, no "photo walls." Strictly P2P local group sync.
+- **CONFIG DRIVEN**: One engine, 5+ festivals. Branding and data are decoupled from the UI.
 
-The platform uses a **Monolithic Hub Architecture**. A single deployment serves all festivals dynamically via URL routing (e.g., `/sziget-2026`, `/novarock-2026`). The root `/` serves as the Global Discovery Hub.
+---
 
-### **Web (Next.js)**
-Just run the development server. All configured festivals are available automatically:
+## 🗺️ Supported Festivals
+
+| Festival | ID | Platform Status |
+| :--- | :--- | :--- |
+| **Sziget 2026** | `sziget-2026` | ✅ Production Ready |
+| **Nova Rock 2026** | `novarock-2026` | ✅ Production Ready |
+| **Frequency 2026** | `frequency-2026` | ✅ Production Ready |
+| **Area 53 2026** | `area53-2026` | ✅ Production Ready |
+| **Ernte Punk 2026** | `ernte-punk-2026` | ✅ Production Ready |
+
+---
+
+## 🚀 Execution
+
+The platform uses a **Monolithic Hub Architecture** for Web and **Product Flavors** for Android.
+
+### **Web (The Strategic Hub)**
+Run the monolithic portal serving all festivals dynamically:
 ```bash
+npm install
 npm run dev
-# Visit http://localhost:3000 to see the Hub
-# Visit http://localhost:3000/sziget-2026 for a specific festival
+# Open http://localhost:3000 (Global Hub)
+# Open http://localhost:3000/sziget-2026 (Specific Festival)
 ```
 
-### **Android (Jetpack Compose)**
-Android uses Gradle Product Flavors to build dedicated APKs per festival:
+### **Android (The Tactical Edge)**
+Build dedicated, high-performance APKs for on-site survival:
 ```bash
-# Build Sziget debug APK
-./gradlew assembleSzigetDebug
-
-# Build Frequency release APK
-./gradlew assembleFrequencyRelease
+cd android
+./gradlew assembleSzigetDebug      # Build Sziget flavor
+./gradlew assembleNovarockDebug    # Build Nova Rock flavor
+./gradlew test                     # Run all unit tests
 ```
 
 ---
 
-## 🛠️ Project Navigation
-- **[docs/guides/DEVELOPER_QUICKSTART.md](docs/guides/DEVELOPER_QUICKSTART.md)**: ⚡ **Developer Quickstart** (Start here for local setup).
-- **[docs/architecture/white-label/README.md](docs/architecture/white-label/README.md)**: 🗺️ **White-Label Roadmap & Architecture**.
-- **[STATUS.md](STATUS.md)**: Current health, state, and recent milestones.
-- **[PROJECT_MAP.md](docs/architecture/PROJECT_MAP.md)**: High-level overview of where the "brains" are.
-- **[SCHEMA.md](docs/architecture/SCHEMA.md)**: Data structure definitions for Lineup, POI, and Guide data.
+## 🛠️ Tactical Capabilities
+- **Acoustic Scout**: Local AI inference to identify sets based on vibe (No data leaves device).
+- **Vibe DNA DNA Quiz**: Gamified artist matching without a Spotify login.
+- **Survival Toolkit**: HUF converter, Weather, SOS Beacon, Tent Finder, Car Finder.
+- **Squad Link**: Anonymous group syncing via local QR code swap (P2P).
+- **Food Radar**: Pre-sorted by price and dietary needs.
 
 ---
 
-## 💎 Platform Capabilities
-
-- **AI Artist Discovery** — Personalized scouting using Google Genkit based on user mood and preferences.
-- **Spotify Integration** — ⚠️ *Suspended* — Spotify API closed public access. See `docs/features/SPOTIFY_INTEGRATION.md`.
-- **Vibe DNA Quiz** — A gamified mood quiz that curates a personal short-list of artists.
-- **Tactical Map** — High-performance SVG map with coordinate-mapped POIs (water, food, stages).
-- **Survival Toolkit** — Currency converters, SOS beacons, and essential local phrases.
-- **Dynamic Theming** — Full UI re-skinning (colors, typography, icons) via central config.
-
----
-
-## 🔄 Data Pipeline
-Each festival has its own data package under `festivals/<id>/data/`. The build process automatically syncs this data:
-```bash
-# Sync data for the active festival
-npm run prebuild 
-```
-
----
-
-## Technical Stack
+## 🏗️ Technical Stack
 
 | Component | Technology |
-|-----------|------------|
-| **Web Core** | Next.js 16 / React 19 / TypeScript |
-| **Styling** | Tailwind CSS 4 / CSS Variables Theme |
-| **Android** | Jetpack Compose / Kotlin / Room (manual factory pattern, no DI framework) |
-| **AI Layer** | Google Genkit / Gemini 1.5 Flash |
-| **Data** | Offline-first JSON bundles / LocalStorage |
+| :--- | :--- |
+| **Web Core** | Next.js 16 / React 19 / TypeScript (Strict) |
+| **Styling** | Tailwind CSS 4 / Brutalist UI Kit |
+| **Android** | Jetpack Compose / Kotlin 2.0 / Room (v8) |
+| **AI Layer** | Google Genkit / Gemini 1.5 Flash (Cloud) / Gemma 4 (Local) |
+| **Philosophy** | Offline-First / Manual DI / Functional UI |
 
 ---
 
-## Documentation
-
-| Doc | What it covers |
-|-----|---------------|
-| [`docs/architecture/white-label/`](docs/architecture/white-label/) | **Multi-festival migration and spec details.** |
-| [`CLAUDE.md`](CLAUDE.md) | Instructions for AI agents working in this repo. |
-| [`android/README.md`](android/README.md) | Android architecture and product flavor setup. |
-| [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) | Full dual-platform architecture deep dive. |
-| [`docs/guides/UI_GUIDE.md`](docs/guides/UI_GUIDE.md) | Design system: colors, typography, component rules. |
+## 📖 Essential Documentation
+- **[docs/guides/MANDATES.md](docs/guides/MANDATES.md)**: Foundational rules (No Accounts, No Camera).
+- **[AGENTS.md](AGENTS.md)**: Context for AI agents (Claude, Gemini, Cursor).
+- **[CURRENT.md](CURRENT.md)**: Real-time project state and build integrity.
+- **[android/README.md](android/README.md)**: Android route table and repository patterns.

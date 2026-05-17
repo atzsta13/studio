@@ -56,7 +56,7 @@ export function NotificationBanner({ festivalId, hasFavorites }: NotificationBan
                 >
                     Enable
                 </button>
-                <button onClick={handleDismiss} className="rounded-xl p-2 text-muted-foreground hover:text-foreground transition-colors">
+                <button onClick={handleDismiss} className="rounded-xl p-2 text-muted-foreground hover:text-foreground transition-colors" aria-label="Dismiss">
                     <X size={14} />
                 </button>
             </div>

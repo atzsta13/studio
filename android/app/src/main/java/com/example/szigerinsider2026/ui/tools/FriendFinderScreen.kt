@@ -42,9 +42,9 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import java.util.UUID
 
-private const val PREFS_NAME = "friend_finder_prefs"
-private const val KEY_USER_ID = "friend_finder_user_id"
-private const val KEY_LINKED = "friend_finder_linked"
+private const val PREFS_NAME = "squad_link_prefs"
+private const val KEY_USER_ID = "squad_link_user_id"
+private const val KEY_LINKED = "squad_link_linked"
 
 private fun getOrCreateUserId(context: Context): String {
     val prefs: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
@@ -148,7 +148,7 @@ fun FriendFinderScreen(navController: NavController) {
             // Explanation
             item {
                 Text(
-                    text = "Share your Squad Code with friends. Scan theirs to sync up.",
+                    text = "Sync group data locally via QR. No accounts, no data leaves your phone.",
                     color = TextMuted,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
