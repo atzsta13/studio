@@ -291,7 +291,7 @@ fun HeadlinerCard(artist: Artist, onClick: () -> Unit) {
                     letterSpacing = 2.sp
                 )
                 Text(
-                    text = artist.name.uppercase(),
+                    text = artist.artist.uppercase(),
                     color = Color.White,
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Black,
@@ -348,7 +348,7 @@ fun PulseCard(artist: Artist, onClick: () -> Unit) {
         }
         Spacer(modifier = Modifier.height(12.dp))
         Text(
-            text = artist.name.uppercase(),
+            text = artist.artist.uppercase(),
             color = Color.White,
             fontSize = 14.sp,
             fontWeight = FontWeight.Black,
@@ -400,7 +400,7 @@ fun FavoriteCircle(artist: Artist, onClick: () -> Unit) {
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = artist.name.split(" ").first().uppercase(),
+            text = artist.artist.split(" ").first().uppercase(),
             color = Color.White,
             fontSize = 10.sp,
             fontWeight = FontWeight.Black,
@@ -452,7 +452,7 @@ fun DiscoveryRow(artist: Artist, onClick: () -> Unit) {
             Spacer(modifier = Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = artist.name.uppercase(),
+                    text = artist.artist.uppercase(),
                     color = Color.White,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Black

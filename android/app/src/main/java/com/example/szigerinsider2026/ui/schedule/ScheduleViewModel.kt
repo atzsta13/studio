@@ -47,7 +47,7 @@ class ScheduleViewModel(
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
                     .thenBy { it.startTime ?: "99:99" }
-                    .thenBy { it.name }
+                    .thenBy { it.artist }
             )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
@@ -56,7 +56,7 @@ class ScheduleViewModel(
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
                     .thenBy { it.startTime ?: "99:99" }
-                    .thenBy { it.name }
+                    .thenBy { it.artist }
             )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 

@@ -13,45 +13,23 @@ if (!fs.existsSync(srcDataDir)) {
 
 fs.mkdirSync(destDir, { recursive: true })
 
-// Copy and transform all JSON data
+// Copy all JSON data
 for (const file of fs.readdirSync(srcDataDir)) {
   if (file.endsWith('.json')) {
     const srcPath = path.join(srcDataDir, file)
     const destPath = path.join(destDir, file)
     
-    if (file.startsWith('lineup')) {
-      // Streamline Alignment: Transform "artist" key to "name" for Android compatibility
-      try {
-        const raw = fs.readFileSync(srcPath, 'utf8')
-        // Skip HTML/Clashfinder files incorrectly ending in .json
-        if (raw.trim().startsWith('<')) {
-          throw new Error('File appears to be HTML, not JSON')
-        }
-        const data = JSON.parse(raw)
-        
-        const transformArtist = (obj) => {
-          if (Array.isArray(obj)) return obj.map(transformArtist)
-          if (obj && typeof obj === 'object') {
-            const newObj = {}
-            for (const [key, value] of Object.entries(obj)) {
-              const newKey = key === 'artist' ? 'name' : key
-              newObj[newKey] = transformArtist(value)
-            }
-            return newObj
-          }
-          return obj
-        }
-        
-        const transformed = transformArtist(data)
-        fs.writeFileSync(destPath, JSON.stringify(transformed, null, 2))
-        console.log(`✓ Synced & Transformed ${file} → android/app/src/${slug}/assets/`)
-      } catch (e) {
-        console.error(`Error transforming ${file}:`, e)
-        fs.copyFileSync(srcPath, destPath)
+    // Check if file is valid JSON
+    try {
+      const raw = fs.readFileSync(srcPath, 'utf8')
+      if (raw.trim().startsWith('<')) {
+        throw new Error('File appears to be HTML, not JSON')
       }
-    } else {
+      JSON.parse(raw) // Just validate
       fs.copyFileSync(srcPath, destPath)
       console.log(`✓ Synced ${file} → android/app/src/${slug}/assets/`)
+    } catch (e) {
+      console.error(`Error syncing ${file}:`, e)
     }
   }
 }

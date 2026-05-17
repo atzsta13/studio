@@ -116,7 +116,7 @@ class LocalScoutRepository(private val context: Context) {
         
         // Context pruning (RAG-Lite)
         val artistsContext = artists.joinToString("\n") { 
-            "- ${it.name} (${it.genres.joinToString()}): ${it.description?.take(120)}..."
+            "- ${it.artist} (${it.genres.joinToString()}): ${it.description?.take(120)}..."
         }
         
         val fullPrompt = """

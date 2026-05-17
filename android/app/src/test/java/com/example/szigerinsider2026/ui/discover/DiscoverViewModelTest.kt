@@ -24,7 +24,7 @@ class DiscoverViewModelTest {
         countryCode: String = "DE",
         isHeadliner: Boolean = false,
     ) = Artist(
-        id = id, name = "Artist $id", stage = null, day = day,
+        id = id, artist = "Artist $id", stage = null, day = day,
         startTime = null, endTime = null, genres = genres, vibes = vibes,
         isHeadliner = isHeadliner, countryCode = countryCode
     )

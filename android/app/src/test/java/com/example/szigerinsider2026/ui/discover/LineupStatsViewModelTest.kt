@@ -16,9 +16,9 @@ class LineupStatsViewModelTest {
     private val testDispatcher = UnconfinedTestDispatcher()
 
     private val fakeLineup = listOf(
-        Artist(id = "a1", name = "A1", genres = listOf("METAL"), vibes = listOf("HEAVY"), countryCode = "SE"),
-        Artist(id = "a2", name = "A2", genres = listOf("METAL", "PROG"), vibes = listOf("TECHNICAL"), countryCode = "SE"),
-        Artist(id = "a3", name = "A3", genres = listOf("ROCK"), vibes = listOf("HEAVY"), countryCode = "US"),
+        Artist(id = "a1", artist = "A1", genres = listOf("METAL"), vibes = listOf("HEAVY"), countryCode = "SE"),
+        Artist(id = "a2", artist = "A2", genres = listOf("METAL", "PROG"), vibes = listOf("TECHNICAL"), countryCode = "SE"),
+        Artist(id = "a3", artist = "A3", genres = listOf("ROCK"), vibes = listOf("HEAVY"), countryCode = "US"),
     )
 
     private val fakeRepo = object : ILineupRepository {

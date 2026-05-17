@@ -189,7 +189,7 @@ private fun DiffArtistList(
             ) {
                 AsyncImage(
                     model = artist.imageUrl,
-                    contentDescription = artist.name,
+                    contentDescription = artist.artist,
                     modifier = Modifier
                         .size(44.dp)
                         .clip(CircleShape),
@@ -198,7 +198,7 @@ private fun DiffArtistList(
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = artist.name,
+                        text = artist.artist,
                         color = TextPrimary,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Black

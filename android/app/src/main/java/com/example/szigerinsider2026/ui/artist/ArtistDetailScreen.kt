@@ -134,7 +134,7 @@ fun ArtistDetailScreen(
                 Box(modifier = Modifier.fillMaxWidth().height(440.dp)) {
                     AsyncImage(
                         model = a.imageUrl,
-                        contentDescription = a.name,
+                        contentDescription = a.artist,
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
                     )
@@ -230,7 +230,7 @@ fun ArtistDetailScreen(
                             )
                         }
                         Text(
-                            text = a.name.uppercase(),
+                            text = a.artist.uppercase(),
                             fontSize = 40.sp,
                             style = BrutalistTypography.headlineLarge,
                             color = Color.White,
@@ -413,7 +413,7 @@ fun ArtistDetailScreen(
             if (spotifyId != null) {
                 item {
                     SpotifyIsland(
-                        artistName = a.name,
+                        artistName = a.artist,
                         spotifyId = spotifyId,
                         onOpenSpotify = {
                             haptic.successBurst()
@@ -563,7 +563,7 @@ private fun SimilarArtistCard(
         Column {
             AsyncImage(
                 model = artist.imageUrl,
-                contentDescription = artist.name,
+                contentDescription = artist.artist,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(130.dp)
@@ -572,7 +572,7 @@ private fun SimilarArtistCard(
             )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
-                    text = artist.name,
+                    text = artist.artist,
                     color = TextPrimary,
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Black,

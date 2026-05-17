@@ -12,7 +12,7 @@ class ArtistTest {
     @Test
     fun `spotifyId extracts id from a full open spotify url`() {
         val artist = Artist(
-            id = "1", name = "Test",
+            id = "1", artist = "Test",
             socials = Socials(spotify = "https://open.spotify.com/artist/4tZwfgrHOc3mvqYlEYSvVi")
         )
         assertEquals("4tZwfgrHOc3mvqYlEYSvVi", artist.spotifyId)
@@ -21,7 +21,7 @@ class ArtistTest {
     @Test
     fun `spotifyId strips query parameters from spotify url`() {
         val artist = Artist(
-            id = "1", name = "Test",
+            id = "1", artist = "Test",
             socials = Socials(spotify = "https://open.spotify.com/artist/4tZwfgrHOc3mvqYlEYSvVi?si=abc123&utm_source=copy-link")
         )
         assertEquals("4tZwfgrHOc3mvqYlEYSvVi", artist.spotifyId)
@@ -29,20 +29,20 @@ class ArtistTest {
 
     @Test
     fun `spotifyId is null when socials is null`() {
-        val artist = Artist(id = "1", name = "Test", socials = null)
+        val artist = Artist(id = "1", artist = "Test", socials = null)
         assertNull(artist.spotifyId)
     }
 
     @Test
     fun `spotifyId is null when spotify field is null`() {
-        val artist = Artist(id = "1", name = "Test", socials = Socials(spotify = null))
+        val artist = Artist(id = "1", artist = "Test", socials = Socials(spotify = null))
         assertNull(artist.spotifyId)
     }
 
     @Test
     fun `spotifyId is null for a non-artist spotify url (playlist)`() {
         val artist = Artist(
-            id = "1", name = "Test",
+            id = "1", artist = "Test",
             socials = Socials(spotify = "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M")
         )
         // URL doesn't contain '/artist/' — splitOrNull returns null
@@ -52,7 +52,7 @@ class ArtistTest {
     @Test
     fun `spotifyId is null for a non-artist spotify url (album)`() {
         val artist = Artist(
-            id = "1", name = "Test",
+            id = "1", artist = "Test",
             socials = Socials(spotify = "https://open.spotify.com/album/6dVIqQ8qmQ5GBnJ9shOYGE")
         )
         assertNull(artist.spotifyId)
@@ -60,7 +60,7 @@ class ArtistTest {
 
     @Test
     fun `spotifyId is null for an empty string spotify field`() {
-        val artist = Artist(id = "1", name = "Test", socials = Socials(spotify = ""))
+        val artist = Artist(id = "1", artist = "Test", socials = Socials(spotify = ""))
         assertNull(artist.spotifyId)
     }
 
@@ -70,7 +70,7 @@ class ArtistTest {
 
     @Test
     fun `default fields are null or empty when not provided`() {
-        val artist = Artist(id = "abc", name = "My Band")
+        val artist = Artist(id = "abc", artist = "My Band")
         assertNull(artist.stage)
         assertNull(artist.day)
         assertNull(artist.startTime)
@@ -94,15 +94,15 @@ class ArtistTest {
 
     @Test
     fun `two artists with identical fields are equal`() {
-        val a = Artist(id = "1", name = "Band A", genres = listOf("ROCK"), vibes = listOf("High Energy"))
-        val b = Artist(id = "1", name = "Band A", genres = listOf("ROCK"), vibes = listOf("High Energy"))
+        val a = Artist(id = "1", artist = "Band A", genres = listOf("ROCK"), vibes = listOf("High Energy"))
+        val b = Artist(id = "1", artist = "Band A", genres = listOf("ROCK"), vibes = listOf("High Energy"))
         assertEquals(a, b)
     }
 
     @Test
     fun `artists with different ids are not equal`() {
-        val a = Artist(id = "1", name = "Band A")
-        val b = Artist(id = "2", name = "Band A")
+        val a = Artist(id = "1", artist = "Band A")
+        val b = Artist(id = "2", artist = "Band A")
         assertNotEquals(a, b)
     }
 
@@ -110,13 +110,13 @@ class ArtistTest {
     fun `copy preserves unmodified fields`() {
         val original = Artist(
             id = "1",
-            name = "Original",
+            artist = "Original",
             genres = listOf("ROCK"),
             vibes = listOf("High Energy"),
             isHeadliner = true
         )
-        val copy = original.copy(name = "Copy")
-        assertEquals("Copy", copy.name)
+        val copy = original.copy(artist = "Copy")
+        assertEquals("Copy", copy.artist)
         assertEquals(original.id, copy.id)
         assertEquals(original.genres, copy.genres)
         assertEquals(original.isHeadliner, copy.isHeadliner)
@@ -161,7 +161,7 @@ class ArtistTest {
 
     @Test
     fun `stage startTime endTime default to null (schedule TBA)`() {
-        val artist = Artist(id = "1", name = "Test")
+        val artist = Artist(id = "1", artist = "Test")
         assertNull(artist.stage)
         assertNull(artist.startTime)
         assertNull(artist.endTime)

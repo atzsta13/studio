@@ -87,7 +87,7 @@ fun VibeResultScreen(navController: NavController, quizViewModel: VibeQuizViewMo
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
-                            Text(artist.name.uppercase(), color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Black)
+                            Text(artist.artist.uppercase(), color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Black)
                             Text(artist.genres.joinToString(" · "), color = TextMuted, fontSize = 12.sp)
                         }
                         

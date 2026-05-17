@@ -18,7 +18,7 @@ class VibeQuizViewModelTest {
 
     private fun makeArtist(id: String, genres: List<String>, vibes: List<String>, isHeadliner: Boolean = false) =
         Artist(
-            id = id, name = "Artist $id", stage = null, day = null,
+            id = id, artist = "Artist $id", stage = null, day = null,
             startTime = null, endTime = null, genres = genres, vibes = vibes,
             isHeadliner = isHeadliner, countryCode = "DE"
         )
