@@ -1,7 +1,7 @@
 [
   {
     "id": "a53-2026-th-1",
-    "name": "In Flames",
+    "artist": "In Flames",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "22:30",
@@ -15,11 +15,12 @@
       "MELODIC",
       "LEGENDARY"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/7e/0d/d6/mzi.erqdieqp.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-2",
-    "name": "Pain",
+    "artist": "Pain",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "20:45",
@@ -32,11 +33,12 @@
       "CYBER",
       "HEAVY",
       "PARTY"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/48/da/5c48daee-d1ce-a5cd-e271-a3600213ba34/artwork.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-3",
-    "name": "Bleed From Within",
+    "artist": "Bleed From Within",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "19:15",
@@ -48,11 +50,12 @@
     "vibes": [
       "HEAVY",
       "MODERN"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/c5/ba/76c5ba35-3e43-a0ac-3177-3ae4d56907cb/886448350705.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-4",
-    "name": "Voivod",
+    "artist": "Voivod",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "17:45",
@@ -65,11 +68,12 @@
       "TECHNICAL",
       "WEIRD",
       "CULT"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/27/b3/9f27b32a-1267-ddcf-a761-5bc1c0a31d95/823000447183.png/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-5",
-    "name": "Ad Infinitum",
+    "artist": "Ad Infinitum",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "16:30",
@@ -81,11 +85,12 @@
     "vibes": [
       "EPIC",
       "MELODIC"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f5/af/a5/f5afa5c3-656b-79f2-c51e-29ffe129f9bb/840588150496.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-6",
-    "name": "Agathodaimon",
+    "artist": "Agathodaimon",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "15:15",
@@ -98,11 +103,12 @@
     "vibes": [
       "DARK",
       "ATMOSPHERIC"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/e3/f3/0d/e3f30dfc-5b15-91f5-550d-9094a65de62d/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-7",
-    "name": "Never Obey Again",
+    "artist": "Never Obey Again",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "14:15",
@@ -114,11 +120,12 @@
     "vibes": [
       "MODERN",
       "LOUD"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/50/d7/b1/50d7b1b5-c777-7c21-2fcf-9bd186bfad9a/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-8",
-    "name": "Watch Them Fail",
+    "artist": "Watch Them Fail",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "13:15",
@@ -130,11 +137,12 @@
     "vibes": [
       "LOCAL-HEROES",
       "HEAVY"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/60/2c/3e/602c3e6a-8839-6607-1f15-33adc2c2d128/196925226608.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-1",
-    "name": "Arch Enemy",
+    "artist": "Arch Enemy",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "22:30",
@@ -148,11 +156,12 @@
       "MELODIC",
       "POWER"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ef/99/8c/ef998ca5-ac5a-1d16-61c7-a1c05fb30527/196874084991.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-2",
-    "name": "Dirkschneider",
+    "artist": "Dirkschneider",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "20:45",
@@ -166,11 +175,12 @@
       "CLASSIC",
       "ANIMAL",
       "POWER"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/c9/86/de/c986debc-9f29-cdf0-0b89-2c136e3c8023/190296279539.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-3",
-    "name": "Self Deception",
+    "artist": "Self Deception",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "19:15",
@@ -182,11 +192,12 @@
     "vibes": [
       "CATCHY",
       "MODERN"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a6/bf/c0/a6bfc055-7351-c7c9-6a1b-aa5de9b07f8d/5063072618295.png/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-4",
-    "name": "Hiraes",
+    "artist": "Hiraes",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "17:45",
@@ -198,11 +209,12 @@
     "vibes": [
       "HEAVY",
       "MELODIC"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/35/08/a3350820-1cfd-56d5-01bf-dfdd2b68cabf/810135715362.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-5",
-    "name": "Firewind",
+    "artist": "Firewind",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "16:30",
@@ -214,11 +226,12 @@
     "vibes": [
       "POWER",
       "GUITAR-SHREDDING"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/02/e1/eb/02e1eb05-cf5a-78e0-75d7-05618ee5f314/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-6",
-    "name": "Kontrust",
+    "artist": "Kontrust",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "15:15",
@@ -231,11 +244,12 @@
       "FUN",
       "CRAZY",
       "LOCAL-HEROES"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6d/c0/26/6dc026b3-587f-c84b-9098-593da01cb995/191018548247.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-7",
-    "name": "Vinegar Hill",
+    "artist": "Vinegar Hill",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "14:15",
@@ -247,11 +261,12 @@
     "vibes": [
       "HEAVY",
       "LOCAL-HEROES"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/8c/a9/9f8ca94c-4e24-2f43-2571-ea437d6f4670/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-8",
-    "name": "Brutal Sphincter",
+    "artist": "Brutal Sphincter",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "13:15",
@@ -267,7 +282,7 @@
   },
   {
     "id": "a53-2026-fr-9",
-    "name": "All Will Know",
+    "artist": "All Will Know",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "12:30",
@@ -279,11 +294,12 @@
     "vibes": [
       "MELODIC",
       "HEAVY"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/be/65/b0be65b5-e08a-51af-d0f1-0e4f49af30ff/8721416157615_cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-1",
-    "name": "Saxon",
+    "artist": "Saxon",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "22:30",
@@ -297,11 +313,12 @@
       "CLASSIC",
       "POWER"
     ],
-    "isHeadliner": true
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a5/ee/c2/a5eec22b-4d17-0338-7e78-487a7fae169d/5054197747694.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-2",
-    "name": "Visions Of Atlantis",
+    "artist": "Visions Of Atlantis",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "20:45",
@@ -314,11 +331,12 @@
       "EPIC",
       "MELODIC",
       "OCEAN"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/26/a5/e8/26a5e867-924e-d463-5ee9-225f35e6d4ca/810135715836.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-3",
-    "name": "Temptations For The Weak",
+    "artist": "Temptations For The Weak",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "19:15",
@@ -330,11 +348,12 @@
     "vibes": [
       "HEAVY",
       "CATCHY"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/44/e1/2c/44e12c24-4432-6853-58c5-22a6210e964b/artwork.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-4",
-    "name": "Igel vs Shark",
+    "artist": "Igel vs Shark",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "17:45",
@@ -351,7 +370,7 @@
   },
   {
     "id": "a53-2026-sa-5",
-    "name": "Patriarcha",
+    "artist": "Patriarcha",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "16:30",
@@ -368,7 +387,7 @@
   },
   {
     "id": "a53-2026-sa-6",
-    "name": "Matter of Taste",
+    "artist": "Matter of Taste",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "15:15",
@@ -379,11 +398,12 @@
     ],
     "vibes": [
       "LOCAL-HEROES"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/07/c0/6a/07c06a16-aae2-73ac-1e5c-cd74ff15c59d/5059137225782_cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-7",
-    "name": "Aris",
+    "artist": "Aris",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "14:15",
@@ -398,7 +418,7 @@
   },
   {
     "id": "a53-2026-sa-8",
-    "name": "Morituri",
+    "artist": "Morituri",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "13:15",
@@ -411,11 +431,12 @@
     "vibes": [
       "FRESH",
       "LOCAL-HEROES"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/90/d2/7d/90d27d00-78f1-c056-64e6-0bd80aa44fdc/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-sa-morning",
-    "name": "Jazz Gitti",
+    "artist": "Jazz Gitti",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "11:00",
@@ -434,7 +455,7 @@
   },
   {
     "id": "a53-2026-aftershow-wed",
-    "name": "Horny Monkeys",
+    "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Wednesday",
     "startTime": "20:00",
@@ -453,7 +474,7 @@
   },
   {
     "id": "a53-2026-aftershow-thu",
-    "name": "Horny Monkeys",
+    "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Thursday",
     "startTime": "23:59",
@@ -472,7 +493,7 @@
   },
   {
     "id": "a53-2026-aftershow-fri",
-    "name": "Horny Monkeys",
+    "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Friday",
     "startTime": "23:59",
@@ -491,7 +512,7 @@
   },
   {
     "id": "a53-2026-aftershow-sat",
-    "name": "Horny Monkeys",
+    "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Saturday",
     "startTime": "23:59",

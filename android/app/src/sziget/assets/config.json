@@ -126,7 +126,6 @@
     "batterySaver": true,
     "friendFinder": true,
     "groupSchedules": true,
-    "artistTrivia": true,
     "similarArtists": true,
     "vibeOfTheHour": true,
     "stageCapacity": false,

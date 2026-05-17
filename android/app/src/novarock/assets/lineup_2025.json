@@ -1,7 +1,7 @@
 [
   {
     "id": "2025-1",
-    "name": "Alessi Rose",
+    "artist": "Alessi Rose",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T16:00:00Z",
@@ -11,7 +11,7 @@
   },
   {
     "id": "2025-2",
-    "name": "Kiss of Life",
+    "artist": "Kiss of Life",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:30:00Z",
@@ -21,7 +21,7 @@
   },
   {
     "id": "2025-3",
-    "name": "Little Simz",
+    "artist": "Little Simz",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T19:00:00Z",
@@ -31,7 +31,7 @@
   },
   {
     "id": "2025-4",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:15:00Z",
@@ -41,7 +41,7 @@
   },
   {
     "id": "2025-5",
-    "name": "Charli XCX",
+    "artist": "Charli XCX",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T21:15:00Z",
@@ -51,7 +51,7 @@
   },
   {
     "id": "2025-6",
-    "name": "Ocean Alley",
+    "artist": "Ocean Alley",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T16:00:00Z",
@@ -61,7 +61,7 @@
   },
   {
     "id": "2025-7",
-    "name": "The Beaches",
+    "artist": "The Beaches",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T17:30:00Z",
@@ -71,7 +71,7 @@
   },
   {
     "id": "2025-8",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T18:30:00Z",
@@ -81,7 +81,7 @@
   },
   {
     "id": "2025-9",
-    "name": "Nelly Furtado",
+    "artist": "Nelly Furtado",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T19:15:00Z",
@@ -91,7 +91,7 @@
   },
   {
     "id": "2025-10",
-    "name": "Shawn Mendes",
+    "artist": "Shawn Mendes",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T21:15:00Z",
@@ -101,7 +101,7 @@
   },
   {
     "id": "2025-11",
-    "name": "The Joy",
+    "artist": "The Joy",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2025-08-08T16:00:00Z",
@@ -111,7 +111,7 @@
   },
   {
     "id": "2025-12",
-    "name": "Pogány Induló",
+    "artist": "Pogány Induló",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2025-08-08T17:30:00Z",
@@ -121,7 +121,7 @@
   },
   {
     "id": "2025-13",
-    "name": "The Kooks",
+    "artist": "The Kooks",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2025-08-08T19:00:00Z",
@@ -131,7 +131,7 @@
   },
   {
     "id": "2025-14",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2025-08-08T20:15:00Z",
@@ -141,7 +141,7 @@
   },
   {
     "id": "2025-15",
-    "name": "Kid Cudi",
+    "artist": "Kid Cudi",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": "2025-08-08T21:15:00Z",
@@ -151,7 +151,7 @@
   },
   {
     "id": "2025-16",
-    "name": "Дeva feat. Napfonat",
+    "artist": "Дeva feat. Napfonat",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T16:00:00Z",
@@ -161,7 +161,7 @@
   },
   {
     "id": "2025-17",
-    "name": "Sevdaliza",
+    "artist": "Sevdaliza",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T17:30:00Z",
@@ -171,7 +171,7 @@
   },
   {
     "id": "2025-18",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T18:30:00Z",
@@ -181,7 +181,7 @@
   },
   {
     "id": "2025-19",
-    "name": "FKA Twigs",
+    "artist": "FKA Twigs",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T19:15:00Z",
@@ -191,7 +191,7 @@
   },
   {
     "id": "2025-20",
-    "name": "Anyma",
+    "artist": "Anyma",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T21:15:00Z",
@@ -201,7 +201,7 @@
   },
   {
     "id": "2025-21",
-    "name": "Frenna & The Gang",
+    "artist": "Frenna & The Gang",
     "stage": "Main Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T16:00:00Z",
@@ -211,7 +211,7 @@
   },
   {
     "id": "2025-22",
-    "name": "Isabel LaRosa",
+    "artist": "Isabel LaRosa",
     "stage": "Main Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T17:30:00Z",
@@ -221,7 +221,7 @@
   },
   {
     "id": "2025-23",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T18:30:00Z",
@@ -231,7 +231,7 @@
   },
   {
     "id": "2025-24",
-    "name": "Rilès",
+    "artist": "Rilès",
     "stage": "Main Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T19:15:00Z",
@@ -241,7 +241,7 @@
   },
   {
     "id": "2025-25",
-    "name": "Post Malone",
+    "artist": "Post Malone",
     "stage": "Main Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T21:15:00Z",
@@ -251,7 +251,7 @@
   },
   {
     "id": "2025-26",
-    "name": "Luvcat",
+    "artist": "Luvcat",
     "stage": "Main Stage",
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
@@ -261,7 +261,7 @@
   },
   {
     "id": "2025-27",
-    "name": "Portugal. The Man",
+    "artist": "Portugal. The Man",
     "stage": "Main Stage",
     "day": "Monday",
     "startTime": "2025-08-11T17:30:00Z",
@@ -271,7 +271,7 @@
   },
   {
     "id": "2025-28",
-    "name": "The Last Dinner Party",
+    "artist": "The Last Dinner Party",
     "stage": "Main Stage",
     "day": "Monday",
     "startTime": "2025-08-11T19:15:00Z",
@@ -281,7 +281,7 @@
   },
   {
     "id": "2025-29",
-    "name": "Sziget Special",
+    "artist": "Sziget Special",
     "stage": "Main Stage",
     "day": "Monday",
     "startTime": "2025-08-11T20:15:00Z",
@@ -291,7 +291,7 @@
   },
   {
     "id": "2025-30",
-    "name": "Chappell Roan",
+    "artist": "Chappell Roan",
     "stage": "Main Stage",
     "day": "Monday",
     "startTime": "2025-08-11T21:15:00Z",
@@ -301,7 +301,7 @@
   },
   {
     "id": "2025-31",
-    "name": "RØRY",
+    "artist": "RØRY",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
@@ -311,7 +311,7 @@
   },
   {
     "id": "2025-32",
-    "name": "Palaye Royale",
+    "artist": "Palaye Royale",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:45:00Z",
@@ -321,7 +321,7 @@
   },
   {
     "id": "2025-33",
-    "name": "Papa Roach",
+    "artist": "Papa Roach",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:45:00Z",
@@ -331,7 +331,7 @@
   },
   {
     "id": "2025-34",
-    "name": "Kenya Grace",
+    "artist": "Kenya Grace",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
@@ -341,7 +341,7 @@
   },
   {
     "id": "2025-35",
-    "name": "Empire of the Sun",
+    "artist": "Empire of the Sun",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:30:00Z",
@@ -351,7 +351,7 @@
   },
   {
     "id": "2025-36",
-    "name": "The Dare",
+    "artist": "The Dare",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": "2025-08-06T02:10:00Z",
@@ -361,7 +361,7 @@
   },
   {
     "id": "2025-37",
-    "name": "Caity Baser",
+    "artist": "Caity Baser",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
@@ -371,7 +371,7 @@
   },
   {
     "id": "2025-38",
-    "name": "Balu Brigada",
+    "artist": "Balu Brigada",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T18:45:00Z",
@@ -381,7 +381,7 @@
   },
   {
     "id": "2025-39",
-    "name": "Co Lee",
+    "artist": "Co Lee",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T20:45:00Z",
@@ -391,7 +391,7 @@
   },
   {
     "id": "2025-40",
-    "name": "Noga Erez",
+    "artist": "Noga Erez",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T22:45:00Z",
@@ -401,7 +401,7 @@
   },
   {
     "id": "2025-41",
-    "name": "Justice",
+    "artist": "Justice",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": "2025-08-07T01:00:00Z",
@@ -411,7 +411,7 @@
   },
   {
     "id": "2025-42",
-    "name": "Ash Olsen",
+    "artist": "Ash Olsen",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T17:00:00Z",
@@ -421,7 +421,7 @@
   },
   {
     "id": "2025-43",
-    "name": "Scarlet Pleasure",
+    "artist": "Scarlet Pleasure",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T18:45:00Z",
@@ -431,7 +431,7 @@
   },
   {
     "id": "2025-44",
-    "name": "Blossoms",
+    "artist": "Blossoms",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T20:45:00Z",
@@ -441,7 +441,7 @@
   },
   {
     "id": "2025-45",
-    "name": "Krúbi",
+    "artist": "Krúbi",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T22:45:00Z",
@@ -451,7 +451,7 @@
   },
   {
     "id": "2025-46",
-    "name": "Caribou",
+    "artist": "Caribou",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T00:30:00Z",
@@ -461,7 +461,7 @@
   },
   {
     "id": "2025-47",
-    "name": "Ahadadream",
+    "artist": "Ahadadream",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": "2025-08-08T02:00:00Z",
@@ -471,7 +471,7 @@
   },
   {
     "id": "2025-48",
-    "name": "Helado Negro",
+    "artist": "Helado Negro",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T17:00:00Z",
@@ -481,7 +481,7 @@
   },
   {
     "id": "2025-49",
-    "name": "Chartreuse",
+    "artist": "Chartreuse",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T18:45:00Z",
@@ -491,7 +491,7 @@
   },
   {
     "id": "2025-50",
-    "name": "Hermano Gutierrez",
+    "artist": "Hermano Gutierrez",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T20:45:00Z",
@@ -501,7 +501,7 @@
   },
   {
     "id": "2025-51",
-    "name": "RY X",
+    "artist": "RY X",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T22:45:00Z",
@@ -511,7 +511,7 @@
   },
   {
     "id": "2025-52",
-    "name": "Elderbrook",
+    "artist": "Elderbrook",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T00:30:00Z",
@@ -521,7 +521,7 @@
   },
   {
     "id": "2025-53",
-    "name": "Mindchatter",
+    "artist": "Mindchatter",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": "2025-08-09T02:00:00Z",
@@ -531,7 +531,7 @@
   },
   {
     "id": "2025-54",
-    "name": "Ecca Vandal",
+    "artist": "Ecca Vandal",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T17:00:00Z",
@@ -541,7 +541,7 @@
   },
   {
     "id": "2025-55",
-    "name": "Zaho De Sagazan",
+    "artist": "Zaho De Sagazan",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T18:45:00Z",
@@ -551,7 +551,7 @@
   },
   {
     "id": "2025-56",
-    "name": "Fat Dog",
+    "artist": "Fat Dog",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T20:45:00Z",
@@ -561,7 +561,7 @@
   },
   {
     "id": "2025-57",
-    "name": "Krept & Konan",
+    "artist": "Krept & Konan",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T22:45:00Z",
@@ -571,7 +571,7 @@
   },
   {
     "id": "2025-58",
-    "name": "Rival Consoles",
+    "artist": "Rival Consoles",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T00:30:00Z",
@@ -581,7 +581,7 @@
   },
   {
     "id": "2025-59",
-    "name": "Ela Minus",
+    "artist": "Ela Minus",
     "stage": "Revolut Stage",
     "day": "Sunday",
     "startTime": "2025-08-10T02:00:00Z",
@@ -591,7 +591,7 @@
   },
   {
     "id": "2025-60",
-    "name": "Jude York",
+    "artist": "Jude York",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
@@ -601,7 +601,7 @@
   },
   {
     "id": "2025-61",
-    "name": "Bartees Strange",
+    "artist": "Bartees Strange",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T18:15:00Z",
@@ -611,7 +611,7 @@
   },
   {
     "id": "2025-62",
-    "name": "Refused",
+    "artist": "Refused",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T20:00:00Z",
@@ -621,7 +621,7 @@
   },
   {
     "id": "2025-63",
-    "name": "Joey Valence and Brae",
+    "artist": "Joey Valence and Brae",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T22:45:00Z",
@@ -631,7 +631,7 @@
   },
   {
     "id": "2025-64",
-    "name": "Brutalismus 3000",
+    "artist": "Brutalismus 3000",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T00:30:00Z",
@@ -641,7 +641,7 @@
   },
   {
     "id": "2025-65",
-    "name": "LSDXOXO",
+    "artist": "LSDXOXO",
     "stage": "Revolut Stage",
     "day": "Monday",
     "startTime": "2025-08-11T02:00:00Z",
@@ -651,7 +651,7 @@
   },
   {
     "id": "2025-66",
-    "name": "Don Diablo",
+    "artist": "Don Diablo",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
@@ -661,7 +661,7 @@
   },
   {
     "id": "2025-67",
-    "name": "ALOK",
+    "artist": "ALOK",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:45:00Z",
@@ -671,7 +671,7 @@
   },
   {
     "id": "2025-68",
-    "name": "Steve Angello",
+    "artist": "Steve Angello",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
     "startTime": "2025-08-06T01:15:00Z",
@@ -681,7 +681,7 @@
   },
   {
     "id": "2025-69",
-    "name": "Lavern",
+    "artist": "Lavern",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
     "startTime": "2025-08-06T02:45:00Z",
@@ -691,7 +691,7 @@
   },
   {
     "id": "2025-70",
-    "name": "StadiumX",
+    "artist": "StadiumX",
     "stage": "Bolt Party Arena",
     "day": "Wednesday",
     "startTime": "2025-08-06T03:45:00Z",
@@ -701,7 +701,7 @@
   },
   {
     "id": "2025-71",
-    "name": "Mateo & Spirit",
+    "artist": "Mateo & Spirit",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
     "startTime": "2025-08-07T22:00:00Z",
@@ -711,7 +711,7 @@
   },
   {
     "id": "2025-72",
-    "name": "Layla Benitez",
+    "artist": "Layla Benitez",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
@@ -721,7 +721,7 @@
   },
   {
     "id": "2025-73",
-    "name": "Alex Wann",
+    "artist": "Alex Wann",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
     "startTime": "2025-08-07T00:30:00Z",
@@ -731,7 +731,7 @@
   },
   {
     "id": "2025-74",
-    "name": "Massano",
+    "artist": "Massano",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
     "startTime": "2025-08-07T01:45:00Z",
@@ -741,7 +741,7 @@
   },
   {
     "id": "2025-75",
-    "name": "Boris Brejcha",
+    "artist": "Boris Brejcha",
     "stage": "Bolt Party Arena",
     "day": "Thursday",
     "startTime": "2025-08-07T03:00:00Z",
@@ -751,7 +751,7 @@
   },
   {
     "id": "2025-76",
-    "name": "Abstract Division",
+    "artist": "Abstract Division",
     "stage": "Bolt Party Arena",
     "day": "Friday",
     "startTime": "2025-08-08T22:00:00Z",
@@ -761,7 +761,7 @@
   },
   {
     "id": "2025-77",
-    "name": "Rene Wise",
+    "artist": "Rene Wise",
     "stage": "Bolt Party Arena",
     "day": "Friday",
     "startTime": "2025-08-08T23:30:00Z",
@@ -771,7 +771,7 @@
   },
   {
     "id": "2025-78",
-    "name": "Len Faki",
+    "artist": "Len Faki",
     "stage": "Bolt Party Arena",
     "day": "Friday",
     "startTime": "2025-08-08T01:00:00Z",
@@ -781,7 +781,7 @@
   },
   {
     "id": "2025-79",
-    "name": "Blawan",
+    "artist": "Blawan",
     "stage": "Bolt Party Arena",
     "day": "Friday",
     "startTime": "2025-08-08T02:30:00Z",
@@ -791,7 +791,7 @@
   },
   {
     "id": "2025-80",
-    "name": "Amelie Lens",
+    "artist": "Amelie Lens",
     "stage": "Bolt Party Arena",
     "day": "Friday",
     "startTime": "2025-08-08T04:15:00Z",
@@ -801,7 +801,7 @@
   },
   {
     "id": "2025-81",
-    "name": "Lanna",
+    "artist": "Lanna",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T22:00:00Z",
@@ -811,7 +811,7 @@
   },
   {
     "id": "2025-82",
-    "name": "Metha",
+    "artist": "Metha",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T23:00:00Z",
@@ -821,7 +821,7 @@
   },
   {
     "id": "2025-83",
-    "name": "Korolova",
+    "artist": "Korolova",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T00:00:00Z",
@@ -831,7 +831,7 @@
   },
   {
     "id": "2025-84",
-    "name": "Agents Of Time",
+    "artist": "Agents Of Time",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T01:00:00Z",
@@ -841,7 +841,7 @@
   },
   {
     "id": "2025-85",
-    "name": "Miss Monique",
+    "artist": "Miss Monique",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T02:00:00Z",
@@ -851,7 +851,7 @@
   },
   {
     "id": "2025-86",
-    "name": "Mathame",
+    "artist": "Mathame",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T03:15:00Z",
@@ -861,7 +861,7 @@
   },
   {
     "id": "2025-87",
-    "name": "Adriatique",
+    "artist": "Adriatique",
     "stage": "Bolt Party Arena",
     "day": "Saturday",
     "startTime": "2025-08-09T04:30:00Z",
@@ -871,7 +871,7 @@
   },
   {
     "id": "2025-88",
-    "name": "Laura van Dam",
+    "artist": "Laura van Dam",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
@@ -881,7 +881,7 @@
   },
   {
     "id": "2025-89",
-    "name": "Nicole Moudaber",
+    "artist": "Nicole Moudaber",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
@@ -891,7 +891,7 @@
   },
   {
     "id": "2025-90",
-    "name": "Armin Van Buuren",
+    "artist": "Armin Van Buuren",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
     "startTime": "2025-08-10T01:00:00Z",
@@ -901,7 +901,7 @@
   },
   {
     "id": "2025-91",
-    "name": "Vini Vici",
+    "artist": "Vini Vici",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
     "startTime": "2025-08-10T03:00:00Z",
@@ -911,7 +911,7 @@
   },
   {
     "id": "2025-92",
-    "name": "Maddix",
+    "artist": "Maddix",
     "stage": "Bolt Party Arena",
     "day": "Sunday",
     "startTime": "2025-08-10T04:00:00Z",
@@ -921,7 +921,7 @@
   },
   {
     "id": "2025-93",
-    "name": "Dublic & B'Andre & Skrude",
+    "artist": "Dublic & B'Andre & Skrude",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T22:00:00Z",
@@ -931,7 +931,7 @@
   },
   {
     "id": "2025-94",
-    "name": "1991",
+    "artist": "1991",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T23:00:00Z",
@@ -941,7 +941,7 @@
   },
   {
     "id": "2025-95",
-    "name": "Hedex B2B Bou + Eksman & B Live 247",
+    "artist": "Hedex B2B Bou + Eksman & B Live 247",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T00:00:00Z",
@@ -951,7 +951,7 @@
   },
   {
     "id": "2025-96",
-    "name": "Subtronics",
+    "artist": "Subtronics",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T01:30:00Z",
@@ -961,7 +961,7 @@
   },
   {
     "id": "2025-97",
-    "name": "Eptic b2b Space Laces",
+    "artist": "Eptic b2b Space Laces",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T03:00:00Z",
@@ -971,7 +971,7 @@
   },
   {
     "id": "2025-98",
-    "name": "HOL!",
+    "artist": "HOL!",
     "stage": "Bolt Party Arena",
     "day": "Monday",
     "startTime": "2025-08-11T04:00:00Z",
@@ -981,7 +981,7 @@
   },
   {
     "id": "2025-99",
-    "name": "Sonic Rain",
+    "artist": "Sonic Rain",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T16:00:00Z",
@@ -991,7 +991,7 @@
   },
   {
     "id": "2025-100",
-    "name": "dntb.",
+    "artist": "dntb.",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
@@ -1001,7 +1001,7 @@
   },
   {
     "id": "2025-101",
-    "name": "Upper90",
+    "artist": "Upper90",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:30:00Z",
@@ -1011,7 +1011,7 @@
   },
   {
     "id": "2025-102",
-    "name": "Winson",
+    "artist": "Winson",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:00:00Z",
@@ -1021,7 +1021,7 @@
   },
   {
     "id": "2025-103",
-    "name": "Franck",
+    "artist": "Franck",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T21:30:00Z",
@@ -1031,7 +1031,7 @@
   },
   {
     "id": "2025-104",
-    "name": "I Hate Models",
+    "artist": "I Hate Models",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
@@ -1041,7 +1041,7 @@
   },
   {
     "id": "2025-105",
-    "name": "999999999",
+    "artist": "999999999",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:30:00Z",
@@ -1051,7 +1051,7 @@
   },
   {
     "id": "2025-106",
-    "name": "Fatima Hajji",
+    "artist": "Fatima Hajji",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T02:00:00Z",
@@ -1061,7 +1061,7 @@
   },
   {
     "id": "2025-107",
-    "name": "Oguz",
+    "artist": "Oguz",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": "2025-08-06T03:30:00Z",
@@ -1071,7 +1071,7 @@
   },
   {
     "id": "2025-108",
-    "name": "Adis Is OK",
+    "artist": "Adis Is OK",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T16:00:00Z",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "2025-109",
-    "name": "IN PARALLEL",
+    "artist": "IN PARALLEL",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
@@ -1091,7 +1091,7 @@
   },
   {
     "id": "2025-110",
-    "name": "Benwal",
+    "artist": "Benwal",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T18:00:00Z",
@@ -1101,7 +1101,7 @@
   },
   {
     "id": "2025-111",
-    "name": "salute",
+    "artist": "salute",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T19:15:00Z",
@@ -1111,7 +1111,7 @@
   },
   {
     "id": "2025-112",
-    "name": "Partiboi69",
+    "artist": "Partiboi69",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T20:30:00Z",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "2025-113",
-    "name": "Malugi",
+    "artist": "Malugi",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T21:45:00Z",
@@ -1131,7 +1131,7 @@
   },
   {
     "id": "2025-114",
-    "name": "DJ Gigola",
+    "artist": "DJ Gigola",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
@@ -1141,7 +1141,7 @@
   },
   {
     "id": "2025-115",
-    "name": "Pegassi",
+    "artist": "Pegassi",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T00:45:00Z",
@@ -1151,7 +1151,7 @@
   },
   {
     "id": "2025-116",
-    "name": "horsegiirL",
+    "artist": "horsegiirL",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T02:15:00Z",
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "2025-117",
-    "name": "Cera Khin",
+    "artist": "Cera Khin",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": "2025-08-07T03:30:00Z",
@@ -1171,7 +1171,7 @@
   },
   {
     "id": "2025-118",
-    "name": "Collective Machine",
+    "artist": "Collective Machine",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T16:00:00Z",
@@ -1181,7 +1181,7 @@
   },
   {
     "id": "2025-119",
-    "name": "James Cole",
+    "artist": "James Cole",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T17:00:00Z",
@@ -1191,7 +1191,7 @@
   },
   {
     "id": "2025-120",
-    "name": "Andrea Lane",
+    "artist": "Andrea Lane",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T18:00:00Z",
@@ -1201,7 +1201,7 @@
   },
   {
     "id": "2025-121",
-    "name": "Melle Brown",
+    "artist": "Melle Brown",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T19:30:00Z",
@@ -1211,7 +1211,7 @@
   },
   {
     "id": "2025-122",
-    "name": "Mita Gami",
+    "artist": "Mita Gami",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T21:00:00Z",
@@ -1221,7 +1221,7 @@
   },
   {
     "id": "2025-123",
-    "name": "HoneyLuv",
+    "artist": "HoneyLuv",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T22:30:00Z",
@@ -1231,7 +1231,7 @@
   },
   {
     "id": "2025-124",
-    "name": "Carlita",
+    "artist": "Carlita",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T00:00:00Z",
@@ -1241,7 +1241,7 @@
   },
   {
     "id": "2025-125",
-    "name": "Josh Baker",
+    "artist": "Josh Baker",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T01:30:00Z",
@@ -1251,7 +1251,7 @@
   },
   {
     "id": "2025-126",
-    "name": "Hot Since 82",
+    "artist": "Hot Since 82",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T03:00:00Z",
@@ -1261,7 +1261,7 @@
   },
   {
     "id": "2025-127",
-    "name": "Francis Mercier",
+    "artist": "Francis Mercier",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": "2025-08-08T04:30:00Z",
@@ -1271,7 +1271,7 @@
   },
   {
     "id": "2025-128",
-    "name": "SouveQ & LERM",
+    "artist": "SouveQ & LERM",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T16:00:00Z",
@@ -1281,7 +1281,7 @@
   },
   {
     "id": "2025-129",
-    "name": "Raasa",
+    "artist": "Raasa",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T17:00:00Z",
@@ -1291,7 +1291,7 @@
   },
   {
     "id": "2025-130",
-    "name": "Sobek",
+    "artist": "Sobek",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T18:00:00Z",
@@ -1301,7 +1301,7 @@
   },
   {
     "id": "2025-131",
-    "name": "Secret Factory",
+    "artist": "Secret Factory",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T19:30:00Z",
@@ -1311,7 +1311,7 @@
   },
   {
     "id": "2025-132",
-    "name": "Vomee",
+    "artist": "Vomee",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T21:00:00Z",
@@ -1321,7 +1321,7 @@
   },
   {
     "id": "2025-133",
-    "name": "Shimza",
+    "artist": "Shimza",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T22:30:00Z",
@@ -1331,7 +1331,7 @@
   },
   {
     "id": "2025-134",
-    "name": "Bedouin",
+    "artist": "Bedouin",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T00:00:00Z",
@@ -1341,7 +1341,7 @@
   },
   {
     "id": "2025-135",
-    "name": "Âme DJ Set b2b Trikk",
+    "artist": "Âme DJ Set b2b Trikk",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T01:30:00Z",
@@ -1351,7 +1351,7 @@
   },
   {
     "id": "2025-136",
-    "name": "Kölsch",
+    "artist": "Kölsch",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T03:00:00Z",
@@ -1361,7 +1361,7 @@
   },
   {
     "id": "2025-137",
-    "name": "Âme Live",
+    "artist": "Âme Live",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": "2025-08-09T04:30:00Z",
@@ -1371,7 +1371,7 @@
   },
   {
     "id": "2025-138",
-    "name": "Shabaam",
+    "artist": "Shabaam",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T16:00:00Z",
@@ -1381,7 +1381,7 @@
   },
   {
     "id": "2025-139",
-    "name": "Dave Wincent",
+    "artist": "Dave Wincent",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T17:30:00Z",
@@ -1391,7 +1391,7 @@
   },
   {
     "id": "2025-140",
-    "name": "SanFranciscoBeat",
+    "artist": "SanFranciscoBeat",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T19:00:00Z",
@@ -1401,7 +1401,7 @@
   },
   {
     "id": "2025-141",
-    "name": "HOT X",
+    "artist": "HOT X",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T20:30:00Z",
@@ -1411,7 +1411,7 @@
   },
   {
     "id": "2025-142",
-    "name": "Elli Acula",
+    "artist": "Elli Acula",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
@@ -1421,7 +1421,7 @@
   },
   {
     "id": "2025-143",
-    "name": "Estella Boersma",
+    "artist": "Estella Boersma",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
@@ -1431,7 +1431,7 @@
   },
   {
     "id": "2025-144",
-    "name": "FJAAK",
+    "artist": "FJAAK",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T01:00:00Z",
@@ -1441,7 +1441,7 @@
   },
   {
     "id": "2025-145",
-    "name": "Chris Liebing",
+    "artist": "Chris Liebing",
     "stage": "Yettel Colosseum",
     "day": "Sunday",
     "startTime": "2025-08-10T03:00:00Z",
@@ -1451,7 +1451,7 @@
   },
   {
     "id": "2025-146",
-    "name": "Daniel Moritz",
+    "artist": "Daniel Moritz",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
@@ -1461,7 +1461,7 @@
   },
   {
     "id": "2025-147",
-    "name": "Tolo & Falcao (LavaLava)",
+    "artist": "Tolo & Falcao (LavaLava)",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
@@ -1471,7 +1471,7 @@
   },
   {
     "id": "2025-148",
-    "name": "Sally C",
+    "artist": "Sally C",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T18:30:00Z",
@@ -1481,7 +1481,7 @@
   },
   {
     "id": "2025-149",
-    "name": "Desiree",
+    "artist": "Desiree",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T20:00:00Z",
@@ -1491,7 +1491,7 @@
   },
   {
     "id": "2025-150",
-    "name": "Jimi Jules",
+    "artist": "Jimi Jules",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T21:30:00Z",
@@ -1501,7 +1501,7 @@
   },
   {
     "id": "2025-151",
-    "name": "Eliza Rose",
+    "artist": "Eliza Rose",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T23:00:00Z",
@@ -1511,7 +1511,7 @@
   },
   {
     "id": "2025-152",
-    "name": "Fatima Yamaha",
+    "artist": "Fatima Yamaha",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T00:45:00Z",
@@ -1521,7 +1521,7 @@
   },
   {
     "id": "2025-153",
-    "name": "The Blessed Madonna",
+    "artist": "The Blessed Madonna",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T02:00:00Z",
@@ -1531,7 +1531,7 @@
   },
   {
     "id": "2025-154",
-    "name": "Young Marco",
+    "artist": "Young Marco",
     "stage": "Yettel Colosseum",
     "day": "Monday",
     "startTime": "2025-08-11T03:30:00Z",
@@ -1541,7 +1541,7 @@
   },
   {
     "id": "2025-155",
-    "name": "Budai House Clique (Colbora, Hoffmann)",
+    "artist": "Budai House Clique (Colbora, Hoffmann)",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
@@ -1551,7 +1551,7 @@
   },
   {
     "id": "2025-156",
-    "name": "Franc Fala",
+    "artist": "Franc Fala",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:30:00Z",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "2025-157",
-    "name": "STRYV",
+    "artist": "STRYV",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
     "startTime": "2025-08-06T02:00:00Z",
@@ -1571,7 +1571,7 @@
   },
   {
     "id": "2025-158",
-    "name": "dublon",
+    "artist": "dublon",
     "stage": "The Club by Don Julio",
     "day": "Wednesday",
     "startTime": "2025-08-06T03:30:00Z",
@@ -1581,7 +1581,7 @@
   },
   {
     "id": "2025-159",
-    "name": "Galactixx",
+    "artist": "Galactixx",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T22:00:00Z",
@@ -1591,7 +1591,7 @@
   },
   {
     "id": "2025-160",
-    "name": "Bass Chaserz",
+    "artist": "Bass Chaserz",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T23:15:00Z",
@@ -1601,7 +1601,7 @@
   },
   {
     "id": "2025-161",
-    "name": "Villain",
+    "artist": "Villain",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T00:30:00Z",
@@ -1611,7 +1611,7 @@
   },
   {
     "id": "2025-162",
-    "name": "Sound Rush",
+    "artist": "Sound Rush",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T01:30:00Z",
@@ -1621,7 +1621,7 @@
   },
   {
     "id": "2025-163",
-    "name": "Zatox",
+    "artist": "Zatox",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T02:45:00Z",
@@ -1631,7 +1631,7 @@
   },
   {
     "id": "2025-164",
-    "name": "Endymion",
+    "artist": "Endymion",
     "stage": "The Club by Don Julio",
     "day": "Thursday",
     "startTime": "2025-08-07T04:00:00Z",
@@ -1641,7 +1641,7 @@
   },
   {
     "id": "2025-165",
-    "name": "Syndanz (Jáky Chan b2b mkls)",
+    "artist": "Syndanz (Jáky Chan b2b mkls)",
     "stage": "The Club by Don Julio",
     "day": "Friday",
     "startTime": "2025-08-08T22:00:00Z",
@@ -1651,7 +1651,7 @@
   },
   {
     "id": "2025-166",
-    "name": "DJ Seinfeld",
+    "artist": "DJ Seinfeld",
     "stage": "The Club by Don Julio",
     "day": "Friday",
     "startTime": "2025-08-08T00:00:00Z",
@@ -1661,7 +1661,7 @@
   },
   {
     "id": "2025-167",
-    "name": "Juicy Romance",
+    "artist": "Juicy Romance",
     "stage": "The Club by Don Julio",
     "day": "Friday",
     "startTime": "2025-08-08T01:30:00Z",
@@ -1671,7 +1671,7 @@
   },
   {
     "id": "2025-168",
-    "name": "Superstrings",
+    "artist": "Superstrings",
     "stage": "The Club by Don Julio",
     "day": "Friday",
     "startTime": "2025-08-08T03:00:00Z",
@@ -1681,7 +1681,7 @@
   },
   {
     "id": "2025-169",
-    "name": "NoFear (Axydent & Akác & Technokool)",
+    "artist": "NoFear (Axydent & Akác & Technokool)",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
     "startTime": "2025-08-09T22:00:00Z",
@@ -1691,7 +1691,7 @@
   },
   {
     "id": "2025-170",
-    "name": "Raven",
+    "artist": "Raven",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
     "startTime": "2025-08-09T02:30:00Z",
@@ -1701,7 +1701,7 @@
   },
   {
     "id": "2025-171",
-    "name": "Kitti Kay",
+    "artist": "Kitti Kay",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
     "startTime": "2025-08-09T04:00:00Z",
@@ -1711,7 +1711,7 @@
   },
   {
     "id": "2025-172",
-    "name": "Jauri",
+    "artist": "Jauri",
     "stage": "The Club by Don Julio",
     "day": "Saturday",
     "startTime": "2025-08-09T05:00:00Z",
@@ -1721,7 +1721,7 @@
   },
   {
     "id": "2025-173",
-    "name": "Galactic Jackson",
+    "artist": "Galactic Jackson",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T22:00:00Z",
@@ -1731,7 +1731,7 @@
   },
   {
     "id": "2025-174",
-    "name": "Bernathy",
+    "artist": "Bernathy",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T23:30:00Z",
@@ -1741,7 +1741,7 @@
   },
   {
     "id": "2025-175",
-    "name": "DJ BORING",
+    "artist": "DJ BORING",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T01:00:00Z",
@@ -1751,7 +1751,7 @@
   },
   {
     "id": "2025-176",
-    "name": "1-800 GIRLS",
+    "artist": "1-800 GIRLS",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T02:30:00Z",
@@ -1761,7 +1761,7 @@
   },
   {
     "id": "2025-177",
-    "name": "Hundred Sins (DJ set)",
+    "artist": "Hundred Sins (DJ set)",
     "stage": "The Club by Don Julio",
     "day": "Sunday",
     "startTime": "2025-08-10T04:00:00Z",
@@ -1771,7 +1771,7 @@
   },
   {
     "id": "2025-178",
-    "name": "Dj 412 & Dj Aristopunk",
+    "artist": "Dj 412 & Dj Aristopunk",
     "stage": "The Club by Don Julio",
     "day": "Monday",
     "startTime": "2025-08-11T22:00:00Z",
@@ -1781,7 +1781,7 @@
   },
   {
     "id": "2025-179",
-    "name": "Big Wett",
+    "artist": "Big Wett",
     "stage": "The Club by Don Julio",
     "day": "Monday",
     "startTime": "2025-08-11T01:00:00Z",
@@ -1791,7 +1791,7 @@
   },
   {
     "id": "2025-180",
-    "name": "Garçons",
+    "artist": "Garçons",
     "stage": "The Club by Don Julio",
     "day": "Monday",
     "startTime": "2025-08-11T01:45:00Z",
@@ -1801,7 +1801,7 @@
   },
   {
     "id": "2025-181",
-    "name": "Sandbox : Ferdinand Kornel, Nora Matisse",
+    "artist": "Sandbox : Ferdinand Kornel, Nora Matisse",
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:00:00Z",
@@ -1811,7 +1811,7 @@
   },
   {
     "id": "2025-182",
-    "name": "Consule",
+    "artist": "Consule",
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:00:00Z",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "2025-183",
-    "name": "Jean Tonique",
+    "artist": "Jean Tonique",
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T21:00:00Z",
@@ -1831,7 +1831,7 @@
   },
   {
     "id": "2025-184",
-    "name": "Selecta : Gemcamp, baeker, quera",
+    "artist": "Selecta : Gemcamp, baeker, quera",
     "stage": "Sziget Beach",
     "day": "Wednesday",
     "startTime": "2025-08-06T22:00:00Z",
@@ -1841,7 +1841,7 @@
   },
   {
     "id": "2025-185",
-    "name": "The Tribe : SanBan, Botsie, Oliv:R, Zentie",
+    "artist": "The Tribe : SanBan, Botsie, Oliv:R, Zentie",
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T11:30:00Z",
@@ -1851,7 +1851,7 @@
   },
   {
     "id": "2025-186",
-    "name": "Nomads",
+    "artist": "Nomads",
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T17:00:00Z",
@@ -1861,7 +1861,7 @@
   },
   {
     "id": "2025-187",
-    "name": "Palo Canto",
+    "artist": "Palo Canto",
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T19:30:00Z",
@@ -1871,7 +1871,7 @@
   },
   {
     "id": "2025-188",
-    "name": "Sandbox : Benene, Ferdinand Kornel, Nora Matisse",
+    "artist": "Sandbox : Benene, Ferdinand Kornel, Nora Matisse",
     "stage": "Sziget Beach",
     "day": "Thursday",
     "startTime": "2025-08-07T21:00:00Z",
@@ -1881,7 +1881,7 @@
   },
   {
     "id": "2025-189",
-    "name": "Hulable : paller2000, Schatzi, Filinus, Spiritos, Mexalen, Richard Godollei",
+    "artist": "Hulable : paller2000, Schatzi, Filinus, Spiritos, Mexalen, Richard Godollei",
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T11:30:00Z",
@@ -1891,7 +1891,7 @@
   },
   {
     "id": "2025-190",
-    "name": "Budapest Calling : Nortio, Fury, George Jr.",
+    "artist": "Budapest Calling : Nortio, Fury, George Jr.",
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T19:30:00Z",
@@ -1901,7 +1901,7 @@
   },
   {
     "id": "2025-191",
-    "name": "KBT Live",
+    "artist": "KBT Live",
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T00:00:00Z",
@@ -1911,7 +1911,7 @@
   },
   {
     "id": "2025-192",
-    "name": "Budapest Calling : Nortio, Fury, George Jr.",
+    "artist": "Budapest Calling : Nortio, Fury, George Jr.",
     "stage": "Sziget Beach",
     "day": "Friday",
     "startTime": "2025-08-08T01:00:00Z",
@@ -1921,7 +1921,7 @@
   },
   {
     "id": "2025-193",
-    "name": "City Matiné : Captain Knuckles, Dj Syncbutton, Enbébi, Geopard Tourist, Kobanya3000, Sabani Sobek, Tempomat",
+    "artist": "City Matiné : Captain Knuckles, Dj Syncbutton, Enbébi, Geopard Tourist, Kobanya3000, Sabani Sobek, Tempomat",
     "stage": "Sziget Beach",
     "day": "Saturday",
     "startTime": "2025-08-09T11:30:00Z",
@@ -1931,7 +1931,7 @@
   },
   {
     "id": "2025-194",
-    "name": "Azami",
+    "artist": "Azami",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T11:30:00Z",
@@ -1941,7 +1941,7 @@
   },
   {
     "id": "2025-195",
-    "name": "Zituli Space Project",
+    "artist": "Zituli Space Project",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T14:30:00Z",
@@ -1951,7 +1951,7 @@
   },
   {
     "id": "2025-196",
-    "name": "Dj Karol Diac",
+    "artist": "Dj Karol Diac",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T15:30:00Z",
@@ -1961,7 +1961,7 @@
   },
   {
     "id": "2025-197",
-    "name": "Be Massive : Abertura, Dubecticut, Robert Makai, Somazed, Lenny Lenoks",
+    "artist": "Be Massive : Abertura, Dubecticut, Robert Makai, Somazed, Lenny Lenoks",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T17:00:00Z",
@@ -1971,7 +1971,7 @@
   },
   {
     "id": "2025-198",
-    "name": "Eclipse Bali : Panther, Doma, Zlatnik",
+    "artist": "Eclipse Bali : Panther, Doma, Zlatnik",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T21:00:00Z",
@@ -1981,7 +1981,7 @@
   },
   {
     "id": "2025-199",
-    "name": "Populous",
+    "artist": "Populous",
     "stage": "Sziget Beach",
     "day": "Sunday",
     "startTime": "2025-08-10T00:00:00Z",
@@ -1991,7 +1991,7 @@
   },
   {
     "id": "2025-200",
-    "name": "MANIMO",
+    "artist": "MANIMO",
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T11:30:00Z",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "2025-201",
-    "name": "Syncope (live)",
+    "artist": "Syncope (live)",
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T16:00:00Z",
@@ -2011,7 +2011,7 @@
   },
   {
     "id": "2025-202",
-    "name": "OIEE",
+    "artist": "OIEE",
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T17:00:00Z",
@@ -2021,7 +2021,7 @@
   },
   {
     "id": "2025-203",
-    "name": "Walter Astral",
+    "artist": "Walter Astral",
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T18:00:00Z",
@@ -2031,7 +2031,7 @@
   },
   {
     "id": "2025-204",
-    "name": "Syndanz : Jaky Chan, mkls, Eliezer, AM I ME",
+    "artist": "Syndanz : Jaky Chan, mkls, Eliezer, AM I ME",
     "stage": "Sziget Beach",
     "day": "Monday",
     "startTime": "2025-08-11T19:00:00Z",
@@ -2041,7 +2041,7 @@
   },
   {
     "id": "2025-205",
-    "name": "Sahra Halgan",
+    "artist": "Sahra Halgan",
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T17:10:00Z",
@@ -2051,7 +2051,7 @@
   },
   {
     "id": "2025-206",
-    "name": "Thumpasaurus",
+    "artist": "Thumpasaurus",
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:40:00Z",
@@ -2061,7 +2061,7 @@
   },
   {
     "id": "2025-207",
-    "name": "Fast Animals & Slow Kids",
+    "artist": "Fast Animals & Slow Kids",
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:10:00Z",
@@ -2071,7 +2071,7 @@
   },
   {
     "id": "2025-208",
-    "name": "Personal Trainer",
+    "artist": "Personal Trainer",
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
@@ -2081,7 +2081,7 @@
   },
   {
     "id": "2025-209",
-    "name": "Julien Granel",
+    "artist": "Julien Granel",
     "stage": "The Buzz",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:40:00Z",
@@ -2091,7 +2091,7 @@
   },
   {
     "id": "2025-210",
-    "name": "Kin'gongolo Kiniata",
+    "artist": "Kin'gongolo Kiniata",
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T17:10:00Z",
@@ -2101,7 +2101,7 @@
   },
   {
     "id": "2025-211",
-    "name": "Woomb",
+    "artist": "Woomb",
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T18:40:00Z",
@@ -2111,7 +2111,7 @@
   },
   {
     "id": "2025-212",
-    "name": "Ivan & the Parazol",
+    "artist": "Ivan & the Parazol",
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T20:10:00Z",
@@ -2121,7 +2121,7 @@
   },
   {
     "id": "2025-213",
-    "name": "Last Train",
+    "artist": "Last Train",
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
@@ -2131,7 +2131,7 @@
   },
   {
     "id": "2025-214",
-    "name": "Kamrad",
+    "artist": "Kamrad",
     "stage": "The Buzz",
     "day": "Thursday",
     "startTime": "2025-08-07T00:40:00Z",
@@ -2141,7 +2141,7 @@
   },
   {
     "id": "2025-215",
-    "name": "Radix",
+    "artist": "Radix",
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T18:40:00Z",
@@ -2151,7 +2151,7 @@
   },
   {
     "id": "2025-216",
-    "name": "EKKSTACY",
+    "artist": "EKKSTACY",
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T20:10:00Z",
@@ -2161,7 +2161,7 @@
   },
   {
     "id": "2025-217",
-    "name": "Parno Graszt",
+    "artist": "Parno Graszt",
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T22:50:00Z",
@@ -2171,7 +2171,7 @@
   },
   {
     "id": "2025-218",
-    "name": "Beton.Hofi",
+    "artist": "Beton.Hofi",
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T00:20:00Z",
@@ -2181,7 +2181,7 @@
   },
   {
     "id": "2025-219",
-    "name": "Malalata",
+    "artist": "Malalata",
     "stage": "The Buzz",
     "day": "Friday",
     "startTime": "2025-08-08T02:10:00Z",
@@ -2191,7 +2191,7 @@
   },
   {
     "id": "2025-220",
-    "name": "Rumbaristas",
+    "artist": "Rumbaristas",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T17:10:00Z",
@@ -2201,7 +2201,7 @@
   },
   {
     "id": "2025-221",
-    "name": "The Wellermen",
+    "artist": "The Wellermen",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T18:40:00Z",
@@ -2211,7 +2211,7 @@
   },
   {
     "id": "2025-222",
-    "name": "Bohemian Betyars",
+    "artist": "Bohemian Betyars",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T20:10:00Z",
@@ -2221,7 +2221,7 @@
   },
   {
     "id": "2025-223",
-    "name": "Kazi Lambyst",
+    "artist": "Kazi Lambyst",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
@@ -2231,7 +2231,7 @@
   },
   {
     "id": "2025-224",
-    "name": "Analog Balaton",
+    "artist": "Analog Balaton",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T00:40:00Z",
@@ -2241,7 +2241,7 @@
   },
   {
     "id": "2025-225",
-    "name": "Bearcubs",
+    "artist": "Bearcubs",
     "stage": "The Buzz",
     "day": "Saturday",
     "startTime": "2025-08-09T02:10:00Z",
@@ -2251,7 +2251,7 @@
   },
   {
     "id": "2025-226",
-    "name": "MAZ Universe",
+    "artist": "MAZ Universe",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T17:10:00Z",
@@ -2261,7 +2261,7 @@
   },
   {
     "id": "2025-227",
-    "name": "Call Me Karizma",
+    "artist": "Call Me Karizma",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T18:40:00Z",
@@ -2271,7 +2271,7 @@
   },
   {
     "id": "2025-228",
-    "name": "Hanabie.",
+    "artist": "Hanabie.",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T20:10:00Z",
@@ -2281,7 +2281,7 @@
   },
   {
     "id": "2025-229",
-    "name": "Sofia Isella",
+    "artist": "Sofia Isella",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
@@ -2291,7 +2291,7 @@
   },
   {
     "id": "2025-230",
-    "name": "Hundreds Sin Live",
+    "artist": "Hundreds Sin Live",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T00:40:00Z",
@@ -2301,7 +2301,7 @@
   },
   {
     "id": "2025-231",
-    "name": "JOUBe",
+    "artist": "JOUBe",
     "stage": "The Buzz",
     "day": "Sunday",
     "startTime": "2025-08-10T02:10:00Z",
@@ -2311,7 +2311,7 @@
   },
   {
     "id": "2025-232",
-    "name": "Lavina",
+    "artist": "Lavina",
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T17:10:00Z",
@@ -2321,7 +2321,7 @@
   },
   {
     "id": "2025-233",
-    "name": "Kingfishr",
+    "artist": "Kingfishr",
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T18:40:00Z",
@@ -2331,7 +2331,7 @@
   },
   {
     "id": "2025-234",
-    "name": "Hollow Coves",
+    "artist": "Hollow Coves",
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T20:10:00Z",
@@ -2341,7 +2341,7 @@
   },
   {
     "id": "2025-235",
-    "name": "Casey Lowery",
+    "artist": "Casey Lowery",
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
@@ -2351,7 +2351,7 @@
   },
   {
     "id": "2025-236",
-    "name": "Platon Karataev",
+    "artist": "Platon Karataev",
     "stage": "The Buzz",
     "day": "Monday",
     "startTime": "2025-08-11T00:40:00Z",
@@ -2361,7 +2361,7 @@
   },
   {
     "id": "2025-237",
-    "name": "Wxlfless",
+    "artist": "Wxlfless",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:00:00Z",
@@ -2371,7 +2371,7 @@
   },
   {
     "id": "2025-238",
-    "name": "Davodka",
+    "artist": "Davodka",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T19:00:00Z",
@@ -2381,7 +2381,7 @@
   },
   {
     "id": "2025-239",
-    "name": "Nura",
+    "artist": "Nura",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:15:00Z",
@@ -2391,7 +2391,7 @@
   },
   {
     "id": "2025-240",
-    "name": "Peet",
+    "artist": "Peet",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
@@ -2401,7 +2401,7 @@
   },
   {
     "id": "2025-241",
-    "name": "Backspin DJ Night: Figub Brazlevic, DJ Cutrock, Marc Hype, DJ Lala",
+    "artist": "Backspin DJ Night: Figub Brazlevic, DJ Cutrock, Marc Hype, DJ Lala",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:15:00Z",
@@ -2411,7 +2411,7 @@
   },
   {
     "id": "2025-242",
-    "name": "Cancel.",
+    "artist": "Cancel.",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T18:00:00Z",
@@ -2421,7 +2421,7 @@
   },
   {
     "id": "2025-243",
-    "name": "Bawo",
+    "artist": "Bawo",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T19:00:00Z",
@@ -2431,7 +2431,7 @@
   },
   {
     "id": "2025-244",
-    "name": "KiLLOWEN",
+    "artist": "KiLLOWEN",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T20:15:00Z",
@@ -2441,7 +2441,7 @@
   },
   {
     "id": "2025-245",
-    "name": "Cristale",
+    "artist": "Cristale",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
@@ -2451,7 +2451,7 @@
   },
   {
     "id": "2025-246",
-    "name": "VD presents: Vunzige Deuntjes Sound System + MC Claudio, Rockefellababe, WEF",
+    "artist": "VD presents: Vunzige Deuntjes Sound System + MC Claudio, Rockefellababe, WEF",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": "2025-08-07T00:15:00Z",
@@ -2461,7 +2461,7 @@
   },
   {
     "id": "2025-247",
-    "name": "Sisi",
+    "artist": "Sisi",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T18:00:00Z",
@@ -2471,7 +2471,7 @@
   },
   {
     "id": "2025-248",
-    "name": "Beba",
+    "artist": "Beba",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T19:00:00Z",
@@ -2481,7 +2481,7 @@
   },
   {
     "id": "2025-249",
-    "name": "Theodora",
+    "artist": "Theodora",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T20:15:00Z",
@@ -2491,7 +2491,7 @@
   },
   {
     "id": "2025-250",
-    "name": "Mula B",
+    "artist": "Mula B",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T23:10:00Z",
@@ -2501,7 +2501,7 @@
   },
   {
     "id": "2025-251",
-    "name": "NCT & Friends: Yue, NCT, T & Sugah, Ekko & Sidetrack, Gladde Paling",
+    "artist": "NCT & Friends: Yue, NCT, T & Sugah, Ekko & Sidetrack, Gladde Paling",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": "2025-08-08T00:15:00Z",
@@ -2511,7 +2511,7 @@
   },
   {
     "id": "2025-252",
-    "name": "Sorvina",
+    "artist": "Sorvina",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T18:00:00Z",
@@ -2521,7 +2521,7 @@
   },
   {
     "id": "2025-253",
-    "name": "Djam & Timo",
+    "artist": "Djam & Timo",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T19:00:00Z",
@@ -2531,7 +2531,7 @@
   },
   {
     "id": "2025-254",
-    "name": "Feux",
+    "artist": "Feux",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T20:15:00Z",
@@ -2541,7 +2541,7 @@
   },
   {
     "id": "2025-255",
-    "name": "Dr. Meaker (live)",
+    "artist": "Dr. Meaker (live)",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
@@ -2551,7 +2551,7 @@
   },
   {
     "id": "2025-256",
-    "name": "Bladerunnaz Night: Unglued + MC PVC + Chris.SU + Incident + Markov + Ninive",
+    "artist": "Bladerunnaz Night: Unglued + MC PVC + Chris.SU + Incident + Markov + Ninive",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": "2025-08-09T00:15:00Z",
@@ -2561,7 +2561,7 @@
   },
   {
     "id": "2025-257",
-    "name": "Lil Frakk",
+    "artist": "Lil Frakk",
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T18:00:00Z",
@@ -2571,7 +2571,7 @@
   },
   {
     "id": "2025-258",
-    "name": "EV",
+    "artist": "EV",
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T19:00:00Z",
@@ -2581,7 +2581,7 @@
   },
   {
     "id": "2025-259",
-    "name": "18K",
+    "artist": "18K",
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T20:15:00Z",
@@ -2591,7 +2591,7 @@
   },
   {
     "id": "2025-260",
-    "name": "Strandz",
+    "artist": "Strandz",
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
@@ -2601,7 +2601,7 @@
   },
   {
     "id": "2025-261",
-    "name": "Halfpipe Records Night: Albre + Emionskis + Lespol",
+    "artist": "Halfpipe Records Night: Albre + Emionskis + Lespol",
     "stage": "dropYard",
     "day": "Sunday",
     "startTime": "2025-08-10T00:15:00Z",
@@ -2611,7 +2611,7 @@
   },
   {
     "id": "2025-262",
-    "name": "RUSIIICK",
+    "artist": "RUSIIICK",
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T18:00:00Z",
@@ -2621,7 +2621,7 @@
   },
   {
     "id": "2025-263",
-    "name": "beatboxeurope.com presents: Robin, Kowler Rangers, Meone, Kristof7s, Rythmind",
+    "artist": "beatboxeurope.com presents: Robin, Kowler Rangers, Meone, Kristof7s, Rythmind",
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T19:00:00Z",
@@ -2631,7 +2631,7 @@
   },
   {
     "id": "2025-264",
-    "name": "Mirror Glimpse",
+    "artist": "Mirror Glimpse",
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
@@ -2641,7 +2641,7 @@
   },
   {
     "id": "2025-265",
-    "name": "ANDA Electronix (LIVE) w/ Ceciel Moyano, Ferré & Samwho",
+    "artist": "ANDA Electronix (LIVE) w/ Ceciel Moyano, Ferré & Samwho",
     "stage": "dropYard",
     "day": "Monday",
     "startTime": "2025-08-11T00:15:00Z",
@@ -2651,7 +2651,7 @@
   },
   {
     "id": "2025-266",
-    "name": "Stone Sober",
+    "artist": "Stone Sober",
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T18:40:00Z",
@@ -2661,7 +2661,7 @@
   },
   {
     "id": "2025-267",
-    "name": "Dimitri's Bats",
+    "artist": "Dimitri's Bats",
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T20:10:00Z",
@@ -2671,7 +2671,7 @@
   },
   {
     "id": "2025-268",
-    "name": "ABBA Tribute Show",
+    "artist": "ABBA Tribute Show",
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:10:00Z",
@@ -2681,7 +2681,7 @@
   },
   {
     "id": "2025-269",
-    "name": "Don4t Stop the Queen",
+    "artist": "Don4t Stop the Queen",
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T00:40:00Z",
@@ -2691,7 +2691,7 @@
   },
   {
     "id": "2025-270",
-    "name": "80's Party by DJL",
+    "artist": "80's Party by DJL",
     "stage": "Jukebox",
     "day": "Wednesday",
     "startTime": "2025-08-06T01:45:00Z",
@@ -2701,7 +2701,7 @@
   },
   {
     "id": "2025-271",
-    "name": "Berlin Manson",
+    "artist": "Berlin Manson",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T17:10:00Z",
@@ -2711,7 +2711,7 @@
   },
   {
     "id": "2025-272",
-    "name": "Wires",
+    "artist": "Wires",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T18:40:00Z",
@@ -2721,7 +2721,7 @@
   },
   {
     "id": "2025-273",
-    "name": "Flaire",
+    "artist": "Flaire",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T20:10:00Z",
@@ -2731,7 +2731,7 @@
   },
   {
     "id": "2025-274",
-    "name": "Revenge of Synth",
+    "artist": "Revenge of Synth",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T23:10:00Z",
@@ -2741,7 +2741,7 @@
   },
   {
     "id": "2025-275",
-    "name": "The Rays - David Bowie Tribute",
+    "artist": "The Rays - David Bowie Tribute",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T00:40:00Z",
@@ -2751,7 +2751,7 @@
   },
   {
     "id": "2025-276",
-    "name": "Bailando Latin Night",
+    "artist": "Bailando Latin Night",
     "stage": "Jukebox",
     "day": "Thursday",
     "startTime": "2025-08-07T01:45:00Z",
@@ -2761,7 +2761,7 @@
   },
   {
     "id": "2025-277",
-    "name": "Huvos",
+    "artist": "Huvos",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T17:10:00Z",
@@ -2771,7 +2771,7 @@
   },
   {
     "id": "2025-278",
-    "name": "LAZARVS",
+    "artist": "LAZARVS",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T18:40:00Z",
@@ -2781,7 +2781,7 @@
   },
   {
     "id": "2025-279",
-    "name": "Mihail",
+    "artist": "Mihail",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T20:10:00Z",
@@ -2791,7 +2791,7 @@
   },
   {
     "id": "2025-280",
-    "name": "Tribute Live Aids",
+    "artist": "Tribute Live Aids",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T23:10:00Z",
@@ -2801,7 +2801,7 @@
   },
   {
     "id": "2025-281",
-    "name": "The Blackbirds",
+    "artist": "The Blackbirds",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T00:40:00Z",
@@ -2811,7 +2811,7 @@
   },
   {
     "id": "2025-282",
-    "name": "Los Santos Party",
+    "artist": "Los Santos Party",
     "stage": "Jukebox",
     "day": "Friday",
     "startTime": "2025-08-08T01:45:00Z",
@@ -2821,7 +2821,7 @@
   },
   {
     "id": "2025-283",
-    "name": "Kisbetus Unnepnapok",
+    "artist": "Kisbetus Unnepnapok",
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T17:10:00Z",
@@ -2831,7 +2831,7 @@
   },
   {
     "id": "2025-284",
-    "name": "Saya Noé",
+    "artist": "Saya Noé",
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T18:40:00Z",
@@ -2841,7 +2841,7 @@
   },
   {
     "id": "2025-285",
-    "name": "Aiko",
+    "artist": "Aiko",
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T20:10:00Z",
@@ -2851,7 +2851,7 @@
   },
   {
     "id": "2025-286",
-    "name": "LL Junior",
+    "artist": "LL Junior",
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T23:10:00Z",
@@ -2861,7 +2861,7 @@
   },
   {
     "id": "2025-287",
-    "name": "NECC PARTY",
+    "artist": "NECC PARTY",
     "stage": "Jukebox",
     "day": "Saturday",
     "startTime": "2025-08-09T00:40:00Z",
@@ -2871,7 +2871,7 @@
   },
   {
     "id": "2025-288",
-    "name": "Kolibri",
+    "artist": "Kolibri",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T17:10:00Z",
@@ -2881,7 +2881,7 @@
   },
   {
     "id": "2025-289",
-    "name": "SONYA",
+    "artist": "SONYA",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T18:40:00Z",
@@ -2891,7 +2891,7 @@
   },
   {
     "id": "2025-290",
-    "name": "Moriones",
+    "artist": "Moriones",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T20:10:00Z",
@@ -2901,7 +2901,7 @@
   },
   {
     "id": "2025-291",
-    "name": "VINI",
+    "artist": "VINI",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T23:10:00Z",
@@ -2911,7 +2911,7 @@
   },
   {
     "id": "2025-292",
-    "name": "Bruno x Spacc",
+    "artist": "Bruno x Spacc",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T23:45:00Z",
@@ -2921,7 +2921,7 @@
   },
   {
     "id": "2025-293",
-    "name": "Eberkoma",
+    "artist": "Eberkoma",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T00:50:00Z",
@@ -2931,7 +2931,7 @@
   },
   {
     "id": "2025-294",
-    "name": "Bailando Latin Night",
+    "artist": "Bailando Latin Night",
     "stage": "Jukebox",
     "day": "Sunday",
     "startTime": "2025-08-10T01:45:00Z",
@@ -2941,7 +2941,7 @@
   },
   {
     "id": "2025-295",
-    "name": "FILO Live",
+    "artist": "FILO Live",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T17:10:00Z",
@@ -2951,7 +2951,7 @@
   },
   {
     "id": "2025-296",
-    "name": "Szabikeys x Juhasz Zoli",
+    "artist": "Szabikeys x Juhasz Zoli",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T18:40:00Z",
@@ -2961,7 +2961,7 @@
   },
   {
     "id": "2025-297",
-    "name": "I Love You Honey Bunny",
+    "artist": "I Love You Honey Bunny",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T20:10:00Z",
@@ -2971,7 +2971,7 @@
   },
   {
     "id": "2025-298",
-    "name": "Rage Against the Machine Tribute",
+    "artist": "Rage Against the Machine Tribute",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T23:10:00Z",
@@ -2981,7 +2981,7 @@
   },
   {
     "id": "2025-299",
-    "name": "Sziami and Friends",
+    "artist": "Sziami and Friends",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T00:40:00Z",
@@ -2991,7 +2991,7 @@
   },
   {
     "id": "2025-300",
-    "name": "Taylor Swift Night",
+    "artist": "Taylor Swift Night",
     "stage": "Jukebox",
     "day": "Monday",
     "startTime": "2025-08-11T01:45:00Z",
@@ -3001,7 +3001,7 @@
   },
   {
     "id": "2025-301",
-    "name": "The Generation",
+    "artist": "The Generation",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T13:00:00Z",
@@ -3011,7 +3011,7 @@
   },
   {
     "id": "2025-302",
-    "name": "PALFFI",
+    "artist": "PALFFI",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T13:55:00Z",
@@ -3021,7 +3021,7 @@
   },
   {
     "id": "2025-303",
-    "name": "Materazi Future Club",
+    "artist": "Materazi Future Club",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T15:30:00Z",
@@ -3031,7 +3031,7 @@
   },
   {
     "id": "2025-304",
-    "name": "Carlo Chicco",
+    "artist": "Carlo Chicco",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T23:00:00Z",
@@ -3041,7 +3041,7 @@
   },
   {
     "id": "2025-305",
-    "name": "Eva Bloo",
+    "artist": "Eva Bloo",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T01:00:00Z",
@@ -3051,7 +3051,7 @@
   },
   {
     "id": "2025-306",
-    "name": "Kiras",
+    "artist": "Kiras",
     "stage": "Lightstage",
     "day": "Wednesday",
     "startTime": "2025-08-06T02:30:00Z",
@@ -3061,7 +3061,7 @@
   },
   {
     "id": "2025-307",
-    "name": "Bufo Alvarius",
+    "artist": "Bufo Alvarius",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T13:00:00Z",
@@ -3071,7 +3071,7 @@
   },
   {
     "id": "2025-308",
-    "name": "Jackie Mere",
+    "artist": "Jackie Mere",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T13:55:00Z",
@@ -3081,7 +3081,7 @@
   },
   {
     "id": "2025-309",
-    "name": "Anna Castiglia",
+    "artist": "Anna Castiglia",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T14:50:00Z",
@@ -3091,7 +3091,7 @@
   },
   {
     "id": "2025-310",
-    "name": "Kyoto",
+    "artist": "Kyoto",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T15:45:00Z",
@@ -3101,7 +3101,7 @@
   },
   {
     "id": "2025-311",
-    "name": "Carlo Chicco",
+    "artist": "Carlo Chicco",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T16:50:00Z",
@@ -3111,7 +3111,7 @@
   },
   {
     "id": "2025-312",
-    "name": "Fab Mayday",
+    "artist": "Fab Mayday",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T23:00:00Z",
@@ -3121,7 +3121,7 @@
   },
   {
     "id": "2025-313",
-    "name": "Carlo Chicco",
+    "artist": "Carlo Chicco",
     "stage": "Lightstage",
     "day": "Thursday",
     "startTime": "2025-08-07T01:00:00Z",
@@ -3131,7 +3131,7 @@
   },
   {
     "id": "2025-314",
-    "name": "Gobbi",
+    "artist": "Gobbi",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T13:00:00Z",
@@ -3141,7 +3141,7 @@
   },
   {
     "id": "2025-315",
-    "name": "Siska",
+    "artist": "Siska",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T13:55:00Z",
@@ -3151,7 +3151,7 @@
   },
   {
     "id": "2025-316",
-    "name": "Savana Funk",
+    "artist": "Savana Funk",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T14:50:00Z",
@@ -3161,7 +3161,7 @@
   },
   {
     "id": "2025-317",
-    "name": "Fab Mayday",
+    "artist": "Fab Mayday",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T16:50:00Z",
@@ -3171,7 +3171,7 @@
   },
   {
     "id": "2025-318",
-    "name": "AMA",
+    "artist": "AMA",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T23:00:00Z",
@@ -3181,7 +3181,7 @@
   },
   {
     "id": "2025-319",
-    "name": "Stefano di Matteo",
+    "artist": "Stefano di Matteo",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T00:30:00Z",
@@ -3191,7 +3191,7 @@
   },
   {
     "id": "2025-320",
-    "name": "Lurayana",
+    "artist": "Lurayana",
     "stage": "Lightstage",
     "day": "Friday",
     "startTime": "2025-08-08T02:00:00Z",
@@ -3201,7 +3201,7 @@
   },
   {
     "id": "2025-321",
-    "name": "Jules War",
+    "artist": "Jules War",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T13:00:00Z",
@@ -3211,7 +3211,7 @@
   },
   {
     "id": "2025-322",
-    "name": "Mazulco & IIPink",
+    "artist": "Mazulco & IIPink",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T13:55:00Z",
@@ -3221,7 +3221,7 @@
   },
   {
     "id": "2025-323",
-    "name": "Crae Wolf",
+    "artist": "Crae Wolf",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T14:50:00Z",
@@ -3231,7 +3231,7 @@
   },
   {
     "id": "2025-324",
-    "name": "Whitemary",
+    "artist": "Whitemary",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T15:45:00Z",
@@ -3241,7 +3241,7 @@
   },
   {
     "id": "2025-325",
-    "name": "Stefano di Matteo",
+    "artist": "Stefano di Matteo",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T16:50:00Z",
@@ -3251,7 +3251,7 @@
   },
   {
     "id": "2025-326",
-    "name": "Chroma Sound System",
+    "artist": "Chroma Sound System",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T23:00:00Z",
@@ -3261,7 +3261,7 @@
   },
   {
     "id": "2025-327",
-    "name": "Fab Mayday",
+    "artist": "Fab Mayday",
     "stage": "Lightstage",
     "day": "Saturday",
     "startTime": "2025-08-09T01:00:00Z",
@@ -3271,7 +3271,7 @@
   },
   {
     "id": "2025-328",
-    "name": "Made in B",
+    "artist": "Made in B",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T13:00:00Z",
@@ -3281,7 +3281,7 @@
   },
   {
     "id": "2025-329",
-    "name": "Aurevoir Sofia",
+    "artist": "Aurevoir Sofia",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T13:55:00Z",
@@ -3291,7 +3291,7 @@
   },
   {
     "id": "2025-330",
-    "name": "Comrad",
+    "artist": "Comrad",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T14:50:00Z",
@@ -3301,7 +3301,7 @@
   },
   {
     "id": "2025-331",
-    "name": "Maklikor",
+    "artist": "Maklikor",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T15:45:00Z",
@@ -3311,7 +3311,7 @@
   },
   {
     "id": "2025-332",
-    "name": "Kiras",
+    "artist": "Kiras",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T16:50:00Z",
@@ -3321,7 +3321,7 @@
   },
   {
     "id": "2025-333",
-    "name": "AMA",
+    "artist": "AMA",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T23:00:00Z",
@@ -3331,7 +3331,7 @@
   },
   {
     "id": "2025-334",
-    "name": "Chroma Soundsystem",
+    "artist": "Chroma Soundsystem",
     "stage": "Lightstage",
     "day": "Sunday",
     "startTime": "2025-08-10T01:00:00Z",
@@ -3341,7 +3341,7 @@
   },
   {
     "id": "2025-335",
-    "name": "ROSE MAY",
+    "artist": "ROSE MAY",
     "stage": "Lightstage",
     "day": "Monday",
     "startTime": "2025-08-11T13:00:00Z",
@@ -3351,7 +3351,7 @@
   },
   {
     "id": "2025-336",
-    "name": "Carsick",
+    "artist": "Carsick",
     "stage": "Lightstage",
     "day": "Monday",
     "startTime": "2025-08-11T13:55:00Z",

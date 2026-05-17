@@ -18,10 +18,28 @@ class LocalScoutRepository(private val context: Context) {
 
     private var llmInference: LlmInference? = null
     private val modelFileName = "gemma4-2b-android.bin"
-    private val modelFile = File(context.filesDir, modelFileName)
+    private val internalModelFile = File(context.filesDir, modelFileName)
+    
+    // Common tactical paths for pre-downloaded models
+    private val externalPaths = listOf(
+        "/data/local/tmp/llm/gemma4-2b-android.bin",
+        "/data/local/tmp/llm/model.bin",
+        File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "gemma4-2b-android.bin").absolutePath,
+        File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "model.bin").absolutePath
+    )
 
-    private val _isModelDownloaded = MutableStateFlow(modelFile.exists())
+    private val _isModelDownloaded = MutableStateFlow(checkIfModelExists())
     val isModelDownloaded = _isModelDownloaded.asStateFlow()
+
+    private fun checkIfModelExists(): Boolean {
+        if (internalModelFile.exists()) return true
+        return externalPaths.any { File(it).exists() }
+    }
+
+    private fun getAvailableModelPath(): String? {
+        if (internalModelFile.exists()) return internalModelFile.absolutePath
+        return externalPaths.find { File(it).exists() }
+    }
 
     private val _downloadProgress = MutableStateFlow(0f)
     val downloadProgress = _downloadProgress.asStateFlow()
@@ -36,6 +54,13 @@ class LocalScoutRepository(private val context: Context) {
         try {
             _error.value = null
             
+            // 1. Check if we already have it somewhere else first
+            val existing = getAvailableModelPath()
+            if (existing != null) {
+                _isModelDownloaded.value = true
+                return@withContext true
+            }
+
             // 1. Check Disk Space (Gemma 4 is ~1.2GB, we want 2GB free for safety)
             if (!hasEnoughSpace(2000 * 1024 * 1024L)) {
                 _error.value = "Not enough disk space (2GB required)."
@@ -48,7 +73,7 @@ class LocalScoutRepository(private val context: Context) {
             
             val totalSize = connection.contentLengthLong
             val inputStream = connection.getInputStream()
-            val outputStream = modelFile.outputStream()
+            val outputStream = internalModelFile.outputStream()
             
             val buffer = ByteArray(1024 * 1024) // 1MB buffer
             var bytesRead: Int
@@ -76,6 +101,19 @@ class LocalScoutRepository(private val context: Context) {
         }
     }
 
+    /**
+     * Force a local file system check for the model.
+     */
+    fun scanForLocalModel() {
+        val path = getAvailableModelPath()
+        if (path != null) {
+            _isModelDownloaded.value = true
+            initializeLlm()
+        } else {
+            _error.value = "No local model found. Ensure model is at /data/local/tmp/llm/gemma4-2b-android.bin"
+        }
+    }
+
     private fun hasEnoughSpace(requiredBytes: Long): Boolean {
         val stat = StatFs(context.filesDir.path)
         val availableBytes = stat.availableBlocksLong * stat.blockSizeLong
@@ -86,11 +124,11 @@ class LocalScoutRepository(private val context: Context) {
      * Initializes the LLM with the local model file.
      */
     fun initializeLlm() {
-        if (!modelFile.exists()) return
+        val path = getAvailableModelPath() ?: return
         
         try {
             val options = LlmInference.LlmInferenceOptions.builder()
-                .setModelPath(modelFile.absolutePath)
+                .setModelPath(path)
                 .setMaxTokens(512)
                 .setTopK(40)
                 .setTemperature(0.7f)

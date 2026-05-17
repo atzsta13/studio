@@ -129,6 +129,10 @@ class DiscoverViewModel(
         localScoutRepository?.initializeLlm()
     }
 
+    fun scanForLocalModel() {
+        localScoutRepository?.scanForLocalModel()
+    }
+
     fun startAcousticScout() {
         viewModelScope.launch {
             if (acousticRepository == null) return@launch

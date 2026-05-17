@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "name": "¥øu$uk€ ¥uk1mat$u",
+    "artist": "¥øu$uk€ ¥uk1mat$u",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": null,
@@ -37,7 +37,7 @@
   },
   {
     "id": "2",
-    "name": "2manydjs (Dj Set)",
+    "artist": "2manydjs (Dj Set)",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -70,7 +70,7 @@
   },
   {
     "id": "3",
-    "name": "6363",
+    "artist": "6363",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -103,7 +103,7 @@
   },
   {
     "id": "4",
-    "name": "Adis Is Ok",
+    "artist": "Adis Is Ok",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -131,7 +131,7 @@
   },
   {
     "id": "5",
-    "name": "Akac",
+    "artist": "Akac",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": null,
@@ -162,7 +162,7 @@
   },
   {
     "id": "6",
-    "name": "Alizade",
+    "artist": "Alizade",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -196,7 +196,7 @@
   },
   {
     "id": "7",
-    "name": "Alt Blk Era",
+    "artist": "Alt Blk Era",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -238,7 +238,7 @@
   },
   {
     "id": "8",
-    "name": "Altin Gun",
+    "artist": "Altin Gun",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -272,7 +272,7 @@
   },
   {
     "id": "9",
-    "name": "Ana Frango Eletrico",
+    "artist": "Ana Frango Eletrico",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -307,7 +307,7 @@
   },
   {
     "id": "10",
-    "name": "Analog Balaton",
+    "artist": "Analog Balaton",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -343,7 +343,7 @@
   },
   {
     "id": "11",
-    "name": "Anetha",
+    "artist": "Anetha",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": null,
@@ -379,7 +379,7 @@
   },
   {
     "id": "12",
-    "name": "Anfisa Letyago",
+    "artist": "Anfisa Letyago",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -411,7 +411,7 @@
   },
   {
     "id": "13",
-    "name": "Anna",
+    "artist": "Anna",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -445,7 +445,7 @@
   },
   {
     "id": "14",
-    "name": "Annisokay",
+    "artist": "Annisokay",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -480,7 +480,7 @@
   },
   {
     "id": "15",
-    "name": "Antony Szmierek",
+    "artist": "Antony Szmierek",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -515,7 +515,7 @@
   },
   {
     "id": "16",
-    "name": "Argy",
+    "artist": "Argy",
     "stage": "BOLT Night Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -550,7 +550,7 @@
   },
   {
     "id": "17",
-    "name": "Ashnikko",
+    "artist": "Ashnikko",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -585,7 +585,7 @@
   },
   {
     "id": "18",
-    "name": "Atrip",
+    "artist": "Atrip",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -617,7 +617,7 @@
   },
   {
     "id": "19",
-    "name": "Autoflower",
+    "artist": "Autoflower",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -645,7 +645,7 @@
   },
   {
     "id": "20",
-    "name": "Avralize",
+    "artist": "Avralize",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -679,7 +679,7 @@
   },
   {
     "id": "21",
-    "name": "Aws",
+    "artist": "Aws",
     "stage": "Budapest Park Stage",
     "day": "Friday",
     "startTime": null,
@@ -713,7 +713,7 @@
   },
   {
     "id": "22",
-    "name": "Baby Lasagna",
+    "artist": "Baby Lasagna",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -750,7 +750,7 @@
   },
   {
     "id": "23",
-    "name": "Bad Nerves",
+    "artist": "Bad Nerves",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -784,7 +784,7 @@
   },
   {
     "id": "24",
-    "name": "Bbno$",
+    "artist": "Bbno$",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
@@ -816,7 +816,7 @@
   },
   {
     "id": "25",
-    "name": "Belga",
+    "artist": "Belga",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -849,7 +849,7 @@
   },
   {
     "id": "26",
-    "name": "Benkane",
+    "artist": "Benkane",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -879,7 +879,7 @@
   },
   {
     "id": "27",
-    "name": "Bernathy Live",
+    "artist": "Bernathy Live",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -914,7 +914,7 @@
   },
   {
     "id": "28",
-    "name": "Beton.Hofi",
+    "artist": "Beton.Hofi",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -950,7 +950,7 @@
   },
   {
     "id": "29",
-    "name": "Bibi Seck",
+    "artist": "Bibi Seck",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -980,7 +980,7 @@
   },
   {
     "id": "30",
-    "name": "Biffy Clyro",
+    "artist": "Biffy Clyro",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "31",
-    "name": "Biia",
+    "artist": "Biia",
     "stage": "BOLT Night Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -1047,7 +1047,7 @@
   },
   {
     "id": "32",
-    "name": "Black Country, New Road",
+    "artist": "Black Country, New Road",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "33",
-    "name": "Blahalousiana",
+    "artist": "Blahalousiana",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -1113,7 +1113,7 @@
   },
   {
     "id": "34",
-    "name": "Bohemian Betyars X Parno Graszt",
+    "artist": "Bohemian Betyars X Parno Graszt",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -1144,7 +1144,7 @@
   },
   {
     "id": "35",
-    "name": "Bongor",
+    "artist": "Bongor",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1177,7 +1177,7 @@
   },
   {
     "id": "36",
-    "name": "Boys Noize",
+    "artist": "Boys Noize",
     "stage": "BOLT Night Stage",
     "day": "Thursday",
     "startTime": null,
@@ -1214,7 +1214,7 @@
   },
   {
     "id": "37",
-    "name": "Bratri",
+    "artist": "Bratri",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -1250,7 +1250,7 @@
   },
   {
     "id": "38",
-    "name": "Bring Me The Horizon",
+    "artist": "Bring Me The Horizon",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -1286,7 +1286,7 @@
   },
   {
     "id": "39",
-    "name": "Brooke Combe",
+    "artist": "Brooke Combe",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -1319,7 +1319,7 @@
   },
   {
     "id": "40",
-    "name": "Bug",
+    "artist": "Bug",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -1356,7 +1356,7 @@
   },
   {
     "id": "41",
-    "name": "Bunt.",
+    "artist": "Bunt.",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -1389,7 +1389,7 @@
   },
   {
     "id": "42",
-    "name": "Byealex Es A Slepp",
+    "artist": "Byealex Es A Slepp",
     "stage": "Budapest Park Stage",
     "day": "Thursday",
     "startTime": null,
@@ -1420,7 +1420,7 @@
   },
   {
     "id": "43",
-    "name": "Calle Mambo",
+    "artist": "Calle Mambo",
     "stage": "Global Village",
     "day": "Tuesday",
     "startTime": null,
@@ -1452,7 +1452,7 @@
   },
   {
     "id": "44",
-    "name": "Cassia",
+    "artist": "Cassia",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -1483,7 +1483,7 @@
   },
   {
     "id": "45",
-    "name": "Cc:disco!",
+    "artist": "Cc:disco!",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -1512,7 +1512,7 @@
   },
   {
     "id": "46",
-    "name": "Chadia",
+    "artist": "Chadia",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -1545,7 +1545,7 @@
   },
   {
     "id": "47",
-    "name": "Charlie Sparks",
+    "artist": "Charlie Sparks",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -1575,7 +1575,7 @@
   },
   {
     "id": "48",
-    "name": "Charlotte Cardin",
+    "artist": "Charlotte Cardin",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -1610,7 +1610,7 @@
   },
   {
     "id": "49",
-    "name": "Chet Faker",
+    "artist": "Chet Faker",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -1642,7 +1642,7 @@
   },
   {
     "id": "50",
-    "name": "Co Lee",
+    "artist": "Co Lee",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1675,7 +1675,7 @@
   },
   {
     "id": "51",
-    "name": "Coco & Breezy",
+    "artist": "Coco & Breezy",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -1710,7 +1710,7 @@
   },
   {
     "id": "52",
-    "name": "Crb",
+    "artist": "Crb",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -1738,7 +1738,7 @@
   },
   {
     "id": "53",
-    "name": "Curtisy",
+    "artist": "Curtisy",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -1770,7 +1770,7 @@
   },
   {
     "id": "54",
-    "name": "Cvrdwell Live",
+    "artist": "Cvrdwell Live",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -1802,7 +1802,7 @@
   },
   {
     "id": "55",
-    "name": "Daniel Moritz",
+    "artist": "Daniel Moritz",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -1832,7 +1832,7 @@
   },
   {
     "id": "56",
-    "name": "De'wayne",
+    "artist": "De'wayne",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -1872,7 +1872,7 @@
   },
   {
     "id": "57",
-    "name": "Deki Alem",
+    "artist": "Deki Alem",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -1908,7 +1908,7 @@
   },
   {
     "id": "58",
-    "name": "Dijon",
+    "artist": "Dijon",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -1941,7 +1941,7 @@
   },
   {
     "id": "59",
-    "name": "Dimension",
+    "artist": "Dimension",
     "stage": "BOLT Night Stage",
     "day": "Saturday",
     "startTime": null,
@@ -1977,7 +1977,7 @@
   },
   {
     "id": "60",
-    "name": "Dixon",
+    "artist": "Dixon",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -2015,7 +2015,7 @@
   },
   {
     "id": "61",
-    "name": "Dom Dolla",
+    "artist": "Dom Dolla",
     "stage": "BOLT Night Stage",
     "day": "Thursday",
     "startTime": null,
@@ -2049,7 +2049,7 @@
   },
   {
     "id": "62",
-    "name": "Dorota",
+    "artist": "Dorota",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -2077,7 +2077,7 @@
   },
   {
     "id": "63",
-    "name": "Dressed Like Boys",
+    "artist": "Dressed Like Boys",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2113,7 +2113,7 @@
   },
   {
     "id": "64",
-    "name": "Dtnb.",
+    "artist": "Dtnb.",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -2144,7 +2144,7 @@
   },
   {
     "id": "65",
-    "name": "Dub Personal",
+    "artist": "Dub Personal",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -2171,7 +2171,7 @@
   },
   {
     "id": "66",
-    "name": "Duckshell",
+    "artist": "Duckshell",
     "stage": "Global Village",
     "day": "Saturday",
     "startTime": null,
@@ -2201,7 +2201,7 @@
   },
   {
     "id": "67",
-    "name": "Elefant",
+    "artist": "Elefant",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -2238,7 +2238,7 @@
   },
   {
     "id": "68",
-    "name": "Eliezer",
+    "artist": "Eliezer",
     "stage": "Yettel Colosseum",
     "day": null,
     "startTime": null,
@@ -2269,7 +2269,7 @@
   },
   {
     "id": "69",
-    "name": "Emma Nolde",
+    "artist": "Emma Nolde",
     "stage": "Light Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -2304,7 +2304,7 @@
   },
   {
     "id": "70",
-    "name": "Ential",
+    "artist": "Ential",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -2331,7 +2331,7 @@
   },
   {
     "id": "71",
-    "name": "Esti Kornel",
+    "artist": "Esti Kornel",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -2365,7 +2365,7 @@
   },
   {
     "id": "72",
-    "name": "Evening Elephants",
+    "artist": "Evening Elephants",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2403,7 +2403,7 @@
   },
   {
     "id": "73",
-    "name": "Faeda",
+    "artist": "Faeda",
     "stage": "Light Stage",
     "day": "Saturday",
     "startTime": null,
@@ -2438,7 +2438,7 @@
   },
   {
     "id": "74",
-    "name": "Fcukers",
+    "artist": "Fcukers",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -2472,7 +2472,7 @@
   },
   {
     "id": "75",
-    "name": "Fka.M4a (Jay Jackson)",
+    "artist": "Fka.M4a (Jay Jackson)",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2504,7 +2504,7 @@
   },
   {
     "id": "76",
-    "name": "Florence   The Machine",
+    "artist": "Florence   The Machine",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
@@ -2542,7 +2542,7 @@
   },
   {
     "id": "77",
-    "name": "Flux Pavilion",
+    "artist": "Flux Pavilion",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2577,7 +2577,7 @@
   },
   {
     "id": "78",
-    "name": "Funk Tribu",
+    "artist": "Funk Tribu",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": null,
@@ -2612,7 +2612,7 @@
   },
   {
     "id": "79",
-    "name": "Giant Rooks",
+    "artist": "Giant Rooks",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -2649,7 +2649,7 @@
   },
   {
     "id": "80",
-    "name": "Golden Hours",
+    "artist": "Golden Hours",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2681,7 +2681,7 @@
   },
   {
     "id": "81",
-    "name": "Haai",
+    "artist": "Haai",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": null,
@@ -2717,7 +2717,7 @@
   },
   {
     "id": "82",
-    "name": "Hamdi",
+    "artist": "Hamdi",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2751,7 +2751,7 @@
   },
   {
     "id": "83",
-    "name": "Hank",
+    "artist": "Hank",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -2782,7 +2782,7 @@
   },
   {
     "id": "84",
-    "name": "Hated",
+    "artist": "Hated",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -2814,7 +2814,7 @@
   },
   {
     "id": "85",
-    "name": "Health",
+    "artist": "Health",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2846,7 +2846,7 @@
   },
   {
     "id": "86",
-    "name": "House Of Circus Carnivale Royale",
+    "artist": "House Of Circus Carnivale Royale",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2876,7 +2876,7 @@
   },
   {
     "id": "87",
-    "name": "I Patagarri",
+    "artist": "I Patagarri",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -2913,7 +2913,7 @@
   },
   {
     "id": "88",
-    "name": "Idiotape",
+    "artist": "Idiotape",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -2948,7 +2948,7 @@
   },
   {
     "id": "89",
-    "name": "Ikkimel",
+    "artist": "Ikkimel",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -2979,7 +2979,7 @@
   },
   {
     "id": "90",
-    "name": "Illbucks",
+    "artist": "Illbucks",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -3011,7 +3011,7 @@
   },
   {
     "id": "91",
-    "name": "Indira Paganotto",
+    "artist": "Indira Paganotto",
     "stage": "BOLT Night Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -3045,7 +3045,7 @@
   },
   {
     "id": "92",
-    "name": "Indirect Movement",
+    "artist": "Indirect Movement",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -3075,7 +3075,7 @@
   },
   {
     "id": "93",
-    "name": "Irie Maffia",
+    "artist": "Irie Maffia",
     "stage": "Budapest Park Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -3105,7 +3105,7 @@
   },
   {
     "id": "94",
-    "name": "Isu",
+    "artist": "Isu",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -3134,7 +3134,7 @@
   },
   {
     "id": "95",
-    "name": "Ivan & The Parazol",
+    "artist": "Ivan & The Parazol",
     "stage": "Budapest Park Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -3170,7 +3170,7 @@
   },
   {
     "id": "96",
-    "name": "Jazzbois",
+    "artist": "Jazzbois",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -3203,7 +3203,7 @@
   },
   {
     "id": "97",
-    "name": "Jazzy",
+    "artist": "Jazzy",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -3236,7 +3236,7 @@
   },
   {
     "id": "98",
-    "name": "Jessica Audiffred",
+    "artist": "Jessica Audiffred",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -3270,7 +3270,7 @@
   },
   {
     "id": "99",
-    "name": "Johanna Bozai",
+    "artist": "Johanna Bozai",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3300,7 +3300,7 @@
   },
   {
     "id": "100",
-    "name": "John Coffey",
+    "artist": "John Coffey",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -3335,7 +3335,7 @@
   },
   {
     "id": "101",
-    "name": "Joris Voorn",
+    "artist": "Joris Voorn",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -3371,7 +3371,7 @@
   },
   {
     "id": "102",
-    "name": "Jorja Smith (Party Set)",
+    "artist": "Jorja Smith (Party Set)",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
@@ -3403,7 +3403,7 @@
   },
   {
     "id": "103",
-    "name": "Julya Karma",
+    "artist": "Julya Karma",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -3436,7 +3436,7 @@
   },
   {
     "id": "104",
-    "name": "Kamafaka",
+    "artist": "Kamafaka",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3467,7 +3467,7 @@
   },
   {
     "id": "105",
-    "name": "Karen Dio",
+    "artist": "Karen Dio",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -3506,7 +3506,7 @@
   },
   {
     "id": "106",
-    "name": "Killakikitt",
+    "artist": "Killakikitt",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -3538,7 +3538,7 @@
   },
   {
     "id": "107",
-    "name": "Kim Dracula",
+    "artist": "Kim Dracula",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -3574,7 +3574,7 @@
   },
   {
     "id": "108",
-    "name": "Kispal Es A Borz",
+    "artist": "Kispal Es A Borz",
     "stage": "Budapest Park Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -3608,7 +3608,7 @@
   },
   {
     "id": "109",
-    "name": "Kitti Kay",
+    "artist": "Kitti Kay",
     "stage": "BOLT Night Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -3638,7 +3638,7 @@
   },
   {
     "id": "110",
-    "name": "Koikoi",
+    "artist": "Koikoi",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -3672,7 +3672,7 @@
   },
   {
     "id": "111",
-    "name": "Kolibri",
+    "artist": "Kolibri",
     "stage": "Global Village",
     "day": "Thursday",
     "startTime": null,
@@ -3709,7 +3709,7 @@
   },
   {
     "id": "112",
-    "name": "Koven",
+    "artist": "Koven",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -3742,7 +3742,7 @@
   },
   {
     "id": "113",
-    "name": "Krudy C",
+    "artist": "Krudy C",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -3768,7 +3768,7 @@
   },
   {
     "id": "114",
-    "name": "Lacchesi",
+    "artist": "Lacchesi",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": null,
@@ -3799,7 +3799,7 @@
   },
   {
     "id": "115",
-    "name": "Lambrini Girls",
+    "artist": "Lambrini Girls",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -3832,7 +3832,7 @@
   },
   {
     "id": "116",
-    "name": "Lammer",
+    "artist": "Lammer",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -3862,7 +3862,7 @@
   },
   {
     "id": "117",
-    "name": "Lau",
+    "artist": "Lau",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -3892,7 +3892,7 @@
   },
   {
     "id": "118",
-    "name": "Lazarvs",
+    "artist": "Lazarvs",
     "stage": "Budapest Park Stage",
     "day": "Friday",
     "startTime": null,
@@ -3927,7 +3927,7 @@
   },
   {
     "id": "119",
-    "name": "Leap",
+    "artist": "Leap",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -3965,7 +3965,7 @@
   },
   {
     "id": "120",
-    "name": "Lewis Capaldi",
+    "artist": "Lewis Capaldi",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
@@ -3999,7 +3999,7 @@
   },
   {
     "id": "121",
-    "name": "Libra",
+    "artist": "Libra",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -4031,7 +4031,7 @@
   },
   {
     "id": "122",
-    "name": "Lou Nour",
+    "artist": "Lou Nour",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4065,7 +4065,7 @@
   },
   {
     "id": "123",
-    "name": "Loyle Carner",
+    "artist": "Loyle Carner",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -4100,7 +4100,7 @@
   },
   {
     "id": "124",
-    "name": "Lucky Done Gone",
+    "artist": "Lucky Done Gone",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4133,7 +4133,7 @@
   },
   {
     "id": "125",
-    "name": "Luke Black",
+    "artist": "Luke Black",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -4166,7 +4166,7 @@
   },
   {
     "id": "126",
-    "name": "Majka",
+    "artist": "Majka",
     "stage": "dropYard",
     "day": "Thursday",
     "startTime": null,
@@ -4199,7 +4199,7 @@
   },
   {
     "id": "127",
-    "name": "Makrohang",
+    "artist": "Makrohang",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -4230,7 +4230,7 @@
   },
   {
     "id": "128",
-    "name": "Manuel",
+    "artist": "Manuel",
     "stage": "Budapest Park Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -4261,7 +4261,7 @@
   },
   {
     "id": "129",
-    "name": "Marsh",
+    "artist": "Marsh",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -4291,7 +4291,7 @@
   },
   {
     "id": "130",
-    "name": "Max Baby",
+    "artist": "Max Baby",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4322,7 +4322,7 @@
   },
   {
     "id": "131",
-    "name": "Mehringer",
+    "artist": "Mehringer",
     "stage": "Budapest Park Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -4354,7 +4354,7 @@
   },
   {
     "id": "132",
-    "name": "Melina",
+    "artist": "Melina",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -4385,7 +4385,7 @@
   },
   {
     "id": "133",
-    "name": "Mestiza",
+    "artist": "Mestiza",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -4418,7 +4418,7 @@
   },
   {
     "id": "134",
-    "name": "Metha",
+    "artist": "Metha",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -4454,7 +4454,7 @@
   },
   {
     "id": "135",
-    "name": "Mikee Mykanic",
+    "artist": "Mikee Mykanic",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -4486,7 +4486,7 @@
   },
   {
     "id": "136",
-    "name": "Mirror Glimpse",
+    "artist": "Mirror Glimpse",
     "stage": "Budapest Park Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -4520,7 +4520,7 @@
   },
   {
     "id": "137",
-    "name": "Missio",
+    "artist": "Missio",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -4554,7 +4554,7 @@
   },
   {
     "id": "138",
-    "name": "Mph",
+    "artist": "Mph",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -4585,7 +4585,7 @@
   },
   {
     "id": "139",
-    "name": "Naika",
+    "artist": "Naika",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -4616,7 +4616,7 @@
   },
   {
     "id": "140",
-    "name": "Natascha Polke",
+    "artist": "Natascha Polke",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -4653,7 +4653,7 @@
   },
   {
     "id": "141",
-    "name": "Natasha Bedingfield",
+    "artist": "Natasha Bedingfield",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -4685,7 +4685,7 @@
   },
   {
     "id": "142",
-    "name": "Nation Of Language",
+    "artist": "Nation Of Language",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -4720,7 +4720,7 @@
   },
   {
     "id": "143",
-    "name": "Next Level: Dublic",
+    "artist": "Next Level: Dublic",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -4754,7 +4754,7 @@
   },
   {
     "id": "144",
-    "name": "Next Level: Grandover",
+    "artist": "Next Level: Grandover",
     "stage": "BOLT Night Stage",
     "day": "Saturday",
     "startTime": null,
@@ -4785,7 +4785,7 @@
   },
   {
     "id": "145",
-    "name": "Nia Archives",
+    "artist": "Nia Archives",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -4822,7 +4822,7 @@
   },
   {
     "id": "146",
-    "name": "Night Tapes",
+    "artist": "Night Tapes",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -4853,7 +4853,7 @@
   },
   {
     "id": "147",
-    "name": "Nks",
+    "artist": "Nks",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -4885,7 +4885,7 @@
   },
   {
     "id": "148",
-    "name": "Olympe",
+    "artist": "Olympe",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -4921,7 +4921,7 @@
   },
   {
     "id": "149",
-    "name": "Omiki",
+    "artist": "Omiki",
     "stage": "BOLT Night Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -4952,7 +4952,7 @@
   },
   {
     "id": "150",
-    "name": "Onyvaa",
+    "artist": "Onyvaa",
     "stage": "Delta District",
     "day": "Friday",
     "startTime": null,
@@ -4982,7 +4982,7 @@
   },
   {
     "id": "151",
-    "name": "Oskar Med K",
+    "artist": "Oskar Med K",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -5016,7 +5016,7 @@
   },
   {
     "id": "152",
-    "name": "Pal Utcai Fiuk",
+    "artist": "Pal Utcai Fiuk",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -5050,7 +5050,7 @@
   },
   {
     "id": "153",
-    "name": "Pan Pot",
+    "artist": "Pan Pot",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -5086,7 +5086,7 @@
   },
   {
     "id": "154",
-    "name": "Paralich",
+    "artist": "Paralich",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -5117,7 +5117,7 @@
   },
   {
     "id": "155",
-    "name": "Parcels",
+    "artist": "Parcels",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -5155,7 +5155,7 @@
   },
   {
     "id": "156",
-    "name": "Paris Paloma",
+    "artist": "Paris Paloma",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
@@ -5188,7 +5188,7 @@
   },
   {
     "id": "157",
-    "name": "Peggy Gou",
+    "artist": "Peggy Gou",
     "stage": "BOLT Night Stage",
     "day": "Friday",
     "startTime": null,
@@ -5223,7 +5223,7 @@
   },
   {
     "id": "158",
-    "name": "Perturbator",
+    "artist": "Perturbator",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -5255,7 +5255,7 @@
   },
   {
     "id": "159",
-    "name": "Peterfy Bori & Love Band",
+    "artist": "Peterfy Bori & Love Band",
     "stage": "Budapest Park Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -5289,7 +5289,7 @@
   },
   {
     "id": "160",
-    "name": "Pizza Amore & Switch Nollie",
+    "artist": "Pizza Amore & Switch Nollie",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5321,7 +5321,7 @@
   },
   {
     "id": "161",
-    "name": "Platon Karataev",
+    "artist": "Platon Karataev",
     "stage": "Budapest Park Stage",
     "day": "Thursday",
     "startTime": null,
@@ -5357,7 +5357,7 @@
   },
   {
     "id": "162",
-    "name": "Pogany Indulo",
+    "artist": "Pogany Indulo",
     "stage": "dropYard",
     "day": "Friday",
     "startTime": null,
@@ -5391,7 +5391,7 @@
   },
   {
     "id": "163",
-    "name": "Quest",
+    "artist": "Quest",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -5425,7 +5425,7 @@
   },
   {
     "id": "164",
-    "name": "Quimby",
+    "artist": "Quimby",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -5459,7 +5459,7 @@
   },
   {
     "id": "165",
-    "name": "Raasa",
+    "artist": "Raasa",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5489,7 +5489,7 @@
   },
   {
     "id": "166",
-    "name": "Raise Spirit",
+    "artist": "Raise Spirit",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5517,7 +5517,7 @@
   },
   {
     "id": "167",
-    "name": "Richie Hawtin",
+    "artist": "Richie Hawtin",
     "stage": "Yettel Colosseum",
     "day": "Thursday",
     "startTime": null,
@@ -5552,7 +5552,7 @@
   },
   {
     "id": "168",
-    "name": "Rose Gray",
+    "artist": "Rose Gray",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -5588,7 +5588,7 @@
   },
   {
     "id": "169",
-    "name": "Rossi.",
+    "artist": "Rossi.",
     "stage": "BOLT Night Stage",
     "day": "Thursday",
     "startTime": null,
@@ -5622,7 +5622,7 @@
   },
   {
     "id": "170",
-    "name": "Sara Landry",
+    "artist": "Sara Landry",
     "stage": "BOLT Night Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -5658,7 +5658,7 @@
   },
   {
     "id": "171",
-    "name": "Secret Factory",
+    "artist": "Secret Factory",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5695,7 +5695,7 @@
   },
   {
     "id": "172",
-    "name": "Sef",
+    "artist": "Sef",
     "stage": "Revolut Stage",
     "day": "Thursday",
     "startTime": null,
@@ -5728,7 +5728,7 @@
   },
   {
     "id": "173",
-    "name": "Sephx",
+    "artist": "Sephx",
     "stage": "Delta District",
     "day": "Thursday",
     "startTime": null,
@@ -5756,7 +5756,7 @@
   },
   {
     "id": "174",
-    "name": "Shaymi",
+    "artist": "Shaymi",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5787,7 +5787,7 @@
   },
   {
     "id": "175",
-    "name": "Shonky",
+    "artist": "Shonky",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -5817,7 +5817,7 @@
   },
   {
     "id": "176",
-    "name": "Sigrid",
+    "artist": "Sigrid",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -5849,7 +5849,7 @@
   },
   {
     "id": "177",
-    "name": "Sikztah",
+    "artist": "Sikztah",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -5878,7 +5878,7 @@
   },
   {
     "id": "178",
-    "name": "Sim0ne",
+    "artist": "Sim0ne",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": null,
@@ -5914,7 +5914,7 @@
   },
   {
     "id": "179",
-    "name": "Sisi",
+    "artist": "Sisi",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
@@ -5947,7 +5947,7 @@
   },
   {
     "id": "180",
-    "name": "Skepta",
+    "artist": "Skepta",
     "stage": "Main Stage",
     "day": "Friday",
     "startTime": null,
@@ -5981,7 +5981,7 @@
   },
   {
     "id": "181",
-    "name": "Ski Aggu",
+    "artist": "Ski Aggu",
     "stage": "Revolut Stage",
     "day": "Friday",
     "startTime": null,
@@ -6014,7 +6014,7 @@
   },
   {
     "id": "182",
-    "name": "Soft Loft",
+    "artist": "Soft Loft",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -6048,7 +6048,7 @@
   },
   {
     "id": "183",
-    "name": "Sombr",
+    "artist": "Sombr",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -6092,7 +6092,7 @@
   },
   {
     "id": "184",
-    "name": "Soulwax",
+    "artist": "Soulwax",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -6125,7 +6125,7 @@
   },
   {
     "id": "185",
-    "name": "Sub Focus",
+    "artist": "Sub Focus",
     "stage": "BOLT Night Stage",
     "day": "Saturday",
     "startTime": null,
@@ -6161,7 +6161,7 @@
   },
   {
     "id": "186",
-    "name": "Svetec",
+    "artist": "Svetec",
     "stage": "Delta District",
     "day": "Wednesday",
     "startTime": null,
@@ -6191,7 +6191,7 @@
   },
   {
     "id": "187",
-    "name": "Swimming Paul",
+    "artist": "Swimming Paul",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": null,
@@ -6228,7 +6228,7 @@
   },
   {
     "id": "188",
-    "name": "Switch Nollie",
+    "artist": "Switch Nollie",
     "stage": "Delta District",
     "day": null,
     "startTime": null,
@@ -6259,7 +6259,7 @@
   },
   {
     "id": "189",
-    "name": "Sylvie Kreusch",
+    "artist": "Sylvie Kreusch",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -6294,7 +6294,7 @@
   },
   {
     "id": "190",
-    "name": "Syreeta",
+    "artist": "Syreeta",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -6331,7 +6331,7 @@
   },
   {
     "id": "191",
-    "name": "Sziami Es A Vendegek & Agi Es Fiuk",
+    "artist": "Sziami Es A Vendegek & Agi Es Fiuk",
     "stage": "Budapest Park Stage",
     "day": "Saturday",
     "startTime": null,
@@ -6365,7 +6365,7 @@
   },
   {
     "id": "192",
-    "name": "Tankcsapda",
+    "artist": "Tankcsapda",
     "stage": "Budapest Park Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6396,7 +6396,7 @@
   },
   {
     "id": "193",
-    "name": "Tash Sultana",
+    "artist": "Tash Sultana",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6431,7 +6431,7 @@
   },
   {
     "id": "194",
-    "name": "Tdj",
+    "artist": "Tdj",
     "stage": "Delta District",
     "day": "Saturday",
     "startTime": null,
@@ -6463,7 +6463,7 @@
   },
   {
     "id": "195",
-    "name": "Technokool",
+    "artist": "Technokool",
     "stage": "Delta District",
     "day": "Tuesday",
     "startTime": null,
@@ -6492,7 +6492,7 @@
   },
   {
     "id": "196",
-    "name": "Teen Mortgage",
+    "artist": "Teen Mortgage",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -6525,7 +6525,7 @@
   },
   {
     "id": "197",
-    "name": "The Zawose Queens",
+    "artist": "The Zawose Queens",
     "stage": "Global Village",
     "day": "Wednesday",
     "startTime": null,
@@ -6559,7 +6559,7 @@
   },
   {
     "id": "198",
-    "name": "Tomora",
+    "artist": "Tomora",
     "stage": "Revolut Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6593,7 +6593,7 @@
   },
   {
     "id": "199",
-    "name": "Tripolism",
+    "artist": "Tripolism",
     "stage": "BOLT Night Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6633,7 +6633,7 @@
   },
   {
     "id": "200",
-    "name": "Trym",
+    "artist": "Trym",
     "stage": "BOLT Night Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -6668,7 +6668,7 @@
   },
   {
     "id": "201",
-    "name": "Twenty One Pilots",
+    "artist": "Twenty One Pilots",
     "stage": "Main Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6705,7 +6705,7 @@
   },
   {
     "id": "202",
-    "name": "Underworld",
+    "artist": "Underworld",
     "stage": "Revolut Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -6738,7 +6738,7 @@
   },
   {
     "id": "203",
-    "name": "Vintage Culture",
+    "artist": "Vintage Culture",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -6774,7 +6774,7 @@
   },
   {
     "id": "204",
-    "name": "Wavy",
+    "artist": "Wavy",
     "stage": "dropYard",
     "day": "Tuesday",
     "startTime": null,
@@ -6807,7 +6807,7 @@
   },
   {
     "id": "205",
-    "name": "Whomadewho (Hybrid Dj Set)",
+    "artist": "Whomadewho (Hybrid Dj Set)",
     "stage": "BOLT Night Stage",
     "day": "Wednesday",
     "startTime": null,
@@ -6841,7 +6841,7 @@
   },
   {
     "id": "206",
-    "name": "Wild Wild Women",
+    "artist": "Wild Wild Women",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -6874,7 +6874,7 @@
   },
   {
     "id": "207",
-    "name": "Wolf Alice",
+    "artist": "Wolf Alice",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -6913,7 +6913,7 @@
   },
   {
     "id": "208",
-    "name": "Yarima",
+    "artist": "Yarima",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -6945,7 +6945,7 @@
   },
   {
     "id": "209",
-    "name": "Yt",
+    "artist": "Yt",
     "stage": "dropYard",
     "day": "Wednesday",
     "startTime": null,
@@ -6979,7 +6979,7 @@
   },
   {
     "id": "210",
-    "name": "Zara Larsson",
+    "artist": "Zara Larsson",
     "stage": "Main Stage",
     "day": "Tuesday",
     "startTime": null,
@@ -7012,7 +7012,7 @@
   },
   {
     "id": "211",
-    "name": "Zep",
+    "artist": "Zep",
     "stage": "dropYard",
     "day": "Saturday",
     "startTime": null,
@@ -7046,7 +7046,7 @@
   },
   {
     "id": "212",
-    "name": "Zimmer90",
+    "artist": "Zimmer90",
     "stage": "Revolut Stage",
     "day": "Saturday",
     "startTime": null,
@@ -7080,7 +7080,7 @@
   },
   {
     "id": "213",
-    "name": "Skrillex",
+    "artist": "Skrillex",
     "stage": "Main Stage",
     "day": "Saturday",
     "startTime": null,
@@ -7111,7 +7111,7 @@
   },
   {
     "id": "214",
-    "name": "Andrea Lane",
+    "artist": "Andrea Lane",
     "stage": "BOLT Night Stage",
     "day": "Thursday",
     "startTime": null,
@@ -7142,7 +7142,7 @@
   },
   {
     "id": "215",
-    "name": "Botond",
+    "artist": "Botond",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -7167,7 +7167,7 @@
   },
   {
     "id": "216",
-    "name": "Dj Fuckoff",
+    "artist": "Dj Fuckoff",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -7196,7 +7196,7 @@
   },
   {
     "id": "217",
-    "name": "Hector Oaks",
+    "artist": "Hector Oaks",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": null,
@@ -7229,7 +7229,7 @@
   },
   {
     "id": "218",
-    "name": "Hiroko Yamamura",
+    "artist": "Hiroko Yamamura",
     "stage": "BOLT Night Stage",
     "day": "Friday",
     "startTime": null,
@@ -7258,7 +7258,7 @@
   },
   {
     "id": "219",
-    "name": "Hruscsov",
+    "artist": "Hruscsov",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -7284,7 +7284,7 @@
   },
   {
     "id": "220",
-    "name": "Jaky Chan",
+    "artist": "Jaky Chan",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": null,
@@ -7315,7 +7315,7 @@
   },
   {
     "id": "221",
-    "name": "Jamback",
+    "artist": "Jamback",
     "stage": "BOLT Night Stage",
     "day": "Thursday",
     "startTime": null,
@@ -7346,7 +7346,7 @@
   },
   {
     "id": "222",
-    "name": "Jauri",
+    "artist": "Jauri",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -7378,7 +7378,7 @@
   },
   {
     "id": "223",
-    "name": "Kink",
+    "artist": "Kink",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -7409,7 +7409,7 @@
   },
   {
     "id": "224",
-    "name": "Kishdead Aka Klay",
+    "artist": "Kishdead Aka Klay",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -7435,7 +7435,7 @@
   },
   {
     "id": "225",
-    "name": "Patrick Mason",
+    "artist": "Patrick Mason",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": null,
@@ -7467,7 +7467,7 @@
   },
   {
     "id": "226",
-    "name": "Pein",
+    "artist": "Pein",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -7493,7 +7493,7 @@
   },
   {
     "id": "227",
-    "name": "Sam Hofman",
+    "artist": "Sam Hofman",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -7519,7 +7519,7 @@
   },
   {
     "id": "228",
-    "name": "Slym & Szoliver",
+    "artist": "Slym & Szoliver",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -7545,7 +7545,7 @@
   },
   {
     "id": "229",
-    "name": "Sonic Rain",
+    "artist": "Sonic Rain",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -7573,7 +7573,7 @@
   },
   {
     "id": "230",
-    "name": "The Whale Street",
+    "artist": "The Whale Street",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -7600,7 +7600,7 @@
   },
   {
     "id": "231",
-    "name": "Third 2hift",
+    "artist": "Third 2hift",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -7629,7 +7629,7 @@
   },
   {
     "id": "232",
-    "name": "Tiga",
+    "artist": "Tiga",
     "stage": "Yettel Colosseum",
     "day": "Wednesday",
     "startTime": null,
@@ -7662,7 +7662,7 @@
   },
   {
     "id": "233",
-    "name": "Tolo & Falcao (Lavalava)",
+    "artist": "Tolo & Falcao (Lavalava)",
     "stage": "Yettel Colosseum",
     "day": "Tuesday",
     "startTime": null,
@@ -7694,7 +7694,7 @@
   },
   {
     "id": "234",
-    "name": "U.R.Trax",
+    "artist": "U.R.Trax",
     "stage": "Yettel Colosseum",
     "day": "Saturday",
     "startTime": null,
@@ -7725,7 +7725,7 @@
   },
   {
     "id": "235",
-    "name": "X Coast",
+    "artist": "X Coast",
     "stage": "Yettel Colosseum",
     "day": "Friday",
     "startTime": null,
@@ -7755,7 +7755,7 @@
   },
   {
     "id": "236",
-    "name": "Yulia Niko",
+    "artist": "Yulia Niko",
     "stage": "BOLT Night Stage",
     "day": "Friday",
     "startTime": null,
@@ -7787,7 +7787,7 @@
   },
   {
     "id": "237",
-    "name": "Zagi",
+    "artist": "Zagi",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -7812,7 +7812,7 @@
   },
   {
     "id": "238",
-    "name": "Zomboy",
+    "artist": "Zomboy",
     "stage": "BOLT Night Stage",
     "day": "Saturday",
     "startTime": null,
@@ -7843,7 +7843,7 @@
   },
   {
     "id": "239",
-    "name": "Zvezda Beta",
+    "artist": "Zvezda Beta",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -7867,7 +7867,7 @@
   },
   {
     "id": "240",
-    "name": "Florence + The Machine",
+    "artist": "Florence + The Machine",
     "stage": "Main Stage",
     "day": "Thursday",
     "startTime": null,
@@ -7901,7 +7901,7 @@
   },
   {
     "id": "241",
-    "name": "Beton Hofi",
+    "artist": "Beton Hofi",
     "stage": "Budapest Park Stage",
     "day": "Friday",
     "startTime": null,
@@ -7930,7 +7930,7 @@
   },
   {
     "id": "242",
-    "name": "Ahmed Ayed",
+    "artist": "Ahmed Ayed",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -7954,7 +7954,7 @@
   },
   {
     "id": "243",
-    "name": "Alta Gama",
+    "artist": "Alta Gama",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -7977,7 +7977,7 @@
   },
   {
     "id": "244",
-    "name": "Ama",
+    "artist": "Ama",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8003,7 +8003,7 @@
   },
   {
     "id": "245",
-    "name": "Ape Soundsystem",
+    "artist": "Ape Soundsystem",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8030,7 +8030,7 @@
   },
   {
     "id": "246",
-    "name": "Attylos Aka Stefano Di Matteo",
+    "artist": "Attylos Aka Stefano Di Matteo",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8057,7 +8057,7 @@
   },
   {
     "id": "247",
-    "name": "Bashar Murad",
+    "artist": "Bashar Murad",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -8079,7 +8079,7 @@
   },
   {
     "id": "248",
-    "name": "Brincadeira",
+    "artist": "Brincadeira",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8103,7 +8103,7 @@
   },
   {
     "id": "249",
-    "name": "Carlo Chicco",
+    "artist": "Carlo Chicco",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -8129,7 +8129,7 @@
   },
   {
     "id": "250",
-    "name": "Cassies",
+    "artist": "Cassies",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8154,7 +8154,7 @@
   },
   {
     "id": "251",
-    "name": "Cent Gral",
+    "artist": "Cent Gral",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8181,7 +8181,7 @@
   },
   {
     "id": "252",
-    "name": "Chroma Sound System",
+    "artist": "Chroma Sound System",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8205,7 +8205,7 @@
   },
   {
     "id": "253",
-    "name": "Club Guy & Roni, Australasian Dance Collective, Hiiit & Boris Acket",
+    "artist": "Club Guy & Roni, Australasian Dance Collective, Hiiit & Boris Acket",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8229,7 +8229,7 @@
   },
   {
     "id": "254",
-    "name": "Cmqmartina",
+    "artist": "Cmqmartina",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -8257,7 +8257,7 @@
   },
   {
     "id": "255",
-    "name": "Compagnie Accrorap",
+    "artist": "Compagnie Accrorap",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8284,7 +8284,7 @@
   },
   {
     "id": "256",
-    "name": "Company Xy",
+    "artist": "Company Xy",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8309,7 +8309,7 @@
   },
   {
     "id": "257",
-    "name": "Diana Salles",
+    "artist": "Diana Salles",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8334,7 +8334,7 @@
   },
   {
     "id": "258",
-    "name": "Eosine",
+    "artist": "Eosine",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8357,7 +8357,7 @@
   },
   {
     "id": "259",
-    "name": "Fab Mayday",
+    "artist": "Fab Mayday",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8383,7 +8383,7 @@
   },
   {
     "id": "260",
-    "name": "Giulia Mei",
+    "artist": "Giulia Mei",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -8410,7 +8410,7 @@
   },
   {
     "id": "261",
-    "name": "Grandmas House",
+    "artist": "Grandmas House",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8436,7 +8436,7 @@
   },
   {
     "id": "262",
-    "name": "Kids Don'T Smoke",
+    "artist": "Kids Don'T Smoke",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8461,7 +8461,7 @@
   },
   {
     "id": "263",
-    "name": "Kiras",
+    "artist": "Kiras",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -8488,7 +8488,7 @@
   },
   {
     "id": "264",
-    "name": "La Fam Teatre",
+    "artist": "La Fam Teatre",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8516,7 +8516,7 @@
   },
   {
     "id": "265",
-    "name": "Le Patin Libre",
+    "artist": "Le Patin Libre",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8541,7 +8541,7 @@
   },
   {
     "id": "266",
-    "name": "Les Filles Du Renard Pale",
+    "artist": "Les Filles Du Renard Pale",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8565,7 +8565,7 @@
   },
   {
     "id": "267",
-    "name": "Little Pieces Of Marmelade",
+    "artist": "Little Pieces Of Marmelade",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -8588,7 +8588,7 @@
   },
   {
     "id": "268",
-    "name": "Losinformalls",
+    "artist": "Losinformalls",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -8612,7 +8612,7 @@
   },
   {
     "id": "269",
-    "name": "Martini Police",
+    "artist": "Martini Police",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8638,7 +8638,7 @@
   },
   {
     "id": "270",
-    "name": "Melanie Baker",
+    "artist": "Melanie Baker",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8664,7 +8664,7 @@
   },
   {
     "id": "271",
-    "name": "Oskar Haag",
+    "artist": "Oskar Haag",
     "stage": null,
     "day": "Thursday",
     "startTime": null,
@@ -8690,7 +8690,7 @@
   },
   {
     "id": "272",
-    "name": "Pales",
+    "artist": "Pales",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -8715,7 +8715,7 @@
   },
   {
     "id": "273",
-    "name": "Race Horse Company",
+    "artist": "Race Horse Company",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8742,7 +8742,7 @@
   },
   {
     "id": "274",
-    "name": "Siegfried & Joy",
+    "artist": "Siegfried & Joy",
     "stage": null,
     "day": "Tuesday",
     "startTime": null,
@@ -8766,7 +8766,7 @@
   },
   {
     "id": "275",
-    "name": "Stone Sober",
+    "artist": "Stone Sober",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -8788,7 +8788,7 @@
   },
   {
     "id": "276",
-    "name": "Stuk Live",
+    "artist": "Stuk Live",
     "stage": null,
     "day": "Wednesday",
     "startTime": null,
@@ -8813,7 +8813,7 @@
   },
   {
     "id": "277",
-    "name": "Szeri Viktor",
+    "artist": "Szeri Viktor",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8836,7 +8836,7 @@
   },
   {
     "id": "278",
-    "name": "Theatre De La Toupine",
+    "artist": "Theatre De La Toupine",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8863,7 +8863,7 @@
   },
   {
     "id": "279",
-    "name": "Tom Cassani",
+    "artist": "Tom Cassani",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8888,7 +8888,7 @@
   },
   {
     "id": "280",
-    "name": "Tridiculous",
+    "artist": "Tridiculous",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8915,7 +8915,7 @@
   },
   {
     "id": "281",
-    "name": "Ujai",
+    "artist": "Ujai",
     "stage": null,
     "day": "Saturday",
     "startTime": null,
@@ -8943,7 +8943,7 @@
   },
   {
     "id": "282",
-    "name": "Vaeva",
+    "artist": "Vaeva",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8969,7 +8969,7 @@
   },
   {
     "id": "283",
-    "name": "Vegas",
+    "artist": "Vegas",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -8994,7 +8994,7 @@
   },
   {
     "id": "284",
-    "name": "Vitor Falabella",
+    "artist": "Vitor Falabella",
     "stage": null,
     "day": "Friday",
     "startTime": null,
@@ -9021,7 +9021,7 @@
   },
   {
     "id": "285",
-    "name": "Yav",
+    "artist": "Yav",
     "stage": null,
     "day": "Saturday",
     "startTime": null,

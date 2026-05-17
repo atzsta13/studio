@@ -1,7 +1,7 @@
 [
   {
     "id": "slipknot",
-    "name": "Slipknot",
+    "artist": "Slipknot",
     "stage": "Blue Stage",
     "day": "Friday",
     "startTime": null,
@@ -27,7 +27,7 @@
   },
   {
     "id": "electric-callboy",
-    "name": "Electric Callboy",
+    "artist": "Electric Callboy",
     "stage": "Blue Stage",
     "day": "Saturday",
     "startTime": null,
@@ -48,11 +48,12 @@
       "Intense",
       "Heavy",
       "Energetic"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f3/2b/77/f32b7781-ed1f-cf89-be53-4308dbde38a1/196871181235.jpg/600x600bb.jpg"
   },
   {
     "id": "wanda",
-    "name": "Wanda",
+    "artist": "Wanda",
     "stage": "Red Stage",
     "day": "Thursday",
     "startTime": null,
@@ -81,7 +82,7 @@
   },
   {
     "id": "1",
-    "name": "Volbeat",
+    "artist": "Volbeat",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -107,7 +108,7 @@
   },
   {
     "id": "2",
-    "name": "Bad Omens",
+    "artist": "Bad Omens",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -136,7 +137,7 @@
   },
   {
     "id": "3",
-    "name": "Sex Pistols Feat Frank Carter",
+    "artist": "Sex Pistols Feat Frank Carter",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -161,7 +162,7 @@
   },
   {
     "id": "4",
-    "name": "Kaleo",
+    "artist": "Kaleo",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -190,7 +191,7 @@
   },
   {
     "id": "5",
-    "name": "Trivium",
+    "artist": "Trivium",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -216,7 +217,7 @@
   },
   {
     "id": "6",
-    "name": "Tom Morello",
+    "artist": "Tom Morello",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -241,7 +242,7 @@
   },
   {
     "id": "7",
-    "name": "Black Veil Brides",
+    "artist": "Black Veil Brides",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -267,7 +268,7 @@
   },
   {
     "id": "8",
-    "name": "Feine Sahne Fischfilet",
+    "artist": "Feine Sahne Fischfilet",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -292,7 +293,7 @@
   },
   {
     "id": "9",
-    "name": "Mastodon",
+    "artist": "Mastodon",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -320,7 +321,7 @@
   },
   {
     "id": "10",
-    "name": "Bilmuri",
+    "artist": "Bilmuri",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -348,7 +349,7 @@
   },
   {
     "id": "11",
-    "name": "Static X",
+    "artist": "Static X",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -372,7 +373,7 @@
   },
   {
     "id": "12",
-    "name": "Lemo",
+    "artist": "Lemo",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -402,7 +403,7 @@
   },
   {
     "id": "13",
-    "name": "Dartagnan",
+    "artist": "Dartagnan",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -434,7 +435,7 @@
   },
   {
     "id": "14",
-    "name": "Badflower",
+    "artist": "Badflower",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -459,7 +460,7 @@
   },
   {
     "id": "15",
-    "name": "Return To Dust",
+    "artist": "Return To Dust",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -486,7 +487,7 @@
   },
   {
     "id": "16",
-    "name": "Ego Kill Talent",
+    "artist": "Ego Kill Talent",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -511,7 +512,7 @@
   },
   {
     "id": "17",
-    "name": "Soul Asylum",
+    "artist": "Soul Asylum",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -538,7 +539,7 @@
   },
   {
     "id": "18",
-    "name": "We Came As Romans",
+    "artist": "We Came As Romans",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -566,7 +567,7 @@
   },
   {
     "id": "19",
-    "name": "The Molotovs",
+    "artist": "The Molotovs",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -595,7 +596,7 @@
   },
   {
     "id": "20",
-    "name": "Ankor",
+    "artist": "Ankor",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -624,7 +625,7 @@
   },
   {
     "id": "21",
-    "name": "Aurorawave",
+    "artist": "Aurorawave",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -648,7 +649,7 @@
   },
   {
     "id": "22",
-    "name": "Yunger",
+    "artist": "Yunger",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -674,7 +675,7 @@
   },
   {
     "id": "23",
-    "name": "Cassies",
+    "artist": "Cassies",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -700,7 +701,7 @@
   },
   {
     "id": "24",
-    "name": "The Cure",
+    "artist": "The Cure",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -728,7 +729,7 @@
   },
   {
     "id": "25",
-    "name": "The Offspring",
+    "artist": "The Offspring",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -754,7 +755,7 @@
   },
   {
     "id": "26",
-    "name": "A Perfect Circle",
+    "artist": "A Perfect Circle",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -781,7 +782,7 @@
   },
   {
     "id": "27",
-    "name": "Ice Nine Kills",
+    "artist": "Ice Nine Kills",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -810,7 +811,7 @@
   },
   {
     "id": "28",
-    "name": "Social Distortion",
+    "artist": "Social Distortion",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -835,7 +836,7 @@
   },
   {
     "id": "29",
-    "name": "Breaking Benjamin",
+    "artist": "Breaking Benjamin",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -862,7 +863,7 @@
   },
   {
     "id": "30",
-    "name": "The Pretty Reckless",
+    "artist": "The Pretty Reckless",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -887,7 +888,7 @@
   },
   {
     "id": "31",
-    "name": "The Plot In You",
+    "artist": "The Plot In You",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -912,7 +913,7 @@
   },
   {
     "id": "32",
-    "name": "Royal Republic",
+    "artist": "Royal Republic",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -937,7 +938,7 @@
   },
   {
     "id": "33",
-    "name": "President",
+    "artist": "President",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -960,7 +961,7 @@
   },
   {
     "id": "34",
-    "name": "Thrown",
+    "artist": "Thrown",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -988,7 +989,7 @@
   },
   {
     "id": "35",
-    "name": "Catch Your Breath",
+    "artist": "Catch Your Breath",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1012,7 +1013,7 @@
   },
   {
     "id": "36",
-    "name": "Magnolia Park",
+    "artist": "Magnolia Park",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1042,7 +1043,7 @@
   },
   {
     "id": "37",
-    "name": "Six Feet Under",
+    "artist": "Six Feet Under",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1067,7 +1068,7 @@
   },
   {
     "id": "38",
-    "name": "Just Mustard",
+    "artist": "Just Mustard",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1091,7 +1092,7 @@
   },
   {
     "id": "39",
-    "name": "Black Label Society",
+    "artist": "Black Label Society",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1114,7 +1115,7 @@
   },
   {
     "id": "40",
-    "name": "Skindred",
+    "artist": "Skindred",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1141,7 +1142,7 @@
   },
   {
     "id": "41",
-    "name": "Annisokay",
+    "artist": "Annisokay",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1169,7 +1170,7 @@
   },
   {
     "id": "42",
-    "name": "Quicksand",
+    "artist": "Quicksand",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1198,7 +1199,7 @@
   },
   {
     "id": "43",
-    "name": "Melrose Avenue",
+    "artist": "Melrose Avenue",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1223,7 +1224,7 @@
   },
   {
     "id": "44",
-    "name": "Tx2",
+    "artist": "Tx2",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1250,7 +1251,7 @@
   },
   {
     "id": "45",
-    "name": "The Pretty Wild",
+    "artist": "The Pretty Wild",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1273,7 +1274,7 @@
   },
   {
     "id": "46",
-    "name": "Zascha",
+    "artist": "Zascha",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1299,7 +1300,7 @@
   },
   {
     "id": "47",
-    "name": "Iron Maiden",
+    "artist": "Iron Maiden",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1322,7 +1323,7 @@
   },
   {
     "id": "48",
-    "name": "A Day To Remember",
+    "artist": "A Day To Remember",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1353,7 +1354,7 @@
   },
   {
     "id": "49",
-    "name": "Sabaton",
+    "artist": "Sabaton",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1381,7 +1382,7 @@
   },
   {
     "id": "50",
-    "name": "Alter Bridge",
+    "artist": "Alter Bridge",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1408,7 +1409,7 @@
   },
   {
     "id": "51",
-    "name": "Sepultura",
+    "artist": "Sepultura",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1436,7 +1437,7 @@
   },
   {
     "id": "52",
-    "name": "Roy Bianco Und Die Abbrunzati Boys",
+    "artist": "Roy Bianco Und Die Abbrunzati Boys",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1463,7 +1464,7 @@
   },
   {
     "id": "53",
-    "name": "All Time Low",
+    "artist": "All Time Low",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1493,7 +1494,7 @@
   },
   {
     "id": "54",
-    "name": "Kanonenfieber",
+    "artist": "Kanonenfieber",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1521,7 +1522,7 @@
   },
   {
     "id": "55",
-    "name": "The Rasmus",
+    "artist": "The Rasmus",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1546,7 +1547,7 @@
   },
   {
     "id": "56",
-    "name": "Kublai Khan Tx",
+    "artist": "Kublai Khan Tx",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1574,7 +1575,7 @@
   },
   {
     "id": "57",
-    "name": "Future Palace",
+    "artist": "Future Palace",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1602,7 +1603,7 @@
   },
   {
     "id": "58",
-    "name": "Madsen",
+    "artist": "Madsen",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1631,7 +1632,7 @@
   },
   {
     "id": "59",
-    "name": "Bad Nerves",
+    "artist": "Bad Nerves",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1657,7 +1658,7 @@
   },
   {
     "id": "60",
-    "name": "Querbeat",
+    "artist": "Querbeat",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1684,7 +1685,7 @@
   },
   {
     "id": "61",
-    "name": "Nickelsdorfer Boehmische",
+    "artist": "Nickelsdorfer Boehmische",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1708,7 +1709,7 @@
   },
   {
     "id": "62",
-    "name": "Palaye Royale",
+    "artist": "Palaye Royale",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1732,7 +1733,7 @@
   },
   {
     "id": "63",
-    "name": "Lagwagon",
+    "artist": "Lagwagon",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1758,7 +1759,7 @@
   },
   {
     "id": "64",
-    "name": "Loathe",
+    "artist": "Loathe",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1787,7 +1788,7 @@
   },
   {
     "id": "65",
-    "name": "Kupfergold",
+    "artist": "Kupfergold",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1813,7 +1814,7 @@
   },
   {
     "id": "66",
-    "name": "Chuggaboom",
+    "artist": "Chuggaboom",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1841,7 +1842,7 @@
   },
   {
     "id": "67",
-    "name": "A New Chapter",
+    "artist": "A New Chapter",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1866,7 +1867,7 @@
   },
   {
     "id": "68",
-    "name": "Frevd",
+    "artist": "Frevd",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1889,7 +1890,7 @@
   },
   {
     "id": "69",
-    "name": "Bring Me The Horizon",
+    "artist": "Bring Me The Horizon",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1918,7 +1919,7 @@
   },
   {
     "id": "70",
-    "name": "Papa Roach",
+    "artist": "Papa Roach",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1945,7 +1946,7 @@
   },
   {
     "id": "71",
-    "name": "Architects",
+    "artist": "Architects",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -1974,7 +1975,7 @@
   },
   {
     "id": "72",
-    "name": "Three Days Grace",
+    "artist": "Three Days Grace",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2001,7 +2002,7 @@
   },
   {
     "id": "73",
-    "name": "Hollywood Undead",
+    "artist": "Hollywood Undead",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2030,7 +2031,7 @@
   },
   {
     "id": "74",
-    "name": "Malevolence",
+    "artist": "Malevolence",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2058,7 +2059,7 @@
   },
   {
     "id": "75",
-    "name": "P O D",
+    "artist": "P O D",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2085,7 +2086,7 @@
   },
   {
     "id": "76",
-    "name": "Voila",
+    "artist": "Voila",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2111,7 +2112,7 @@
   },
   {
     "id": "77",
-    "name": "All Them Witches",
+    "artist": "All Them Witches",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2135,7 +2136,7 @@
   },
   {
     "id": "78",
-    "name": "Drain",
+    "artist": "Drain",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2162,7 +2163,7 @@
   },
   {
     "id": "79",
-    "name": "Slay Squad",
+    "artist": "Slay Squad",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2189,7 +2190,7 @@
   },
   {
     "id": "80",
-    "name": "Vinegar Hill",
+    "artist": "Vinegar Hill",
     "stage": null,
     "day": null,
     "startTime": null,
@@ -2214,7 +2215,7 @@
   },
   {
     "id": "81",
-    "name": "The Funeral Portrait",
+    "artist": "The Funeral Portrait",
     "stage": null,
     "day": null,
     "startTime": null,

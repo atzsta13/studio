@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -256,6 +257,7 @@ fun DiscoverScreen(
                                     discoverViewModel.downloadModel("$base/ai/gemma4-2b-android.bin")
                                 }
                             },
+                            onScanLocal = { discoverViewModel.scanForLocalModel() },
                             onSearch = { discoverViewModel.runLocalScout(it) },
                             onListen = { 
                                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
@@ -491,6 +493,7 @@ data class LocalAiScoutUiState(
 
 data class LocalAiScoutActions(
     val onDownload: () -> Unit,
+    val onScanLocal: () -> Unit,
     val onSearch: (String) -> Unit,
     val onListen: () -> Unit,
     val onClear: () -> Unit
@@ -588,17 +591,29 @@ fun LocalAiScoutCard(
                         }
                     }
                 } else {
-                    Button(
-                        onClick = {
-                            actions.onDownload()
-                        },
-                        modifier = Modifier.fillMaxWidth().height(48.dp),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black)
-                    ) {
-                        Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.Black)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text("PREPARE OFFLINE AI", fontWeight = FontWeight.Black, fontSize = 12.sp, color = Color.Black)
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = {
+                                actions.onDownload()
+                            },
+                            modifier = Modifier.weight(1.3f).height(48.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black)
+                        ) {
+                            Icon(Icons.Default.Download, contentDescription = null, modifier = Modifier.size(18.dp), tint = Color.Black)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text("PREPARE AI", fontWeight = FontWeight.Black, fontSize = 11.sp, color = Color.Black)
+                        }
+                        
+                        OutlinedButton(
+                            onClick = actions.onScanLocal,
+                            modifier = Modifier.weight(1f).height(48.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            border = BorderStroke(1.dp, Color.White.copy(alpha = 0.2f)),
+                            colors = ButtonDefaults.outlinedButtonColors(contentColor = Color.White)
+                        ) {
+                            Text("SCAN LOCAL", fontWeight = FontWeight.Black, fontSize = 11.sp)
+                        }
                     }
                 }
             } else {
