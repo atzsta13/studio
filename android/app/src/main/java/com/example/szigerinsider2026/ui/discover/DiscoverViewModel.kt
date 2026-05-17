@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import android.content.Context
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.model.AiRecommendationResult
+import com.example.szigerinsider2026.data.repository.ILineupRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.data.repository.AiRecommendationRepository
 import com.example.szigerinsider2026.data.config.FestivalConfig
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class DiscoverViewModel(
-    private val repository: LineupRepository,
+    private val repository: ILineupRepository,
     private val context: Context? = null
 ) : ViewModel() {
 

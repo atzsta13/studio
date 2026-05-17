@@ -7,13 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.szigerinsider2026.data.model.Artist
+import com.example.szigerinsider2026.data.repository.ILineupRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class VibeQuizViewModel(private val repo: LineupRepository) : ViewModel() {
+class VibeQuizViewModel(private val repo: ILineupRepository) : ViewModel() {
 
     var step by mutableStateOf(0)
     var energy by mutableStateOf("")
@@ -48,6 +49,18 @@ class VibeQuizViewModel(private val repo: LineupRepository) : ViewModel() {
     init {
         viewModelScope.launch {
             _allArtists.value = repo.getLineup()
+        }
+    }
+
+    fun nextStep() { step++ }
+    fun prevStep() { if (step > 0) step-- }
+    fun toggleGenre(genre: String) {
+        selectedGenres = if (selectedGenres.contains(genre)) {
+            selectedGenres - genre
+        } else if (selectedGenres.size < 2) {
+            selectedGenres + genre
+        } else {
+            selectedGenres
         }
     }
 

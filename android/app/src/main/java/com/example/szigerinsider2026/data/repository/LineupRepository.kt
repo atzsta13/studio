@@ -14,7 +14,7 @@ import kotlinx.serialization.decodeFromString
 import java.io.InputStreamReader
 import java.net.URL
 
-class LineupRepository(private val context: Context) {
+class LineupRepository(private val context: Context) : ILineupRepository {
     
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
     private val database = AppDatabase.getDatabase(context)
