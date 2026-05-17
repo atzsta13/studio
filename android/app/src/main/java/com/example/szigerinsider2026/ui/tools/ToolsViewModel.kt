@@ -5,15 +5,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.szigerinsider2026.data.model.WeatherData
-import com.example.szigerinsider2026.data.repository.WeatherRepository
+import com.example.szigerinsider2026.data.repository.ILineupRepository
+import com.example.szigerinsider2026.data.repository.IWeatherRepository
 import com.example.szigerinsider2026.data.repository.LineupRepository
+import com.example.szigerinsider2026.data.repository.WeatherRepository
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class ToolsViewModel(private val repository: LineupRepository) : ViewModel() {
+class ToolsViewModel(
+    private val repository: ILineupRepository,
+    private val weatherRepository: IWeatherRepository = WeatherRepository()
+) : ViewModel() {
     private val _weather = MutableStateFlow<WeatherData?>(null)
     val weather: StateFlow<WeatherData?> = _weather
 
@@ -34,8 +39,7 @@ class ToolsViewModel(private val repository: LineupRepository) : ViewModel() {
         viewModelScope.launch {
             _isLoadingWeather.value = true
             try {
-                val weatherRepo = WeatherRepository()
-                _weather.value = weatherRepo.getForecast()
+                _weather.value = weatherRepository.getForecast()
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {

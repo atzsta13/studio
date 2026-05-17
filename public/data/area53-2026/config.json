@@ -144,7 +144,7 @@
     "carFinder": true,
     "notesJournal": true,
     "socialFeed": false,
-    "newsBulletin": true,
+    "newsBulletin": false,
     "setCountdowns": true,
     "surpriseRoulette": true,
     "genreBreakdown": true,

@@ -7,7 +7,7 @@ import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.URL
 
-class WeatherRepository {
+class WeatherRepository : IWeatherRepository {
 
     companion object {
         private var cachedData: WeatherData? = null
@@ -22,7 +22,7 @@ class WeatherRepository {
         "&timezone=Europe%2FBudapest" +
         "&forecast_days=7"
 
-    suspend fun getForecast(): WeatherData = withContext(Dispatchers.IO) {
+    override suspend fun getForecast(): WeatherData = withContext(Dispatchers.IO) {
         val now = System.currentTimeMillis()
         cachedData?.takeIf { now - cacheTime < CACHE_TTL_MS }?.let { return@withContext it }
 

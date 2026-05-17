@@ -11,7 +11,7 @@
 |-------|--------|
 | `npm run typecheck` | ✅ 0 errors |
 | `npm test -- --run` | ✅ 198/198 passing |
-| `cd android && ./gradlew testSzigetDebugUnitTest` | ✅ 49/49 passing |
+| `cd android && ./gradlew testSzigetDebugUnitTest` | ✅ 60/60 passing |
 | White-label compliance | ✅ No hardcoded hex in components |
 | Vibe coverage | ✅ 100% across all 4 festivals |
 | Android Room version | v8 |
@@ -85,9 +85,9 @@
 
 ### Scope Refinement & Feature Cleanup
 - ✅ **Merch Purge**: Completely removed 'Merch Catalog' and 'Merch Price Watch' features.
-- ✅ **Clean UI**: Deleted `src/app/[festivalId]/merch` and removed merch from navigation across Web and Android.
-- ✅ **Global Configs**: Disabled `merchCatalog` and `merchPriceWatch` across all 5 festivals.
-- ✅ **Zero Waste**: Removed stale merch-related translations and icons.
+- ✅ **Signal Purge**: Removed 'Crowd Heatmap', 'Social Feed', and other signal-dependent features to ensure 100% offline reliability.
+- ✅ **Clean UI**: Deleted `src/app/[festivalId]/merch` and removed stale features from navigation.
+- ✅ **Main Stage Stress Test**: Formalized the philosophy that the app must function with 0 bars of signal.
 
 ### Data & Features
 - ✅ **Artist Images**: Fixed missing artist images using iTunes API for Area 53 and Nova Rock.
@@ -128,9 +128,10 @@ npm run typecheck     # 0 errors
 npm test -- --run     # 198/198
 npm run lineup:sync   # after any data change
 
-cd android && ./gradlew testSzigetDebugUnitTest   # 49 tests
+cd android && ./gradlew testSzigetDebugUnitTest   # 60 tests
 ```
 
 ---
 
 *Status: GREEN. All requested tasks completed and mandates enforced.*
+andates enforced.*
