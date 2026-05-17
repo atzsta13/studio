@@ -125,7 +125,7 @@ function getFestivalLineup(festivalId: string): Promise<LineupArtist[]> | Lineup
     console.error(`Failed to load lineup for ${festivalId}`, e);
   }
   // Fallback to currently synced lineup
-  return import('@/data/lineup.json').then(m => m.default as LineupArtist[]);
+  return import('@/data/lineup.json').then(m => m.default as unknown as LineupArtist[]);
 }
 
 /**

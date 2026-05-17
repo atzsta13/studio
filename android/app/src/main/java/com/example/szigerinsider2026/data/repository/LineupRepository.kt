@@ -20,7 +20,7 @@ class LineupRepository(private val context: Context) : ILineupRepository {
     private val database = AppDatabase.getDatabase(context)
     private val artistDao = database.artistDao()
 
-    suspend fun getLineup(year: String = "2026"): List<Artist> = withContext(Dispatchers.IO) {
+    override suspend fun getLineup(year: String): List<Artist> = withContext(Dispatchers.IO) {
         // Try Room first
         val cached = artistDao.getArtistsByYear(year).first()
         if (cached.isNotEmpty()) {

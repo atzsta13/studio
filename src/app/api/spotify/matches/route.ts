@@ -21,7 +21,7 @@ function getSpotifyId(url: string | null): string | null {
 
 // Build map of Spotify Artist ID -> Festival Artist ID
 const spotifyMap = new Map<string, string>();
-(lineup as LineupItem[]).forEach((artist) => {
+(lineup as unknown as LineupItem[]).forEach((artist) => {
     const spotifyId = getSpotifyId(artist.socials?.spotify ?? null);
     if (spotifyId) {
         spotifyMap.set(spotifyId, artist.id);

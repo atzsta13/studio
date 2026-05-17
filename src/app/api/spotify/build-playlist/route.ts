@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
 
         // 2. Build festival artist ID → Spotify artist ID map
         const lineupMap = new Map<string, string>();
-        (lineup as LineupItem[]).forEach((a) => {
+        (lineup as unknown as LineupItem[]).forEach((a) => {
             const sid = getSpotifyId(a.socials?.spotify);
             if (sid) lineupMap.set(a.id, sid);
         });
