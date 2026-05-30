@@ -48,12 +48,33 @@ export function WeatherWidget() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/weather?festivalId=${encodeURIComponent(festivalId)}`)
+        const { lat, lng, timezone } = config.location;
+        const url =
+            `https://api.open-meteo.com/v1/forecast?` +
+            `latitude=${lat}&longitude=${lng}` +
+            `&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+            `&hourly=precipitation_probability` +
+            `&timezone=${encodeURIComponent(timezone)}` +
+            `&forecast_days=7`;
+
+        fetch(url)
             .then((r) => r.json())
-            .then(setWeather)
+            .then((raw) => {
+                const daily = raw.daily;
+                const hourlyPrecip: number[] = raw.hourly.precipitation_probability;
+                const rainAlert = hourlyPrecip.slice(0, 24).some((p: number) => p > 60);
+                const forecast = (daily.time as string[]).map((date: string, i: number) => ({
+                    date: `${date}T00:00:00Z`,
+                    maxTemp: daily.temperature_2m_max[i] as number,
+                    minTemp: daily.temperature_2m_min[i] as number,
+                    precipProbability: daily.precipitation_probability_max[i] as number,
+                    weatherCode: daily.weathercode[i] as number,
+                }));
+                setWeather({ forecast, rainAlert });
+            })
             .catch(() => {})
             .finally(() => setLoading(false));
-    }, [festivalId]);
+    }, [festivalId, config.location]);
 
     if (loading) {
         return (

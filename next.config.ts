@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  trailingSlash: true,
   // Aggressively transpile packages to prevent module factory/call errors in Next.js 15/16
   transpilePackages: [
     '@mui/material',
@@ -13,6 +15,7 @@ const nextConfig: NextConfig = {
     'lucide-react'
   ],
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

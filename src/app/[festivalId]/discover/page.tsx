@@ -41,6 +41,7 @@ import { getRandomUnfavoritedArtist } from '@/lib/serendipity';
 import { useHaptic } from '@/hooks/use-haptic';
 import { NotificationBanner } from '@/components/layout/notification-banner';
 import { NeonButton, GlassCard } from '@/components/ui/brutalist';
+import { ArtistImage } from '@/components/ui/artist-image';
 
 import { cn } from '@/lib/utils';
 import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
@@ -249,7 +250,7 @@ export default function DiscoverPage() {
           >
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted shrink-0">
               {artist.imageUrl ? (
-                <img
+                <ArtistImage
                   src={artist.imageUrl}
                   alt={artist.artist}
                   className="h-full w-full object-cover transition-all duration-1000 group-hover:scale-110"
@@ -557,7 +558,7 @@ export default function DiscoverPage() {
                 >
                   <div className="relative w-40 h-52 rounded-[2rem] overflow-hidden bg-muted border-2 border-accent/30 group-hover:border-accent/80 transition-all duration-500 shadow-accent/10 group-hover:shadow-accent/25 mb-3">
                     {artist.imageUrl ? (
-                      <img
+                      <ArtistImage
                         src={artist.imageUrl}
                         alt={artist.artist}
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"

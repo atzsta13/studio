@@ -21,7 +21,7 @@ export async function generateMetadata({
       default: `${config.appName} — ${config.tagline}`,
     },
     description: config.description,
-    manifest: `/api/${festivalId}/manifest.json`,
+    manifest: `/manifest.json`,
   };
 }
 

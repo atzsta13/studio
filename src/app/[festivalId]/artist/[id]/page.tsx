@@ -30,6 +30,7 @@ import { FaGlobe } from 'react-icons/fa6';
 import { FavoriteButton } from '@/components/artist/favorite-button';
 import { SetCountdown } from '@/components/artist/set-countdown';
 import { SetlistLinks } from '@/components/artist/setlist-links';
+import { ArtistImage } from '@/components/ui/artist-image';
 import type { LineupItem } from '@/types';
 
 import { useGlobalArtist } from '@/hooks/use-global-artist';
@@ -110,7 +111,7 @@ export default function ArtistDetailPage() {
         <div className="lg:col-span-5">
           {artist.imageUrl && (
             <div className="overflow-hidden rounded-[2.5rem] bg-muted shadow-xl mb-6 border border-border/50 group relative">
-              <img src={artist.imageUrl} alt={artist.artist} className="w-full h-auto object-cover aspect-square transition-transform duration-1000 group-hover:scale-110" />
+              <ArtistImage src={artist.imageUrl} alt={artist.artist} className="w-full h-auto object-cover aspect-square transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           )}
@@ -192,7 +193,7 @@ export default function ArtistDetailPage() {
                 {similar.map(a => (
                   <Link key={a.id} href={`/${festivalId}/artist/${a.id}`} className="group block">
                     <div className="aspect-square rounded-[2rem] bg-muted overflow-hidden mb-3 relative border border-white/5 shadow-2xl">
-                      <img src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      {a.imageUrl && <ArtistImage src={a.imageUrl} alt={a.artist} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />}
                       <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
                         <UserPlus className="text-white h-10 w-10" />
                       </div>
