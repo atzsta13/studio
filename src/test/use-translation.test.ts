@@ -75,7 +75,6 @@ function makeConfig(overrides: Partial<FestivalConfig> = {}): FestivalConfig {
       currencyConverter: false,
       tentFinder: false,
       vibeQuiz: false,
-      spotifyIntegration: false,
       aiRecommendations: false,
       survivalGuide: false,
       timetable: false,

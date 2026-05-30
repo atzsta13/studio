@@ -10,8 +10,6 @@ import {
   SortAsc,
   Sparkles,
   Globe,
-  Wand2,
-  Loader2,
   ChevronRight,
   Heart,
   AlertTriangle,
@@ -23,7 +21,6 @@ import {
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { SpotifyConnect } from '@/components/spotify/spotify-connect';
 import {
   Dialog,
   DialogContent,
@@ -35,7 +32,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { PlaylistBuilder } from '@/components/spotify/playlist-builder';
 import { SerendipityModal } from '@/components/discover/SerendipityModal';
 import { TagCloud } from '@/components/discover/tag-cloud';
 import { GenreBreakdown } from '@/components/discover/genre-breakdown';
@@ -49,7 +45,7 @@ import { NeonButton, GlassCard } from '@/components/ui/brutalist';
 import { cn } from '@/lib/utils';
 import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 
-type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country' | 'spotify';
+type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country';
 
 export default function DiscoverPage() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -62,8 +58,6 @@ export default function DiscoverPage() {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [searchQuery, setSearchQuery] = useState('');
-  const [spotifyMatches, setSpotifyMatches] = useState<string[]>([]);
-  const [isSpotifyConnected, setIsSpotifyConnected] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   
   const [serendipityArtist, setSerendipityArtist] = useState<LineupItem | null>(null);
@@ -142,10 +136,6 @@ export default function DiscoverPage() {
   const filteredArtists = useMemo(() => {
     let base = [...allArtists];
 
-    if (viewMode === 'spotify') {
-      base = base.filter(a => spotifyMatches.includes(a.id));
-    }
-
     if (viewMode === 'az') {
       base.sort((a, b) => a.artist.localeCompare(b.artist));
     } else if (viewMode === 'discover') {
@@ -173,7 +163,7 @@ export default function DiscoverPage() {
 
       return matchesGenre && matchesVibe && matchesStage && matchesSearch && matchesCountry;
     });
-  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, spotifyMatches, searchQuery, config, selectedCountry]);
+  }, [allArtists, selectedGenre, selectedVibe, selectedStage, viewMode, searchQuery, config, selectedCountry]);
 
   const artistsByDay = useMemo(() => {
     const grouped: Record<string, typeof filteredArtists> = {};
@@ -393,19 +383,6 @@ export default function DiscoverPage() {
 
         <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-8">
           <div className="flex items-center gap-6 flex-wrap justify-center">
-            {config.features.spotifyIntegration && (
-              <>
-                <SpotifyConnect onMatchesFound={(ids) => {
-                  setSpotifyMatches(ids);
-                  setIsSpotifyConnected(true);
-                  if (ids.length > 0) setViewMode('spotify');
-                }} />
-                {isSpotifyConnected && spotifyMatches.length > 0 && (
-                  <PlaylistBuilder matchedArtistIds={spotifyMatches} />
-                )}
-              </>
-            )}
-
             {/* Surprise Me */}
             <NeonButton
               variant="accent"
@@ -523,14 +500,6 @@ export default function DiscoverPage() {
                   {mode.label}
                 </button>
               ))}
-              {isSpotifyConnected && (
-                <button
-                  onClick={() => handleViewModeChange('spotify')}
-                  className={`flex items-center gap-3 rounded-[1.2rem] px-8 py-4 text-[11px] font-black tracking-[0.2em] uppercase transition-all whitespace-nowrap ${viewMode === 'spotify' ? 'bg-[#1DB954] text-white shadow-2xl' : 'text-muted-foreground hover:text-foreground'}`}
-                >
-                  Matches
-                </button>
-              )}
             </GlassCard>
           </div>
 
@@ -710,7 +679,7 @@ export default function DiscoverPage() {
           </div>
         )}
 
-        {(viewMode === 'discover' || viewMode === 'az' || viewMode === 'spotify') && (
+        {(viewMode === 'discover' || viewMode === 'az') && (
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 sm:gap-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             {filteredArtists.map(artist => (
               <ArtistCard key={artist.id} artist={artist} />

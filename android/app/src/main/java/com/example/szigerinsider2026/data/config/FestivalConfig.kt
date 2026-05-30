@@ -12,7 +12,6 @@ data class FestivalFeatures(
     val tentFinder: Boolean = false,
     val vibeQuiz: Boolean = false,
     val passport: Boolean = false,
-    val spotifyIntegration: Boolean = false,
     val aiRecommendations: Boolean = false,
     val survivalGuide: Boolean = false,
     val timetable: Boolean = false,

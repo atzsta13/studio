@@ -3,9 +3,8 @@ import { rateLimit } from '@/lib/rate-limit';
 
 // Rate limits per window (60 seconds)
 const LIMITS: Record<string, number> = {
-    '/api/ai/':      20,   // AI recommendations — expensive, Gemini API costs
-    '/api/spotify/': 60,   // Spotify proxy — moderate
-    '/api/':        100,   // All other routes
+    '/api/ai/':  20,   // AI recommendations — expensive, Gemini API costs
+    '/api/':    100,   // All other routes
 };
 
 export function proxy(request: NextRequest) {

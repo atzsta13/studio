@@ -71,7 +71,6 @@ export interface FestivalConfig {
     currencyConverter: boolean
     tentFinder: boolean
     vibeQuiz: boolean
-    spotifyIntegration: boolean
     aiRecommendations: boolean
     survivalGuide: boolean
     timetable: boolean

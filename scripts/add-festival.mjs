@@ -119,7 +119,6 @@ const config = {
     currencyConverter: true,
     tentFinder: false,
     vibeQuiz: true,
-    spotifyIntegration: false,
     aiRecommendations: true,
     survivalGuide: true,
     timetable: false,
