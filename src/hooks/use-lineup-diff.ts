@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
@@ -20,7 +21,7 @@ export function useLineupDiff(festivalId: string, currentLineup: LineupItem[]): 
       
       try {
         // Try to load 2025 data specifically for Sziget, or generic previous
-        const response = await fetch(`/data/${festivalId}/lineup_2025.json`);
+        const response = await fetch(`${BASE_PATH}/data/${festivalId}/lineup_2025.json`);
         if (response.ok) {
           const data = await response.json();
           setPreviousLineup(data);

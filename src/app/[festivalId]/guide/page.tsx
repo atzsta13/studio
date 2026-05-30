@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useParams } from 'next/navigation';
@@ -34,7 +35,7 @@ export default function GuidePage() {
   useEffect(() => {
     async function fetchGuide() {
       try {
-        const response = await fetch(`/data/${festivalId}/guide.json`);
+        const response = await fetch(`${BASE_PATH}/data/${festivalId}/guide.json`);
         if (!response.ok) throw new Error('Failed to load guide');
         const data = await response.json();
         setGuideData(data);

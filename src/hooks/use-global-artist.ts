@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -27,7 +28,7 @@ export function useGlobalArtist(artistName: string | undefined) {
       try {
         await Promise.all(
           FESTIVAL_IDS.map(async (id) => {
-            const res = await fetch(`/data/${id}/lineup.json`);
+            const res = await fetch(`${BASE_PATH}/data/${id}/lineup.json`);
             if (res.ok) {
               const lineup: LineupItem[] = await res.json();
               const match = lineup.find(a => a.artist.toLowerCase() === artistName?.toLowerCase());

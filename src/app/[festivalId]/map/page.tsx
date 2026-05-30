@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 import { useInsider } from '@/components/layout/insider-provider';
 
@@ -76,8 +77,8 @@ export default function MapPage() {
     async function fetchMapData() {
       try {
         const [poiRes, foodRes] = await Promise.all([
-          fetch(`/data/${festivalId}/poi.json`),
-          fetch(`/data/${festivalId}/food.json`)
+          fetch(`${BASE_PATH}/data/${festivalId}/poi.json`),
+          fetch(`${BASE_PATH}/data/${festivalId}/food.json`)
         ]);
         if (poiRes.ok) setPoiData(await poiRes.json());
         if (foodRes.ok) setFoodData(await foodRes.json());

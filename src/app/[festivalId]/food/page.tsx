@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -52,7 +53,7 @@ export default function FoodFinderPage() {
     useEffect(() => {
         async function fetchFood() {
             try {
-                const response = await fetch(`/data/${festivalId}/food.json`);
+                const response = await fetch(`${BASE_PATH}/data/${festivalId}/food.json`);
                 if (response.ok) setVendors(await response.json());
             } catch (err) {
                 console.error(err);

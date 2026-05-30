@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -54,7 +55,7 @@ export function SurvivalGuide() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`/data/${festivalId}/survival.json`);
+        const response = await fetch(`${BASE_PATH}/data/${festivalId}/survival.json`);
         if (response.ok) {
           const json = await response.json();
           setData(json);

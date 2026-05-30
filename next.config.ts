@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   basePath: '/studio',
+  env: {
+    NEXT_PUBLIC_BASE_PATH: '/studio',
+  },
   // Aggressively transpile packages to prevent module factory/call errors in Next.js 15/16
   transpilePackages: [
     '@mui/material',

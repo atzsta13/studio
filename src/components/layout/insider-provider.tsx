@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
@@ -83,7 +84,7 @@ export function InsiderProvider({
     async function fetchLineup() {
       setIsLoading(true);
       try {
-        const response = await fetch(`/data/${config.id}/lineup.json`);
+        const response = await fetch(`${BASE_PATH}/data/${config.id}/lineup.json`);
         if (!response.ok) throw new Error(`Failed to load lineup for ${config.id}`);
         const data = await response.json();
         if (isMounted) {

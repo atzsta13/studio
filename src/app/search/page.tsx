@@ -1,3 +1,4 @@
+import { BASE_PATH } from '@/lib/base-path';
 'use client';
 
 import { useState, useEffect, useMemo, Suspense } from 'react';
@@ -36,7 +37,7 @@ function HubSearchContent() {
       await Promise.all(
         FESTIVAL_IDS.map(async (id) => {
           try {
-            const res = await fetch(`/data/${id}/lineup.json`);
+            const res = await fetch(`${BASE_PATH}/data/${id}/lineup.json`);
             if (res.ok) results[id] = await res.json();
           } catch (e) {
             console.error(`Failed to load lineup for ${id}`);
