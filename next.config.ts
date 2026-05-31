@@ -7,7 +7,16 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: '/studio',
   },
-  // Aggressively transpile packages to prevent module factory/call errors in Next.js 15/16
+  experimental: {
+    optimizePackageImports: [
+      '@mui/material',
+      '@mui/icons-material',
+      '@mui/lab',
+      'lucide-react',
+      'react-icons',
+    ],
+  },
+  // Transpile for SSR/hydration compatibility with Emotion and MUI
   transpilePackages: [
     '@mui/material',
     '@mui/system',
@@ -16,35 +25,15 @@ const nextConfig: NextConfig = {
     '@emotion/react',
     '@emotion/styled',
     '@emotion/cache',
-    'lucide-react'
+    'lucide-react',
   ],
   images: {
     unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'media.appmiral.com',
-        port: '',
-        pathname: '/**',
-      },
+      { protocol: 'https', hostname: 'media.appmiral.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'is1-ssl.mzstatic.com', pathname: '/**' },
+      { protocol: 'https', hostname: '*.mzstatic.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'coverartarchive.org', pathname: '/**' },
     ],
   },
 };

@@ -2,10 +2,9 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { AlertTriangle, ArrowRight, Zap } from 'lucide-react';
+import { AlertTriangle, Zap } from 'lucide-react';
 import type { LineupItem } from '@/types';
 import { useClashResolver } from '@/hooks/use-clash-resolver';
-import { FESTIVAL } from '@/config/festival-engine';
 
 export function ClashResolver({ favorites }: { favorites: LineupItem[] }) {
   const clashes = useClashResolver(favorites);

@@ -23,7 +23,8 @@
       "Raw",
       "Eclectic",
       "Guitar"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f6/eb/9c/f6eb9cc6-91a4-a723-de7a-08bd45d483b0/016861741006.jpg/600x600bb.jpg"
   },
   {
     "id": "2",
@@ -78,7 +79,8 @@
       "Chill",
       "Atmospheric",
       "Melodic"
-    ]
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/47/75/4b/47754bf5-8773-d454-9dd7-b76c0ef9705c/00602557801682.rgb.jpg/600x600bb.jpg"
   },
   {
     "id": "4",
@@ -87,7 +89,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DK",
     "genres": [
       "BLUE STAGE"
     ],
@@ -112,7 +114,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -165,7 +167,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "IS",
     "genres": [
       "RED STAGE"
     ],
@@ -193,7 +195,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -218,7 +220,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -267,7 +269,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "RED STAGE"
     ],
@@ -292,7 +294,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -319,7 +321,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -346,7 +348,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "INDUSTRIAL METAL",
       "NU METAL"
@@ -370,7 +372,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AT",
     "genres": [
       "RED STAGE"
     ],
@@ -399,7 +401,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "BLUE STAGE"
     ],
@@ -505,7 +507,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "ALTERNATIVE ROCK",
       "GRUNGE"
@@ -515,7 +517,7 @@
       "spotify": null
     },
     "description": null,
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/22/39/97/2239973c-6ad2-d929-3bd9-2c23b0e23cfc/074644889826.jpg/600x600bb.jpg",
     "vibes": [
       "Raw",
       "Energetic",
@@ -532,7 +534,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -587,7 +589,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "ES",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -615,7 +617,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -691,7 +693,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "BLUE STAGE"
     ],
@@ -717,7 +719,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -742,7 +744,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -768,7 +770,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -796,7 +798,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -821,7 +823,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -847,7 +849,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -871,7 +873,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -896,7 +898,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "SE",
     "genres": [
       "BLUE STAGE"
     ],
@@ -920,7 +922,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "ES",
     "genres": [
       "RED STAGE"
     ],
@@ -943,7 +945,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "SE",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -994,7 +996,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1023,7 +1025,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -1048,7 +1050,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "IE",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1071,7 +1073,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -1094,7 +1096,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "RED STAGE"
     ],
@@ -1147,7 +1149,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1226,7 +1228,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1249,7 +1251,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1275,7 +1277,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1298,7 +1300,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1328,7 +1330,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "SE",
     "genres": [
       "RED STAGE"
     ],
@@ -1381,7 +1383,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "BR",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1408,7 +1410,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "RED STAGE"
     ],
@@ -1434,7 +1436,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED STAGE"
     ],
@@ -1490,7 +1492,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "FI",
     "genres": [
       "RED STAGE"
     ],
@@ -1514,7 +1516,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1541,7 +1543,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1568,7 +1570,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "RED STAGE"
     ],
@@ -1621,7 +1623,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "RED STAGE"
     ],
@@ -1671,7 +1673,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1694,7 +1696,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1719,7 +1721,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1773,7 +1775,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1825,7 +1827,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AT",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -1876,7 +1878,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1902,7 +1904,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1930,7 +1932,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "CA",
     "genres": [
       "BLUE STAGE"
     ],
@@ -1956,7 +1958,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -2037,7 +2039,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "BLUE STAGE"
     ],
@@ -2063,7 +2065,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "RED BULL STAGE"
     ],
@@ -2187,7 +2189,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "BLUE STAGE"
     ],
@@ -2271,7 +2273,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "RED BULL STAGE"
     ],

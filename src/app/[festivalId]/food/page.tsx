@@ -45,7 +45,7 @@ export default function FoodFinderPage() {
     const config = getFestivalConfig(festivalId);
     
     const [vendors, setVendors] = useState<Vendor[]>([]);
-    const [isLocalLoading, setIsLocalLoading] = useState(true);
+    const [, setIsLocalLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [activeFilters, setActiveFilters] = useState<string[]>([]);
     const [ratings, setRatings] = useState<Record<string, number>>({});

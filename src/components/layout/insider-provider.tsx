@@ -126,18 +126,17 @@ export function InsiderProvider({
   }, [config.id, favKeys]);
 
   // --- Actions ---
-  const toggleBatterySaver = () => {
-    const next = !batterySaver;
-    setBatterySaver(next);
-    localStorage.setItem(`${config.id}-battery-saver`, String(next));
-    if (next) {
-      document.body.classList.add('battery-saver');
-    } else {
-      document.body.classList.remove('battery-saver');
-    }
-  };
+  const toggleBatterySaver = useCallback(() => {
+    setBatterySaver(prev => {
+      const next = !prev;
+      localStorage.setItem(`${config.id}-battery-saver`, String(next));
+      if (next) document.body.classList.add('battery-saver');
+      else document.body.classList.remove('battery-saver');
+      return next;
+    });
+  }, [config.id]);
 
-  const getStorageKey = (key: string) => `${config.id}-${key}`;
+  const getStorageKey = useCallback((key: string) => `${config.id}-${key}`, [config.id]);
 
   const saveFavorites = useCallback((data: Record<string, FavoriteTier>) => {
     try {
@@ -188,13 +187,15 @@ export function InsiderProvider({
   }, [saveFavorites]);
 
   // --- Derived Favorites ---
-  const favorites = new Set(Object.keys(tieredFavorites));
+  const favorites = useMemo(() => new Set(Object.keys(tieredFavorites)), [tieredFavorites]);
   const allFavoriteIds = favorites;
-  const mustSeeIds = new Set(
-    Object.entries(tieredFavorites).filter(([, tier]) => tier === 'must_see').map(([id]) => id)
+  const mustSeeIds = useMemo(
+    () => new Set(Object.entries(tieredFavorites).filter(([, tier]) => tier === 'must_see').map(([id]) => id)),
+    [tieredFavorites]
   );
-  const interestedIds = new Set(
-    Object.entries(tieredFavorites).filter(([, tier]) => tier === 'interested').map(([id]) => id)
+  const interestedIds = useMemo(
+    () => new Set(Object.entries(tieredFavorites).filter(([, tier]) => tier === 'interested').map(([id]) => id)),
+    [tieredFavorites]
   );
 
   // --- Conflict Detection ---
@@ -227,7 +228,7 @@ export function InsiderProvider({
     setConflicts(newConflicts);
   }, [tieredFavorites, lineup, isFavorite]);
 
-  const value = {
+  const value = useMemo(() => ({
     config,
     features: config.features,
     batterySaver,
@@ -246,8 +247,13 @@ export function InsiderProvider({
     removeFavorite,
     getFavoriteTier,
     isFavorite,
-    conflicts
-  };
+    conflicts,
+  }), [
+    config, batterySaver, toggleBatterySaver, getStorageKey, isOnline,
+    lineup, isLoading, error, favorites, allFavoriteIds, mustSeeIds,
+    interestedIds, toggleFavorite, addFavorite, removeFavorite,
+    getFavoriteTier, isFavorite, conflicts,
+  ]);
 
   return (
     <InsiderContext.Provider value={value}>

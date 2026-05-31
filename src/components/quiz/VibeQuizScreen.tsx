@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { LineupItem } from '@/types';
 import { useVibeQuiz } from '@/hooks/use-vibe-quiz';
@@ -38,7 +38,6 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
     nextStep,
     prevStep,
     computeResults,
-    reset,
   } = useVibeQuiz(lineup);
 
   const [showResults, setShowResults] = useState(false);
@@ -73,10 +72,6 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
     setShowResults(true);
   };
 
-  const handleRetake = () => {
-    setShowResults(false);
-    reset();
-  };
 
   const handlePrevStep = () => {
     haptic.lightTap();
@@ -123,7 +118,7 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
           {!showResults ? (
             <>
               {state.step === 0 && (
-                <EnergyStep selected={state.energy as any} onSelect={setEnergy} />
+                <EnergyStep selected={state.energy} onSelect={setEnergy} />
               )}
               {state.step === 1 && (
                 <GenreStep
@@ -133,13 +128,13 @@ export function VibeQuizScreen({ lineup, onComplete }: VibeQuizScreenProps) {
               )}
               {state.step === 2 && (
                 <CrowdVibeStep
-                  selected={state.crowdVibe as any}
+                  selected={state.crowdVibe}
                   onSelect={setCrowdVibe}
                 />
               )}
               {state.step === 3 && (
                 <MoodTagStep
-                  selected={state.moodTag as any}
+                  selected={state.moodTag}
                   onSelect={setMoodTag}
                 />
               )}

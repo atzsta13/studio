@@ -45,7 +45,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupRepository

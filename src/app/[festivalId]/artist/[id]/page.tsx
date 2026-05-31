@@ -11,7 +11,6 @@ import {
   Clock,
   ChevronLeft,
   Building,
-  Sparkles,
   UserPlus,
   Loader2,
   MapPin,
@@ -40,7 +39,7 @@ export default function ArtistDetailPage() {
   const { config, lineup, isLoading } = useInsider();
   
   const artist = lineup.find((artist) => artist.id === id) as (LineupItem & { vibes?: string[] }) | undefined;
-  const { appearances, isLoading: isGlobalLoading } = useGlobalArtist(artist?.artist);
+  const { appearances } = useGlobalArtist(artist?.artist);
 
   const getSimilarArtists = (a: LineupItem) => {
     if (!a.genres) return [];
@@ -58,7 +57,7 @@ export default function ArtistDetailPage() {
         .split('')
         .map(char => 127397 + char.charCodeAt(0));
       return String.fromCodePoint(...codePoints);
-    } catch (e) { return ''; }
+    } catch { return ''; }
   };
 
   if (isLoading) {

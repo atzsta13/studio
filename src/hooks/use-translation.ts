@@ -1,12 +1,12 @@
 'use client';
 
 import { useInsider } from '@/components/layout/insider-provider';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect, useMemo } from 'react';
 
 export function useTranslation() {
   const { config } = useInsider();
   const defaultLocale = config.i18n?.defaultLocale || 'en';
-  const locales = config.i18n?.locales || ['en'];
+  const locales = useMemo(() => config.i18n?.locales || ['en'], [config.i18n?.locales]);
   const [locale, setLocale] = useState<string>(defaultLocale);
 
   useEffect(() => {

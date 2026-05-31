@@ -11,19 +11,15 @@ import {
   Navigation,
   Info,
   X,
-  History,
   Zap,
-  Flame,
   Accessibility,
   VolumeX,
   BatteryCharging,
-  Crosshair
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { TentFinder } from '@/components/tools/tent-finder';
-import { Loader2 } from 'lucide-react';
 import { GlassCard, NeonButton } from '@/components/ui/brutalist';
 import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 
@@ -59,7 +55,7 @@ interface MapPin {
 
 export default function MapPage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading: isDataLoading } = useInsider();
+  const { config, lineup } = useInsider();
   const [poiData, setPoiData] = useState<POIItem[]>([]);
   const [foodData, setFoodData] = useState<FoodItem[]>([]);
   const [isLocalLoading, setIsLocalLoading] = useState(true);

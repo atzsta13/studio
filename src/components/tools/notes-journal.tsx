@@ -26,7 +26,7 @@ export function NotesJournal() {
     if (saved) {
       setNotes(JSON.parse(saved));
     }
-  }, []);
+  }, [STORAGE_KEY]);
 
   const saveNote = () => {
     if (!currentNote.trim()) return;

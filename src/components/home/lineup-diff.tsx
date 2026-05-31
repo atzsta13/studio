@@ -1,16 +1,12 @@
 'use client';
 
 import { useLineupDiff } from '@/hooks/use-lineup-diff';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  Sparkles, 
-  RotateCcw, 
-  TrendingUp, 
-  TrendingDown, 
-  ChevronRight,
-  Music,
+import {
+  TrendingUp,
+  TrendingDown,
   UserPlus
 } from 'lucide-react';
 import Link from 'next/link';

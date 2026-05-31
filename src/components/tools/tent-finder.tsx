@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Navigation, Trash2, Crosshair } from 'lucide-react';
+import { MapPin, Navigation, Trash2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useParams } from 'next/navigation';
 
@@ -11,14 +11,12 @@ export function TentFinder() {
     const { festivalId } = useParams() as { festivalId: string };
     const STORAGE_KEY = `${festivalId}-tent-location`;
     const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
-    const [currentPos, setCurrentPos] = useState<{ lat: number; lng: number } | null>(null);
-    const [bearing, setBearing] = useState<number | null>(null);
     const { toast } = useToast();
 
     useEffect(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (saved) setLocation(JSON.parse(saved));
-    }, []);
+    }, [STORAGE_KEY]);
 
     const saveSpot = () => {
         if (!navigator.geolocation) {

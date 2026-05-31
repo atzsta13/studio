@@ -44,7 +44,7 @@ import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupRepository
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.components.*
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import java.time.LocalDate

@@ -1,29 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { PageHeader } from '@/components/layout/page-header';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
   Coins,
   Zap,
   Ear,
   Sun,
-  FileText,
   Phone,
   ShieldAlert,
-  ShieldCheck,
-  QrCode,
-  MapPin,
-  Share2,
-  Languages,
   ArrowRight,
   BookOpen,
   Bus,
-  Radar
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { WeatherWidget } from '@/components/tools/weather-widget';

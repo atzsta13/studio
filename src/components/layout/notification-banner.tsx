@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bell, BellOff, X } from 'lucide-react';
+import { Bell, X } from 'lucide-react';
 import { areNotificationsSupported, requestNotificationPermission } from '@/lib/notifications';
 
 interface NotificationBannerProps {

@@ -28,13 +28,13 @@ export function CampsiteChecklist() {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setChecked(JSON.parse(saved));
     setIsLoaded(true);
-  }, []);
+  }, [STORAGE_KEY]);
 
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
     }
-  }, [checked, isLoaded]);
+  }, [checked, isLoaded, STORAGE_KEY]);
 
   const toggle = (id: string) => {
     setChecked(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);

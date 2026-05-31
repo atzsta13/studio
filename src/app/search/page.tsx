@@ -4,7 +4,7 @@ import { BASE_PATH } from '@/lib/base-path';
 import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
-import { Search, Music2, MapPin, Calendar, ArrowRight, Loader2, Filter } from 'lucide-react';
+import { Search, Music2, MapPin, ArrowRight, Loader2 } from 'lucide-react';
 import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -39,7 +39,7 @@ function HubSearchContent() {
           try {
             const res = await fetch(`${BASE_PATH}/data/${id}/lineup.json`);
             if (res.ok) results[id] = await res.json();
-          } catch (e) {
+          } catch {
             console.error(`Failed to load lineup for ${id}`);
           }
         })

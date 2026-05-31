@@ -4,7 +4,6 @@ import { useInsider } from '@/components/layout/insider-provider';
 import { useState, useEffect } from 'react';
 import { Heart, Eye, CheckCircle2 } from 'lucide-react';
 import { useHaptic } from '@/hooks/use-haptic';
-import { FESTIVAL } from '@/config/festival-engine';
 
 interface FavoriteButtonProps {
     artistId: string;
@@ -25,7 +24,7 @@ export function FavoriteButton({ artistId, size = 'lg', festivalId }: FavoriteBu
             const seen = JSON.parse(raw) as string[];
             setIsSeen(seen.includes(artistId));
         }
-    }, [artistId]);
+    }, [artistId, SEEN_KEY]);
 
     const handleSeenToggle = (e: React.MouseEvent) => {
         e.preventDefault();

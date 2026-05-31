@@ -1,7 +1,7 @@
 'use client';
 import { BASE_PATH } from '@/lib/base-path';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
@@ -71,7 +71,14 @@ export function SurvivalGuide() {
 
   const toggle = (id: string) => setExpanded(expanded === id ? null : id);
 
-  const Section = ({ id, title, icon: Icon, children, colorClass }: any) => (
+  interface SectionProps {
+    id: string;
+    title: string;
+    icon: React.ElementType;
+    children: React.ReactNode;
+    colorClass: string;
+  }
+  const Section = ({ id, title, icon: Icon, children, colorClass }: SectionProps) => (
     <Card className="bg-card/50 backdrop-blur-3xl border-white/5 shadow-2xl overflow-hidden rounded-[2rem] mb-6">
       <button 
         onClick={() => toggle(id)}

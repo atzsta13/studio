@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Globe, Users, Trophy } from 'lucide-react';
+import { Globe, Trophy } from 'lucide-react';
 import type { LineupItem } from '@/types';
 import { useMemo } from 'react';
 
@@ -50,7 +50,7 @@ export function CountryExplorer({
         .split('')
         .map(char => 127397 + char.charCodeAt(0));
       return String.fromCodePoint(...codePoints);
-    } catch (e) { return '🌐'; }
+    } catch { return '🌐'; }
   };
 
   const topCountry = countryStats[0];

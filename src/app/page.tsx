@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { FESTIVAL_CONFIGS } from '@/config/festival-engine';
 import { Card, CardContent } from '@/components/ui/card';
-import { Music2, ArrowRight, MapPin, Calendar, Sparkles } from 'lucide-react';
+import { Music2, ArrowRight, MapPin, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GlobalSearch } from '@/components/home/global-search';
 import { GlobalRadar } from '@/components/home/global-radar';

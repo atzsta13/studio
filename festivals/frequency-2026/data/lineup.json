@@ -28,7 +28,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132620-18583-KraftklubcPhilipp-Gladsome.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132620-18583-KraftklubcPhilipp-Gladsome.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "2",
@@ -57,7 +58,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152517-19135-Lorde-Press-shot-2-Thistle-Brown.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152517-19135-Lorde-Press-shot-2-Thistle-Brown.jpg",
+    "countryCode": "NZ"
   },
   {
     "id": "3",
@@ -85,7 +87,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152395-16165-SDP_pressebild_web_byRobertHirschmannandbdxmedia-(1).png"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152395-16165-SDP_pressebild_web_byRobertHirschmannandbdxmedia-(1).png",
+    "countryCode": "DE"
   },
   {
     "id": "4",
@@ -110,7 +113,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152524-20813-Ravyn-Lenae-Press-Photo-2.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152524-20813-Ravyn-Lenae-Press-Photo-2.jpg",
+    "countryCode": "US"
   },
   {
     "id": "5",
@@ -161,7 +165,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153076-20447-lovehead-Credit-Nikolas-Rode-2.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153076-20447-lovehead-Credit-Nikolas-Rode-2.jpg",
+    "countryCode": "AT"
   },
   {
     "id": "7",
@@ -186,7 +191,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152545-19113-OGLU_3_Credits_Janis_Luders.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152545-19113-OGLU_3_Credits_Janis_Luders.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "8",
@@ -213,7 +219,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/4d/3a/76/4d3a7621-8b56-56a3-829f-545dde0b2b6a/191404143674.png/600x600bb.jpg",
+    "countryCode": "IE"
   },
   {
     "id": "9",
@@ -237,7 +244,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152801-19586-ZaraLarsson_LOOK06_00108_V2_Adobergb_LR.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152801-19586-ZaraLarsson_LOOK06_00108_V2_Adobergb_LR.jpg",
+    "countryCode": "SE"
   },
   {
     "id": "10",
@@ -261,7 +269,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/a3/20/c9/a320c9b3-5d92-65d2-4b93-573a06ddf5e2/075679799067.jpg/600x600bb.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "11",
@@ -285,7 +294,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152806-20852-000160100005-2.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152806-20852-000160100005-2.jpg",
+    "countryCode": "US"
   },
   {
     "id": "12",
@@ -334,7 +344,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152808-19674-20251028_JAMES_HYPE_CULT_KA_01_WHITE_41511_V1G.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152808-19674-20251028_JAMES_HYPE_CULT_KA_01_WHITE_41511_V1G.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "14",
@@ -361,7 +372,7 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f8/65/02/f8650256-039d-1ffc-c991-f0ef2cc399a3/703980548035.png/600x600bb.jpg"
   },
   {
     "id": "15",
@@ -414,7 +425,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/84/2e/ee/842eee03-a8d0-94b5-9ce0-034055696f67/mzi.trvyppxj.jpg/600x600bb.jpg",
+    "countryCode": "AT"
   },
   {
     "id": "17",
@@ -439,7 +451,8 @@
     "startTime": null,
     "endTime": null,
     "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153078-20489-Kleiner_PA69_Oskar_Dombrowsky_1.jpg",
-    "description": "ABOUT\n\nPA69 – pronounced “PA” in English and “69” in German – are a rap group from Berlin. Little to nothing is known about the identities of the three pink-masked rappers DJ DOPE, Rabatto, and Turbogianni. What is certain is that they grew up in the affluent suburbs of Berlin and in rural northeast Germany.\n\nFurther rumors regarding the identity of the three members (youth basketball coach, combat diver, Michelin-starred chef, wedding DJ, doctor of law, or freestyle king) and the meaning of the abbreviation PA69 cannot be confirmed with certainty.\n\nPA69 released their first tape, “Tape No. Two,” in 2020. Shortly thereafter, ‘Kingmische’ became their first veritable underground hit. Their first concerts at Goa open-air festivals and in Berlin pub basements were followed by their own tour of sold-out clubs after the release of “Biertornado” in 2023. In their hometown of Berlin, PA69 played to a sold-out crowd at SO36 in early 2024, followed by a sold-out show at Astra Kulturhaus at the end of the year; another concert at Columbiahalle has already been announced. Meanwhile, PA69 are attracting an extremely diverse audience far beyond Berlin's city limits and have played several sold-out tours and at festivals such as Splash!, Fusion, Spektrum, Pangea, and Dockville. In other words, slowly but surely, no one can ignore the PA69 phenomenon anymore.\n\nThe fact that the people behind PA69 are so elusive gives the three rappers tremendous freedom to slip effortlessly into a wide variety of roles. Lyrically, they work with anti-styles and obscure references—the more bizarre, the better.\n\nSo while other players in the music scene are all about coolness, toughness, and wealth, these rappers make a point of being uncool. PA69 flirts with the very things that others look down on: life in the provinces, fingerboards, fake luxury watches, and supermarket loyalty points. In short, PA69 are masters of “ironic Dadaist distortion” (Alex Barbian).\n\nIn their euphoric, slogan-like rap, PA69 also convey an intoxicated, hedonistic attitude to life, which places them in the cosmos of Berlin's “Atzen rap.” The influences of certain rap greats, especially those from Berlin, are unmistakable – one is repeatedly reminded of the K.IZ. promo album, DJ Reckless, Corus86, or the Atzen, Frauenarzt, and Manny Marc. Lyrically, however, PA69 never stoops to low blows. Unlike what is still common in German rap, their punchlines are directed neither at women nor at minorities.\n\nPA69 deliver a special, energetic show live. Always part of the act: an animator in a sun costume, who is both a cheerleader and lead dancer, carefully arranged intros made up of pop culture set pieces, and the now indispensable “beer tornado” circle pit. The quality media have also come to understand that PA69 is something special: For the Berliner Zeitung, the band's “guaranteed never-before-heard, creative rap lines” are “incredibly fun,” even though it is “by no means a pure fun project.” For the Tagesspiegel, the “mood phenomenon PA69” is already one of the most exciting newcomers of 2024."
+    "description": "ABOUT\n\nPA69 – pronounced “PA” in English and “69” in German – are a rap group from Berlin. Little to nothing is known about the identities of the three pink-masked rappers DJ DOPE, Rabatto, and Turbogianni. What is certain is that they grew up in the affluent suburbs of Berlin and in rural northeast Germany.\n\nFurther rumors regarding the identity of the three members (youth basketball coach, combat diver, Michelin-starred chef, wedding DJ, doctor of law, or freestyle king) and the meaning of the abbreviation PA69 cannot be confirmed with certainty.\n\nPA69 released their first tape, “Tape No. Two,” in 2020. Shortly thereafter, ‘Kingmische’ became their first veritable underground hit. Their first concerts at Goa open-air festivals and in Berlin pub basements were followed by their own tour of sold-out clubs after the release of “Biertornado” in 2023. In their hometown of Berlin, PA69 played to a sold-out crowd at SO36 in early 2024, followed by a sold-out show at Astra Kulturhaus at the end of the year; another concert at Columbiahalle has already been announced. Meanwhile, PA69 are attracting an extremely diverse audience far beyond Berlin's city limits and have played several sold-out tours and at festivals such as Splash!, Fusion, Spektrum, Pangea, and Dockville. In other words, slowly but surely, no one can ignore the PA69 phenomenon anymore.\n\nThe fact that the people behind PA69 are so elusive gives the three rappers tremendous freedom to slip effortlessly into a wide variety of roles. Lyrically, they work with anti-styles and obscure references—the more bizarre, the better.\n\nSo while other players in the music scene are all about coolness, toughness, and wealth, these rappers make a point of being uncool. PA69 flirts with the very things that others look down on: life in the provinces, fingerboards, fake luxury watches, and supermarket loyalty points. In short, PA69 are masters of “ironic Dadaist distortion” (Alex Barbian).\n\nIn their euphoric, slogan-like rap, PA69 also convey an intoxicated, hedonistic attitude to life, which places them in the cosmos of Berlin's “Atzen rap.” The influences of certain rap greats, especially those from Berlin, are unmistakable – one is repeatedly reminded of the K.IZ. promo album, DJ Reckless, Corus86, or the Atzen, Frauenarzt, and Manny Marc. Lyrically, however, PA69 never stoops to low blows. Unlike what is still common in German rap, their punchlines are directed neither at women nor at minorities.\n\nPA69 deliver a special, energetic show live. Always part of the act: an animator in a sun costume, who is both a cheerleader and lead dancer, carefully arranged intros made up of pop culture set pieces, and the now indispensable “beer tornado” circle pit. The quality media have also come to understand that PA69 is something special: For the Berliner Zeitung, the band's “guaranteed never-before-heard, creative rap lines” are “incredibly fun,” even though it is “by no means a pure fun project.” For the Tagesspiegel, the “mood phenomenon PA69” is already one of the most exciting newcomers of 2024.",
+    "countryCode": "DE"
   },
   {
     "id": "18",
@@ -464,7 +477,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d6/75/4e/d6754e89-0038-3c5a-4361-18c8c58b26b3/840054913228.png/600x600bb.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "19",
@@ -490,7 +504,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152526-19114-subfocus.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152526-19114-subfocus.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "20",
@@ -514,7 +529,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152528-19752-kleiner_atashaBedingfieldBoardmasters_AaronParsonsPhotography1_highres.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152528-19752-kleiner_atashaBedingfieldBoardmasters_AaronParsonsPhotography1_highres.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "21",
@@ -539,7 +555,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152531-19115-Nora-EReze.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152531-19115-Nora-EReze.jpg",
+    "countryCode": "IL"
   },
   {
     "id": "22",
@@ -562,7 +579,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/2f/1b/57/2f1b5711-ed31-74cb-7cda-db3dc5d91400/artwork.jpg/600x600bb.jpg",
+    "countryCode": "AT"
   },
   {
     "id": "23",
@@ -588,7 +606,8 @@
     "startTime": null,
     "endTime": null,
     "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132988-19661-SIDO-2024-006-c-Niklas-Kamp.jpg",
-    "description": "ABOUT\n\nHe is Sido. He is Paul. He is LIVE again and he is back in his element, with a new album, new hits and in good old SIDO style incl. powerful entertainment, the long-running hits, the well-known songs and his hymns.\n\nIn the summer of 2023, SIDO will be on the road again and play festivals in Germany, Austria and Switzerland.\n\nSIDO: FESTIVALS LIVE 2023.\n\nSIDO is and remains a one-of-a-kind. No other German artist masters the balancing act between hip-hop and mainstream as well as the masked man. This is also reflected in his audience. After more than 20 years at the top, SIDO manages to unite the generations of his fans like hardly any other rapper in Germany - by now, the rap fans of the first hour are often in the audience together with their children.\n\nAnyone who has ever experienced the exceptional artist SIDO in his live element knows that an energetic and unique show awaits him. Now you can look forward, get in the starting position and secure tickets for the festivals: https://bit.ly/3PySU5y"
+    "description": "ABOUT\n\nHe is Sido. He is Paul. He is LIVE again and he is back in his element, with a new album, new hits and in good old SIDO style incl. powerful entertainment, the long-running hits, the well-known songs and his hymns.\n\nIn the summer of 2023, SIDO will be on the road again and play festivals in Germany, Austria and Switzerland.\n\nSIDO: FESTIVALS LIVE 2023.\n\nSIDO is and remains a one-of-a-kind. No other German artist masters the balancing act between hip-hop and mainstream as well as the masked man. This is also reflected in his audience. After more than 20 years at the top, SIDO manages to unite the generations of his fans like hardly any other rapper in Germany - by now, the rap fans of the first hour are often in the audience together with their children.\n\nAnyone who has ever experienced the exceptional artist SIDO in his live element knows that an energetic and unique show awaits him. Now you can look forward, get in the starting position and secure tickets for the festivals: https://bit.ly/3PySU5y",
+    "countryCode": "DE"
   },
   {
     "id": "24",
@@ -614,7 +633,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152812-19587-kleiner_PaulKalkbrenner_Cover_Press_Shoot_SvenjaAva_8-(1).jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152812-19587-kleiner_PaulKalkbrenner_Cover_Press_Shoot_SvenjaAva_8-(1).jpg",
+    "countryCode": "DE"
   },
   {
     "id": "25",
@@ -639,7 +659,8 @@
     "startTime": null,
     "endTime": null,
     "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132695-20842-DG_190325_TOM_ODELL_02_077_V1.jpg",
-    "description": "ABOUT\n\nTom Odell has never lived up to the image people have of him. \"My music was perceived as a 'major label creation',\" says the singer-songwriter with an eye roll. In the early stages of his career, perhaps because he burst onto the scene armed with a Brits Critics' Choice Award, an instantly ubiquitous single ('Another Love') and a major label deal, critics questioned his authenticity - as if his knack for a good hook were somehow a taint against him. Even his last year's album 'Monsters' - on which he pushes boundaries, experiments with new sounds and talks about his struggles with crippling fears - has been dismissed by some as an attempt to stay relevant. \"I don't care if people don't like my music, but when someone says, 'This is a major label creation,' I say, 'You have no idea how hard I worked on it,'\" says Odell.\n\nAlso, no one seemed to know where to put him. \"Alternative people think I'm pop, and pop people think I'm alternative...\" So he decided he didn't want to please anyone anymore. He left Sony, released the outside pressure and made the record that felt right in his bones. \"I feel so free, so liberated, to be an independent artist,\" he says. \"Honestly, this music is a huge relief because I can do exactly what I want. I didn't want to throw in as many hooks as I could, not have the chorus right at the beginning of the song, but just create an environment for people to sit and breathe to the music.\""
+    "description": "ABOUT\n\nTom Odell has never lived up to the image people have of him. \"My music was perceived as a 'major label creation',\" says the singer-songwriter with an eye roll. In the early stages of his career, perhaps because he burst onto the scene armed with a Brits Critics' Choice Award, an instantly ubiquitous single ('Another Love') and a major label deal, critics questioned his authenticity - as if his knack for a good hook were somehow a taint against him. Even his last year's album 'Monsters' - on which he pushes boundaries, experiments with new sounds and talks about his struggles with crippling fears - has been dismissed by some as an attempt to stay relevant. \"I don't care if people don't like my music, but when someone says, 'This is a major label creation,' I say, 'You have no idea how hard I worked on it,'\" says Odell.\n\nAlso, no one seemed to know where to put him. \"Alternative people think I'm pop, and pop people think I'm alternative...\" So he decided he didn't want to please anyone anymore. He left Sony, released the outside pressure and made the record that felt right in his bones. \"I feel so free, so liberated, to be an independent artist,\" he says. \"Honestly, this music is a huge relief because I can do exactly what I want. I didn't want to throw in as many hooks as I could, not have the chorus right at the beginning of the song, but just create an environment for people to sit and breathe to the music.\"",
+    "countryCode": "GB"
   },
   {
     "id": "26",
@@ -712,7 +733,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152817-19662-og-keemo.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152817-19662-og-keemo.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "29",
@@ -737,7 +759,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/149116-19676-Filow_2025_3_@MariusFaulhaber-1.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/149116-19676-Filow_2025_3_@MariusFaulhaber-1.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "30",
@@ -760,7 +783,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/52/a2/0d/52a20d73-6ed8-8e2a-dc67-c2cc6b2c3308/196871754897.jpg/600x600bb.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "31",
@@ -784,7 +808,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152821-19608-EstherGRaf(c)AnnikaYanura.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152821-19608-EstherGRaf(c)AnnikaYanura.jpg",
+    "countryCode": "AT"
   },
   {
     "id": "32",
@@ -832,7 +857,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152908-19893-audrey-nuna.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152908-19893-audrey-nuna.jpg",
+    "countryCode": "US"
   },
   {
     "id": "34",
@@ -856,7 +882,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/55/5b/f0/555bf0f5-5bbe-ff0d-8d91-7d9ad552121c/196872930788.jpg/600x600bb.jpg",
+    "countryCode": "AT"
   },
   {
     "id": "35",
@@ -881,7 +908,8 @@
     "startTime": null,
     "endTime": null,
     "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153082-20504-kleiner_missio.jpg",
-    "description": "ABOUT\n\n\"Missio\" is Latin for mission. And what at one time began as a side project for singer-songwriter Matthew Brue has now shifted into the main mission. Accompanied by producer and instrumentalist David Butler, MISSIO sports an alternative/electronic sound with beat-driven hip-hop undertones. Atmospheric and expressive, this electro-alternative act is keen on a spirit of experimentation. \n\nBased in Austin, Texas, MISSIO broke out in 2017 with their single Middle Fingers which reached top 10 at U.S. Alternative Radio, later leading to an appearance on the Conan O’Brien late night show amid the launch of their debut album Loner. That same album also spawned heavily rotated songs like Bottom of the Deep Blue Sea, Everybody Gets High, and Twisted, which all reached over 50 million streams each (and counting) on streaming platforms.\n\nMISSIO released their second album The Darker the Weather // The Better the Man in mid 2019, broadening their sonic palette with songs like I See You which was the #1 song on the Sirius XM Alt 18 for 9 total weeks. During this album campaign, their streaming audience tripled and they capped off their album cycle by releasing the single Sing to Me as part of the soundtrack to the global video game phenomenon ‘Death Stranding’ alongside artists such as Chvrches, Major Lazer, Khalid, & Bring Me the Horizon. The band decided to document their creative process and personal growth during the recording process of this album, and ended up also releasing a documentary with accompanying soundtrack which they wrote and scored titled Love Me Whole.\n\nMISSIO has now accumulated one billion streams within three years and three album releases.\n\nBeginning the next stage in their music evolution, Matthew and David landed back in their home base of Austin, Texas in November of 2019 with their producer, co-writer, and creative partner Dwight Baker, and over a feverish 21 day period wrote and recorded the entirety of their album, Can You Feel The Sun released on October 23rd via 2B Recordings / BMG).\n\n“We started talking with Dwight last summer about recording new music even though our second album had just released,” says Matthew Brue. “I felt inspired after coming back from our first European shows in some of the most beautiful cities in the world and seeing our music translate across the ocean, which was incredibly surreal. I instantly began writing new demos, taking hold of the many feelings that come along with living out your own dreams.”\n\nDavid Butler adds “We wanted to create music on our own terms, separate and apart from any label deadlines or industry pressure. We were the only ones we wanted to impress.”\n\nThe band started with a range of demos that eventually snowballed into being a complete and finished full-length album.\n\n“We worked until we felt like we were done and then one day woke up and knew we had a finished album”, says David. “Even from the very beginning of the process I already knew that ‘Can You Feel the Sun’ was one of the best songs we’d ever written and knew that we had something special.”\n\nMISSIO has always been a band that is known for their thoughtful lyrics, raw emotion, but also pure, and unadulterated fun. Tracks like Wolves, Hoodie Up, Cry Baby (feat. Paul Wall), Vagabond (feat. Esoteric of Czarface), and Roman Empire might get the fans incredibly hyped up, but songs like Don’t Forget to Open Your Eyes, We All Burn to the Ground, and the title track Can You Feel the Sun glimmer with an introspective insight that now takes on an even deeper meaning in a pandemic ravaged world.\n\n“With a song like Don’t Forget to Open Your Eyes I honestly don’t know where those lyrics came from”, says Matthew. “I had never taken the time to view the sunrise or the sunset and somehow this song has helped me personally heal when I’m overloaded with anxiety or depression. It continues to prove its message is bigger than ourselves.”\n\nDavid adds “The reason we create and release music is because we love the process of making it all. Being able to write songs for ourselves has to be its own reward even though we’re hoping we can get out on the road and play music for people again soon. Until then we’re hoping, through our music and lyrics, to encourage people to ask questions and to open their minds.”\n\nMISSIO have toured the United States extensively as headliners, and through several large support slots for the likes of MUSE, 30 Seconds to Mars, Yungblud, and K. Flay. The duo have also performed at major festivals like Lollapalooza, Austin City Limits, Firefly, Hangout, Bottle Rock, and Voodoo Fest. As part of a wider European tour, they made their UK (sold out) live debut at London’s Old Blue Last in May 2019. Their high energy live performances and custom-built light shows easily set them apart from their peers.\n\nMISSIO returned to play a second sold out UK show at London’s Colours early March 2020, but the second half of their most recent European tour ended up being cancelled. The band were pulled off their tour bus at 2AM while crossing the Czech border, so that men in hazmat suits could check their temperatures to ensure that the touring party didn’t have COVID-19. They raced to get home on the final day before the U.S. borders were closed.\n\nRegardless of not being able to tour for an undetermined amount of time, the band decided to forge ahead with releasing their new music. They put out the first single Wolves on June 24, 2020 which reached #1 on the Sirius XM Alt Nation ‘Top 18’ within three weeks. The duo now have 5 #1 singles on the countdown to date."
+    "description": "ABOUT\n\n\"Missio\" is Latin for mission. And what at one time began as a side project for singer-songwriter Matthew Brue has now shifted into the main mission. Accompanied by producer and instrumentalist David Butler, MISSIO sports an alternative/electronic sound with beat-driven hip-hop undertones. Atmospheric and expressive, this electro-alternative act is keen on a spirit of experimentation. \n\nBased in Austin, Texas, MISSIO broke out in 2017 with their single Middle Fingers which reached top 10 at U.S. Alternative Radio, later leading to an appearance on the Conan O’Brien late night show amid the launch of their debut album Loner. That same album also spawned heavily rotated songs like Bottom of the Deep Blue Sea, Everybody Gets High, and Twisted, which all reached over 50 million streams each (and counting) on streaming platforms.\n\nMISSIO released their second album The Darker the Weather // The Better the Man in mid 2019, broadening their sonic palette with songs like I See You which was the #1 song on the Sirius XM Alt 18 for 9 total weeks. During this album campaign, their streaming audience tripled and they capped off their album cycle by releasing the single Sing to Me as part of the soundtrack to the global video game phenomenon ‘Death Stranding’ alongside artists such as Chvrches, Major Lazer, Khalid, & Bring Me the Horizon. The band decided to document their creative process and personal growth during the recording process of this album, and ended up also releasing a documentary with accompanying soundtrack which they wrote and scored titled Love Me Whole.\n\nMISSIO has now accumulated one billion streams within three years and three album releases.\n\nBeginning the next stage in their music evolution, Matthew and David landed back in their home base of Austin, Texas in November of 2019 with their producer, co-writer, and creative partner Dwight Baker, and over a feverish 21 day period wrote and recorded the entirety of their album, Can You Feel The Sun released on October 23rd via 2B Recordings / BMG).\n\n“We started talking with Dwight last summer about recording new music even though our second album had just released,” says Matthew Brue. “I felt inspired after coming back from our first European shows in some of the most beautiful cities in the world and seeing our music translate across the ocean, which was incredibly surreal. I instantly began writing new demos, taking hold of the many feelings that come along with living out your own dreams.”\n\nDavid Butler adds “We wanted to create music on our own terms, separate and apart from any label deadlines or industry pressure. We were the only ones we wanted to impress.”\n\nThe band started with a range of demos that eventually snowballed into being a complete and finished full-length album.\n\n“We worked until we felt like we were done and then one day woke up and knew we had a finished album”, says David. “Even from the very beginning of the process I already knew that ‘Can You Feel the Sun’ was one of the best songs we’d ever written and knew that we had something special.”\n\nMISSIO has always been a band that is known for their thoughtful lyrics, raw emotion, but also pure, and unadulterated fun. Tracks like Wolves, Hoodie Up, Cry Baby (feat. Paul Wall), Vagabond (feat. Esoteric of Czarface), and Roman Empire might get the fans incredibly hyped up, but songs like Don’t Forget to Open Your Eyes, We All Burn to the Ground, and the title track Can You Feel the Sun glimmer with an introspective insight that now takes on an even deeper meaning in a pandemic ravaged world.\n\n“With a song like Don’t Forget to Open Your Eyes I honestly don’t know where those lyrics came from”, says Matthew. “I had never taken the time to view the sunrise or the sunset and somehow this song has helped me personally heal when I’m overloaded with anxiety or depression. It continues to prove its message is bigger than ourselves.”\n\nDavid adds “The reason we create and release music is because we love the process of making it all. Being able to write songs for ourselves has to be its own reward even though we’re hoping we can get out on the road and play music for people again soon. Until then we’re hoping, through our music and lyrics, to encourage people to ask questions and to open their minds.”\n\nMISSIO have toured the United States extensively as headliners, and through several large support slots for the likes of MUSE, 30 Seconds to Mars, Yungblud, and K. Flay. The duo have also performed at major festivals like Lollapalooza, Austin City Limits, Firefly, Hangout, Bottle Rock, and Voodoo Fest. As part of a wider European tour, they made their UK (sold out) live debut at London’s Old Blue Last in May 2019. Their high energy live performances and custom-built light shows easily set them apart from their peers.\n\nMISSIO returned to play a second sold out UK show at London’s Colours early March 2020, but the second half of their most recent European tour ended up being cancelled. The band were pulled off their tour bus at 2AM while crossing the Czech border, so that men in hazmat suits could check their temperatures to ensure that the touring party didn’t have COVID-19. They raced to get home on the final day before the U.S. borders were closed.\n\nRegardless of not being able to tour for an undetermined amount of time, the band decided to forge ahead with releasing their new music. They put out the first single Wolves on June 24, 2020 which reached #1 on the Sirius XM Alt Nation ‘Top 18’ within three weeks. The duo now have 5 #1 singles on the countdown to date.",
+    "countryCode": "US"
   },
   {
     "id": "36",
@@ -961,7 +989,7 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/8e/e2/89/8ee28904-0821-610d-5011-a61845f62756/075679926951.jpg/600x600bb.jpg",
     "countryCode": "US"
   },
   {
@@ -989,7 +1017,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152906-19894-Ken-Carson-2025-Approved-Press-Photo.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152906-19894-Ken-Carson-2025-Approved-Press-Photo.jpg",
+    "countryCode": "US"
   },
   {
     "id": "40",
@@ -1018,7 +1047,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132754-18629-SKIAGGU01_Prio_Pic_SkiAggu.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/132754-18629-SKIAGGU01_Prio_Pic_SkiAggu.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "41",
@@ -1046,7 +1076,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/25/1e/d9/251ed933-a6cb-cdd2-d1da-1f7320706214/190295403874.jpg/600x600bb.jpg",
+    "countryCode": "US"
   },
   {
     "id": "42",
@@ -1071,7 +1102,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/fe/9a/ba/fe9aba25-ae4e-1cfc-709f-f1c0fdfd964a/663918501528.jpg/600x600bb.jpg",
+    "countryCode": "CA"
   },
   {
     "id": "43",
@@ -1095,7 +1127,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/147407-19101-Ikkimel_c_LaurentNoichl.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/147407-19101-Ikkimel_c_LaurentNoichl.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "44",
@@ -1119,7 +1152,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/da/71/fc/da71fc6e-d2a1-4aa6-b6dd-18b5b4c0db5d/19CRGIM15441.rgb.jpg/600x600bb.jpg",
+    "countryCode": "US"
   },
   {
     "id": "45",
@@ -1143,7 +1177,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133128-19823-souly.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/133128-19823-souly.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "46",
@@ -1241,7 +1276,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": null
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f5/30/6d/f5306d9c-231c-a78b-1a82-3f35269ccfda/cover.jpg/600x600bb.jpg",
+    "countryCode": "DE"
   },
   {
     "id": "50",
@@ -1317,7 +1353,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152914-19898-bdbbc515_ALT-BLK-ERA-HIGH-RES-1.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/152914-19898-bdbbc515_ALT-BLK-ERA-HIGH-RES-1.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "53",
@@ -1344,7 +1381,8 @@
     "startTime": null,
     "endTime": null,
     "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153088-20442-CulchaCandela_c_1_LeonHahn_0225.jpg",
-    "description": "ABOUT\n\nSummer 2024. A huge crowd stands in front of the stage, their impatient wait immediately turning into exuberant applause as Chino, Mateo, Johnny Strange, and Don Cali take the stage:\n\nThe world has changed a lot in the last 22 years. However, the boundless joy and unbroken energy at a Culcha Candela show has hardly changed at all!\n\nWith over five million records sold, almost 35 gold and platinum awards, and more than 1,500 live shows, Culcha Candela may not be reinventing themselves, but they don't need to.\n\nTime and again in recent years, the Berlin cult collective has shown that they can shake energetic club bangers and hits with attitude out of their colorful sleeves with playful ease—today as in the past. After almost a quarter of a century in showbiz, the band continues to tour sold-out venues, has just delivered the theme song for the European Handball Championship in Germany (“Celebration”) and celebrated the 15th anniversary of the smash hit “MONSTA” in September 2024.\n\nCULCHA CANDELA has come up with something very special for this occasion: With a whole box of great surprises, strong collaborations, and a brand-new MONSTA 15 EP, September was monstrously strong.\n\nThe guys recently showed that they're still up for a bit of fun when they posted a fun dance video on TikTok to Shirin David's song “Bauch Beine Po” and announced that they would release a new single if the clip got 1 million views. The following week, they promptly announced the release of their new single KILLAH (September 6). Of course, the 1 million views were quickly collected!\n\nBut that's not all: a huge indoor tour is on the schedule for March 2025. Standing still and pop star retirement are simply not (yet) options for the legendary hip-hop, reggae, and Latin band.\n\nThe four Berlin boys can rarely bear to watch the world go by as mere “onlookers.” Culcha Candela have always wanted to make a difference and make the world a little bit better. That's why they continue to be heavily involved in social projects such as BeAnAngel e.V., Die Arche, ActionKids, Laut Gegen Nazis, Pro Asyl, Seebrücke, Afrika Rise, and many others."
+    "description": "ABOUT\n\nSummer 2024. A huge crowd stands in front of the stage, their impatient wait immediately turning into exuberant applause as Chino, Mateo, Johnny Strange, and Don Cali take the stage:\n\nThe world has changed a lot in the last 22 years. However, the boundless joy and unbroken energy at a Culcha Candela show has hardly changed at all!\n\nWith over five million records sold, almost 35 gold and platinum awards, and more than 1,500 live shows, Culcha Candela may not be reinventing themselves, but they don't need to.\n\nTime and again in recent years, the Berlin cult collective has shown that they can shake energetic club bangers and hits with attitude out of their colorful sleeves with playful ease—today as in the past. After almost a quarter of a century in showbiz, the band continues to tour sold-out venues, has just delivered the theme song for the European Handball Championship in Germany (“Celebration”) and celebrated the 15th anniversary of the smash hit “MONSTA” in September 2024.\n\nCULCHA CANDELA has come up with something very special for this occasion: With a whole box of great surprises, strong collaborations, and a brand-new MONSTA 15 EP, September was monstrously strong.\n\nThe guys recently showed that they're still up for a bit of fun when they posted a fun dance video on TikTok to Shirin David's song “Bauch Beine Po” and announced that they would release a new single if the clip got 1 million views. The following week, they promptly announced the release of their new single KILLAH (September 6). Of course, the 1 million views were quickly collected!\n\nBut that's not all: a huge indoor tour is on the schedule for March 2025. Standing still and pop star retirement are simply not (yet) options for the legendary hip-hop, reggae, and Latin band.\n\nThe four Berlin boys can rarely bear to watch the world go by as mere “onlookers.” Culcha Candela have always wanted to make a difference and make the world a little bit better. That's why they continue to be heavily involved in social projects such as BeAnAngel e.V., Die Arche, ActionKids, Laut Gegen Nazis, Pro Asyl, Seebrücke, Afrika Rise, and many others.",
+    "countryCode": "DE"
   },
   {
     "id": "54",
@@ -1368,7 +1406,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153090-20457-TwoFeet_kleiner(Credit_-JT-Boehme-@-Raw-Content)-.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153090-20457-TwoFeet_kleiner(Credit_-JT-Boehme-@-Raw-Content)-.jpg",
+    "countryCode": "US"
   },
   {
     "id": "55",
@@ -1447,7 +1486,8 @@
     "stage": null,
     "startTime": null,
     "endTime": null,
-    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153096-20445-AN7A1266.jpg"
+    "imageUrl": "https://www.frequency.at/wp-content/uploads/sites/2/153096-20445-AN7A1266.jpg",
+    "countryCode": "GB"
   },
   {
     "id": "58",
@@ -1505,7 +1545,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "TWENTY ONE PILOTS",
       "GET YOUR TICKET"
@@ -1527,7 +1567,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "ASHNIKKO",
       "HOL DIR DEIN TICKET"
@@ -1549,7 +1589,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "BBNO$",
       "GET YOUR TICKET"
@@ -1571,7 +1611,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "XW",
     "genres": [
       "SSIO",
       "GET YOUR TICKET"
@@ -1593,7 +1633,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "DENZEL CURRY",
       "GET YOUR TICKET"
@@ -1615,7 +1655,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "GLUEBOYS",
       "GET YOUR TICKET"
@@ -1659,7 +1699,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "XW",
     "genres": [
       "SYMBA",
       "HOL DIR DEIN TICKET"
@@ -1681,7 +1721,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "KOVEN",
       "GET YOUR TICKET"
@@ -1703,7 +1743,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "SUMMER CEM & KC REBELL",
       "HOL DIR DEIN TICKET"
@@ -1725,7 +1765,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AT",
     "genres": [
       "CAMO & KROOKED",
       "HOL DIR DEIN TICKET"
@@ -1747,7 +1787,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AT",
     "genres": [
       "ABOR & TYNNA",
       "GET YOUR TICKET"
@@ -1769,7 +1809,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "A LITTLE SOUND",
       "HOL DIR DEIN TICKET"
@@ -1791,7 +1831,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AT",
     "genres": [
       "DELTA HEAVY + DAXTA MC",
       "HOL DIR DEIN TICKET"
@@ -1813,7 +1853,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "DISORDER",
       "HOL DIR DEIN TICKET"
@@ -1857,7 +1897,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
       "FOX STEVENSON DJ SET",
       "GET YOUR TICKET"
@@ -1879,7 +1919,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "US",
     "genres": [
       "POLA & BRYSON",
       "HOL DIR DEIN TICKET"
@@ -1989,7 +2029,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "SARAH4K",
       "HOL DIR DEIN TICKET"
@@ -2033,7 +2073,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "FOURTEX",
       "HOL DIR DEIN TICKET"
@@ -2143,7 +2183,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "CASCADA",
       "HOL DIR DEIN TICKET"
@@ -2187,7 +2227,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "CH",
     "genres": [
       "DJ ANTOINE",
       "HOL DIR DEIN TICKET"
@@ -2209,7 +2249,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "DE",
     "genres": [
       "CLOCKCLOCK",
       "GET YOUR TICKET"
@@ -2231,7 +2271,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "NL",
     "genres": [
       "NESS",
       "HOL DIR DEIN TICKET"
@@ -2275,7 +2315,7 @@
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "AU",
     "genres": [
       "THE SAINTS",
       "HOL DIR DEIN TICKET"

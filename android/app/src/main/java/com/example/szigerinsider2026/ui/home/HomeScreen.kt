@@ -43,7 +43,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.szigerinsider2026.data.local.AppDatabase
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupDiffRepository

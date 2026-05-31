@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Coins, Plus, Trash2, Wallet } from 'lucide-react';
+import { Plus, Trash2, Wallet } from 'lucide-react';
 import { useParams } from 'next/navigation';
 import { getFestivalConfig } from '@/config/festival-engine';
 
@@ -29,7 +29,7 @@ export function BudgetTracker() {
     if (saved) {
       setEntries(JSON.parse(saved));
     }
-  }, []);
+  }, [STORAGE_KEY]);
 
   const addEntry = () => {
     if (!label || !amount) return;

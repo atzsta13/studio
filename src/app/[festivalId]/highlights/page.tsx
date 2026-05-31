@@ -5,7 +5,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Star, Trophy, Music, Globe, Share2, Sparkles, Loader2 } from 'lucide-react';
-import { getFestivalConfig } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';

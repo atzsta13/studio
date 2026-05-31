@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FESTIVAL } from '@/config/festival-engine';
 
 export function useHydration(festivalId?: string) {
   const [glassCount, setHydrationCount] = useState(0);
@@ -10,13 +9,13 @@ export function useHydration(festivalId?: string) {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setHydrationCount(parseInt(saved, 10));
     setIsLoaded(true);
-  }, []);
+  }, [STORAGE_KEY]);
 
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, glassCount.toString());
     }
-  }, [glassCount, isLoaded]);
+  }, [glassCount, isLoaded, STORAGE_KEY]);
 
   const addWater = () => setHydrationCount(prev => prev + 1);
   const resetWater = () => setHydrationCount(0);

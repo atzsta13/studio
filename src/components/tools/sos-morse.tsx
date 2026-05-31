@@ -6,11 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Zap, ShieldAlert, SignalHigh } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const MORSE_CODE = {
-  'S': '...',
-  'O': '---',
-};
-
 // S-O-S pattern: . . . --- --- --- . . .
 const SOS_PATTERN = '...---...';
 

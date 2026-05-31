@@ -3,7 +3,7 @@ import { useInsider } from '@/components/layout/insider-provider';
 
 import { useState, useMemo, useEffect } from 'react';
 import TimetableView from '@/components/timetable/timetable-view';
-import { History, Calendar, Clock, Sun, Moon } from 'lucide-react';
+import { Clock, Sun, Moon } from 'lucide-react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';

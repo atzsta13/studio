@@ -1,16 +1,15 @@
 'use client';
 import { useInsider } from '@/components/layout/insider-provider';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
-import { X, Heart, ChevronLeft, Music, Info, Zap, Sparkles } from 'lucide-react';
+import { X, Heart, ChevronLeft, Music, Info, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useHaptic } from '@/hooks/use-haptic';
-import { LineupItem } from '@/types';
 
 export default function SpeedDiscoveryPage() {
   const haptic = useHaptic();
@@ -31,7 +30,7 @@ export default function SpeedDiscoveryPage() {
     return allArtists
       .filter(a => !isFavorite(a.id))
       .sort(() => Math.random() - 0.5);
-  }, []);
+  }, [allArtists, isFavorite]);
 
   const currentArtist = pool[currentIndex];
 

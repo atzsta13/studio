@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback } from 'react';
 import { LineupItem, EnergyLevel, GenreOption, CrowdVibeOption, MoodTagOption } from '@/types';
 
 interface QuizState {

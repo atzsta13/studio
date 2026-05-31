@@ -23,7 +23,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.data.repository.LineupDiffRepository
 import com.example.szigerinsider2026.ui.theme.*

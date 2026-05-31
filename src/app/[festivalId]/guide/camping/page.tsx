@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Tent, ShowerHead, Lock, Flame } from 'lucide-react';
 import type { Metadata } from 'next';
 import { PageHeader } from '@/components/layout/page-header';

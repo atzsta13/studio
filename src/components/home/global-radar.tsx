@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { FESTIVAL_CONFIGS } from '@/config/festival-engine';
-import { MapPin } from 'lucide-react';
 import { useState } from 'react';
 import Link from 'next/link';
 

@@ -1,5 +1,5 @@
 import { IconName } from "@/components/ui/icon";
-import { FESTIVAL, FESTIVAL_CONFIGS, FestivalConfig, getFestivalConfig } from "@/config/festival-engine";
+import { FestivalConfig, getFestivalConfig } from "@/config/festival-engine";
 
 export interface NavItem {
   href: string;

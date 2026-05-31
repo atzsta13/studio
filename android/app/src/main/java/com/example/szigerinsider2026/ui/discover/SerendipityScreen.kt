@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import coil.compose.AsyncImage
+import coil3.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager

@@ -1,7 +1,7 @@
 'use client';
 import { useInsider } from '@/components/layout/insider-provider';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import type { LineupItem } from '@/types';
 import {
   Music,
@@ -20,15 +20,6 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -50,7 +41,7 @@ type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country';
 
 export default function DiscoverPage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, lineup, isLoading: isDataLoading } = useInsider();
+  const { config, lineup } = useInsider();
   const haptic = useHaptic();
   
   const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
@@ -59,10 +50,11 @@ export default function DiscoverPage() {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('discover');
   const [searchQuery, setSearchQuery] = useState('');
-  const [isMounted, setIsMounted] = useState(false);
-  
+  const [isMounted] = useState(false);
+
+
   const [serendipityArtist, setSerendipityArtist] = useState<LineupItem | null>(null);
-  const [serendipityHistory, setSerendipityHistory] = useState<Set<string>>(new Set());
+  const [serendipityHistory] = useState<Set<string>>(new Set());
 
   const allArtistsCurrent = useMemo(() => {
     return (lineup as LineupItem[]).map(a => ({
@@ -78,19 +70,19 @@ export default function DiscoverPage() {
   const HIDDEN_GEM_IDS = config?.content?.hiddenGems || [];
   const SEEN_KEY = config ? `${config.id}-seen` : 'seen';
   
-  const loadSeenIds = () => {
+  const loadSeenIds = useCallback(() => {
     try {
       const raw = typeof window !== 'undefined' ? localStorage.getItem(SEEN_KEY) : null;
       if (raw) return new Set(JSON.parse(raw) as string[]);
     } catch { /* ignore */ }
     return new Set<string>();
-  };
+  }, [SEEN_KEY]);
 
   const [seenIds, setSeenIds] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     setSeenIds(loadSeenIds());
-  }, []);
+  }, [loadSeenIds]);
 
   const [isCountryExplorerOpen, setIsCountryExplorerOpen] = useState(false);
 
@@ -103,7 +95,7 @@ export default function DiscoverPage() {
         .split('')
         .map(char => 127397 + char.charCodeAt(0));
       return String.fromCodePoint(...codePoints);
-    } catch (e) {
+    } catch {
       return '';
     }
   };
@@ -112,26 +104,10 @@ export default function DiscoverPage() {
 
   const allArtists = allArtistsCurrent;
 
-  const allGenres = useMemo(() => {
-    const genres = new Set<string>();
-    allArtists.forEach(item => item.genres?.forEach(g => {
-      if (g !== 'MUSIC') genres.add(g);
-    }));
-    return Array.from(genres).sort();
-  }, [allArtists]);
-
   const allVibeSet = useMemo(() => {
     const vibes = new Set<string>();
     allArtists.forEach(item => item.vibes?.forEach(v => vibes.add(v)));
     return Array.from(vibes).sort();
-  }, [allArtists]);
-
-  const allStages = useMemo(() => {
-    const stages = new Set<string>();
-    allArtists.forEach(item => {
-      if (item.stage) stages.add(item.stage);
-    });
-    return Array.from(stages).sort();
   }, [allArtists]);
 
   const filteredArtists = useMemo(() => {

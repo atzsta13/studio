@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
@@ -15,7 +15,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import {
-  X,
   Plus,
   Trash2,
   CheckCircle2,
@@ -85,12 +84,12 @@ export default function PackingChecklistPage() {
     } finally {
       setIsLoaded(true);
     }
-  }, []);
+  }, [STORAGE_KEY]);
 
   useEffect(() => {
     if (!isLoaded) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }, [items, isLoaded]);
+  }, [items, isLoaded, STORAGE_KEY]);
 
   const handleToggleItem = (id: string) => {
     setItems((prev) => prev.map((item) => item.id === id ? { ...item, checked: !item.checked } : item));

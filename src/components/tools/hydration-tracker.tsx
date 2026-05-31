@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Droplets, Plus, RotateCcw, GlassWater } from 'lucide-react';
+import { Droplets, RotateCcw, GlassWater } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import { useParams } from 'next/navigation';
@@ -24,7 +24,7 @@ export function HydrationTracker() {
         setGlasses(count);
       }
     }
-  }, []);
+  }, [STORAGE_KEY]);
 
   const addGlass = () => {
     const newCount = glasses + 1;

@@ -5,24 +5,17 @@ import { useState, useEffect, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid2';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
 import { alpha, useTheme } from '@mui/material/styles';
 import {
   Map as MapIcon,
   Wand2,
-  Trophy,
   Music,
   Newspaper,
-  Flame,
   ChevronRight,
   Zap,
-  LayoutGrid,
   Utensils
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
@@ -30,7 +23,7 @@ import { useInsider } from '@/components/layout/insider-provider';
 import type { LineupItem } from '@/types';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
 import { LineupDiff } from '@/components/home/lineup-diff';
-import { GlassCard, NeonButton } from '@/components/ui/brutalist';
+import { GlassCard } from '@/components/ui/brutalist';
 
 export default function Home() {
   const { festivalId } = useParams() as { festivalId: string };
@@ -69,7 +62,7 @@ export default function Home() {
   ], [festivalId]);
 
   const features = useMemo(() => 
-    allFeatures.filter(f => !f.feature || (config.features as any)[f.feature]),
+    allFeatures.filter(f => !f.feature || config.features[f.feature as keyof typeof config.features]),
     [allFeatures, config]
   );
 

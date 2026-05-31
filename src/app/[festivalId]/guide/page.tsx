@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Icon, IconName } from "@/components/ui/icon";
 import { PageHeader } from "@/components/layout/page-header";
-import { getFestivalConfig } from '@/config/festival-engine';
 import { Loader2 } from 'lucide-react';
 
 interface GuideItem {
@@ -28,7 +27,6 @@ interface GuideData {
 
 export default function GuidePage() {
   const { festivalId } = useParams() as { festivalId: string };
-  const config = getFestivalConfig(festivalId);
   const [guideData, setGuideData] = useState<GuideData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

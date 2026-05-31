@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import { getFestivalConfig } from '@/config/festival-engine';
 
 interface TimeLeft {
@@ -16,10 +16,10 @@ function pad(n: number): string {
 
 export function FestivalCountdown({ festivalId }: { festivalId: string }) {
   const config = getFestivalConfig(festivalId);
-  const FESTIVAL_START = new Date(`${config.dates.startDate}T00:00:00+02:00`);
-  const FESTIVAL_END = new Date(`${config.dates.endDate}T23:59:59+02:00`);
+  const FESTIVAL_START = useMemo(() => new Date(`${config.dates.startDate}T00:00:00+02:00`), [config.dates.startDate]);
+  const FESTIVAL_END = useMemo(() => new Date(`${config.dates.endDate}T23:59:59+02:00`), [config.dates.endDate]);
 
-  const getTimeLeft = (): TimeLeft => {
+  const getTimeLeft = useCallback((): TimeLeft => {
     const now = Date.now();
     const diff = FESTIVAL_START.getTime() - now;
     if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -30,7 +30,7 @@ export function FestivalCountdown({ festivalId }: { festivalId: string }) {
       minutes: Math.floor((totalSeconds % 3600) / 60),
       seconds: totalSeconds % 60,
     };
-  };
+  }, [FESTIVAL_START]);
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft);
   const [now, setNow] = useState(() => Date.now());
@@ -41,7 +41,7 @@ export function FestivalCountdown({ festivalId }: { festivalId: string }) {
       setNow(Date.now());
     }, 1000);
     return () => clearInterval(id);
-  }, [config.dates.startDate]);
+  }, [getTimeLeft]);
 
   const isFestivalWeek = now >= FESTIVAL_START.getTime() && now < FESTIVAL_END.getTime();
   const isAfterFestival = now >= FESTIVAL_END.getTime();

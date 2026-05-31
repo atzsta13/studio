@@ -5,7 +5,6 @@ import ArtistCard from './artist-card';
 import { Clock, Navigation, AlertTriangle } from 'lucide-react';
 import {
     areNotificationsSupported,
-    requestNotificationPermission,
     timetableNotification,
     cancelTimetableNotification,
 } from '@/lib/notifications';
@@ -13,15 +12,13 @@ import {
 const MIN_TIME = 10; // 10 AM UTC (accommodates CEST festivals starting at noon local)
 const MAX_TIME = 36;
 
-export default function TimetableView({ lineup, festivalId, utcOffsetHours = 0 }: { lineup: LineupItem[], festivalId?: string, utcOffsetHours?: number }) {
+export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: LineupItem[], festivalId?: string, utcOffsetHours?: number }) {
     const { favorites, toggleFavorite, conflicts } = useInsider();
 
-    const [notificationsSupported, setNotificationsSupported] = useState(false);
     const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
 
     useEffect(() => {
         if (areNotificationsSupported()) {
-            setNotificationsSupported(true);
             setNotificationPermission(Notification.permission);
         }
     }, []);
@@ -51,7 +48,7 @@ export default function TimetableView({ lineup, festivalId, utcOffsetHours = 0 }
             return `${displayHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
         });
         return { days: (sortedDays as string[]), stages: (uniqueStages as string[]), timeSlots: slots };
-    }, [lineup]);
+    }, [lineup, utcOffsetHours]);
 
     const [activeDayIdx, setActiveDayIdx] = useState(0);
     const activeDay = days[activeDayIdx];

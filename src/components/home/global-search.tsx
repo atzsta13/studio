@@ -3,7 +3,7 @@ import { BASE_PATH } from '@/lib/base-path';
 
 import { useState, useEffect, useMemo } from 'react';
 import { Input } from '@/components/ui/input';
-import { Search, Music2, MapPin, ArrowRight, Loader2 } from 'lucide-react';
+import { Search, MapPin, ArrowRight, Loader2 } from 'lucide-react';
 import { FESTIVAL_IDS, getFestivalConfig } from '@/config/festival-engine';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,7 +37,7 @@ export function GlobalSearch() {
           try {
             const res = await fetch(`${BASE_PATH}/data/${id}/lineup.json`);
             if (res.ok) results[id] = await res.json();
-          } catch (e) {
+          } catch {
             console.error(`Failed to load lineup for ${id}`);
           }
         })
@@ -99,7 +99,7 @@ export function GlobalSearch() {
             className="absolute top-full mt-4 w-full bg-card/90 border border-white/10 rounded-[2.5rem] shadow-2xl backdrop-blur-3xl overflow-hidden z-50 p-4"
           >
             <div className="space-y-2">
-              {searchResults.map((result, idx) => (
+              {searchResults.map((result) => (
                 <Link 
                   key={`${result.festivalId}-${result.artist.id}`} 
                   href={`/${result.festivalId}/artist/${result.artist.id}`}

@@ -20,7 +20,7 @@ export function FestivalLayoutShell({
   headerIcon 
 }: FestivalLayoutShellProps) {
   const { festivalId } = useParams() as { festivalId: string };
-  const { config, isLoading } = useInsider();
+  const { isLoading } = useInsider();
 
   if (isLoading) {
     return (

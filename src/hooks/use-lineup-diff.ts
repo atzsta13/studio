@@ -41,7 +41,6 @@ export function useLineupDiff(festivalId: string, currentLineup: LineupItem[]): 
     }
 
     const previousNames = new Set(previousLineup.map(a => a.artist.toLowerCase().trim()));
-    const currentNames = new Set(currentLineup.map(a => a.artist.toLowerCase().trim()));
 
     const newArrivals = currentLineup.filter(a => !previousNames.has(a.artist.toLowerCase().trim()));
     const returningHeroes = currentLineup.filter(a => previousNames.has(a.artist.toLowerCase().trim()));

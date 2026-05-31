@@ -16,7 +16,7 @@ export function CarFinder() {
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) setLocation(JSON.parse(saved));
-  }, []);
+  }, [STORAGE_KEY]);
 
   const saveLocation = () => {
     if (!navigator.geolocation) {
