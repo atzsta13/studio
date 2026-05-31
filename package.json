@@ -28,7 +28,10 @@
     "android:sync:area53": "NEXT_PUBLIC_FESTIVAL_ID=area53-2026 npm run lineup:sync-android",
     "android:sync:novarock": "NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run lineup:sync-android",
     "android:sync:frequency": "NEXT_PUBLIC_FESTIVAL_ID=frequency-2026 npm run lineup:sync-android",
-    "android:sync:erntepunk": "NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:sync-android"
+    "android:sync:erntepunk": "NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:sync-android",
+    "android:sync:rockamring": "NEXT_PUBLIC_FESTIVAL_ID=rock-am-ring-2026 npm run lineup:sync-android",
+    "lineup:update:ernte-punk": "NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:update && NEXT_PUBLIC_FESTIVAL_ID=ernte-punk-2026 npm run lineup:sync-android",
+    "lineup:update:rock-am-ring": "NEXT_PUBLIC_FESTIVAL_ID=rock-am-ring-2026 npm run lineup:sync && NEXT_PUBLIC_FESTIVAL_ID=rock-am-ring-2026 npm run lineup:sync-android"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",

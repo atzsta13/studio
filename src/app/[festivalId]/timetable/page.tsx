@@ -139,7 +139,7 @@ export default function TimetablePage() {
         </Container>
 
         {hasSchedule ? (
-          <TimetableView key={selectedTimeSlot} lineup={currentLineup} />
+          <TimetableView key={selectedTimeSlot} lineup={currentLineup} utcOffsetHours={config.location.utcOffsetHours ?? 0} />
         ) : (
           <Container maxWidth="sm" sx={{ py: 20, textAlign: 'center' }}>
             <Box sx={{ 

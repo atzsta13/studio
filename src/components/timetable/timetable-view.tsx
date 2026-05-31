@@ -10,10 +10,10 @@ import {
     cancelTimetableNotification,
 } from '@/lib/notifications';
 
-const MIN_TIME = 12; // 12 PM
-const MAX_TIME = 36; // 12 PM (the next day)
+const MIN_TIME = 10; // 10 AM UTC (accommodates CEST festivals starting at noon local)
+const MAX_TIME = 36;
 
-export default function TimetableView({ lineup, festivalId }: { lineup: LineupItem[], festivalId?: string }) {
+export default function TimetableView({ lineup, festivalId, utcOffsetHours = 0 }: { lineup: LineupItem[], festivalId?: string, utcOffsetHours?: number }) {
     const { favorites, toggleFavorite, conflicts } = useInsider();
 
     const [notificationsSupported, setNotificationsSupported] = useState(false);
@@ -46,7 +46,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         const uniqueStages = [...new Set(scheduledLineup.map(item => item.stage))];
         const slots = Array.from({ length: (MAX_TIME - MIN_TIME) * 2 }, (_, i) => {
             const totalHour = MIN_TIME + Math.floor(i / 2);
-            const displayHour = totalHour % 24;
+            const displayHour = (totalHour + utcOffsetHours) % 24;
             const minute = (i % 2) * 30;
             return `${displayHour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
         });

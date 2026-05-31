@@ -55,6 +55,8 @@ npm run lineup:update:sziget
 npm run lineup:update:novarock
 npm run lineup:update:area53
 npm run lineup:update:frequency
+npm run lineup:update:ernte-punk
+npm run lineup:update:rock-am-ring   # sync only — timetable data is hand-authored from PDF
 
 # Sync existing data to public/data/ and src/data/ (no scrape)
 npm run lineup:sync
@@ -66,6 +68,8 @@ npm run lineup:sync
 ./gradlew assembleArea53Debug
 ./gradlew assembleNovarockDebug
 ./gradlew assembleFrequencyDebug
+./gradlew assembleErntepunkDebug
+./gradlew assembleRockamringDebug
 ./gradlew test        # unit tests (no device needed)
 ```
 

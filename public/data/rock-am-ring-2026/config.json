@@ -60,6 +60,7 @@
     "countryCode": "DE",
     "venue": "Nürburgring",
     "timezone": "Europe/Berlin",
+    "utcOffsetHours": 2,
     "lat": 50.3356,
     "lng": 6.9475,
     "weatherDisplayName": "Nürburg · Nürburgring"

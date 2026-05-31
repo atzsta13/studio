@@ -33,6 +33,7 @@ export interface FestivalConfig {
     lat: number
     lng: number
     weatherDisplayName: string
+    utcOffsetHours?: number
   }
   dates: {
     year: number

@@ -13,6 +13,7 @@
 | `npm run lint` | ✅ 0 errors (ESLint now wired, was broken) |
 | `npm test -- --run` | ✅ 189/189 passing |
 | `cd android && ./gradlew testSzigetDebugUnitTest` | ✅ 60/60 passing |
+| Festivals | 6 (Sziget, Nova Rock, Frequency, Area 53, Ernte Punk, Rock am Ring) |
 | White-label compliance | ✅ No hardcoded hex in components |
 | Vibe coverage | ✅ 100% across all 4 festivals |
 | Android Room version | v8 |
@@ -31,7 +32,7 @@
 | `/[festivalId]/discover` | ✅ Artist grid, filters, Country Explorer, Serendipity, AI Scout, Genre DNA entry |
 | `/[festivalId]/artist/[id]` | ✅ Artist detail, Spotify embed, similar artists |
 | `/[festivalId]/map` | ✅ POI dot map |
-| `/[festivalId]/timetable` | ⏳ Placeholder — no startTime/endTime data yet |
+| `/[festivalId]/timetable` | ✅ Fully functional — Rock am Ring 2026 has full schedule. Other festivals show "Announcing Soon" until data arrives |
 | `/[festivalId]/food` | ✅ Vendor list with dietary filters |
 | `/[festivalId]/tools` | ✅ HUF converter, weather, SOS, Car Finder, Tent Finder |
 | `/[festivalId]/tools/dictionary` | ✅ Festival slang glossary |
@@ -118,8 +119,11 @@
 
 | Feature | Blocked by |
 |---------|-----------|
-| Timetable, ClashDetector, groupSchedules, stageCapacity, setCountdowns | startTime/endTime null — awaiting Sziget 2026 schedule |
+| Timetable (Sziget/NovaRock/Frequency/Area53/ErntePunk) | startTime/endTime null — awaiting schedule publication |
+| ClashDetector, groupSchedules, setCountdowns (other festivals) | Same — no schedule data |
 | secretStages | Unannounced location data |
+
+Rock am Ring 2026 has a full timetable — all schedule features are live for that festival.
 
 ---
 
