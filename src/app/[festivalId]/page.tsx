@@ -18,7 +18,6 @@ import {
   Wand2,
   Trophy,
   Music,
-  Camera,
   Newspaper,
   Flame,
   ChevronRight,
@@ -30,9 +29,6 @@ import { useParams } from 'next/navigation';
 import { useInsider } from '@/components/layout/insider-provider';
 import type { LineupItem } from '@/types';
 import { FestivalCountdown } from '@/components/home/festival-countdown';
-import { NewsBulletin } from '@/components/home/news-bulletin';
-import { FanPoll } from '@/components/home/fan-poll';
-import { PhotoWall } from '@/components/home/photo-wall';
 import { LineupDiff } from '@/components/home/lineup-diff';
 import { GlassCard, NeonButton } from '@/components/ui/brutalist';
 
@@ -226,8 +222,6 @@ export default function Home() {
       <Container maxWidth="lg" sx={{ mt: 16 }}>
         <Grid container spacing={12}>
           <Grid size={{ xs: 12, md: 7 }}>
-            {config.features.newsBulletin && <NewsBulletin festivalId={festivalId} />}
-            {config.features.fanPolls && <FanPoll festivalId={festivalId} />}
           </Grid>
           <Grid size={{ xs: 12, md: 5 }}>
             <Box sx={{ position: 'sticky', top: 100 }}>
@@ -269,8 +263,6 @@ export default function Home() {
         </Grid>
 
         <LineupDiff festivalId={festivalId} lineup={lineup} />
-
-        {config.features.photoWall && <PhotoWall festivalId={festivalId} />}
 
         {/* Strategic Tactical Sections */}
         {config.features.foodRatings && (

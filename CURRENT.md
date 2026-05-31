@@ -1,6 +1,6 @@
 # CURRENT.md (State of the Union)
 
-**Last Updated:** May 17, 2026
+**Last Updated:** May 30, 2026
 **Current Phase:** All phases complete. Platform is production-ready.
 
 ---
@@ -10,7 +10,8 @@
 | Check | Result |
 |-------|--------|
 | `npm run typecheck` | ✅ 0 errors |
-| `npm test -- --run` | ✅ 198/198 passing |
+| `npm run lint` | ✅ 0 errors (ESLint now wired, was broken) |
+| `npm test -- --run` | ✅ 189/189 passing |
 | `cd android && ./gradlew testSzigetDebugUnitTest` | ✅ 60/60 passing |
 | White-label compliance | ✅ No hardcoded hex in components |
 | Vibe coverage | ✅ 100% across all 4 festivals |
@@ -38,7 +39,6 @@
 | `/[festivalId]/vibe-quiz` | ✅ 5-step quiz → ranked artist results |
 | `/[festivalId]/guide` | ✅ Survival guide |
 | `/[festivalId]/highlights` | ✅ Year highlights reel |
-| `/[festivalId]/merch` | ✅ Merch catalog |
 | `/[festivalId]/packing-list` | ✅ Packing list |
 | `/[festivalId]/discover/speed` | ✅ Speed discovery mode |
 | `/search` | ✅ Cross-festival artist search |
@@ -100,8 +100,8 @@
 ## 4. Unfinished / Open
 
 ### Android Features (Flagged in config but UI missing)
-- ⏳ `crowdHeatmap`, `newsBulletin`, `afterMovie`, `merchCatalog`.
-- ⏳ `setlistLinks` in `ArtistDetailScreen`.
+- ⏳ `newsBulletin`, `afterMovie` — pending real implementation
+- ⏳ `setlistLinks` in `ArtistDetailScreen`
 
 ### Deferred / Future
 | Item | Status |
@@ -127,7 +127,8 @@
 
 ```bash
 npm run typecheck     # 0 errors
-npm test -- --run     # 198/198
+npm run lint          # 0 errors
+npm test -- --run     # 189/189
 npm run lineup:sync   # after any data change
 
 cd android && ./gradlew testSzigetDebugUnitTest   # 60 tests
@@ -135,5 +136,4 @@ cd android && ./gradlew testSzigetDebugUnitTest   # 60 tests
 
 ---
 
-*Status: GREEN. All requested tasks completed and mandates enforced.*
-andates enforced.*
+*Status: GREEN. Codebase clean — typecheck ✅, lint ✅, tests ✅.*

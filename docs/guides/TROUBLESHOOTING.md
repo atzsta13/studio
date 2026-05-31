@@ -20,8 +20,7 @@
 1. [Web Development](#web-development)
 2. [Android Development](#android-development)
 3. [Data & Build](#data--build)
-4. [API & Network](#api--network)
-5. [General](#general)
+4. [General](#general)
 
 ---
 
@@ -64,26 +63,17 @@ npm install --legacy-peer-deps
 
 **Error:**
 ```
-Error: ENOENT: no such file or directory, open '.env.local'
+Error: listen EADDRINUSE
 ```
 
 **Cause:**
-Missing environment variables file.
+Port conflict or corrupted `.next` cache.
 
 **Solution:**
 ```bash
-# Create .env.local
-cat > .env.local << 'EOF'
-GOOGLE_GENAI_API_KEY=test-key-or-leave-blank
-SPOTIFY_CLIENT_ID=d27e168c2c3746f7a22c075ce1a49dc2
-SPOTIFY_CLIENT_SECRET=your-secret-here
-NEXT_PUBLIC_BASE_URL=http://localhost:9002
-EOF
-
+rm -rf .next
 npm run dev
 ```
-
-**Note:** AI recommendations + Spotify features won't work without real keys, but app will start.
 
 ---
 
@@ -109,30 +99,6 @@ PORT=3000 npm run dev
 
 ---
 
-### Problem: TypeScript errors prevent build
-
-**Example:**
-```
-src/ai/flows/recommend-artists-flow.ts:63 — 'artists' does not exist
-```
-
-**Cause:**
-Pre-existing schema mismatch (known issue, non-blocking).
-
-**Solution:**
-```bash
-# Check if it's a known issue
-grep -r "artists" src/ai/flows/
-
-# Build anyway (Next.js doesn't block on tsc errors)
-npm run build
-
-# Fix later in refactor cycle
-```
-
-**Important:** These errors don't prevent build or deployment. TypeScript is best-effort in Next.js.
-
----
 
 ### Problem: Components not updating after edit
 
@@ -153,56 +119,18 @@ npm run dev
 
 ---
 
-### Problem: `/api/weather` returns 503
-
-**Error:**
-```json
-{ "error": "Failed to fetch weather data from Open-Meteo" }
-```
+### Problem: Weather widget shows no data
 
 **Cause:**
-- Open-Meteo API down (rare)
-- Network issue
-- CORS issue
+Open-Meteo API is down or there's no network connection. The widget fetches directly from `api.open-meteo.com` client-side.
 
 **Solution:**
 ```bash
 # Test API directly
 curl 'https://api.open-meteo.com/v1/forecast?latitude=47.5&longitude=19.05&daily=temperature_2m_max'
-
-# Check network
-ping api.open-meteo.com
-
-# Restart dev server if network flaky
-npm run dev
 ```
 
----
-
-### Problem: Spotify auth redirect fails
-
-**Error:**
-```
-GET /api/auth/spotify/callback?error=access_denied
-```
-
-**Cause:**
-- User clicked "Deny" on Spotify login
-- Client ID/Secret mismatch
-- Redirect URI not registered
-
-**Solution:**
-```bash
-# Verify credentials
-echo "SPOTIFY_CLIENT_ID=$SPOTIFY_CLIENT_ID"
-echo "SPOTIFY_CLIENT_SECRET=${SPOTIFY_CLIENT_SECRET:0:5}***"
-
-# Check redirect URI registered in Spotify dashboard
-# https://developer.spotify.com/dashboard/applications/d27e168c2c3746f7a22c075ce1a49dc2
-
-# Should be: http://127.0.0.1:9002/api/auth/spotify/callback
-# (or http://localhost:9002 depending on system)
-```
+Weather is non-critical — the rest of the app works offline.
 
 ---
 
@@ -403,7 +331,7 @@ Forgot to copy after updating Web lineup.
 **Solution:**
 ```bash
 # After any src/data/lineup.json update
-npm run lineup:show  # Verify update
+npm run lineup:sync  # Re-sync data after update
 
 # Copy to Android
 cp src/data/lineup.json android/app/src/main/assets/lineup.json
@@ -462,65 +390,6 @@ find public -name "*.jpg" -o -name "*.png" | xargs du -h
 
 ---
 
-## API & Network
-
-### Problem: CORS error on API call
-
-**Error:**
-```
-Access to XMLHttpRequest blocked by CORS policy
-```
-
-**Cause:**
-Request from different origin (e.g., localhost:3000 → localhost:9002).
-
-**Solution:**
-```bash
-# Next.js dev server should handle this automatically
-
-# If issue persists, add CORS headers
-# src/app/api/[route]/route.ts
-export async function GET(request: Request) {
-  const response = new Response(JSON.stringify(data));
-  response.headers.set('Access-Control-Allow-Origin', '*');
-  return response;
-}
-```
-
----
-
-### Problem: API rate limit exceeded
-
-**Error:**
-```json
-{ "error": "Too Many Requests" }
-```
-
-**Cause:**
-- Spotify API rate limited
-- Google AI API quota exceeded
-- Polling too aggressively
-
-**Solution:**
-```typescript
-// Implement exponential backoff
-const retryWithBackoff = async (fn, maxRetries = 3) => {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await fn();
-    } catch (err) {
-      if (err.status === 429 && i < maxRetries - 1) {
-        const delay = Math.pow(2, i) * 1000;  // 1s, 2s, 4s
-        await new Promise(r => setTimeout(r, delay));
-      } else {
-        throw err;
-      }
-    }
-  }
-};
-```
-
----
 
 ## General
 

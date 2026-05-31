@@ -1,5 +1,5 @@
-import { BASE_PATH } from '@/lib/base-path';
 'use client';
+import { BASE_PATH } from '@/lib/base-path';
 
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';

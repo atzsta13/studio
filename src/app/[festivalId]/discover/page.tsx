@@ -135,7 +135,7 @@ export default function DiscoverPage() {
   }, [allArtists]);
 
   const filteredArtists = useMemo(() => {
-    let base = [...allArtists];
+    const base = [...allArtists];
 
     if (viewMode === 'az') {
       base.sort((a, b) => a.artist.localeCompare(b.artist));

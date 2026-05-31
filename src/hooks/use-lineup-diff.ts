@@ -1,5 +1,5 @@
-import { BASE_PATH } from '@/lib/base-path';
 'use client';
+import { BASE_PATH } from '@/lib/base-path';
 
 import { useState, useEffect, useMemo } from 'react';
 import type { LineupItem } from '@/types';

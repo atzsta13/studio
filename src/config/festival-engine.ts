@@ -67,7 +67,7 @@ export interface FestivalConfig {
     androidSecondaryLong: string
   }
   features: {
-    // Phase 1 Core (Existing)
+    // Navigation & discovery
     currencyConverter: boolean
     tentFinder: boolean
     vibeQuiz: boolean
@@ -79,51 +79,54 @@ export interface FestivalConfig {
     dayparkNightpark: boolean
     familyZone: boolean
 
-    // Phase 3 Hyper-Insider Expansion (50 Features)
+    // Health & survival
     hydrationTracker: boolean
     sunscreenAlert: boolean
     batterySaver: boolean
-    friendFinder: boolean
+    waterCounter: boolean
+    audioMonitor: boolean
+    sosMorseCode: boolean
+    highContrast: boolean
+    offlineBanner: boolean
+
+    // Planning & schedule
+    clashResolver: boolean
+    setCountdowns: boolean
     groupSchedules: boolean
+    friendFinder: boolean
+
+    // Lineup & discovery
     similarArtists: boolean
     vibeOfTheHour: boolean
-    stageCapacity: boolean
-    merchCatalog: boolean
+    genreBreakdown: boolean
+    vibeAnalysis: boolean
+    surpriseRoulette: boolean
+    setlistLinks: boolean
+    secretStages: boolean
+    afterMovie: boolean
+
+    // Map & location
+    accessibilityMap: boolean
+    quietZones: boolean
+    chargingStations: boolean
+    firstAidFinder: boolean
+    carFinder: boolean
+
+    // Practical tools
     foodRatings: boolean
     budgetTracker: boolean
     lostAndFound: boolean
-    sosMorseCode: boolean
     festivalDictionary: boolean
-    firstAidFinder: boolean
-    chargingStations: boolean
     shuttleTimetable: boolean
     weatherRadar: boolean
-    setlistLinks: boolean
-    collabPlaylists: boolean
-    arStageView: boolean
-    fanPolls: boolean
-    photoWall: boolean
-    clashResolver: boolean
+    notesJournal: boolean
     posterGenerator: boolean
     customThemes: boolean
-    waterCounter: boolean
-    carFinder: boolean
-    notesJournal: boolean
-    socialFeed: boolean
-    newsBulletin: boolean
-    setCountdowns: boolean
-    surpriseRoulette: boolean
-    genreBreakdown: boolean
-    vibeAnalysis: boolean
-    accessibilityMap: boolean
-    quietZones: boolean
-    crowdHeatmap: boolean
-    secretStages: boolean
-    afterMovie: boolean
     feedbackSystem: boolean
-    offlineBanner: boolean
-    audioMonitor: boolean
-    highContrast: boolean
+    stageCapacity: boolean
+
+    // Pending implementation
+    newsBulletin: boolean
   }
   content: {
     emergencyContacts?: {

@@ -4,112 +4,138 @@ Agent instructions for the Festival Insider Platform. Applies to Claude Code, Cu
 
 ## Project Overview
 
-The **Festival Insider Platform** is a multi-festival engine with two parallel codebases:
-- **Web** (Next.js 16 / React 19) — root directory.
+The **Festival Insider Platform** is a multi-festival, offline-first companion app with two parallel codebases:
+- **Web** (Next.js 16 / React 19) — root directory. Exported as a **fully static site** (`output: 'export'`), deployed to GitHub Pages at `https://atzsta13.github.io/studio/`.
 - **Android** (Jetpack Compose / Kotlin) — `android/` directory.
 
-### **White-Label Mandate (CRITICAL)**
-This is a **Config-First** platform. **NEVER** hardcode brand names (Sziget, Nova Rock), dates, colors, or coordinates in components or logic.
-- **Web**: Always import `FESTIVAL` from `@/config/festival`.
+**No backend. No API routes. No server required.** Everything runs client-side from static JSON.
+
+### White-Label Mandate (CRITICAL)
+This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colors, or coordinates in components or logic.
+- **Web**: Always import `FESTIVAL` from `@/config/festival-engine`.
 - **Android**: Always use `FestivalConfig` constants.
-- **Data**: All festival-specific data lives in `festivals/<festival-id>/data/`. The build process (`npm run prebuild`) syncs this to `src/data/`.
+- **Data**: All festival-specific data lives in `festivals/<festival-id>/data/`. The build process syncs this to `public/data/` and `src/data/`.
+
+## Festivals
+
+| ID | Name | Artists |
+|----|------|---------|
+| `sziget-2026` | Sziget | ~338 |
+| `novarock-2026` | Nova Rock | ~84 |
+| `frequency-2026` | Frequency | ~59 |
+| `area53-2026` | Area 53 | ~30 |
+| `ernte-punk-2026` | Ernte Punk | ~17 |
+
+All `stage`, `startTime`, `endTime` fields are `null` — schedule not yet published. Never build UI that assumes these exist.
 
 ## Common Commands
 
 ### Web (Next.js)
 ```bash
-# Development (Runs the Monolithic Hub serving all festivals)
+# Development
 npm run dev
 
-# Quality Control (typecheck must pass before any merge)
+# Quality Control (must pass before any commit)
 npm run typecheck
 npm run lint
 
-# Tests (Vitest + React Testing Library)
-npm test              # watch mode
-npm test -- --run     # CI / single pass
-npm test -- ArtistCard.test.tsx   # single file
-npm test -- --coverage
+# Tests (Vitest + React Testing Library) — 189 passing
+npm test -- --run
 
-# AI flows (Genkit + Gemini 2.5 Flash)
-npm run genkit:dev    # starts Genkit dev UI
-```
-
-### Android
-```bash
-# Build specific flavor
-./gradlew assembleSzigetDebug
-./gradlew assembleArea53Debug
-./gradlew assembleNovarockDebug
-./gradlew assembleFrequencyDebug
-
-# Tests
-./gradlew test                          # unit tests (no device needed)
-./gradlew connectedAndroidTest          # instrumented tests (device/emulator)
-./gradlew test --tests "DiscoverViewModelTest"
+# Static export build (outputs to out/)
+npm run build
 ```
 
 ### Data Pipeline
 ```bash
-# Sync all festival data to public/data/ (runs automatically on dev/build)
-npm run lineup:sync
-
-# Full lineup update for a specific festival (scrape → clean → vibes → sync)
+# Full lineup update: scrape → clean → vibes → sync → android assets
 npm run lineup:update:sziget
 npm run lineup:update:novarock
 npm run lineup:update:area53
 npm run lineup:update:frequency
 
-# Push synced data to Android assets
-npm run android:sync:sziget
+# Sync existing data to public/data/ and src/data/ (no scrape)
+npm run lineup:sync
 ```
 
-## Architecture Patterns
+### Android
+```bash
+./gradlew assembleSzigetDebug
+./gradlew assembleArea53Debug
+./gradlew assembleNovarockDebug
+./gradlew assembleFrequencyDebug
+./gradlew test        # unit tests (no device needed)
+```
 
-### 1. Web Configuration (Hub Architecture)
-- **Interface**: `FestivalConfig` in `src/config/festival.ts`.
-- **Dynamic Routing**: The UI lives in `src/app/[festivalId]/`. Use `useInsider()` to load the active config and lineup.
-- **Theming**: Config colors are applied dynamically based on the active route.
+### Deployment
+Push to `main` → GitHub Actions builds static export → deploys to GitHub Pages automatically.
+Workflow: `.github/workflows/deploy-pages.yml`
 
-### 2. Android Configuration
-- **Product Flavors**: Defined in `android/app/build.gradle.kts`.
-- **Flavor Config**: `FestivalConfig.kt` switches logic based on `BuildConfig.FESTIVAL_ID`.
-- **Themes**: `FestivalInsiderTheme` in `Theme.kt` pulls colors dynamically.
+## Architecture
 
-### 3. Data Flow
-- **Source of truth**: `festivals/<id>/data/*.json` (one directory per festival ID).
-- **Sync**: `scripts/sync-data.mjs` → `public/data/<id>/` (Web); `scripts/sync-android-assets.mjs` → Android assets.
-- **Format**: Static JSON only. `stage`/`startTime`/`endTime` are always `null` — do not build UI that assumes they exist.
+### Web — Key Patterns
 
-### 4. Storage & Persistence
-- **Web**: `localStorage` keys **must** be prefixed with `${FESTIVAL.id}` to avoid cross-festival data pollution.
-- **Android**: Room v2 with `fallbackToDestructiveMigration()`. Increment `@Database(version = …)` for every entity change. Two entities: `UserProgress` (singleton id=1) and `FavoriteArtist`.
+**Static Export**: `next.config.ts` has `output: 'export'`, `basePath: '/studio'`, `trailingSlash: true`.
 
-### 5. Web UI Stack
-- **Atomic components**: ShadCN (Radix) in `src/components/ui/`.
-- **Complex layouts**: MUI 6. MUI theme is synced to Tailwind CSS variables via `MuiRegistry` component — do not set MUI colors directly.
-- **Hydration safety**: Use `isMounted` pattern or `suppressHydrationWarning` for browser-only values (GPS, flags).
+**basePath is critical**: All client-side `fetch()` calls for JSON data MUST use the `BASE_PATH` helper:
+```ts
+import { BASE_PATH } from '@/lib/base-path';
+fetch(`${BASE_PATH}/data/${festivalId}/lineup.json`);
+```
+Without this, fetches will 404 on GitHub Pages. `BASE_PATH` is `'/studio'` in production, `''` locally.
 
-### 6. AI (Local-Only)
-- **Android**: Uses `LlmInference` with **Gemma 4 Small (1.2GB)** for local-only artist discovery.
-- **Web**: AI features are disabled to enforce 100% offline/local privacy.
-- **No Cloud**: Absolutely no calls to external LLM APIs (Gemini, OpenAI, Anthropic).
+**Dynamic routing**: Pages live in `src/app/[festivalId]/`. The `[festivalId]/layout.tsx` exports `generateStaticParams()` for all festivals. The `[festivalId]/artist/[id]/layout.tsx` pre-renders all artist pages.
 
-## Coding Standards
-- **TypeScript**: Strict mode. No `any`. Use interfaces from `src/types/index.ts`.
-- **Offline-First**: All features (except Spotify matching) must work without an internet connection.
-- **Brutalist UI**: Follow the high-contrast, bold aesthetic defined in `docs/guides/UI_GUIDE.md`.
-- **Haptics**: Required on all interactive elements in Android via `rememberHapticManager()`.
-- **Icons**: Lucide (Web). Import individually to avoid HMR module factory errors. Android uses Vector Drawables.
-- **Android ViewModel**: Manual `ViewModelProvider.Factory` pattern — no Hilt DI.
+**Data loading**: `useInsider()` hook (from `InsiderProvider`) loads lineup + config client-side from `public/data/<festivalId>/lineup.json`. All user state (favorites, progress) is `localStorage`-only, prefixed with `${FESTIVAL.id}`.
+
+**Config**: `FestivalConfig` interface in `src/config/festival-engine.ts`. Each festival has a `config.json` in `festivals/<id>/`. No `spotifyIntegration` field — Spotify OAuth was removed.
+
+**Weather**: `WeatherWidget` fetches Open-Meteo directly (free public API, no auth). No proxy needed.
+
+**Images**: All artist images are hotlinked to their original CDN — never downloaded or hosted. `ArtistImage` component (`src/components/ui/artist-image.tsx`) wraps every `<img>` with a `© source.com` attribution watermark.
+
+**UI Stack**: ShadCN (Radix) for atomic components, MUI 6 for complex layouts. MUI theme synced to Tailwind via `MuiRegistry`. Never set MUI colors directly.
+
+**Hydration**: Use `isMounted` pattern or `suppressHydrationWarning` for browser-only values.
+
+### Android — Key Patterns
+- **Product Flavors**: `android/app/build.gradle.kts`
+- **Config**: `FestivalConfig.kt` — reads from `assets/config.json` per flavor
+- **DB**: Room v2, `fallbackToDestructiveMigration()`, increment `@Database(version=…)` for every entity change
+- **Nav**: Manual `ViewModelProvider.Factory` — no Hilt
+- **Artist images**: Hotlinked to CDN with `SpotifyIsland`-style attribution (social links only, no OAuth)
+- **Haptics**: Required on all interactive elements via `rememberHapticManager()`
+
+### Data Flow
+```
+festivals/<id>/data/*.json
+  → scripts/sync-data.mjs
+  → public/data/<id>/          (served statically, fetched at runtime)
+  → src/data/                  (legacy import path)
+  → android assets (per flavor)
+```
+
+## What Was Removed (Do Not Re-Add)
+
+- **Spotify OAuth** — Spotify revoked API access for new apps. The `spotifyIntegration` feature flag is gone from all configs. Do not add OAuth flows, `/api/auth/spotify/`, match endpoints, or playlist builders.
+- **Firebase** — Project migrated away from Firebase Studio. No Firebase dependency, no `firebase.ts`.
+- **API routes** — There are zero Next.js API routes. The app is fully static. Do not add `route.ts` files.
+- **Rate limiting / middleware** — No server, so no middleware. `src/proxy.ts` is deleted.
+- **Server-side AI** — No Genkit, no Gemini API calls from the web app. Android uses on-device Gemma only.
 
 ## Hard Constraints
 
-See `docs/guides/MANDATES.md` for the full list. Key rules:
 - **NO ACCOUNTS** — no login, no email, no phone numbers. 100% anonymous.
 - **NO SOCIAL** — no feeds, no photo walls, no moderation liability.
-- **NO CAMERA** — no AR, no QR scanning (except tactical P2P link). Ever.
-- **NO DATA COLLECTION** — all user data (favorites, location, budget) stays 100% local.
+- **NO CAMERA** — no AR, no QR scanning. Ever.
+- **NO DATA COLLECTION** — all user data stays 100% local.
+- **NO API ROUTES** — static export only. Any `route.ts` breaks the build.
 - **OFFLINE FIRST** — Map, Guide, Lineup, and all core features must work with zero signal.
 - **CONFIG FIRST** — no hardcoded festival names, colors, coordinates, or dates in any component.
+- **IMAGES** — never download or host artist images. Always hotlink to source CDN. Always use `ArtistImage` component for attribution.
 
+## Coding Standards
+- **TypeScript**: Strict mode. No `any`. Interfaces in `src/types/index.ts`.
+- **Icons**: Lucide (Web), import individually. Android uses Vector Drawables.
+- **No comments** unless the WHY is non-obvious.
+- **Tests**: 198 passing — keep green. Run `npm test -- --run` before committing.

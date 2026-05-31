@@ -18,6 +18,7 @@ White-label platform powering 4 festival apps (Sziget 2026, Nova Rock, Frequency
 ## Canonical docs
 - `AGENTS.md` — coding rules, architecture patterns, commands
 - `CURRENT.md` — full platform state snapshot (routes, integrity checks, open items)
+- `docs/GOALS.md` — purpose and goal of every feature and the platform as a whole
 - `docs/features/FEATURES.md` — build status per feature per platform
 - `docs/guides/MANDATES.md` — hard constraints (privacy, offline, config-first)
 - `docs/guides/HANDOFF.md` — agent onboarding guide

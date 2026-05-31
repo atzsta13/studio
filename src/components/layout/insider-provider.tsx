@@ -1,5 +1,5 @@
-import { BASE_PATH } from '@/lib/base-path';
 'use client';
+import { BASE_PATH } from '@/lib/base-path';
 
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { getFestivalConfig, FestivalConfig } from '@/config/festival-engine';

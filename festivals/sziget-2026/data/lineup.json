@@ -10204,8 +10204,8 @@
   {
     "id": "336",
     "artist": "Stefani",
-    "stage": null,
-    "day": null,
+    "stage": "The Cypher by Friss",
+    "day": "Thursday",
     "startTime": null,
     "endTime": null,
     "countryCode": null,
@@ -10214,8 +10214,8 @@
     "socials": {
       "spotify": null
     },
-    "description": null,
-    "imageUrl": null,
+    "description": "Stefani is a professional breaker from Ukraine, currently based in London. She represented Ukraine at the Paris 2024 Olympic Games and is known for her strong power sets, clean rounds, and world-class battle presence. At The Cypher, she will join the battles and lead a breaking workshop together with Hiro 10.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/41/thumb_5640496_performance_1440.jpeg",
     "vibes": [
       "Discover"
     ]
@@ -10271,5 +10271,661 @@
       "Anthemic",
       "Sing-along"
     ]
+  },
+  {
+    "id": "339",
+    "artist": "Florence %2B The Machine",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "UK",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "POP",
+      "POP-ROCK",
+      "INDIE ROCK",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064800-florence-%2B-the-machine?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1moxjboGR7GNWYIMWsRjgG",
+      "facebook": "https://www.facebook.com/florenceandthemachine",
+      "instagram": "https://www.instagram.com/florenceandthemachine",
+      "youtube": "https://www.youtube.com/@florencemachine"
+    },
+    "description": "Florence Welch - also known as Florence + The Machine - has released her sixth studio album Everybody Scream.\n\nThe album’s title track Everybody Scream was written and produced by Florence Welch over the past two years with a close-knit circle of collaborators including Mark Bowen of IDLES, who appears in the video for the single, Aaron Dessner and Mitski.\n\nAfter needing lifesaving surgery on the Dance Fever Tour, Florence’s ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581803_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "340",
+    "artist": "Lewis Capaldi",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "SCO",
+    "genres": [
+      "ROCK",
+      "POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064849-lewis-capaldi?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4GNC7GD6oZMSxPGyXy4MNB",
+      "facebook": "https://www.facebook.com/lewiscapaldi",
+      "instagram": "https://www.instagram.com/lewiscapaldi",
+      "youtube": "https://www.youtube.com/channel/UCveFkLdSOUsGwMJEgedO9dQ"
+    },
+    "description": "Global superstar Lewis Capaldi returns with ‘Almost’ - a soaring, full-band anthem marking his third new single since his comeback. The track arrives ahead of his newly announced EP Survive - out November 14th. Arriving hot on the heels of a critically-lauded return to touring after almost 2 years away, and latest success ‘Something In The Heavens’, his tenth UK Top 10 single, ‘Almost’ is a raw and intimate exploration ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577157_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "341",
+    "artist": "Sombr",
+    "stage": "Main Stage",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "ALTERNATIVE",
+      "ALT POP",
+      "INDIE ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064847-sombr?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/4G9NDjRyZFDlJKMRL8hx3S",
+      "facebook": "https://www.facebook.com/s0mbr",
+      "instagram": "https://www.instagram.com/sombr",
+      "youtube": "https://www.youtube.com/channel/UCXlqFQmZZOb78teSnAqhuwA"
+    },
+    "description": "A New York City-native raised on the Lower East Side, sombr—born Shane Boose—started making music in his bedroom while studying classical music as a student at the prestigious public school, LaGuardia High School. His breakout hit “Caroline” (2022) took the internet by storm, and he has since released a series of EPs and singles - all self-written and co-produced by the artist himself - that has propelled him to 500 ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577150_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "342",
+    "artist": "Twenty One Pilots",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "POP",
+      "ALTERNATIVE",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064850-twenty-one-pilots?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx",
+      "facebook": "https://www.facebook.com/twentyonepilots",
+      "instagram": "https://www.instagram.com/twentyonepilots",
+      "youtube": "https://www.youtube.com/channel/UCBQZwaNPFfJ1gZ1fLZpAEGw"
+    },
+    "description": "Grammy-Award winning band, Twenty One Pilots, have shifted music and culture as an incomparable creative force and with an ever-evolving vision. The Columbus, OH duo—Tyler Joseph and Josh Dun— have tallied over 33 billion global streams and counting, sold north of three million tickets worldwide, notched dozens of multi-Platinum certifications, and even claimed a spot in the Guinness® Book of World Records. In historic fashion, their quadruple-Platinum breakout LP, Blurryface, ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577159_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "343",
+    "artist": "Ashnikko",
+    "stage": "Revolut Stage",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "POP",
+      "HIP-HOP",
+      "ELECTROPOP",
+      "ALT POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065315-ashnikko?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/3PyJHH2wyfQK3WZrk9rpmP",
+      "facebook": "https://www.facebook.com/ashnikkomusic",
+      "instagram": "https://www.instagram.com/ashnikko",
+      "youtube": "https://www.youtube.com/channel/UCprhwr86ckrMC2q9jX8qMnw"
+    },
+    "description": "Ashnikko (Ashton Nicole Casey) is an American rapper, singer-songwriter, and producer currently based in London. She grew up in Greensboro, North Carolina, then moved with her family to Estonia and later to Riga, Latvia during her teenage years. She released her first track, KROKODIL, in 2016, followed by her debut EP Sass Pancakes in 2017. Her next EPs, Unlikeable (2018) and Hi It’s Me (2019), continued to build her audience. ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/80/thumb_5579811_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "344",
+    "artist": "Bbno%24",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "CA",
+    "genres": [
+      "HIP-HOP",
+      "RAP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064842-bbno%24?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/41X1TR6hrK8Q2ZCpp2EqCz",
+      "facebook": "https://www.facebook.com/bbnomula",
+      "instagram": "https://www.instagram.com/bbnomula",
+      "youtube": "https://www.youtube.com/channel/UCC8FSfSnbjiZ6vGr68ZLtzg"
+    },
+    "description": "Hailed by Rolling Stone as “A Viral Pioneer”, bbno$ is no stranger to producing addictive hooks, having released the first ever TikTok thit, ‘Lalala’ with Y2K in 2019, which has gone 10x Platinum across the globe. Unlike a lot of his counterparts who's fame stemmed from a \"TikTok hit\", bbno$'s fame was no \"flash in the pan\" and his artistry quickly came to be respected in 2021 when he recreated ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577125_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "345",
+    "artist": "Biffy Clyro",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "SCO",
+    "genres": [
+      "ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065608-biffy-clyro?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1km0R7wy712AzLkA1WjKET",
+      "facebook": "https://www.facebook.com/biffyclyro",
+      "instagram": "https://www.instagram.com/biffy_clyro",
+      "youtube": "https://www.youtube.com/@biffyclyro"
+    },
+    "description": "Biffy Clyro are one of the UK's most successful rock bands, they have released 3 UK number 1 albums to date and performed numerous headline sets at the likes of Reading & Leeds, Download, TRNSMT and Isle of Wight.\n\nTheir highly anticipated new album ‘Futique’ is set to release on 26th September, featuring new single ‘A Little Love’, which debuted as Hottest Record in the world on BBC Radio One. ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581804_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "346",
+    "artist": "Charlotte Cardin",
+    "stage": "Revolut Stage",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "CA",
+    "genres": [
+      "INDIE",
+      "POP",
+      "ALT POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064816-charlotte-cardin?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1G0YV9WooUBjrwDq0Q7EFK",
+      "facebook": "https://www.facebook.com/charlottecardinofficial",
+      "instagram": "https://www.instagram.com/charlottecardin",
+      "youtube": "https://www.youtube.com/channel/UCIEcq0eG63LS-4J9M1qNj9Q"
+    },
+    "description": "Born in Montreal and based in Paris, Charlotte Cardin shines on the global stage with striking authenticity and emotional depth. Named Billboard’s Global Woman of the Year in 2025, the Canadian singer-songwriter has amassed over a billion streams worldwide and performed on renowned stages from Bonnaroo to Festival d’Été de Québec to Les Vieilles Charrues, earning praise from Harper’s BAZAAR, W Magazine, TF1, and Le Parisien. In late 2024, following ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577351_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "347",
+    "artist": "Dijon",
+    "stage": "Revolut Stage",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "US",
+    "genres": [
+      "INDIE",
+      "ALTERNATIVE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064846-dijon?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/0knGpCTbmG4ctl1wzYRZs4",
+      "facebook": "https://www.facebook.com/DijonOfficial",
+      "instagram": "https://www.instagram.com/dijondijon_",
+      "youtube": "https://www.youtube.com/channel/UC-rr-YumyDDWDE9BjGYrnIQ"
+    },
+    "description": "Dijon Duenas (simply known as Dijon) is an American alternative/R&B singer-songwriter and producer, also known as the former vocalist of the R&B duo Abhi//Dijon. After the duo released two projects respectively in 2015 and 2016, Dijon began to step into his own in 2017, releasing a string of solo singles, including \"Skin\" and \"Nico's Red Truck\". His debut EP Sci Fi 1 was released in 2019 under the Warner-supported label ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577140_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "348",
+    "artist": "Dom Dolla",
+    "stage": "BOLT Night Stage",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "AU",
+    "genres": [
+      "ELECTRONIC",
+      "TECH-HOUSE",
+      "DELTA DISTRICT"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065311-dom-dolla?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/205i7E8fNVfojowcQSfK9m",
+      "facebook": "https://www.facebook.com/domdollamusic",
+      "instagram": "https://www.instagram.com/domdolla",
+      "youtube": "https://www.youtube.com/@DomDolla"
+    },
+    "description": "Grammy nominated DJ, producer & songwriter, DOM DOLLA, is experiencing a meteoric rise, his signature style of house music is connecting with global audiences, and he is recognised as one of the most exciting producers in electronic music. Dom discovered house music when his Mother handed him a copy of Basement Jaxx’ 2001 album ‘Rooty\". In his late teen’s Dom spent weekends hosting pub‐discos & djing at parties whilst working ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/80/thumb_5579847_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "349",
+    "artist": "Tash Sultana",
+    "stage": "Main Stage",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "AU",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "HIP-HOP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064844-tash-sultana?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/6zVFRTB0Y1whWyH7ZNmywf",
+      "facebook": "https://www.facebook.com/tashsultanamusic",
+      "instagram": "https://www.instagram.com/tashsultanaofficial",
+      "youtube": "https://www.youtube.com/@tashsultana01"
+    },
+    "description": "Renowned multi-instrumentalist, singer, songwriter, and producer Tash Sultana is making their long-awaited return to the EU/UK in March 2026. These will be Tash’s first shows in the region since 2023, and they’re back by high demand, marking the biggest headline performances of their career in this market to date. The Return to the Roots EU/UK 2026 Tour follows the release of Tash’s most recent body of work and promises fans ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/78/thumb_5577136_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "350",
+    "artist": "Tomora",
+    "stage": "Revolut Stage",
+    "day": "Wednesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE",
+      "ELECTRONIC"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064840-tomora?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/5r0BuurxKQugj8cjHiO8pY",
+      "facebook": "https://www.facebook.com/tomoraofficial",
+      "instagram": "https://www.instagram.com/tomora",
+      "youtube": "https://www.youtube.com/@watch"
+    },
+    "description": "TOMORA, the new duo featuring The Chemical Brothers’ Tom Rowlands and AURORA, have released their debut single “RING THE ALARM,” out now via Capitol Records. It arrives alongside a BBC Radio 1 premiere with Jack Saunders and an official music video directed by Adam Smith, a visual that compliments the track’s fun and chaotic nature. Until now, TOMORA’s identity was unknown, with their presence on next year’s festival lineups for ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580979_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "351",
+    "artist": "Underworld",
+    "stage": "Revolut Stage",
+    "day": "Tuesday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "UK",
+    "genres": [
+      "ELECTRONIC",
+      "TECHNO",
+      "HOUSE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065313-underworld?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1PXHzxRDiLnjqNrRn2Xbsa",
+      "facebook": "https://www.facebook.com/underworldlive",
+      "instagram": "https://www.instagram.com/underworld",
+      "youtube": "https://www.youtube.com/channel/UCL2yEhXEN6umpyZYJhX4e7g"
+    },
+    "description": "Underworld are Rick Smith and Karl Hyde. Over 30 years since their peerless first album, dubnobasswithmyheadman, and their generation-defining euphoric hit, ‘Born Slippy (Nuxx)’, they are going from strength to strength. 2025 marks a modern renaissance for the group, which already has over 40 years of experience. Their Boiler Room debut this summer saw over one million views in the first five days, and upon the recent re-reissue of their ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/81/thumb_5580030_performance_1440.jpeg",
+    "vibes": []
+  },
+  {
+    "id": "352",
+    "artist": "Alt Blk Era",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064843-alt-blk-era?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "353",
+    "artist": "Anna",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064839-anna?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "354",
+    "artist": "Antony Szmierek",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064845-antony-szmierek?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "355",
+    "artist": "Baby Lasagna",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065607-baby-lasagna?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "356",
+    "artist": "Bad Nerves",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064799-bad-nerves?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "357",
+    "artist": "Biia",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064817-biia?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "358",
+    "artist": "Brooke Combe",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064824-brooke-combe?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "359",
+    "artist": "Cassia",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065312-cassia?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "360",
+    "artist": "Giant Rooks",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064628-giant-rooks?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "361",
+    "artist": "Jazzy",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065317-jazzy?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "362",
+    "artist": "Karen Dio",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065318-karen-dio?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "363",
+    "artist": "Kim Dracula",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065316-kim-dracula?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "364",
+    "artist": "Lambrini Girls",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064848-lambrini-girls?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "365",
+    "artist": "Makrohang",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064795-makrohang?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "366",
+    "artist": "Oskar Med K",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065314-oskar-med-k?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "367",
+    "artist": "Pan Pot",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064838-pan-pot?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "368",
+    "artist": "Paris Paloma",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064819-paris-paloma?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "369",
+    "artist": "Sim0ne",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2065319-sim0ne?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "370",
+    "artist": "Sisi",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064823-sisi?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
+  },
+  {
+    "id": "371",
+    "artist": "Ski Aggu",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064825-ski-aggu?from=%2F",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": []
   }
 ]

@@ -1,19 +1,12 @@
 [
   {
     "id": "raised-fist",
-    "name": "Raised Fist",
     "genres": [
-      "Hardcore",
-      "Punk Rock"
+      "HARDCORE",
+      "PUNK ROCK"
     ],
-    "origin": "Luleå, Sweden",
     "isHeadliner": true,
     "description": "The biggest headliner in Erntepunkfest history. Pure energy and power from Sweden, known for their aggressive vocals and high-speed hardcore punk.",
-    "links": {
-      "website": "https://www.raisedfist.com",
-      "instagram": "https://www.instagram.com/raisedfistofficial",
-      "spotify": "https://open.spotify.com/artist/0BToKOJj3FGrlc2RomEH6P"
-    },
     "vibes": [
       "Aggressive",
       "Raw",
@@ -21,14 +14,24 @@
       "Fast",
       "Energetic",
       "Guitar"
-    ]
+    ],
+    "artist": "Raised Fist",
+    "socials": {
+      "website": "https://www.raisedfist.com",
+      "instagram": "https://www.instagram.com/raisedfistofficial",
+      "spotify": "https://open.spotify.com/artist/0BToKOJj3FGrlc2RomEH6P"
+    },
+    "countryCode": "Luleå, Sweden",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "tba-headliner-2",
-    "name": "TBA Headliner",
     "genres": [
-      "Punk",
-      "Hardcore"
+      "PUNK",
+      "HARDCORE"
     ],
     "isHeadliner": true,
     "description": "To be announced in April 2026!",
@@ -38,23 +41,21 @@
       "Aggressive",
       "Fast",
       "Intense"
-    ]
+    ],
+    "artist": "TBA Headliner",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "guadalajara",
-    "name": "Guadalajara",
     "genres": [
-      "Ska Punk",
-      "Pop Punk"
+      "SKA PUNK",
+      "POP PUNK"
     ],
-    "origin": "Graz, Austria",
     "isHeadliner": false,
     "description": "Local legends from Graz. A staple of the Austrian indie scene, known for their energetic live performances and a powerful 9-piece lineup including a brass section.",
-    "links": {
-      "website": "http://www.guadalajara-music.de",
-      "instagram": "https://www.instagram.com/guadalajaramusic",
-      "spotify": "https://open.spotify.com/artist/2TAwci5"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
@@ -62,21 +63,27 @@
       "Feel-Good",
       "Uplifting",
       "Mainstream"
-    ]
+    ],
+    "artist": "Guadalajara",
+    "socials": {
+      "website": "http://www.guadalajara-music.de",
+      "instagram": "https://www.instagram.com/guadalajaramusic",
+      "spotify": "https://open.spotify.com/artist/2TAwci5"
+    },
+    "countryCode": "Graz, Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "the-incredible-staggers",
-    "name": "The Incredible Staggers",
     "genres": [
-      "Garage Rock",
-      "Punk"
+      "GARAGE ROCK",
+      "PUNK"
     ],
-    "origin": "Graz, Austria",
     "isHeadliner": false,
     "description": "Graz-based garage punk icons. Expect wild organ-driven rock 'n' roll and 60s inspired garage punk chaos.",
-    "links": {
-      "instagram": "https://www.instagram.com/theincrediblestaggers"
-    },
     "vibes": [
       "Dance",
       "Rhythmic",
@@ -86,23 +93,25 @@
       "Guitar",
       "Aggressive",
       "Fast"
-    ]
+    ],
+    "artist": "The Incredible Staggers",
+    "socials": {
+      "instagram": "https://www.instagram.com/theincrediblestaggers"
+    },
+    "countryCode": "Graz, Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "the-rumpled",
-    "name": "The Rumpled",
     "genres": [
-      "Celtic Punk",
-      "Folk Rock"
+      "CELTIC PUNK",
+      "FOLK ROCK"
     ],
-    "origin": "Trento, Italy",
     "isHeadliner": false,
     "description": "High-energy mix of traditional Irish folk, rock, ska, and punk from the Dolomites. Featuring accordion and fiddle for an explosive live show.",
-    "links": {
-      "website": "https://www.therumpled.it",
-      "instagram": "https://www.instagram.com/therumpled",
-      "spotify": "https://open.spotify.com/artist/4v6v6v6v6v6v6v6v6v6v6v"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
@@ -112,43 +121,53 @@
       "Acoustic",
       "Emotional",
       "Storytelling"
-    ]
+    ],
+    "artist": "The Rumpled",
+    "socials": {
+      "website": "https://www.therumpled.it",
+      "instagram": "https://www.instagram.com/therumpled",
+      "spotify": "https://open.spotify.com/artist/4v6v6v6v6v6v6v6v6v6v6v"
+    },
+    "countryCode": "Trento, Italy",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "the-iron-roses",
-    "name": "The Iron Roses",
     "genres": [
-      "Punk Rock",
-      "Ska Punk"
+      "PUNK ROCK",
+      "SKA PUNK"
     ],
-    "origin": "USA",
     "isHeadliner": false,
     "description": "Politically-driven protest anthems fronted by Nathan Gray (Boysetsfire) and Becky Fontaine. Melodic punk with raw power and social commentary.",
-    "links": {
-      "instagram": "https://www.instagram.com/theironroses",
-      "spotify": "https://open.spotify.com/artist/2v6v6v6v6v6v6v6v6v6v6v"
-    },
     "vibes": [
       "Raw",
       "Energetic",
       "Guitar",
       "Aggressive",
       "Fast"
-    ]
+    ],
+    "artist": "The Iron Roses",
+    "socials": {
+      "instagram": "https://www.instagram.com/theironroses",
+      "spotify": "https://open.spotify.com/artist/2v6v6v6v6v6v6v6v6v6v6v"
+    },
+    "countryCode": "USA",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "pridebowl",
-    "name": "Pridebowl",
     "genres": [
-      "Melodic Hardcore",
-      "Punk Rock"
+      "MELODIC HARDCORE",
+      "PUNK ROCK"
     ],
-    "origin": "Sweden",
     "isHeadliner": false,
     "description": "Swedish melodic hardcore veterans. Fast, melodic, and technical skate punk in the vein of the 90s Epitaph/Fat Wreck era.",
-    "links": {
-      "instagram": "https://www.instagram.com/pridebowl_official"
-    },
     "vibes": [
       "Aggressive",
       "Raw",
@@ -156,112 +175,130 @@
       "Fast",
       "Energetic",
       "Guitar"
-    ]
+    ],
+    "artist": "Pridebowl",
+    "socials": {
+      "instagram": "https://www.instagram.com/pridebowl_official"
+    },
+    "countryCode": "Sweden",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "cyanide-pills",
-    "name": "Cyanide Pills",
     "genres": [
-      "Punk Rock",
-      "77 Punk"
+      "PUNK ROCK",
+      "77 PUNK"
     ],
-    "origin": "Leeds, UK",
     "isHeadliner": false,
     "description": "1977-style punk rock from Leeds. White leather jackets, candy-colored sunglasses, and a low-budget rock 'n' roll attitude.",
-    "links": {
-      "website": "http://www.cyanidepills.com",
-      "instagram": "https://www.instagram.com/cyanidepillsband",
-      "spotify": "https://open.spotify.com/artist/4v6v6v6v6v6v6v6v6v6v6v"
-    },
     "vibes": [
       "Raw",
       "Energetic",
       "Guitar",
       "Aggressive",
       "Fast"
-    ]
+    ],
+    "artist": "Cyanide Pills",
+    "socials": {
+      "website": "http://www.cyanidepills.com",
+      "instagram": "https://www.instagram.com/cyanidepillsband",
+      "spotify": "https://open.spotify.com/artist/4v6v6v6v6v6v6v6v6v6v6v"
+    },
+    "countryCode": "Leeds, UK",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "melonball",
-    "name": "Melonball",
     "genres": [
-      "Skate Punk",
-      "Punk Rock"
+      "SKATE PUNK",
+      "PUNK ROCK"
     ],
-    "origin": "Nuremberg, Germany",
     "isHeadliner": false,
     "description": "Fast, technical, and politically charged skatepunk with strong melodies and distinctive vocals. Named after a cocktail from Punk Rock Holiday.",
-    "links": {
-      "website": "https://www.melonballpunkrock.com",
-      "instagram": "https://www.instagram.com/melonball.punkrock",
-      "spotify": "https://open.spotify.com/artist/4vX9vX9vX9vX9vX9vX9vX9"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
       "Fast",
       "Energetic",
       "Guitar"
-    ]
+    ],
+    "artist": "Melonball",
+    "socials": {
+      "website": "https://www.melonballpunkrock.com",
+      "instagram": "https://www.instagram.com/melonball.punkrock",
+      "spotify": "https://open.spotify.com/artist/4vX9vX9vX9vX9vX9vX9vX9"
+    },
+    "countryCode": "Nuremberg, Germany",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "sir-veja",
-    "name": "Sir Veja",
     "genres": [
-      "Ska Core",
-      "Punk Rock"
+      "SKA CORE",
+      "PUNK ROCK"
     ],
-    "origin": "Bavaria, Germany",
     "isHeadliner": false,
     "description": "MonsterGaloppingSkaCore since 1995. High-energy Bavarian ska-punk with fast-paced riffs and three-part harmonies.",
-    "links": {
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ],
+    "artist": "Sir Veja",
+    "socials": {
       "website": "https://www.sirveja.de",
       "instagram": "https://www.instagram.com/sirveja_official",
       "spotify": "https://open.spotify.com/artist/1v6X6X6X6X6X6X6X6X6X6X"
     },
-    "vibes": [
-      "Raw",
-      "Energetic",
-      "Guitar",
-      "Aggressive",
-      "Fast"
-    ]
+    "countryCode": "Bavaria, Germany",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "feder",
-    "name": "Feder",
     "genres": [
-      "Punk Rock"
+      "PUNK ROCK"
     ],
-    "origin": "Austria",
     "isHeadliner": false,
     "description": "Austrian punk rock with a DIY ethos. Fast-paced drums and melodic guitars with lyrics often in German dialect.",
-    "links": {
-      "instagram": "https://www.instagram.com/feder_punkrock"
-    },
     "vibes": [
       "Raw",
       "Energetic",
       "Guitar",
       "Aggressive",
       "Fast"
-    ]
+    ],
+    "artist": "Feder",
+    "socials": {
+      "instagram": "https://www.instagram.com/feder_punkrock"
+    },
+    "countryCode": "Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "chilio",
-    "name": "CHILIØ",
     "genres": [
-      "Pop Punk",
-      "Post Hardcore"
+      "POP PUNK",
+      "POST HARDCORE"
     ],
-    "origin": "Calgary, Canada",
     "isHeadliner": false,
     "description": "Medicinal Pop-Punk focusing on quarter-life crisis struggles. High energy and catchy hooks from the Canadian scene.",
-    "links": {
-      "website": "https://www.chilioband.com",
-      "instagram": "https://www.instagram.com/chilioband",
-      "spotify": "https://open.spotify.com/artist/0BToKOJj3FGrlc2RomEH6P"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
@@ -270,104 +307,124 @@
       "Uplifting",
       "Mainstream",
       "Intense"
-    ]
+    ],
+    "artist": "CHILIØ",
+    "socials": {
+      "website": "https://www.chilioband.com",
+      "instagram": "https://www.instagram.com/chilioband",
+      "spotify": "https://open.spotify.com/artist/0BToKOJj3FGrlc2RomEH6P"
+    },
+    "countryCode": "Calgary, Canada",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "draist",
-    "name": "Draist",
     "genres": [
-      "Hardcore Punk",
-      "Deutschpunk"
+      "HARDCORE PUNK",
+      "DEUTSCHPUNK"
     ],
-    "origin": "Germany",
     "isHeadliner": false,
     "description": "Young, energetic Deutschpunk band from Germany. Uncompromising DIY attitude and critical lyrics delivered with high-speed intensity.",
-    "links": {
-      "instagram": "https://www.instagram.com/draist_punk",
-      "spotify": "https://open.spotify.com/artist/2v6v6v6v6v6v6v6v6v6v6v"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
       "Fast",
       "Intense"
-    ]
+    ],
+    "artist": "Draist",
+    "socials": {
+      "instagram": "https://www.instagram.com/draist_punk",
+      "spotify": "https://open.spotify.com/artist/2v6v6v6v6v6v6v6v6v6v6v"
+    },
+    "countryCode": "Germany",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "torches",
-    "name": "Torches From Above",
     "genres": [
-      "Post Hardcore"
+      "POST HARDCORE"
     ],
-    "origin": "USA",
     "isHeadliner": false,
     "description": "Atmospheric and heavy post-hardcore. Known for their intense sound and recent high-profile collaborations in the scene.",
-    "links": {
-      "instagram": "https://www.instagram.com/torchesmusic"
-    },
     "vibes": [
       "Aggressive",
       "Raw",
       "Intense",
       "Fast"
-    ]
+    ],
+    "artist": "Torches From Above",
+    "socials": {
+      "instagram": "https://www.instagram.com/torchesmusic"
+    },
+    "countryCode": "USA",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "prunknelke",
-    "name": "Prunknelke",
     "genres": [
-      "Post Hardcore",
-      "Screamo"
+      "POST HARDCORE",
+      "SCREAMO"
     ],
-    "origin": "Graz, Austria",
     "isHeadliner": false,
     "description": "Graz-based 'Post-Everything' trio. Raw, technical math-rock and stoner-influenced hardcore with aggressive live energy.",
-    "links": {
-      "instagram": "https://www.instagram.com/prunknelke",
-      "spotify": "https://open.spotify.com/artist/4v9v9v9v9v9v9v9v9v9v9v"
-    },
     "vibes": [
       "Aggressive",
       "Raw",
       "Intense",
       "Fast"
-    ]
+    ],
+    "artist": "Prunknelke",
+    "socials": {
+      "instagram": "https://www.instagram.com/prunknelke",
+      "spotify": "https://open.spotify.com/artist/4v9v9v9v9v9v9v9v9v9v9v"
+    },
+    "countryCode": "Graz, Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "the-snub",
-    "name": "The Snub",
     "genres": [
-      "Punk Rock"
+      "PUNK ROCK"
     ],
-    "origin": "Austria",
     "isHeadliner": false,
     "description": "Straight-forward Austrian punk rock. Raw, honest, and loud.",
-    "links": {
-      "instagram": "https://www.instagram.com/thesnub_punkrock"
-    },
     "vibes": [
       "Raw",
       "Energetic",
       "Guitar",
       "Aggressive",
       "Fast"
-    ]
+    ],
+    "artist": "The Snub",
+    "socials": {
+      "instagram": "https://www.instagram.com/thesnub_punkrock"
+    },
+    "countryCode": "Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   },
   {
     "id": "7-years-bad-luck",
-    "name": "7 Years Bad Luck",
     "genres": [
-      "Pop Punk",
-      "Melodic Punk"
+      "POP PUNK",
+      "MELODIC PUNK"
     ],
-    "origin": "Innsbruck/Salzburg, Austria",
     "isHeadliner": false,
     "description": "Staple of the European underground since 2001. 90s-style melodic punk with dual lead vocals and smart lyrics.",
-    "links": {
-      "website": "http://7yearsbadluck.net",
-      "instagram": "https://www.instagram.com/7yearsbadluck_punkrock",
-      "spotify": "https://open.spotify.com/artist/1v6v6v6v6v6v6v6v6v6v6v"
-    },
     "vibes": [
       "Raw",
       "Aggressive",
@@ -375,6 +432,17 @@
       "Feel-Good",
       "Uplifting",
       "Mainstream"
-    ]
+    ],
+    "artist": "7 Years Bad Luck",
+    "socials": {
+      "website": "http://7yearsbadluck.net",
+      "instagram": "https://www.instagram.com/7yearsbadluck_punkrock",
+      "spotify": "https://open.spotify.com/artist/1v6v6v6v6v6v6v6v6v6v6v"
+    },
+    "countryCode": "Innsbruck/Salzburg, Austria",
+    "stage": null,
+    "startTime": null,
+    "endTime": null,
+    "imageUrl": null
   }
 ]

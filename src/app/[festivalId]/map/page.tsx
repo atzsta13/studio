@@ -1,6 +1,6 @@
-import { BASE_PATH } from '@/lib/base-path';
 'use client';
 import { useInsider } from '@/components/layout/insider-provider';
+import { BASE_PATH } from '@/lib/base-path';
 
 import { useState, useMemo, useEffect } from 'react';
 import {
@@ -14,11 +14,9 @@ import {
   History,
   Zap,
   Flame,
-  Users,
   Accessibility,
   VolumeX,
   BatteryCharging,
-  Eye,
   Crosshair
 } from 'lucide-react';
 import { useParams } from 'next/navigation';
@@ -70,8 +68,6 @@ export default function MapPage() {
   const [selectedPin, setSelectedPin] = useState<MapPin | null>(null);
   const [showTools, setShowTools] = useState(false);
   const [hydrationMode, setHydrationMode] = useState(false);
-  const [heatmapMode, setHeatmapMode] = useState(false);
-  const [arMode, setArMode] = useState(false);
 
   useEffect(() => {
     async function fetchMapData() {
@@ -212,23 +208,7 @@ export default function MapPage() {
 
         {/* Floating Survival FAB */}
         <div className="absolute top-4 right-4 z-50 flex flex-col gap-3">
-          {config.features.arStageView && (
-             <button 
-               className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 flex items-center justify-center ${arMode ? 'bg-indigo-600 border-indigo-400' : 'bg-black/60 border-white/20'}`} 
-               onClick={() => setArMode(!arMode)}
-             >
-               <Eye className={`h-6 w-6 ${arMode ? 'text-white' : 'text-indigo-400'} `} />
-             </button>
-          )}
-          {config.features.crowdHeatmap && (
-             <button 
-               className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 flex items-center justify-center ${heatmapMode ? 'bg-orange-600 border-orange-400' : 'bg-black/60 border-white/20'}`} 
-               onClick={() => setHeatmapMode(!heatmapMode)}
-             >
-               <Users className={`h-6 w-6 ${heatmapMode ? 'text-white' : 'text-orange-400'} `} />
-             </button>
-          )}
-          <button 
+          <button
             className={`h-12 w-12 rounded-full shadow-2xl transition-all duration-300 border-2 flex items-center justify-center ${hydrationMode ? 'bg-blue-500 border-blue-300' : 'bg-black/60 border-white/20'}`} 
             onClick={() => setHydrationMode(!hydrationMode)}
           >
@@ -257,30 +237,7 @@ export default function MapPage() {
 
         {/* Visual Map Area */}
         <div className="relative flex-1">
-          {arMode && (
-             <div className="absolute inset-0 z-10 bg-indigo-950/20 backdrop-blur-[2px] flex items-center justify-center pointer-events-none animate-in fade-in duration-1000">
-                <div className="relative w-full h-full flex items-center justify-center">
-                   <div className="w-64 h-64 border-2 border-indigo-500/40 rounded-full animate-ping" />
-                   <div className="absolute w-full h-[1px] bg-indigo-500/20" />
-                   <div className="absolute h-full w-[1px] bg-indigo-500/20" />
-                   
-                   {allPins.filter(p => p.type === 'music').map((p, i) => (
-                      <div 
-                        key={i} 
-                        className="absolute px-4 py-2 bg-indigo-600/80 text-white rounded-lg border border-indigo-400 text-[8px] font-black uppercase tracking-widest animate-bounce"
-                        style={{ 
-                          left: `${p.x}%`, 
-                          top: `${p.y}%`,
-                          animationDelay: `${i * 0.2}s`
-                        }}
-                      >
-                         {p.name} · {Math.floor(Math.random() * 500) + 100}m
-                      </div>
-                   ))}
-                </div>
-             </div>
-          )}
-          <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode || arMode ? 'scale-110' : ''}`}>
+          <div className={`absolute inset-0 flex items-center justify-center p-8 md:p-16 transition-all duration-500 ${hydrationMode ? 'scale-110' : ''}`}>
             <div className={`relative aspect-[3/4] h-full max-h-full w-auto overflow-hidden rounded-[4rem] shadow-2xl border transition-all duration-500 ${hydrationMode ? 'bg-blue-950 border-blue-500/50 grayscale' : 'bg-zinc-900 border-white/5'}`}>
               
               {/* Dynamic Map Asset */}
@@ -293,16 +250,6 @@ export default function MapPage() {
                 }}
               />
 
-              {/* Coordinate Layer */}
-              <svg className="absolute inset-0 h-full w-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-                 {heatmapMode && (
-                    <g className="animate-pulse opacity-40">
-                       <circle cx="20" cy="30" r="15" fill="rgba(255,0,0,0.5)" filter="blur(8px)" />
-                       <circle cx="70" cy="50" r="20" fill="rgba(255,165,0,0.5)" filter="blur(10px)" />
-                       <circle cx="40" cy="80" r="12" fill="rgba(255,0,0,0.5)" filter="blur(6px)" />
-                    </g>
-                 )}
-              </svg>
 
               {filteredPins.map((pin) => {
                 if (!pin || !pin.icon) return null;

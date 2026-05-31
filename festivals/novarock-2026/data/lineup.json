@@ -1,6 +1,6 @@
 [
   {
-    "id": "slipknot",
+    "id": "1",
     "artist": "Slipknot",
     "stage": "Blue Stage",
     "day": "Friday",
@@ -8,8 +8,8 @@
     "endTime": null,
     "isHeadliner": true,
     "genres": [
-      "Nu Metal",
-      "Alternative Metal"
+      "NU METAL",
+      "ALTERNATIVE METAL"
     ],
     "countryCode": "US",
     "description": "The Iowa masked icons return to Pannonia Fields.",
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "id": "electric-callboy",
+    "id": "2",
     "artist": "Electric Callboy",
     "stage": "Blue Stage",
     "day": "Saturday",
@@ -34,8 +34,8 @@
     "endTime": null,
     "isHeadliner": true,
     "genres": [
-      "Electronicore",
-      "Metalcore"
+      "ELECTRONICORE",
+      "METALCORE"
     ],
     "countryCode": "DE",
     "description": "The ultimate party metal experience.",
@@ -52,7 +52,7 @@
     "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f3/2b/77/f32b7781-ed1f-cf89-be53-4308dbde38a1/196871181235.jpg/600x600bb.jpg"
   },
   {
-    "id": "wanda",
+    "id": "3",
     "artist": "Wanda",
     "stage": "Red Stage",
     "day": "Thursday",
@@ -60,8 +60,8 @@
     "endTime": null,
     "isHeadliner": true,
     "genres": [
-      "Austropop",
-      "Indie Rock"
+      "AUSTROPOP",
+      "INDIE ROCK"
     ],
     "countryCode": "AT",
     "description": "Amore from the Viennese cult heroes.",
@@ -81,7 +81,7 @@
     ]
   },
   {
-    "id": "1",
+    "id": "4",
     "artist": "Volbeat",
     "stage": null,
     "day": null,
@@ -89,8 +89,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HEAVY METAL",
-      "HARD ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/volbeat/",
     "socials": {
@@ -107,7 +106,7 @@
     ]
   },
   {
-    "id": "2",
+    "id": "5",
     "artist": "Bad Omens",
     "stage": null,
     "day": null,
@@ -115,8 +114,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "ALTERNATIVE METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/bad-omens/",
     "socials": {
@@ -136,7 +134,7 @@
     ]
   },
   {
-    "id": "3",
+    "id": "6",
     "artist": "Sex Pistols Feat Frank Carter",
     "stage": null,
     "day": null,
@@ -144,7 +142,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/sex-pistols-feat-frank-carter/",
     "socials": {
@@ -161,7 +159,7 @@
     ]
   },
   {
-    "id": "4",
+    "id": "7",
     "artist": "Kaleo",
     "stage": null,
     "day": null,
@@ -169,8 +167,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "INDIE ROCK",
-      "BLUES ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/kaleo/",
     "socials": {
@@ -190,7 +187,7 @@
     ]
   },
   {
-    "id": "5",
+    "id": "8",
     "artist": "Trivium",
     "stage": null,
     "day": null,
@@ -198,8 +195,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HEAVY METAL",
-      "METALCORE"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/trivium/",
     "socials": {
@@ -216,7 +212,7 @@
     ]
   },
   {
-    "id": "6",
+    "id": "9",
     "artist": "Tom Morello",
     "stage": null,
     "day": null,
@@ -224,8 +220,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK",
-      "HARD ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/tom-morello/",
     "socials": {
@@ -241,7 +236,7 @@
     ]
   },
   {
-    "id": "7",
+    "id": "10",
     "artist": "Black Veil Brides",
     "stage": null,
     "day": null,
@@ -249,8 +244,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "GLAM METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/black-veil-brides/",
     "socials": {
@@ -267,7 +261,7 @@
     ]
   },
   {
-    "id": "8",
+    "id": "11",
     "artist": "Feine Sahne Fischfilet",
     "stage": null,
     "day": null,
@@ -275,7 +269,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/feine-sahne-fischfilet/",
     "socials": {
@@ -292,7 +286,7 @@
     ]
   },
   {
-    "id": "9",
+    "id": "12",
     "artist": "Mastodon",
     "stage": null,
     "day": null,
@@ -300,8 +294,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PROGRESSIVE METAL",
-      "HEAVY METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/mastodon/",
     "socials": {
@@ -320,7 +313,7 @@
     ]
   },
   {
-    "id": "10",
+    "id": "13",
     "artist": "Bilmuri",
     "stage": null,
     "day": null,
@@ -328,8 +321,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "POST-HARDCORE"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/bilmuri/",
     "socials": {
@@ -348,7 +340,7 @@
     ]
   },
   {
-    "id": "11",
+    "id": "14",
     "artist": "Static X",
     "stage": null,
     "day": null,
@@ -372,7 +364,7 @@
     ]
   },
   {
-    "id": "12",
+    "id": "15",
     "artist": "Lemo",
     "stage": null,
     "day": null,
@@ -380,8 +372,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP ROCK",
-      "INDIE POP"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/lemo/",
     "socials": {
@@ -402,7 +393,7 @@
     ]
   },
   {
-    "id": "13",
+    "id": "16",
     "artist": "Dartagnan",
     "stage": null,
     "day": null,
@@ -410,8 +401,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "FOLK METAL",
-      "FOLK ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/dartagnan/",
     "socials": {
@@ -434,7 +424,7 @@
     ]
   },
   {
-    "id": "14",
+    "id": "17",
     "artist": "Badflower",
     "stage": null,
     "day": null,
@@ -459,7 +449,7 @@
     ]
   },
   {
-    "id": "15",
+    "id": "18",
     "artist": "Return To Dust",
     "stage": null,
     "day": null,
@@ -467,8 +457,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK",
-      "GRUNGE"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/return-to-dust/",
     "socials": {
@@ -486,7 +475,7 @@
     ]
   },
   {
-    "id": "16",
+    "id": "19",
     "artist": "Ego Kill Talent",
     "stage": null,
     "day": null,
@@ -494,8 +483,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HARD ROCK",
-      "ALTERNATIVE ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/ego-kill-talent/",
     "socials": {
@@ -511,7 +499,7 @@
     ]
   },
   {
-    "id": "17",
+    "id": "20",
     "artist": "Soul Asylum",
     "stage": null,
     "day": null,
@@ -538,7 +526,7 @@
     ]
   },
   {
-    "id": "18",
+    "id": "21",
     "artist": "We Came As Romans",
     "stage": null,
     "day": null,
@@ -546,8 +534,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "POST-HARDCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/we-came-as-romans/",
     "socials": {
@@ -566,7 +553,7 @@
     ]
   },
   {
-    "id": "19",
+    "id": "22",
     "artist": "The Molotovs",
     "stage": null,
     "day": null,
@@ -574,8 +561,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK",
-      "INDIE ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/the-molotovs/",
     "socials": {
@@ -595,7 +581,7 @@
     ]
   },
   {
-    "id": "20",
+    "id": "23",
     "artist": "Ankor",
     "stage": null,
     "day": null,
@@ -603,8 +589,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "METALCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/ankor/",
     "socials": {
@@ -624,7 +609,7 @@
     ]
   },
   {
-    "id": "21",
+    "id": "24",
     "artist": "Aurorawave",
     "stage": null,
     "day": null,
@@ -632,7 +617,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/aurorawave/",
     "socials": {
@@ -648,7 +633,7 @@
     ]
   },
   {
-    "id": "22",
+    "id": "25",
     "artist": "Yunger",
     "stage": null,
     "day": null,
@@ -656,7 +641,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "INDIE ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/yunger/",
     "socials": {
@@ -674,7 +659,7 @@
     ]
   },
   {
-    "id": "23",
+    "id": "26",
     "artist": "Cassies",
     "stage": null,
     "day": null,
@@ -682,7 +667,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP PUNK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/cassies/",
     "socials": {
@@ -700,7 +685,7 @@
     ]
   },
   {
-    "id": "24",
+    "id": "27",
     "artist": "The Cure",
     "stage": null,
     "day": null,
@@ -708,9 +693,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POST-PUNK",
-      "GOTHIC ROCK",
-      "ALTERNATIVE ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/the-cure/",
     "socials": {
@@ -728,7 +711,7 @@
     ]
   },
   {
-    "id": "25",
+    "id": "28",
     "artist": "The Offspring",
     "stage": null,
     "day": null,
@@ -736,8 +719,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK",
-      "SKATE PUNK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-offspring/",
     "socials": {
@@ -754,7 +736,7 @@
     ]
   },
   {
-    "id": "26",
+    "id": "29",
     "artist": "A Perfect Circle",
     "stage": null,
     "day": null,
@@ -762,8 +744,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "PROGRESSIVE ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/a-perfect-circle/",
     "socials": {
@@ -781,7 +762,7 @@
     ]
   },
   {
-    "id": "27",
+    "id": "30",
     "artist": "Ice Nine Kills",
     "stage": null,
     "day": null,
@@ -789,8 +770,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "SYMPHONIC METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/ice-nine-kills/",
     "socials": {
@@ -810,7 +790,7 @@
     ]
   },
   {
-    "id": "28",
+    "id": "31",
     "artist": "Social Distortion",
     "stage": null,
     "day": null,
@@ -818,7 +798,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/social-distortion/",
     "socials": {
@@ -835,7 +815,7 @@
     ]
   },
   {
-    "id": "29",
+    "id": "32",
     "artist": "Breaking Benjamin",
     "stage": null,
     "day": null,
@@ -843,8 +823,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "HARD ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/breaking-benjamin/",
     "socials": {
@@ -862,7 +841,7 @@
     ]
   },
   {
-    "id": "30",
+    "id": "33",
     "artist": "The Pretty Reckless",
     "stage": null,
     "day": null,
@@ -870,8 +849,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HARD ROCK",
-      "ALTERNATIVE ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-pretty-reckless/",
     "socials": {
@@ -887,7 +865,7 @@
     ]
   },
   {
-    "id": "31",
+    "id": "34",
     "artist": "The Plot In You",
     "stage": null,
     "day": null,
@@ -895,7 +873,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-plot-in-you/",
     "socials": {
@@ -912,7 +890,7 @@
     ]
   },
   {
-    "id": "32",
+    "id": "35",
     "artist": "Royal Republic",
     "stage": null,
     "day": null,
@@ -920,8 +898,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK",
-      "HARD ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/royal-republic/",
     "socials": {
@@ -937,7 +914,7 @@
     ]
   },
   {
-    "id": "33",
+    "id": "36",
     "artist": "President",
     "stage": null,
     "day": null,
@@ -945,7 +922,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/president/",
     "socials": {
@@ -960,7 +937,7 @@
     ]
   },
   {
-    "id": "34",
+    "id": "37",
     "artist": "Thrown",
     "stage": null,
     "day": null,
@@ -968,8 +945,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HARDCORE",
-      "METALCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/thrown/",
     "socials": {
@@ -988,7 +964,7 @@
     ]
   },
   {
-    "id": "35",
+    "id": "38",
     "artist": "Catch Your Breath",
     "stage": null,
     "day": null,
@@ -996,7 +972,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/catch-your-breath/",
     "socials": {
@@ -1012,7 +988,7 @@
     ]
   },
   {
-    "id": "36",
+    "id": "39",
     "artist": "Magnolia Park",
     "stage": null,
     "day": null,
@@ -1020,8 +996,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP PUNK",
-      "ALTERNATIVE ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/magnolia-park/",
     "socials": {
@@ -1042,7 +1017,7 @@
     ]
   },
   {
-    "id": "37",
+    "id": "40",
     "artist": "Six Feet Under",
     "stage": null,
     "day": null,
@@ -1050,7 +1025,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "DEATH METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/six-feet-under/",
     "socials": {
@@ -1067,7 +1042,7 @@
     ]
   },
   {
-    "id": "38",
+    "id": "41",
     "artist": "Just Mustard",
     "stage": null,
     "day": null,
@@ -1075,8 +1050,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POST-PUNK",
-      "SHOEGAZE"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/just-mustard/",
     "socials": {
@@ -1091,7 +1065,7 @@
     ]
   },
   {
-    "id": "39",
+    "id": "42",
     "artist": "Black Label Society",
     "stage": null,
     "day": null,
@@ -1099,7 +1073,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HEAVY METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/black-label-society/",
     "socials": {
@@ -1114,7 +1088,7 @@
     ]
   },
   {
-    "id": "40",
+    "id": "43",
     "artist": "Skindred",
     "stage": null,
     "day": null,
@@ -1122,8 +1096,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "NU METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/skindred/",
     "socials": {
@@ -1141,7 +1114,7 @@
     ]
   },
   {
-    "id": "41",
+    "id": "44",
     "artist": "Annisokay",
     "stage": null,
     "day": null,
@@ -1149,8 +1122,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "POST-HARDCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/annisokay/",
     "socials": {
@@ -1169,7 +1141,7 @@
     ]
   },
   {
-    "id": "42",
+    "id": "45",
     "artist": "Quicksand",
     "stage": null,
     "day": null,
@@ -1177,8 +1149,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POST-HARDCORE",
-      "ALTERNATIVE METAL"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/quicksand/",
     "socials": {
@@ -1198,7 +1169,7 @@
     ]
   },
   {
-    "id": "43",
+    "id": "46",
     "artist": "Melrose Avenue",
     "stage": null,
     "day": null,
@@ -1206,7 +1177,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/melrose-avenue/",
     "socials": {
@@ -1223,7 +1194,7 @@
     ]
   },
   {
-    "id": "44",
+    "id": "47",
     "artist": "Tx2",
     "stage": null,
     "day": null,
@@ -1231,8 +1202,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP PUNK",
-      "EMO"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/tx2/",
     "socials": {
@@ -1250,7 +1220,7 @@
     ]
   },
   {
-    "id": "45",
+    "id": "48",
     "artist": "The Pretty Wild",
     "stage": null,
     "day": null,
@@ -1258,7 +1228,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "COUNTRY ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-pretty-wild/",
     "socials": {
@@ -1273,7 +1243,7 @@
     ]
   },
   {
-    "id": "46",
+    "id": "49",
     "artist": "Zascha",
     "stage": null,
     "day": null,
@@ -1281,7 +1251,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "INDIE POP"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/zascha/",
     "socials": {
@@ -1299,7 +1269,7 @@
     ]
   },
   {
-    "id": "47",
+    "id": "50",
     "artist": "Iron Maiden",
     "stage": null,
     "day": null,
@@ -1307,7 +1277,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HEAVY METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/iron-maiden/",
     "socials": {
@@ -1322,7 +1292,7 @@
     ]
   },
   {
-    "id": "48",
+    "id": "51",
     "artist": "A Day To Remember",
     "stage": null,
     "day": null,
@@ -1330,8 +1300,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "POP PUNK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/a-day-to-remember/",
     "socials": {
@@ -1353,7 +1322,7 @@
     ]
   },
   {
-    "id": "49",
+    "id": "52",
     "artist": "Sabaton",
     "stage": null,
     "day": null,
@@ -1361,8 +1330,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POWER METAL",
-      "HEAVY METAL"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/sabaton/",
     "socials": {
@@ -1381,7 +1349,7 @@
     ]
   },
   {
-    "id": "50",
+    "id": "53",
     "artist": "Alter Bridge",
     "stage": null,
     "day": null,
@@ -1389,8 +1357,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HARD ROCK",
-      "ALTERNATIVE METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/alter-bridge/",
     "socials": {
@@ -1408,7 +1375,7 @@
     ]
   },
   {
-    "id": "51",
+    "id": "54",
     "artist": "Sepultura",
     "stage": null,
     "day": null,
@@ -1416,8 +1383,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "THRASH METAL",
-      "GROOVE METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/sepultura/",
     "socials": {
@@ -1436,7 +1402,7 @@
     ]
   },
   {
-    "id": "52",
+    "id": "55",
     "artist": "Roy Bianco Und Die Abbrunzati Boys",
     "stage": null,
     "day": null,
@@ -1444,8 +1410,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "INDIE POP",
-      "ITALO POP"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/roy-bianco-und-die-abbrunzati-boys/",
     "socials": {
@@ -1463,7 +1428,7 @@
     ]
   },
   {
-    "id": "53",
+    "id": "56",
     "artist": "All Time Low",
     "stage": null,
     "day": null,
@@ -1471,8 +1436,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP PUNK",
-      "ALTERNATIVE ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/all-time-low/",
     "socials": {
@@ -1493,7 +1457,7 @@
     ]
   },
   {
-    "id": "54",
+    "id": "57",
     "artist": "Kanonenfieber",
     "stage": null,
     "day": null,
@@ -1501,8 +1465,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "BLACK METAL",
-      "DEATH METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/kanonenfieber/",
     "socials": {
@@ -1521,7 +1484,7 @@
     ]
   },
   {
-    "id": "55",
+    "id": "58",
     "artist": "The Rasmus",
     "stage": null,
     "day": null,
@@ -1529,8 +1492,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE ROCK",
-      "GOTHIC ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-rasmus/",
     "socials": {
@@ -1546,7 +1508,7 @@
     ]
   },
   {
-    "id": "56",
+    "id": "59",
     "artist": "Kublai Khan Tx",
     "stage": null,
     "day": null,
@@ -1554,8 +1516,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "HARDCORE"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/kublai-khan-tx/",
     "socials": {
@@ -1574,7 +1535,7 @@
     ]
   },
   {
-    "id": "57",
+    "id": "60",
     "artist": "Future Palace",
     "stage": null,
     "day": null,
@@ -1582,8 +1543,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POST-HARDCORE",
-      "ALTERNATIVE ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/future-palace/",
     "socials": {
@@ -1602,7 +1562,7 @@
     ]
   },
   {
-    "id": "58",
+    "id": "61",
     "artist": "Madsen",
     "stage": null,
     "day": null,
@@ -1610,8 +1570,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "INDIE ROCK",
-      "PUNK ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/madsen/",
     "socials": {
@@ -1631,16 +1590,15 @@
     ]
   },
   {
-    "id": "59",
+    "id": "62",
     "artist": "Bad Nerves",
     "stage": null,
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
-      "PUNK ROCK",
-      "GARAGE ROCK"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/bad-nerves/",
     "socials": {
@@ -1657,7 +1615,7 @@
     ]
   },
   {
-    "id": "60",
+    "id": "63",
     "artist": "Querbeat",
     "stage": null,
     "day": null,
@@ -1665,8 +1623,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "BRASS POP",
-      "INDIE"
+      "RED STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/querbeat/",
     "socials": {
@@ -1684,7 +1641,7 @@
     ]
   },
   {
-    "id": "61",
+    "id": "64",
     "artist": "Nickelsdorfer Boehmische",
     "stage": null,
     "day": null,
@@ -1708,7 +1665,7 @@
     ]
   },
   {
-    "id": "62",
+    "id": "65",
     "artist": "Palaye Royale",
     "stage": null,
     "day": null,
@@ -1716,8 +1673,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ART ROCK",
-      "GLAM ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/palaye-royale/",
     "socials": {
@@ -1732,7 +1688,7 @@
     ]
   },
   {
-    "id": "63",
+    "id": "66",
     "artist": "Lagwagon",
     "stage": null,
     "day": null,
@@ -1740,8 +1696,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "PUNK ROCK",
-      "SKATE PUNK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/lagwagon/",
     "socials": {
@@ -1758,7 +1713,7 @@
     ]
   },
   {
-    "id": "64",
+    "id": "67",
     "artist": "Loathe",
     "stage": null,
     "day": null,
@@ -1766,8 +1721,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "METALCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/loathe/",
     "socials": {
@@ -1787,7 +1741,7 @@
     ]
   },
   {
-    "id": "65",
+    "id": "68",
     "artist": "Kupfergold",
     "stage": null,
     "day": null,
@@ -1795,7 +1749,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "FOLK ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/kupfergold/",
     "socials": {
@@ -1813,7 +1767,7 @@
     ]
   },
   {
-    "id": "66",
+    "id": "69",
     "artist": "Chuggaboom",
     "stage": null,
     "day": null,
@@ -1821,8 +1775,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "COMEDY ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/chuggaboom/",
     "socials": {
@@ -1841,7 +1794,7 @@
     ]
   },
   {
-    "id": "67",
+    "id": "70",
     "artist": "A New Chapter",
     "stage": null,
     "day": null,
@@ -1849,7 +1802,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/a-new-chapter/",
     "socials": {
@@ -1866,7 +1819,7 @@
     ]
   },
   {
-    "id": "68",
+    "id": "71",
     "artist": "Frevd",
     "stage": null,
     "day": null,
@@ -1874,7 +1827,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/frevd/",
     "socials": {
@@ -1889,16 +1842,15 @@
     ]
   },
   {
-    "id": "69",
+    "id": "72",
     "artist": "Bring Me The Horizon",
     "stage": null,
     "day": null,
     "startTime": null,
     "endTime": null,
-    "countryCode": null,
+    "countryCode": "GB",
     "genres": [
-      "ALTERNATIVE METAL",
-      "METALCORE"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/bring-me-the-horizon/",
     "socials": {
@@ -1918,7 +1870,7 @@
     ]
   },
   {
-    "id": "70",
+    "id": "73",
     "artist": "Papa Roach",
     "stage": null,
     "day": null,
@@ -1926,8 +1878,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "NU METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/papa-roach/",
     "socials": {
@@ -1945,7 +1896,7 @@
     ]
   },
   {
-    "id": "71",
+    "id": "74",
     "artist": "Architects",
     "stage": null,
     "day": null,
@@ -1953,8 +1904,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "ALTERNATIVE METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/architects/",
     "socials": {
@@ -1974,7 +1924,7 @@
     ]
   },
   {
-    "id": "72",
+    "id": "75",
     "artist": "Three Days Grace",
     "stage": null,
     "day": null,
@@ -1982,8 +1932,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "ALTERNATIVE METAL",
-      "HARD ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/three-days-grace/",
     "socials": {
@@ -2001,7 +1950,7 @@
     ]
   },
   {
-    "id": "73",
+    "id": "76",
     "artist": "Hollywood Undead",
     "stage": null,
     "day": null,
@@ -2009,8 +1958,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "RAP ROCK",
-      "NU METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/hollywood-undead/",
     "socials": {
@@ -2030,7 +1978,7 @@
     ]
   },
   {
-    "id": "74",
+    "id": "77",
     "artist": "Malevolence",
     "stage": null,
     "day": null,
@@ -2038,8 +1986,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "METALCORE",
-      "HARDCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/malevolence/",
     "socials": {
@@ -2058,7 +2005,7 @@
     ]
   },
   {
-    "id": "75",
+    "id": "78",
     "artist": "P O D",
     "stage": null,
     "day": null,
@@ -2066,8 +2013,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "NU METAL",
-      "RAP METAL"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/p-o-d/",
     "socials": {
@@ -2085,7 +2031,7 @@
     ]
   },
   {
-    "id": "76",
+    "id": "79",
     "artist": "Voila",
     "stage": null,
     "day": null,
@@ -2093,7 +2039,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "POP ROCK"
+      "BLUE STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/voila/",
     "socials": {
@@ -2111,7 +2057,7 @@
     ]
   },
   {
-    "id": "77",
+    "id": "80",
     "artist": "All Them Witches",
     "stage": null,
     "day": null,
@@ -2119,8 +2065,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "STONER ROCK",
-      "PSYCHEDELIC ROCK"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/all-them-witches/",
     "socials": {
@@ -2135,7 +2080,7 @@
     ]
   },
   {
-    "id": "78",
+    "id": "81",
     "artist": "Drain",
     "stage": null,
     "day": null,
@@ -2143,8 +2088,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "HARDCORE PUNK",
-      "THRASH METAL"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/artist/drain/",
     "socials": {
@@ -2162,7 +2106,7 @@
     ]
   },
   {
-    "id": "79",
+    "id": "82",
     "artist": "Slay Squad",
     "stage": null,
     "day": null,
@@ -2170,8 +2114,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "NU METAL",
-      "HARDCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/slay-squad/",
     "socials": {
@@ -2189,7 +2132,7 @@
     ]
   },
   {
-    "id": "80",
+    "id": "83",
     "artist": "Vinegar Hill",
     "stage": null,
     "day": null,
@@ -2197,7 +2140,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "MELODIC DEATH METAL"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/vinegar-hill/",
     "socials": {
@@ -2214,7 +2157,7 @@
     ]
   },
   {
-    "id": "81",
+    "id": "84",
     "artist": "The Funeral Portrait",
     "stage": null,
     "day": null,
@@ -2222,8 +2165,7 @@
     "endTime": null,
     "countryCode": null,
     "genres": [
-      "EMO",
-      "POST-HARDCORE"
+      "RED BULL STAGE"
     ],
     "festivalUrl": "https://www.novarock.at/en/artist/the-funeral-portrait/",
     "socials": {
@@ -2236,6 +2178,111 @@
       "Raw",
       "Intense",
       "Fast"
+    ]
+  },
+  {
+    "id": "85",
+    "artist": "Mittel Alta",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "BLUE STAGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/mittel-alta/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/73298-21088-Mittel-Alta-Bandfoto-1.jpg",
+    "vibes": [
+      "Discover"
+    ]
+  },
+  {
+    "id": "86",
+    "artist": "Shmiffy",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RED STAGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/shmiffy/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Shmiffy’s world is simple. It’s filled with sweet and quirky guitar riffs, rebellious alt-rock vibes, and lyrics that are pretty straightforward.\n\nShe started playing guitar when she was just a little Shmiffy and wrote songs nonstop throughout her teenage years. With her debut release, the EP “Blood, Shred & Tears” (release date: September 2024), the alt-rock newcomer from Austria caught the attention of Vienna’s local music scene and sold out her first headlining show!\n\nOne year later, Shmiffy is ready for the next chapter: a new EP titled “Riff, Laugh, Love” (Release Date: November 28, 2025). This time, the positive response to her first EP, “Blood, Shred & Tears,” has made her more confident in her approach to her own music. Nevertheless, she remains true to her alt-rock vibes and guitar-driven sound.\n\nWriting lyrics about the struggles of growing up, “perfect world” scenarios, and other topics that 20-somethings grapple with is her thing. Probably because she’s going through them herself right now.\n\nSo if you’re a fan of 2000s rock bands like Weezer, Fall Out Boy, or Paramore, Shmiffy might just be exactly what your ears have been looking for.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/73300-20986-shmiffy_36_c_marie_schrentewein.jpg",
+    "vibes": [
+      "Discover"
+    ]
+  },
+  {
+    "id": "87",
+    "artist": "Pure Chlorine",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RED BULL STAGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/pure-chlorine/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The best way to describe Pure Chlorine? Modern alternative rock with an electronic edge. The Austrian artist blends heavy guitars, dark pop elements, and emotional intensity into a distinctive sound, and with her EP “Healing Is Brutal,” she brings a powerful mix of alternative rock, attitude, and atmospheric impact to Nickelsdorf.\n\n“Playing at Nova Rock is definitely a bucket-list moment! At first, I couldn’t believe I actually had the chance to experience this with my band. I’m really looking forward to playing on the Red Bull Stage—it’s going to be a core memory.” – Pure Chlorine",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/73373-21153-Pure-Chlorine_RedBullStageTakeOff_(c)RedBull-PhilippCarlRiedl.jpg",
+    "vibes": [
+      "Discover"
+    ]
+  },
+  {
+    "id": "88",
+    "artist": "Cousins",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RED BULL STAGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/cousins/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "COUSINS, a young DIY band from Graz, is set to take the Red Bull Stage at Nova Rock. With their raw alternative and punk rock sound, they’re already turning heads. The distinctive dual vocals of cousins Alex and Markus Lill blend with high-energy guitar riffs and nostalgic skate punk vibes that evoke the carefree days of the early rock and punk era.\n\n“We used to climb over the fence at our first big festival (that’s ancient history!), so it’s just unbelievable for us to be playing on the Red Bull Stage at Nova Rock this year! We had to check three times to make sure the email was real. We’re incredibly excited!” – COUSINS",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/73370-21155-COUSINS__RedBullStageTakeOff_(c)RedBull-PhilippCarlRiedl.jpg",
+    "vibes": [
+      "Discover"
+    ]
+  },
+  {
+    "id": "89",
+    "artist": "Purple",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RED BULL STAGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/purple/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "With PURPLE, we welcome one of the most exciting local alternative newcomer bands to the Red Bull Stage. The four-piece band from Vienna blends art-pop, rock, and electronic elements into a modern sound that exudes distinct ’90s vibes. With their upcoming EP “SOBER,” the band continues to expand its own musical universe.\n\n“Our journey as a band began in a bedroom with minimal equipment and a few creative ideas. Back then, we could only dream of sharing these ideas with a new crowd at such a big and significant festival. Now those dreams are becoming reality!” – PURPLE",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/73367-21154-PURPLE_RedBullStageTakeOff_(c)RedBull-PhilippCarlRiedl.jpg",
+    "vibes": [
+      "Discover"
     ]
   }
 ]
