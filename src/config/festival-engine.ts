@@ -4,6 +4,7 @@ import area53 from '../../festivals/area53-2026/config.json'
 import novarock from '../../festivals/novarock-2026/config.json'
 import frequency from '../../festivals/frequency-2026/config.json'
 import erntepunk from '../../festivals/ernte-punk-2026/config.json'
+import rockamring from '../../festivals/rock-am-ring-2026/config.json'
 
 // Ensure TypeScript knows the structure of our unified config
 export interface FestivalConfig {
@@ -161,6 +162,7 @@ export const FESTIVAL_CONFIGS: Record<string, FestivalConfig> = {
   'novarock-2026': novarock as FestivalConfig,
   'frequency-2026': frequency as FestivalConfig,
   'ernte-punk-2026': erntepunk as FestivalConfig,
+  'rock-am-ring-2026': rockamring as FestivalConfig,
 }
 
 export const FESTIVAL_IDS = Object.keys(FESTIVAL_CONFIGS)

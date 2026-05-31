@@ -18,15 +18,17 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 
 ## Festivals
 
-| ID | Name | Artists |
-|----|------|---------|
-| `sziget-2026` | Sziget | ~338 |
-| `novarock-2026` | Nova Rock | ~84 |
-| `frequency-2026` | Frequency | ~59 |
-| `area53-2026` | Area 53 | ~30 |
-| `ernte-punk-2026` | Ernte Punk | ~17 |
+| ID | Name | Artists | Schedule |
+|----|------|---------|----------|
+| `sziget-2026` | Sziget | ~339 | TBA (null) |
+| `novarock-2026` | Nova Rock | ~89 | TBA (null) |
+| `frequency-2026` | Frequency | ~95 | TBA (null) |
+| `area53-2026` | Area 53 | ~30 | TBA (null) |
+| `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) |
+| `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** (Jun 5–7 2026) |
 
-All `stage`, `startTime`, `endTime` fields are `null` — schedule not yet published. Never build UI that assumes these exist.
+For sziget/novarock/frequency/area53/ernte-punk: all `stage`, `startTime`, `endTime` fields are `null` — schedule not yet published.
+Rock am Ring has real ISO 8601 timestamps for all 73 artists across 3 stages (Utopia, Mandora, Orbit).
 
 ## Common Commands
 
@@ -138,4 +140,4 @@ festivals/<id>/data/*.json
 - **TypeScript**: Strict mode. No `any`. Interfaces in `src/types/index.ts`.
 - **Icons**: Lucide (Web), import individually. Android uses Vector Drawables.
 - **No comments** unless the WHY is non-obvious.
-- **Tests**: 198 passing — keep green. Run `npm test -- --run` before committing.
+- **Tests**: 189 passing — keep green. Run `npm test -- --run` before committing.
