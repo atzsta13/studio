@@ -200,10 +200,11 @@ const ChartTooltipContent = React.forwardRef<
       >
         {!nestLabel ? tooltipLabel : null}
         <div className="grid gap-1.5">
-          {payload.map((item: TooltipPayloadItem, index: number) => {
-            const key = `${nameKey || item.name || item.dataKey || "value"}`
-            const itemConfig = getPayloadConfigFromPayload(config, item, key)
-            const indicatorColor = color || item.payload.fill || item.color
+          {payload.map((item, index) => {
+            const typedItem = item as unknown as TooltipPayloadItem
+            const key = `${nameKey || typedItem.name || typedItem.dataKey || "value"}`
+            const itemConfig = getPayloadConfigFromPayload(config, typedItem, key)
+            const indicatorColor = color || (typedItem.payload as Record<string, string> | undefined)?.fill || typedItem.color
 
             return (
               <div
@@ -214,7 +215,7 @@ const ChartTooltipContent = React.forwardRef<
                 )}
               >
                 {formatter && item?.value !== undefined && item.name ? (
-                  formatter(item.value, item.name, item, index, item.payload)
+                  formatter(item.value, item.name, item, index, payload)
                 ) : (
                   <>
                     {itemConfig?.icon ? (
@@ -299,13 +300,14 @@ const ChartLegendContent = React.forwardRef<
           className
         )}
       >
-        {payload.map((item: LegendPayloadItem) => {
-          const key = `${nameKey || item.dataKey || "value"}`
-          const itemConfig = getPayloadConfigFromPayload(config, item, key)
+        {payload.map((item) => {
+          const typedItem = item as unknown as LegendPayloadItem
+          const key = `${nameKey || typedItem.dataKey || "value"}`
+          const itemConfig = getPayloadConfigFromPayload(config, typedItem, key)
 
           return (
             <div
-              key={item.value}
+              key={typedItem.value as string}
               className={cn(
                 "flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
               )}
@@ -316,7 +318,7 @@ const ChartLegendContent = React.forwardRef<
                 <div
                   className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
-                    backgroundColor: item.color,
+                    backgroundColor: typedItem.color,
                   }}
                 />
               )}

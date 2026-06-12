@@ -1,47 +1,65 @@
-# ✅ Verification & Quality Guide
+# Verification & Quality Guide
 
-This document outlines the protocols for maintaining platform integrity across both Web and Android.
+> Last updated: 2026-06-12. Single-APK architecture — no product flavors.
 
-## 1. Automated Testing
+## Automated Testing
 
-### **Web (Vitest / RTL)**
-Every PR must pass the full test suite (190+ tests).
+### Web (Vitest / RTL)
 ```bash
-npm test -- --run
+npm test -- --run          # 189 tests, must stay green
+npm run typecheck          # 0 errors (chart.tsx has 4 pre-existing ShadCN errors — known, skip)
+npm run lint               # ESLint clean
 ```
-- **Coverage focus**: `InsiderProvider`, translation logic, and core UI components.
 
-### **Android (JUnit / Turbine)**
-All ViewModels must have 100% test coverage using In-Memory fakes.
+### Android (JUnit / Turbine)
 ```bash
 cd android
-./gradlew testSzigetDebugUnitTest
+./gradlew test             # unit tests — no device required
 ```
-- **Fakes used**: `InMemorySharedPreferences`, `FakeUserDao`, `IWeatherRepository`.
 
-## 2. Integrity Checks
+Fakes used in tests: `InMemorySharedPreferences`, `FakeUserDao`, `IWeatherRepository`.
 
-### **Type Safety**
-Strict TypeScript mode is enforced. No `any` allowed.
+## Build & Install
+
+### Web (static export)
 ```bash
-npm run typecheck
+npm run build              # outputs to out/ — deploy by pushing to main
 ```
+GitHub Actions auto-deploys to https://atzsta13.github.io/studio/ on every push to `main`.
 
-### **Config Validation**
-All festival configurations are validated against a JSON Schema before sync.
+### Android (single APK)
 ```bash
-npm run lineup:sync
+cd android
+./gradlew assembleDebug
+# APK: app/build/outputs/apk/debug/app-debug.apk
+
+# Install to connected device
+adb install -r app/build/outputs/apk/debug/app-debug.apk
+# or
+adb install -r -t app/build/outputs/apk/debug/app-debug.apk
 ```
 
-### **Android Resource Compilation**
-Always verify that the AAPT compiler is happy with new assets.
+There is **one APK** — no flavor suffix. `applicationId` is `com.example.festivalinsider`.
+
+## Integrity Checks
+
+### Config validation
+All festival configs are validated during sync:
 ```bash
-./gradlew assembleSzigetDebug
+npm run lineup:sync        # validates and syncs all festivals
 ```
 
-## 3. The "Main Stage" Stress Test
-Before certifying a feature as "Stable," it must pass these criteria:
-1. **0 Bars of Signal**: Feature functions with airplane mode enabled.
-2. **High Density**: UI remains responsive during background local AI inference.
-3. **No Account**: Feature is accessible without any login or personal data.
-4. **Offline First**: All necessary data is either bundled or cached from a previous session.
+### Android resource compilation
+```bash
+cd android
+./gradlew compileDebugKotlin   # fast check — Kotlin only, no full APK build
+```
+
+## The Main Stage Stress Test
+
+Before marking a feature stable:
+
+1. **0 Bars of Signal** — airplane mode on, feature still works
+2. **No Account** — accessible without any login or personal data
+3. **Offline First** — all data bundled or cached from previous session
+4. **Direct Sunlight** — readability at max brightness, OLED black background

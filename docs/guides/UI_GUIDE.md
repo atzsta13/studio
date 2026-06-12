@@ -2,7 +2,7 @@
 
 ## Philosophy: Neon Brutalism
 
-Sziget Insider is a survival tool used in extreme festival conditions: direct sunlight, total darkness, loud crowds, and low battery. The design makes one deliberate trade-off — **readability and tap-ability over subtlety**.
+Festival Insider is a survival tool used in extreme festival conditions: direct sunlight, total darkness, loud crowds, and low battery. The design makes one deliberate trade-off — **readability and tap-ability over subtlety**.
 
 Core principles:
 - **OLED black everywhere** — saves battery, maximises contrast
