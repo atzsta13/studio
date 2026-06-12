@@ -37,7 +37,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 | Sziget 2026 | 339 | ❌ TBA | ✅ 292/339 have stage assigned | Times not yet published. Stage names set but no startTime/endTime. |
 | Nova Rock 2026 | 89 | ✅ 84/89 | ✅ | **Currently happening** (Jun 11–14). 5 missing: Slipknot, Electric Callboy, Wanda, Static X, Badflower — absent from live timetable, likely cancelled. ISO 8601 timestamps with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
-| Area 53 2026 | 30 | ⚠️ 30/30 | ✅ | **Inconsistent format**: times are plain strings (`"22:30"`) not ISO 8601. Timetable screen and clash resolver will NOT work correctly until migrated to ISO format. |
+| Area 53 2026 | 30 | ✅ 30/30 | ✅ | Full timetable (Jul 15–18, incl. Wednesday warm-up + aftershows), ISO timestamps. |
 | Frequency 2026 | 95 | ❌ TBA | ❌ | No schedule yet. |
 | Ernte Punk 2026 | 17 | ❌ TBA | ❌ | No schedule yet. |
 
@@ -51,9 +51,8 @@ None currently.
 
 ### Data
 
-**Area 53 time format is wrong.**
-`startTime`/`endTime` are plain strings (`"22:30"`, `"00:00"`) instead of ISO 8601 (`"2026-07-10T22:30:00+02:00"`). The timetable component expects ISO. The clash resolver and set countdowns will not work for Area 53 until this is fixed.
-→ Fix: run a migration script similar to the Nova Rock timetable update, converting each time to a full ISO timestamp with the correct Area 53 date and timezone.
+**Canonical time format: ISO 8601 with explicit offset.**
+All `startTime`/`endTime` values in every festival's `lineup.json` must be full ISO 8601 timestamps with offset (e.g. `"2026-07-16T22:30:00+02:00"`). Android parses ISO first with an `HH:mm` fallback (`ui/utils/FestivalUtils.kt`), but new data must always be ISO. Area 53 was migrated on 2026-06-12 (`scripts/migrate-area53-times.mjs`).
 
 **Nova Rock 5 artists without slots.**
 Slipknot, Electric Callboy, Wanda, Static X, Badflower were not present on the live timetable page. They may have been cancelled or replaced. They remain in the lineup with null times and will not appear in the timetable view.
@@ -86,12 +85,12 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Feature | Blocked for | Unblocked for |
 |---|---|---|
-| `clashResolver` | Sziget, Frequency, Ernte Punk, Area 53* | Nova Rock, Rock am Ring |
-| `setCountdowns` | Sziget, Frequency, Ernte Punk, Area 53* | Nova Rock, Rock am Ring |
-| `vibeOfTheHour` | Sziget, Frequency, Ernte Punk, Area 53* | Nova Rock, Rock am Ring |
+| `clashResolver` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
+| `setCountdowns` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
+| `vibeOfTheHour` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
 | `groupSchedules` | All (feature pending) | — |
 
-*Area 53 has times but in wrong format — fix required first.
+`features.timetable` is now `false` for Sziget, Frequency, and Ernte Punk — re-enable per festival when schedule data lands.
 
 ---
 
@@ -112,12 +111,11 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 These are real gaps, not backlog filler:
 
-1. **Fix Area 53 time format** — convert plain `HH:MM` strings to ISO 8601. Quick script job.
-2. **Rewrite `TROUBLESHOOTING.md`** — outdated paths and commands.
-3. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk`.
-4. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival.
-5. **Service worker update prompt** — users on PWA get stale deploys silently.
-6. **Area 53 config audit** — check if `timetable: true` in `area53-2026/config.json` and if so, disable it until times are in ISO format.
+1. **Rewrite `TROUBLESHOOTING.md`** — outdated paths and commands.
+2. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
+3. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival. Re-enable `features.timetable`.
+4. **Service worker update prompt** — users on PWA get stale deploys silently.
+5. **Nova Rock cancelled artists** — decide whether to remove Slipknot, Electric Callboy, Wanda, Static X, Badflower or add a `cancelled` flag + badge (needs maintainer decision).
 
 ---
 

@@ -6,6 +6,7 @@ import { validateAllConfigs } from './utils/validate-configs.mjs'
 
 const FESTIVALS_DIR = 'festivals'
 const PUBLIC_DATA_DIR = path.join('public', 'data')
+const ANDROID_ASSETS_DIR = path.join('android', 'app', 'src', 'main', 'assets')
 
 console.log('🚀 Starting White-Label Data Sync...')
 
@@ -53,7 +54,22 @@ for (const id of festivalFolders) {
     console.log(`✓ [${id}] Synced data package`)
   }
 
-  // 3. Sync Assets (Recursive)
+  // 3. Sync Android bundled assets (config + data JSONs)
+  const androidDest = path.join(ANDROID_ASSETS_DIR, id)
+  if (fs.existsSync(ANDROID_ASSETS_DIR)) {
+    if (!fs.existsSync(androidDest)) fs.mkdirSync(androidDest, { recursive: true })
+    if (fs.existsSync(srcConfig)) fs.copyFileSync(srcConfig, path.join(androidDest, 'config.json'))
+    if (fs.existsSync(srcData)) {
+      for (const file of fs.readdirSync(srcData)) {
+        if (file.endsWith('.json')) {
+          fs.copyFileSync(path.join(srcData, file), path.join(androidDest, file))
+        }
+      }
+    }
+    console.log(`✓ [${id}] Synced android assets`)
+  }
+
+  // 4. Sync Assets (Recursive)
   if (fs.existsSync(srcAssets)) {
     const assetDest = path.join(dest, 'assets')
     // Node 20+ supports recursive cpSync

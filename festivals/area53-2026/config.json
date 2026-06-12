@@ -59,7 +59,8 @@
     "timezone": "Europe/Vienna",
     "lat": 47.3769,
     "lng": 15.0944,
-    "weatherDisplayName": "Leoben · VAZ Schladnitz"
+    "weatherDisplayName": "Leoben · VAZ Schladnitz",
+    "utcOffsetHours": 2
   },
   "dates": {
     "year": 2026,

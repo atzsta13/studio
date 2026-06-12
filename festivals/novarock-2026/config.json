@@ -67,7 +67,8 @@
     "timezone": "Europe/Vienna",
     "lat": 47.9381,
     "lng": 17.0651,
-    "weatherDisplayName": "Nickelsdorf · Pannonia Fields II"
+    "weatherDisplayName": "Nickelsdorf · Pannonia Fields II",
+    "utcOffsetHours": 2
   },
   "dates": {
     "year": 2026,

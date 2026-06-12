@@ -67,12 +67,12 @@ export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: 
     };
 
     const dailyLineup = useMemo(() => {
-        return lineup.filter(item => item.day === activeDay);
+        return lineup.filter(item => item.day === activeDay && item.startTime && item.endTime && item.stage);
     }, [lineup, activeDay]);
 
     return (
-        <div className="w-full bg-black min-h-screen text-white font-sans selection:bg-pink-500">
-            <div className="sticky top-0 z-[100] bg-black/90 backdrop-blur-xl border-b border-white/10">
+        <div className="w-full bg-background min-h-screen text-foreground font-sans selection:bg-primary">
+            <div className="sticky top-0 z-[100] bg-background/90 backdrop-blur-xl border-b border-white/10">
                 <div className="flex flex-col">
                     <div className="flex items-center justify-between px-4 py-3 gap-4">
                         <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
@@ -81,7 +81,7 @@ export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: 
                                     key={day}
                                     onClick={() => setActiveDayIdx(idx)}
                                     className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase transition-all whitespace-nowrap border-2 ${activeDayIdx === idx
-                                        ? 'bg-pink-600 border-pink-600 text-white'
+                                        ? 'bg-primary border-primary text-primary-foreground'
                                         : 'bg-transparent border-white/10 text-white/40 hover:text-white hover:border-white/30'
                                         }`}
                                 >
@@ -102,16 +102,16 @@ export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: 
                     }}
                 >
                     <div className="sticky top-[64px] z-30 flex contents">
-                        <div className="sticky top-[64px] left-0 z-40 bg-black border-r border-b border-white/10 h-10 flex items-center justify-center">
+                        <div className="sticky top-[64px] left-0 z-40 bg-background border-r border-b border-white/10 h-10 flex items-center justify-center">
                             <Clock size={16} className="text-white opacity-20" />
                         </div>
                         {stages.map((stage, index) => (
                             <div
                                 key={stage}
-                                className="sticky top-[64px] z-30 flex items-center justify-center p-2 bg-black border-b border-white/10 h-10"
+                                className="sticky top-[64px] z-30 flex items-center justify-center p-2 bg-background border-b border-white/10 h-10"
                                 style={{ gridColumn: index + 2 }}
                             >
-                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-pink-500 whitespace-nowrap">
+                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary whitespace-nowrap">
                                     {stage}
                                 </span>
                             </div>
@@ -122,7 +122,7 @@ export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: 
                         index % 2 === 0 && (
                             <div
                                 key={time}
-                                className="sticky left-0 z-20 flex items-start justify-end pr-2 bg-black border-r border-white/10"
+                                className="sticky left-0 z-20 flex items-start justify-end pr-2 bg-background border-r border-white/10"
                                 style={{
                                     gridRow: index * 2 + 2,
                                     gridRowEnd: `span 2`,
@@ -168,9 +168,9 @@ export default function TimetableView({ lineup, utcOffsetHours = 0 }: { lineup: 
                         <span className="text-[10px] font-black text-white uppercase tracking-widest">{conflicts.size / 2} CLASHES DETECTED</span>
                     </div>
                 )}
-                <div className="bg-black/80 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-4">
+                <div className="bg-background/80 backdrop-blur-md border border-white/10 px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-4">
                     <div className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
                         <span className="text-[9px] font-black text-white/60 uppercase tracking-tighter">FAVE</span>
                     </div>
                     <div className="flex items-center gap-1.5 text-white/60">
