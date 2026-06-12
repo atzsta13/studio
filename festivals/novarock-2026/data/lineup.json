@@ -1,88 +1,5 @@
 [
   {
-    "id": "1",
-    "artist": "Slipknot",
-    "stage": "Blue Stage",
-    "day": "Friday",
-    "startTime": null,
-    "endTime": null,
-    "isHeadliner": true,
-    "genres": [
-      "NU METAL",
-      "ALTERNATIVE METAL"
-    ],
-    "countryCode": "US",
-    "description": "The Iowa masked icons return to Pannonia Fields.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/05fGUMSTpcz69999999999"
-    },
-    "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense",
-      "Raw",
-      "Eclectic",
-      "Guitar"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f6/eb/9c/f6eb9cc6-91a4-a723-de7a-08bd45d483b0/016861741006.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "2",
-    "artist": "Electric Callboy",
-    "stage": "Blue Stage",
-    "day": "Saturday",
-    "startTime": null,
-    "endTime": null,
-    "isHeadliner": true,
-    "genres": [
-      "ELECTRONICORE",
-      "METALCORE"
-    ],
-    "countryCode": "DE",
-    "description": "The ultimate party metal experience.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/168u799999999999999999"
-    },
-    "vibes": [
-      "Aggressive",
-      "Melodic",
-      "Intense",
-      "Heavy",
-      "Energetic"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f3/2b/77/f32b7781-ed1f-cf89-be53-4308dbde38a1/196871181235.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "3",
-    "artist": "Wanda",
-    "stage": "Red Stage",
-    "day": "Thursday",
-    "startTime": null,
-    "endTime": null,
-    "isHeadliner": true,
-    "genres": [
-      "AUSTROPOP",
-      "INDIE ROCK"
-    ],
-    "countryCode": "AT",
-    "description": "Amore from the Viennese cult heroes.",
-    "socials": {
-      "spotify": "https://open.spotify.com/artist/209u799999999999999999"
-    },
-    "vibes": [
-      "Feel-Good",
-      "Uplifting",
-      "Mainstream",
-      "Raw",
-      "Energetic",
-      "Guitar",
-      "Chill",
-      "Atmospheric",
-      "Melodic"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/47/75/4b/47754bf5-8773-d454-9dd7-b76c0ef9705c/00602557801682.rgb.jpg/600x600bb.jpg"
-  },
-  {
     "id": "4",
     "artist": "Volbeat",
     "stage": "Blue Stage",
@@ -342,30 +259,6 @@
     ]
   },
   {
-    "id": "14",
-    "artist": "Static X",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
-    "countryCode": "US",
-    "genres": [
-      "INDUSTRIAL METAL",
-      "NU METAL"
-    ],
-    "festivalUrl": "https://www.novarock.at/en/artist/static-x/",
-    "socials": {
-      "spotify": null
-    },
-    "description": "One of the genre-defining bands of the late 90s, Static-Xwas founded in Los Angeles CA in 1994 by lead vocalist/guitarist Wayne Static and drummer Ken Jay. The band lineup was rounded out by bassist Tony Campos and guitarist/programmer Koichi Fukuda, who collectively inked a deal with Warner Bros records.Static-Xrose to fame with their 1999 platinum selling debut album Wisconsin Death Tripandwent on to release five more albums over the course of the next decade: Machinein 2001, Shadow Zonein 2003, Start A War in 2005, Cannibal in 2007, and Cult Of Static in 2009. The band has sold more than 3-million albums in the US alone and has had multiple chart-toppingradio singles. They have toured the world extensively, and to this day, maintain a reputation for being one of the best live acts in heavy music. In 2012, the band took a break to pursue outside creative interests and on Nov. 1, 2014 Wayne Static unexpectedly passed away. In 2018, the band announced that they were reforming to celebrate the 20thAnniversary of their debut album. The reformed lineup of original members Tony Campos, Koichi Fukuda, Ken Jay and backed by frontman Xer0 delivered acclaimed performances by fans and critics alike.The tour was a massive success, with sold-outshows around the world , proving that Static-X fans remain as committed to the band as ever before.The revitalized Static-X continue to make headlines with their sold-out touring and new music while keeping their signature Evil Disco sound alive.",
-    "imageUrl": "https://www.novarock.at/wp-content/uploads/72130-18934-kleiner_Static-X-2023-(Photo-by-Jeremy-Saffer).jpg",
-    "vibes": [
-      "Heavy",
-      "Energetic",
-      "Intense"
-    ]
-  },
-  {
     "id": "15",
     "artist": "Lemo",
     "stage": "Red Stage",
@@ -423,31 +316,6 @@
       "Storytelling",
       "Raw",
       "Guitar"
-    ]
-  },
-  {
-    "id": "17",
-    "artist": "Badflower",
-    "stage": null,
-    "day": null,
-    "startTime": null,
-    "endTime": null,
-    "countryCode": null,
-    "genres": [
-      "ALTERNATIVE ROCK",
-      "HARD ROCK"
-    ],
-    "festivalUrl": "https://www.novarock.at/en/artist/badflower/",
-    "socials": {
-      "spotify": null
-    },
-    "description": "No Place Like Home, the third studio album from Badflower, finds the Los Angeles-bred, Nashville-based rock band in their most vulnerable and reflective state yet. Written entirely sober for the first time by frontman Josh Katz, the album is a raw exploration of regret, aging, emotional isolation, and the shifting idea of \"home.\" For Katz, home isn’t a place or a person — it’s a memory, a version of himself he no longer recognizes in a world that feels increasingly foreign.\n\nSince their formation in 2011, Badflower has released two EPs, their hit full-length debut Ok, I’m Sick via Big Machine Label Group, and their sophomore record, This Is How The World Ends. With a unique blend of raw rock and introspective storytelling, the band have earned critical acclaim from outlets like Billboard, Alternative Press, and Nylon. Their hit single “Ghost” went Platinum, received “Rock Song of the Year” honors at the iHeartRadio Awards, and has amassed over 700 million streams, all while captivating audiences across the globe, playing major festivals like Kaboo Del Mar and Sonic Temple, and sharing stages with bands such as Incubus, Shinedown, and Ghost.\n\nFour years in the making, No Place Like Home marks a turning point for Badflower — Josh Katz (vocals/guitar), Joey Morrow (lead guitar), Alex Espiritu (bass), and Anthony Sonetti (drums) — as they confront the disillusionment that comes after achieving their lifelong dreams. From the biting commentary of the music industry on “Number 1” to the heartbreaking future regrets of “Don’t Be a Stranger” and “Paws,” the album weaves together themes of mental health, self-doubt, and existential dread with an unflinching honesty that’s become Badflower’s signature. No Place Like Homedoesn’t offer easy answers — instead, it invites listeners to sit with their discomfort, to feel seen, and maybe, to feel less alone.",
-    "imageUrl": "https://www.novarock.at/wp-content/uploads/72961-20295-kleiner-Badflower_P_20240606_JPaul_BMLGowns_0884_EditJF_FNL-(1).jpg",
-    "vibes": [
-      "Raw",
-      "Energetic",
-      "Guitar",
-      "Eclectic"
     ]
   },
   {

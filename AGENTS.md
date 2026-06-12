@@ -21,7 +21,7 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 | ID | Name | Artists | Schedule |
 |----|------|---------|----------|
 | `sziget-2026` | Sziget | ~339 | TBA (null times; 292 have stage) |
-| `novarock-2026` | Nova Rock | 89 | **Full timetable** 84/89 (Jun 11–14 2026) |
+| `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 (Jun 11–14 2026) |
 | `frequency-2026` | Frequency | ~95 | TBA (null) |
 | `area53-2026` | Area 53 | 30 | **Full timetable** (Jul 15–18 2026) |
 | `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) |

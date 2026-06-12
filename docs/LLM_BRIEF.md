@@ -32,7 +32,7 @@ Everything runs from static JSON bundled in the app or served from GitHub Pages.
 | ID | Name | Artists | Timetable | Notes |
 |---|---|---|---|---|
 | `sziget-2026` | Sziget | 339 | ❌ TBA | 292/339 have stage assigned, no times yet |
-| `novarock-2026` | Nova Rock | 89 | ✅ 84/89 | **Currently happening** (Jun 11–14). 5 likely cancelled. |
+| `novarock-2026` | Nova Rock | 84 | ✅ 84/84 | **Currently happening** (Jun 11–14). Lineup = official timetable. |
 | `rock-am-ring-2026` | Rock am Ring | 73 | ✅ 73/73 | Finished (Jun 5–7). Full ISO timestamps. |
 | `area53-2026` | Area 53 | 30 | ✅ 30/30 | Full ISO timestamps (Jul 15–18, incl. Wednesday warm-up) |
 | `frequency-2026` | Frequency | 95 | ❌ TBA | |
@@ -81,7 +81,6 @@ These are architectural decisions, not preferences:
 - No service worker update prompt — users on PWA get stale data silently after a deploy.
 - Sziget timetable — 339 artists waiting for schedule data. When published, run `npm run lineup:update:sziget` and set `features.timetable: true`.
 - Frequency + Ernte Punk timetables — same.
-- Nova Rock — Slipknot, Electric Callboy, Wanda, Static X, Badflower are absent from the official timetable (likely cancelled); decide remove vs. `cancelled` badge.
 
 (SharedPreferences encryption was closed as won't-fix — only the festival ID is stored, no tokens or PII.)
 

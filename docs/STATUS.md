@@ -35,7 +35,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 | Festival | Artists | Schedule | Stage data | Notes |
 |---|---|---|---|---|
 | Sziget 2026 | 339 | ❌ TBA | ✅ 292/339 have stage assigned | Times not yet published. Stage names set but no startTime/endTime. |
-| Nova Rock 2026 | 89 | ✅ 84/89 | ✅ | **Currently happening** (Jun 11–14). 5 missing: Slipknot, Electric Callboy, Wanda, Static X, Badflower — absent from live timetable, likely cancelled. ISO 8601 timestamps with CEST (+02:00). |
+| Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | **Currently happening** (Jun 11–14). Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
 | Area 53 2026 | 30 | ✅ 30/30 | ✅ | Full timetable (Jul 15–18, incl. Wednesday warm-up + aftershows), ISO timestamps. |
 | Frequency 2026 | 95 | ❌ TBA | ❌ | No schedule yet. |
@@ -53,9 +53,6 @@ None currently.
 
 **Canonical time format: ISO 8601 with explicit offset.**
 All `startTime`/`endTime` values in every festival's `lineup.json` must be full ISO 8601 timestamps with offset (e.g. `"2026-07-16T22:30:00+02:00"`). Android parses ISO first with an `HH:mm` fallback (`ui/utils/FestivalUtils.kt`), but new data must always be ISO. Area 53 was migrated on 2026-06-12 (`scripts/migrate-area53-times.mjs`).
-
-**Nova Rock 5 artists without slots.**
-Slipknot, Electric Callboy, Wanda, Static X, Badflower were not present on the live timetable page. They may have been cancelled or replaced. They remain in the lineup with null times and will not appear in the timetable view.
 
 **Sziget stages without times.**
 292 Sziget artists have a `stage` field set but `startTime: null`. This is correct — Sziget has not published its timetable — but means the timetable feature flag (`timetable: false` in Sziget's config) must stay off until data is available.
@@ -112,7 +109,6 @@ These are real gaps, not backlog filler:
 1. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
 2. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival. Re-enable `features.timetable`.
 3. **Service worker update prompt** — users on PWA get stale deploys silently.
-4. **Nova Rock cancelled artists** — decide whether to remove Slipknot, Electric Callboy, Wanda, Static X, Badflower or add a `cancelled` flag + badge (needs maintainer decision). Confirmed absent from the official novarock.at timetable (line-by-line diff, 2026-06-12).
 
 ---
 
