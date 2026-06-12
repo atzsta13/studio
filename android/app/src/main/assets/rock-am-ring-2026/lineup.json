@@ -7,12 +7,22 @@
     "startTime": "2026-06-05T23:00:00+02:00",
     "endTime": "2026-06-06T00:30:00+02:00",
     "isHeadliner": true,
-    "genres": ["ALTERNATIVE METAL", "NU METAL", "ALTERNATIVE ROCK"],
+    "genres": [
+      "ALTERNATIVE METAL",
+      "NU METAL",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "The Linkin Park comeback tour arrives at the Ring. Hybrid Theory to the present — the entire arena sings along.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Features115/v4/ae/96/55/ae965544-a29d-5355-910a-1cc14dab7542/contsched.ltemslzy.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Intense", "Energetic", "Anthemic", "Heavy", "Nostalgic"]
+    "vibes": [
+      "Intense",
+      "Energetic",
+      "Anthemic",
+      "Heavy",
+      "Nostalgic"
+    ]
   },
   {
     "id": "2",
@@ -22,12 +32,21 @@
     "startTime": "2026-06-07T21:00:00+02:00",
     "endTime": "2026-06-07T23:00:00+02:00",
     "isHeadliner": true,
-    "genres": ["HEAVY METAL", "NWOBHM"],
+    "genres": [
+      "HEAVY METAL",
+      "NWOBHM"
+    ],
     "countryCode": "GB",
     "description": "The legends from east London close out Rock am Ring 2026. Expect full production, Eddie, and two hours of metal mastery.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f8/cd/38/f8cd3816-a840-209a-e9f6-cf3f3e47da21/0881034134455.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Epic", "Heavy", "Guitar", "Intense", "Anthemic"]
+    "vibes": [
+      "Epic",
+      "Heavy",
+      "Guitar",
+      "Intense",
+      "Anthemic"
+    ]
   },
   {
     "id": "3",
@@ -37,12 +56,22 @@
     "startTime": "2026-06-06T22:30:00+02:00",
     "endTime": "2026-06-07T01:00:00+02:00",
     "isHeadliner": true,
-    "genres": ["ROCKABILLY METAL", "HEAVY METAL", "ALTERNATIVE METAL"],
+    "genres": [
+      "ROCKABILLY METAL",
+      "HEAVY METAL",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "DK",
     "description": "Denmark's finest rockabilly-metal hybrid headlines Saturday night. Over two hours of grooves, riffs, and ring-of-fire energy.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/a1/22/8a/a1228a21-a111-8432-7ec9-f0f3618faf74/21UMGIM33138.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Heavy", "Rock", "Fun", "Guitar"]
+    "vibes": [
+      "Energetic",
+      "Heavy",
+      "Rock",
+      "Fun",
+      "Guitar"
+    ]
   },
   {
     "id": "4",
@@ -52,12 +81,22 @@
     "startTime": "2026-06-05T21:00:00+02:00",
     "endTime": "2026-06-05T22:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["NU METAL", "ALTERNATIVE ROCK", "HARD ROCK"],
+    "genres": [
+      "NU METAL",
+      "ALTERNATIVE ROCK",
+      "HARD ROCK"
+    ],
     "countryCode": "US",
     "description": "Sacramento's finest bring 'Last Resort' and decades of anthems to the Utopia Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c5/a9/af/c5a9affe-9e14-65d1-afe3-2af569b1ad57/190296320569.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Heavy", "Raw", "Anthemic", "Intense"]
+    "vibes": [
+      "Energetic",
+      "Heavy",
+      "Raw",
+      "Anthemic",
+      "Intense"
+    ]
   },
   {
     "id": "5",
@@ -67,12 +106,21 @@
     "startTime": "2026-06-05T19:30:00+02:00",
     "endTime": "2026-06-05T20:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "POST-HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
     "countryCode": "GB",
     "description": "Brighton's genre-defining metalcore outfit delivers a crushing, emotionally charged set.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/73/9a/c7/739ac7a3-85c0-b80e-f907-a66ca5679859/0045778772865.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Intense", "Melodic", "Technical", "Aggressive"]
+    "vibes": [
+      "Heavy",
+      "Intense",
+      "Melodic",
+      "Technical",
+      "Aggressive"
+    ]
   },
   {
     "id": "6",
@@ -82,12 +130,21 @@
     "startTime": "2026-06-05T18:00:00+02:00",
     "endTime": "2026-06-05T19:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["GARAGE ROCK", "PUNK ROCK"],
+    "genres": [
+      "GARAGE ROCK",
+      "PUNK ROCK"
+    ],
     "countryCode": "SE",
     "description": "Sweden's most explosive garage rock band brings chaos, swagger, and Howlin' Pelle theatrics.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/f5/6a/1b/f56a1bfb-2ec1-d1b7-0798-5820e26096d8/mzi.znivpvqb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Raw", "Fun", "Rock", "Wild"]
+    "vibes": [
+      "Energetic",
+      "Raw",
+      "Fun",
+      "Rock",
+      "Wild"
+    ]
   },
   {
     "id": "7",
@@ -97,12 +154,22 @@
     "startTime": "2026-06-05T16:20:00+02:00",
     "endTime": "2026-06-05T17:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "GRUNGE", "POST-GRUNGE"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "GRUNGE",
+      "POST-GRUNGE"
+    ],
     "countryCode": "GB",
     "description": "Gavin Rossdale leads the 90s alt-rock icons through the hits that defined a generation.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/b0/1e/b8/b01eb88c-c1ab-dac8-fec7-6a7bc424bb6a/859709332024_cover.tif/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Melodic", "Rock", "Alternative", "Nostalgic", "Energetic"]
+    "vibes": [
+      "Melodic",
+      "Rock",
+      "Alternative",
+      "Nostalgic",
+      "Energetic"
+    ]
   },
   {
     "id": "8",
@@ -112,12 +179,20 @@
     "startTime": "2026-06-05T14:30:00+02:00",
     "endTime": "2026-06-05T15:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK ROCK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "PUNK ROCK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "DE",
     "description": "German punk rock openers kicking off Friday at the Utopia Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/12/e4/ec/12e4ece7-ebe0-5f4b-0544-ed8537d3e2f6/cover_4099885227165.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Energetic", "Punk", "Fun"]
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Punk",
+      "Fun"
+    ]
   },
   {
     "id": "9",
@@ -127,12 +202,21 @@
     "startTime": "2026-06-06T21:00:00+02:00",
     "endTime": "2026-06-06T22:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["ELECTRONICORE", "METALCORE"],
+    "genres": [
+      "ELECTRONICORE",
+      "METALCORE"
+    ],
     "countryCode": "DE",
     "description": "Gelsenkirchen's party metal sensation — equal parts mosh pit and rave.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/54/aa/73/54aa7397-eb41-ce2a-a62c-d500f0afb7a8/196589066640.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Aggressive", "Fun", "Heavy", "Dance"]
+    "vibes": [
+      "Energetic",
+      "Aggressive",
+      "Fun",
+      "Heavy",
+      "Dance"
+    ]
   },
   {
     "id": "10",
@@ -142,12 +226,22 @@
     "startTime": "2026-06-06T19:05:00+02:00",
     "endTime": "2026-06-06T20:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE METAL", "POST-GRUNGE", "HARD ROCK"],
+    "genres": [
+      "ALTERNATIVE METAL",
+      "POST-GRUNGE",
+      "HARD ROCK"
+    ],
     "countryCode": "CA",
     "description": "The Canadian post-grunge heavyweights deliver a set of radio-ready bangers with serious weight.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/cf/b4/5f/mzi.vgwnjneb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Rock", "Energetic", "Anthemic"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Rock",
+      "Energetic",
+      "Anthemic"
+    ]
   },
   {
     "id": "11",
@@ -157,12 +251,22 @@
     "startTime": "2026-06-06T17:20:00+02:00",
     "endTime": "2026-06-06T18:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE METAL", "FUNK METAL", "HARD ROCK"],
+    "genres": [
+      "ALTERNATIVE METAL",
+      "FUNK METAL",
+      "HARD ROCK"
+    ],
     "countryCode": "US",
     "description": "The Rage Against the Machine guitarist performs solo, showcasing his boundary-pushing guitar experiments.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/0f/ca/28/0fca28b8-233f-7d96-e4b2-b6e38f3de649/858275063110.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Guitar", "Heavy", "Energetic", "Political", "Intense"]
+    "vibes": [
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Political",
+      "Intense"
+    ]
   },
   {
     "id": "12",
@@ -172,12 +276,21 @@
     "startTime": "2026-06-06T16:00:00+02:00",
     "endTime": "2026-06-06T17:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["HARD ROCK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "HARD ROCK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Taylor Momsen leads her rock band through a set of gritty, blues-drenched hard rock.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/85/fa/ed/85faed70-423d-348b-9aa2-5b7cf43af44b/20CRGIM20935.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Rock", "Melodic", "Energetic", "Dark", "Guitar"]
+    "vibes": [
+      "Rock",
+      "Melodic",
+      "Energetic",
+      "Dark",
+      "Guitar"
+    ]
   },
   {
     "id": "13",
@@ -187,12 +300,22 @@
     "startTime": "2026-06-06T14:50:00+02:00",
     "endTime": "2026-06-06T15:50:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK", "ALTERNATIVE ROCK", "ELECTRONIC"],
+    "genres": [
+      "PUNK",
+      "ALTERNATIVE ROCK",
+      "ELECTRONIC"
+    ],
     "countryCode": "AU",
     "description": "High-energy Australian punk-electronic act opening Saturday on the main stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/33/53/a4/3353a48d-e9c8-0bc0-5fcc-5b28aa2edffe/26CRGIM53707.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Raw", "Alternative", "Punk", "Fierce"]
+    "vibes": [
+      "Energetic",
+      "Raw",
+      "Alternative",
+      "Punk",
+      "Fierce"
+    ]
   },
   {
     "id": "15",
@@ -202,12 +325,21 @@
     "startTime": "2026-06-07T19:00:00+02:00",
     "endTime": "2026-06-07T20:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK ROCK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "PUNK ROCK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "California punk legends and their catalogue of bangers — Come Out and Play is non-negotiable.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/af/a3/6f/afa36ff7-01fd-f054-1e05-b257aff7cd20/0045778686865.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Fun", "Rock", "Anthemic", "Nostalgic"]
+    "vibes": [
+      "Energetic",
+      "Fun",
+      "Rock",
+      "Anthemic",
+      "Nostalgic"
+    ]
   },
   {
     "id": "16",
@@ -217,12 +349,22 @@
     "startTime": "2026-06-07T17:00:00+02:00",
     "endTime": "2026-06-07T18:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["POST-HARDCORE", "EMO", "ALTERNATIVE ROCK"],
+    "genres": [
+      "POST-HARDCORE",
+      "EMO",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "The Temecula post-hardcore pioneers return with cuts from What It Is to Die Wishes.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/42/14/a1/4214a191-3dce-85ab-ae8e-6ad7596c4df3/00042286099125.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Melodic", "Intense", "Alternative", "Nostalgic", "Heavy"]
+    "vibes": [
+      "Melodic",
+      "Intense",
+      "Alternative",
+      "Nostalgic",
+      "Heavy"
+    ]
   },
   {
     "id": "17",
@@ -232,12 +374,22 @@
     "startTime": "2026-06-07T15:30:00+02:00",
     "endTime": "2026-06-07T16:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["RAP ROCK", "ALTERNATIVE ROCK", "NU METAL"],
+    "genres": [
+      "RAP ROCK",
+      "ALTERNATIVE ROCK",
+      "NU METAL"
+    ],
     "countryCode": "US",
     "description": "The masked LA rap-rock crew bring their raucous party energy to the Utopia Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/10/00/12/100012ed-66a1-4715-caec-c4815b0da71e/00602527683676.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Heavy", "Party", "Raw", "Aggressive"]
+    "vibes": [
+      "Energetic",
+      "Heavy",
+      "Party",
+      "Raw",
+      "Aggressive"
+    ]
   },
   {
     "id": "18",
@@ -247,12 +399,22 @@
     "startTime": "2026-06-07T14:10:00+02:00",
     "endTime": "2026-06-07T15:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["GLAM METAL", "HARD ROCK", "ALTERNATIVE METAL"],
+    "genres": [
+      "GLAM METAL",
+      "HARD ROCK",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "US",
     "description": "Andy Biersack and crew bring the war paint and anthems in a set built for the big stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/e5/85/b7/e585b7d1-b5f4-b6ab-2303-9be999870c64/00602537227075.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Rock", "Theatrical", "Anthemic"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Rock",
+      "Theatrical",
+      "Anthemic"
+    ]
   },
   {
     "id": "19",
@@ -262,12 +424,21 @@
     "startTime": "2026-06-07T12:30:00+02:00",
     "endTime": "2026-06-07T13:40:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK ROCK", "GARAGE ROCK"],
+    "genres": [
+      "PUNK ROCK",
+      "GARAGE ROCK"
+    ],
     "countryCode": "GB",
     "description": "The British punk-pop firebrands open Sunday with adrenaline-shot sets from their debut.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d9/01/eb/d901ebc9-13d2-abba-7381-aff7c4545cb0/8716059016283.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Energetic", "Punk", "Fun", "Fast"]
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Punk",
+      "Fun",
+      "Fast"
+    ]
   },
   {
     "id": "20",
@@ -277,12 +448,22 @@
     "startTime": "2026-06-06T00:45:00+02:00",
     "endTime": "2026-06-06T02:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["NU METAL", "RAP ROCK", "ALTERNATIVE METAL"],
+    "genres": [
+      "NU METAL",
+      "RAP ROCK",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "US",
     "description": "Fred Durst and the Mandora Stage at nearly 1am. Nookie. Break Stuff. Pure chaos.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/b2/70/c8/b270c885-3e28-3dfa-3bd3-faa6e5fa8540/15UMGIM36851.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Energetic", "Party", "Raw", "Heavy"]
+    "vibes": [
+      "Aggressive",
+      "Energetic",
+      "Party",
+      "Raw",
+      "Heavy"
+    ]
   },
   {
     "id": "21",
@@ -292,12 +473,22 @@
     "startTime": "2026-06-05T22:45:00+02:00",
     "endTime": "2026-06-06T00:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["KAWAII METAL", "ALTERNATIVE METAL", "J-POP"],
+    "genres": [
+      "KAWAII METAL",
+      "ALTERNATIVE METAL",
+      "J-POP"
+    ],
     "countryCode": "JP",
     "description": "The Japanese metal-pop phenomenon closes out Friday night on the Mandora Stage with a full theatrical production.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f0/c4/dd/f0c4ddaa-8ab5-7c1c-e27d-12eae296c81d/25UMGIM49566.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Eclectic", "Intense", "Theatrical", "Heavy"]
+    "vibes": [
+      "Energetic",
+      "Eclectic",
+      "Intense",
+      "Theatrical",
+      "Heavy"
+    ]
   },
   {
     "id": "22",
@@ -307,12 +498,22 @@
     "startTime": "2026-06-05T20:50:00+02:00",
     "endTime": "2026-06-05T22:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["HEAVY METAL", "METALCORE", "THRASH METAL"],
+    "genres": [
+      "HEAVY METAL",
+      "METALCORE",
+      "THRASH METAL"
+    ],
     "countryCode": "US",
     "description": "One of metal's most reliable live bands, delivering two decades of riffs with surgical precision.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/14/52/34/145234ba-2cca-ca87-4b82-c13ef5b9236f/mzi.bdcewbho.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Intense", "Guitar", "Technical", "Aggressive"]
+    "vibes": [
+      "Heavy",
+      "Intense",
+      "Guitar",
+      "Technical",
+      "Aggressive"
+    ]
   },
   {
     "id": "23",
@@ -322,12 +523,21 @@
     "startTime": "2026-06-05T19:20:00+02:00",
     "endTime": "2026-06-05T20:25:00+02:00",
     "isHeadliner": false,
-    "genres": ["SYMPHONIC METAL", "GOTHIC METAL"],
+    "genres": [
+      "SYMPHONIC METAL",
+      "GOTHIC METAL"
+    ],
     "countryCode": "NL",
     "description": "Sharon den Adel leads the Dutch symphonic metal giants through a sweeping, cinematic set.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e1/a9/f7/e1a9f796-66a8-923a-3e61-9bf34656b4b8/00602577347641.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Melodic", "Cinematic", "Heavy", "Epic", "Emotional"]
+    "vibes": [
+      "Melodic",
+      "Cinematic",
+      "Heavy",
+      "Epic",
+      "Emotional"
+    ]
   },
   {
     "id": "24",
@@ -337,12 +547,21 @@
     "startTime": "2026-06-05T17:20:00+02:00",
     "endTime": "2026-06-05T18:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["POST-HARDCORE", "ALTERNATIVE ROCK"],
+    "genres": [
+      "POST-HARDCORE",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Ohio's introspective post-hardcore act blending vulnerability with crushing instrumentation.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music7/v4/7f/a7/ec/7fa7ec70-c31b-1eba-7f59-bdb2a9bc363e/886445450606.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Melodic", "Emotional", "Intense", "Alternative", "Heavy"]
+    "vibes": [
+      "Melodic",
+      "Emotional",
+      "Intense",
+      "Alternative",
+      "Heavy"
+    ]
   },
   {
     "id": "25",
@@ -352,12 +571,22 @@
     "startTime": "2026-06-05T16:20:00+02:00",
     "endTime": "2026-06-05T17:25:00+02:00",
     "isHeadliner": false,
-    "genres": ["PROGRESSIVE METAL", "SLUDGE METAL", "ALTERNATIVE METAL"],
+    "genres": [
+      "PROGRESSIVE METAL",
+      "SLUDGE METAL",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "US",
     "description": "Atlanta's progressive metal titans bring Crack the Skye-era depth and bone-crushing heaviness.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/6c/63/d8/6c63d817-9e0b-07a3-a756-e468186302cb/s06.qdagdxdw.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Complex", "Guitar", "Technical", "Intense"]
+    "vibes": [
+      "Heavy",
+      "Complex",
+      "Guitar",
+      "Technical",
+      "Intense"
+    ]
   },
   {
     "id": "26",
@@ -367,12 +596,21 @@
     "startTime": "2026-06-05T15:20:00+02:00",
     "endTime": "2026-06-05T16:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "POST-HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Michigan metalcore with soaring clean vocals and crushing breakdowns, paying tribute to Kyle Pavone.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/ff/ec/31/ffec31cc-1e23-94a7-184d-1a0c00672457/dj.powxtlqt.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Intense", "Emotional", "Energetic"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Intense",
+      "Emotional",
+      "Energetic"
+    ]
   },
   {
     "id": "27",
@@ -382,12 +620,22 @@
     "startTime": "2026-06-05T14:05:00+02:00",
     "endTime": "2026-06-05T14:55:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "PROGRESSIVE METAL", "SHOEGAZE"],
+    "genres": [
+      "METALCORE",
+      "PROGRESSIVE METAL",
+      "SHOEGAZE"
+    ],
     "countryCode": "GB",
     "description": "Liverpool's genre-blurring heavyweights open the Mandora Stage with noise and catharsis.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/96/00/0d/96000d08-9403-fcfa-a865-178160a13313/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Intense", "Dark", "Complex", "Atmospheric"]
+    "vibes": [
+      "Heavy",
+      "Intense",
+      "Dark",
+      "Complex",
+      "Atmospheric"
+    ]
   },
   {
     "id": "28",
@@ -397,12 +645,22 @@
     "startTime": "2026-06-07T00:00:00+02:00",
     "endTime": "2026-06-07T02:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "ALTERNATIVE ROCK", "POP ROCK"],
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE ROCK",
+      "POP ROCK"
+    ],
     "countryCode": "US",
     "description": "The Richmond act closes Saturday on the Mandora Stage with a two-hour set spanning their atmospheric metalcore discography.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/20/17/67/20176704-8002-ec25-828d-8fa0db0868c8/198704845987_Cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Dark", "Intense", "Atmospheric"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Dark",
+      "Intense",
+      "Atmospheric"
+    ]
   },
   {
     "id": "29",
@@ -412,12 +670,22 @@
     "startTime": "2026-06-06T22:35:00+02:00",
     "endTime": "2026-06-06T23:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["HIP HOP", "ALTERNATIVE RAP", "ELECTRONIC"],
+    "genres": [
+      "HIP HOP",
+      "ALTERNATIVE RAP",
+      "ELECTRONIC"
+    ],
     "countryCode": "DE",
     "description": "German rap heavyweight Marteria bridges hip-hop and festival rock energy on the Mandora Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/59/33/90/mzi.lorkoqtc.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Party", "Alternative", "Fun", "Rap"]
+    "vibes": [
+      "Energetic",
+      "Party",
+      "Alternative",
+      "Fun",
+      "Rap"
+    ]
   },
   {
     "id": "30",
@@ -427,12 +695,21 @@
     "startTime": "2026-06-06T20:15:00+02:00",
     "endTime": "2026-06-06T21:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "HORROR METAL"],
+    "genres": [
+      "METALCORE",
+      "HORROR METAL"
+    ],
     "countryCode": "US",
     "description": "Boston's horror-themed metalcore act with full theatrical horror staging and anthemic breakdowns.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/ba/9a/4e/ba9a4eb1-2ef1-7150-ac12-cdcb9d70b906/18CRGIM05569.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Intense", "Heavy", "Theatrical", "Aggressive", "Energetic"]
+    "vibes": [
+      "Intense",
+      "Heavy",
+      "Theatrical",
+      "Aggressive",
+      "Energetic"
+    ]
   },
   {
     "id": "31",
@@ -442,12 +719,21 @@
     "startTime": "2026-06-06T18:45:00+02:00",
     "endTime": "2026-06-06T19:45:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "POST-HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
     "countryCode": "FR",
     "description": "French metalcore rising force blending melody and brutality in equal measure.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1f/e0/0d/1fe00d63-828a-acc9-4901-c992db7b36d1/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Intense", "Energetic", "Aggressive"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Intense",
+      "Energetic",
+      "Aggressive"
+    ]
   },
   {
     "id": "32",
@@ -457,12 +743,21 @@
     "startTime": "2026-06-06T17:20:00+02:00",
     "endTime": "2026-06-06T18:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "POST-HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
     "countryCode": "GB",
     "description": "Southampton's metalcore stalwarts delivering precision riffage and dual-vocal power.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/21/77/3b/21773b0f-1382-1b3d-dc4c-471bcff1be18/886447054383.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Intense", "Melodic", "Energetic", "Aggressive"]
+    "vibes": [
+      "Heavy",
+      "Intense",
+      "Melodic",
+      "Energetic",
+      "Aggressive"
+    ]
   },
   {
     "id": "33",
@@ -472,12 +767,21 @@
     "startTime": "2026-06-06T16:15:00+02:00",
     "endTime": "2026-06-06T16:55:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "ALTERNATIVE ROCK"],
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Johnny Franck's solo project where metalcore meets infectious melodies and hooks.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/35/89/b0/3589b0e1-41da-a15f-b673-469059df6342/196874025635.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Fun", "Energetic", "Alternative"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Fun",
+      "Energetic",
+      "Alternative"
+    ]
   },
   {
     "id": "34",
@@ -487,12 +791,22 @@
     "startTime": "2026-06-06T15:15:00+02:00",
     "endTime": "2026-06-06T15:55:00+02:00",
     "isHeadliner": false,
-    "genres": ["HIP HOP", "TRAP", "ALTERNATIVE RAP"],
+    "genres": [
+      "HIP HOP",
+      "TRAP",
+      "ALTERNATIVE RAP"
+    ],
     "countryCode": "CH",
     "description": "Swiss hip-hop and trap act bringing a unique perspective to the Mandora Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/36/53/7b/36537bc0-2ef1-7807-d982-e966f33ea7be/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Rap", "Alternative", "Fun", "Party"]
+    "vibes": [
+      "Energetic",
+      "Rap",
+      "Alternative",
+      "Fun",
+      "Party"
+    ]
   },
   {
     "id": "35",
@@ -502,12 +816,21 @@
     "startTime": "2026-06-07T23:20:00+02:00",
     "endTime": "2026-06-08T01:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["POWER METAL", "HEAVY METAL"],
+    "genres": [
+      "POWER METAL",
+      "HEAVY METAL"
+    ],
     "countryCode": "SE",
     "description": "Sweden's history-themed power metal battalion close the Mandora Stage on Sunday with battle hymns and pyro.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/03/5e/65/035e65a1-1873-8a3f-b25d-18d9bb3736b6/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Epic", "Heavy", "Energetic", "Anthemic", "Guitar"]
+    "vibes": [
+      "Epic",
+      "Heavy",
+      "Energetic",
+      "Anthemic",
+      "Guitar"
+    ]
   },
   {
     "id": "36",
@@ -517,12 +840,22 @@
     "startTime": "2026-06-07T21:30:00+02:00",
     "endTime": "2026-06-07T22:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE METAL", "PROGRESSIVE METAL", "ART ROCK"],
+    "genres": [
+      "ALTERNATIVE METAL",
+      "PROGRESSIVE METAL",
+      "ART ROCK"
+    ],
     "countryCode": "US",
     "description": "Maynard James Keenan's hypnotic side project delivering dark, cerebral metal at its finest.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/12/8c/22/128c225e-2d75-a283-c13f-0aaaf92ef865/13UABIM59271.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Dark", "Intense", "Heavy", "Atmospheric", "Complex"]
+    "vibes": [
+      "Dark",
+      "Intense",
+      "Heavy",
+      "Atmospheric",
+      "Complex"
+    ]
   },
   {
     "id": "37",
@@ -532,12 +865,21 @@
     "startTime": "2026-06-07T19:40:00+02:00",
     "endTime": "2026-06-07T20:40:00+02:00",
     "isHeadliner": false,
-    "genres": ["HARD ROCK", "ALTERNATIVE METAL"],
+    "genres": [
+      "HARD ROCK",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "US",
     "description": "Myles Kennedy's powerhouse vocals over Mark Tremonti's riffs — hard rock done right.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2e/c1/12/2ec11256-ed80-17fb-ddf2-cf8eb850078c/840588171507.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Rock", "Guitar", "Melodic", "Heavy", "Energetic"]
+    "vibes": [
+      "Rock",
+      "Guitar",
+      "Melodic",
+      "Heavy",
+      "Energetic"
+    ]
   },
   {
     "id": "38",
@@ -547,12 +889,22 @@
     "startTime": "2026-06-07T18:10:00+02:00",
     "endTime": "2026-06-07T19:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK ROCK", "ROCKABILLY", "ALTERNATIVE ROCK"],
+    "genres": [
+      "PUNK ROCK",
+      "ROCKABILLY",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Mike Ness and Social D delivering 40+ years of California punk, country, and rock 'n' roll.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/d2/8f/e3/d28fe3a5-f99f-227c-263f-1485756de8eb/mzi.goczaxyx.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Rock", "Energetic", "Punk", "Nostalgic"]
+    "vibes": [
+      "Raw",
+      "Rock",
+      "Energetic",
+      "Punk",
+      "Nostalgic"
+    ]
   },
   {
     "id": "39",
@@ -562,12 +914,22 @@
     "startTime": "2026-06-07T16:45:00+02:00",
     "endTime": "2026-06-07T17:40:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE METAL", "POST-GRUNGE", "HARD ROCK"],
+    "genres": [
+      "ALTERNATIVE METAL",
+      "POST-GRUNGE",
+      "HARD ROCK"
+    ],
     "countryCode": "US",
     "description": "Pennsylvania post-grunge icons with a catalogue of dark, melodic, radio-heavy hits.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/c7/38/f1/c738f1f8-8146-8363-eecc-cb1d3b048b75/19UMGIM94144.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Dark", "Rock", "Emotional"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Dark",
+      "Rock",
+      "Emotional"
+    ]
   },
   {
     "id": "40",
@@ -577,12 +939,22 @@
     "startTime": "2026-06-07T15:35:00+02:00",
     "endTime": "2026-06-07T16:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["FOLK METAL", "GROOVE METAL", "ALTERNATIVE METAL"],
+    "genres": [
+      "FOLK METAL",
+      "GROOVE METAL",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "IN",
     "description": "Delhi's unique folk-metal fusion act — Punjabi influences, furious riffing, and a message.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/08/3f/59/083f5964-e161-ef49-0f45-755e52e595de/artwork.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Heavy", "Eclectic", "Fierce", "Unique"]
+    "vibes": [
+      "Energetic",
+      "Heavy",
+      "Eclectic",
+      "Fierce",
+      "Unique"
+    ]
   },
   {
     "id": "41",
@@ -592,12 +964,21 @@
     "startTime": "2026-06-07T14:20:00+02:00",
     "endTime": "2026-06-07T15:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["DEATH METAL", "PROGRESSIVE METAL"],
+    "genres": [
+      "DEATH METAL",
+      "PROGRESSIVE METAL"
+    ],
     "countryCode": "US",
     "description": "Denver's cosmic death metal outfit — technical, psychedelic, and utterly crushing.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bb/4e/2d/bb4e2d8d-4c15-ba91-ecf1-84a0162815ea/196871925433.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Extreme", "Heavy", "Technical", "Dark", "Complex"]
+    "vibes": [
+      "Extreme",
+      "Heavy",
+      "Technical",
+      "Dark",
+      "Complex"
+    ]
   },
   {
     "id": "42",
@@ -607,12 +988,20 @@
     "startTime": "2026-06-07T13:30:00+02:00",
     "endTime": "2026-06-07T14:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["HARDCORE", "METALCORE"],
+    "genres": [
+      "HARDCORE",
+      "METALCORE"
+    ],
     "countryCode": null,
     "description": "Intense hardcore openers setting the tone for Sunday on the Mandora Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/3d/d2/e6/3dd2e6a8-6d80-e88c-ee38-3633220af412/797885069962_cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Raw", "Intense"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Raw",
+      "Intense"
+    ]
   },
   {
     "id": "43",
@@ -622,12 +1011,21 @@
     "startTime": "2026-06-06T00:20:00+02:00",
     "endTime": "2026-06-06T01:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["HARD ROCK", "GARAGE ROCK"],
+    "genres": [
+      "HARD ROCK",
+      "GARAGE ROCK"
+    ],
     "countryCode": "CA",
     "description": "Toronto's hardest-working rock trio bring bravado, hooks, and no-nonsense rock 'n' roll.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/89/29/cc/8929cc64-0a83-59ac-6ad5-103355103de0/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Rock", "Fun", "Raw", "Guitar"]
+    "vibes": [
+      "Energetic",
+      "Rock",
+      "Fun",
+      "Raw",
+      "Guitar"
+    ]
   },
   {
     "id": "44",
@@ -637,12 +1035,21 @@
     "startTime": "2026-06-05T22:30:00+02:00",
     "endTime": "2026-06-05T23:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "GOTHIC ROCK"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "GOTHIC ROCK"
+    ],
     "countryCode": "GB",
     "description": "UK alternative-gothic rock act with anthemic hooks and a theatrical stage presence.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ea/b1/9f/eab19f04-5f02-282b-0452-7b551e80f5ee/846070095504.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Dark", "Alternative", "Rock", "Melodic", "Theatrical"]
+    "vibes": [
+      "Dark",
+      "Alternative",
+      "Rock",
+      "Melodic",
+      "Theatrical"
+    ]
   },
   {
     "id": "45",
@@ -652,12 +1059,21 @@
     "startTime": "2026-06-05T21:30:00+02:00",
     "endTime": "2026-06-05T22:25:00+02:00",
     "isHeadliner": false,
-    "genres": ["BEATDOWN HARDCORE", "METALCORE"],
+    "genres": [
+      "BEATDOWN HARDCORE",
+      "METALCORE"
+    ],
     "countryCode": "GB",
     "description": "Sheffield's beatdown-metalcore crew delivering neck-snapping groove and pit-starting breakdowns.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/e4/b6/37/e4b6379f-2f1b-96d0-6709-7452beb12d26/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Intense", "Raw", "Energetic"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Intense",
+      "Raw",
+      "Energetic"
+    ]
   },
   {
     "id": "46",
@@ -667,12 +1083,21 @@
     "startTime": "2026-06-05T20:30:00+02:00",
     "endTime": "2026-06-05T21:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["HARDCORE", "PUNK ROCK"],
+    "genres": [
+      "HARDCORE",
+      "PUNK ROCK"
+    ],
     "countryCode": "US",
     "description": "Santa Cruz hardcore with surf-punk DNA — fast, heavy, and relentlessly fun.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/18/9a/b7/189ab78b-9c1b-357b-4a9b-7e06837a65d6/0045778812066.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Raw", "Punk", "Intense", "Fast"]
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Punk",
+      "Intense",
+      "Fast"
+    ]
   },
   {
     "id": "47",
@@ -682,12 +1107,21 @@
     "startTime": "2026-06-05T19:15:00+02:00",
     "endTime": "2026-06-05T20:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "POP ROCK"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "POP ROCK"
+    ],
     "countryCode": "GB",
     "description": "Bedford's most fun band — Rob Damiani's showmanship meets some of the most infectious riffs on the circuit.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f0/e9/3e/f0e93e3a-3e4f-a174-1e40-bca54da87356/25CRGIM50449.rgb.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Fun", "Rock", "Melodic", "Party"]
+    "vibes": [
+      "Energetic",
+      "Fun",
+      "Rock",
+      "Melodic",
+      "Party"
+    ]
   },
   {
     "id": "48",
@@ -697,12 +1131,20 @@
     "startTime": "2026-06-05T16:30:00+02:00",
     "endTime": "2026-06-05T17:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "ALTERNATIVE ROCK"],
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": null,
     "description": "Rising metalcore act on the Orbit Stage Friday afternoon.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ef/f9/37/eff937a9-ad77-ee4f-0944-5a0a36e20046/3247.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Energetic", "Alternative", "Intense"]
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Alternative",
+      "Intense"
+    ]
   },
   {
     "id": "49",
@@ -712,12 +1154,21 @@
     "startTime": "2026-06-05T15:40:00+02:00",
     "endTime": "2026-06-05T16:25:00+02:00",
     "isHeadliner": false,
-    "genres": ["POP PUNK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "POP PUNK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Orlando pop-punk act with huge hooks and viral energy translating to a must-see live show.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/d3/4d/d4/d34dd4d9-a58b-9861-fa1c-64b9158ce54d/0045778809066.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Fun", "Energetic", "Melodic", "Punk", "Party"]
+    "vibes": [
+      "Fun",
+      "Energetic",
+      "Melodic",
+      "Punk",
+      "Party"
+    ]
   },
   {
     "id": "50",
@@ -727,12 +1178,20 @@
     "startTime": "2026-06-05T15:00:00+02:00",
     "endTime": "2026-06-05T15:40:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "ALTERNATIVE ROCK"],
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": null,
     "description": "Rising act opening the Orbit Stage Friday with metalcore energy.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/a0/a5/ee/a0a5ee74-a1e6-5276-f0bd-7272a56f89bc/artwork.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Energetic", "Intense", "Alternative"]
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Alternative"
+    ]
   },
   {
     "id": "51",
@@ -742,12 +1201,20 @@
     "startTime": "2026-06-05T14:30:00+02:00",
     "endTime": "2026-06-05T15:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "HARDCORE"
+    ],
     "countryCode": null,
     "description": "Opening the Orbit Stage on Friday, kicking off the weekend.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/4d/d0/fa/4dd0fa65-bc34-463a-905d-142457f7267e/artwork.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Raw", "Energetic", "Heavy"]
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Energetic",
+      "Heavy"
+    ]
   },
   {
     "id": "52",
@@ -757,12 +1224,20 @@
     "startTime": "2026-06-06T01:30:00+02:00",
     "endTime": "2026-06-06T02:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "PUNK"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "PUNK"
+    ],
     "countryCode": null,
     "description": "Closing out the Orbit Stage in the early hours of Saturday morning.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3a/39/91/3a3991b7-da54-435f-7ed1-c0266ee94599/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Energetic", "Alternative", "Fun"]
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Alternative",
+      "Fun"
+    ]
   },
   {
     "id": "53",
@@ -772,12 +1247,21 @@
     "startTime": "2026-06-07T01:30:00+02:00",
     "endTime": "2026-06-07T02:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["RAP ROCK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "RAP ROCK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "DE",
     "description": "Münster's rap-rock veterans closing Saturday night on the Orbit Stage.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/83/5d/01/835d01d0-8646-b2be-eef9-9bba0f7f394f/mzi.simlesze.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Rock", "Alternative", "Rap", "Party"]
+    "vibes": [
+      "Energetic",
+      "Rock",
+      "Alternative",
+      "Rap",
+      "Party"
+    ]
   },
   {
     "id": "54",
@@ -787,12 +1271,22 @@
     "startTime": "2026-06-07T00:30:00+02:00",
     "endTime": "2026-06-07T01:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["GLAM ROCK", "ALTERNATIVE ROCK", "ART ROCK"],
+    "genres": [
+      "GLAM ROCK",
+      "ALTERNATIVE ROCK",
+      "ART ROCK"
+    ],
     "countryCode": "CA",
     "description": "The theatrically inclined Canadian trio with a rabid fanbase and cinematic live show.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/42/ef/f2/42eff2ad-500e-5649-86cb-887a35eb6a9b/5054227039744_1.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Rock", "Theatrical", "Energetic", "Melodic", "Alternative"]
+    "vibes": [
+      "Rock",
+      "Theatrical",
+      "Energetic",
+      "Melodic",
+      "Alternative"
+    ]
   },
   {
     "id": "55",
@@ -802,12 +1296,22 @@
     "startTime": "2026-06-06T23:05:00+02:00",
     "endTime": "2026-06-06T23:50:00+02:00",
     "isHeadliner": false,
-    "genres": ["INDIE ROCK", "POST-HARDCORE", "ALTERNATIVE ROCK"],
+    "genres": [
+      "INDIE ROCK",
+      "POST-HARDCORE",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "GB",
     "description": "Ipswich's beloved post-hardcore indie act delivering heartfelt, dynamic live sets.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/14/ac/7b/14ac7b28-e4ae-1ab8-63b7-17c9b47b678a/43554.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Alternative", "Melodic", "Emotional", "Energetic", "Rock"]
+    "vibes": [
+      "Alternative",
+      "Melodic",
+      "Emotional",
+      "Energetic",
+      "Rock"
+    ]
   },
   {
     "id": "56",
@@ -817,12 +1321,21 @@
     "startTime": "2026-06-06T22:05:00+02:00",
     "endTime": "2026-06-06T22:50:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "PROGRESSIVE METAL"],
+    "genres": [
+      "METALCORE",
+      "PROGRESSIVE METAL"
+    ],
     "countryCode": "AU",
     "description": "Melbourne's melodic metalcore standouts blending lush atmospherics with crushing heaviness.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/a3/9d/bf/a39dbfae-84ad-b535-59ba-bb3accab5f20/8721093759744.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Dark", "Complex", "Atmospheric"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Dark",
+      "Complex",
+      "Atmospheric"
+    ]
   },
   {
     "id": "57",
@@ -832,12 +1345,22 @@
     "startTime": "2026-06-06T20:50:00+02:00",
     "endTime": "2026-06-06T21:40:00+02:00",
     "isHeadliner": false,
-    "genres": ["PUNK", "POST-PUNK", "HARDCORE"],
+    "genres": [
+      "PUNK",
+      "POST-PUNK",
+      "HARDCORE"
+    ],
     "countryCode": "GB",
     "description": "North London post-punk act channelling The Smiths through hardcore intensity.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/1b/b0/16/1bb0166c-3e1a-b993-a10f-d37e2747e1b1/65736.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Energetic", "Alternative", "Punk", "Intense"]
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Alternative",
+      "Punk",
+      "Intense"
+    ]
   },
   {
     "id": "58",
@@ -847,12 +1370,21 @@
     "startTime": "2026-06-06T19:45:00+02:00",
     "endTime": "2026-06-06T20:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Portland metalcore with a ferocious frontwoman and breakdowns built to destroy necks.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/69/c5/7c/69c57cec-4e62-a7d4-65d8-cd3c26d82c19/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Intense", "Raw", "Energetic"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Intense",
+      "Raw",
+      "Energetic"
+    ]
   },
   {
     "id": "59",
@@ -862,12 +1394,22 @@
     "startTime": "2026-06-06T18:40:00+02:00",
     "endTime": "2026-06-06T19:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["METAL", "INDUSTRIAL", "ALTERNATIVE METAL"],
+    "genres": [
+      "METAL",
+      "INDUSTRIAL",
+      "ALTERNATIVE METAL"
+    ],
     "countryCode": "GB",
     "description": "Sam and Milkie Way's provocative industrial metal duo — uncompromising, loud, and unforgettable.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/75/31/b8/7531b897-0468-0b20-8ba8-ece974830cc1/195497240784.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Energetic", "Intense", "Wild"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Wild"
+    ]
   },
   {
     "id": "60",
@@ -877,12 +1419,22 @@
     "startTime": "2026-06-06T17:20:00+02:00",
     "endTime": "2026-06-06T18:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["INDIE ROCK", "PUNK ROCK", "GARAGE ROCK"],
+    "genres": [
+      "INDIE ROCK",
+      "PUNK ROCK",
+      "GARAGE ROCK"
+    ],
     "countryCode": "GB",
     "description": "The Welwyn Garden City trio with two-minute bangers and infectious rock energy.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/14/81/90/mzi.hdyvnmhk.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Fun", "Rock", "Raw", "Melodic"]
+    "vibes": [
+      "Energetic",
+      "Fun",
+      "Rock",
+      "Raw",
+      "Melodic"
+    ]
   },
   {
     "id": "61",
@@ -892,12 +1444,20 @@
     "startTime": "2026-06-06T16:30:00+02:00",
     "endTime": "2026-06-06T17:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "POP ROCK"],
-    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "POP ROCK"
+    ],
+    "countryCode": "JP",
     "description": "Alternative rock act on the Orbit Stage Saturday afternoon.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/c8/9a/68/c89a685d-9425-38fb-db60-a1298118f076/886449505326.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Melodic", "Alternative", "Energetic", "Rock"]
+    "vibes": [
+      "Melodic",
+      "Alternative",
+      "Energetic",
+      "Rock"
+    ]
   },
   {
     "id": "62",
@@ -907,12 +1467,21 @@
     "startTime": "2026-06-06T15:20:00+02:00",
     "endTime": "2026-06-06T16:05:00+02:00",
     "isHeadliner": false,
-    "genres": ["POST-HARDCORE", "ART PUNK"],
+    "genres": [
+      "POST-HARDCORE",
+      "ART PUNK"
+    ],
     "countryCode": "US",
     "description": "Los Angeles post-hardcore with Jason Butler's explosive, boundary-obliterating performances.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/6a/90/72/6a9072df-1c12-f79f-ab79-addb21c73437/mzi.vrmxvdsg.tif/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Intense", "Raw", "Alternative", "Energetic", "Wild"]
+    "vibes": [
+      "Intense",
+      "Raw",
+      "Alternative",
+      "Energetic",
+      "Wild"
+    ]
   },
   {
     "id": "63",
@@ -922,12 +1491,20 @@
     "startTime": "2026-06-06T14:30:00+02:00",
     "endTime": "2026-06-06T15:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["HIP HOP", "ALTERNATIVE RAP"],
+    "genres": [
+      "HIP HOP",
+      "ALTERNATIVE RAP"
+    ],
     "countryCode": "DE",
     "description": "German hip-hop act opening the Orbit Stage on Saturday.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ee/8b/48/ee8b48e4-8633-ec94-2e55-c8cbad99a852/cover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Rap", "Alternative", "Fun"]
+    "vibes": [
+      "Energetic",
+      "Rap",
+      "Alternative",
+      "Fun"
+    ]
   },
   {
     "id": "64",
@@ -937,12 +1514,20 @@
     "startTime": "2026-06-08T00:30:00+02:00",
     "endTime": "2026-06-08T01:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "INDIE ROCK"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "INDIE ROCK"
+    ],
     "countryCode": null,
     "description": "Closing the Orbit Stage and Rock am Ring 2026 in the early hours of Monday morning.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/6a/04/76/6a04764f-7faf-906b-7352-bba88c3a4da6/4050538306002.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Alternative", "Melodic", "Energetic", "Rock"]
+    "vibes": [
+      "Alternative",
+      "Melodic",
+      "Energetic",
+      "Rock"
+    ]
   },
   {
     "id": "65",
@@ -952,12 +1537,21 @@
     "startTime": "2026-06-07T22:30:00+02:00",
     "endTime": "2026-06-07T23:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "BEATDOWN HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "BEATDOWN HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Texas beatdown-metalcore — some of the meanest breakdowns on the circuit.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2e/0c/dc/2e0cdc50-53b2-09f5-5d6b-0cc40c53ccf2/4099964063103.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Intense", "Raw", "Energetic"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Intense",
+      "Raw",
+      "Energetic"
+    ]
   },
   {
     "id": "66",
@@ -967,12 +1561,22 @@
     "startTime": "2026-06-07T21:15:00+02:00",
     "endTime": "2026-06-07T22:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["POP PUNK", "POP ROCK", "ALTERNATIVE ROCK"],
+    "genres": [
+      "POP PUNK",
+      "POP ROCK",
+      "ALTERNATIVE ROCK"
+    ],
     "countryCode": "US",
     "description": "Florida pop-punk veterans with a decade of anthems and a devoted fanbase.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/ca/81/1c/ca811cdd-f91f-4d87-c3e6-e01b3c9358a9/dj.biohxgpn.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Fun", "Energetic", "Melodic", "Punk", "Party"]
+    "vibes": [
+      "Fun",
+      "Energetic",
+      "Melodic",
+      "Punk",
+      "Party"
+    ]
   },
   {
     "id": "67",
@@ -982,12 +1586,21 @@
     "startTime": "2026-06-07T20:10:00+02:00",
     "endTime": "2026-06-07T21:10:00+02:00",
     "isHeadliner": false,
-    "genres": ["POP PUNK", "PUNK ROCK"],
+    "genres": [
+      "POP PUNK",
+      "PUNK ROCK"
+    ],
     "countryCode": "US",
     "description": "Walnut Creek pop-punk with a rawness and directness that cuts through any crowd.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/07/25/59/072559fe-ccb7-6cd8-9d99-a6f39c3bb593/192562764459.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Energetic", "Melodic", "Punk", "Raw", "Anthemic"]
+    "vibes": [
+      "Energetic",
+      "Melodic",
+      "Punk",
+      "Raw",
+      "Anthemic"
+    ]
   },
   {
     "id": "68",
@@ -997,12 +1610,20 @@
     "startTime": "2026-06-07T18:50:00+02:00",
     "endTime": "2026-06-07T19:45:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "INDIE ROCK"],
-    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "INDIE ROCK"
+    ],
+    "countryCode": "ES",
     "description": "Sunday evening Orbit Stage slot.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/23/2e/57/232e574d-0f97-e687-797c-d8efa4f9fb62/5034644803487.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Alternative", "Energetic", "Rock", "Melodic"]
+    "vibes": [
+      "Alternative",
+      "Energetic",
+      "Rock",
+      "Melodic"
+    ]
   },
   {
     "id": "69",
@@ -1012,12 +1633,21 @@
     "startTime": "2026-06-07T17:45:00+02:00",
     "endTime": "2026-06-07T18:30:00+02:00",
     "isHeadliner": false,
-    "genres": ["DJENT", "PROGRESSIVE METAL"],
+    "genres": [
+      "DJENT",
+      "PROGRESSIVE METAL"
+    ],
     "countryCode": "GB",
     "description": "Milton Keynes djent pioneers with mind-bending rhythmic complexity and soaring vocal melodies.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/73/46/39/7346399d-18bc-c6c0-14ba-f64462d18c27/802644832524.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Complex", "Heavy", "Technical", "Melodic", "Atmospheric"]
+    "vibes": [
+      "Complex",
+      "Heavy",
+      "Technical",
+      "Melodic",
+      "Atmospheric"
+    ]
   },
   {
     "id": "70",
@@ -1027,12 +1657,21 @@
     "startTime": "2026-06-07T16:30:00+02:00",
     "endTime": "2026-06-07T17:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "POST-HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Charlotte metalcore with infectious hooks and powerful vocal performances.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/61/0a/ad/610aad56-dff6-5631-e199-45772aa33be9/193436393836_CYBDeluxeCover.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Heavy", "Melodic", "Intense", "Energetic", "Aggressive"]
+    "vibes": [
+      "Heavy",
+      "Melodic",
+      "Intense",
+      "Energetic",
+      "Aggressive"
+    ]
   },
   {
     "id": "71",
@@ -1042,12 +1681,21 @@
     "startTime": "2026-06-07T15:30:00+02:00",
     "endTime": "2026-06-07T16:15:00+02:00",
     "isHeadliner": false,
-    "genres": ["DEATH METAL", "HARDCORE"],
+    "genres": [
+      "DEATH METAL",
+      "HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Phoenix death metal bulldozer — HM-2 tone worship and relentless groove.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music20/v4/fe/01/ee/fe01eeb1-9fbd-0071-f337-f74b78fa6278/781676736225.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Extreme", "Heavy", "Aggressive", "Raw", "Intense"]
+    "vibes": [
+      "Extreme",
+      "Heavy",
+      "Aggressive",
+      "Raw",
+      "Intense"
+    ]
   },
   {
     "id": "72",
@@ -1057,12 +1705,21 @@
     "startTime": "2026-06-07T14:45:00+02:00",
     "endTime": "2026-06-07T15:25:00+02:00",
     "isHeadliner": false,
-    "genres": ["METALCORE", "HARDCORE"],
+    "genres": [
+      "METALCORE",
+      "HARDCORE"
+    ],
     "countryCode": "US",
     "description": "Pittsburgh metalcore act with breakdowns that demand a response from every limb.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/63/0d/78/630d7896-796a-412e-a9d5-30bce742f3d7/8721056479092.png/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Aggressive", "Heavy", "Intense", "Raw", "Energetic"]
+    "vibes": [
+      "Aggressive",
+      "Heavy",
+      "Intense",
+      "Raw",
+      "Energetic"
+    ]
   },
   {
     "id": "73",
@@ -1072,12 +1729,21 @@
     "startTime": "2026-06-07T13:30:00+02:00",
     "endTime": "2026-06-07T14:20:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "HARD ROCK"],
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "HARD ROCK"
+    ],
     "countryCode": "BR",
     "description": "São Paulo alternative rock rising force — melodic, heavy, and impossible to ignore.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/06/71/dd/0671dd7a-d197-9b86-8210-4440c66ce1be/4099964039771.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Rock", "Energetic", "Alternative", "Melodic", "Heavy"]
+    "vibes": [
+      "Rock",
+      "Energetic",
+      "Alternative",
+      "Melodic",
+      "Heavy"
+    ]
   },
   {
     "id": "74",
@@ -1087,11 +1753,19 @@
     "startTime": "2026-06-07T12:30:00+02:00",
     "endTime": "2026-06-07T13:00:00+02:00",
     "isHeadliner": false,
-    "genres": ["ALTERNATIVE ROCK", "PUNK"],
-    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "PUNK"
+    ],
+    "countryCode": "JM",
     "description": "Opening the Orbit Stage on Sunday morning.",
-    "imageUrl": null,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/9c/37/2c/9c372ca8-3a4f-ea15-4612-987e2ab54782/197190287301.jpg/600x600bb.jpg",
     "socials": {},
-    "vibes": ["Raw", "Alternative", "Energetic", "Punk"]
+    "vibes": [
+      "Raw",
+      "Alternative",
+      "Energetic",
+      "Punk"
+    ]
   }
 ]

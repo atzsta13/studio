@@ -67,7 +67,8 @@
     "timezone": "Europe/Vienna",
     "lat": 47.0583,
     "lng": 15.4461,
-    "weatherDisplayName": "Graz · Messe Congress"
+    "weatherDisplayName": "Graz · Messe Congress",
+    "utcOffsetHours": 2
   },
   "dates": {
     "year": 2026,
@@ -112,10 +113,9 @@
     "currencyConverter": false,
     "tentFinder": false,
     "vibeQuiz": true,
-    "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
-    "timetable": true,
+    "timetable": false,
     "cashlessLink": false,
     "dayparkNightpark": false,
     "familyZone": false,

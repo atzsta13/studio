@@ -47,6 +47,8 @@ import com.example.szigerinsider2026.ui.components.*
 import coil3.compose.AsyncImage
 import androidx.compose.ui.layout.ContentScale
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.parseTime
+import com.example.szigerinsider2026.ui.utils.formatTime
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -70,15 +72,6 @@ private val FESTIVAL_END   get() = FestivalConfig.current.let { LocalDate.parse(
 private val ClashBannerBg     = Color(0xFF2A0A00)
 private val ClashBannerBorder = Color(0xFFFF4500)
 private val ClashBadgeColor   = Color(0xFFFF6B00)
-
-// ─── Time helpers ─────────────────────────────────────────────────────────────
-
-private fun parseTime(t: String?): LocalTime? {
-    if (t == null) return null
-    return try {
-        LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"))
-    } catch (_: Exception) { null }
-}
 
 // ─── Now-playing helper ───────────────────────────────────────────────────────
 
@@ -477,14 +470,10 @@ fun TimetableGrid(
     val hourWidth = baseHourWidth * zoom
     val trackHeight = 110f
 
-    fun getX(time: String?): Float {
+    fun getX(time: LocalTime?): Float {
         if (time == null) return 0f
-        val parts = time.split(":")
-        if (parts.size < 2) return 0f
-        val h = parts[0].toInt()
-        val m = parts[1].toInt()
-        val normalizedH = if (h < 10) h + 24 else h
-        val offsetMinutes = (normalizedH - START_HOUR) * 60 + m
+        val normalizedH = if (time.hour < 10) time.hour + 24 else time.hour
+        val offsetMinutes = (normalizedH - START_HOUR) * 60 + time.minute
         return (offsetMinutes / 60f) * hourWidth
     }
 
@@ -514,7 +503,7 @@ fun TimetableGrid(
             val startDate = LocalDate.parse(FestivalConfig.current.dates.startDate)
             val endDate   = LocalDate.parse(FestivalConfig.current.dates.endDate)
             if (today >= startDate && today <= endDate) {
-                val currentX = getX("${now.hour}:${now.minute}")
+                val currentX = getX(now)
                 // Glow effect
                 Box(
                     modifier = Modifier
@@ -537,8 +526,8 @@ fun TimetableGrid(
                 val trackY = stageIndex * trackHeight + 40
                 if ((trackY + offsetY) in -trackHeight..screenHeight + trackHeight) {
                     entry.value.forEach { artist ->
-                        val x = getX(artist.startTime)
-                        val endX = getX(artist.endTime)
+                        val x = getX(parseTime(artist.startTime))
+                        val endX = getX(parseTime(artist.endTime))
                         val width = (endX - x).coerceAtLeast(60f)
                         if ((x + offsetX + width) > 0 && (x + offsetX) < screenWidth) {
                             ArtistGridBlock(artist = artist, x = x, y = trackY, width = width, blockHeight = trackHeight - 12, isFavorite = favoriteIds.contains(artist.id), inSquad = squadIds.contains(artist.id), onArtistClick = onArtistClick, haptic = haptic)
@@ -719,7 +708,7 @@ private fun ArtistGridBlock(
             Spacer(modifier = Modifier.weight(1f))
             
             Text(
-                text = "${artist.startTime} - ${artist.endTime}",
+                text = "${formatTime(artist.startTime)} - ${formatTime(artist.endTime)}",
                 color = if (isLive) ToxicGreen.copy(alpha = 0.7f) else TextMuted,
                 fontSize = 8.sp,
                 fontWeight = FontWeight.Bold,
@@ -763,10 +752,10 @@ private fun ScheduleRow(
                     } else if (showDayBadge) {
                         val dayShort = FestivalConfig.current.dates.dayLabels[artist.day] ?: artist.day?.take(3)?.uppercase() ?: ""
                         BrutalistBadge(text = dayShort, color = MaterialTheme.colorScheme.secondary)
-                        if (artist.startTime != null) { Text(text = artist.startTime, fontWeight = FontWeight.Black, color = Color.White.copy(alpha = 0.7f), fontSize = 11.sp, letterSpacing = (-0.3).sp, modifier = Modifier.padding(top = 4.dp)) }
+                        if (artist.startTime != null) { Text(text = formatTime(artist.startTime), fontWeight = FontWeight.Black, color = Color.White.copy(alpha = 0.7f), fontSize = 11.sp, letterSpacing = (-0.3).sp, modifier = Modifier.padding(top = 4.dp)) }
                     } else {
-                        if (artist.startTime != null) { Text(text = artist.startTime, fontWeight = FontWeight.Black, color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White, fontSize = 14.sp, letterSpacing = (-0.5).sp) }
-                        if (artist.endTime != null) { Text(text = artist.endTime, color = TextMuted, fontSize = 10.sp) }
+                        if (artist.startTime != null) { Text(text = formatTime(artist.startTime), fontWeight = FontWeight.Black, color = if (artist.isHeadliner) MaterialTheme.colorScheme.primary else Color.White, fontSize = 14.sp, letterSpacing = (-0.5).sp) }
+                        if (artist.endTime != null) { Text(text = formatTime(artist.endTime), color = TextMuted, fontSize = 10.sp) }
                     }
                 }
                 Box(modifier = Modifier.width(1.dp).height(36.dp).background(Color.White.copy(alpha = 0.07f)))
@@ -863,7 +852,7 @@ private fun ArtistDetailSheet(artist: Artist, isFavorite: Boolean, onToggleFavor
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 8.dp)) {
                  BrutalistBadge(text = (artist.stage ?: "MAIN STAGE").uppercase(), color = MaterialTheme.colorScheme.primary)
                  Spacer(modifier = Modifier.width(10.dp))
-                 Text(text = "${artist.day?.uppercase()} · ${artist.startTime} - ${artist.endTime}", color = TextMuted, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                 Text(text = "${artist.day?.uppercase()} · ${formatTime(artist.startTime)} - ${formatTime(artist.endTime)}", color = TextMuted, fontWeight = FontWeight.Bold, fontSize = 12.sp)
             }
             if (artist.genres?.isNotEmpty() == true) {
                 Row(modifier = Modifier.padding(top = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {

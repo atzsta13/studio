@@ -9,6 +9,20 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
+fun parseTime(t: String?): LocalTime? {
+    if (t == null) return null
+    return try {
+        java.time.OffsetDateTime.parse(t).toLocalTime()
+    } catch (_: Exception) {
+        try {
+            LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"))
+        } catch (_: Exception) { null }
+    }
+}
+
+fun formatTime(t: String?): String =
+    parseTime(t)?.format(DateTimeFormatter.ofPattern("HH:mm")) ?: ""
+
 fun getFestivalDay(): String {
     val config = FestivalConfig.current
     val today = LocalDate.now()
@@ -32,8 +46,8 @@ fun hasSetStarted(artist: Artist): Boolean {
         if (dayIndex == -1) return false
 
         val setDate = startDate.plusDays(dayIndex.toLong())
-        val setTime = LocalTime.parse(artist.startTime, DateTimeFormatter.ofPattern("HH:mm"))
-        
+        val setTime = parseTime(artist.startTime) ?: return false
+
         val setDateTime = LocalDateTime.of(setDate, setTime)
         val now = LocalDateTime.now()
 

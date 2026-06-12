@@ -25,15 +25,6 @@ import com.example.szigerinsider2026.ui.theme.OLEDBlack
 
 private data class FestivalEntry(val id: String, val label: String, val location: String)
 
-private val FESTIVALS = listOf(
-    FestivalEntry("sziget-2026",      "Sziget",      "Budapest, Hungary"),
-    FestivalEntry("novarock-2026",    "Nova Rock",   "Nickelsdorf, Austria"),
-    FestivalEntry("frequency-2026",   "Frequency",   "St. Pölten, Austria"),
-    FestivalEntry("area53-2026",      "Area 53",     "Wiesen, Austria"),
-    FestivalEntry("ernte-punk-2026",  "Ernte Punk",  "Güssing, Austria"),
-    FestivalEntry("rock-am-ring-2026","Rock am Ring", "Nürburgring, Germany"),
-)
-
 @Composable
 fun FestivalSelectionScreen(
     navController: NavController,
@@ -41,6 +32,13 @@ fun FestivalSelectionScreen(
 ) {
     val context = LocalContext.current
     val haptic = LocalHapticFeedback.current
+    val festivals = remember {
+        FestivalConfig.AVAILABLE_IDS.mapNotNull { id ->
+            FestivalConfig.load(context, id)?.let { config ->
+                FestivalEntry(id, config.name, "${config.location.city}, ${config.location.country}")
+            }
+        }
+    }
 
     Box(
         modifier = Modifier
@@ -74,7 +72,7 @@ fun FestivalSelectionScreen(
             Spacer(Modifier.height(40.dp))
 
             LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                items(FESTIVALS) { fest ->
+                items(festivals) { fest ->
                     val isActive = isSwitch && FestivalConfig.isSelected(context) &&
                             FestivalConfig.getSelectedId(context) == fest.id
                     Row(
@@ -87,11 +85,7 @@ fun FestivalSelectionScreen(
                             )
                             .clickable {
                                 haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                                if (isSwitch) {
-                                    FestivalConfig.switchFestival(context, fest.id)
-                                } else {
-                                    FestivalConfig.switchFestival(context, fest.id)
-                                }
+                                FestivalConfig.switchFestival(context, fest.id)
                             }
                             .padding(horizontal = 20.dp, vertical = 18.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,

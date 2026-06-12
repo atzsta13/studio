@@ -9,7 +9,7 @@ import com.example.szigerinsider2026.data.repository.LineupRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
+import com.example.szigerinsider2026.ui.utils.parseTime
 
 enum class ScheduleTab { GRID, BY_TIME, MY_LINEUP }
 enum class ClashType { HARD, TIGHT }
@@ -46,7 +46,7 @@ class ScheduleViewModel(
             }
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
-                    .thenBy { it.startTime ?: "99:99" }
+                    .thenBy(nullsLast()) { parseTime(it.startTime) }
                     .thenBy { it.artist }
             )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -55,7 +55,7 @@ class ScheduleViewModel(
         state.allArtists.filter { state.favoriteIds.contains(it.id) }
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
-                    .thenBy { it.startTime ?: "99:99" }
+                    .thenBy(nullsLast()) { parseTime(it.startTime) }
                     .thenBy { it.artist }
             )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
@@ -113,7 +113,7 @@ class ScheduleViewModel(
         val byDay = favorites.groupBy { it.day }
         
         byDay.forEach { (_, dayArtists) ->
-            val sorted = dayArtists.sortedBy { it.startTime }
+            val sorted = dayArtists.sortedWith(compareBy(nullsLast()) { parseTime(it.startTime) })
             for (i in 0 until sorted.size - 1) {
                 for (j in i + 1 until sorted.size) {
                     val a = sorted[i]
@@ -136,13 +136,6 @@ class ScheduleViewModel(
             }
         }
         return pairs
-    }
-
-    private fun parseTime(t: String?): LocalTime? {
-        if (t == null) return null
-        return try {
-            LocalTime.parse(t, DateTimeFormatter.ofPattern("HH:mm"))
-        } catch (_: Exception) { null }
     }
 
     private fun timesOverlap(s1: LocalTime, e1: LocalTime, s2: LocalTime, e2: LocalTime): Boolean {

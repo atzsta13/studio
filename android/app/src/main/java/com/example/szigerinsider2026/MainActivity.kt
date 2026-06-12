@@ -25,10 +25,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         Thread.setDefaultUncaughtExceptionHandler { _, exception ->
-            Log.e("FestivalInsider", "Uncaught exception — restarting app", exception)
-            val intent = packageManager.getLaunchIntentForPackage(packageName)
-                ?.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP or android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
-            if (intent != null) startActivity(intent)
+            Log.e("FestivalInsider", "Uncaught exception", exception)
+            // Restart only if the previous crash was >10s ago — a deterministic
+            // startup crash would otherwise loop forever.
+            val prefs = getSharedPreferences("crash_guard", MODE_PRIVATE)
+            val last = prefs.getLong("last_crash", 0L)
+            val now = System.currentTimeMillis()
+            prefs.edit().putLong("last_crash", now).commit()
+            if (now - last > 10_000) {
+                val intent = packageManager.getLaunchIntentForPackage(packageName)
+                    ?.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP or android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                if (intent != null) startActivity(intent)
+            }
             finish()
             Process.killProcess(Process.myPid())
         }

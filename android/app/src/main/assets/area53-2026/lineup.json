@@ -4,8 +4,8 @@
     "artist": "In Flames",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "22:30",
-    "endTime": "00:00",
+    "startTime": "2026-07-16T22:30:00+02:00",
+    "endTime": "2026-07-17T00:00:00+02:00",
     "countryCode": "SE",
     "genres": [
       "MELODIC DEATH METAL"
@@ -23,8 +23,8 @@
     "artist": "Pain",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "20:45",
-    "endTime": "22:00",
+    "startTime": "2026-07-16T20:45:00+02:00",
+    "endTime": "2026-07-16T22:00:00+02:00",
     "countryCode": "SE",
     "genres": [
       "INDUSTRIAL METAL"
@@ -41,8 +41,8 @@
     "artist": "Bleed From Within",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "19:15",
-    "endTime": "20:15",
+    "startTime": "2026-07-16T19:15:00+02:00",
+    "endTime": "2026-07-16T20:15:00+02:00",
     "countryCode": "GB",
     "genres": [
       "METALCORE"
@@ -58,8 +58,8 @@
     "artist": "Voivod",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "17:45",
-    "endTime": "18:45",
+    "startTime": "2026-07-16T17:45:00+02:00",
+    "endTime": "2026-07-16T18:45:00+02:00",
     "countryCode": "CA",
     "genres": [
       "PROG THRASH"
@@ -76,8 +76,8 @@
     "artist": "Ad Infinitum",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "16:30",
-    "endTime": "17:15",
+    "startTime": "2026-07-16T16:30:00+02:00",
+    "endTime": "2026-07-16T17:15:00+02:00",
     "countryCode": "CH",
     "genres": [
       "SYMPHONIC METAL"
@@ -93,8 +93,8 @@
     "artist": "Agathodaimon",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "15:15",
-    "endTime": "16:00",
+    "startTime": "2026-07-16T15:15:00+02:00",
+    "endTime": "2026-07-16T16:00:00+02:00",
     "countryCode": "DE",
     "genres": [
       "DARK METAL",
@@ -111,8 +111,8 @@
     "artist": "Never Obey Again",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "14:15",
-    "endTime": "14:45",
+    "startTime": "2026-07-16T14:15:00+02:00",
+    "endTime": "2026-07-16T14:45:00+02:00",
     "countryCode": "IT",
     "genres": [
       "MODERN METAL"
@@ -128,8 +128,8 @@
     "artist": "Watch Them Fail",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "13:15",
-    "endTime": "13:45",
+    "startTime": "2026-07-16T13:15:00+02:00",
+    "endTime": "2026-07-16T13:45:00+02:00",
     "countryCode": "AT",
     "genres": [
       "METALCORE"
@@ -145,8 +145,8 @@
     "artist": "Arch Enemy",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "22:30",
-    "endTime": "00:00",
+    "startTime": "2026-07-17T22:30:00+02:00",
+    "endTime": "2026-07-18T00:00:00+02:00",
     "countryCode": "SE",
     "genres": [
       "MELODIC DEATH METAL"
@@ -164,8 +164,8 @@
     "artist": "Dirkschneider",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "20:45",
-    "endTime": "22:00",
+    "startTime": "2026-07-17T20:45:00+02:00",
+    "endTime": "2026-07-17T22:00:00+02:00",
     "countryCode": "DE",
     "genres": [
       "HEAVY METAL"
@@ -183,8 +183,8 @@
     "artist": "Self Deception",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "19:15",
-    "endTime": "20:15",
+    "startTime": "2026-07-17T19:15:00+02:00",
+    "endTime": "2026-07-17T20:15:00+02:00",
     "countryCode": "SE",
     "genres": [
       "MODERN ROCK"
@@ -200,8 +200,8 @@
     "artist": "Hiraes",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "17:45",
-    "endTime": "18:45",
+    "startTime": "2026-07-17T17:45:00+02:00",
+    "endTime": "2026-07-17T18:45:00+02:00",
     "countryCode": "DE",
     "genres": [
       "MELODIC DEATH METAL"
@@ -217,8 +217,8 @@
     "artist": "Firewind",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "16:30",
-    "endTime": "17:15",
+    "startTime": "2026-07-17T16:30:00+02:00",
+    "endTime": "2026-07-17T17:15:00+02:00",
     "countryCode": "GR",
     "genres": [
       "POWER METAL"
@@ -234,8 +234,8 @@
     "artist": "Kontrust",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "15:15",
-    "endTime": "16:00",
+    "startTime": "2026-07-17T15:15:00+02:00",
+    "endTime": "2026-07-17T16:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "CROSSOVER"
@@ -252,8 +252,8 @@
     "artist": "Vinegar Hill",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "14:15",
-    "endTime": "14:45",
+    "startTime": "2026-07-17T14:15:00+02:00",
+    "endTime": "2026-07-17T14:45:00+02:00",
     "countryCode": "AT",
     "genres": [
       "MELODIC DEATH METAL"
@@ -269,8 +269,8 @@
     "artist": "Brutal Sphincter",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "13:15",
-    "endTime": "13:45",
+    "startTime": "2026-07-17T13:15:00+02:00",
+    "endTime": "2026-07-17T13:45:00+02:00",
     "countryCode": "BE",
     "genres": [
       "GOREGRIND"
@@ -285,8 +285,8 @@
     "artist": "All Will Know",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "12:30",
-    "endTime": "13:00",
+    "startTime": "2026-07-17T12:30:00+02:00",
+    "endTime": "2026-07-17T13:00:00+02:00",
     "countryCode": "DE",
     "genres": [
       "MELODIC DEATH METAL"
@@ -302,8 +302,8 @@
     "artist": "Saxon",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "22:30",
-    "endTime": "00:00",
+    "startTime": "2026-07-18T22:30:00+02:00",
+    "endTime": "2026-07-19T00:00:00+02:00",
     "countryCode": "GB",
     "genres": [
       "HEAVY METAL"
@@ -321,8 +321,8 @@
     "artist": "Visions Of Atlantis",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "20:45",
-    "endTime": "22:00",
+    "startTime": "2026-07-18T20:45:00+02:00",
+    "endTime": "2026-07-18T22:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "SYMPHONIC METAL"
@@ -339,8 +339,8 @@
     "artist": "Temptations For The Weak",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "19:15",
-    "endTime": "20:15",
+    "startTime": "2026-07-18T19:15:00+02:00",
+    "endTime": "2026-07-18T20:15:00+02:00",
     "countryCode": "BE",
     "genres": [
       "METALCORE"
@@ -356,8 +356,8 @@
     "artist": "Igel vs Shark",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "17:45",
-    "endTime": "18:45",
+    "startTime": "2026-07-18T17:45:00+02:00",
+    "endTime": "2026-07-18T18:45:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK 'N' ROLL"
@@ -373,8 +373,8 @@
     "artist": "Patriarcha",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "16:30",
-    "endTime": "17:15",
+    "startTime": "2026-07-18T16:30:00+02:00",
+    "endTime": "2026-07-18T17:15:00+02:00",
     "countryCode": "AT",
     "genres": [
       "DEATH METAL",
@@ -390,8 +390,8 @@
     "artist": "Matter of Taste",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "15:15",
-    "endTime": "16:00",
+    "startTime": "2026-07-18T15:15:00+02:00",
+    "endTime": "2026-07-18T16:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "METAL"
@@ -406,8 +406,8 @@
     "artist": "Aris",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "14:15",
-    "endTime": "14:45",
+    "startTime": "2026-07-18T14:15:00+02:00",
+    "endTime": "2026-07-18T14:45:00+02:00",
     "countryCode": "AT",
     "genres": [
       "METAL"
@@ -421,8 +421,8 @@
     "artist": "Morituri",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "13:15",
-    "endTime": "13:45",
+    "startTime": "2026-07-18T13:15:00+02:00",
+    "endTime": "2026-07-18T13:45:00+02:00",
     "countryCode": "AT",
     "genres": [
       "METAL"
@@ -439,8 +439,8 @@
     "artist": "Jazz Gitti",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "11:00",
-    "endTime": "12:30",
+    "startTime": "2026-07-18T11:00:00+02:00",
+    "endTime": "2026-07-18T12:30:00+02:00",
     "countryCode": "AT",
     "genres": [
       "AUSTRO-POP",
@@ -458,8 +458,8 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Wednesday",
-    "startTime": "20:00",
-    "endTime": "00:00",
+    "startTime": "2026-07-15T20:00:00+02:00",
+    "endTime": "2026-07-16T00:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
@@ -477,8 +477,8 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Thursday",
-    "startTime": "23:59",
-    "endTime": "02:00",
+    "startTime": "2026-07-16T23:59:00+02:00",
+    "endTime": "2026-07-17T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
@@ -496,8 +496,8 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Friday",
-    "startTime": "23:59",
-    "endTime": "02:00",
+    "startTime": "2026-07-17T23:59:00+02:00",
+    "endTime": "2026-07-18T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
@@ -515,8 +515,8 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Saturday",
-    "startTime": "23:59",
-    "endTime": "02:00",
+    "startTime": "2026-07-18T23:59:00+02:00",
+    "endTime": "2026-07-19T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",

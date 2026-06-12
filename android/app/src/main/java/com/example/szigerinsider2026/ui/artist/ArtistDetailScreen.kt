@@ -53,6 +53,7 @@ import com.example.szigerinsider2026.ui.discover.ArtistViewModel
 import com.example.szigerinsider2026.ui.theme.*
 import com.example.szigerinsider2026.ui.components.*
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
+import com.example.szigerinsider2026.ui.utils.formatTime
 import com.example.szigerinsider2026.ui.utils.getSeenArtistIds
 import com.example.szigerinsider2026.ui.utils.toggleSeenArtist
 
@@ -250,7 +251,7 @@ fun ArtistDetailScreen(
                     a.stage?.let { item { BrutalistBadge(it.uppercase(), CyanPulse) } }
                     a.countryCode?.let { item { BrutalistBadge(it.uppercase(), ToxicGreen) } }
                     if (a.startTime != null && a.endTime != null) {
-                        item { BrutalistBadge("${a.startTime} – ${a.endTime}", TextMuted, isOutlined = true) }
+                        item { BrutalistBadge("${formatTime(a.startTime)} – ${formatTime(a.endTime)}", TextMuted, isOutlined = true) }
                     }
                 }
             }

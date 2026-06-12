@@ -65,7 +65,8 @@
     "timezone": "Europe/Vienna",
     "lat": 48.2088,
     "lng": 15.636,
-    "weatherDisplayName": "St. Pölten · Green Park"
+    "weatherDisplayName": "St. Pölten · Green Park",
+    "utcOffsetHours": 2
   },
   "dates": {
     "year": 2026,
@@ -112,10 +113,9 @@
     "currencyConverter": false,
     "tentFinder": true,
     "vibeQuiz": true,
-    "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
-    "timetable": true,
+    "timetable": false,
     "cashlessLink": true,
     "cashlessUrl": "https://www.frequency.at/en/cashless/",
     "dayparkNightpark": true,

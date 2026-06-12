@@ -47,6 +47,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import coil3.compose.AsyncImage
 import com.example.szigerinsider2026.data.model.Artist
 import com.example.szigerinsider2026.ui.theme.*
+import com.example.szigerinsider2026.ui.utils.formatTime
 import com.example.szigerinsider2026.ui.utils.getMood
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
 import com.example.szigerinsider2026.data.config.FestivalConfig
@@ -118,7 +119,7 @@ fun ArtistCard(
                         haptic.successBurst()
                         val shareText = "🎵 ${artist.artist}\n" +
                             "📅 ${artist.day ?: "TBA"} · ${artist.stage ?: "Main Stage"}\n" +
-                            "⏰ ${artist.startTime ?: ""} – ${artist.endTime ?: ""}\n\n" +
+                            "⏰ ${formatTime(artist.startTime)} – ${formatTime(artist.endTime)}\n\n" +
                             "${FestivalConfig.NAME} ${FestivalConfig.current.dates.year} · ${FestivalConfig.current.location.city} · ${FestivalConfig.current.tagline}"
                         val sendIntent = Intent(Intent.ACTION_SEND).apply {
                             type = "text/plain"

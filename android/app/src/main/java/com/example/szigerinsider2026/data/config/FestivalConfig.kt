@@ -193,21 +193,24 @@ object FestivalConfig {
         if (_current != null) return
         val id = getSelectedId(context).ifEmpty { DEFAULT_FESTIVAL_ID }
         _current = load(context, id)
+            ?: load(context, DEFAULT_FESTIVAL_ID)
+            ?: error("Failed to load config for '$id' and default — config.json schema mismatch?")
     }
 
     fun switchFestival(context: Context, festivalId: String) {
         context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             .edit()
             .putString(KEY_FESTIVAL_ID, festivalId)
-            .apply()
-        _current = load(context, festivalId)
-        com.example.szigerinsider2026.data.local.AppDatabase.resetInstance()
+            .commit()
         val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
             ?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         if (intent != null) context.startActivity(intent)
+        // Kill the process so no in-flight coroutine touches the closed/old-festival DB.
+        if (context is android.app.Activity) context.finishAffinity()
+        android.os.Process.killProcess(android.os.Process.myPid())
     }
 
-    private fun load(context: Context, id: String): FestivalConfigData? = try {
+    internal fun load(context: Context, id: String): FestivalConfigData? = try {
         val stream = context.assets.open("$id/config.json")
         val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
         json.decodeFromString<FestivalConfigData>(InputStreamReader(stream).readText())

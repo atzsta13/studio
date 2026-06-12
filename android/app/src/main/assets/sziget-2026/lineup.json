@@ -10204,8 +10204,8 @@
   {
     "id": "336",
     "artist": "Stefani",
-    "stage": null,
-    "day": null,
+    "stage": "The Cypher by Friss",
+    "day": "Thursday",
     "startTime": null,
     "endTime": null,
     "countryCode": null,
@@ -10214,8 +10214,8 @@
     "socials": {
       "spotify": null
     },
-    "description": null,
-    "imageUrl": null,
+    "description": "Stefani is a professional breaker from Ukraine, currently based in London. She represented Ukraine at the Paris 2024 Olympic Games and is known for her strong power sets, clean rounds, and world-class battle presence. At The Cypher, she will join the battles and lead a breaking workshop together with Hiro 10.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/41/thumb_5640496_performance_1440.jpeg",
     "vibes": [
       "Discover"
     ]
@@ -10270,6 +10270,40 @@
       "Party",
       "Anthemic",
       "Sing-along"
+    ]
+  },
+  {
+    "id": "339",
+    "artist": "Florence + The Machine",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "countryCode": "UK",
+    "genres": [
+      "ROCK",
+      "INDIE",
+      "POP",
+      "POP-ROCK",
+      "INDIE ROCK",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/en/programs-lineup-2026#/artist/2064800-florence-%2B-the-machine?from=%2F",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/1moxjboGR7GNWYIMWsRjgG",
+      "facebook": "https://www.facebook.com/florenceandthemachine",
+      "instagram": "https://www.instagram.com/florenceandthemachine",
+      "youtube": "https://www.youtube.com/@florencemachine"
+    },
+    "description": "Florence Welch - also known as Florence + The Machine - has released her sixth studio album Everybody Scream.\n\nThe album’s title track Everybody Scream was written and produced by Florence Welch over the past two years with a close-knit circle of collaborators including Mark Bowen of IDLES, who appears in the video for the single, Aaron Dessner and Mitski.\n\nAfter needing lifesaving surgery on the Dance Fever Tour, Florence’s ...",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0056/82/thumb_5581803_performance_1440.jpeg",
+    "vibes": [
+      "High Energy",
+      "Anthemic",
+      "Feel-good",
+      "Nostalgic",
+      "Sing-along",
+      "Party"
     ]
   }
 ]
