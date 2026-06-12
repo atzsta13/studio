@@ -34,7 +34,7 @@ Everything runs from static JSON bundled in the app or served from GitHub Pages.
 | `sziget-2026` | Sziget | 339 | ❌ TBA | 292/339 have stage assigned, no times yet |
 | `novarock-2026` | Nova Rock | 89 | ✅ 84/89 | **Currently happening** (Jun 11–14). 5 likely cancelled. |
 | `rock-am-ring-2026` | Rock am Ring | 73 | ✅ 73/73 | Finished (Jun 5–7). Full ISO timestamps. |
-| `area53-2026` | Area 53 | 30 | ⚠️ 30/30 | Times in wrong format (`"22:30"` not ISO 8601) |
+| `area53-2026` | Area 53 | 30 | ✅ 30/30 | Full ISO timestamps (Jul 15–18, incl. Wednesday warm-up) |
 | `frequency-2026` | Frequency | 95 | ❌ TBA | |
 | `ernte-punk-2026` | Ernte Punk | 17 | ❌ TBA | |
 
@@ -75,16 +75,15 @@ These are architectural decisions, not preferences:
 
 ## Known issues worth fixing
 
-**High priority:**
-- Area 53 time format — `startTime`/`endTime` are `"HH:MM"` strings, not ISO 8601. Timetable, clash resolver, and set countdowns all break for Area 53. Fix: run a migration script converting them to `"2026-07-10T22:30:00+02:00"` format.
+**Canonical time format**: all `startTime`/`endTime` values are ISO 8601 with offset (e.g. `"2026-07-16T22:30:00+02:00"`). Android parses ISO with an `HH:mm` fallback; new data must always be ISO.
 
 **Medium priority:**
 - No service worker update prompt — users on PWA get stale data silently after a deploy.
-- Sziget timetable — 339 artists waiting for schedule data. When published, run `npm run lineup:update:sziget`.
+- Sziget timetable — 339 artists waiting for schedule data. When published, run `npm run lineup:update:sziget` and set `features.timetable: true`.
 - Frequency + Ernte Punk timetables — same.
+- Nova Rock — Slipknot, Electric Callboy, Wanda, Static X, Badflower are absent from the official timetable (likely cancelled); decide remove vs. `cancelled` badge.
 
-**Low priority:**
-- SharedPreferences unencrypted — festival selection ID stored in plain SharedPreferences. For production, migrate to `EncryptedSharedPreferences`.
+(SharedPreferences encryption was closed as won't-fix — only the festival ID is stored, no tokens or PII.)
 
 ---
 

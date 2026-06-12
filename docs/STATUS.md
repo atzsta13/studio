@@ -62,8 +62,8 @@ Slipknot, Electric Callboy, Wanda, Static X, Badflower were not present on the l
 
 ### Android
 
-**SharedPreferences unencrypted.**
-Festival selection ID and any persisted user data (favorites via Room) is stored in unencrypted SharedPreferences/SQLite. Acceptable for MVP; for a production release, migrate to `EncryptedSharedPreferences` and encrypted SQLite.
+**SharedPreferences unencrypted — won't fix.**
+The only persisted preference is the selected festival ID; there are no tokens, credentials, or PII anywhere. `EncryptedSharedPreferences` is deprecated upstream. Closed as won't-fix (2026-06-12 audit).
 
 **`FestivalSelectionScreen` navigation after switch.**
 `FestivalConfig.switchFestival()` restarts the app via `getLaunchIntentForPackage`. This works but is abrupt — no transition animation and the system treats it as a new launch. Acceptable for now.
@@ -75,9 +75,6 @@ When a new deploy is pushed, users on the PWA won't be prompted to refresh. They
 
 **`chart.tsx` TypeScript errors (4 errors, pre-existing).**
 ShadCN recharts wrapper has type mismatches with the recharts library version. These do not affect runtime behavior. Filed as a known ShadCN/recharts incompatibility.
-
-**Troubleshooting guide is stale.**
-`docs/guides/TROUBLESHOOTING.md` (last updated 2026-03-20) references the old asset path (`android/app/src/main/assets/lineup.json`) which no longer exists after the single-APK refactor. Old Android Gradle commands also reference flavors. Needs a rewrite.
 
 ### Features blocked on schedule data
 
@@ -98,6 +95,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-06-12 | ISO 8601 time-format unification (Area 53 migration, Android ISO parsing, utcOffsetHours, stability fixes) — deployed + verified against novarock.at |
 | 2026-06-12 | Nova Rock full timetable (84 artists, live data from novarock.at) |
 | 2026-06-12 | Single-APK Android refactor + FestivalSwitcher on web |
 | 2026-06-12 | ARCHITECTURE.md full rewrite for AI/cold-start readability |
@@ -111,11 +109,10 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 These are real gaps, not backlog filler:
 
-1. **Rewrite `TROUBLESHOOTING.md`** — outdated paths and commands.
-2. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
-3. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival. Re-enable `features.timetable`.
-4. **Service worker update prompt** — users on PWA get stale deploys silently.
-5. **Nova Rock cancelled artists** — decide whether to remove Slipknot, Electric Callboy, Wanda, Static X, Badflower or add a `cancelled` flag + badge (needs maintainer decision).
+1. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
+2. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival. Re-enable `features.timetable`.
+3. **Service worker update prompt** — users on PWA get stale deploys silently.
+4. **Nova Rock cancelled artists** — decide whether to remove Slipknot, Electric Callboy, Wanda, Static X, Badflower or add a `cancelled` flag + badge (needs maintainer decision). Confirmed absent from the official novarock.at timetable (line-by-line diff, 2026-06-12).
 
 ---
 
@@ -129,5 +126,5 @@ These are real gaps, not backlog filler:
 | `docs/features/FEATURES.md` | Feature matrix (Web ✅/⏳, Android ✅/⏳) |
 | `docs/STATUS.md` | **This file** — live state snapshot |
 | `docs/guides/MANDATES.md` | Hard constraints (privacy, offline, config-first) |
-| `docs/guides/TROUBLESHOOTING.md` | Dev troubleshooting — currently stale |
+| `docs/guides/TROUBLESHOOTING.md` | Dev troubleshooting |
 | `docs/guides/UI_GUIDE.md` | UI/UX design system reference |
