@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     id("org.jetbrains.kotlin.plugin.compose") version "2.3.20"
     alias(libs.plugins.ksp)
@@ -11,7 +10,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.szigerinsider2026"
+        applicationId = "com.example.festivalinsider"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
@@ -21,76 +20,6 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-    }
-
-    // ── Product Flavors ──────────────────────────────────────────────────────
-    flavorDimensions += "festival"
-
-    productFlavors {
-        create("sziget") {
-            dimension = "festival"
-            applicationId = "com.example.szigetinsider"
-            versionName = "2.0"
-            resValue("string", "app_name", "dev_Sziget Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"sziget-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "sziget2026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-        create("area53") {
-            dimension = "festival"
-            applicationId = "com.example.area53insider"
-            versionName = "1.0"
-            resValue("string", "app_name", "dev_Area 53 Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"area53-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "area532026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-        create("novarock") {
-            dimension = "festival"
-            applicationId = "com.example.novarockinsider"
-            versionName = "1.0"
-            resValue("string", "app_name", "dev Nova Rock Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"novarock-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "novarock2026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-        create("frequency") {
-            dimension = "festival"
-            applicationId = "com.example.frequencyinsider"
-            versionName = "1.0"
-            resValue("string", "app_name", "dev_Frequency Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"frequency-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "frequency2026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-        create("erntepunk") {
-            dimension = "festival"
-            applicationId = "com.example.erntepunkinsider"
-            versionName = "1.0"
-            resValue("string", "app_name", "dev_Ernte Punk Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"ernte-punk-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "erntepunk2026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-        create("rockamring") {
-            dimension = "festival"
-            applicationId = "com.example.rockamringinsider"
-            versionName = "1.0"
-            resValue("string", "app_name", "dev_Rock am Ring Insider")
-            buildConfigField("String", "FESTIVAL_ID", "\"rock-am-ring-2026\"")
-            manifestPlaceholders["deepLinkScheme"] = "rockamring2026"
-            manifestPlaceholders["deepLinkHost"]   = "spotify-callback"
-        }
-    }
-
-    // ── Per-flavor asset source sets ─────────────────────────────────────────
-    sourceSets {
-        getByName("sziget")    { assets.srcDirs("src/sziget/assets") }
-        getByName("area53")    { assets.srcDirs("src/area53/assets") }
-        getByName("novarock")  { assets.srcDirs("src/novarock/assets") }
-        getByName("frequency") { assets.srcDirs("src/frequency/assets") }
-        getByName("erntepunk")    { assets.srcDirs("src/erntepunk/assets") }
-        getByName("rockamring")   { assets.srcDirs("src/rockamring/assets") }
     }
 
     buildTypes {
@@ -142,8 +71,8 @@ dependencies {
     implementation(libs.room.ktx)
     implementation(libs.coil.compose)
     implementation(libs.androidx.material.icons.extended)
-    implementation("androidx.glance:glance-appwidget:1.2.0")
-    implementation("androidx.glance:glance-material3:1.2.0")
+    implementation("androidx.glance:glance-appwidget:1.1.1")
+    implementation("androidx.glance:glance-material3:1.1.1")
 
     // QR & Squad Link
     implementation(libs.androidx.camera.camera2)

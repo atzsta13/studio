@@ -1,7 +1,7 @@
 package com.example.szigerinsider2026.data.config
 
 import android.content.Context
-import com.example.szigerinsider2026.BuildConfig
+import android.content.Intent
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.io.InputStreamReader
@@ -19,8 +19,6 @@ data class FestivalFeatures(
     val cashlessUrl: String? = null,
     val dayparkNightpark: Boolean = false,
     val familyZone: Boolean = false,
-
-    // Phase 3 Hyper-Insider Expansion (50 Features)
     val hydrationTracker: Boolean = false,
     val sunscreenAlert: Boolean = false,
     val batterySaver: Boolean = false,
@@ -63,10 +61,7 @@ data class FestivalFeatures(
 )
 
 @Serializable
-data class EmergencyContact(
-    val phone: String,
-    val label: String
-)
+data class EmergencyContact(val phone: String, val label: String)
 
 @Serializable
 data class EmergencyContacts(
@@ -170,29 +165,61 @@ data class FestivalConfigData(
 )
 
 object FestivalConfig {
+    private const val PREFS_NAME = "festival_insider_prefs"
+    private const val KEY_FESTIVAL_ID = "selected_festival_id"
+    private const val DEFAULT_FESTIVAL_ID = "sziget-2026"
+
+    val AVAILABLE_IDS = listOf(
+        "sziget-2026",
+        "novarock-2026",
+        "frequency-2026",
+        "area53-2026",
+        "ernte-punk-2026",
+        "rock-am-ring-2026"
+    )
+
     private var _current: FestivalConfigData? = null
-    
+
     val current: FestivalConfigData
-        get() = _current ?: throw IllegalStateException("FestivalConfig not initialized. Call initialize(context) first.")
+        get() = _current ?: throw IllegalStateException("FestivalConfig not initialized.")
+
+    fun getSelectedId(context: Context): String =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_FESTIVAL_ID, null) ?: ""
+
+    fun isSelected(context: Context): Boolean = getSelectedId(context).isNotEmpty()
 
     fun initialize(context: Context) {
         if (_current != null) return
-        try {
-            val inputStream = context.assets.open("config.json")
-            val reader = InputStreamReader(inputStream)
-            val jsonString = reader.readText()
-            _current = Json { ignoreUnknownKeys = true }.decodeFromString<FestivalConfigData>(jsonString)
-        } catch (e: Exception) {
-            e.printStackTrace()
-            // Fallback or crash gracefully
-        }
+        val id = getSelectedId(context).ifEmpty { DEFAULT_FESTIVAL_ID }
+        _current = load(context, id)
+    }
+
+    fun switchFestival(context: Context, festivalId: String) {
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            .edit()
+            .putString(KEY_FESTIVAL_ID, festivalId)
+            .apply()
+        _current = load(context, festivalId)
+        com.example.szigerinsider2026.data.local.AppDatabase.resetInstance()
+        val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+            ?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        if (intent != null) context.startActivity(intent)
+    }
+
+    private fun load(context: Context, id: String): FestivalConfigData? = try {
+        val stream = context.assets.open("$id/config.json")
+        val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+        json.decodeFromString<FestivalConfigData>(InputStreamReader(stream).readText())
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
     }
 
     fun setTestConfig(config: FestivalConfigData) {
         _current = config
     }
 
-    // Direct accessors for frequently used fields
     val NAME get() = current.name
     val DAYS get() = current.dates.days
     val DAY_LABELS get() = current.dates.dayLabels

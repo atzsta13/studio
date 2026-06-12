@@ -409,6 +409,29 @@ fun ToolsScreen(navController: NavController) {
                         }
                     }
                 }
+
+                item {
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(CardBackground)
+                            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
+                            .clickable { haptic.mediumTap(); navController.navigate("festival_switch") }
+                            .padding(20.dp)
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text("🎪", fontSize = 32.sp)
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text("SWITCH FESTIVAL", color = TextPrimary, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 0.5.sp)
+                                Text("Currently: ${config.name}", color = TextMuted, fontSize = 13.sp)
+                                Text("TAP TO CHANGE FESTIVAL", color = MaterialTheme.colorScheme.primary, fontSize = 11.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp, modifier = Modifier.padding(top = 4.dp))
+                            }
+                        }
+                    }
+                }
             }
         }
     }

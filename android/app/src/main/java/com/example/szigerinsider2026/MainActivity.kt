@@ -33,7 +33,8 @@ class MainActivity : ComponentActivity() {
             Process.killProcess(Process.myPid())
         }
 
-        // Initialize unified configuration from JSON assets
+        // Always initialize — uses saved preference or defaults to "sziget-2026" on first launch.
+        // The splash screen routes to festival_select if no preference has been saved yet.
         FestivalConfig.initialize(applicationContext)
         
         enableEdgeToEdge()

@@ -1,0 +1,2241 @@
+[
+  {
+    "id": "slipknot",
+    "artist": "Slipknot",
+    "stage": "Blue Stage",
+    "day": "Friday",
+    "startTime": null,
+    "endTime": null,
+    "isHeadliner": true,
+    "genres": [
+      "Nu Metal",
+      "Alternative Metal"
+    ],
+    "countryCode": "US",
+    "description": "The Iowa masked icons return to Pannonia Fields.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/05fGUMSTpcz69999999999"
+    },
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Raw",
+      "Eclectic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "electric-callboy",
+    "artist": "Electric Callboy",
+    "stage": "Blue Stage",
+    "day": "Saturday",
+    "startTime": null,
+    "endTime": null,
+    "isHeadliner": true,
+    "genres": [
+      "Electronicore",
+      "Metalcore"
+    ],
+    "countryCode": "DE",
+    "description": "The ultimate party metal experience.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/168u799999999999999999"
+    },
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/f3/2b/77/f32b7781-ed1f-cf89-be53-4308dbde38a1/196871181235.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "wanda",
+    "artist": "Wanda",
+    "stage": "Red Stage",
+    "day": "Thursday",
+    "startTime": null,
+    "endTime": null,
+    "isHeadliner": true,
+    "genres": [
+      "Austropop",
+      "Indie Rock"
+    ],
+    "countryCode": "AT",
+    "description": "Amore from the Viennese cult heroes.",
+    "socials": {
+      "spotify": "https://open.spotify.com/artist/209u799999999999999999"
+    },
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "1",
+    "artist": "Volbeat",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HEAVY METAL",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/volbeat/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72114-20515-Brittany_Bowman_26Main1-3L8A6892.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Raw",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "2",
+    "artist": "Bad Omens",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/bad-omens/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Bad Omens slither through boundaries, only to ultimately choke convention in the process. The quartet—Noah Sebastian [vocals], Joakim “Jolly” Karlsson [guitar], Nick Ruffilo [bass], and Nick Folio [drums]—materialize with ghostly atmospherics, striking hooks, and the tingles of sensual high-register harmonies uplifted by cinematic production. Racking up over 1.9 billion worldwide streams to-date and earning widespread acclaim, the band presented an uncompromising and undeniable vision on their third full-length album, THE DEATH OF PEACE OF MIND [Sumerian Records].",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72116-12979-BO-IOWA-1-25.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Eclectic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "3",
+    "artist": "Sex Pistols Feat Frank Carter",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/sex-pistols-feat-frank-carter/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72658-19300-6S6A4591-2-RET.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "4",
+    "artist": "Kaleo",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK",
+      "BLUES ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/kaleo/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Akin to steadying a ship on rough seas, KALEO deftly navigates life’s extremes via music. Emerging out of Reykjavík, KALEO—JJ Julius Son [vocals, guitar, piano], Rubin Pollock [lead guitar], Daniel Kristjansson [bass], and David Antonsson [drums] —buzzed to the forefront of the global conversation with the platinum-certified A/B in 2016. The album took flight as a phenomenon uplifted by the double-platinum #1 single “Way Down We Go,” gold-certified “All The Pretty Girls,” and “No Good,” which garnered a GRAMMY® Award nod in the category of “Best Rock Performance.” They maintained this momentum with Surface Sounds [2021], cracking the Top 6 on AAA with “I Want More” and “Break My Baby.” Their music surged through popular culture with dozens of film and television syncs, including Marvel flicks like LOGAN and hit TV shows such as Grey’s Anatomy and Riverdale. Additionally, the guys made their mark with performances on Late Night with Seth Meyers, Jimmy Kimmel Live!, The Late Show with Stephen Colbert, Good Morning America, and more. Beyond selling out headline tours on multiple continents, they shined as a live force of nature who could hold their own on a bill with The Rolling Stones or ignite festival crowds at Coachella, Lollapalooza, Bonnaroo, and beyond. To date, they have notably tallied north of 4 billion global streams and earned 60 international certifications. As always, the band encompass a vast spectrum of sound and feeling, which manifest on their 2024 single “Lonely Cowboy” where delicate finger-picking underscores cinematic lyricism.KALEO originally debuted the tune in front of a sold-out audience at The Grand Ole Opry in 2022, and more recently delivered a stunning performance of the track inside the world-famous Colosseum in Rome, Italy. Musically, it proudly tips a Stetson hat to Ennio Morricone. The boys will continue to release new music and tour the globe beginning in June.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72118-18966-kleiner_KALEO3.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic",
+      "Emotional",
+      "Acoustic"
+    ]
+  },
+  {
+    "id": "5",
+    "artist": "Trivium",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HEAVY METAL",
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/trivium/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "For over two decades, Trivium have quietly raised the bar for heavy music by conjuring a near-magic balance between towering melodic metal infectiousness, extreme metal unpredictability, black metal scope, and a kick of rock ‘n’ roll spirit. After forming in 1999, Trivium crafted a classic in the form of Ascendancy. It concluded 2005 as KERRANG!’s “Album of the Year,” went gold in the UK, and has since surpassed global sales of 500,000 copies. Retrospectively, Metal Hammer cited it in the Top 15 of the “The Greatest Metal Albums of the Century.” They’ve earned six straight Top 25 debuts on the Billboard Top 200 and six Top 3 debuts on the Top Rock Albums Chart. One of many standouts from 2017’s The Sin and The Sentence, the \n\nsingle “Betrayer” garnered a GRAMMY® Award nod in the category of “Best Metal Performance.” The quartet reached new heights on 2020’s What The Dead Men Say, appearing everywhere from The New York Times, NPR, Forbes, Billboard, Tech Crunch, and Kotaku to Revolver and Alternative Press. They are the rare band who can incinerate a stage alongside Metallica and Iron Maiden and hold a captive audience of tens of thousands on a Twitch stream. Following 22 years, over 1 million units moved, hundreds of sold-out shows, and half-a-billion streams, the GRAMMY® Award-nominated Florida quartet—Matt Heavy [vocals, guitar], Corey Beaulieu [guitar], Paolo Gregoletto [bass], and Alex Bent [drums]—deliver a definitive statement cast in ironclad guitar fireworks, pummeling rhythms, lyrical provocations, and stadium-shaking choruses on their 10th full-length offering, In The Court of the Dragon [Roadrunner Records]. It springs from the past, seizes the present, and hints at the future of Trivium—and metal—all at once.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72120-18967-Trivium-ITCOD-001-BW.png",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Aggressive",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "6",
+    "artist": "Tom Morello",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/tom-morello/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Tom Morello is living proof of the transformative power of rock’n’roll. Known for his innovative guitar solos and thunderous riffs, Morello is a groundbreaking artist whether in his solo career or as an original member of the rock bands Rage Against the Machine and Audioslave - two acts responsible for multiple Grammy Awards and a combined 30 million albums sold worldwide. His trademark style, innovative techniques, and effects that resemble turntable scratching redefined electric guitar playing and were crucial components of Rage Against the Machine's rap-metal sonic attack and Audioslave’s numerous radio hits, not only helping catapult Morello and both those bands to multi-platinum success but leading to his recognition by Rolling Stone Magazine as #18 on the “100 Greatest Guitar Players of All-Time” and subsequent induction into the Rock & Roll Hall of Fame and the Heavy Metal Hall of Fame. Morello's signature guitar could also be heard in supergroups Prophets of Rage, Street Sweeper Social Club as well as a six year stint with Bruce Springsteen and the E Street Band. Additionally, Harvard graduate Morello has for decades been a vocal political activist and solo artist who has championed countless human rights and workers rights causes.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72662-19227-Soldier-Lead-Press-Shot.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "7",
+    "artist": "Black Veil Brides",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "GLAM METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/black-veil-brides/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Before the birth of the BVB Army, the thousands of lyric tattoos, and the gold and platinum records that followed, Black Veil Brides was simply a dark vision dreamt up by an only child in Ohio. \n\nHe loved Batman and KISS. Then, the striking visage of Sweeney Todd: The Demon Barber of Fleet Street, on the cover of his dad’s dusty CD (released a dozen years before he was born) kicked open the door for Andy Biersack. Sweeney Toddcleared the way for The Phantom of the Opera, Misfits, and all that followed, culminating in the birth of Andy Black and the ascension of Black Veil Brides.  \n\nThe Bleeders EP, Black Veil Brides’ inaugural release in a new partnership with Spinefarm Records, celebrates one of the singer’s first loves. The EP boasts the title track alongside a loving rendition of Sweeney Todd’s “My Friends” and a faithful cover of U2’s “Sunday Bloody Sunday.” \n\nThe group’s cinematic scope and unwavering commitment to self-expression strikes a familiar chord with their fellow “bleeders” who seek refuge (and revenge) in the power of the dark and imagination. \n\nThere are over 160 million views of “Knives and Pens,” an early demo committed to music video before Andy (who moved to Hollywood at 18 and lived in his car) met his band of brothers. The RIAA-certified platinum single “In the End,” itself close to 170M views, further proves the group whose merch dominated Hot Topic before they’d even made their debut album was built to last. \n\nA treacherous DIY headlining outing in 2009 paved the way for the next 15 years of performances and beyond, a history that includes the triple-co-headlining smash Trinity Of Terror Tour; multiple mainstage runs on Vans Warped Tour; treks supporting Avenged Sevenfold and Mötley Crüe; and just about every major rock and metal festival in North and South America, Europe, and Australia. \n\nGuitarists Jake Pitts and Jinxx joined the fold before the creation of BVB’s debut album, 2010’s We Stitch These Wounds. The duo played in an earlier band with drummer Christian Coma, who came aboard for their first Billboard Top 20 album, Set the World on Fire, featuring gold single “Fallen Angels.” Metalcore milestone Wretched and Divine: The Story of the Wild Ones followed in 2013. \n\nA no-frills fourth album, 2014’s Black Veil Brides, gave them another Top 10 debut. 2018’s Vale went to No. 1 on Billboard’s Hard Rock chart. 2021’s The Phantom Tomorrow, the band’s first album with bassist Lonny Eagleton, produced the No. 8 Rock single “Scarlet Cross,” their highest charting yet. \n\nBleeders offers a taste of what will become Black Veil Brides' most visceral, theatrical, and unrelenting era yet. They combine a unique identity with an unquenchable creative thirst. They’re an object of devotion for those who sing their anthems in unison, a diverse BVB Army who never surrenders. \n\nBlack Veil Brides and their audience slash away at the darkness together, bleeders one and all.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72664-19229-BVB-2025-copy.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "8",
+    "artist": "Feine Sahne Fischfilet",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/feine-sahne-fischfilet/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "With the long-player titled \"Sturm & Dreck,\" the group from Mecklenburg-Vorpommern managed to reach number 3 on the charts for the first time, achieving what is commonly known as the \"big breakthrough.\" This was unusual for a band founded in 2004 by a few schoolmates in the Pomeranian province, primarily to make things happen in their immediate environment, not to lament and wait for others to do something, but to straighten things out for themselves in every way, privately, politically, and otherwise.\n\nEvery few years, there is this phenomenon of a band that everyone can agree on: their fans, of course, but also critics, media, and music lovers across all genres. Feine Sahne Fischfilet was exactly that band in 2018, music for the here and now, fresh, modern, and captivating.\n\nAnd then things really took off: \"In 2018, Feine Sahne Fischfilet are the most successful young rock band in the country,\" recognized \"Die Zeit,\" Spiegel Online rejoiced over \"A Manifesto of Resistance,\" while Rolling Stone stated, \"You believe every word of the resistance from the band,\" and the scene magazine \"Ox Fanzine\" aptly described the group as \"Big mouth and substance.\"\n\nThe following years saw them constantly on tour, playing at the biggest festivals, and their own concerts saw increasingly larger venues and open airs. By the end of 2019, almost 200,000 people had celebrated, danced, laughed, and cried together with the band on one of their tours. Feine Sahne Fischfilet embraced their listeners when things got tough. And it was always tough. Everything was there: disillusionment, drunkenness, fun, agitation, reason, riot, and excess. And because the band always got politically involved and clashed, trouble has been a constant and ongoing condition. Nazis, the AfD, and local and national right-wing extremists of all kinds repeatedly put obstacles in the band's way. \"Alles auf Rausch\" was the name of one of their concert tours during this phase, and that's exactly how Feine Sahne Fischfilet were on the road until they took an extended break at the end of 2019.\n\nFinally, taking a breath, finding peace, and processing what had happened. Only to realize over time that they had partly lost themselves in the noise of the past years. A reorientation was needed and inevitable. The guys who founded the band in 2004 quickly realized: giving up was not an option, resistance and difficulties were part of it from the beginning, and dealing with these, including their own shortcomings and contradictions, was part of the band's DNA and motivated them to keep going. A happy coincidence brought a new band member on board. The first test followed in the summer of 2022: at the invitation of Die Toten Hosen, Feine Sahne Fischfilet joined ten concerts of the \"Alles aus Liebe – 40 Jahre Die Toten Hosen\" tour as support and thrilled tens of thousands night after night.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72122-18948-Kleiner_FEinesahenfischfilet.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "9",
+    "artist": "Mastodon",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PROGRESSIVE METAL",
+      "HEAVY METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/mastodon/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72666-19519-103A6496.jpg",
+    "vibes": [
+      "Complex",
+      "Melodic",
+      "Technical",
+      "Atmospheric",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "10",
+    "artist": "Bilmuri",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/bilmuri/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Bilmuri’s music is full of surprises. The Columbus, OH singer, songwriter, multi-instrumentalist, and producer a.k.a. Johnny Franck stirs up the musical equivalent of a protein shake, blending a hearty helping of alternative rock, the right amount of metal, a dash of country twang, and whatever-else-is-in-the fridge at high speed. Rising up out of the heartland with a sound as Americanly free as a roaring lawnmower on a Saturday morning, this unpredictability has endeared him to a fervent fanbase. Since the age of 14, Johnny has always loved making music. During high school, he co-founded metalcore favorites ATTACK ATTACK! In 2010, Johnny made the choice to amicably split from the group. Turning his mom’s basement into a studio, he produced and recorded at least 50 albums, working with everyone from SycAmour to YouTubers such as Jared Dines and Jared Alonge. At the top of 2016, he introduced Bilmuri with the independent debut EP, Jaguar Shark followed by a dozen projects, including Eggy Pocket [2020] and Goblin Hours [2022]. Along the way, he generated tens of millions of streams fueled by “ABSOLUTELYCRANKINMYF’INHOG” [feat. brody] and “FLOURIDEINTHEWATERHARDSELTZER” [feat. Dayseeker & Jon Mess]. Simultaneously, he collaborated with the likes of Dance Gavin Dance, Make Me Famous, and Jonathan Young. Rolling into 2024 strong, Babymetal tapped him for a massive gig at Saitama Super Arena in Japan, while Sleep Token recruited him as direct support for their European arena tour. Now, he serves up a sonic buffet meant to be devoured without shame.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72124-18982-Kleiner_Bilmuri.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "11",
+    "artist": "Static X",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDUSTRIAL METAL",
+      "NU METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/static-x/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "One of the genre-defining bands of the late 90s, Static-Xwas founded in Los Angeles CA in 1994 by lead vocalist/guitarist Wayne Static and drummer Ken Jay. The band lineup was rounded out by bassist Tony Campos and guitarist/programmer Koichi Fukuda, who collectively inked a deal with Warner Bros records.Static-Xrose to fame with their 1999 platinum selling debut album Wisconsin Death Tripandwent on to release five more albums over the course of the next decade: Machinein 2001, Shadow Zonein 2003, Start A War in 2005, Cannibal in 2007, and Cult Of Static in 2009. The band has sold more than 3-million albums in the US alone and has had multiple chart-toppingradio singles. They have toured the world extensively, and to this day, maintain a reputation for being one of the best live acts in heavy music. In 2012, the band took a break to pursue outside creative interests and on Nov. 1, 2014 Wayne Static unexpectedly passed away. In 2018, the band announced that they were reforming to celebrate the 20thAnniversary of their debut album. The reformed lineup of original members Tony Campos, Koichi Fukuda, Ken Jay and backed by frontman Xer0 delivered acclaimed performances by fans and critics alike.The tour was a massive success, with sold-outshows around the world , proving that Static-X fans remain as committed to the band as ever before.The revitalized Static-X continue to make headlines with their sold-out touring and new music while keeping their signature Evil Disco sound alive.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72130-18934-kleiner_Static-X-2023-(Photo-by-Jeremy-Saffer).jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "12",
+    "artist": "Lemo",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP ROCK",
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/lemo/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Following the resounding successes of recent years and a series of sold-out concerts, Lemo will be returning to the stage in 2025 – performing in the country's largest cities.\n\n‘Lemo live 2025’ promises a show that will eclipse everything that has come before. The Viennese artist will not only be bringing new songs, but also a completely new live production. Look forward to breathtaking lighting effects, impressive outfits and a stage that will bring out the mood of the songs even more intensely. The only constant? His great band!",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72126-18694-lemo_7_cpertramer.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Melodic",
+      "Chill",
+      "Atmospheric"
+    ]
+  },
+  {
+    "id": "13",
+    "artist": "Dartagnan",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "FOLK METAL",
+      "FOLK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/dartagnan/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The folk rockers dArtagnan have struck gold with “Herzblut.” The Franconians' sixth studio album is a treasure chest brimming with hits, glittering with enticing musical precious metal. Every ballad, anthem, dance tune, and headbanger on it proves to be a diamond.\n\nThe way the Nuremberg band delivers one catchy tune after another on “Herzblut” makes writing hits seem like the easiest thing in the world. But in reality, it is a high art, and many dream ships have been wrecked on its cliffs.\n\nHow does dArtagnan manage to navigate all the musical shoals so successfully? On the one hand, through years of experience. Although the group was only founded in 2015, by that time band leader, singer, and multi-instrumentalist Ben Metzner had long since earned his spurs with the chart-toppers Feuerschwanz. No school teaches what makes a good song better than extensive live performances at festivals and on tours – which have taken Ben and his comrades from clubs to often sold-out halls and now even occasionally to arenas.\n\nThis is accompanied by a high level of craftsmanship that sets dArtagnan apart—both on stage and in the rehearsal room and studio. The Franconians have achieved a perfect balance between electric instruments and acoustics, with bouzouki, devil's fiddle, tin whistle, and the queen of bagpipes, the uilleann pipes, all used to great effect.\n\nEqually important are their clever lyrical contents. Of course, dArtagnan play joyfully for dancing, and their songs always invite celebration. But without didactic undertones or finger-wagging, the South Germans also offer a journey into the age of the musketeers. Their cosmopolitan outlook extends far beyond the boundaries of Alexandre Dumas' novel “The Three Musketeers,” which has been filmed several times.\n\nOn “Herzblut,” dArtagnan pay a lively visit to the Breton “King of Corsairs,” Robert Surcouf, and with the epic “Mosqueteros,” Spanish musketeers are put in the spotlight for the first time. The latter song features Rafa Blas, the newly minted singer of Spanish metal legends Mägo de Oz—one of the traditionally exciting guest appearances on the new album. For example, the hard-rocking title track “Herzblut,” with lyrics based on Johann Wolfgang von Goethe's poem “Was wird mir jede Stunde so bang?” (What makes me so anxious every hour?), features the beautiful mezzo-soprano voice of Ad Infinitum frontwoman Melissa Bonny.\n\nOf course, true crowd favorites are also a must on “Herzblut”: “Klingen Kreuzen” and “Rollt rein” are guaranteed to get the cups clinking, and not just among the cloak-and-dagger crowd. “Rosenrot” and, despite its title, “Freudenhaus” can be understood as a gallant bow to the ladies, subtly questioning masculine manners and behavior in their undertones. “Coeur de la mer,” on the other hand, reveals another musical influence on “Herzblut” when listened to closely: the cinematic character of many songs is no coincidence, as Die Franken have been audibly inspired by such giants of film music as Ennio Morricone and Hans Zimmer.\n\nOn “Herzblut,” dArtagnan once again have their fingers in many pies and feel just as at home at medieval festivals as they do at Wacken Open Air. It is probably this openness that gives the album its tremendous hit potential. With “Herzblut,” dArtagnan seize their hard-won musical freedom with both hands and, united, lift a sparkling treasure!",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72128-18935-kleiner_DRTGN_Studio_2024_quer_1.jpg",
+    "vibes": [
+      "Energetic",
+      "Cultural",
+      "Melodic",
+      "Fun",
+      "Heavy",
+      "Intense",
+      "Acoustic",
+      "Emotional",
+      "Storytelling",
+      "Raw",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "14",
+    "artist": "Badflower",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/badflower/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "No Place Like Home, the third studio album from Badflower, finds the Los Angeles-bred, Nashville-based rock band in their most vulnerable and reflective state yet. Written entirely sober for the first time by frontman Josh Katz, the album is a raw exploration of regret, aging, emotional isolation, and the shifting idea of \"home.\" For Katz, home isn’t a place or a person — it’s a memory, a version of himself he no longer recognizes in a world that feels increasingly foreign.\n\nSince their formation in 2011, Badflower has released two EPs, their hit full-length debut Ok, I’m Sick via Big Machine Label Group, and their sophomore record, This Is How The World Ends. With a unique blend of raw rock and introspective storytelling, the band have earned critical acclaim from outlets like Billboard, Alternative Press, and Nylon. Their hit single “Ghost” went Platinum, received “Rock Song of the Year” honors at the iHeartRadio Awards, and has amassed over 700 million streams, all while captivating audiences across the globe, playing major festivals like Kaboo Del Mar and Sonic Temple, and sharing stages with bands such as Incubus, Shinedown, and Ghost.\n\nFour years in the making, No Place Like Home marks a turning point for Badflower — Josh Katz (vocals/guitar), Joey Morrow (lead guitar), Alex Espiritu (bass), and Anthony Sonetti (drums) — as they confront the disillusionment that comes after achieving their lifelong dreams. From the biting commentary of the music industry on “Number 1” to the heartbreaking future regrets of “Don’t Be a Stranger” and “Paws,” the album weaves together themes of mental health, self-doubt, and existential dread with an unflinching honesty that’s become Badflower’s signature. No Place Like Homedoesn’t offer easy answers — instead, it invites listeners to sit with their discomfort, to feel seen, and maybe, to feel less alone.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72961-20295-kleiner-Badflower_P_20240606_JPaul_BMLGowns_0884_EditJF_FNL-(1).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "15",
+    "artist": "Return To Dust",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "GRUNGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/return-to-dust/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Every ending sparks a new beginning. Return to Dust embodies the sound of shedding the weight of the past while embracing the promise of tomorrow. The Los Angeles-based quartet—Matty Bielawski [guitar, vocals], Graham Stanush [bass, vocals], Sebastian Gonzalez [guitar], and London Hudson [drums]— brings a fresh perspective to alternative rock. \n\nThe band settled in Los Angeles to record with producer Jim Kaufman [Everclear, Danny Worsnop, Night Riots, Helmet]. 2024 saw them unveil their independent self-titled full-length debut, Return To Dust, including standout single “Belly Up” which rose through the Active Rock chart  and was praised by Distorted Sound as “a grungy, punky thrill ride,” while Revolver applauded the group’s “Alice In Chains-inspired form of modern-day grunge.”\n\nIn the aftermath, they lit up the stages at major festivals like Inkarceration, Welcome To Rockville, and Sonic Temple and joined rock legends Chevelle and Sevendust as support on tour. Signing to LAVA Records/Republic Records with more music on the horizon, the group is poised to stand at the forefront of the next generation of rock music, beginning with their 2025 EP Speak Like The Dead.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72668-19244-Neu_091025-RTD-Brianasista-151.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic",
+      "Heavy",
+      "Atmospheric"
+    ]
+  },
+  {
+    "id": "16",
+    "artist": "Ego Kill Talent",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HARD ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/ego-kill-talent/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Power and versatility define Ego Kill Talent, one of the biggest names in Brazilian rock, with a growing international presence.\n\nSince its formation in 2014, Ego Kill Talent has achieved remarkable milestones, performing at some of the world's biggest festivals — Rock in Rio, Aftershock, Rock Im Park, Hellfest, and more — while also completing successful tours across Brazil and Europe.\n\nWith two studio albums, Ego Kill Talent (2017) and The Dance Between Extremes (2021), recorded at the legendary Studio 606 in Los Angeles, the band has built a strong international presence, earning airplay on major rock radio stations worldwide.\n\nIn 2022, they had the honor of closing the main stage at Lollapalooza Brazil with a tribute to Foo Fighters’ drummer Taylor Hawkins. Before that, they had already toured as special guests for Foo Fighters and Queens of the Stone Age.\n\nNow, with Emmily Barreto taking over as f rontwoman, EKT is embracing a f resh new sound. This shift led to Call Us By Her Name (2023), an EP that’s been turning heads and winning over both critics and fans.\n\nIn 2023, they joined Evanescence on their Brazilian tour, earning public praise from Amy Lee in interviews and on social media — especially for Emmily's powerhouse performance. That same year, they dropped We Move As One, featuring Andreas Kisser (Sepultura) and Rob Damiani (Don Broco), which became the official anthem of the Rainbow Six Siege World Championship.\n\nFast forward to 2024, EKT was back in the spotlight, opening for Linkin Park’s massive comeback shows in Brazil. And in 2025, Ego Kill Talent performed for over 500,000 people across a historic SOLD OUT 9-show South American tour as special guest to System Of A Down.\n\nWith an explosive energy on stage, the band keeps delivering electrifying and unforgettable performances. The current lineup features Emmily Barreto (vocals), Theo Van Der Loo (guitar), Niper Boaventura (guitar), Raphael Miranda (drums), and Cris Botarelli (bass).",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72759-19481-Press_Shot_Ego-Kill-Talent.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "17",
+    "artist": "Soul Asylum",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "GRUNGE"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/soul-asylum/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic",
+      "Heavy",
+      "Atmospheric"
+    ]
+  },
+  {
+    "id": "18",
+    "artist": "We Came As Romans",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/we-came-as-romans/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since the release of the milestone debut album, 2009’s To Plant a Seed, diehard fans depend on We Came As Romans to deliver intimate, confessional, and autobiographical anthems, each one challenging, triumphant, and passionate. Darkbloom is a bright light in the darkness with the strength of every WCAR album before it. Singer David Stephens, guitarist Joshua Moore, bassist Andy Glass, guitarist Lou Cotton, and drummer David Puckett usher in an ambitious, courageous new era, while honoring the legacy and memory of their fallen bandmate, co-vocalist and keyboardist Kyle Pavone. \n\nWe Came As Romans’ initial ascent was quick and assured, catapulting the band (who met as teens) into the hearts of diehard fans immersed in the metalcore, post-hardcore, and Warped Tour subculture. Their hook-filled heavy music carried an uplifting message and connects with even greater urgency live. The increasingly diverse catalog of metallic might, melodic strength, and electronic atmosphere soars in clubs, theaters, and fests. They’ve supported tastemaker acts like Bring Me The Horizon, I Prevail, A Day To Remember, Bullet For My Valentine, and The Used. \n\nMoore and Stephens are a formidable writing team. Crowds connected with the songs on To Plant a Seed and its follow-up, 2011’s Understanding What We’ve Grown to Be. They entered Billboard’s Independent Albums chart at No. 1 with 2013’s Tracing Back Roots. Metal Hammer described 2015 self-titled fourth album as “a massive departure from their comfort zone. Where once there was positivity, patience, and platitudes, there is now pain.” AltPress declared 2017’s Cold Like War a “milestone,” noting the “expanded range of sounds, emotions, and songwriting capabilities.” \n\nRoughly a year after Cold Like War’s release, an accidental overdose took Pavone’s life. A devastated WCAR vowed to continue, in his memory, for each other, and for their fans. Each record marks a moment in time, a stage in the process of continuing evolution, none more so than Darkbloom. Shaped by their collective loss and grief, the album balances the optimistic vitality of WCAR’s most beloved work with stark realism and emotion. Like a flower emerging through concrete, We Came As Romans symbolize the transformative power of perseverance.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72782-19558-kleiner_WCAR_JW_2025_109_RT.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "19",
+    "artist": "The Molotovs",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK",
+      "INDIE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/the-molotovs/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72965-20293-Album-Art-Press-Shot.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "20",
+    "artist": "Ankor",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/ankor/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ANKOR is an alternative metal band based in Catalonia (Spain) with  female front singer/screamer Jessie Williams (Bristol, UK), female  drummer Eleni Nota (Athens, Greece), guitarists/vocals David Romeu and  Fito Martinez and bassist Julio López (Tarragona, Spain). The band was  formed in 2003 in a village near Barcelona when its members were only  teenagers. \n\nMore than 19 years later, with 5 albums on their backs and spread  worldwide, Ankor is a national reference in Spain, while still connecting  with new audience and a fan base that keeps growing every day.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72788-19549-ANKOR.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Aggressive",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "21",
+    "artist": "Aurorawave",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/aurorawave/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "aurorawave is a genre-bending rock band pioneering their own sound: reggaecore. Fusing heavy riffs with reggae rhythms, their music pulses with grit, groove, and emotional power. Their self-titled debut album made an early statement with features from The Ghost Inside, Atreyu, and Attila. Now, they return with their sophomore project Monument - a bold evolution featuring Aaron Gillespie (Underoath), Frankie Palmeri (Emmure), Left To Suffer, Ekoh, and reggae icons Jesse Royal, The Movement, and Kumar Fyah. Whether on stage or in the studio, aurorawave delivers a sound that hits hard and moves deeper — forging a new lane in the modern rock world.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72791-19557-aw_press-photo_2025_FINAL.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "22",
+    "artist": "Yunger",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/yunger/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Yunger provides the soundtrack for anyone who longs for the wide open spaces of the world. The Viennese singer-songwriter tells stories about traveling and other desires. Musically, he stands for folk with pop, indie, and rock influences, full of honesty and emotion. In his songs, he deals with hopes and dreams, wanderlust, and other longings, and from time to time also everyday things such as living with ants.\n\nThe singer-songwriter behind the folk act Yunger is Felix Junger. As a guitarist and songwriter, he is involved in a variety of band projects, from jazz to musicals to post-hardcore. Felix began his musical journey in his early years playing classical guitar, eventually branching out into all kinds of musical genres. Today, the multi-instrumentalist records almost all the instruments for his songs himself; he performs live with his band.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72794-19836-Yunger_Band_Pic1-(Credits-Bernhard-Ullrich).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "23",
+    "artist": "Cassies",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP PUNK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/cassies/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Cassies is an indie rock band from Vienna, founded in the spring of 2024. Their music combines catchy melodies with influences from psychedelic rock and soul—a sound that is shaped by the individual musical backgrounds of the members. Cassies like to experiment, blurring genres and creating something unique—honest, lively, and rousing. The trumpet stands out time and again, giving the sound a unique touch. The band's special qualities are particularly evident in their live performances: lots of energy, enthusiasm, and connection with the audience—something that is very important to the band.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72797-19831-5_copyright-Xaver_Haiden.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "24",
+    "artist": "The Cure",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POST-PUNK",
+      "GOTHIC ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/the-cure/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72110-18911-cure26_w1a_crop(c)andyvellaRS1.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "25",
+    "artist": "The Offspring",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK",
+      "SKATE PUNK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-offspring/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Nur The Offspring konnten ein Album mit so viel Energie wie SUPERCHARGED produzieren. Aggressiv und doch melodisch, unverkennbar SoCal und doch universell – dieses Album fängt die unberechenbare Energie des Lebens im 21. Jahrhundert ein und verwandelt sie in eine positive und inspirierende Kraft. \n\n„Der Titel SUPERCHARGED fasst die aktuelle Weltlage gut zusammen, in der alle im realen Leben und in den sozialen Medien wie unter Strom zu stehen scheinen“, sagt Dexter Holland, Gründungsmitglied, Sänger, Gitarrist und Songwriter von The Offspring. „Er bezieht sich aber auch auf den Sound einiger meiner Lieblingsalben, von AC/DC bis Operation Ivy. Ob musikalisch oder kulturell, dieses Wort trifft einen auf eine sehr viszerale Weise.“ \n\nDie 10 Songs auf SUPERCHARGED, produziert von Bob Rock, zeigen The Offspring – eine zentrale Band in der Entstehung der Punk-Szene in Südkalifornien – in Höchstform. Hollands Texte sind messerscharf und werden von einer der bekanntesten Stimmen der Musikszene vorgetragen. Leadgitarrist Noodles, seit 1985 Hollands rechte Hand, spielt rasante Riffs und Soli. Mit SUPERCHARGED-Singles wie „Light It Up“ werden sie ihrem Ruf als eines der kreativsten Teams des Punkrocks gerecht. \n\n„‚Light It Up‘ ist ein Moloch. Die Figur hat genug, sie hat die Nase voll und ist bereit für einen Kampf“, sagt Holland. „Als ich aufwuchs, gehörten einige meiner Lieblingssongs von Punkbands dazu, die sagten: ‚Ich habe deine Scheiße satt‘, aber auch versuchten, die Dinge zum Besseren zu verändern. Das ist die Botschaft von ‚Light It Up‘: Du hast genug und willst etwas dagegen tun.\n\nDie Idee, sein Leben zu verbessern, ist auch das Thema der Lead-Single „Make It All Right“, einem Song mit starkem California-Flair, der melodische Harmonien mit dem Gitarrensound von Orange County verbindet. „Ich wollte versuchen, einen Punkrock-Song im Stil der Beach Boys zu schreiben“, sagt Holland. \n\nAls Markenzeichen einiger der größten Hits von The Offspring, von „Come Out and Play“ bis „Pretty Fly (For a White Guy)“, wird der Song durch einen gesprochenen Refrain unterbrochen. „Alles, was ich will, ist mit dir wegzufliegen“, erklärt eine Frauenstimme. \n\n„Ich sehe diese gesprochenen Teile als eine Art musikalische Hooks. Eine frische Stimme kann einen Song in eine andere Dimension versetzen, und besonders bei ‚Make It All Right‘ fand ich, dass diese bestimmte Stimme genau richtig dafür war“, sagt Holland. „Der Song handelt von einem Mann, dessen Freundin ihn daran erinnert, dass alles gut werden wird. Aber sie ist keine Schwächling – in einem Text sagt sie ihm: ‚Reiß dich zusammen!‘ Das gefällt ihm.“ \n\nIn „OK, But This Is the Last Time“ kehren The Offspring zu dem bekannten Thema zurück, ein Trottel zu sein. „Noodles nennt diesen Song ‚Self Esteem Part Two‘“, lacht Holland. \n\nAber Holland hatte beim Schreiben des Textes eigentlich seine Kinder im Sinn, nicht eine launische, schwer zu befriedigende Freundin. „Ich sage nein und du sagst ja/Dann sage ich OK, aber das ist das letzte Mal“, singt er im Refrain und beschreibt damit eine Verhandlung, die immer auf die gleiche Weise endet. \n\n„Das Coole an Musik und Texten ist, dass sie offen für Interpretationen sein sollten“, sagt er. „Ich habe einige Songs geschrieben, die sehr stark auf einer wahren Geschichte basieren, wie zum Beispiel ‚Self Esteem‘, aber mir gefällt, dass dieser Song auf verschiedene Arten verstanden werden kann. Er kann von deiner Freundin handeln oder von deinen Kindern, die einen Wutanfall haben, und das ist Teil des Reizes.“ \n\nHolland macht sich mit dem Song „Come to Brazil“ aus dem Album „IYKYK“ ein wenig über einen Kommentar lustig, den Musiker jedes Mal hören, wenn sie eine Tour ankündigen. Der Song ist ein Highlight des Albums und zeichnet sich durch schwere Gitarren, Anspielungen auf brasilianische Bräuche und einen mitreißenden Fußballgesang aus. Holland betrachtet ihn als Liebesbrief an die südamerikanischen Fans. „Brasilien ist wirklich der Hammer. Es ist voller Enthusiasmus und Leidenschaft und ein fantastischer Ort, um aufzutreten“, sagt er. „Ich hoffe, dass die Fans diesen Song zu ihrem eigenen machen.“ \n\nSeit ihrer Rückkehr aus einer fast zehnjährigen Pause zwischen den Alben, in der Holland seinen Doktortitel in Molekularbiologie an der USC erworben hat, sind The Offspring unerbittlich. Sie feierten in diesem Jahr das 30-jährige Jubiläum ihres sechsfach mit Platin ausgezeichneten Albums „Smash“, veröffentlichten 2021 das Chart-Album „Let the Bad Times Roll“ und steigerten ihre weltweiten Albumverkäufe auf 40 Millionen. Außerdem touren sie weiterhin um die Welt – ja, auch durch Brasilien –, begeistern langjährige Fans und erreichen eine neue Generation, die dieselbe Wut und Aggression verspürt, auf der The Offspring aufgebaut sind.\n\nIm vergangenen Jahr standen Queen-Gitarrist Brian May und Ed Sheeran bei verschiedenen Konzerten mit ihnen auf der Bühne, wobei Sheeran die Band beeindruckte, indem er sein Hemd hochhob und ein Offspring-Tattoo zeigte. Holland, der seine Dissertation über HIV-Forschung schrieb, fand aufgrund ihres gemeinsamen wissenschaftlichen Hintergrunds eine Verbindung zu May. \n\n„Manche Leute sehen es als Widerspruch an, einen wissenschaftlichen Abschluss zu haben und sich dennoch für Musik zu interessieren, aber es gibt da eine Verbindung. Musik ist in ihrer Struktur mathematisch, und wenn man sich das zu Herzen nimmt, kann es einem beim Songwriting helfen“, sagt er. \n\nHolland ist einer der wahren Renaissance-Menschen des Rock, ein lizenzierter Pilot und zertifizierter Fluglehrer, der sich freiwillig für medizinische Transportflüge engagiert, wenn er nicht gerade die Band zu ihren Auftritten fliegt. Er betreibt auch seine eigene Hot-Sauce-Firma – Gringo Bandito – nur eine weitere Facette einer Band, die wohl die interessanteste im Rock ‚n‘ Roll ist. \n\n„Wir wollen einfach nur mit der Welt in Verbindung treten, und SUPERCHARGED tut das wie ein kräftiger Schlag ins Gesicht“, sagt Holland. „Wir sind begeistert, dieses Album zu veröffentlichen und nächstes Jahr damit auf Tour zu gehen, um unsere Musik unseren Fans zu präsentieren, die uns schon so lange begleiten.“",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/71984-18205-Komprimiert_Full-band-DSC01560-(Daveed-Benito).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "26",
+    "artist": "A Perfect Circle",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "PROGRESSIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/a-perfect-circle/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72136-20364-aperfectcircle2024travisshinn2-(1).jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "27",
+    "artist": "Ice Nine Kills",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "SYMPHONIC METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/ice-nine-kills/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Ice Nine Kills spread cavalier carnage with a knowing smile, as evidenced by the densely catchy songs on their pair of breakthrough albums, The Silver Screamand The Silver Scream 2: Welcome to Horrorwood. The INKverse boasts a series of high-concept, cinematic videos; the Psychos Only club; a mock “true crime” book; the Inked in Bloodgraphic novels; monthly “Nightmare on the 9th” merch drops; and the annual INK-curated Silver Scream Convention weekends. In 2024, Silver Scream Con moved into the DCU Center in Worcester, Massachusetts – not far from the North Shore birthplace of Ice Nine Kills. Led by Spencer Charnas, the internationally acclaimed band (who mix extreme metal with melody) toured with Slipknot in 2022 and was handpicked by Metallica for the M72 World Tour in 2023, 2024, and 2025. The horror community Spencer grew up loving has embraced his band in return. INK’s “A Work of Art” plays in 2024’s Terrifier 3, now the highest-grossing unrated film ever.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72138-18925-INK_Terrifier_6_042_Final.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Epic",
+      "Orchestral",
+      "Dramatic"
+    ]
+  },
+  {
+    "id": "28",
+    "artist": "Social Distortion",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/social-distortion/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The enduring L.A. punk band Social Distortion has overcome numerous personnel shifts, the demise of the Los Angeles hardcore scene that spawned them, and the heroin addiction of singer/guitarist/bandleader Mike Ness to achieve a measure mainstream acceptance for their rootsy, hard-hitting punk without compromise. Inspired by the fertile L.A. punk scene, Ness formed the group in 1978 with drummer Casey Royer and brothers Frank (bass) and Rikk agnew (guitar). When the brothers left to join The Adolescents, Ness’ schoolmate Dennis Danell joined on bass; the next few years saw a revolving-door membership. When the group finally recorded its debut album, Mommy's Little Monster in 1983, the band consisted of Ness, Danell (now on guitar), bassist Brent Liles, and drummer Derek O'Brien. Their music was often described as a punk version of The Rolling Stones, and \"Another State of Mind\" was one of the few punk videos to air on MTV in 1984. However, the band took four years to record a follow-up, as Ness descended into heroin addiction and self-consciously rebellious behavior. Liles and O'Brien left, and Ness, after straightening himself out, finally regrouped in 1988 with John Maurer on bass and Chris Reece on drums. This lineup recorded Prison Bound, a mature album broadening Social Distortion's roots rock influences with a country feel. Their self-titled 1990 effort included a cover of Johnny Cash's \"Ring of Fire\" and returned the group to MTV via \"Ball and Chain.\" Somewhere Between Heaven and Hell became their most popular album to date, producing a minor radio hit in \"Bad Luck\" and keeping with their now-established blend of punk, blues, country, and rockabilly. Social Distortion took an extended hiatus following the release of Somewhere Between Heaven and Hell, returning in 1996 with White Light, White Heat, White Trash, which proved to be a moderate hit on MTV and modern-rock radio; former Black Flag and D.O.A. drummer Chuck Biscuits made his debut on the album, following the departure of Reece. Live at the Roxy followed in 1998, Ness and a year later issued a pair of solo albums, Cheating at Solitaire and the covers collection Under the Influences. Danell died February 29, 2000 of an apparent brain aneurysm; the guitarist was just 38-years-old. In the fall of 2000, Jonny Wickersham signed on as the group's new guitarist, and Charlie Quintana took over on drums from the often busy Biscuits. After extensive touring, the band went back into the studio in 2004 to record Sex, Love and Rock 'n' Roll. Another six years passed before Social D returned to recording. Produced by Mike Ness himself, 2011's glossy-but-muscular Hard Times and Nursery Rhymes featured a new lineup, with bassist Brent Harding and the son of Los Lobos’ David Hidalgo, drummer David Hidalgo Jr. joining Wickersham and Ness.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72142-18979-462279308_3810052029275452_8867932080647289997_n.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "29",
+    "artist": "Breaking Benjamin",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/breaking-benjamin/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "After announcing their recent signing to BMG, hard rock veterans Breaking Benjamin have released their anthemic new track “Awaken”, the first single from the band in five years.\n\nConsistently dominating the rock charts since their debut in 2002 with “Saturate”, Breaking Benjamin has accumulated ten #1 hits, platinum and multi-platinum albums, 8.5 billion streams globally, and a social following of over 6.5 million, they’ve solidified their global influence and devoted fan base. The past release, “AURORA,” earned them their 10th #1 rock radio hit with “Far Away”. Their previous album, EMBER debuted at #3 on the Billboard Top 200, marking their fourth Top 5 debut. Their track record includes #1 hits like “Red Cold River” and “Torn in Two. ” Both AURORA and EMBER achieved Top 10 status in multiple countries and #1 spots across various charts, including Top Alternative Albums, Top Rock Albums, Top Hard Rock Albums and Top Digital Albums. “Working on this song has been something new and exciting for all of us I believe” guitarist Jasen Rauch adds and continues “We’ve been able to explore more of who we are traditionally, while at the same time push boundaries and try things we haven’t done in the past. Musicallynwe’ve tried hard to stay true to what Breaking Benjamin is, but offer a new take as well.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72144-5014-bg_breakingbenjamin-1440x900.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "30",
+    "artist": "The Pretty Reckless",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HARD ROCK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-pretty-reckless/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The Pretty Reckless is a rock band hailing from New York City, known for their electrifying live performances and soul-baring lyrics. Fronted by the incomparable Taylor Momsen, whose captivating vocals effortlessly shift from raw power to haunting vulnerability, and fueled by the dynamic guitar work of Ben Phillips alongside Jamie Perkins’ explosive drums and Mark Damons’ resonant bass, the band have established themselves as an enduring powerhouse in rock music.\n\nThe Pretty Reckless deliver a sonic experience that blends blistering hard rock with introspective moments, inviting listeners on a cathartic journey through the highs and lows of life. Their live shows have established them as a touring force, grounded in the undeniable energy of Momsen’s magnetic on-stage presence. They have toured the world, opening for legends like AC/DC, The Rolling Stones, and Soundgarden.\n\nFormed in the early 2010s, The Pretty Reckless burst onto the rock music scene with their debut album Light Me Up, a bold introduction to a band that refuses to be confined by expectations. They soon gained worldwide attention with their second studio album, Going To Hell. A bruising blend of ferocious rock and roll and inky blues, the album debuted in the Top 5 on the Billboard Top 200 and spawned three No. 1 Mainstream Rock singles including 2014’s most successful song at the format, “Heaven Knows,” which spent a total of 18 weeks in the top spot.\n\nThe band’s third album, Who You Selling For, was released to critical acclaim and delved into themes of inner turmoil and redemption, becoming a testament to the band's fearless exploration of the human experience. The band’s latest album, 2021’s Death by Rock and Roll, is a raw and unfiltered exploration of life, loss, and the enduring power of rock music.\n\nWith the album’s eponymous lead single, The Pretty Reckless made history by becoming the first female-fronted band to have seven number-one singles on Billboard’s Mainstream Rock chart.\n\nThis past August, the band released “For I Am Death,” their first single in more than four years. Following an exclusive iHeartRadio premiere, the track earned 1.25 million streams across DSPs in its first week, became the #1 most added single at rock radio for three consecutive weeks, and now sits at #12 on the Mediabase Active Rock Chart as of September 15. “For I Am Death” is a brooding track that opens with searing guitar which emerged from a place of quiet devastation following a period of loss. To process the weight of that grief through their lyrics, the band personified Death itself, crafting a song that is intentionally left open to interpretation. The single marks the beginning of what promises to be a powerful, unpredictable ride through the band’s latest chapter of artistic exploration.\n\nIt’s The Pretty Reckless’ willingness to bare their souls that has earned them such a passionate fan base of those who identify with the raw candor of the lyrics and fearless way they are expressed. As they continue to push boundaries and defy expectations, The Pretty Reckless remains a beacon of uncompromising rock 'n' roll, proving that sometimes the most powerful music comes from the deepest depths of the human heart.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72146-18961-theprettyreckless.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "31",
+    "artist": "The Plot In You",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-plot-in-you/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The Plot In You continue to move forward on their fifth full-length album and second for Fearless Records, Swan Song. The Ohio quartet— Landon Tewers [vocals], Josh Childress [guitar], Ethan Yoder [bass], and Michael Cooper [drums]—stare down years of negativity, soured friendships, disappointment, and mistakes and flush it all away in the wake of hammering distortion, towering melodies, cinematic production, and unapologetically cathartic lyrics. Ascending to the apex of an eight-year grind, the band reached critical mass on 2018’s DISPOSE. The standout “FEEL NOTHING” exploded with 28 million US streams, while the project eclipsed 55 million US streams. Billboard raved, “DISPOSE is the band’s most polished and cohesive work to date,” and Alternative Press noted, “DISPOSE makes it clear that TPIY challenge both the listeners and themselves more and more with each release.” Grading the album “9.0-out-of-10,” Rock Sound predicted it “should finally – and deservedly – make The Plot In You a name that everyone knows.” They supported the record by hitting the road with Underoath, The Amity Affliction, Like Moths To Flames, Sum 41, and more. After racking up over 100 million streams and receiving praise from Billboard, Rock Sound, Alternative Press, and more, the group wave off darkness with unassuming confidence and clarity on Swan Song ignited by the single “Face Me.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72148-18795-the-plot-inyou.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "32",
+    "artist": "Royal Republic",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/royal-republic/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Royal Republic is not your average rock band. They don’t buy into the clichés or the dos and don’ts of Rock’n’Roll. A purist might shake their head and say “Hey now, this isn’t right!“ but they’d be wrong. Royal Republic is always right! It’s the weird flavour combination that doesn’t make sense until you try it. The outfit that’s so ugly it’s awesome. The kinky thing you never knew you liked until it just sort of happened by accident that one time and you were all like WHOAAAH! \n\nEstablished in 2007, the world’s greatest Power-Disco quartet Royal Republic first busted onto the scene with their 2009 (or 2010) debut album We Are The Royal, featuring classics like Tommy Gun and Full Steam Spacemachine. In 2012, the modestly titled follow-up Save The Nation was released, including smash hits like Everybody Wants To Be An Astronaut and Addictive.  After that the band decided it was time to bring it on down and recorded the 2014 acoustic EP Royal Republic and The Nosebreakers.In 2016, Royal released their 3rd album, Weekend Man. A tour-de-force featuring all-time greats like When I see You Dance With Another and Baby, which also started to hint at a new direction… This direction was fully embraced on Club Majesty, which boasted singles like Fireman & Dancer and Anna-Leigh, and at the time of its release and still to this day, Club Majesty remains the world’s greatest Power-Disco album. After this, the world stopped, but Royal did not. In this intermission, Royal Republic kept releasing anthems such as RATA-TATA and Back From the Dead, proving that even in the face of great adversity, Royal can churn out un-deadly classics. \n\nIt’s been a long hard wait, but at long last Royal Republic is BACK to melt your hearts and set fire to your speakers. In the long wake of previous masterpieces, Royal Republic proudly present their 5th studio album “LoveCop”! Produced by Adam Grahn and Michael Ilbert at the legendary Hansa Studios, LoveCop features Royal’s irresistible blend of sass, riffs and puns in combinations previously not thought possible. LoveCop is another giant leap in the right direction, where Royal Republic continues to play to its strengths, which also happens to be your weaknesses. It’s loaded with Per Andreasson’s intelligently dumb drum beats and Jonas Almén’s groovy sweat-dripping bass lines. It’s a continuation of the love-affair between Hannes Irengård’s dirty telecaster and Adam Grahn’s silky voice. It’s whipped cream and caviar. Jean-Claude Van Damme getting pinned by Céline Dion. A sweaty one-night stand between Metallica and Michael Bolton.\n\nLoveCop is here to free you from your shackles and read you your rights: \n\nYou have the right to remain LOUD!\n\nPut your fucking hands up,\n\nand dance!",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72150-18796-RR-LoveCop-Press4-photo-by-Jonatan-Rennemark-(Paraply).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "33",
+    "artist": "President",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/president/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Citizens, the time has come.\n\nNo names.\n\nNo past.\n\nNo distractions.\n\nOnly the mission ahead.\n\nAt Download Festival, the inauguration begins.\n\nNot with words, but with action. Not with empty promises, but with undeniable force.\n\nThere will be no campaign, no debate, no opposition.\n\nOnly one truth: President has arrived.\n\nThe oath will be taken. The people will decide. History will be made.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72152-18940-KLEINER_president-nonperformance-151.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "34",
+    "artist": "Thrown",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HARDCORE",
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/thrown/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72154-18794-thrown-Press-Photo-2024-(Credits-Aslak-Junttu).jpg",
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Intense",
+      "Fast",
+      "Melodic",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "35",
+    "artist": "Catch Your Breath",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/catch-your-breath/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Catch Your Breath is a fresh, burgeoning Hard Rock act based out of Austin, Texas. This eclectic 4 piece injects a unique mix of synth soundscaping elements, imaginative production, and refined songwriting creating an intense amount of emotion, while still keeping it heavy and unique. With the success of their debut album “Shame On Me”, seeing multiple singles added to active rotation at Sirius XM Octane radio, paired with very solid touring history over the last year supporting some of the bigger artists in the U.S., Catch Your Breath have begun making their imprint on the music scene, and show no signs of slowing down.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72156-20219-kleiner_catchyourbreath.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "36",
+    "artist": "Magnolia Park",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP PUNK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/magnolia-park/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "MAGNOLIA PARK – vocalist Joshua Roberts, guitarists Tristan Torres and Freddie Criales, drummer Joe Horsham and bassist Vincent Ernst – have never been ones to settle for subtlety. Since forming in 2018, the Orlando, Florida-based quintet have, over and over again, proven themselves to be one of the most exciting and forward-thinking groups in the underground, spinning a chameleonic, genre-spanning sound that incorporates punk, rock, pop, hip-hop and metalcore into a dizzying, multisensory experience. \n\nThe fivesome is set to unleash their most ambitious effort yet: VAMP (Epitaph Records), a neo-gothic concept album rich in world-building and gripping storytelling. Culling influence from the band’s favorite anime including the long-running Vampire Hunter D, along with inspiration from iconic works like Star Wars, Dracula and Joseph Cambell’s legendary monomyth, Vamp unravels an ominous journey through Nocturne Nexus, where rulers and rebels battle with the future hanging in the balance. \n\nAcross the album’s 11 tracks – produced by the band’s own producers, Torres, Criales and Ernst, alongside Andrew Wade (A Day To Remember, Wage War), Hiram Hernandez (blessthefall, Real Friends) and Andy Karpovck (408, Taylor Acorn) and mixed by Zakk Cervini (Bad Omens, Bring Me The Horizon) – Magnolia Park soundtrack this dramatic tale of crimson blood and chrome-plated courage through their own mix of man and machine, stacking whirring electronics and industrial undertones alongside sledgehammer breakdowns, walls of detuned guitars and Roberts’ seam-splitting vocals.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72670-19230-MagnoliaPark_Oswaldo-website.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "37",
+    "artist": "Six Feet Under",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "DEATH METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/six-feet-under/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72672-19299-Six-Feet-Under-photo-2-jackchrissky_final-MAIN.jpg",
+    "vibes": [
+      "Brutal",
+      "Dark",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "38",
+    "artist": "Just Mustard",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POST-PUNK",
+      "SHOEGAZE"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/just-mustard/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72158-18987-Credit.-Greg-Purcell.-Square.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "39",
+    "artist": "Black Label Society",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HEAVY METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/black-label-society/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Everything about Black Label Society begins with the riff. \n\nA dedicated disciple of Zeppelin, Sabbath, and Deep Purple, Zakk Wylde looks to the massive guitar hooks in classics like “Whole Lotta Love,” “Into the Void,” and “Smoke On the Water” as guiding lights. “The main ingredient in any Black Label soup is the riff,” says the larger-than-life frontman. \n\nBlack Label Society builds their music on this simple truth, truth as self-evident on Back in Black as on the dozen songs comprising Doom Crew Inc., the eleventh album from the dependable stalwarts. Doom Crew Inc. is both a tribute to the band’s “first to bleed, last to leave” road crew and a salute to the legion whose support, stretching back to 1998, rivals that of the KISS Army. The Black Label Society biker-style battle vest “kutte” is as ubiquitous at hard rock and metal shows as a black t-shirt. \n\nA charismatic heavy metal marauder recognized worldwide as a living legend, Wylde rose to prominence when Ozzy Osbourne chose him as his loyal axe-man, based on a cassette he mailed in as a teen. Guitar World put him on their cover more than a dozen times in recognition of his work on multiplatinum albums by the icon he calls “the Boss” and the two decades of music made by BLS. \n\nDoom Crew Inc. sees Zakk trading solos and twin-guitar parts with Dario Lorina, backed by the rumble of longtime bassist John “J.D.” DeServio and powerhouse drummer Jeff Fabb. Like every BLS album since 2010, the band tracked Doom Crew Inc. at Zakk’s home studio, aka the Black Vatican. \n\nThe beautiful simplicity of BLS bangers owe everything to the lessons Wylde first heard on We Sold Our Soul for Rock N’ Roll. “Less is more with everything,” he says. “Except the guitar solos.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72762-19532-BlackLabelSociety.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "40",
+    "artist": "Skindred",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "NU METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/skindred/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The music world may be in a permanent state of panic and flux, but one basic principle of rock’n’roll remains true: the key to longevity is to always deliver the goods. No band has better encapsulated this ethos of integrity and determination over the last decade than Skindred.\n\nWidely acknowledged as one of the most devastating and enthralling live bands on the planet, the Newport destroyers have been a perennial force for musical invention and remorseless positivity since emerging from the ashes of frontman Benji Webbe’s former band Dub War back in 1998. Over the course of four universally praised studio albums – Babylon (2002), Roots Rock Riot (2007), Shark Bites And Dog Fights (2009) and Union Black (2011) – Skindred’s reputation for producing the ultimate spark-spraying state-of-the-art soundclash, combining all manner of seemingly disparate musical elements into an irresistibly exhilarating explosion of energy and cross-pollinated cultural fervour has rightly earned them a reputation as a band capable of uniting people from all corners of the globe and making every last one of them tear up the dancefloor with a giant shit-eating grin plastered across their faces.\n\nWith the toughest and most infectious metal riffs colliding with the biggest, phattest hip hop and reggae grooves, cutting edge electronics and a razor-sharp pop sensibility guaranteed to encourage even the most curmudgeonly music fans bellow along with rabid enthusiasm, Skindred are both the ultimate thinking man’s party band. And now, with the release of their fifth studio album Kill The Power, Benji Webbe and his loyal henchmen – bassist Dan Pugsley, guitarist Mikey Demus and drummer Arya Goggin – are poised to spread their gospel of good times and badass tunes to an even bigger global audience.\n\n“We know that everyone recognises us as one of the best live bands around,” says Arya. “We’re really proud of all of the albums we’ve made, but we all felt that we needed to make an album that would be as powerful and effective as the live show. That’s what Kill The Power is all about. This time, we want everyone to sit up and listen and join in the party.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72765-19448-251001_Skindred2021_nelighter_web.jpg.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "41",
+    "artist": "Annisokay",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "POST-HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/annisokay/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ANNISOKAY, a pioneering force in modern European metalcore. Through five impactful albums and countless live shows, they've steadily built their influence, earning global recognition and a passionate fanbase along the way.\n\nTheir dedication to the road is undeniable: Annisokay has performed in over 20 countries, including the USA, Japan, Russia, nearly all of mainland EU, and the UK. Prominent appearances at major festivals such as Wacken, Summer Breeze, Tuska, and Full Force further highlight their tireless work ethic.\n\nIn 2025, the band will embark on their largest headlining tour to date. This European trek builds directly on the momentum from their successful 2024 \"Bleed Out Tour\" with Within Temptation.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72800-19659-AbyssPt2-Promo1-gleiche-hohe-kleiner.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "42",
+    "artist": "Quicksand",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POST-HARDCORE",
+      "ALTERNATIVE METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/quicksand/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "One of the most remarkable aspects of Distant Populations—Quicksand’s first album since 2017’s Interiors—is how timely and prescient the themes running throughout its songs sound at this very moment. Thoughtful, driving, and powerful, like the long-lived band itself, the 11 tracks comprising Distant Populations have an emotional resonance that is only amplified by the events of the past stressed-out, locked-down year.\n\nIf there is a recurring theme running throughout the new album, it might be this: “Everyone is on the one hand so connected with each other,” says Schreifels, “and on the other hand is so far apart, and so freaked out about everything.” \n\nThat seeming contradiction may lie at the heart of what Distant Populations is all about. The title comes from a lyric from anarcho-crust punk band Nausea’s “Fallout (Of Our Being)” about “destitute populations”; because of the singer’s thick accent, Schreifels misheard it as “distant populations” and instantly connected with that concept.  “So we’re checking out each other’s social media and we know what everybody’s doing,” he says, pointing out a sad irony. “But when we’re sitting in the same room together, we’re looking at our phones.”\n\nThat peculiar duality—our simultaneous existence in individual relationships and as part of mass society—is examined with power and surprising emotional impact throughout all of the tracks here.  Cutting and sharp lyrical passages pop out on tracks such as the throbbing “Colossus”:   “A new life/ We’re never meant to feel completed/As long as we’re here/It doesn’t matter what for”  And alienation—from whom or what often going unsaid—and loneliness are touched on regularly, whether subtly (“Sometimes it’s better just to keep on traveling” from “Phase 90”) or stated plainly (“Living just around the corner/Share the same existence/Doesn’t make a difference/Deconstructed, isolated” from the closing track “Rodan”). Combine those sentiments with the most sweeping, powerful music the band has ever created, and you’ve got a truly unforgettable, extremely timely listening experience.\n\nDistant Populations, just the fourth full-length album of Quicksand’s career, comes as a comparatively swift follow-up to Interiors--which itself came a full 22 years after its predecessor, 1995’s Manic Compression. Critically lauded and deemed very much worth the wait, Interiors succeeded in reestablishing the band as the powerful and contemporary entity they had always been. “Our only conscious challenge for that period, really,” says bassist Sergio Vega, “was that we felt like we needed to make a record that was worth waiting that long for.” Its success proved that they met that challenge, and, he adds, “galvanized by that, we felt like we know what we are today. We know what fits in our template. And we can build off that and expand on that.”\n\nAnd expand they did. Distant Populations has a punchier, more up-tempo sound than its predecessor; its 11 songs are concise, carved sonic jewels boasting not a single wasted note; and its raw power, its gripping lyricism, leaps out from the very first listening.  It is a striking step up for the band.\n\nThe songwriting itself had been no minor process: Following the release of Interiors, the band successfully toured around the world, hitting the US, Europe, Japan, and South America, and in the process fully re-established their chemistry together. Looking forward to making the next album, the three of them—Schreifels, Vega, and drummer Alan Cage—had methodically recorded various soundchecks, improvisations, and show rehearsals, and compiled the results. “Eventually, when it came time to make a record,” Schreifels says, “we would just edit down to the ones that were most exciting to us all, and then refocus on them and see if we could recapture the magic from it.”\n\nGreatly aiding in the process was producer Will Yip, whose masterful work on Interiors had been much appreciated by the band.\n\n“Will has a very organized, systematic mindset,” says Schreifels, “but with that, the perfect complement of that is that he is very open-minded and giving. He's like super down for whatever you want to pursue, and not begrudgingly. And he’s also a great musician. So everyone within our little organization respects his opinion musically, and especially with the three of us, having that extra opinion that we all respect is really helpful.”\n\nDistant populations going nowhere\n\nSo far away from us, you wouldn’t know where\n\nOpposite of you, opposite of me\n\nGenerations leveled and taken by the sea\n\n--from “Inversion”\n\nThe artfulness at work on Distant Populations is evident from its pounding opening track, “Inversion,” which may encapsulate all that is distinctive about Quicksand’s current music. The lyrics work on a variety of levels, for which Vega credits the “meticulousness” of Schreifels’ lyric writing. “They’re so open to interpretation, and they kind of hit you on a lot of levels,” he says. “I like those kind of lyrics best.” \n\nAnd, like the lyrics, the music itself pounds.\n\n“That was one of the last songs we came up with,” says Schreifels. “And it was just very primal sounding and very basic, you know, just like two parts. Especially in contrast to Interiors or even our earlier work, you know, where we would tend toward the more complex, I think. I thought it was really cool that we were in a place where we could step back from that, and didn't have to bells-and-whistles it all out. We kind of did something pretty basic. And I think the lyrics set the tone nicely for the record.”\n\nAnother personal favorite of Schreifels’ here is “Missile Command,” a song that, significantly, emerged from a rehearsal jam, he recalls. “It really kind of focuses on Sergio’s whole motif in a very simple way. He and Alan just have this really kind of trademark groove, and I think that really sings on that one to me. I just felt like it's a kind of song that is very us, but we hadn't written it yet. So I'm really proud of that one.”\n\nThere are a total of 11 tracks on Distant Populations, and not one hits the four-minute mark. But you wouldn’t know it. The album is deep, brimming with substance, and thematically about as contemporary as it gets.  \n\n“Sonically, I think this album has a real urgency,” says Vega. “Something in the way that it was mixed. Partly it's the mix that increased the urgency. But when I look at the song tracking, a lot of songs are under three minutes, right? And that creates a real sense of urgency as well.”\n\nAppropriately, the urgency Vega speaks of reaches its crescendo in Distant Populations’ final track, “Rodan.” A throbbing, monolithic piece much in keeping with the album’s overall emotional landscape—and it is a gripping album closer—the track takes its name from the flying monster of late ’50s Japanese horror film fame. \n\n“If you watch the news right now, it's essentially a whole bunch of things that are going to scare the crap out of you,” says Schreifels. “And that's the point of it. You know what I mean? Until they think of the new thing that's going to scare the crap out of you. If Rodan beats his wings, you know, houses fall down and people die and get all crushed--but Rodan might have just saved you from some other shittier monster that’s really trying to do you harm. \n\n“So it’s trying to capture that feeling that I was feeling--not only in the macro of our modern time, that we live in right now, but also how it plays itself in your own lived experience, and how you're affected by it in different ways, you know? And those were the feelings and concepts that were driving me--without wanting to be polemic about it, or getting into the nitty-gritty of, well, ‘Fuck Donald Trump.’ You know what I mean? These kind of issues. There's a lot of people’s lives are being driven by these fears and, you know, I'm no exception.”\n\nThere may be a final irony in the title of Distant Populations. Practically speaking, that’s precisely whom Quicksand recorded it for: Listeners very far away. Not a single one of these songs has ever been played live onstage. The band has dates on hold for the fall, notes Schreifels, and fingers are crossed Quicksand will be out there performing very soon.  They will likely be the most memorable shows of the band’s career.\n\n“Meanwhile,” he adds, “we're happy at this stage of the game.  We're excited for this record. And we want people to know.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72803-19595-quicksand-PROMO-1-(A.F.-Cortes).jpg",
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Intense",
+      "Fast",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "43",
+    "artist": "Melrose Avenue",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/melrose-avenue/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Melrose Avenue has quickly risen from a post-pandemic experiment to one of the most exciting heavy music acts in the world today. Born out of a cross-state collaboration in Australia, the band turned the limitations of lockdown into opportunity, building a global fanbase online before ever stepping foot on major stages. What began as a digital lifeline is now a full-fledged phenomenon, with millions of fans worldwide and a reputation as one of the fastest-rising names in modern Metalcore.\n\nWith over 3 million combined followers across TikTok and Instagram, Melrose Avenue has mastered the art of connecting with fans in a way few heavy bands have achieved. In 2023, they ranked as the 8th most-viewed music act on TikTok in Australia/New Zealand, and by 2025 their audience had expanded across more than 60 countries, with the USA, Germany, the UK, and Australia leading their global following. Their ability to merge heavy riffs with infectious hooks has made them not just a viral sensation, but a serious force in the international heavy music scene.\n\nDrawing influence from Bring Me The Horizon, Memphis May Fire, and Linkin Park, Melrose Avenue blends crushing breakdowns with soaring choruses, creating a sound that is both aggressive and anthemic. Their music resonates with fans of modern Metalcore while carving out a unique identity that sets them apart.\n\nThe group signed to punk rock staple label Hopeless Records in 2024, with their music rapidly surpassing 20 million global streams and singles reaching audiences worldwide, consistently landing on SiriusXM Octane.\n\nThe band’s debut U.S. tour in May 2025—supporting Ice Nine Kills, The Word Alive, and The Funeral Portrait across 26 sold-out shows—was followed by their own sold-out headline dates in Las Vegas, Los Angeles, and Phoenix. This run marked a major breakthrough, leading to the announcement of a UK/European tour for November 2025, which sold out in less than 72 hours and cemented their status as one of the most in-demand new acts in heavy music.\n\nAnd it doesn’t slow down from here. Melrose Avenue is set for a monumental run of shows:\n\n•           November 2025: Debut Australian headline tour\n\n•           Late 2025: Sold-out UK and European tour\n\n•           April 2026: A massive 32-date U.S. headline tour, their biggest yet\n\nMelrose Avenue has proven they are more than a viral success story—they are a global heavy music powerhouse. With undeniable talent, charisma, and a rapidly growing fanbase, the band is positioned as one of the defining acts of the next generation of Metalcore.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72806-19544-75a9292d_Melrose-Avenue-press-shot.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "44",
+    "artist": "Tx2",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP PUNK",
+      "EMO"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/tx2/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72810-19405-redbluealt.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "45",
+    "artist": "The Pretty Wild",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "COUNTRY ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-pretty-wild/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The Pretty Wild is a genre-bending, boundary-breaking powerhouse fusing rebellious spirit with raw, heartfelt lyricism that speaks to a generation craving authenticity. Refusing to be confined by the rules and expectations of traditional society, The Pretty Wild embrace their relentless pursuit of truth beyond societal expectations, all while making music for everyone brave enough to break free.With already amassing over 37 million all-time streams and planned performances this year at major national festivals such as Welcome To Rockville and Inkcarceration 2025, as well as the hotly-anticipated Hell Hath No Fury tour with In This Moment, Wargasm, and Kat Von D, the sky is the limit for the sister duo who are further solidifying themselves as a force tobe reckoned with in modern heavy music.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72812-19660-kleiner_2026-TPW-Press-Pic.-Credit-Joshua-Shultz-(1).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "46",
+    "artist": "Zascha",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE POP"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/zascha/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72815-19825-Sofiia-Zvonarrova-@zvonarrova.jpg",
+    "vibes": [
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "47",
+    "artist": "Iron Maiden",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HEAVY METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/iron-maiden/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "It’s a story like no other –a sound that changed the world. In the 50 years since bassist Steve Harris’ vision was birthed in the humble working-class sprawl of East London Iron Maiden have grown to become nothing less than an institution, and this year has seen them celebrating their founding in 1975 with a tour to match the gargantuan scale of that truly peerless half century. A two year run, the Run For Your Lives World Tour has already taken Iron Maiden to stadiums in the UK and around Europe, and there is more to come, but to truly understand Iron Maiden’s story you must first go back to the beginning. It’s about more than tours that have encircled the globe or chart-smashing records that have inspired a fan base that can be found in every time zone.The near mythical status and undeniable cultural impact of Iron Maiden cannot be overstated. Yet it’s the fact that theirs is a tale which is still unfolding to this day which is truly worthy of note.Maiden, simply, take no prisoners –not then, and notnow, and in the decades since they cut their teeth they’ve grown to embody a spirit of fearless creative independence, unswerving dedication to their fans, and a cheerful indifference to their critics that can only be described as legendary.By 1980 IronMaiden had already earned themselves a cast-iron reputation for ferocious live-shows and a fiercely loyal following to match. Inspired by heavy rock and tempered by the heat of the burgeoning New Wave of British Heavy Metal, theirs was an upward ascent that would culminate in a landmark self-titled album debut which would immediately elevate them above their peers and serve as the prologue to a truly remarkable story that has captured the imagination of music lovers of every country, colour and creed. Emblazoned with the totemic image of Eddie, a ghoulish yet undeniably handsome and mysterious figure whose tantalizing image would go on to feature on every album and countless t-shirts hence, it was nothing less than a groundbreaking statement of intent. Manymore would follow. The rapturous response to 1981 follow-up Killers would confirm the growing suspicion that this was a band in a class of its own,and ensuing tours of Japan and the States as well as the UK and Europe would affirm both Maiden’s international appeal and their relentless commitment to reach fans wherever, wherever they are.However, it was really the release of their third album –1982’s incendiary The Number Of The Beast –and a bold line-up change which would see original singer Paul Di’Anno replaced by ex-Samson frontman Bruce Dickinson that would set the scene for the epic chapters to come. A chart-smashing success, it would kick off a decade of now classic annual releases and dogged touring that would come to epitomise the indefatigablegallop that Maiden are so well known for. That marvellous decade would also yield seven new studio albums, seven world tours and one of the most revered and influential concert albums of all time; the seminal Live After Death. What makes these qualitieseven more notable is that they developed almost entirely without the acknowledgement of mainstream media. While celebrity culture and the next-big-thing occupied the airwaves, Iron Maiden were embarking on the marathon 192-date 1984/5 World Slavery Tour,  playing at the formative, standard-setting Rock In Rio in 1985, and mounting a command performance at the biggest-ever Monsters Of Rock festival at Donington in 1988 with 107,000 fans in attendance. But it’s really Iron Maiden’s gritty resolve to always push the boundaries that gives their career such astonishing distinction.From historically groundbreaking performances in Poland behind the Iron Curtain in 1984 at the height of the Cold War, around South America in 1991, through the Middle East and India in 2007, and Indonesia in 2011 among many others, Iron Maiden’s relentless forward momentum has left an indelible impression on the globe.The changing landscape of the ‘90s proved to be a difficult time for heavy metal bands in general, but Iron Maiden pressed ever-forward, notching up yet more success with albums like 1992’s acclaimed Fear Of The Dark and even weathering the departure of Bruce Dickinson in 1993. The band made two strong albums with new singer Blaze Bayley and continued to honour their commitment to intensive touring. However, it was the return of Dickinson and guitarist Adrian Smith (who originally left the band in 1990) in 1999 when Iron Maiden became a six-piece, that established the ultimate Iron Maiden line-up of Bruce Dickinson on vocals, Steve Harris on bass, Nicko McBrain on drums and “the three amigos” –Adrian Smith, Dave Murray and Janick Gers -on guitar, and heralded a new golden age of Maiden and the band’s monumental third act.It began with the release of the landmark BraveNew World album in 2000, swiftly followed by 2003’s diverse and ingenious Dance Of Death album and its dark and daring follow-up, 2006’s A Matter Of Life And Death. This trio of releases, and the accompanying tours which saw them playing to millions of people around the world, proved Maiden could still dazzle fans and critics alike, all the while upending the notion that veteran acts should bask in the glow of former glories. Maiden instead opted to never be predictable while remaining predictably brilliant.There is perhaps no better visual illustration of these triumphs than the band’s decision to charter their own 757 –Ed Force One –which would be flown by none other than Bruce Dickinson himself, by then a qualified airline captain. 2008’s ensuing Somewhere Back In Time Tour took the band 50,000 miles around the world in 45 days, and it also made for an unforgettable image –a band taking to the skies under its own steam both figuratively and literally. They did it again under the banner of 2010’s The Final Frontier Tour in support of the album of the same name. Fittingly, the release of 2016’s The Book Of Souls –a 92-minute masterpiece and the band’s first double-album –saw a corresponding upgrade to a 747 Jumbo Jet (again piloted by Dickinson) but revealed no change to their ongoing determination to always reach new lands, this time playing debut shows in El Salvador, Lithuania and China.The Legacy of the Beast Tour would follow in 2018 –a stunning summation of the band’s creative output to date and a clever tie-in with Iron Maiden’s award winning mobile game of the same name. Only a global pandemic could halt the momentum of that world-beating tour, but rest is not in Maiden’s vocabulary, and September 2021 saw the release of Maiden’s stunning 17th album, Senjutsu –their first record in six years. It would debut at #1 in 27 countries, a  colossal achievement only rivaled by the uncompromising artistic vision contained therein: proof positive of Maiden’s trademark ability to summit dizzying heights and keep going. It would also herald an emotional return to the live stage with a fusion of the classic Legacy Of The Best set-list with thrilling new Senjutsu tracks to sold-out arenas around the world, including an unforgettable return to Rock in Rio.2023 would see Maiden continuing a Herculean upswing with a triumvirate of history-making headlines. First came the news that the Royal Mail UK were set to immortalise Iron Maiden with their very own set of commemorative stamps. A rare honour, it was an expression of Maiden’s undeniable status as one of the United Kingdom’s greatest exports and their unquestionable influence on world culture. Even Eddie got one. Then came Trooper beer’s tenth anniversary –a Bruce-curated range of beers named after the seminal single of the same name from 1983’s Piece Of Mind album. Trooper beer has now sold a staggering 38 million pints in 68 countries around the world.And finally, spearheaded by artwork that perfectly encapsulates Maiden’s steadfast ability to chart new territory while remaining true to its roots and ever-growing legacy, 2023 saw the launch of The Future Past Tour, a stunning visual and sonic blend of new music from Senjutsu and the band’s desire to revisit 1986’s revered Somewhere in Time album, the worldtour continued into 2024 to ecstatic response.The tour would also see drummer Nicko McBrain announcing taking a step back from the touring life. Having recovered against the odds from a TIA in 2023 that left him originally unable to use his right side, he valiantly returned to the drumstool for both legs of the world tour. The ‘handsome one’ would play his final show with the band after a remarkable 42 years behind the kit at The Future Past’s concluding show in São Paulo. It made for an emotional farewell for the beloved sticksman. Maiden’s world continued to turn however, and it was not long before veteran British Lion drummer Simon Dawson was announced for the Run For Your Lives tour, because if there’s anything to be learned by now it’s that Maiden never sit still for long, and their ability to make the extraordinary seem routine has never wavered. The first leg of the Run For Your Lives Tour would be met with exceptional reviews as well as a deeply moving and historic homecoming at London Stadium –the home of Steve’s beloved team, West Ham United FC. It would make for an auspicious start to a two year tour which will also see the release of an official book –Infinite Dreams –as well as a feature documentary via Universal Pictures. Run For Your Lives will continue in 2026 –a stadium tour designed to fire the imagination and continue Maiden’s lifelong commitment to reach ever-loftier summits with a set list and a fully modernized production designed to delight fans of every generation: a world-spanning celebration of the past, the present, and the eternal living legend that is Iron Maiden.\n\nAlexander MilasEddietor, the official Iron Maiden Fan Club",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72112-18924-IRON-MAIDEN-LINEUP-2026.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "48",
+    "artist": "A Day To Remember",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "POP PUNK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/a-day-to-remember/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since their formation in 2003, A Day To Remember quietly emerged as arguably the biggest underground band in the world. The Florida group affirmed this status by achieving one platinum album, two gold albums, one platinum single, and four gold singles. Not to mention, each full-length record ascended to #1 on the Billboard Rock, Indie, and/or Alternative Chart including their most recent release, A Day To Remember's Big Ole Album Vol. 1, which arrived earlier this year. They’ve put up unprecedented numbers for a rock act in the 21st century, generating nearly 2 billion streams worldwide and sales of three million-plus units. They’ve also packed arenas on continental tours and attracted a global audience consisting of millions. \n\nA Day To Remember is: Jeremy McKinnon (vocals), Alex Shelnutt (drums), Kevin Skaff (guitar, vocals), and Neil Westfall (guitar, vocals).",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72660-19233-ADTR.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "49",
+    "artist": "Sabaton",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POWER METAL",
+      "HEAVY METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/sabaton/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "In the more than two decades since the band's launch, Sabaton has headlined major festivals, sold-out arena concerts worldwide and gained a legion of loyal fans by carving out a reputation for being one of the hardest working bands in the business. Since their 2005 debut album, they’ve earned Gold, Platinum, and multi-Platinum certifications in territories around the world with their 10 studio albums.They’ve also had eight albums score Top 10 international chart status, and six claim the Top 5. The band has earned eight Metal Hammer/Golden Gods Awards nominations, taking home the award for \"Breakthrough Artist\" in 2011 and \"Best Live Band\" in three different years, and a Grammi's nomination (Swedish equivalent to the U.S. GRAMMY) as Best Heavy Metal band.\n\nSabaton has also accumulated more than three billion streams across all streaming platforms and almost 2 billion views on YouTube.In 2008, Sabaton hosted the first edition of its annual, three-day music festival, Sabaton Open Air, in Sweden, which is currently on a hiatus following over a decade of successful events. The year after, the highly popular Sabaton Cruisewas introduced, which sails out of Stockholm each year for epic sea adventures and live acts. A pivotal point in the band’s history was the debut of the Sabaton History Channelin 2019, which uses the power of music and storytelling to dive into the stories behind every song with documentary-style videos.\n\nOn March 4, 2022, the band’s 10thstudio album The War To End All Wars dropped. The album revisits WW1 and features 11 songs. To conclude the band’s chapter on the First World War, the quintet released an EP trilogy on September 30, 2022, entitled Echoes Of The Great War. Complementing their two studio albums on WW1 (The Great Warand The War To End All Wars), the trilogy comprised the Weapons Of The Modern Age, Heroes Of The Great Warand Stories From The Western Front EPs, each of which featured anew single. Eager to share their new music with the world, the band embarked on The Tour To End All Toursin 2022/2023 which spanned the US/Canada and Europe. The Great Swedish Touralso occurred in 2022/2023, which saw the band take on their motherland with 50 shows, many of which were completely sold out. But keeping their heads down and working hard hasn’t stopped them from garnering recognition. In April 2023, the band was recognised by the Swedish Skeptics Association with the highly regarded “Enlightener of the Year Award 2022”, making Sabaton the first ever rock band to receive such an honour. On June 12, 2023, Sabaton launched History Rocks, a global museum charity project which revolved around the band’s new animated film, “The War To End All Wars -The Movie”, which was screened in 140 museums around the world. The film was later released on major video streaming services on May 11, 2025. Rewind back to October 2024, Sabaton celebrated the global premiere of their concert film Sabaton –The Tour To End All Tours, which was filmed at the Ziggo Dome in Amsterdam the year prior. Over 1,200 cinemas in 28 countries screened the concert film. At the end of 2024, Sabaton announced The Legendary Tour 2025in Europe which kicks off in November. In May 2025, they marked their return to Latin America, while in September/October2025 Sabaton will perform six dates in Australia and New Zealand; will return to Istanbul; and will perform in Moldova and Kazakhstan. On July 25, 2025, the band announcedthat their 11th studio album Legendswill be released on October 17 in multiple formatsincluding digital, vinyl, CD and a limited boxset. Four singles from the upcomingalbum are already availableincluding Templars, Hordes Of Khan, The Duelistand Lightning At The Gates.Sabaton refuses to be slotted into a genre. Fans need only know them as Sabaton, the heavy metal band that sings of real-life wars and the people who played a part in them; true stories more fantastic than any fiction.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72160-18793-sabaton-july-2025-1x1.jpg",
+    "vibes": [
+      "Epic",
+      "Anthemic",
+      "Melodic",
+      "Fast",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "50",
+    "artist": "Alter Bridge",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HARD ROCK",
+      "ALTERNATIVE METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/alter-bridge/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Back in 2004, four lifelong musicians got together down in Florida. Even though they had traveled separate paths, similar lessons learned, wisdom earned, and dues paid united these gentlemen—Myles Kennedy [vocals, guitar], Mark Tremonti [guitar, vocals], Brian Marshall [bass], and Scott Phillips [drums]—as Alter Bridge. Over theensuing two decades, the band endured countless trials and tribulations, defied every odd, and rose to the head of the pack as a hard rock juggernaut, cementing a singular legacy by selling out arenas, gathering nearly 1 billion streams, inciting international acclaim, and quietly attracting a diehard audience. Beginning with the Top 5 entry of 2004’s gold-certified One Day Remains, the band have scored six consecutive Top 20 debuts on the Billboard200. Among a myriad of highlights, Guitarist Magazineapplauded “Blackbird” for the “Greatest Guitar Solo of All Time,” the ABIIIsingle “Isolation” vaulted to #1 on the BillboardMainstream Rock Chart, 2013’sFortressreceived rare perfect scores from KERRANG!and Total Guitar, and Walk The Skyshook the Top Rock Albums Chart at #1. Beyond packingO2 Arena and Royal Albert Hall,Classic Rockhailed 2022’s Pawns & Kingsas “the Rolls-Royce of Alter Bridge records”in a4.5-out-of-5 star review. Plus, the latter LP garnered praise from American Songwriter, Guitar World, and Loudwire, while Billboardchristened them“one of America’s premiere hard rock quartets.” Channeling the same hunger, theband continue to push themselves on their self-titled eighth full-length offering, Alter Bridge[Napalm Records]. It embodies everything they’re known for such as the precise riffs, towering hooks, and solos that practically break guitar strings as they burst through the clouds.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72162-18819-KLEINER_ALTER-BRIDGE_Chuck_Brueckmann1.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic",
+      "Heavy",
+      "Intense"
+    ]
+  },
+  {
+    "id": "51",
+    "artist": "Sepultura",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "THRASH METAL",
+      "GROOVE METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/sepultura/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "After 4 decades, 14 gold records, and having traversed 80 countries and numerous diverse cultures, SEPULTURA has transcended into one of the most influential metal bands of our time, serving as Brazil's emissary to the rest of the world. With their latest opus, 'Quadra', an album that made a triumphant entry at number 5 on the German charts and garnered over seventeen million streams on Spotify, the band hailing from Belo Horizonte has once again spread the colours and rhythms of Brazil worldwide. However, in late 2023, they announced their plan to unite their forces for one final, powerful farewell tour, bidding adieu to a forty-year existence. For this final journey, Sepultura has enlisted the prodigious 21-year-old American virtuoso, Greyson Nekrutman, as their new drummer and together, this quartet will soon embark on a 21-dates-strong pilgrimage along the North American roads alongside Obituary, Agnostic Front and Claustrofobia, presenting a career-spanning set to their fans that shall honor the forty years of Sepultura.To date, the band has unleashed fifteen studio albums upon the world, having sold over 3 million units in the United States and twenty million worldwide, thus earning multiple gold and platinum records in various corners of the globe, including France, Australia, Indonesia, Cyprus, and their home country. To this day, their magnum opus, 'Roots', has been streamed a staggering 150 million times on Spotify.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72166-18790-Sepultura-by-Stephanie-Veronezzi1.jpg",
+    "vibes": [
+      "Aggressive",
+      "Fast",
+      "Raw",
+      "Energetic",
+      "Heavy",
+      "Intense",
+      "Rhythmic"
+    ]
+  },
+  {
+    "id": "52",
+    "artist": "Roy Bianco Und Die Abbrunzati Boys",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE POP",
+      "ITALO POP"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/roy-bianco-und-die-abbrunzati-boys/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Let there be Italo-Schlager! This is how it is written and this is how it must be in summer 2026. Roy Bianco & Die Abbrunzati Boys did achieve a cult-status and are known and beloved by press and fans as the probably best live-band of our time, after their latest album release. It's the big show and good entertainment!\n\nWhat's not to like? Six passionate musicians, that give a suspenseful performance while wearing satin shirts. With grand gestures, grand stories, and grand emotions, their new and old songs ring out across open-air stages, creating a triumphant celebration of joy. Come closer and let yourself be carried away into a musical whirlwind of hits, where the boundaries between fiction and reality blur and everyone suddenly becomes brothers and sisters.\n\nRoy Bianco & Die Abbrunzati Boys—a band, a paradise of their own. After all the euphoria, what remains at the end of the concert is not disillusionment, but a humble practice that will last forever. White roses are distributed.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72164-18845-kleiner_roybianco.jpg",
+    "vibes": [
+      "Melodic",
+      "Chill",
+      "Feel-Good",
+      "Atmospheric",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "53",
+    "artist": "All Time Low",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP PUNK",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/all-time-low/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since their inception in 2003, All Time Low have shattered records, topped charts, sold out arenas and carved out a fervent fanbase along the way. Their catalog consists of five consecutive Top 10 albums on the Billboard Top 200 in addition to picking up multi-platinum, platinum, and gold certifications. Speaking to their impact, Rolling Stone named So Wrong, It’s Right, among its “50 Greatest Pop Punk Albums.” In 2020, they ascended to a new commercial and critical high watermark with their eighth full-length LP, Wake Up, Sunshine. Following a #1 debut on the Top Rock Albums chart, it spawned the biggest hit of the band’s career thus far, “Monsters” [feat. blackbear]. It clinched #1 on the Billboard Alternative Airplay Chart for an unprecedented 18 weeks, emerging as the longest-charting song ever at the Modern Rock format. In addition to going platinum, it notably garnered “Alternative Rock Song of the Year” at the 2022 iHeartRadio Music Awards, while superstar Demi Lovato teamed up with the group for the Official Remix. \n\nThe band also captivated audiences with explosive sets at Bonnaroo and Firefly, along with unforgettable appearances on The Late Late Show with James Corden, Jimmy Kimmel Live!, Ellen, Good Morning America, and more.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72168-18939-Sitting-1-Final.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "54",
+    "artist": "Kanonenfieber",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "BLACK METAL",
+      "DEATH METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/kanonenfieber/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "KANONENFIEBER return to the stages of Europe – louder and more relentless than ever.\n\nThe Blackened-Death formation from Germany brings their impressive concept live to the stage: no glory, no honor – only the raw horror of war, based on real fates and historical sources.\n\nWith thunderous power, grim atmosphere, and uncompromising energy, every concert becomes a reminder against forgetting – a musical crusade in the name of remembrance.\n\nIn the trenches of their songs, history is not told – it is endured.\n\nKANONENFIEBER make tangible what must never happen again.\n\n“We don’t tell of victories. We report on decay.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72170-18930-Pressefoto-Kanonenfieber-Soldatenschicksale.jpg",
+    "vibes": [
+      "Dark",
+      "Atmospheric",
+      "Intense",
+      "Raw",
+      "Heavy",
+      "Energetic",
+      "Brutal"
+    ]
+  },
+  {
+    "id": "55",
+    "artist": "The Rasmus",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE ROCK",
+      "GOTHIC ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-rasmus/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "It is often said that the best bands are the ones which keep surprising you time and time again, in the most thrilling of ways. This is something Finnish rockers The Rasmus have been doing since their major label debut and a creative responsibility they take great pride in. If you’ve listened to any of their albums, you’ll be able to hear a kaleidoscopic collage of heavy guitars against futuristic electronics, as well as pop hooks that can find their way into the heart of any kind of music fan. As a direct result, they’ve become one of Finland’s greatest musical exports, selling millions of records worldwide and winning award after award.\n\nBut this year, they’re upping the ante and releasing their most commanding music to date in the form of new single Rest In Pieces, set for release on October 25. It’s irresistibly heavy, dark and melodic – marking the start of the next chapter in their sonic evolution with a sense of fearless bravado and world-conquering intensity. “I guess it’s kind of a new sound for us,” ponders founding frontman Lauri Ylönen. “We’ve done heavy things in the past, I remember the second album had songs with hard riffing. So it’s not completely new, but it’s definitely a fresh take on The Rasmus... especially compared to what we’ve done more recently.”\n\nThe roots of the song come from a place of betrayal and anger, which explains why the lyrics could be considered Ylönen’s most hard-hitting and direct to date. As he rightly points out, some of the best art comes from the challenges life can throw at us – provided the emotions are processed and channelled through more positive avenues. If art imitates life, it should be every bit as unpredictable...\n\n“This all started very organically,” he continues. “The story behind the music is that I was betrayed by a friend. I was sad and pissed off at the same time. I wanted to channel my frustration into the music and create what I call a ‘fuck you song’ for revenge. That’s usually the best thing for any artist or creator to do in that situation. You take the emotion and turn it into something powerful. There’s an impulse that comes through and you find the strength to capture it in the form of music to make art. It might seem negative at first, but I wanted this song to also feel empowering to anyone who hears it. There’s that uplifting thing that we do. I would say Rest In Pieces is very positive in amongst all the intensity.”\n\nThe new track also marks a new partnership with American label Better Noise outside the Nordic and Baltic territories overseen by Playground Music. Currently representing heavyweights like Five Finger Death Punch and Asking Alexandria, having led successful campaigns with Mötley Crüe and Papa Roach in the past, it’s the perfect new home for their new music. The label also introduced the group (completed by bassist Eero Heinonen, drummer Aki Hakala and guitarist Emppu Suhonen) to acclaimed producer Joseph McQueen [As I Lay Dying, Bad Wolves] in order to help them explore and experiment in new creative directions. The initial tracking had been done with Alex Mattson in Helsinki, the mastermind behind Blind Channel’s 100 million-plus streams, and with McQueen on board, they had the recipe for something truly spectacular. “He’s known for producing really cool bands, mostly American ones,” smiles the frontman. “It was very inspiring to work with new blood, so to speak. Here was someone who lived and breathed this kind of music. It was a perfect match.”\n\nThe new music will be supported by a world tour, with The Rasmus bringing an unforgettable stage show to their devoted audiences around the world. “It’s been a while since we went on tour, so we’re really excited to be heading out all over the world in 2025,” continues Ylönen. “It’s shaping up to be a massive tour and there’s more dates to come. We can’t wait to hang out with our fans. It’s going to be fun to see them again, we’re like family.”\n\nAs for what to expect from album number eleven, all we can say is watch this space.\n\n“Rest In Pieces is a promise of what’s to come, for sure!” adds the frontman. “It represents our new sound... it’s shaping up to be the heaviest and darkest album of our career to date!”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72172-18932-The-Rasmus-2024-RIP-Press-2-(photo-Venla-Shalin).jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "56",
+    "artist": "Kublai Khan Tx",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/kublai-khan-tx/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Struggle spurs strength. Trials and tribulations mold and fortify character. Embodying these truths,Kublai Khan turn hardships into hypnotic and heavy metalcore upheld by nimble metallic fury and pit-splitting spirit on their fourth full-length offering, Absolute [Rise Records].“A lot of the record is about our struggle with what we do and the fact we’ve been doing this for over adecade, hit a lot of roadblocks, ate a lot of shit, and still kept going,” exclaims frontman Matt Honeycutt.“We’ve done far more than we ever expected, so it’s always about picking yourself up, dusting yourselfoff, and letting nothing get you down. You have the opportunity to take responsibility for what you dowrong and right. We’re spinning the negative into a positive.”The Sherman, TX quartet—Matt [vocals], Nolan Ashley [guitar, vocals], Eric English [bass], and IsaacLamb [drums]—quietly emerged as a fiery force since their 2008 formation straight out of high school.They built a devout following through airtight consistency on Balancing Survival and Happiness [2014],New Strength [2015], and Nomad [2017]. The latter impressively tallied over 6 million cumulativestreams with “The Hammer” surpassing 2.6 million on Spotify and “Antpile” exceeding 1.1 million.Meanwhile, acclaim came from Metal Hammer, Alternative Press, New Noise, and more as the boystoured relentlessly.In early 2019, they retreated to New Jersey and hit the studio with longtime collaborator, engineer, andproducer Randy LaBoeuf to record what would become Absolute. Taking advantage of a full month tocreate, they changed up the process, recording the drums last for the first time. Additionally, Randyprovided space for Matt to hone his voice.These techniques enriched the sonic punch.“Everything could be folded around the drums, and it made for a better vision, to be honest,” continuesMatt. “That’s how Randy records bands now. It allowed us to have more space to think. We were able toshape everything into exactly what we wanted. It was a game changer. The best thing about this recordwas the learning curve we experienced.”The first single “Self-Destruct” showcases their evolution. Underpinned by airtight riffing, the tracksteamrolls through eerie samples and guttural growls before subsiding on a bashing reprieve of lonebass and drums.“The polarization between everyday citizens in our country is unlike anything I’ve ever experienced,” hesighs. “In person, we can have discussions and logical conversations as friends. On social media, it’sincredibly toxic. They’re going for each other’s necks 24/7. If we keep going, we’re going to self-destruct.Everyone is a ticking time bomb. You can’t do or say anything without somebody taking offence. Weneed to calm down, back off, listen to each other, come together, and understand it’s okay for us to bedifferent. That makes our country beautiful. Canceling conversation is dangerous.”Elsewhere, “Boomslang” tosses and turns between a distorted chug, searing scream, and pensive lyricsabout “touring in general, how difficult it can be on your nerves, and the internal warfare of what wedo.” Then, there’s “The Truest Love.” It urges for preservation of the family unit as Matt barks, “You callyourself a man, but you just leave…just protect your young!”“It concerns my qualms with the current state of male responsibility,” he states. “You see so many guysrun out on their kids. They don’t stop to realize they helped create another life. You can’t say you’re aman and just abandon your family. It’s my irritation with how normal it’s becoming for the breakdownof the family unit to occur. Everything comes down to responsibility, self-love, and love of your family.”In the end, Kublai Khan’s music siphons power from pain on Absolute.“We put a lot into the record,” Matt leaves off. “There are so many different tones and lyrical aspects. Itreally shows how far we’ve come. I hope people connect and get something good from it. We’ll keepgoing no matter what.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72174-18936-kleiner_KKTX-2025.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "57",
+    "artist": "Future Palace",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POST-HARDCORE",
+      "ALTERNATIVE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/future-palace/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Future Palace from Berlin have long proven that post-hardcore is not a label with limits but a space full of creative possibilities. In the music of vocalist Maria Lessing, guitarist Manuel Kohlert, and drummer Johannes Früchtenicht, the fiercest outbursts of despair clash with the quietest moments of resignation. Lush instrumentals meet cinematic electronic production, piercing screams contrast with haunting melodies.\n\nFuture Palace embody the emotional highs and lows of human life through a constantly shifting artistic lens. Their songs delve deep into internal struggles and shed light on issues surrounding mental health – topics that remain far too stigmatized in modern society.\n\nThat Future Palace have become one of the most talked-about alternative metal acts in Europe in just a few years comes as no surprise, given the raw intensity of their work. But considering the many obstacles they faced early in their career, their rise is all the more remarkable. Their debut album \"Escape\" (2020) was released at the height of the pandemic, forcing the band to overcome major setbacks. Since then, they’ve supported major European tours with Electric Callboy, Annisokay, and more — commanding ever-larger audiences and growing recognition across the scene.\n\nIn 2022, the band finally embarked on their first European headline tour, supported by their second album “Run”, which now counts over 40 million streams across all platforms. Most shows were sold out or upgraded due to high demand.\n\nIn September 2024, Future Palace released their most ambitious work to date: “Distortion”. The corresponding fall 2024 tour took them across Europe once again — with numerous sold-out and upgraded venues confirming their rising status.\n\nTheir growing international appeal is underlined by appearances at some of the world’s biggest festivals: Wacken Open Air, Rock am Ring, Hellfest, Graspop Metal Meeting, Nova Rock, Summer Breeze, Full Force, and Greenfield — Future Palace have proven themselves on the grandest stages of the scene.\n\nIn 2025, the band opens a new chapter: With over 65 million streams, 11 million YouTube views, and strong placements in major playlists like New Core, All New Metal, and Kickass Metal, Future Palace will embark on their first North American headline tour.\n\nThe journey is just beginning — and Future Palace are here to stay.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72176-18949-FuturePalace_2025_1_MAIN_AthinaParaschoudi.jpg",
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Intense",
+      "Fast",
+      "Energetic",
+      "Guitar",
+      "Eclectic"
+    ]
+  },
+  {
+    "id": "58",
+    "artist": "Madsen",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "INDIE ROCK",
+      "PUNK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/madsen/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72674-19234-Madsen_2024_1B0002725_pp_credit-Sven-Sindt.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Chill",
+      "Atmospheric",
+      "Melodic",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "59",
+    "artist": "Bad Nerves",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK",
+      "GARAGE ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/bad-nerves/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "The bastard child of a Ramones/Strokes one night stand, Bad Nerves play ferociously fast distorted pop songs. Their self-made debut and second album Still Nervous put them in the hearts and minds of the cream of the alternative crop; including rock legends such as Green Day’s Billie Joe Armstrong, Pearl Jam’s Stone Gossard, and Iggy Pop. Drawing comparisons to Supergrass, The Hives and Jay Reatard, they proactively seek to make the type of in-your-face, infectious rock music that the genre was built on. After a whirlwind three years, going from playing tiny sweaty rooms, to commanding stadium audiences, Bad Nerves has deservedly enamoured new fans across the world with their captivating 200mph live shows. Emerging as one of rock’n’roll’s most electrifying new exports, the band is currently working on their much anticipated third album.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72676-19231-kleiner_3f5164a8_Bad-Nerves-2-by-Josh-Beech-joshbeech.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "60",
+    "artist": "Querbeat",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "BRASS POP",
+      "INDIE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/querbeat/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Querbeat: A collective that developed during school days from the talents of a school big band. Prince, Buena Vista Social Club, and lots of jazz serve as inspiration. During overtime, they cover everything they can. Flexibility seems to be in this crew's DNA, and quickly, the sounds of rehearsal cellars and school auditorium sweat become the New Kids in the Bonn Block. Street music on every corner—you have to celebrate when you stand out. \n\nThey grow together, experience firsts, challenges, and opportunities. And above all, there is the unmistakable gut feeling: we're going to do this! They want to get out and experience life in the metropolis of Cologne. A village and a cosmopolitan city at the same time, but above all one thing: similar in attitude towards life. It's a match! The band falls in love with the city and the city falls in love with the optimistic music of the banda. Carnival explodes with the fresh songs of the new alternative. The music sounds so different from anything you've heard before. Always starting over, always new. \n\nQuerbeat somehow flips a switch, invests even more time and vibe, and one of these intense sessions turns into an idea: after “Rhythms del Mundo,” to pay tribute to Buena Vista Social Club in their own style. A compilation of Cologne songs is created in the Querbeat network, which, together with a few Latin Grammy musician friends, is once again enveloped in Cuban cigar smoke. The work is called Cuba Colonia.\n\nWhat no one knew at the time was that in 2019, the band would be rewarded for this record with the German Jazz Award, the GfK's gold record in jazz. What is consistent, and remains so to this day, is that everything is done in-house. From recording the first note to production to designing the blurb on the sustainable merchandise T-shirt collar. Self-made is a word that is firmly ingrained in the minds of the band members.\n\nBut the collective is challenged. A hello from real life, fears about the future—all topics that put a young band to the test. But you grow. Now more than ever. No more just covering hits, imitation becomes forward thinking, and the first album of their own is created. Fettes Q is the name of the album. It has now racked up 150 million streams and washed Querbeat from the school band tides onto the wave of “brass pop.” Street music + city festivals + party gigs = first club tour. That's the equation now. The family is growing. Best friends become tour managers, and the gang that used to just hang out with the band to party suddenly finds itself in the road crew. And they're all still there today. Q is also kind of destiny. After the Fettes Q album, things are happening. In their adopted home of Cologne, they get to play the Palladium for the first time (sold out three times), and hundreds of fans become thousands. An insider band for brass \n\nAfter the Fettes Q album, things start to happen. In their adopted home of Cologne, they get to play at the Palladium for the first time (sold out three times), and hundreds of fans turn into thousands. From an insider band for brass nerds, they become a small phenomenon that whirls unstoppably across the stage. Two years later, in 2018, the next album is released: Randale & Hurra. Randale & Hurra gives the band a top 10 experience. The album enters the German album charts at number 7. The consequences of this release are easy to live with: festival bookings! (Lollapalooza, Hurricane, and many more) \n\nOne thing is clear: there are few to minus 10 bands that can clean up so massively and sustainably in a crazy crossover world at the indie-esque Dockville Festival, the Leverkusen Jazz Days, Rock am Ring, and the 80,000-person Elektro-Parookaville with the same live set. The greenhorns from the school band would certainly have considered this scenario utopian. But maybe the Q also has the ability to somehow work toward utopia. One of the band's “most important festivals,” according to their own statement: Jamel rocks the Förster. The well-known festival against the right wing and Querbeat: handshakes and activism. The band is committed, political, and environmentally conscious.\n\nBack to the story: The Q must first reclaim the letter Q from the dark side of power. Because, as with so many artists, there is a Corona gap in their CV. \n\nThis crisis poses the toughest challenge in the band's history. Give it your all or give it your all? Querbeat provides the answer in the middle of the pandemic vacuum on the square. Square 2, to be precise. They succeeded with the album “Radikal Positiv,” which was created in the band's new home, their “Werft” in Cologne's Südstadt. The release concert in Cologne's sold-out Lanxess Arena, during the brief lull before the pandemic peak, felt magical until the last trumpet note. And: this record brought new songs like “Renate,” “Ja,” and “Früher wird alles besser” to the dusty summer concert meadows and into the open hearts of festival addicts. Provoked coincidences, creativity, and hard lessons. To fulfill dreams, for example, that of having their own festival. Said and done. In June 2025, the fourth edition of “Randale & Freunde” took place in their hometown on the Rhine meadows in Bonn. Artists such as Milky Chance, Clueso, and Roy Bianco & die Abbrunzzati Boys accepted Querbeat's invitation to their own party in front of 25,000(!) people. We are also grateful for moments of friendship with Ok Kid and Bukahara: joint singles and sessions feel like musical engagements. The international friendship with the Catalan band “La Pegatina” has led to shows in Barcelona, Madrid, and Malaga.\n\nMore than just a school trip, alongside Austria, Switzerland, and the Netherlands, Spain is developing into a wild place for Querbeat's energetic music. With authentic consistency, the “Barcelona Tapes EP” was created in southern European inspiration between the sound of cicadas and finca deep talk, about songwriting without world reception, wanderlust, and the ‘circles’ you have to turn until you find happiness when routines kick in. “So far, so good.”\n\nAnd now? After a turbulent main stage festival summer (Hurricane, Southside, Pinkpop, Opren Flair, Rocco del Schlack, and co), the next celebrations are already clear! Tour 2025 calling, everything from Aachen to Zurich in the navigation system. Humble as the letter A, even when sold out. Tickets are still available for only a few cities. But good news: starting in March, the tour bus with the 11er Freundeskreis will be hitting the road again. All tour info at www.querbeat.info",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72682-19365-KLEINER_Querbeat-by-Jan-Holo-QB-Valencia-Bandapic-49-2.jpg",
+    "vibes": [
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream",
+      "Chill",
+      "Atmospheric",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "61",
+    "artist": "Nickelsdorfer Boehmische",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "BRASS",
+      "FOLK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/nickelsdorfer-boehmische/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": [
+      "Acoustic",
+      "Emotional",
+      "Storytelling"
+    ]
+  },
+  {
+    "id": "62",
+    "artist": "Palaye Royale",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ART ROCK",
+      "GLAM ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/palaye-royale/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Electrifying Los Angeles trio Palaye Royale today share their highly anticipated fourth studio album “Death or Glory” via Sumerian Records.\n\nAcross a series of increasingly bold records, the band have laid out their grand rock & roll vision inspired by everyone from The Libertines to The Rolling Stones, by way of My Chemical Romance. Those first four records were driven by a desire to prove just how much the band could actually do, nailing everything from epic heartbreak to snarling vengeance.\n\n2020’s genre-hopping The Bastards showcases a band out to take on the world while 2022’s Fever Dream takes rebellious punk rock and twists it around orchestral beauty. By contrast, new album Death Of Glory has absolutely nothing to prove.\n\nInspired by years of chaotic, communal gigs, album five sees Palaye Poyale comfortable in their own skin.\n\n“We’ve learned that writing radio hits or soundtracking viral moments on social media is great, but we don’t need to chase those things. We’ve got this dedicated fanbase, and that’s the most important thing,” says Remington.\n\n“Death Or Glory is definitely our most confident record.” It's also their most fun. Following the success of the sprawling Fever Dream world tour, the Palaye Royale brothers and touring bassist Logan Baudean reconnected with guitarist Dave Green, who played with the band on their first ever tour. They set up shop in his garage studio alongside producer Matt Squire and “got back to the roots of the band,” says Sebastian Danzig. “We just had so much freedom.” In one day, they wrote the party-starting rave of Pretty Stranger and the empowering snarl of Death & Glory, setting the tone for everything that would come next.\n\n“The whole thing has this energy of not caring about being too perfect.” “We’re not taking ourselves too seriously and just having a good time this time around, ” Remington continues.\n\n“In a band, there’s always so much pressure around the decisions you make but this record was all about making music in a room together. All we cared about was being happy in that moment,” he adds, with Death Or Glory driven by a sense of euphoria. “Most of our albums are dark and depressing, but this one is all about having fun.”\n\nDeath Or Glory may see Palaye Royale fully embrace the giddy recklessness of their celebrated live show, but there’s a lot of heart behind the album as well. As the band were recording the last song, they got the news that their mom Stephanie Rachel had been diagnosed with stage four cancer. She passed away nine months later. “This album is coming out at the perfect time,” says Sebastian.\n\n“Instead of living in this dark, depressing headspace after losing someone so important, so loved by all of us, Death Or Glory is forcing us to chase fun and excitement.” It’s about connection, unity and strength in numbers, which is something the world could do with more of.\n\n“This record means so much more to us now, because life is short. You need to enjoy every single moment while you can and surround yourself with people you care about,” Sebastian continues.\n\n“We’re really trying to be the best band we can be, so we can make our mom proud. As silly as it might sound, I just want people to have fun with this record. ”Palaye Royale consists of brothers Remington Leith (vocals), Sebastian Danzig (guitar), and Emerson Barrett (drums). The creation of \"Death or Glory\" was a cathartic return to their roots, combining their deep musical knowledge with an innovative approach. The album's tracks were developed during a period of introspection, drawing from their extensive experience and growth as artists. Each song on the album is meticulously crafted, showcasing the band's profound connection to their music and their fans, lovingly dubbed the Soldiers of the Royal Council. “When we first started out, the goal was Wembley arena. Now that show has been announced, it’s about planning the way forward from there,” says Sebastian. The mantra of Palaye Royale remains “always be ambitious, always be driven and always stay true to yourself,” he continues. “And I’m not worried if that pisses people off anymore.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72967-20304-fb91a868_2026-Palaye-Royale-Press-Photo-Photo-Credit-Mac-Praed.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "63",
+    "artist": "Lagwagon",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "PUNK ROCK",
+      "SKATE PUNK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/lagwagon/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72817-1655-Lagwagon.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Aggressive",
+      "Fast"
+    ]
+  },
+  {
+    "id": "64",
+    "artist": "Loathe",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/loathe/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72819-19556-LOATHE-1.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Aggressive",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "65",
+    "artist": "Kupfergold",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "FOLK ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/kupfergold/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Kupfergold are currently the hottest thing on the German folk scene. The modest Rhinelanders led by frontwoman Bonnie Banks don't quite know how it happened, but are increasingly coming to terms with being labeled a “newcomer sensation” and “high flyers.” The band is also coming to terms with ever-larger stages, such as at Wacken Open Air, Summer Breeze, Rock Harz, and many other festivals. Kupfergold has become an integral part of the MPS family; it has also made a name for itself at the Cologne Carnival and sold out six of its first ten headlining shows. In the summer of 2025, the band will crown themselves with their new album FASAN ALARM. With a new sound, new instrumentation, and new stories from the Golden Rammler, the band is well equipped to continue their high-flying journey through the festival landscape.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72821-19824-kleiner-ArrHart_Kupfergold-Gruppe_A0005-1-1.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Acoustic",
+      "Emotional",
+      "Storytelling"
+    ]
+  },
+  {
+    "id": "66",
+    "artist": "Chuggaboom",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "COMEDY ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/chuggaboom/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "ChuggaBoom haben sich weiterentwickelt. Witziger. Härter. Eingängiger.\n\nWas als anonymes Metalcore-Experiment begann, hat sich zu einer der am schnellsten aufsteigenden Underground-Bands Großbritanniens entwickelt – lauter, schärfer und unberechenbarer denn je.\n\nIhre neue Haltung ist messerscharf.\n\nDer neue Look ist unverkennbar.\n\nUnd die neue Musik? Gemacht für die Moshpit, geschaffen für große Bühnen und bereit, jedes Publikum in vollwertige Chuggalos zu verwandeln.\n\nChuggaBoom legen eine neue Stufe auf. Schließt euch jetzt dem Chugg Life an.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72824-19834-chuggaboom.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "67",
+    "artist": "A New Chapter",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/a-new-chapter/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "A NEW CHAPTER are a modern metalcore band from Austria, delivering uncompromising energy and emotional depth that has been shaking up the scene for years. Their sound combines hard-hitting riffs, driving breakdowns, and emotional hooks into an intense and dynamic whole. With their unique interplay of heaviness and melody, the band crafts songs that leave an immediate impact – both on record and on stage.\n\nTheir latest single “Colorblind” once again showcased their strengths – heavy riffs, a singalong chorus, and an epic solo. Lyrically, the track takes aim at pressing social issues, addressing materialism and the throwaway mentality in both human relationships and modern society.\n\nA NEW CHAPTER have already made their mark across festivals in Austria and have proven their live presence in Germany. In 2026, they will celebrate a major milestone with their debut appearance at the NOVA ROCK FESTIVAL. Beyond the stage, the band has collaborated with RVNDM Clothing and Still Emo, and since 2024 they have been proud official support artists for Sea Shepherd, underlining that their passion extends not only to music but also to important social and environmental causes.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72827-19826-OFFICIAL_ANC_BANDPIC.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic"
+    ]
+  },
+  {
+    "id": "68",
+    "artist": "Frevd",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/frevd/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72973-20363-FREVD-2-Copyright-DeadFoxMedia.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "69",
+    "artist": "Bring Me The Horizon",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "METALCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/bring-me-the-horizon/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "BRIT and Grammy-nominated, multi-platinum-selling quintet Bring Me The Horizon are fast becoming one of the most successful rockbands on the planet, selling over 5 million albums globally to date.\n\nThey have toured the globe multiple times, playing sold-out shows in over 50 countries.They are revered festival headliners and their recent Download mainstage performance In front over 100k fans is their most recent triumph, plus Headline slots at Reading&Leeds Festival in 2022 and wowing a traditionally non-rock crowd at Glastonbury Festival in 2016 & 2018.\n\nThey kicked off their POSTHUMAN era in 2020 with the release of the first of four EPs aptly titled 'POSTHUMAN:SURVIVALHORROR'. The critically acclaimed release debuted a tNumber 1 on the UK Albumchart. 2022 saw them appear a tt he BRIT Awards where they joined Grammy awardwinning singer-songwriter Ed Sheeran for an electrifying performance of 'Bad Habits. The group released their gold-certified sixth studioalbum,'amo', in 2019, which debuted at Number1 in 17 markets and was named 5 \"one of the most anticipated albums o f 2019 by Billboard, it also garnered the band their second Grammy nomination for Best Rock Album, after the LP's first single 'MANTRA' earned them a nod for Best Rock Song in 2018.\n\nThe Sheffield 5-piece also received their first BRIT Award nomination for Best Group in 2021.They have now also amassed over 1 billion video views on YouTube and are in the top 500 most streamed artists globally on Spotify.\n\nTheir recently released singles 'LosT' and 'AmEN!', part of the globally acclaimed Post Human series and follows singles 'DiE4u' and 'Strangers', which have bee n streamed over a massive 200 million times to date . They also announced a brand new studio album, entitled 'POSTHUMAN:NeXGEn', which is due for release on September 15th via Sony/RCA and a UK& Ireland Arena tour in 2024, which includes 2 x nights at t he 02 Arena in London.\n\nBring Me The Horizon are vocalist Oli Sykes, guitarist 'Lee Malia, bassist Matt Kean, drummer Mat Nicholls and kevboardist Jordan Fish.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/71982-18204-BMTHVV11-_MAIN-IMAGE_.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Aggressive",
+      "Melodic"
+    ]
+  },
+  {
+    "id": "70",
+    "artist": "Papa Roach",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "NU METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/papa-roach/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Papa Roach are two-time GRAMMY-nominated, Platinum-selling leaders in Alternative Hard Rock music, who in 2020 celebrated the 20thAnniversary of their iconic album INFEST. Papa Roach are not unfamiliar with calling attention to Mental Health, and have been doing so since day 1 with the iconic release of “Last Resort.” Since then, the band has gone on to release 10 studio albums, along with their most recent Ego Trip released on their own label New Noize Records through ADA /Warner Music. Ego Trip has garnered over 360 million global streams to date and has produced four #1 singles including the band’s current single “Leave A Light On (Talk Away the Dark) which is the band’s biggest hit in a decade. The international hit brings the band’s total to 26 career Top-10 hits, and 12 career #1s. 24 years into their career, the band continues to make a global impact.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72178-18797-Papa-Roach.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "71",
+    "artist": "Architects",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "ALTERNATIVE METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/architects/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Creating an album can sometimes feel like life or death, especially for a band as creative as British metalcore legends Architects. But this time, the creation process necessitated that they go through the ultimate rebirth. “It wasn’t about just putting out another Architects record. It had to be the record—the one people talk about when they talk about our band,” says frontman Sam Carter. Bandmate Dan Searle echoes this sentiment about their new work, The Sky, The Earth & All Between: “What we’re trying to say is that we had to make the quintessential Architects album—bringing together all our best qualities and everything we excel at.”\n\nFew bands make it to their 11th album and deliver their best music, but Architects have done just that. Touring stadiums with Metallica for two years gave them clarity: they could legitimately do this forever, something that hadn’t felt possible when they began the band as scrappy teenagers. In fact, they realised they were only halfway through their career, provided they stayed passionate and kept their creative edge. “Maybe we’re not rich enough to be lacklustre yet,” Searle jokes, “but there’s always that fear you’ll be seen as your powers dwindling album by album. I think some people felt that way after our last couple of records because we experimented with our identity. But we’re growing in a way that’s unique—you don’t see it often.”\n\nThe last couple of albums For Those That Wish To Exist and The Classic Symptoms of a Broken Spirit had been about attempting the new. When those records performed well critically and commercially, that was their green light to pursue whatever they wanted to. So, they resolved to channel the lessons learned from innovation into making something that felt like the pinnacle of what Architects have long been evolving towards.\n\nOne of the band’s most beloved songs, “Doomsday,” was a tribute to Tom Searle, Dan’s brother and fellow Architects member who passed away in 2016. Written with Bring Me The Horizon’s Jordan Fish, it left them curious if they’d ever collaborate again. When Fish left Bring Me in 2023, Architects were the first artist or band to bring him on board to produce, freeing Dan Searle from his usual production duties to focus entirely on creativity. Fish’s involvement brought fresh energy. “It didn’t hurt working with him when he was extremely hungry and had a point to prove,” says Searle.\n\nThree weeks of work began in a private Brighton studio. The pressure was intense, but the process was—ironically considering how seriously they were taking this—more fun than they’d had in years. The shared British sense of humour in the room lightened the mood, leading to funny samples and moments of silliness amongst some of their heaviest music yet.\n\n“If we made something and the three of us all laughed it almost always stayed on the record. Ithink we often found ourselves making the tasteless tasteful which was a lot of fun,” says Searle. It’s part and parcel of the British sensibility to be able to laugh at yourself, which contributed to the choice of the brutal and humorous “Seeing Red” as the first single from this record.\n\nAgainst the semi-ironic use of Carter’s trademark “blegh”s, the frontman lyrically outlines how the band can feel stuck in the box of genre, patrolled by fans who want them to repeat the angry songs they love. “I think a lot of people felt like ‘Seeing Red’ was us taking the piss out of people that like our band, but I think it was just the same amount of us sort of being able to have fun with ourselves and taking the piss out of ourselves,” explains Carter. Searle reflects on the balance they struck across the creation of the album: “You have to take it so seriously because it’s precious to us, but you also have to not take it too seriously. If you.cling too tightly or impose too many boundaries, which we’ve perhaps done in the past, it kills the music.”\n\nThe resulting The Sky, The Earth & All Between is a masterful rock album, forever shifting between aggressive, melodic, and experimental sounds while maintaining a cohesive vision. The grandiosity of the title reflects its ambition, but the music feels effortless—an elemental summation of everything Architects have been and could become. From the ferocious single “Blackhole” to the pop-metal brilliance of “Everything Ends,” every track demonstrates an instinctive hand at blending sounds.\n\nThe camaraderie and push for freedom in the recording studio encouraged Searle to embrace further vulnerability in his lyrics. “Some songs are tongue-in-cheek and came more naturally to me, like ‘Whiplash’, ‘Braindead’ and ‘Judgement Day’ because they’re writing about what most of us can plainly see—but others are so sincere and full of pain,” Searle admits. “I don't tend to share how I feel with those around me so to do so in the songs is always uncomfortable for me. There were times I questioned if I really meant what I was saying. Then I’d listen while in pain, and it all made sense.”\n\nThe album closes on a poignant note with the atmospheric ballad “Chandelier.” Initially, Searle saw the lyrics—“No more lies when I disappear / One less light on the chandelier”—as bleak, hinting at being better off dead. But over time, he reinterpreted them as a celebration of life’s fragility. “The chandelier is life, and that’s worth celebrating while we’re here,” he says.\n\nThis perspective shift reflects Searle’s personal journey of existentialism during the album’s creation. “I started in a strange, difficult place, but turning 37 made me realize I have an opportunity to find peace,” he shares. The album, fittingly, ends on a hopeful note. “I don’t want to be the band constantly preaching how terrible life is, but I also won’t shy away from that experience because so many of us relate to it.”Carter, who often gravitates toward darker themes, adds, “There are days I’m a complete mess and tell the boys I can’t do it, and better days when I find the drive to keep going. It’s never finite, but it’s always moving forward.”\n\nThe band has moved beyond the raw loss of losing Tom Searle, which eventually made their performances feel like “grief tourism,” as Dan puts it. Carter felt he had to access that pain and next level of vulnerability each night in order to provide catharsis, until Searle eventually stepped in and told him he didn’t have to do it anymore, since it was clearly negatively impacting him. “Some people sort of froze us in time there and wanted us to be this pool of tears every time we rocked up at a venue,” says Searle, explaining that their following two albums felt like a reaction to that. After moving through their own backlash to that complex emotional odyssey as musicians, they’re ready to embrace a clean slate.\n\nNow, with a sharp innovation and renewed hunger, Architects are that longstanding band at the height of their powers. “We’ve created The Architects record,” Carter declares, “and we’re going to push it up a hill, even if it fucking kills us.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72180-18926-architects.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Eclectic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "72",
+    "artist": "Three Days Grace",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "ALTERNATIVE METAL",
+      "HARD ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/three-days-grace/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Life ebbs and flows in bursts of energy. Moments of calm give way to chaos only to eventually slip back into quiet. Between these peaks and valleys, we grow, change, and progress. Three Days Grace harness this ebb and flow in their music. The iHeart Radio and Billboard award-winning multiplatinum record-breaking Ontario, Canada quartet—Matt Walst [lead vocals], Barry Stock [lead guitar], Brad Walst [bass], and Neil Sanderson [drums, percussion, keyboards, programming]—balance moments of extreme emotion on an axis of pummeling hard rock anthems and pensive balladry. Along the way, they’ve amassed billions of streams and millions of album sales, sold out arenas on multiple continents, and reached unprecedented heights, earning a staggering 17 total #1 entries on the Mediabase Active Rock Chart and sharing the record for “Most #1 singles on the Billboard Mainstream Rock Songs Chart” with 16. However, the band ascend to another stratosphere on their 2022 seventh full-length offering, Explosions [RCA Records].\n\n“We are born into a world of explosions, and they’re always present,” observes Neil. “We all bottle feelings of anger inside and act like they’re not there. Sometimes, you just want to express yourself and be creative. You try to be who you are, but the world hinders it. So, do you explode? It’s not always the right answer. Do you find something to take the edge off? We all do to some degree, because the other option is exploding. Not all explosions are bad; some are beautiful. If you’re a dad, your child goes out into the world and becomes a person. To me, that’s explosive.”\n\nThroughout 2020 and 2021, Three Days Grace carefully assembled what would become Explosions in Canada. The band members initially convened via ZOOM. As restrictions eased, they tracked at Jukasa Studios and in Neil’s home studio. Matt would often hop on a snowmobile and cruise backwoods trails from his place to work with Neil. Meanwhile, producer Howard Benson [My Chemical Romance, Adam Lambert, Santana] beamed into the sessions on a life-size screen. For the first time, they also enlisted the mixing talents of Dan Lancaster (Bring Me The Horizon, Muse) adding another dimension.\n\n“It felt like everyone was in the room,” recalls Neil. “We got a hell of a lot done. There were fewer smoke breaks, and we didn’t have to go for sushi every two hours,” he laughs. “Change brought out another facet of Three Days Grace.”\n\n“It was definitely a different kind of record,” agrees Barry. “We had more time to experiment and expand the sound. It was a benefit to be able to try new flavors we haven’t tried before.”\n\n“Usually, there’s a deadline to go on tour,” adds Matt. “We didn’t have to rush. The heavy tunes stand out, but there’s a lot of emotion. There’s something for everybody.”\n\nThree Days Grace introduced the record with the opener “So Called Life.” Airy electronics underscore tightly wound verses before fits of distortion buoy an instantly unshakable refrain as Matt pleads, “Give me something to take the edge off, something to kick the night off, something to keep my mind off this so called life.” It set the tone for this chapter with a bang, marking the aforementioned latest #1 for the group.\n\n“Everybody has one thing they do to take the edge off,” Matt goes on. “We all need something, or we’ll go crazy. Whether it’s going to the gym, taking a drink, or having a smoke, we find peace somehow.”\n\n“Music is therapy for us, and it’s why we’ve been doing it for so long,” says Brad. “ ‘So Called Life’ is a party song. You’re getting rid of those frustrations with whatever works for you.”\n\nA siren swell and piano punctuate “Neurotic (Ft Lukas Rossi).” The track originated as a collaboration between Neil and Lukas Rossi [Rockstar Supernova] for the side project King City. Now, Matt and Lukas duet on this bludgeoning banger teeming with nervous energy.\n\n“We added a Three Days Grace spin to it,” Matt reveals. “Lukas has a great voice, and we match up pretty well.”\n\n“Everything is about tension and release,” adds Neil. “It defines the record.”\n\nGuitar creaks underneath the airy string-laden soundscape of “Lifetime.” As the beat trudges forward, Matt’s voice cracks with raw pain, “Who do I talk to when I want to talk to you? I thought I’d have you for a lifetime.”\n\n“Loss is the biggest and most universal thing in the human experience,” Neil elaborates. “Nothing is forever. Humanity deals with loss, and this song encapsulates it.”\n\n“My girlfriend lost her dad, and I watched her get the call,” Matt remembers. “We wrote the song right after it happened. You think you’ll have everyone you love forever. You need to hang in there when other people go away, but it’s easier said than done.”\n\nThen, there’s “Redemption.” It illuminates the masterful dynamics at the heart of the album, teetering between acoustic guitar and a soaring chorus. Elsewhere, “Champion” hinges on a stadium-size refrain inspired by Michael Jordan’s The Last Dance. Everything culminates on the title track “Explosions.” It allows for a catchy catharsis at the edge of existence as Matt declares, “There’s no reason not to have a little fun, one more trip around the sun.”\n\n“It’s a lullaby to soothe another person amidst chaos,” states Neil. “I’ve always pictured it as a message to console someone terrified by all of the fireworks going on. Recognize explosions are normal, and you don’t need to freak out.”\n\n“It’s a big idea,” Brad remarks. “We all have our own emotions and inner struggles. It’s something we connect over.”\n\n“It was the first song I sang to my son on the day he was born,” smiles Matt.\n\nExplosions represents a natural step for Three Days Grace. In the wake of 2018’s Outsider, they picked up “Rock Artist of the Year” at the iHeartRadio Music Awards and “Rock Songwriters of the Year” for the single “The Mountain” at the SOCAN Awards. The album garnered nods for “Album of the Year” and “Rock Album of the Year” at the 2019 Juno Awards. Three years prior, 2015’s Human housed the gold-selling “I Am Machine” and “Painkiller.” Achieving dozens of gold and platinum certifications worldwide, their catalog comprises the double-platinum Three Days Grace [2003], triple-platinum One-X [2006], gold-certified Life Starts Now [2009], and epic Transit of Venus [2012]. As “one of the most-streamed rock bands in the world,” they impressively attract over 8 million monthly listeners on Spotify. Speaking to quietly inescapable presence, they appeared on the NBA2K19 Soundtrack curated by Travis Scott, while Jeris Johnson served up a viral cover of “Never Too Late” and the late Lil Peep and Lil Tracy have sampled “The Real You.” The band also collaborated with Young Thug on Bighead’s “Emotions.” Thus far, their number one smashes span “Chalk Outline,” “The High Road,” “Misery Loves My Company,” “World So Cold,” “Good Life,” “Break,” “Never Too Late,” “Animal I Have Become,” “Pain,” “Just Like You,” and “Home.”\n\nIn the end, Explosions signals another era for Three Days Grace.\n\n“There’s a lot of positivity in this record,” Barry notes. “It’s about living like there’s no tomorrow and making the most of every moment. Hopefully, you feel that.”\n\n“This band represents a huge part of my purpose and identity,” Neil leaves off. “Art helps explain our lives. If fans feel like the songs explain their lives, there’s nothing better.”\n\n“We’re from a small town of 1,300,” Matt adds. “We can’t believe how far we’ve come, and it’s exciting that there’s a long way to go.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72140-18933-kleiner_THREE-DAYS-GRACE5149.jpg",
+    "vibes": [
+      "Raw",
+      "Eclectic",
+      "Guitar",
+      "Heavy",
+      "Energetic",
+      "Intense"
+    ]
+  },
+  {
+    "id": "73",
+    "artist": "Hollywood Undead",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "RAP ROCK",
+      "NU METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/hollywood-undead/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since the release of their RIAA platinum-certified 2008 debutSwan Songs, Hollywood Undead’s distinctive and infectious music has incited a global cult audience, sold out shows across continents, and earned praise from Consequence of Sound, Billboard, Revolverand more. With over 3.2 billioncross-platform streams, over 1 billionYouTube views, and 4.3 millionmonthly Spotify listeners, they remain one of modern rock’s most influential and enduring forces. Now signed to Sumerian Records, they continue to push boundaries and reshape alternative culture.Hollywood Undeadare: Johnny 3 Tears, J-Dog, Charlie Scene, Funny Man, Danny.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72182-18964-kleiner_Hollywood-Undead-2024-1-Credit-Travis-Shinn.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense",
+      "Heavy",
+      "Intense"
+    ]
+  },
+  {
+    "id": "74",
+    "artist": "Malevolence",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "METALCORE",
+      "HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/malevolence/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "“We wanted to write an album that encompasses our sound – but we wanted to push It further and go deeper,” says Malevolence frontman Alex Taylor. Indeed, with their third album, Malicious Intent, the Sheffield-born Malevolence has done just that. Ask anyone who has seen ‘em setting fire to tiny pressure-cooker hardcore gigs to igniting massive pits at big-stage metal festivals.  Anyone who witnessed their set at Bloodstock 2021, knows that this is their reckoning hour. Malevolence has truly arrived. Formed in the north of England, Malevolence has perfected a sound of their own that swaggers like a band born in New-Fucking-Orleans while embracing the power of the riff and the brutality of the breakdown. “We made it a point to step outside our comfort zone,” says Taylor, “but also do what we started this band to do in the first place – play the metal that we want to hear.”\n\nFrom the hard-as-Sheffield steel title track that opens the album, Malevolence has upped their own ante. To paraphrase one of their biggest influences, Pantera, it’s the sound of a band on a “New Level”. You can spot the influences – those unforgettable wrecking ball riffs rooted in the hate-sludge of Crowbar, the guitar finesse of Dimebag Darrell and the all-out catchiness and brutality of Hatebreed”, Malevolence has asserted their status not merely as a contender, but as force to be reckoned with. \n\nIt's not all bluster and brutality. While the likes of “Life Sentence” hits like a ten-ton baseball bat, “Higher Place” is a surprisingly plaintive, almost ballad-esque moment where guitarist Konan Hall seamlessly blends his voice with the normally gruff Taylor. “If you’re a Malevolence fan, you know to expect the hard, fast and aggressive but then there’s a completely different side that’s heartfelt, moving sound that is there for self-reflection,” explains the vocalist. “When you combine them, that’s where we’re at with this album. I get asked a lot whether I consider us a hardcore band or a metal band or a metalcore band. To me, it’s just heavy metal. It’s simply us, Malevolence.”\n\nThe bloody roots of Malevolence stretch back to 2010 when childhood friends, guitarists Josh Baines and Hall, who had been playing together since 2005 joined up with bassist Wilkie Robinson and rummer Charlie Thorpe and recorded the first proper Malevolence demo with Taylor on vocals. Fueled on a steady diet of Roadrunner Records samplers and Road Rage tours, the seeds for Malevolence were planted. “Seeing Chimaira and Killswitch Engage were some of my earliest metal concerts,” says Alex, “and they’re some of my favorite bands to this day. The kind of diversity those bands brought to the table inspired us to do what we do. They never limited themselves to one sound.” In 2013, Malevolence burst upon the worldwide stage with the release of the debut album Reign of Suffering on Siege of Amida/Century Media, touring  Europe with Dying Fetus and then charging through America with Kublai Khan and Jesus Piece.\n\n“Realizing that our music could take us to take us to other countries and seeing the praise the first album had gotten took us completely by surprise,” recalls Alex. “We went to the US and had incredible shows at places like Chain Reaction [Anaheim,California]. Then, in 2019, touring for our second album, Self Supremacy, we went to Asia for the first time. We had experiences that completely changed my whole perspective. Going to places like the Philippines and playing for kids who had very little but saved for months and months just to see us play! And then, they took us out for food, took us swimming with whale sharks. It was completely humbling. And inspiring. Screaming has taken me to the other side of the word – and I’m so grateful for that.”\n\nWith a clutch of plaudits for their self-released 2020 3-track EP, The Other Side, which featured Knocked Loose vocalist Bryan Garris on the track, “Keep Your Distance”, Malevolence set to the business of writing and recording Malicious Intent – in the shadow of COVID and a worldwide lockdown. Amidst a flurry of praise including a prophetic review from Kerrang!: “Brace for impact when their full-length finally hits.” The fivesome turned isolation into focus. \n\n“As soon as we realized that things weren’t going to get better, that the pandemic was going to be an upheaval of our daily lives, we threw ourselves into it,” recounts Alex. “We found a warehouse space in Sheffield that we spent hundreds and hundreds of hours converting. It became our writing and rehearsal space – but I actually recorded my vocals for the album there. While it felt like the world may have turned to shit, we pushed ourselves to stay positive and that definitely came out on the album.” The results, produced by Jim Pinder and co-mixed by Jim Pinder and Carl Bown at Treehouse Studios in Derbyshire, UK (Bullet For My Valentine, Bring Me The Horizon) speak for themselves. \n\n“Malicious Intent is the sound of Malevolence being utterly true to ourselves,” the vocalist states. “The song ‘Salvation’, which features Matt Heafy from Trivium is the probably the most honest I’ve been on a song lyrically. It deals with mental health. I knew I wanted to push myself and be open and then having Matt coming to the fray wanting to be on a song was a massive thing for me. Trivium’s Ascendency was one of the first heavy albums I had ever listened to! 13-year-old me was blown away!”  \n\nIt's clear – Malevolence is set to explode in 2022. Already distinguishing themselves as a force to be reckoned with in an exploding UK metal scene, they’ve stepped to the front of the class with force and finesse. Their intent has never been so completely realized.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72184-18792-Kleiner_Malevolence_-Ramsey-Ramone-Credit-1.jpg",
+    "vibes": [
+      "Aggressive",
+      "Melodic",
+      "Intense",
+      "Heavy",
+      "Energetic",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "75",
+    "artist": "P O D",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "NU METAL",
+      "RAP METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/p-o-d/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since 1992, P.O.D. have globally rallied audiences around a hypnotic hybrid of hard rock, hip-hop, reggae, and alternative punctuated by a message of unification and a powerful pledge to persevere. The San Diego quartet—Sonny Sandoval [vocals], Marcos Curiel [guitar], Traa Daniels [bass], and Wuv Bernardo [drums]—rose up from a tough neighborhood just four exists north of the Mexican border into a three-time GRAMMY® Award-nominated multiplatinum mainstay. Moving 10 million-plus records, selling out gigs on multiple continents, logging four Top 10 debuts on the Billboard Top 200, and collaborating with everyone from Rock and Roll Hall of Fame® inductee Carlos Santana to Katy Perry, the group continue to bring people together everywhere.\n\nAfter years of grinding in sweaty basement shows and van tours coast-to-coast, they landed a deal with Atlantic Records, and the grind continued on 1999’s platinum major label debut, The Fundamental Elements of Southtown. Plus, it set the stage for Satellite in 2001. Not only did it bow at #6 on the Billboard Top 200 and go triple-platinum, but it also yielded four signature singles “Alive,” “Youth of the Nation,” “Boom,” and “Satellite.” In its wake, the band garnered GRAMMY® nominations in the categories of “Best Hard Rock Performance” for “Alive” in 2002, “Best Metal Performance” for “Portrait” in 2003, and “Best Hard Rock Performance” for “Youth of the Nation” also in 2003.  Three top 10 albums followed with 2003’s gold-certified Payable on Death, 2006’s Testify,  and 2008’s When Angels & Serpents Dance. The latter boasted “dream collaborations” such as “Kaliforn-Eye-A” [feat. Mike Muir of Suicidal Tendencies], “I’ll Be Ready” [feat. Cedella & Shannon Marley], and “God Forbid” [feat. Page Hamilton of Helmet]. Logging a Top 20 debut, 2012’s Murdered Love included fan favorites “Eyez” [feat. Jamey Jasta of Hatebreed] and “West Coast Rock Steady” [feat. Sen Dog of Cypress Hill]. After 2015’s conceptual The Awakening, Circles earmarked the start of a whole new chapter in 2018. Signing to Mascot Label Group, the boys extensively collaborated with production duo The Heavy and popped off with a dynamic distillation of their trademark style. Billboard claimed, “P.O.D. takes a leap forward with ‘Circles’,” as “Listening For The Silence” [4 million Spotify streams] and “Always Southern California” [3.2 million Spotify streams] lit up DSPs.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72724-14045-4Y3A0643-Enhanced-NR-2.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Urban",
+      "Rhythmic",
+      "Lyrically Dense"
+    ]
+  },
+  {
+    "id": "76",
+    "artist": "Voila",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "POP ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/voila/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Luke Eisner and Gus Ross make up the duo, VOILÀ. Respectively from Wisconsin and London, the Emmy-nominated pair self-produce, write, and perform their own songs. They released their third album, “Glass Half Empty” last year and just announced the release date for their FOURTH album “The Last Laugh.” With over 500 million global streams, the fully independent band’s commitment to a magically themed aesthetic has resulted in the creation of a loyal global community that call themselves “the magicians.” They played a fully sold-out co-headline US/EU tour last year and have landed support on radio and an array of major editorial playlists across every DSP as well as entering the Global Top 25 on Shazam.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72680-19232-2f5b79d2_2025A-2.png",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar",
+      "Feel-Good",
+      "Uplifting",
+      "Mainstream"
+    ]
+  },
+  {
+    "id": "77",
+    "artist": "All Them Witches",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "STONER ROCK",
+      "PSYCHEDELIC ROCK"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/all-them-witches/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Versatile hard rock quartet, All Them Witches, thrive on contrast. Now six records deep into a tenure that began in 2012, Ben McLeod (guitarist,) Charles Michael Parks, Jr. (bass/vocals,) Robby Staebler (drums,) and Allan Van Cleave (keys) are unremittingly forward-looking. There is a ferocious energy and rhythmic nuance to the band that delivers devastating guitar riffs in a raw blend of progressive, bluesy, neo-psychedelic rock.\n\nThe band has relentlessly toured since inception, performing at festivals including Voodoo Music & Arts, Bonnaroo, Forecastle Festival, and Pukkelpop; while also sharing tours with acts such as Mastodon, Ghost, and Primus.\n\nAll Them Witches’ most recent record was recorded in Abbey Road and released September 4, 2020 on New West Records. They continue to hone their unique meld of crafted songwriting and spacious grooves on the road with 30+ date tour this winter with plays at Shakey Knees Festival and a sold-out Halloween show at Ryman Auditorium in their hometown, Nashville. All Them Witches have deep musical roots and grow a heavy, visceral sound, with sheer dexterity delivered in every song.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72830-19548-ATW_LeadPress2024_CreditDylanHanley_CROPPED.jpg",
+    "vibes": [
+      "Raw",
+      "Energetic",
+      "Guitar"
+    ]
+  },
+  {
+    "id": "78",
+    "artist": "Drain",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "HARDCORE PUNK",
+      "THRASH METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/artist/drain/",
+    "socials": {
+      "spotify": null
+    },
+    "description": null,
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72833-19547-DRAIN-PRESS-PIC-2025.jpg",
+    "vibes": [
+      "Raw",
+      "Aggressive",
+      "Fast",
+      "Intense",
+      "Energetic",
+      "Heavy"
+    ]
+  },
+  {
+    "id": "79",
+    "artist": "Slay Squad",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "NU METAL",
+      "HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/slay-squad/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Emerging from the hazy swelter of San Bernardino County, California collective Slay Squad are implementing the crew dynamic in the space of modern heavy music. Earning their stripes and cultivating a true DIY ethos among Southern California’s discerning underground hardcore ranks, the sextet established their signature of self-coined ‘ghetto metal’ in a way that is resonating with fans of swagger savvy hip-hop and no bullshit deathcore.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72835-19546-slaysquad.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Aggressive",
+      "Raw",
+      "Fast"
+    ]
+  },
+  {
+    "id": "80",
+    "artist": "Vinegar Hill",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/vinegar-hill/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Since their formation in 2007, Vinegar Hill have pursued a clear mission:\n\nto create powerful, independent melodic metal that impresses both nationally and internationally.\n\nThe Austrian band combines catchy guitar riffs with powerful growls and distinctive clean vocals to create a distinctive sound that conveys both emotion and energy.\n\nVinegar Hill stands for uncompromising passion, technical precision, and songwriting that sticks. Their music bridges the gap between heaviness and melody, between dynamic arrangements and atmospheric moments—striking a chord with metal fans around the world.\n\nWith their previous releases, numerous live shows, and a steadily growing fan base, Vinegar Hill impressively prove that authentic melodic metal is timeless—and that they know how to live it with heart and dedication.",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72838-19835-Vinegar-Hill-Promophoto.jpg",
+    "vibes": [
+      "Heavy",
+      "Energetic",
+      "Intense",
+      "Brutal",
+      "Dark"
+    ]
+  },
+  {
+    "id": "81",
+    "artist": "The Funeral Portrait",
+    "stage": null,
+    "day": null,
+    "startTime": null,
+    "endTime": null,
+    "countryCode": null,
+    "genres": [
+      "EMO",
+      "POST-HARDCORE"
+    ],
+    "festivalUrl": "https://www.novarock.at/en/artist/the-funeral-portrait/",
+    "socials": {
+      "spotify": null
+    },
+    "description": "Greetings from Suffocate City, The Funeral Portrait’s first full-length for Better Noise Music, expands the group’s mythology to new heights and dimensions with invigorating, authentic, and passionate anthems. Songs like “Alien,” “Voodoo Doll,” “You’re So Ugly When You Cry” (featuring The Used’s Bert McCracken), and the title track (featuring Spencer Charnas of Ice Nine Kills) fuse the vibrant accessibility of Active Rock with the earnest honesty once screamed at the Warped Tour of the 2000s. \n\nSteadily growing since the band’s formation in 2014, The Coffin Crew is a worldwide assemblage of devotees united in the shared catharsis of The Funeral Portrait’s music. It’s a tight-knit fandom built in the spirit of AFI’s Despair Faction, the MCRmy, the BVB Army, and Ice Nine Kills’ Psychos. It’s a diverse and welcoming community bound by perseverance through adversity and heartbreak. \n\nHeralded as “the inspiring antidote to stagnant metalcore” by Alternative Press early into their career, the band eventually made their way onto SiriusXM Octane and episodes of All Elite Wrestling. \n\nThe Funeral Portrait is comprised of frontman and founder Lee Jennings, guitarists Cody Weissinger and Caleb Freihaut, bassist Robert Weston, and drummer Homer Umbanhower. Some grew up loving Avenged Sevenfold and Papa Roach; others adored My Chemical Romance and Fall Out Boy. \n\nThe Funeral Portrait excels in the live environment, with visceral and heartfelt sets, as a headliner and while supporting genre titans like Five Finger Death Punch, Shinedown, and Skillet. They’ve been invited to perform at major festivals like Aftershock, Louder Than Life, So What?! and Inkcarceration.  \n\n“There are as many people in the hard rock radio audience that are lonely, sad, and going through difficulties as in the more underground-leaning fandoms,” Jennings insists. \n\n“Our band is about standing up for weirdos and misfits. Because we are weirdos, too.”",
+    "imageUrl": "https://www.novarock.at/wp-content/uploads/72970-20296-TFP-2026-Photo-WIDE.jpg",
+    "vibes": [
+      "Aggressive",
+      "Raw",
+      "Intense",
+      "Fast"
+    ]
+  }
+]

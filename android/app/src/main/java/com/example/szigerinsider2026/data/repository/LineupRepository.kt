@@ -29,7 +29,7 @@ class LineupRepository(private val context: Context) : ILineupRepository {
 
         // Fallback to assets
         try {
-            val inputStream = context.assets.open("lineup.json")
+            val inputStream = context.assets.open("${FestivalConfig.current.id}/lineup.json")
             val jsonString = InputStreamReader(inputStream).readText()
             val artists = json.decodeFromString<List<Artist>>(jsonString)
             

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "weather",
+    "title": "Mountain Weather",
+    "icon": "Sun",
+    "content": "Area 53 is in the Styrian mountains. Expect intense sun during the day and rapid temperature drops at night. Pack a jacket even if it's 30°C at noon."
+  },
+  {
+    "id": "distances",
+    "title": "Short Distances",
+    "icon": "MapPin",
+    "content": "One of Area 53's best features is the 'cozy' layout. You can reach the main stage from most camping spots in under 10 minutes. No need for heavy tactical planning."
+  },
+  {
+    "id": "jazz-gitti",
+    "title": "Jazz Gitti Etiquette",
+    "icon": "Music",
+    "content": "The Saturday morning session is a cult tradition. It's Austro-Pop, not Metal, but the moshpits are surprisingly intense. Wear your battle vest with pride and bring a beer."
+  },
+  {
+    "id": "showers",
+    "title": "Pro Showers",
+    "icon": "Droplet",
+    "content": "The Schutzhaus building offers renovated indoor showers and real toilets. It's the highest quality sanitation you'll find at an Austrian metal festival."
+  },
+  {
+    "id": "drinking",
+    "title": "Local Fuel",
+    "icon": "Utensils",
+    "content": "The festival is fueled by Murauer beer. Support the local brewery and stay hydrated with the free spring water points near the Schutzhaus."
+  }
+]

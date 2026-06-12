@@ -1,0 +1,58 @@
+[
+  {
+    "id": "stage-main",
+    "name": "OPEN AIR MAIN STAGE",
+    "type": "stage",
+    "mapCoords": { "x": 50, "y": 45 },
+    "description": "The heart of the valley. Maximum volume."
+  },
+  {
+    "id": "stage-tenne",
+    "name": "THE TENNE (INDOOR)",
+    "type": "stage",
+    "mapCoords": { "x": 70, "y": 60 },
+    "description": "Legendary barn stage for aftershow mayhem."
+  },
+  {
+    "id": "camp-bavarian",
+    "name": "BAVARIAN VILLAGE",
+    "type": "camping",
+    "mapCoords": { "x": 30, "y": 20 },
+    "description": "Themed camping area. Look for the Mayor."
+  },
+  {
+    "id": "camp-standard",
+    "name": "GENERAL CAMPING",
+    "type": "camping",
+    "mapCoords": { "x": 60, "y": 15 },
+    "description": "Main tent area. Short walk to the pits."
+  },
+  {
+    "id": "schutzhaus",
+    "name": "SCHUTZHAUS (HQ)",
+    "type": "first-aid",
+    "mapCoords": { "x": 40, "y": 55 },
+    "description": "Showers, Dormitory, and First Aid station."
+  },
+  {
+    "id": "water-1",
+    "name": "STYRIAN SPRING WATER",
+    "type": "water",
+    "mapCoords": { "x": 45, "y": 40 },
+    "description": "Free hydration point."
+  },
+  {
+    "id": "toilet-1",
+    "name": "INDOOR TOILETS (SCHUTZHAUS)",
+    "type": "toilet",
+    "mapCoords": { "x": 42, "y": 56 },
+    "description": "Real porcelain. High priority target."
+  },
+  {
+    "id": "entrance",
+    "name": "FESTIVAL ENTRANCE",
+    "type": "stage",
+    "mapCoords": { "x": 50, "y": 80 },
+    "description": "Wristband exchange and security check."
+  }
+]

@@ -21,6 +21,7 @@ import com.example.szigerinsider2026.ui.theme.*
 import kotlinx.coroutines.delay
 
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.platform.LocalContext
 import com.example.szigerinsider2026.data.config.FestivalConfig
 
 @Composable
@@ -29,6 +30,7 @@ fun SplashScreen(navController: NavController) {
     var showInsider by remember { mutableStateOf(false) }
     var showBadge by remember { mutableStateOf(false) }
     val hapticFeedback = LocalHapticFeedback.current
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         delay(80)
@@ -39,7 +41,8 @@ fun SplashScreen(navController: NavController) {
         delay(280)
         showBadge = true
         delay(1800)
-        navController.navigate("home") {
+        val dest = if (FestivalConfig.isSelected(context)) "home" else "festival_select"
+        navController.navigate(dest) {
             popUpTo("splash") { inclusive = true }
         }
     }
@@ -71,7 +74,7 @@ fun SplashScreen(navController: NavController) {
                 enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { it / 2 }
             ) {
                 Text(
-                    text = FestivalConfig.NAME.uppercase(),
+                    text = "FESTIVAL",
                     fontSize = 100.sp,
                     fontWeight = FontWeight.Black,
                     color = MaterialTheme.colorScheme.secondary,

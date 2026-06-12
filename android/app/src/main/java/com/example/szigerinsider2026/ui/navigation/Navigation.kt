@@ -31,6 +31,7 @@ import com.example.szigerinsider2026.ui.map.MapScreen
 import com.example.szigerinsider2026.ui.tools.ToolsScreen
 import com.example.szigerinsider2026.ui.tools.SurvivalGuideScreen
 import com.example.szigerinsider2026.ui.splash.SplashScreen
+import com.example.szigerinsider2026.ui.splash.FestivalSelectionScreen
 import com.example.szigerinsider2026.ui.artist.ArtistDetailScreen
 import com.example.szigerinsider2026.ui.schedule.ScheduleScreen
 import com.example.szigerinsider2026.ui.utils.rememberHapticManager
@@ -89,6 +90,8 @@ fun AppNavigation() {
     val currentRoute = navBackStackEntry?.destination?.route
 
     val showBottomBar = currentRoute != "splash"
+        && currentRoute != "festival_select"
+        && currentRoute != "festival_switch"
         && currentRoute?.startsWith("artist/") != true
         && currentRoute != "guide"
         && currentRoute != "vibe_quiz"
@@ -133,6 +136,12 @@ fun AppNavigation() {
             ) {
                 composable("splash") {
                     SplashScreen(navController)
+                }
+                composable("festival_select") {
+                    FestivalSelectionScreen(navController, isSwitch = false)
+                }
+                composable("festival_switch") {
+                    FestivalSelectionScreen(navController, isSwitch = true)
                 }
                 composable(Screen.Home.route) {
                     HomeScreen(navController = navController)

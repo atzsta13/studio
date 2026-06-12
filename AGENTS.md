@@ -64,13 +64,8 @@ npm run lineup:sync
 
 ### Android
 ```bash
-./gradlew assembleSzigetDebug
-./gradlew assembleArea53Debug
-./gradlew assembleNovarockDebug
-./gradlew assembleFrequencyDebug
-./gradlew assembleErntepunkDebug
-./gradlew assembleRockamringDebug
-./gradlew test        # unit tests (no device needed)
+./gradlew assembleDebug   # single "Festival Insider" APK
+./gradlew test            # unit tests (no device needed)
 ```
 
 ### Deployment
@@ -105,7 +100,7 @@ Without this, fetches will 404 on GitHub Pages. `BASE_PATH` is `'/studio'` in pr
 **Hydration**: Use `isMounted` pattern or `suppressHydrationWarning` for browser-only values.
 
 ### Android — Key Patterns
-- **Product Flavors**: `android/app/build.gradle.kts`
+- **Single APK**: `applicationId = "com.example.festivalinsider"`, all festival assets bundled under `src/main/assets/<festival-id>/`
 - **Config**: `FestivalConfig.kt` — reads from `assets/config.json` per flavor
 - **DB**: Room v2, `fallbackToDestructiveMigration()`, increment `@Database(version=…)` for every entity change
 - **Nav**: Manual `ViewModelProvider.Factory` — no Hilt
