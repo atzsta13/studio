@@ -45,8 +45,8 @@ export default function TimetablePage() {
   return (
     <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: 'background.default', minHeight: '100vh' }}>
       <Box sx={{
-        pt: { xs: 9, md: 10 },
-        pb: 2,
+        pt: { xs: 7, md: 8 },
+        pb: 1.5,
         textAlign: 'center',
         background: theme.palette.mode === 'dark'
           ? `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.05)}, transparent)`
@@ -117,7 +117,7 @@ export default function TimetablePage() {
       </Box>
 
       <Box sx={{ flex: 1, position: 'relative' }}>
-        <Container maxWidth="lg" sx={{ mt: 4 }}>
+        <Container maxWidth="lg" sx={{ mt: 4, '&:empty': { display: 'none' } }}>
            {config.features.clashResolver && (
              <ClashResolver favorites={festivalLineup.filter(a => allFavoriteIds.has(a.id))} />
            )}
