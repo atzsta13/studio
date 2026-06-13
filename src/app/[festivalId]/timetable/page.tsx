@@ -44,12 +44,12 @@ export default function TimetablePage() {
 
   return (
     <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: 'background.default', minHeight: '100vh' }}>
-      <Box sx={{ 
-        pt: 12, 
-        pb: 8, 
-        textAlign: 'center', 
-        background: theme.palette.mode === 'dark' 
-          ? `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.05)}, transparent)` 
+      <Box sx={{
+        pt: { xs: 9, md: 10 },
+        pb: 2,
+        textAlign: 'center',
+        background: theme.palette.mode === 'dark'
+          ? `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.05)}, transparent)`
           : `linear-gradient(to bottom, ${alpha(config.theme.primaryHex, 0.02)}, #f8f8f8)`,
         borderBottom: `1px solid ${theme.palette.divider}`
       }}>
@@ -59,38 +59,23 @@ export default function TimetablePage() {
             sx={{
               fontWeight: 900,
               color: 'text.primary',
-              letterSpacing: '-0.07em',
-              mb: 2,
+              letterSpacing: '-0.05em',
               textTransform: 'uppercase',
-              fontSize: { xs: '3.5rem', md: '6.5rem' },
+              fontSize: { xs: '1.75rem', md: '2.5rem' },
               fontStyle: 'italic',
-              lineHeight: 0.85
+              lineHeight: 1
             }}
           >
             TIMETABLE <span style={{ color: config.theme.primaryHex }}>{config.dates.year}</span>
           </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              color: 'text.secondary',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.3em',
-              opacity: 0.5,
-              fontSize: '0.75rem',
-              mb: 4
-            }}
-          >
-            Official Stage Times
-          </Typography>
 
           {/* Daypark / Nightpark Toggle (Frequency) */}
           {config.features.dayparkNightpark && (
-            <Box sx={{ 
-              display: 'inline-flex', 
-              p: 0.5, 
-              bgcolor: 'rgba(255,255,255,0.03)', 
-              borderRadius: '1.25rem', 
+            <Box sx={{
+              display: 'inline-flex',
+              p: 0.5,
+              bgcolor: 'rgba(255,255,255,0.03)',
+              borderRadius: '1.25rem',
               border: '1px solid rgba(255,255,255,0.05)',
               mt: 2
             }}>
@@ -139,7 +124,7 @@ export default function TimetablePage() {
         </Container>
 
         {hasSchedule ? (
-          <TimetableView key={selectedTimeSlot} lineup={currentLineup} utcOffsetHours={config.location.utcOffsetHours ?? 0} />
+          <TimetableView key={selectedTimeSlot} lineup={currentLineup} />
         ) : (
           <Container maxWidth="sm" sx={{ py: 20, textAlign: 'center' }}>
             <Box sx={{ 
