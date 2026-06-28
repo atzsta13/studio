@@ -34,7 +34,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 
 | Festival | Artists | Schedule | Stage data | Notes |
 |---|---|---|---|---|
-| Sziget 2026 | 339 | ❌ TBA | ✅ 292/339 have stage assigned | Times not yet published. Stage names set but no startTime/endTime. |
+| Sziget 2026 | 458 | ✅ 442/458 | ✅ 447/458 have stage | Full timetable live (Aug 9–16). 431 flagged showInSchedule. ISO 8601 with CEST (+02:00). |
 | Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | **Currently happening** (Jun 11–14). Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
 | Area 53 2026 | 30 | ✅ 30/30 | ✅ | Full timetable (Jul 15–18, incl. Wednesday warm-up + aftershows), ISO timestamps. |
@@ -54,8 +54,8 @@ None currently.
 **Canonical time format: ISO 8601 with explicit offset.**
 All `startTime`/`endTime` values in every festival's `lineup.json` must be full ISO 8601 timestamps with offset (e.g. `"2026-07-16T22:30:00+02:00"`). Android parses ISO first with an `HH:mm` fallback (`ui/utils/FestivalUtils.kt`), but new data must always be ISO. Area 53 was migrated on 2026-06-12 (`scripts/migrate-area53-times.mjs`).
 
-**Sziget stages without times.**
-292 Sziget artists have a `stage` field set but `startTime: null`. This is correct — Sziget has not published its timetable — but means the timetable feature flag (`timetable: false` in Sziget's config) must stay off until data is available.
+**Sziget timetable is live.**
+442/458 artists have `startTime`. 16 artists remain without a time slot. `features.timetable` is `true` in Sziget's config.
 
 ### Android
 
@@ -79,12 +79,12 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Feature | Blocked for | Unblocked for |
 |---|---|---|
-| `clashResolver` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
-| `setCountdowns` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
-| `vibeOfTheHour` | Sziget, Frequency, Ernte Punk | Nova Rock, Rock am Ring, Area 53 |
+| `clashResolver` | Frequency, Ernte Punk | Sziget, Nova Rock, Rock am Ring, Area 53 |
+| `setCountdowns` | Frequency, Ernte Punk | Sziget, Nova Rock, Rock am Ring, Area 53 |
+| `vibeOfTheHour` | Frequency, Ernte Punk | Sziget, Nova Rock, Rock am Ring, Area 53 |
 | `groupSchedules` | All (feature pending) | — |
 
-`features.timetable` is now `false` for Sziget, Frequency, and Ernte Punk — re-enable per festival when schedule data lands.
+`features.timetable` is `false` for Frequency and Ernte Punk — re-enable per festival when schedule data lands. Sziget is now `true`.
 
 ---
 
@@ -92,6 +92,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-06-28 | Sziget 2026 full timetable live — 442/458 artists, Aug 9–16, features.timetable enabled |
 | 2026-06-12 | ISO 8601 time-format unification (Area 53 migration, Android ISO parsing, utcOffsetHours, stability fixes) — deployed + verified against novarock.at |
 | 2026-06-12 | Nova Rock full timetable (84 artists, live data from novarock.at) |
 | 2026-06-12 | Single-APK Android refactor + FestivalSwitcher on web |
@@ -107,7 +108,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 These are real gaps, not backlog filler:
 
 1. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
-2. **Sziget timetable** — highest impact when published (339 artists). Unlocks clash resolver and set countdowns for the main festival. Re-enable `features.timetable`.
+2. **Sziget 16 missing slots** — 16 artists still have no `startTime`. Fill in when official schedule publishes final details.
 3. **Service worker update prompt** — users on PWA get stale deploys silently.
 
 ---

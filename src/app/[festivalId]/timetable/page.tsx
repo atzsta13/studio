@@ -124,7 +124,7 @@ export default function TimetablePage() {
         </Container>
 
         {hasSchedule ? (
-          <TimetableView key={selectedTimeSlot} lineup={currentLineup} />
+          <TimetableView key={selectedTimeSlot} lineup={currentLineup} festivalId={festivalId} />
         ) : (
           <Container maxWidth="sm" sx={{ py: 20, textAlign: 'center' }}>
             <Box sx={{ 
