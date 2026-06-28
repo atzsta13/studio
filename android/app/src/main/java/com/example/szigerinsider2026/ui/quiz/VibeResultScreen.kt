@@ -54,7 +54,7 @@ fun VibeResultScreen(navController: NavController, quizViewModel: VibeQuizViewMo
         topBar = {
             CenterAlignedTopAppBar(
                 title = { Text("YOUR MATCHES", style = BrutalistTypography.headlineSmall, color = Color.White) },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = OLEDBlack)
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = OLEDBlack)
             )
         }
     ) { padding ->

@@ -885,7 +885,7 @@ private fun ArtistDetailSheet(artist: Artist, isFavorite: Boolean, onToggleFavor
 @Composable
 private fun SquadScannerDialog(onIdsDetected: (List<String>) -> Unit, onDismiss: () -> Unit) {
     val context = androidx.compose.ui.platform.LocalContext.current
-    val lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
     val cameraProviderFuture = remember { androidx.camera.lifecycle.ProcessCameraProvider.getInstance(context) }
     val scanner = remember { com.google.mlkit.vision.barcode.BarcodeScanning.getClient() }
 
