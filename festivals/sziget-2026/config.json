@@ -117,7 +117,7 @@
     "vibeQuiz": true,
     "aiRecommendations": true,
     "survivalGuide": true,
-    "timetable": false,
+    "timetable": true,
     "cashlessLink": false,
     "dayparkNightpark": false,
     "familyZone": false,

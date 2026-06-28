@@ -59,7 +59,8 @@
     "timezone": "Europe/Budapest",
     "lat": 47.5194,
     "lng": 19.0512,
-    "weatherDisplayName": "Budapest · Óbudai-sziget"
+    "weatherDisplayName": "Budapest · Óbudai-sziget",
+    "utcOffsetHours": 2
   },
   "dates": {
     "year": 2026,
@@ -114,7 +115,6 @@
     "currencyConverter": true,
     "tentFinder": true,
     "vibeQuiz": true,
-    "spotifyIntegration": false,
     "aiRecommendations": true,
     "survivalGuide": true,
     "timetable": true,
