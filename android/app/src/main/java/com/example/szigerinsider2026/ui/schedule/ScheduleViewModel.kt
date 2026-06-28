@@ -42,7 +42,7 @@ class ScheduleViewModel(
                 } else {
                     true
                 }
-                dayMatch && slotMatch
+                dayMatch && slotMatch && artist.showInSchedule
             }
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }

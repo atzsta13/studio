@@ -63,7 +63,7 @@ export default function TimetableView({ lineup }: { lineup: LineupItem[] }) {
 
     const scheduled = useMemo(
         () => lineup.filter(
-            (item): item is ScheduledItem => !!(item.day && item.stage && item.startTime && item.endTime)
+            (item): item is ScheduledItem => !!(item.day && item.stage && item.startTime && item.endTime) && item.showInSchedule !== false
         ),
         [lineup]
     );

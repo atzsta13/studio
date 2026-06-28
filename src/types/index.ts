@@ -37,6 +37,7 @@ export interface LineupItem {
   isHeadliner?: boolean;
   returningHero?: boolean;
   lastYearStage?: string;
+  showInSchedule?: boolean;
 }
 
 /** POI dot on the festival map. position is % from top-left of the map image. */

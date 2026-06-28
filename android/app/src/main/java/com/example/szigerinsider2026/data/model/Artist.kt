@@ -20,7 +20,8 @@ data class Artist(
     val isHeadliner: Boolean = false,
     val returningHero: Boolean = false,
     val lastYearStage: String? = null,
-    val timeSlot: String? = null
+    val timeSlot: String? = null,
+    val showInSchedule: Boolean = true
 ) {
     val spotifyId: String?
         get() = socials?.spotify
