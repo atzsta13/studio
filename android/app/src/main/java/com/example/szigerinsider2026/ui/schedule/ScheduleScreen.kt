@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.ui.platform.LocalDensity
@@ -20,7 +21,9 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.LocalFireDepartment
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -33,7 +36,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -74,6 +79,21 @@ private val ClashBannerBg     = Color(0xFF2A0A00)
 private val ClashBannerBorder = Color(0xFFFF4500)
 private val ClashBadgeColor   = Color(0xFFFF6B00)
 
+// ─── Live-state ticker ──────────────────────────────────────────────────────────
+// One coroutine, hoisted once per screen. Its value bumps every 60s; pass it as a
+// remember-key wherever live/past state is derived so the grid advances on its own.
+@Composable
+private fun rememberMinuteTick(): Long {
+    var tick by remember { mutableStateOf(0L) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            kotlinx.coroutines.delay(60_000L)
+            tick++
+        }
+    }
+    return tick
+}
+
 // ─── Now-playing helper ───────────────────────────────────────────────────────
 
 private fun isNowPlaying(artist: Artist): Boolean {
@@ -105,6 +125,7 @@ fun ScheduleScreen(
 ) {
     val context = LocalContext.current
     val haptic  = rememberHapticManager()
+    val minuteTick = rememberMinuteTick()
 
     val viewModel: ScheduleViewModel = viewModel(
         factory = ScheduleViewModel.Factory(
@@ -223,11 +244,24 @@ fun ScheduleScreen(
             )
         }
 
+        if (uiState.activeTab != ScheduleTab.MY_LINEUP) {
+            ScheduleSearchField(
+                query = uiState.searchQuery,
+                onQueryChange = { viewModel.setSearchQuery(it) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(bottom = 12.dp)
+            )
+        }
+
         when (uiState.activeTab) {
             ScheduleTab.GRID -> {
                 TimetableGrid(
                     dayArtists = dayArtists,
                     selectedDay = uiState.selectedDay,
+                    searchQuery = uiState.searchQuery,
+                    minuteTick = minuteTick,
                     favoriteIds = uiState.favoriteIds,
                     squadIds = uiState.squadFavoriteIds,
                     onArtistClick = { id -> 
@@ -239,6 +273,12 @@ fun ScheduleScreen(
                 )
             }
             ScheduleTab.BY_TIME -> {
+                if (dayArtists.isEmpty() && uiState.searchQuery.isNotBlank()) {
+                    Box(modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp), contentAlignment = Alignment.Center) {
+                        BrutalistHeader(title = "NO ARTISTS MATCH", subtitle = "No acts named \"${uiState.searchQuery.trim()}\" on this day.")
+                    }
+                    return@Column
+                }
                 LazyColumn(
                     contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -256,7 +296,8 @@ fun ScheduleScreen(
                             onClick = { artistForDetail = artist },
                             hapticTap = { haptic.lightTap() },
                             clashPair = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id },
-                            showDayBadge = false
+                            showDayBadge = false,
+                            minuteTick = minuteTick
                         )
                     }
                 }
@@ -331,7 +372,8 @@ fun ScheduleScreen(
                                     onClick = { artistForDetail = artist },
                                     hapticTap = { haptic.lightTap() },
                                     clashPair = clashes.firstOrNull { it.a.id == artist.id || it.b.id == artist.id },
-                                    showDayBadge = true
+                                    showDayBadge = true,
+                                    minuteTick = minuteTick
                                 )
                             }
                         }
@@ -405,6 +447,53 @@ private fun TimeSlotToggle(
 }
 
 @Composable
+private fun ScheduleSearchField(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .clip(RoundedCornerShape(14.dp))
+            .background(CardBackground)
+            .border(1.dp, Color.White.copy(alpha = 0.07f), RoundedCornerShape(14.dp))
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(Icons.Filled.Search, contentDescription = null, tint = TextMuted, modifier = Modifier.size(16.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+        Box(modifier = Modifier.weight(1f)) {
+            if (query.isEmpty()) {
+                Text(
+                    text = "Search artists…",
+                    color = TextMuted.copy(alpha = 0.6f),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+            BasicTextField(
+                value = query,
+                onValueChange = onQueryChange,
+                singleLine = true,
+                textStyle = TextStyle(color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold),
+                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+        if (query.isNotEmpty()) {
+            Icon(
+                Icons.Filled.Close,
+                contentDescription = "Clear search",
+                tint = TextMuted,
+                modifier = Modifier
+                    .size(16.dp)
+                    .clickable { onQueryChange("") }
+            )
+        }
+    }
+}
+
+@Composable
 private fun ScheduleTabToggle(
     activeTab: ScheduleTab,
     onTabSelected: (ScheduleTab) -> Unit,
@@ -468,6 +557,8 @@ fun TimetableGrid(
     selectedDay: String,
     favoriteIds: Set<String>,
     squadIds: Set<String> = emptySet(),
+    searchQuery: String = "",
+    minuteTick: Long = 0L,
     onArtistClick: (String) -> Unit,
     onToggleFavorite: (String) -> Unit
 ) {
@@ -480,7 +571,11 @@ fun TimetableGrid(
 
     if (byStage.isEmpty()) {
         Box(modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp), contentAlignment = Alignment.Center) {
-            BrutalistHeader(title = "NO STAGE TIMES YET", subtitle = "The schedule for this day has not been published.")
+            if (searchQuery.isNotBlank()) {
+                BrutalistHeader(title = "NO ARTISTS MATCH", subtitle = "No acts named \"${searchQuery.trim()}\" on this day.")
+            } else {
+                BrutalistHeader(title = "NO STAGE TIMES YET", subtitle = "The schedule for this day has not been published.")
+            }
         }
         return
     }
@@ -493,7 +588,7 @@ fun TimetableGrid(
     }
     val boardHeight = ((dayEnd - dayStart) * DP_PER_MINUTE).dp
 
-    val nowMinutes = remember(selectedDay, dayStart, dayEnd) {
+    val nowMinutes = remember(selectedDay, dayStart, dayEnd, minuteTick) {
         val now = LocalTime.now()
         val mins = now.hour * 60 + now.minute + if (now.hour < ROLLOVER_HOUR) 24 * 60 else 0
         val effectiveDate = if (now.hour < ROLLOVER_HOUR) LocalDate.now().minusDays(1) else LocalDate.now()
@@ -570,6 +665,7 @@ fun TimetableGrid(
                 // Stage columns
                 Row(modifier = Modifier.fillMaxSize()) {
                     Spacer(modifier = Modifier.width(GUTTER_WIDTH))
+                    val nowMins = nowMinutes
                     byStage.forEach { entry ->
                         Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
                             entry.value.forEach { artist ->
@@ -581,6 +677,8 @@ fun TimetableGrid(
                                     blockHeight = ((end - start) * DP_PER_MINUTE).coerceAtLeast(52f),
                                     isFavorite = favoriteIds.contains(artist.id),
                                     inSquad = squadIds.contains(artist.id),
+                                    isPast = nowMins != null && end <= nowMins,
+                                    minuteTick = minuteTick,
                                     onArtistClick = onArtistClick,
                                     haptic = haptic
                                 )
@@ -627,10 +725,13 @@ private fun ArtistGridBlock(
     blockHeight: Float,
     isFavorite: Boolean,
     inSquad: Boolean,
+    isPast: Boolean = false,
+    minuteTick: Long = 0L,
     onArtistClick: (String) -> Unit,
     haptic: com.example.szigerinsider2026.ui.utils.HapticManager
 ) {
-    val isLive = remember(artist) { isNowPlaying(artist) }
+    val isLive = remember(artist, minuteTick) { isNowPlaying(artist) }
+    val dimmed = isPast && !isFavorite && !inSquad && !isLive
     val accentColor = when {
         isFavorite -> MaterialTheme.colorScheme.secondary
         inSquad -> CyanPulse
@@ -645,6 +746,7 @@ private fun ArtistGridBlock(
             .offset(y = y.dp)
             .fillMaxWidth()
             .height(blockHeight.dp)
+            .graphicsLayer { alpha = if (dimmed) 0.45f else 1f }
             .padding(horizontal = 3.dp, vertical = 2.dp)
             .clip(RoundedCornerShape(14.dp))
             .background(if (isLive) CardBackground.copy(alpha = 0.9f) else CardBackground)
@@ -743,9 +845,10 @@ private fun ScheduleRow(
     onClick: () -> Unit,
     hapticTap: () -> Unit,
     clashPair: ClashPair?,
-    showDayBadge: Boolean
+    showDayBadge: Boolean,
+    minuteTick: Long = 0L
 ) {
-    val nowPlaying = remember { isNowPlaying(artist) }
+    val nowPlaying = remember(artist.id, minuteTick) { isNowPlaying(artist) }
     val accentColor = when {
         nowPlaying    -> ToxicGreen
         artist.isHeadliner -> MaterialTheme.colorScheme.primary

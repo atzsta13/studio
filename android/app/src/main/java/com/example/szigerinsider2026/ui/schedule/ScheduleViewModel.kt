@@ -22,6 +22,7 @@ data class ScheduleUiState(
     val selectedDay: String = FestivalConfig.DAYS.firstOrNull() ?: "Wednesday",
     val selectedTimeSlot: String = "daypark",
     val activeTab: ScheduleTab = ScheduleTab.GRID,
+    val searchQuery: String = "",
     val isLoading: Boolean = true
 )
 
@@ -34,6 +35,7 @@ class ScheduleViewModel(
     val uiState: StateFlow<ScheduleUiState> = _uiState.asStateFlow()
 
     val dayArtists: StateFlow<List<Artist>> = _uiState.map { state ->
+        val query = state.searchQuery.trim()
         state.allArtists
             .filter { artist ->
                 val dayMatch = state.selectedDay == "WEEK" || artist.day?.equals(state.selectedDay, ignoreCase = true) == true
@@ -42,7 +44,8 @@ class ScheduleViewModel(
                 } else {
                     true
                 }
-                dayMatch && slotMatch && artist.showInSchedule
+                val searchMatch = query.isBlank() || artist.artist.contains(query, ignoreCase = true)
+                dayMatch && slotMatch && searchMatch && artist.showInSchedule
             }
             .sortedWith(
                 compareBy<Artist> { FestivalConfig.DAYS.indexOf(it.day ?: "").let { i -> if (i == -1) 99 else i } }
@@ -91,6 +94,10 @@ class ScheduleViewModel(
 
     fun setTab(tab: ScheduleTab) {
         _uiState.update { it.copy(activeTab = tab) }
+    }
+
+    fun setSearchQuery(query: String) {
+        _uiState.update { it.copy(searchQuery = query) }
     }
 
     fun toggleFavorite(artistId: String) {

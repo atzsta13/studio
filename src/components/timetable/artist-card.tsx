@@ -12,18 +12,32 @@ interface ArtistCardProps {
   festivalId: string;
   isFavorite: boolean;
   isConflicting: boolean;
+  isLive?: boolean;
+  isPast?: boolean;
   onToggleFavorite: () => void;
 }
 
-export default function ArtistCard({ artist, festivalId, isFavorite, isConflicting, onToggleFavorite }: ArtistCardProps) {
+const LIVE_HEX = '#22c55e';
+
+export default function ArtistCard({ artist, festivalId, isFavorite, isConflicting, isLive = false, isPast = false, onToggleFavorite }: ArtistCardProps) {
   if (!artist.startTime || !artist.endTime) return null;
 
   const start = new Date(artist.startTime);
+  const end = new Date(artist.endTime);
   const startTime = format(start, 'HH:mm');
-  const duration = (new Date(artist.endTime).getTime() - start.getTime()) / (1000 * 60);
+  const endTime = format(end, 'HH:mm');
+  const duration = (end.getTime() - start.getTime()) / (1000 * 60);
 
   const isTiny = duration < 25;
   const isSmall = duration < 40;
+
+  const borderLeft = isConflicting
+    ? '4px solid #ef4444'
+    : isLive
+      ? `4px solid ${LIVE_HEX}`
+      : isFavorite
+        ? `4px solid ${FESTIVAL.theme.primaryHex}`
+        : '1px solid rgba(255,255,255,0.06)';
 
   return (
     <Box
@@ -35,12 +49,13 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
         justifyContent: isSmall ? 'center' : 'space-between',
         p: isTiny ? 0.5 : 1.5,
         borderRadius: '0.75rem',
-        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : FESTIVAL.theme.backgroundHex,
+        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : isLive ? 'rgba(34, 197, 94, 0.08)' : FESTIVAL.theme.backgroundHex,
         border: '1px solid rgba(255,255,255,0.06)',
-        borderLeft: isConflicting ? '4px solid #ef4444' : isFavorite ? `4px solid ${FESTIVAL.theme.primaryHex}` : '1px solid rgba(255,255,255,0.06)',
+        borderLeft,
+        opacity: isPast && !isFavorite && !isConflicting ? 0.4 : 1,
         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
-        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isFavorite ? `0 10px 30px ${FESTIVAL.theme.glowColor}` : 'none',
+        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isLive ? `0 0 0 1px ${LIVE_HEX}, 0 10px 30px rgba(34, 197, 94, 0.25)` : isFavorite ? `0 10px 30px ${FESTIVAL.theme.glowColor}` : 'none',
         '&:hover': {
           bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : FESTIVAL.theme.backgroundHex,
           borderColor: isConflicting ? '#ef4444' : isFavorite ? FESTIVAL.theme.primaryHex : 'rgba(255,255,255,0.2)',
@@ -75,15 +90,25 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
           {!isTiny && (
             <Typography
               sx={{
-                color: isConflicting ? 'rgba(239, 68, 68, 0.8)' : 'rgba(255,255,255,0.4)',
+                color: isConflicting ? 'rgba(239, 68, 68, 0.8)' : isLive ? LIVE_HEX : 'rgba(255,255,255,0.4)',
                 fontSize: '0.7rem',
                 fontWeight: 800,
                 fontFamily: '"Outfit", sans-serif',
                 mt: 0.5,
-                letterSpacing: '0.05em'
+                letterSpacing: '0.05em',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.75,
               }}
             >
-              {startTime} {isConflicting && "(!)"}
+              <span>{startTime}–{endTime}</span>
+              {isLive && (
+                <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.5, color: LIVE_HEX, fontWeight: 900, letterSpacing: '0.1em' }}>
+                  <Box component="span" sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: LIVE_HEX, animation: 'ttPulse 1.4s ease-in-out infinite', '@keyframes ttPulse': { '0%,100%': { opacity: 1 }, '50%': { opacity: 0.3 } } }} />
+                  NOW
+                </Box>
+              )}
+              {isConflicting && "(!)"}
             </Typography>
           )}
         </Link>

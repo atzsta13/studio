@@ -2,7 +2,7 @@ import { useInsider } from '@/components/layout/insider-provider';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import type { LineupItem } from '@/types';
 import ArtistCard from './artist-card';
-import { Clock, AlertTriangle, Heart, Target } from 'lucide-react';
+import { Clock, AlertTriangle, Heart, Target, Search, X } from 'lucide-react';
 import {
     areNotificationsSupported,
     timetableNotification,
@@ -43,6 +43,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     const [now, setNow] = useState<Date | null>(null);
     const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
     const [hiddenStages, setHiddenStages] = useState<Set<string>>(new Set());
+    const [query, setQuery] = useState('');
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -120,18 +121,22 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         [allStages, hiddenStages]
     );
 
+    const trimmedQuery = query.trim().toLowerCase();
     const dailyLineup = useMemo(() => {
         const daily = scheduled.filter(item => item.day === activeDay);
-        const filtered = showFavoritesOnly ? daily.filter(item => favorites.has(item.id)) : daily;
-        return filtered.filter(item => !hiddenStages.has(item.stage));
-    }, [scheduled, activeDay, showFavoritesOnly, favorites, hiddenStages]);
+        const favFiltered = showFavoritesOnly ? daily.filter(item => favorites.has(item.id)) : daily;
+        const stageFiltered = favFiltered.filter(item => !hiddenStages.has(item.stage));
+        if (!trimmedQuery) return stageFiltered;
+        return stageFiltered.filter(item => item.artist.toLowerCase().includes(trimmedQuery));
+    }, [scheduled, activeDay, showFavoritesOnly, favorites, hiddenStages, trimmedQuery]);
 
     const totalMinutes = dayEnd - dayStart;
     const boardHeight = totalMinutes * PX_PER_MIN;
 
-    // Now-line: only when the viewer's local date matches the active day's
-    // venue date (festival-goers are on site, so local time == venue time).
-    const nowOffset = useMemo(() => {
+    // Current wall-minute at the venue, only when the viewer's local date
+    // matches the active day's venue date (festival-goers are on site, so
+    // local time == venue time). Null on any other day.
+    const nowWallMinutes = useMemo(() => {
         if (!now || !anchorDate) return null;
         const pad = (n: number) => n.toString().padStart(2, '0');
         const localDate = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
@@ -143,9 +148,14 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         const matchesAnchor = localDate === anchorDate;
         const matchesRollover = localDate === nextDate && now.getHours() < ROLLOVER_HOUR;
         if (!matchesAnchor && !matchesRollover) return null;
-        if (mins < dayStart || mins > dayEnd) return null;
-        return (mins - dayStart) * PX_PER_MIN;
-    }, [now, anchorDate, dayStart, dayEnd]);
+        return mins;
+    }, [now, anchorDate]);
+
+    // Now-line pixel offset — only when the live minute falls inside the board.
+    const nowOffset = useMemo(() => {
+        if (nowWallMinutes === null || nowWallMinutes < dayStart || nowWallMinutes > dayEnd) return null;
+        return (nowWallMinutes - dayStart) * PX_PER_MIN;
+    }, [nowWallMinutes, dayStart, dayEnd]);
 
     const jumpToNow = useCallback(() => {
         if (nowOffset !== null && scrollRef.current) {
@@ -215,6 +225,30 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     </div>
                 </div>
 
+                {/* Artist search */}
+                <div className="flex items-center gap-2 px-4 py-2 border-b border-border/40">
+                    <div className="relative flex-1">
+                        <Search size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/50 pointer-events-none" />
+                        <input
+                            type="text"
+                            inputMode="search"
+                            value={query}
+                            onChange={e => setQuery(e.target.value)}
+                            placeholder="Search artists…"
+                            className="w-full bg-muted/40 border border-border rounded-full pl-9 pr-9 py-1.5 text-xs font-bold text-foreground placeholder:text-muted-foreground/50 placeholder:font-medium focus:outline-none focus:border-primary/60"
+                        />
+                        {query && (
+                            <button
+                                onClick={() => setQuery('')}
+                                aria-label="Clear search"
+                                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground/60 hover:text-foreground"
+                            >
+                                <X size={14} />
+                            </button>
+                        )}
+                    </div>
+                </div>
+
                 {/* Stage filter pills */}
                 {allStages.length > 1 && (
                     <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4 py-2">
@@ -242,6 +276,12 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     <Heart size={32} className="opacity-20" />
                     <span className="text-[11px] font-black uppercase tracking-widest">No favourites on this day</span>
                     <span className="text-[10px] text-muted-foreground/50">Tap the heart on any artist to add them</span>
+                </div>
+            ) : trimmedQuery && dailyLineup.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-32 gap-4 text-muted-foreground">
+                    <Search size={32} className="opacity-20" />
+                    <span className="text-[11px] font-black uppercase tracking-widest">No artists match “{query.trim()}”</span>
+                    <span className="text-[10px] text-muted-foreground/50">Try another name or a different day</span>
                 </div>
             ) : (
             <div ref={scrollRef} className="overflow-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
@@ -297,11 +337,12 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                                     {dailyLineup
                                         .filter(item => item.stage === stage)
                                         .map(item => {
-                                            const top = (wallMinutes(item.startTime) - dayStart) * PX_PER_MIN;
-                                            const height = Math.max(
-                                                (wallMinutes(item.endTime) - wallMinutes(item.startTime)) * PX_PER_MIN,
-                                                34
-                                            );
+                                            const startWall = wallMinutes(item.startTime);
+                                            const endWall = wallMinutes(item.endTime);
+                                            const top = (startWall - dayStart) * PX_PER_MIN;
+                                            const height = Math.max((endWall - startWall) * PX_PER_MIN, 34);
+                                            const isLive = nowWallMinutes !== null && startWall <= nowWallMinutes && nowWallMinutes < endWall;
+                                            const isPast = nowWallMinutes !== null && endWall <= nowWallMinutes;
                                             return (
                                                 <div
                                                     key={item.id}
@@ -313,6 +354,8 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                                                         festivalId={festivalId}
                                                         isFavorite={favorites.has(item.id)}
                                                         isConflicting={conflicts.has(item.id)}
+                                                        isLive={isLive}
+                                                        isPast={isPast}
                                                         onToggleFavorite={() => handleToggleFavorite(item)}
                                                     />
                                                 </div>

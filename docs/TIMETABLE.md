@@ -121,6 +121,20 @@ function wallMinutes(iso: string): number {
 - When active with zero favorites on the day: shows a clean empty state ("NO FAVOURITES ON THIS DAY / Tap the heart on any artist to add them") instead of the grid.
 - Button turns primary-color with filled heart when active.
 
+### Artist search
+- Text input in the sticky header filters the active day's cards by artist name (case-insensitive substring).
+- Non-matching cards are removed; stage columns remain. Clear (✕) button resets it.
+- When a query matches nothing on the day, a clean empty state is shown instead of the grid.
+
+### Live + past set states
+- When the active day is live (viewer local date == venue date, incl. overnight rollover), each card derives `isLive` / `isPast` from `nowWallMinutes`.
+- **Live** cards get a green left border, green glow ring, green time text, and a pulsing "● NOW" badge.
+- **Past** cards are dimmed to 40% opacity (favorited and clashing cards stay full opacity so they're never lost).
+- All computed from `wallMinutes` (no Date parse) so it never drifts with viewer timezone.
+
+### Set time range
+- Every non-tiny card shows `start–end` (e.g. `16:00–17:00`), not just the start time, so set length is readable without measuring pixel height.
+
 ### Jump to now (NOW button)
 - Only rendered when the viewer's local date matches the active festival day (i.e., they are at the festival right now).
 - Clicking smooth-scrolls the inner scroll container to 160px above the now-line.
@@ -204,12 +218,20 @@ config.theme.glowColor     // used for favorite glow shadow
 - **Visual tier distinction** — `must_see` cards could have a different color border or star icon vs `interested`.
 - **"My Schedule" export** — generate an iCal / share link of favorited sets.
 - **Cross-day favorites summary** — a view that shows all your favorites across all days at once (currently you must browse each day tab).
-- **Set duration label** — the card doesn't show how long a set is (only start time). A "60 min" badge would help.
 - **Pinch-to-zoom on mobile** — PX_PER_MIN is fixed; there's no way to zoom out to see the full day at once.
 - **Offline indicator** — no visual feedback that the timetable is running from cached data vs live.
 - **Now-line for other festivals** — NOW button only works when viewer's local time matches the festival day. International viewers or those in different timezones won't see it correctly unless they're physically at the festival.
 
 ---
+
+## Android parity
+
+The Android `ScheduleScreen.kt` grid mirrors the web feature set:
+- **Live + past states** — `isNowPlaying()` drives a green border, glow, pulsing dot and "LIVE NOW" badge; finished sets dim to 45% (favorites / squad / live stay full). Past detection uses the grid's `nowMinutes` (wall-clock, rollover-aware).
+- **Set time range** — grid blocks show `start - end`.
+- **Artist search** — `searchQuery` in `ScheduleUiState` filters `dayArtists` by name (case-insensitive); the field shows on the GRID and BY-TIME tabs with a clear button, and both tabs show a "NO ARTISTS MATCH" empty state.
+
+Android additionally has GRID / BY-TIME / MY-LINEUP tabs, a tiered clash banner (HARD vs TIGHT transition), and squad QR sharing — none of which exist on web.
 
 ## Festival coverage
 
