@@ -20,6 +20,7 @@
     "lineup:vibes": "node scripts/backfill-vibes.mjs",
     "lineup:sync-android": "node scripts/sync-android-assets.mjs",
     "lineup:update": "npm run lineup:scrape && npm run lineup:clean && npm run lineup:vibes && npm run lineup:sync",
+    "lineup:rebuild:sziget": "node scripts/rebuild-lineup-from-api.mjs && NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:sync && NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:sync-android",
     "lineup:update:sziget": "NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:update && NEXT_PUBLIC_FESTIVAL_ID=sziget-2026 npm run lineup:sync-android",
     "lineup:update:area53": "NEXT_PUBLIC_FESTIVAL_ID=area53-2026 npm run lineup:update && NEXT_PUBLIC_FESTIVAL_ID=area53-2026 npm run lineup:sync-android",
     "lineup:update:novarock": "NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run lineup:update && NEXT_PUBLIC_FESTIVAL_ID=novarock-2026 npm run lineup:sync-android",
