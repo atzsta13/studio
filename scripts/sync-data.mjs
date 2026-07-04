@@ -1,7 +1,6 @@
 // scripts/sync-data.mjs
 import fs from 'fs'
 import path from 'path'
-import { getFestivalId } from './utils/festival-env.mjs'
 import { validateAllConfigs } from './utils/validate-configs.mjs'
 
 const FESTIVALS_DIR = 'festivals'
@@ -80,21 +79,6 @@ for (const id of festivalFolders) {
       console.error(`❌ [${id}] Failed to sync assets: ${e.message}`)
     }
   }
-}
-
-// Legacy support: sync default festival to src/data
-const defaultId = getFestivalId()
-const legacySrc = path.join(FESTIVALS_DIR, defaultId, 'data')
-const legacyDest = path.join('src', 'data')
-
-if (fs.existsSync(legacySrc)) {
-  if (!fs.existsSync(legacyDest)) fs.mkdirSync(legacyDest, { recursive: true })
-  for (const file of fs.readdirSync(legacySrc)) {
-    if (file.endsWith('.json')) {
-      fs.copyFileSync(path.join(legacySrc, file), path.join(legacyDest, file))
-    }
-  }
-  console.log(`✓ [${defaultId}] Synced legacy data (src/data)`)
 }
 
 console.log('✨ Data Sync Complete.')

@@ -14,7 +14,7 @@ The **Festival Insider Platform** is a multi-festival, offline-first companion a
 This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colors, or coordinates in components or logic.
 - **Web**: Always import `FESTIVAL` from `@/config/festival-engine`.
 - **Android**: Always use `FestivalConfig` constants.
-- **Data**: All festival-specific data lives in `festivals/<festival-id>/data/`. The build process syncs this to `public/data/` and `src/data/`.
+- **Data**: All festival-specific data lives in `festivals/<festival-id>/data/`. The build process syncs this to `public/data/` and the Android assets.
 
 ## Festivals
 
@@ -57,7 +57,7 @@ npm run lineup:update:frequency
 npm run lineup:update:ernte-punk
 npm run lineup:update:rock-am-ring   # sync only — timetable data is hand-authored from PDF
 
-# Sync existing data to public/data/ and src/data/ (no scrape)
+# Sync existing data to public/data/ and android assets (no scrape)
 npm run lineup:sync
 ```
 
@@ -100,7 +100,7 @@ Without this, fetches will 404 on GitHub Pages. `BASE_PATH` is `'/studio'` in pr
 
 ### Android — Key Patterns
 - **Single APK**: `applicationId = "com.example.festivalinsider"`, all festival assets bundled under `src/main/assets/<festival-id>/`
-- **Config**: `FestivalConfig.kt` — reads from `assets/config.json` per flavor
+- **Config**: `FestivalConfig.kt` — reads `assets/<festival-id>/config.json` for the selected festival
 - **DB**: Room v2, `fallbackToDestructiveMigration()`, increment `@Database(version=…)` for every entity change
 - **Nav**: Manual `ViewModelProvider.Factory` — no Hilt
 - **Artist images**: Hotlinked to CDN with `SpotifyIsland`-style attribution (social links only, no OAuth)
@@ -111,8 +111,7 @@ Without this, fetches will 404 on GitHub Pages. `BASE_PATH` is `'/studio'` in pr
 festivals/<id>/data/*.json
   → scripts/sync-data.mjs
   → public/data/<id>/          (served statically, fetched at runtime)
-  → src/data/                  (legacy import path)
-  → android assets (per flavor)
+  → android/app/src/main/assets/<id>/ (bundled into APK)
 ```
 
 ## What Was Removed (Do Not Re-Add)
@@ -139,3 +138,22 @@ festivals/<id>/data/*.json
 - **Icons**: Lucide (Web), import individually. Android uses Vector Drawables.
 - **No comments** unless the WHY is non-obvious.
 - **Tests**: 189 passing — keep green. Run `npm test -- --run` before committing.
+
+## Docs Map (keep it this lean)
+
+| File | Purpose |
+|---|---|
+| `AGENTS.md` | **This file** — rules, commands, architecture summary. Canonical agent entry point. |
+| `README.md` | Human-facing project overview |
+| `TASKS.md` | Open/unfinished work — the only backlog file |
+| `docs/STATUS.md` | Live state snapshot (data coverage, open issues, recently shipped) |
+| `docs/architecture/ARCHITECTURE.md` | Deep technical reference |
+| `docs/GOALS.md` | The why behind every feature |
+| `docs/features/FEATURES.md` | Feature matrix per platform |
+| `docs/TIMETABLE.md` | Full brief of the timetable feature |
+| `docs/guides/MANDATES.md` | Hard constraints |
+| `docs/guides/UI_GUIDE.md` | Design system |
+| `docs/guides/TROUBLESHOOTING.md` | Dev troubleshooting |
+| `android/README.md` | Android architecture + routes |
+
+Do **not** create new status/snapshot docs (`CURRENT.md`, `UPDATED.md`, `LLM_BRIEF.md` etc. were deleted for rotting). Update `docs/STATUS.md` and `TASKS.md` instead.

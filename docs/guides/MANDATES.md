@@ -16,11 +16,11 @@ These rules are foundational to the project's philosophy and must **NEVER** be v
 - **NO REAL-TIME DATA**: Prohibit features that require a live connection on-site (Heatmaps, Live Feeds, Cloud-based Polls, Community Boards).
 - **LOCAL-ONLY SYNC**: Interaction between users (like Squad Link) must be P2P/local-only (e.g., QR codes) to avoid server dependency.
 
-## 2. Financial & Scope Mandates
-- **TACTICAL PRICING ONLY**: The platform may display utility costs for on-site survival, such as food/drink prices and "Budget Hero" meal flags. 
-- **NO FINANCIAL PLANNING**: The app must not implement personal spending trackers, travel cost calculators, ticket price comparison tools, or bank/wallet integrations.
+## 3. Financial & Scope Mandates
+- **TACTICAL PRICING ONLY**: The platform may display utility costs for on-site survival, such as food/drink prices and "Budget Hero" meal flags. A local-only spending tally (the Budget Tracker) is permitted — it never leaves the device.
+- **NO FINANCIAL INTEGRATIONS**: No travel cost calculators, ticket price comparison tools, or bank/wallet integrations.
 - **NO ADVERTISING**: The UI must remain a "Pure Signal" brutalist interface. No third-party ad SDKs.
 
-## 3. Technical Mandates
+## 4. Technical Mandates
 - **OFFLINE FIRST**: Every core feature (Map, Guide, Lineup, Local AI) must function with 0 bars of signal.
 - **CONFIG FIRST**: No hardcoded strings or branding in the UI layers.

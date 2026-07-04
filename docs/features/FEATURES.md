@@ -31,10 +31,10 @@
 | `foodRatings` | Practical | ✅ | ✅ | Android: FoodScreen ratings |
 | `posterGenerator` | Practical | ⏳ | ⏳ | Pending — shareable highlights image |
 | `newsBulletin` | Practical | ⏳ | ⏳ | Pending — static pre-loaded announcements |
-| `feedbackSystem` | Practical | ⏳ | ⏳ | Pending — in-app feedback for organizers |
-| `clashResolver` | Schedule | ✅ | ⏳ | Android: blocked — needs startTime/endTime |
-| `setCountdowns` | Schedule | ✅ | ⏳ | Android: blocked — needs startTime/endTime |
-| `groupSchedules` | Schedule | ⏳ | ⏳ | Blocked — needs schedule data |
+| `feedbackSystem` | Practical | ✅ | ⏳ | Web: FeedbackSystem card in tools; Android pending |
+| `clashResolver` | Schedule | ✅ | ✅ | Android: tiered clash banner in ScheduleScreen. Needs schedule data (live for 4/6 festivals) |
+| `setCountdowns` | Schedule | ✅ | ⏳ | Needs schedule data (live for 4/6 festivals); Android card pending |
+| `groupSchedules` | Schedule | ⏳ | ⏳ | Not implemented on either platform |
 | `accessibilityMap` | Map | ✅ | ✅ | Android: MapScreen accessible routes filter |
 | `quietZones` | Map | ✅ | ✅ | Android: MapScreen quiet zone filter |
 | `chargingStations` | Map | ✅ | ✅ | Android: MapScreen charging filter |
@@ -43,7 +43,7 @@
 | `friendFinder` | Social (P2P) | ✅ | ✅ | Android: SquadLinkScreen (Local QR Sync) |
 | `stageCapacity` | Tactical | ⏳ | ⏳ | Pending — stage crowd level display |
 | `customThemes` | Personalization | ⏳ | ⏳ | Pending — per-user theme selection |
-| `timetable` | Schedule | ✅ | ✅ | Gating flag; full schedule blocked until data |
+| `timetable` | Schedule | ✅ | ✅ | Full grid live for Sziget, Nova Rock, Rock am Ring, Area 53; `false` for Frequency + Ernte Punk (no data yet) |
 | `currencyConverter` | Practical | ✅ | ✅ | Android: ToolsScreen card |
 | `cashlessLink` | Practical | ✅ | ✅ | Deep link to festival cashless top-up |
 | `dayparkNightpark` | Schedule | ✅ | ✅ | Frequency-specific day/night split |

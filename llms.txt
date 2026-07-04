@@ -1,34 +1,37 @@
 # Festival Insider Platform
 
-Multi-festival companion app engine. Two standalone apps sharing one data source.
+Multi-festival, offline-first companion app. Two codebases (Next.js web + Jetpack Compose Android) sharing one JSON data source. No backend, no accounts, no tracking.
 
 ## What it is
-White-label platform powering 4 festival apps (Sziget 2026, Nova Rock, Frequency, Area 53) from a single codebase. Config-first: all branding, colors, dates, and feature flags live in `festivals/<id>/config.json`.
+White-label engine powering 6 festival apps (Sziget, Nova Rock, Frequency, Area 53, Ernte Punk, Rock am Ring — all 2026) from a single codebase. Config-first: all branding, colors, dates, and feature flags live in `festivals/<id>/config.json`.
 
 ## Platforms
-- **Web**: Next.js 16 / React 19 App Router — repo root
-- **Android**: Jetpack Compose / Kotlin 2.0.21 — `android/` directory
+- **Web**: Next.js 16 / React 19 static export (repo root) → GitHub Pages at https://atzsta13.github.io/studio/
+- **Android**: single APK, Jetpack Compose / Kotlin 2.3 — `android/` directory
 
 ## Key constraints
-- `startTime` and `endTime` are null for all artists — schedule not yet published. Do not build UI that assumes they exist.
-- No camera features (hard mandate)
+- No API routes — fully static export; any `route.ts` breaks the build
+- No camera features, no accounts, no social, no cloud AI (hard mandates)
 - Offline-first: every core feature works with no signal
 - No hardcoded colors, names, or coordinates in components
+- `startTime`/`endTime` are ISO 8601 with offset; null for festivals without published schedules (Frequency, Ernte Punk)
 
 ## Canonical docs
-- `AGENTS.md` — coding rules, architecture patterns, commands
-- `CURRENT.md` — full platform state snapshot (routes, integrity checks, open items)
-- `docs/GOALS.md` — purpose and goal of every feature and the platform as a whole
+- `AGENTS.md` — coding rules, architecture patterns, commands (start here)
+- `TASKS.md` — open/unfinished work
+- `docs/STATUS.md` — live state snapshot
+- `docs/architecture/ARCHITECTURE.md` — deep technical reference
+- `docs/GOALS.md` — purpose of every feature
 - `docs/features/FEATURES.md` — build status per feature per platform
-- `docs/guides/MANDATES.md` — hard constraints (privacy, offline, config-first)
-- `docs/guides/HANDOFF.md` — agent onboarding guide
+- `docs/guides/MANDATES.md` — hard constraints
 - `android/README.md` — Android file tree, Room schema, design system
 
 ## Data
-Source of truth: `festivals/<id>/data/*.json`. Sync to app: `npm run lineup:sync`. 412 artists across 4 festivals, 100% vibe coverage.
+Source of truth: `festivals/<id>/data/*.json`. Sync to apps: `npm run lineup:sync`.
 
 ## Verify before committing
 ```
 npm run typecheck   # must return 0 errors
-npm test -- --run   # 198/198 must pass
+npm run lint        # must be clean
+npm test -- --run   # 189 tests must pass
 ```

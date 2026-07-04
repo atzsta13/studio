@@ -1,97 +1,88 @@
 # 🎪 Festival Insider Platform
 
-A high-performance, **Main-Stage Certified** white-label engine for elite festival companion apps. Built to survive 100,000+ people, direct sunlight, and **0 bars of signal**.
+A white-label, **offline-first** engine for festival companion apps. Built to survive 100,000+ people, direct sunlight, and **0 bars of signal**.
+
+**Live:** https://atzsta13.github.io/studio/
 
 ---
 
 ## ⚡ Core Pillars
 - **100% OFFLINE FIRST**: Every tactical feature (Map, Timetable, Guide, Local AI) works without internet.
-- **NO ACCOUNTS**: Zero logins, zero tracking. 100% anonymous utility for the privacy-conscious attendee.
+- **NO ACCOUNTS**: Zero logins, zero tracking. 100% anonymous.
 - **NO SOCIAL**: Strictly P2P local group sync via **Squad Link**. No feeds, no moderation liability.
-- **NO CLOUD AI**: All intelligence is **local inference** (Gemma 4 Small). Zero data leaves the device.
-- **CONFIG DRIVEN**: One engine, 5+ festivals. Branding and data are decoupled from the UI layers.
+- **NO CLOUD AI**: All intelligence is local inference (on-device Gemma, Android only). Zero data leaves the device.
+- **CONFIG DRIVEN**: One engine, six festivals. Branding and data are decoupled from the UI layers.
 
 ---
 
-## 🗺️ Supported Festivals (Production Ready)
+## 🗺️ Festivals
 
-| Festival | ID | Vibe Coverage | Status |
+| Festival | ID | Artists | Timetable |
 | :--- | :--- | :--- | :--- |
-| **Sziget** | `sziget-2026` | 100% | ✅ Certified |
-| **Nova Rock** | `novarock-2026` | 100% | ✅ Certified |
-| **Frequency** | `frequency-2026` | 100% | ✅ Certified |
-| **Area 53** | `area53-2026` | 100% | ✅ Certified |
-| **Ernte Punk** | `ernte-punk-2026` | 100% | ✅ Certified |
+| **Sziget** | `sziget-2026` | 458 | ✅ Aug 9–16 |
+| **Nova Rock** | `novarock-2026` | 84 | ✅ Jun 11–14 |
+| **Rock am Ring** | `rock-am-ring-2026` | 73 | ✅ Jun 5–7 |
+| **Area 53** | `area53-2026` | 30 | ✅ Jul 15–18 |
+| **Frequency** | `frequency-2026` | ~95 | ⏳ TBA |
+| **Ernte Punk** | `ernte-punk-2026` | ~17 | ⏳ TBA |
 
 ---
 
-## 🚀 Technical Architecture
+## 🚀 Architecture
 
-The ecosystem consists of two parallel, specialized platforms synchronized by a unified data pipeline.
+Two parallel platforms synchronized by a unified data pipeline. No backend, no API routes, no server.
 
-### **1. Web (The Strategic Hub)**
-A monolithic Next.js portal serving all festivals dynamically via `/[festivalId]`. Built for pre-festival planning and cross-festival artist discovery.
-- **Tech**: Next.js 16 (App Router), React 19, Tailwind CSS 4.
-- **Execution**: 
-  ```bash
-  npm install
-  npm run dev # Global Hub: http://localhost:9002
-  ```
+### 1. Web
+Next.js 16 / React 19 static export (`output: 'export'`), deployed to GitHub Pages. All festivals served from one app via `/[festivalId]/`.
+```bash
+npm install
+npm run dev        # http://localhost:9002
+```
 
-### **2. Android (The Tactical Edge)**
-A native Jetpack Compose app using Product Flavors for specialized on-site survival APKs.
-- **Tech**: Kotlin 2.0, Room (v8), MediaPipe (Local LLM), Manual DI.
-- **Execution**:
-  ```bash
-  cd android
-  ./gradlew assembleSzigetDebug # Build Sziget APK
-  ./gradlew test               # Run 60/60 unit tests
-  ```
+### 2. Android
+Native Jetpack Compose app. **Single APK** (`com.example.festivalinsider`) with all festival data bundled — the user picks their festival on first launch.
+```bash
+cd android
+./gradlew assembleDebug   # build APK
+./gradlew test            # unit tests, no device needed
+```
 
 ---
 
-## 🛠️ Tactical Capabilities
+## 🛠️ Feature Highlights
 
-### **Intelligence (Local-Only)**
-- **Acoustic Scout**: Identifies the set you're hearing via microphone using **local Gemma 4 inference**.
-- **Vibe DNA Quiz**: A gamified, offline artist discovery engine (No Spotify login required).
-- **Vibe Radar**: Visual spider-chart analysis of your festival preferences.
-
-### **Survival Toolkit**
-- **Main Stage Map**: Fully cached POI dot-map for Water, First Aid, and Stages.
-- **Squad Link**: Anonymous group syncing via local QR code swap (P2P).
-- **Food Radar**: Pre-sorted by price and dietary needs (Vegan/Halal/etc).
-- **Toolbox**: HUF/EUR converter, Weather Cache, Tent Finder (GPS), SOS Beacon.
+- **Timetable**: pixel-accurate vertical time grid — stage filters, favorites filter, clash detection, live/past set states, now-line.
+- **Discovery**: Vibe Quiz, Serendipity roulette, similar artists, genre DNA — all offline, no Spotify login.
+- **Survival Toolkit**: offline POI map, tent/car finder (GPS pin), SOS morse beacon, hydration/sunscreen reminders, currency converter, weather cache.
+- **Squad Link**: anonymous group syncing via local QR swap (P2P, no server).
 
 ---
 
-## 📈 Quality & Integrity
+## 📈 Quality Gates
 
-The platform is rigorously tested and "Main Stage Stress Tested."
-
-| Check | Result | Standard |
-| :--- | :--- | :--- |
-| **Web Tests** | ✅ 198/198 Passed | Vitest / RTL |
-| **Android Tests** | ✅ 60/60 Passed | JUnit / Turbine |
-| **Type Integrity** | ✅ 0 Errors | TypeScript Strict |
-| **A11y (Web)** | ✅ Hardened | Skip-links, Landmarks, Focus-visible |
-| **AAPT Build** | ✅ Stable | Resource Integrity Verified |
+```bash
+npm run typecheck     # 0 errors
+npm run lint          # 0 errors
+npm test -- --run     # 189 tests, keep green
+```
 
 ---
 
-## 🏗️ Data Pipeline (DRY)
+## 🏗️ Data Pipeline
 
-We use a single source of truth for all data. **`festivals/<id>/data/lineup.json`** flows directly to both platforms without middle-man transformations.
+Source of truth: `festivals/<id>/data/*.json` → synced to `public/data/` (web) and `android/app/src/main/assets/` (Android) via `npm run lineup:sync`.
 
-- **Scrape**: `npm run lineup:update:<id>` (Crawls festival sites).
-- **Clean**: `scripts/clean-lineup.mjs` (Deduplication & normalization).
-- **Vibes**: `scripts/backfill-vibes.mjs` (AI-driven vibe taxonomy).
-- **Sync**: `scripts/sync-data.mjs` (Web) & `scripts/sync-android-assets.mjs` (Android).
+- **Scrape**: `npm run lineup:update:<id>`
+- **Clean**: `scripts/clean-lineup.mjs`
+- **Vibes**: `scripts/backfill-vibes.mjs`
+- **Sync**: `scripts/sync-data.mjs` + `scripts/sync-android-assets.mjs`
 
 ---
 
-## 📖 Deep Dive Docs
-- **[`CURRENT.md`](CURRENT.md)**: Real-time project status and build integrity.
-- **[`docs/guides/MANDATES.md`](docs/guides/MANDATES.md)**: The foundational "Laws of the Engine."
-- **[`AGENTS.md`](AGENTS.md)**: Onboarding guide for AI agents (Claude, Gemini, Cursor).
-- **[`android/README.md`](android/README.md)**: Android-specific architecture and route table.
+## 📖 Docs
+- [`AGENTS.md`](AGENTS.md) — rules, commands, and architecture for AI agents (canonical entry point)
+- [`TASKS.md`](TASKS.md) — open and unfinished work
+- [`docs/STATUS.md`](docs/STATUS.md) — live project state
+- [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) — deep technical reference
+- [`docs/GOALS.md`](docs/GOALS.md) — the why behind every feature
+- [`android/README.md`](android/README.md) — Android architecture and routes
