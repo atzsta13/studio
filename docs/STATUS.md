@@ -67,8 +67,8 @@ The only persisted preference is the selected festival ID; there are no tokens, 
 
 ### Web
 
-**No service worker update prompt.**
-When a new deploy is pushed, users on the PWA won't be prompted to refresh. They silently get stale cached data until they manually reload.
+**PWA/offline layer is dead in production (audited 2026-07-04).**
+The service worker never registers on GitHub Pages (`register('/sw.js')` ignores the `/studio` basePath), the manifest link 404s, the manifest itself is Sziget-branded for all six festivals, and set-time notifications gate on a browser API that was removed in 2021. Full diagnosis with fixes: `TASKS.md` → P0. This is why PWA users silently get stale deploys.
 
 ### Features blocked on schedule data
 
