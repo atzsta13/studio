@@ -18,16 +18,18 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 
 ## Festivals
 
-| ID | Name | Artists | Schedule |
-|----|------|---------|----------|
-| `sziget-2026` | Sziget | 458 | **Full timetable** 442/458 (Aug 9–16 2026) |
-| `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 (Jun 11–14 2026) |
-| `frequency-2026` | Frequency | ~95 | TBA (null) |
-| `area53-2026` | Area 53 | 30 | **Full timetable** (Jul 15–18 2026) |
-| `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) |
-| `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** (Jun 5–7 2026) |
+| ID | Name | Artists | Schedule | Status (as of Jul 2026) |
+|----|------|---------|----------|--------|
+| `sziget-2026` | Sziget | 458 | **Full timetable** 442/458 | Upcoming — Aug 9–16. **Flagship priority.** |
+| `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 | Past (Jun 11–14) |
+| `frequency-2026` | Frequency | ~95 | TBA (null) | Upcoming — Aug, schedule not published |
+| `area53-2026` | Area 53 | 30 | **Full timetable** | **Imminent — Jul 15–18** |
+| `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) | Upcoming, schedule not published |
+| `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** | Past (Jun 5–7) |
 
 All `startTime`/`endTime` values are **ISO 8601 with offset** (e.g. `"2026-07-16T22:30:00+02:00"`) — never plain `"HH:mm"`. Festivals marked TBA have `null` times. `features.timetable` is `false` for festivals without schedule data.
+
+Known bugs and the prioritized backlog live in **`TASKS.md`** — check it before starting work; your task may already be specified there.
 
 ## Common Commands
 
@@ -157,3 +159,16 @@ festivals/<id>/data/*.json
 | `android/README.md` | Android architecture + routes |
 
 Do **not** create new status/snapshot docs (`CURRENT.md`, `UPDATED.md`, `LLM_BRIEF.md` etc. were deleted for rotting). Update `docs/STATUS.md` and `TASKS.md` instead.
+
+### Vendor entry files (do not fork content into them)
+
+`AGENTS.md` is the single source of truth for every AI tool. The per-vendor files are thin pointers only:
+
+| File | Tool | Mechanism |
+|---|---|---|
+| `CLAUDE.md` | Claude Code | `@AGENTS.md` import |
+| `GEMINI.md` | Gemini CLI | `@AGENTS.md` import |
+| `.github/copilot-instructions.md` | GitHub Copilot | Plain-text pointer (Copilot does not expand `@` imports) |
+| — | Cursor, Codex, and other AGENTS.md-native tools | Read `AGENTS.md` directly |
+
+Never add rules to a vendor file — add them here.

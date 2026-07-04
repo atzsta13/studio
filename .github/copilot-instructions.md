@@ -1,1 +1,1 @@
-@AGENTS.md
+All agent instructions for this repository live in `AGENTS.md` at the repo root. Read it first and follow it exactly — it covers commands, architecture, hard constraints (no API routes, no accounts, offline-first, config-first), and coding standards. The open backlog is in `TASKS.md`.

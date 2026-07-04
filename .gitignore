@@ -51,6 +51,4 @@ firestore-debug.log
 .agent/
 .idx/
 .cursor/
-.cursorrules
-.github/copilot-instructions.md
 .antigravitycli/

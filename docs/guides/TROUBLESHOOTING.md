@@ -7,6 +7,7 @@
 | Problem | Fix |
 |---|---|
 | Web won't start | `npm install && npm run dev` |
+| PWA / offline / update banner not working on the live site | Known broken — SW registration ignores the `/studio` basePath. See `TASKS.md` P0 |
 | Android won't build | `cd android && ./gradlew clean && ./gradlew assembleDebug` |
 | TypeScript errors | `npm run typecheck` — must be 0 errors |
 | Lineup data missing | Run `npm run lineup:sync` to sync all festival data |

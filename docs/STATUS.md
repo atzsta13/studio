@@ -89,6 +89,8 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-04 | Docs housekeeping round 2 — vendor LLM files streamlined (deleted legacy Cursor rules; Copilot pointer made literal), corrected TIMETABLE.md notification claims, fixed stale counts/claims across GOALS, UI_GUIDE, TROUBLESHOOTING |
+| 2026-07-04 | Web deep-dive audit documented in TASKS.md (broken PWA layer in production, provider favorites bug, dead weight inventory) |
 | 2026-07-04 | Repo cleanup — deleted stale snapshot docs (CURRENT.md, UPDATED.md, LLM_BRIEF.md, VERIFICATION.md), removed legacy `src/data/` sync path, created TASKS.md as the single backlog file |
 | 2026-07-02 | Timetable: live/past set states, set time ranges, artist search — web + Android parity |
 | 2026-06-28 | Sziget 2026 full timetable live — 442/458 artists, Aug 9–16, features.timetable enabled |

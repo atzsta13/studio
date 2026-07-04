@@ -136,12 +136,14 @@ val alpha by infiniteTransition.animateFloat(
 
 ### Color palette (Tailwind CSS 4 / CSS variables)
 
-| Token | Value | Usage |
+The primary/accent values below are the **default (Sziget) theme** — every festival overrides them via `festivals/<id>/config.json`, injected as CSS variables in `[festivalId]/layout.tsx`. Components must use the tokens (`bg-primary`, `text-primary`), never these raw values.
+
+| Token | Default value | Usage |
 |-------|-------|-------|
 | Background | `hsl(240, 10%, 4%)` | All page backgrounds |
 | Card | `hsl(240, 5%, 8%)` | Card surfaces |
 | Muted | `hsl(240, 5%, 15%)` | Dividers, empty states |
-| Sziget Magenta | `#ff0080` | Primary action, favorites |
+| Primary (Magenta) | `#ff0080` | Primary action, favorites |
 | Toxic Green | `#4ade80` | Success, money, budget |
 | Cyan Pulse | `#00c3ff` | Hydration, medical |
 | Text Primary | `#ffffff` | |
@@ -176,7 +178,7 @@ group-hover:scale-110  ← on icons within a group wrapper
 
 ### Navigation
 
-Bottom navigation is canonical — top nav bars are not used for primary navigation. The `BottomNav` component is persistent across all mobile views.
+Bottom navigation is canonical for primary navigation on mobile — the `BottomNav` component is persistent across all mobile views. The sticky header exists only for the `FestivalSwitcher` dropdown and mode toggle, not for primary navigation.
 
 ### Checklist for new web pages
 
