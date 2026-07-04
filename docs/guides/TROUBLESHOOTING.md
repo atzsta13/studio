@@ -1,6 +1,6 @@
 # Troubleshooting Guide
 
-> Last updated: 2026-06-12. Single-APK architecture — no product flavors.
+> Single-APK architecture — no product flavors.
 
 ## TLDR
 
@@ -8,7 +8,7 @@
 |---|---|
 | Web won't start | `npm install && npm run dev` |
 | Android won't build | `cd android && ./gradlew clean && ./gradlew assembleDebug` |
-| TypeScript errors | `npm run typecheck` — 4 pre-existing errors in `chart.tsx` are known/safe |
+| TypeScript errors | `npm run typecheck` — must be 0 errors |
 | Lineup data missing | Run `npm run lineup:sync` to sync all festival data |
 | Festival not switching on Android | Clear app data: `adb shell pm clear com.example.festivalinsider` |
 
@@ -89,6 +89,4 @@ Room caches the old data. Either:
 ### Timetable not showing for a festival
 Check two things:
 1. `features.timetable: true` in `festivals/<id>/config.json`
-2. At least one artist in `lineup.json` has a non-null `startTime` in ISO 8601 format (`2026-06-11T20:00:00+02:00`)
-
-Area 53 currently has times as plain strings (`"22:30"`) — the timetable will not work for it until migrated to ISO format.
+2. At least one artist in `lineup.json` has a non-null `startTime` in ISO 8601 format with offset (`2026-06-11T20:00:00+02:00`) — plain `"HH:mm"` strings are not supported

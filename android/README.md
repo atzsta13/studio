@@ -2,7 +2,9 @@
 
 Jetpack Compose / Kotlin native app. Standalone — shares lineup data with the web app but has no runtime dependency on it.
 
-**Key versions:** AGP 8.13.2 · Kotlin 2.0.21 · compileSdk 35 · minSdk 26 · Compose BOM latest · Room v8
+**Key versions:** AGP 9.2.0 · Kotlin 2.3.20 · KSP 2.3.9 · Gradle 9.5 · Java 21 toolchain · compileSdk/targetSdk 36 · minSdk 26 · Compose BOM 2026.05 · Room 2.8.4 (DB v8) · Coil 3
+
+> AGP 9.x note: the `kotlinOptions {}` DSL inside `android {}` is removed. This project uses the replacement — top-level `kotlin { compilerOptions { jvmTarget = JvmTarget.JVM_21 } }` in `app/build.gradle.kts`. `android/gradle/libs.versions.toml` is the single source of truth for versions.
 
 ---
 
@@ -30,16 +32,18 @@ Assets (JSON) + Room DB (SQLite)
 
 ---
 
-## Navigation routes (18 total)
+## Navigation routes (20 total)
 
 | Route | Screen | Bottom bar? |
 |-------|--------|-------------|
 | `splash` | SplashScreen | No |
+| `festival_select` | FestivalSelectionScreen (first launch) | No |
+| `festival_switch` | FestivalSelectionScreen (switch) | No |
 | `home` | HomeScreen | Yes |
 | `discover` | DiscoverScreen | Yes |
+| `schedule` | ScheduleScreen (timetable grid) | Yes — gated by `features.timetable` |
 | `map` | MapScreen | Yes |
 | `tools` | ToolsScreen | Yes |
-| `schedule` | ScheduleScreen | No — blocked (no startTime/endTime) |
 | `guide` | SurvivalGuideScreen | No |
 | `artist/{id}` | ArtistDetailScreen | No |
 | `vibe_quiz` | VibeQuizScreen | No |
@@ -50,7 +54,7 @@ Assets (JSON) + Room DB (SQLite)
 | `budget_tracker` | BudgetTrackerScreen | No |
 | `genre_breakdown` | GenreBreakdownScreen | No |
 | `vibe_radar` | VibeRadarScreen | No |
-| `friend_finder` | FriendFinderScreen | No |
+| `squad_link` | FriendFinderScreen | No |
 | `speed_discovery` | SpeedDiscoveryScreen | No |
 
 ---
@@ -62,7 +66,7 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │
 ├── data/
 │   ├── config/
-│   │   └── FestivalConfig.kt             # Currency rates, festival constants
+│   │   └── FestivalConfig.kt             # Config loader, festival selection prefs, switchFestival()
 │   ├── local/
 │   │   ├── AppDatabase.kt                # Room DB singleton, version 8
 │   │   ├── Converters.kt                 # List<String> ↔ JSON for Room
@@ -113,9 +117,11 @@ android/app/src/main/java/com/example/szigerinsider2026/
 │   │   ├── VibeQuizViewModel.kt          # Scoring algorithm (uses ILineupRepository)
 │   │   └── VibeResultScreen.kt           # Results + bulk-favorite FAB
 │   ├── schedule/
-│   │   └── ScheduleScreen.kt             # Placeholder — awaiting startTime/endTime data
+│   │   ├── ScheduleScreen.kt             # Timetable grid — GRID / BY-TIME / MY-LINEUP tabs, live states, clash banner
+│   │   └── ScheduleViewModel.kt
 │   ├── splash/
-│   │   └── SplashScreen.kt               # Brutalist entrance, 2s → home
+│   │   ├── SplashScreen.kt               # Entrance → home or festival_select
+│   │   └── FestivalSelectionScreen.kt    # First-launch + switch festival picker
 │   ├── theme/
 │   │   ├── Color.kt                      # OLEDBlack, AcidYellow, PrimaryMagenta, CyanPulse, ToxicGreen
 │   │   ├── Theme.kt
@@ -143,7 +149,7 @@ android/app/src/main/java/com/example/szigerinsider2026/
 
 ### Assets (White-Label)
 
-Each flavor has its own `assets` directory: `android/app/src/[flavor]/assets/`
+Single APK — all festival data is bundled per festival under `android/app/src/main/assets/<festival-id>/`
 - `config.json` — feature flags, theme colors, festival metadata
 - `lineup.json` — all artists
 - `poi.json` — map POIs (stages, water, first-aid)
@@ -190,8 +196,8 @@ TextMuted       // ~65% white — secondary info
 
 From `android/` directory:
 ```bash
-./gradlew assembleSzigetDebug      # Build Sziget variant
-./gradlew assembleDebug            # Build ALL variants
+./gradlew assembleDebug            # Build the single "Festival Insider" APK
 ./gradlew test                     # Unit tests (no device needed)
-./gradlew installSzigetDebug       # Build + install to connected device/ADB
+./gradlew installDebug             # Build + install to connected device/ADB
+# APK: app/build/outputs/apk/debug/app-debug.apk
 ```

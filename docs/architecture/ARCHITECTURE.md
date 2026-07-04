@@ -35,7 +35,6 @@ Festivals supported: Sziget, Nova Rock, Frequency, Area 53, Ernte Punk, Rock am 
         insider-provider.tsx← Context: loads lineup.json, exposes useInsider()
     config/
       festival-engine.ts    ← FESTIVAL_CONFIGS map, getFestivalConfig(), FestivalConfig interface
-    data/                   ← Symlinked/synced JSON (source of truth: festivals/*/data/)
   public/data/<id>/         ← Statically served JSON fetched at runtime
   festivals/
     <festival-id>/
@@ -216,7 +215,6 @@ Every interactive element must use `rememberHapticManager()` — `haptic.lightTa
 festivals/<id>/data/*.json          ← source of truth (hand-authored or scraped)
   → scripts/sync-data.mjs
   → public/data/<id>/               ← web runtime fetch
-  → src/data/                       ← legacy static import path
   → android/app/src/main/assets/<id>/ ← bundled into APK
 ```
 

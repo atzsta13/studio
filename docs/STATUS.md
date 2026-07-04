@@ -1,6 +1,6 @@
 # Project Status — Festival Insider 2026
 
-> Live snapshot. Update this after significant changes. Last updated: 2026-06-12.
+> Live snapshot. Update this after significant changes. Last updated: 2026-07-04.
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Check | Status | Detail |
 |---|---|---|
-| Web TypeScript | ✅ 0 errors | `chart.tsx` has 4 pre-existing ShadCN type errors — known, not blocking |
+| Web TypeScript | ✅ 0 errors | `npm run typecheck` |
 | Web tests | ✅ 189 passing | `npm test -- --run` |
 | Web lint | ✅ Clean | `npm run lint` |
 | Android Kotlin compile | ✅ 0 errors | Only deprecation warnings (pre-existing) |
@@ -35,7 +35,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 | Festival | Artists | Schedule | Stage data | Notes |
 |---|---|---|---|---|
 | Sziget 2026 | 458 | ✅ 442/458 | ✅ 447/458 have stage | Full timetable live (Aug 9–16). 431 flagged showInSchedule. ISO 8601 with CEST (+02:00). |
-| Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | **Currently happening** (Jun 11–14). Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
+| Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | Festival ran Jun 11–14. Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
 | Area 53 2026 | 30 | ✅ 30/30 | ✅ | Full timetable (Jul 15–18, incl. Wednesday warm-up + aftershows), ISO timestamps. |
 | Frequency 2026 | 95 | ❌ TBA | ❌ | No schedule yet. |
@@ -67,11 +67,8 @@ The only persisted preference is the selected festival ID; there are no tokens, 
 
 ### Web
 
-**No service worker update prompt.**
-When a new deploy is pushed, users on the PWA won't be prompted to refresh. They silently get stale cached data until they manually reload.
-
-**`chart.tsx` TypeScript errors (4 errors, pre-existing).**
-ShadCN recharts wrapper has type mismatches with the recharts library version. These do not affect runtime behavior. Filed as a known ShadCN/recharts incompatibility.
+**PWA/offline layer is dead in production (audited 2026-07-04).**
+The service worker never registers on GitHub Pages (`register('/sw.js')` ignores the `/studio` basePath), the manifest link 404s, the manifest itself is Sziget-branded for all six festivals, and set-time notifications gate on a browser API that was removed in 2021. Full diagnosis with fixes: `TASKS.md` → P0. This is why PWA users silently get stale deploys.
 
 ### Features blocked on schedule data
 
@@ -92,6 +89,8 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-04 | Repo cleanup — deleted stale snapshot docs (CURRENT.md, UPDATED.md, LLM_BRIEF.md, VERIFICATION.md), removed legacy `src/data/` sync path, created TASKS.md as the single backlog file |
+| 2026-07-02 | Timetable: live/past set states, set time ranges, artist search — web + Android parity |
 | 2026-06-28 | Sziget 2026 full timetable live — 442/458 artists, Aug 9–16, features.timetable enabled |
 | 2026-06-12 | ISO 8601 time-format unification (Area 53 migration, Android ISO parsing, utcOffsetHours, stability fixes) — deployed + verified against novarock.at |
 | 2026-06-12 | Nova Rock full timetable (84 artists, live data from novarock.at) |
@@ -105,11 +104,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 ## Pending / Next Up
 
-These are real gaps, not backlog filler:
-
-1. **Frequency + Ernte Punk timetable** — when published. Run `npm run lineup:update:frequency` / `npm run lineup:update:ernte-punk` and re-enable `features.timetable`.
-2. **Sziget 16 missing slots** — 16 artists still have no `startTime`. Fill in when official schedule publishes final details.
-3. **Service worker update prompt** — users on PWA get stale deploys silently.
+See `TASKS.md` (repo root) — the single backlog file for all open and unfinished work.
 
 ---
 
@@ -118,6 +113,7 @@ These are real gaps, not backlog filler:
 | File | Purpose |
 |---|---|
 | `AGENTS.md` | AI agent instructions — commands, constraints, architecture summary |
+| `TASKS.md` | Open/unfinished work — the only backlog file |
 | `docs/architecture/ARCHITECTURE.md` | Deep-dive reference for models/engineers joining cold |
 | `docs/GOALS.md` | The **why** behind every feature |
 | `docs/features/FEATURES.md` | Feature matrix (Web ✅/⏳, Android ✅/⏳) |

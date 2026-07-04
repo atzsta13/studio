@@ -17,7 +17,7 @@ The two platforms serve two distinct phases of a festival:
 | **Web (Hub)** | Before the festival, at home or hotel | "There are 338 artists I don't know. Which ones are for me?" |
 | **Android (APK)** | On-site, in the crowd | "I have no signal, 12% battery, and I can't find my tent." |
 
-Both are driven by the same data pipeline and config system. One engine, five festivals, no hardcoded branding.
+Both are driven by the same data pipeline and config system. One engine, six festivals, no hardcoded branding.
 
 ---
 
@@ -74,13 +74,13 @@ Goal: answer "what is this festival actually like?" for first-timers. A link to 
 **Highlights** (always on)
 Goal: replace the paper schedule. Two tiers — `must_see` (I will rearrange my day for this) and `interested` (I'll go if I'm nearby). The entire timetable and clash resolver are built on top of this list.
 
-**`clashResolver`** (blocked until `startTime`/`endTime` data exists)
+**`clashResolver`**
 Goal: when two must-see artists overlap, show the exact overlap duration and help the user make an informed choice. Prevents decision paralysis in the crowd.
 
-**`setCountdowns`** (blocked until schedule data exists)
+**`setCountdowns`**
 Goal: passive time awareness. "Radiohead starts in 23 minutes" replaces checking the paper timetable repeatedly. Reduces the panic of losing track of time.
 
-**`groupSchedules`** (blocked until schedule data exists)
+**`groupSchedules`** (not implemented yet)
 Goal: solve the "what should we do together?" problem for groups without a shared server. Compare two people's highlights locally and surface overlaps and clashes.
 
 ---
@@ -192,10 +192,10 @@ Goal: let users rate vendors locally. When a friend asks "is the Thai place good
 ### Web Hub (Root `/`)
 
 **Festival grid + routing**
-Goal: entry point to all five festivals. A casual user lands here, picks their festival, and is routed into that festival's companion. Everything below `/[festivalId]/` is fully isolated per festival.
+Goal: entry point to all festivals. A casual user lands here, picks their festival, and is routed into that festival's companion. Everything below `/[festivalId]/` is fully isolated per festival.
 
 **Global Search (`/search`)**
-Goal: cross-festival artist lookup. "Is Artist X playing any of these festivals this summer?" One query, five lineups searched simultaneously.
+Goal: cross-festival artist lookup. "Is Artist X playing any of these festivals this summer?" One query, all lineups searched simultaneously.
 
 **Global Radar**
 Goal: a visual overview of all festivals — dates, artist counts, upcoming. Gives the platform a sense of scale and helps users who are deciding which festival to attend.
