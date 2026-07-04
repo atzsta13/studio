@@ -2,12 +2,7 @@ import { useInsider } from '@/components/layout/insider-provider';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
 import type { LineupItem } from '@/types';
 import ArtistCard from './artist-card';
-import { Clock, AlertTriangle, Heart, Target, Search, X } from 'lucide-react';
-import {
-    areNotificationsSupported,
-    timetableNotification,
-    cancelTimetableNotification,
-} from '@/lib/notifications';
+import { Clock, AlertTriangle, Heart, Target, Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PX_PER_MIN = 2.4;
 const GUTTER_PX = 52;
@@ -37,31 +32,25 @@ interface ScheduledItem extends LineupItem {
 }
 
 export default function TimetableView({ lineup, festivalId }: { lineup: LineupItem[]; festivalId: string }) {
-    const { favorites, toggleFavorite, conflicts, config } = useInsider();
+    const { favorites, toggleFavorite, conflicts, config, getFavoriteTier } = useInsider();
 
-    const [notificationPermission, setNotificationPermission] = useState<NotificationPermission>('default');
     const [now, setNow] = useState<Date | null>(null);
     const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
     const [hiddenStages, setHiddenStages] = useState<Set<string>>(new Set());
     const [query, setQuery] = useState('');
     const scrollRef = useRef<HTMLDivElement>(null);
+    const hasInitializedRef = useRef(false);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(false);
 
     useEffect(() => {
-        if (areNotificationsSupported()) {
-            setNotificationPermission(Notification.permission);
-        }
         setNow(new Date());
         const tick = setInterval(() => setNow(new Date()), 60_000);
         return () => clearInterval(tick);
     }, []);
 
     const handleToggleFavorite = (artist: LineupItem) => {
-        const isFavorited = favorites.has(artist.id);
         toggleFavorite(artist.id);
-        if (notificationPermission === 'granted') {
-            if (!isFavorited) timetableNotification(artist);
-            else cancelTimetableNotification(artist.id);
-        }
     };
 
     const toggleStage = useCallback((stage: string) => {
@@ -97,6 +86,28 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     const [activeDayIdx, setActiveDayIdx] = useState(0);
     const activeDay = days[Math.min(activeDayIdx, Math.max(days.length - 1, 0))];
 
+    useEffect(() => {
+        if (!now || days.length === 0 || hasInitializedRef.current) return;
+        
+        const pad = (n: number) => n.toString().padStart(2, '0');
+        const adjustedNow = new Date(now.getTime());
+        if (adjustedNow.getHours() < ROLLOVER_HOUR) {
+            adjustedNow.setDate(adjustedNow.getDate() - 1);
+        }
+        const localDate = `${adjustedNow.getFullYear()}-${pad(adjustedNow.getMonth() + 1)}-${pad(adjustedNow.getDate())}`;
+        
+        const matchIdx = days.findIndex(day => {
+            const daily = scheduled.filter(item => item.day === day && item.startTime);
+            const anchor = daily.map(i => i.startTime.slice(0, 10)).sort()[0];
+            return anchor === localDate;
+        });
+        
+        if (matchIdx !== -1) {
+            setActiveDayIdx(matchIdx);
+        }
+        hasInitializedRef.current = true;
+    }, [now, days, scheduled]);
+
     const { allStages, dayStart, dayEnd, anchorDate } = useMemo(() => {
         const daily = scheduled.filter(item => item.day === activeDay);
         const stageNames = [...new Set(daily.map(i => i.stage))].sort((a, b) => {
@@ -129,6 +140,27 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         if (!trimmedQuery) return stageFiltered;
         return stageFiltered.filter(item => item.artist.toLowerCase().includes(trimmedQuery));
     }, [scheduled, activeDay, showFavoritesOnly, favorites, hiddenStages, trimmedQuery]);
+
+    const checkScroll = useCallback(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        setCanScrollLeft(el.scrollLeft > 5);
+        setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 5);
+    }, []);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        
+        checkScroll();
+        window.addEventListener('resize', checkScroll);
+        el.addEventListener('scroll', checkScroll);
+        
+        return () => {
+            window.removeEventListener('resize', checkScroll);
+            el.removeEventListener('scroll', checkScroll);
+        };
+    }, [checkScroll, stages, dailyLineup]);
 
     const totalMinutes = dayEnd - dayStart;
     const boardHeight = totalMinutes * PX_PER_MIN;
@@ -284,7 +316,25 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     <span className="text-[10px] text-muted-foreground/50">Try another name or a different day</span>
                 </div>
             ) : (
-            <div ref={scrollRef} className="overflow-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
+            <div className="relative">
+                {canScrollLeft && (
+                    <>
+                        <div className="absolute left-[52px] top-0 bottom-0 w-8 pointer-events-none bg-gradient-to-r from-background to-transparent z-20" />
+                        <div className="absolute left-[64px] top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-background/80 border border-border shadow-lg animate-pulse pointer-events-none">
+                            <ChevronLeft size={14} className="text-primary" />
+                        </div>
+                    </>
+                )}
+                {canScrollRight && (
+                    <>
+                        <div className="absolute right-0 top-0 bottom-0 w-8 pointer-events-none bg-gradient-to-l from-background to-transparent z-20" />
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 z-30 p-1.5 rounded-full bg-background/80 border border-border shadow-lg animate-pulse pointer-events-none">
+                            <ChevronRight size={14} className="text-primary" />
+                        </div>
+                    </>
+                )}
+
+                <div ref={scrollRef} className="overflow-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
                 <div className="relative min-w-max">
                     {/* Stage header row — sticky inside the scroll container */}
                     {stages.length > 0 && (
@@ -353,6 +403,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                                                         artist={item}
                                                         festivalId={festivalId}
                                                         isFavorite={favorites.has(item.id)}
+                                                        favoriteTier={getFavoriteTier(item.id)}
                                                         isConflicting={conflicts.has(item.id)}
                                                         isLive={isLive}
                                                         isPast={isPast}
@@ -379,6 +430,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     )}
                 </div>
             </div>
+            </div>
             )}
 
             {conflicts.size > 0 && (
@@ -386,7 +438,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     <div className="bg-destructive px-4 py-1.5 rounded-full shadow-2xl flex items-center gap-2 border-2 border-background/20">
                         <AlertTriangle size={14} className="text-destructive-foreground" />
                         <span className="text-[10px] font-black text-destructive-foreground uppercase tracking-widest">
-                            {conflicts.size / 2} {conflicts.size === 2 ? 'CLASH' : 'CLASHES'} DETECTED
+                            {conflicts.size} {conflicts.size === 1 ? 'ARTIST CLASHES' : 'ARTISTS CLASH'}
                         </span>
                     </div>
                 </div>

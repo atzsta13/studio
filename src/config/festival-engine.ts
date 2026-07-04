@@ -125,7 +125,6 @@ export interface FestivalConfig {
     posterGenerator: boolean
     customThemes: boolean
     feedbackSystem: boolean
-    stageCapacity: boolean
 
     // Pending implementation
     newsBulletin: boolean

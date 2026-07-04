@@ -7,7 +7,7 @@
   "tagline": "Punk's Not Dead in Graz",
   "description": "The ultimate companion for Ernte Punk Festival 2026 at Messe Congress Graz.",
   "officialWebsite": "https://www.ernte-punk.at",
-  "productionUrl": "https://ernte-punk-2026.vercel.app",
+  "productionUrl": "https://atzsta13.github.io/studio/ernte-punk-2026",
   "deepLinkScheme": "erntepunk2026",
   "i18n": {
     "defaultLocale": "de",
@@ -126,7 +126,6 @@
     "groupSchedules": true,
     "similarArtists": true,
     "vibeOfTheHour": true,
-    "stageCapacity": true,
     "foodRatings": false,
     "budgetTracker": true,
     "lostAndFound": true,

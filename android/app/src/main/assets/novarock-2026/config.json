@@ -7,7 +7,7 @@
   "tagline": "Rock the Fields",
   "description": "Your unofficial discovery guide to Nova Rock Festival 2026 in Nickelsdorf.",
   "officialWebsite": "https://www.novarock.at",
-  "productionUrl": "https://novarock-2026.vercel.app",
+  "productionUrl": "https://atzsta13.github.io/studio/novarock-2026",
   "deepLinkScheme": "novarock2026",
   "i18n": {
     "defaultLocale": "de",
@@ -131,7 +131,6 @@
     "groupSchedules": true,
     "similarArtists": true,
     "vibeOfTheHour": true,
-    "stageCapacity": false,
     "foodRatings": false,
     "budgetTracker": true,
     "lostAndFound": true,

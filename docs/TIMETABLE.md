@@ -165,7 +165,7 @@ function wallMinutes(iso: string): number {
 ### Favoriting + notifications
 - Two tiers: `must_see` and `interested` (default is `interested` when tapping the heart in the timetable).
 - Stored in `localStorage` as `${festivalId}-favorites-v2`, keyed by artist ID.
-- ⚠️ **The notification scheduling code path is dead in every current browser** — `src/lib/notifications.ts` gates on the Notification Triggers API (`showTrigger`), which was removed from Chrome in 2021, so `areNotificationsSupported()` always returns false and nothing is ever scheduled. See `TASKS.md` P0.4 for the options (delete vs reimplement).
+- ⚠️ **Local notifications were removed** — The local PWA Notification Triggers API (`showTrigger`) is no longer supported by current browsers, making local timetabled notifications impossible without a backend push notification system. The dead code path was removed to keep the app clean.
 
 ---
 

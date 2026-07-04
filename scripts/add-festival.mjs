@@ -133,7 +133,6 @@ const config = {
     artistTrivia: false,
     similarArtists: false,
     vibeOfTheHour: false,
-    stageCapacity: false,
     merchCatalog: false,
     foodRatings: false,
     budgetTracker: false,

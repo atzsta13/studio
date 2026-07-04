@@ -12,6 +12,21 @@ function toLocalISO(utcString) {
     return local.toISOString().replace('Z', '+02:00');
 }
 
+function getDayFromStartTime(startTime) {
+    if (!startTime) return null;
+    const year = parseInt(startTime.slice(0, 4), 10);
+    const month = parseInt(startTime.slice(5, 7), 10) - 1;
+    const date = parseInt(startTime.slice(8, 10), 10);
+    const hour = parseInt(startTime.slice(11, 13), 10);
+    const minute = parseInt(startTime.slice(14, 16), 10);
+    
+    const d = new Date(year, month, date, hour, minute);
+    d.setHours(d.getHours() - 6);
+    
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return daysOfWeek[d.getDay()];
+}
+
 function stripHtml(html) {
     return (html || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 }
@@ -70,15 +85,19 @@ async function main() {
     const existing = JSON.parse(fs.readFileSync(LINEUP_FILE, 'utf8'));
     console.log(`📁 ${existing.length} artists in lineup.json`);
 
-    // Index existing by API artist ID (extracted from festivalUrl)
-    const existingByApiId = new Map();
+    // Index existing by API artist ID (extracted from festivalUrl or name match)
+    const coveredApiIds = new Set();
     for (const entry of existing) {
         const match = entry.festivalUrl?.match(/#\/artist\/(\d+)/);
-        if (match) existingByApiId.set(match[1], entry);
+        if (match) {
+            coveredApiIds.add(match[1]);
+        } else {
+            const apiArtist = apiArtistById.get(entry.artist) || data.artists.find(a => a.name_i18n?.en === entry.artist);
+            if (apiArtist) {
+                coveredApiIds.add(apiArtist.id);
+            }
+        }
     }
-
-    // Track which API artist IDs are already in lineup
-    const coveredApiIds = new Set(existingByApiId.keys());
 
     let updated = 0;
     let added = 0;
@@ -86,10 +105,17 @@ async function main() {
 
     // Update existing entries from API
     const rebuilt = existing.map(entry => {
+        let apiId = null;
         const match = entry.festivalUrl?.match(/#\/artist\/(\d+)/);
-        if (!match) { noMatch++; return entry; }
+        if (match) {
+            apiId = match[1];
+        } else {
+            const apiArtist = apiArtistById.get(entry.artist) || data.artists.find(a => a.name_i18n?.en === entry.artist);
+            if (apiArtist) apiId = apiArtist.id;
+        }
 
-        const apiId = match[1];
+        if (!apiId) { noMatch++; return entry; }
+
         const apiArtist = apiArtistById.get(apiId);
         if (!apiArtist) { noMatch++; return entry; }
 
@@ -98,23 +124,27 @@ async function main() {
         const description = stripHtml(apiArtist.body_i18n?.en);
         const imageUrl = apiArtist.image?.['1440'] || apiArtist.image?.['960'] || apiArtist.image?.full || entry.imageUrl;
 
+        const startTime = perf?.start_time ? toLocalISO(perf.start_time) : entry.startTime;
+        const derivedDay = startTime ? getDayFromStartTime(startTime) : (day || entry.day);
+
         updated++;
         return {
             id: entry.id,
             artist: apiArtist.name_i18n?.en || entry.artist,
             stage: perf ? (placeById.get(perf.place_id) || entry.stage) : entry.stage,
-            day: day || entry.day,
-            startTime: perf?.start_time ? toLocalISO(perf.start_time) : entry.startTime,
+            day: derivedDay,
+            startTime,
             endTime: perf?.end_time ? toLocalISO(perf.end_time) : entry.endTime,
             countryCode: countryCode || entry.countryCode,
             genres: genres.length ? genres : entry.genres,
-            festivalUrl: entry.festivalUrl,
+            festivalUrl: entry.festivalUrl || `https://szigetfestival.com/#/artist/${apiId}`,
             socials: buildSocials(apiArtist.links),
             description: description || entry.description,
             imageUrl,
             vibes: entry.vibes || [],
             isHeadliner: entry.isHeadliner || false,
             returningHero: entry.returningHero || false,
+            ...(entry.showInSchedule !== undefined ? { showInSchedule: entry.showInSchedule } : {})
         };
     });
 
@@ -130,16 +160,19 @@ async function main() {
         const description = stripHtml(apiArtist.body_i18n?.en);
         const imageUrl = apiArtist.image?.['1440'] || apiArtist.image?.['960'] || apiArtist.image?.full || null;
 
+        const startTime = perf.start_time ? toLocalISO(perf.start_time) : null;
+        const derivedDay = startTime ? getDayFromStartTime(startTime) : day;
+
         rebuilt.push({
             id: String(nextId++),
             artist: apiArtist.name_i18n?.en || '',
             stage: placeById.get(perf.place_id) || null,
-            day: day || null,
-            startTime: perf.start_time ? toLocalISO(perf.start_time) : null,
+            day: derivedDay,
+            startTime,
             endTime: perf.end_time ? toLocalISO(perf.end_time) : null,
             countryCode: countryCode || null,
             genres: genres.length ? genres : [],
-            festivalUrl: null,
+            festivalUrl: `https://szigetfestival.com/#/artist/${apiArtist.id}`,
             socials: buildSocials(apiArtist.links),
             description: description || null,
             imageUrl,

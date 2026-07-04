@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import type { LineupItem } from '@/types';
+import { areSlotsOverlapping } from '@/lib/utils';
 
 export function useClashResolver(favorites: LineupItem[]) {
   const clashes = useMemo(() => {
@@ -12,15 +13,8 @@ export function useClashResolver(favorites: LineupItem[]) {
         const a = favorites[i];
         const b = favorites[j];
         
-        if (a.day === b.day && a.startTime && b.startTime && a.endTime && b.endTime) {
-          const startA = new Date(a.startTime).getTime();
-          const endA = new Date(a.endTime).getTime();
-          const startB = new Date(b.startTime).getTime();
-          const endB = new Date(b.endTime).getTime();
-          
-          if (startA < endB && startB < endA) {
-            result.push({ a, b });
-          }
+        if (areSlotsOverlapping(a, b)) {
+          result.push({ a, b });
         }
       }
     }

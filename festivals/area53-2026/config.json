@@ -7,7 +7,7 @@
   "tagline": "Metal in the Styrian Mountains",
   "description": "Your tactical guide to Austria's cult metal gathering. Short distances, heavy riffs, and the legendary Styrian hospitality at VAZ Schladnitz.",
   "officialWebsite": "https://www.area53festival.at",
-  "productionUrl": "https://area53.festival-insider.com",
+  "productionUrl": "https://atzsta13.github.io/studio/area53-2026",
   "deepLinkScheme": "area53insider",
   "i18n": {
     "defaultLocale": "de",
@@ -120,7 +120,6 @@
     "groupSchedules": true,
     "similarArtists": true,
     "vibeOfTheHour": true,
-    "stageCapacity": false,
     "foodRatings": false,
     "budgetTracker": true,
     "lostAndFound": true,

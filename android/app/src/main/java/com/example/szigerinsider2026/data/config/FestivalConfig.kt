@@ -26,7 +26,6 @@ data class FestivalFeatures(
     val groupSchedules: Boolean = false,
     val similarArtists: Boolean = false,
     val vibeOfTheHour: Boolean = false,
-    val stageCapacity: Boolean = false,
     val merchCatalog: Boolean = false,
     val foodRatings: Boolean = false,
     val budgetTracker: Boolean = false,

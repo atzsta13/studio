@@ -67,8 +67,7 @@ The only persisted preference is the selected festival ID; there are no tokens, 
 
 ### Web
 
-**PWA/offline layer is dead in production (audited 2026-07-04).**
-The service worker never registers on GitHub Pages (`register('/sw.js')` ignores the `/studio` basePath), the manifest link 404s, the manifest itself is Sziget-branded for all six festivals, and set-time notifications gate on a browser API that was removed in 2021. Full diagnosis with fixes: `TASKS.md` → P0. This is why PWA users silently get stale deploys.
+None.
 
 ### Features blocked on schedule data
 
@@ -89,6 +88,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-04 | Fixed PWA/offline layer (registration basePath, scope, neutral manifest.json, 512px icon, cross-origin open-meteo caching), corrected Sziget timetable day mapping with 06:00 rollover, resolved favorites bleed, unified clash detection, deleted 21 unused UI components, pruned 56 unused dependencies, deleted dead stageCapacity flag, updated config productionUrl values, added live day auto-selection, styled must_see vs interested favorite tiers in the timetable grid, and added horizontal scroll indicators/gradients |
 | 2026-07-04 | Docs housekeeping round 2 — vendor LLM files streamlined (deleted legacy Cursor rules; Copilot pointer made literal), corrected TIMETABLE.md notification claims, fixed stale counts/claims across GOALS, UI_GUIDE, TROUBLESHOOTING |
 | 2026-07-04 | Web deep-dive audit documented in TASKS.md (broken PWA layer in production, provider favorites bug, dead weight inventory) |
 | 2026-07-04 | Repo cleanup — deleted stale snapshot docs (CURRENT.md, UPDATED.md, LLM_BRIEF.md, VERIFICATION.md), removed legacy `src/data/` sync path, created TASKS.md as the single backlog file |

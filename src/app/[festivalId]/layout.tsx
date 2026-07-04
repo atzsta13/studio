@@ -60,7 +60,7 @@ export default async function FestivalLayout({
   `;
 
   return (
-    <InsiderProvider festivalId={festivalId}>
+    <InsiderProvider key={festivalId} festivalId={festivalId}>
       <style dangerouslySetInnerHTML={{ __html: themeStyle }} />
       {config.features.offlineBanner && <OfflineBanner />}
       <div className="relative flex min-h-screen w-full flex-col">

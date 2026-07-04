@@ -56,8 +56,8 @@ describe('useClashResolver', () => {
   })
 
   it('does not clash for artists on different days', () => {
-    const a = makeArtist('1', { day: 'Friday', startTime: t(18), endTime: t(20) })
-    const b = makeArtist('2', { day: 'Saturday', startTime: t(18), endTime: t(20) })
+    const a = makeArtist('1', { day: 'Friday', startTime: '2026-08-01T18:00:00', endTime: '2026-08-01T20:00:00' })
+    const b = makeArtist('2', { day: 'Saturday', startTime: '2026-08-02T18:00:00', endTime: '2026-08-02T20:00:00' })
     const { result } = renderHook(() => useClashResolver([a, b]))
     expect(result.current).toEqual([])
   })
@@ -69,10 +69,7 @@ describe('useClashResolver', () => {
     expect(result.current).toEqual([])
   })
 
-  it('treats two null-day artists with overlapping times as a clash (null === null)', () => {
-    // In the current dataset stage/day are always null. The algorithm uses
-    // `a.day === b.day` which evaluates null === null → true, so any two
-    // artists with time data will clash. This test documents that behaviour.
+  it('treats two artists with overlapping times as a clash regardless of day label', () => {
     const a = makeArtist('1', { day: null, startTime: t(18), endTime: t(20) })
     const b = makeArtist('2', { day: null, startTime: t(18), endTime: t(20) })
     const { result } = renderHook(() => useClashResolver([a, b]))

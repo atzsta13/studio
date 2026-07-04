@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       '@mui/material',
       '@mui/icons-material',
-      '@mui/lab',
       'lucide-react',
       'react-icons',
     ],

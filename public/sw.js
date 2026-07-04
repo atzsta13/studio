@@ -1,22 +1,27 @@
 const CACHE_NAME = 'festival-insider-cache-v4';
 
 // Static assets to pre-cache on install (maps + icons)
-const PRECACHE_URLS = [
-  '/icons/icon-192x192.png',
-  '/data/sziget-2026/assets/map.svg',
-  '/data/area53-2026/assets/map.svg',
-  '/data/novarock-2026/assets/map.svg',
-  '/data/frequency-2026/assets/map.svg',
-  '/data/ernte-punk-2026/assets/map.svg',
+const PRECACHE_RELATIVE_URLS = [
+  'icon-192x192.png',
+  'icon-512x512.png',
+  'data/sziget-2026/assets/map.svg',
+  'data/area53-2026/assets/map.svg',
+  'data/novarock-2026/assets/map.svg',
+  'data/frequency-2026/assets/map.svg',
+  'data/ernte-punk-2026/assets/map.svg',
+  'data/rock-am-ring-2026/assets/map.svg',
 ];
 
 // --- Lifecycle: Install ---
 self.addEventListener('install', (event) => {
+  const scope = self.registration.scope;
+  const precacheUrls = PRECACHE_RELATIVE_URLS.map(path => new URL(path, scope).toString());
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       // Pre-cache critical offline assets; ignore failures for missing maps
       return Promise.allSettled(
-        PRECACHE_URLS.map((url) =>
+        precacheUrls.map((url) =>
           fetch(url).then((res) => {
             if (res.ok) return cache.put(url, res);
           }).catch(() => {})
@@ -57,23 +62,21 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. API CHECK: Cache weather (stale-while-revalidate), skip all other API calls
-  if (url.pathname.startsWith('/api/')) {
-    if (url.pathname === '/api/weather') {
-      // Cache keyed by full URL (includes ?festivalId= param)
-      event.respondWith(
-        caches.match(request).then((cached) => {
-          const networkFetch = fetch(request).then((response) => {
-            if (response && response.status === 200) {
-              const clone = response.clone();
-              caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
-            }
-            return response;
-          }).catch(() => cached);
-          return cached || networkFetch;
-        })
-      );
-    }
+  // 3. API CHECK: Cache weather (stale-while-revalidate)
+  if (url.host === 'api.open-meteo.com') {
+    // Cache keyed by full URL (includes lat/lng/timezone params)
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        const networkFetch = fetch(request).then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        }).catch(() => cached);
+        return cached || networkFetch;
+      })
+    );
     return;
   }
 

@@ -8,7 +8,7 @@
     "endTime": "2026-08-09T23:00:00.000+02:00",
     "countryCode": "HU",
     "genres": [],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2096359",
     "socials": {
       "website": "https://www.facebook.com/events/1753251209391700/",
       "facebook": null,
@@ -38,7 +38,7 @@
     "genres": [
       "FOLK"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2084181",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/goranbregovic",
@@ -68,7 +68,7 @@
     "genres": [
       "INDIE POP"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2084182",
     "socials": {
       "website": "https://morcheeba.uk/",
       "facebook": "https://www.facebook.com/MorcheebaBand",
@@ -99,7 +99,7 @@
       "ELECTRONIC",
       "BRITISH ELECTRONICA"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2084185",
     "socials": {
       "website": "https://faithless.co.uk/",
       "facebook": "https://www.facebook.com/Faithless",
@@ -127,7 +127,7 @@
     "endTime": "2026-08-11T00:00:00.000+02:00",
     "countryCode": "HU",
     "genres": [],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116823",
     "socials": {
       "website": null,
       "facebook": null,
@@ -150,7 +150,7 @@
     "id": "336",
     "artist": "Stefani",
     "stage": "The Cypher by Friss",
-    "day": "Thursday",
+    "day": "Tuesday",
     "startTime": "2026-08-11T13:00:00.000+02:00",
     "endTime": "2026-08-11T14:30:00.000+02:00",
     "countryCode": null,
@@ -418,7 +418,7 @@
       "HIP HOP",
       "RAP"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2115603",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/p",
@@ -436,6 +436,35 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "461",
+    "artist": "Mirror Talks: The New Era of Queer Hungary",
+    "stage": "Magic Mirror",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T16:00:00.000+02:00",
+    "endTime": "2026-08-11T17:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "DISCUSSION"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106692",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Hungary is pulsing with new energy and the promise of a new beginning when it comes to LGBTQ rights. The work has already begun: we all want to live in a better world, but to build it, we first need to understand the world around us. This year, Mirror Talks helps us do exactly that, as experts, artists, and activists — led by András Ádám Kanicsár — explore the present and sketch out the future. We will talk about what happens to love in the age of situationships and to sex as it becomes increasingly embedded in the world of drugs, about the future of gender, fashion, and culture in the middle of an everyday gender revolution, and about how queer activism is finding new forms through a new generation and new digital spaces. The week begins with the portrait of a new queer Hungary — and closes at the dawn of a new era of queer revolution.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644397_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "271",
@@ -656,7 +685,7 @@
     "genres": [
       "CONTEMPORARY DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110205",
     "socials": {
       "website": null,
       "facebook": null,
@@ -686,7 +715,7 @@
     "genres": [
       "DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110202",
     "socials": {
       "website": null,
       "facebook": null,
@@ -709,7 +738,7 @@
     "id": "368",
     "artist": "Dávid Gerlei-Emese Kovács",
     "stage": "Le DÔME",
-    "day": null,
+    "day": "Tuesday",
     "startTime": "2026-08-11T17:25:00.000+02:00",
     "endTime": "2026-08-11T17:45:00.000+02:00",
     "countryCode": "HU",
@@ -955,9 +984,9 @@
   },
   {
     "id": "372",
-    "artist": "Dóri Czakó, Forró Budapest",
+    "artist": "Dóri Czakó, Forró Budapest: Forró Workshop",
     "stage": "Mobilis",
-    "day": null,
+    "day": "Tuesday",
     "startTime": "2026-08-11T18:30:00.000+02:00",
     "endTime": "2026-08-11T19:30:00.000+02:00",
     "countryCode": "HU",
@@ -977,7 +1006,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "This workshop introduces the joyful Brazilian partner dance Forró. It focuses on connection, improvisation, and community through movement and rhythm. Participants are guided through the basics of Forró in an accessible and welcoming way, leading into a social dance experience that creates an inclusive and energetic atmosphere for dancers of all levels.Workshop facilitator: Dóri Czakó , Assistant: Alberto Eloy Rodriguez",
+    "description": "This workshop introduces the joyful Brazilian partner dance Forró. It focuses on connection, improvisation, and community through movement and rhythm. Participants are guided through the basics of Forró in an accessible and welcoming way, leading into a social dance experience that creates an inclusive and energetic atmosphere for dancers of all levels. Workshop facilitator: Dóri Czakó , Assistant: Alberto Eloy Rodriguez",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646299_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -988,7 +1017,7 @@
     "id": "382",
     "artist": "Ivo Dimchev & Band",
     "stage": "Magic Mirror",
-    "day": null,
+    "day": "Tuesday",
     "startTime": "2026-08-11T18:30:00.000+02:00",
     "endTime": "2026-08-11T19:30:00.000+02:00",
     "countryCode": "BG",
@@ -1044,6 +1073,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "473",
+    "artist": "Szabikeyz",
+    "stage": "Bacardi Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T18:30:00.000+02:00",
+    "endTime": "2026-08-11T19:15:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116900",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/szabikeyz",
+      "instagram": "https://www.instagram.com/szabikeyz",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCqinNKhAhbELNsZllBUISnA",
+      "spotify": "https://open.spotify.com/artist/7cyFxt9SpkC7aQb8yULboZ",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Szabikeyz (Szabolcs Barnabás Fodor) is an emerging Hungarian artist and producer whose solo project is gaining increasing recognition within the local music scene. Many may also know him as the keyboard player of the band Mehringer. Together with Zoli Juhász, he won the 2025 edition of Sávlekötő Camp by OTP Junior, opening new professional opportunities and giving fresh momentum to his career. His most popular track, “Részeg”, has accumulated more than 250,000 streams across platforms. Drawing inspiration from the synth-driven sounds of the ’80s, ’90s, and the carefree early 2000s, Szabikeyz blends nostalgic influences with the freshness of modern pop production. His songs are distinctive, evocative, and contemporary, representing a unique and much-needed direction in today’s Hungarian music landscape.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/80/thumb_5679429_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "324",
@@ -1388,6 +1444,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "474",
+    "artist": "Kristoaf",
+    "stage": "Bacardi Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T20:00:00.000+02:00",
+    "endTime": "2026-08-11T20:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116901",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/kristoaf",
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCaG7rSvTI2fO9VaOz3ZoRGA",
+      "spotify": "https://open.spotify.com/artist/1JkASUd5gc4NlepQHX4KVz",
+      "appleMusic": "https://music.apple.com/hu/artist/kristoaf/1537779184",
+      "soundcloud": null
+    },
+    "description": "In the coming period, kristoaf is placing a stronger focus on his personal creative process, offering the most complete insight yet into his artistic vision and way of thinking. As part of this new chapter, every aspect of the music — from songwriting to production — is crafted entirely by the artist himself. The pursuit of “going higher” lies at the heart of this era: a journey toward artistic fulfillment, liberation, and self-realization. Drawing on Platonic ideals and embracing an intentionally over-romanticized perspective, kristoaf explores themes of aspiration, transcendence, and emotional depth. Blending balance, indie-inspired soundscapes, and guitar-driven textures, his music creates a distinctive atmosphere where introspection meets ambition.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/80/thumb_5679450_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "62",
@@ -1929,7 +2012,7 @@
       "DANCE",
       "INSTALLATION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110203",
     "socials": {
       "website": null,
       "facebook": null,
@@ -1941,15 +2024,15 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "ouroboros.hu",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/64/thumb_5663650_performance_1440.jpeg",
+    "description": "Vince Varga + Gábor Keresztes OUROBOROS la montée, la descente, on repeat The groove repeats itself. The rhythm dissolves, makes room for something else, returns, changes shape. It makes you sweat, freezes you, starts you over. Future memories pass through its gaps. Nothing disappears completely. Nothing returns unchanged. The circle closes, the circle begins again. It gives birth to itself. Careful, it bites. Vince Varga is an interdisciplinary artist, theatre maker and VJ. His work has been seen from Lisbon through Ozora to Novosibirsk, at the Grand Théâtre de Genève, the Hungarian State Opera, Deutsches Schauspielhaus Hamburg and Schauspiel Stuttgart. He returns to Sziget this year after a decade away. His work explores transformation through repetition, inherited patterns and the limits of free will. In spaces built from sound, light and moving image, he examines how we treat ourselves, each other and what we call nature — which is to say, our true, whole selves. Gábor Keresztes is a Junior Prima Award-winning composer and sound designer working across theatre and film. A long-time sound designer for Viktor Bodó’s productions, he has created work for theatre and dance productions in Hungary and internationally. He is also a member of the band Freakin’ Disco. His film credits include Comrade Drakulich, Mastergame and — with Kristóf Kelemen — Silent Friend. He received the International Cinephile Society Award for Best Original Score for Preparations to Be Together for an Unknown Period of Time.Concept and design: Vince Varga Music and sound design: Gábor Keresztes",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/88/thumb_5687823_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
   },
   {
-    "id": "449",
+    "id": "470",
     "artist": "Stacey Clare and Keri Gold ELSC Productions CIC",
     "stage": "The Joker",
     "day": "Tuesday",
@@ -1960,7 +2043,7 @@
       "CABARET",
       "COMEDY"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110621",
     "socials": {
       "website": null,
       "facebook": null,
@@ -1976,8 +2059,34 @@
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/65/thumb_5664387_performance_960.jpeg",
     "vibes": [],
     "isHeadliner": false,
-    "returningHero": false,
-    "showInSchedule": true
+    "returningHero": false
+  },
+  {
+    "id": "475",
+    "artist": "Mollywood",
+    "stage": "Bacardi Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T23:00:00.000+02:00",
+    "endTime": "2026-08-11T23:40:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116962",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/6mollywood",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCGjXvLcYJdVlcVmM3oUNEnQ",
+      "spotify": "https://open.spotify.com/artist/4JUoajUgI0mmICMBpV6iEP",
+      "appleMusic": "https://music.apple.com/hu/artist/mollywood/1739556023",
+      "soundcloud": null
+    },
+    "description": "Mollywood is one of the fastest-rising figures in the Hungarian underground hip-hop scene, building significant attention around himself in a short period of time through his distinctive visual and musical style. He currently reaches nearly 300,000 monthly listeners on Spotify, with his most-streamed tracks including “AFTERPARTY” (a collaboration with Bruno), as well as “PASSENGER PRINCESS” and “Inuyasha”. His music combines modern trap aesthetics, a direct style of expression, and a readily recognizable artistic attitude, giving him an increasingly prominent position within the new wave of Hungarian rap.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/80/thumb_5679741_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "158",
@@ -2144,6 +2253,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "476",
+    "artist": "Hazetomika",
+    "stage": "Bacardi Stage",
+    "day": "Tuesday",
+    "startTime": "2026-08-11T23:45:00.000+02:00",
+    "endTime": "2026-08-12T00:25:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118676",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCSrtz0biV6EA6j_Ofk--W_w",
+      "spotify": "https://open.spotify.com/artist/3hvIZ2TPVhx5ZcTV7Q9nHL",
+      "appleMusic": "https://music.apple.com/hu/artist/hazetomika/1761624028",
+      "soundcloud": "https://soundcloud.com/hazetomikahh"
+    },
+    "description": "Hazetomika is one of the notable rising artists of Hungary’s new-wave hip-hop and trap scene. With his short, hard-hitting tracks and instinctive, direct delivery, he has quickly built a loyal and growing fanbase. He currently has nearly 60,000 monthly listeners on Spotify, with his most popular tracks including “Shao Leng Leng” with ekhoe and Grasa, “Ha Ha Ha”, and “#mindennapom” featuring Patyi. His sound combines raw energy, a laid-back street attitude, and the signature elements of new-generation trap, giving him a distinctive identity within the Hungarian scene.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/85/thumb_5684989_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "223",
@@ -2357,7 +2493,7 @@
     "id": "364",
     "artist": "Budai House Clique",
     "stage": "Budapest Park Stage by Johnnie Walker",
-    "day": null,
+    "day": "Tuesday",
     "startTime": "2026-08-12T00:45:00.000+02:00",
     "endTime": "2026-08-12T03:00:00.000+02:00",
     "countryCode": null,
@@ -2413,10 +2549,40 @@
     "showInSchedule": true
   },
   {
+    "id": "459",
+    "artist": "Stemin: Sinners & Lovers",
+    "stage": "Magic Mirror",
+    "day": "Tuesday",
+    "startTime": "2026-08-12T01:00:00.000+02:00",
+    "endTime": "2026-08-12T02:00:00.000+02:00",
+    "countryCode": "NL",
+    "genres": [
+      "ELECTROPOP",
+      "DANCE POP"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2100902",
+    "socials": {
+      "website": "https://www.steminmusic.com",
+      "facebook": "https://www.facebook.com/steminmusic",
+      "instagram": "https://www.instagram.com/steminmusic",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@steminmusic",
+      "youtube": "https://www.youtube.com/channel/UCnm-_FGDX8ijLJgsgmDUvSA",
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Stemin is an Amsterdam-based queer pop artist blending sensual pop, soul and electronic elements into an empowering live show. Think The Weeknd meets Dua Lipa with the playful wink of Sabrina Carpenter. Tales of a Gay Romance is a journey through desire, identity and liberation, driven by powerful vocals and dancefloor energy. At Sziget Stemin will present new music from his upcoming project Sinners & Lovers, a darker and more seductive chapter: pop bangers where desire, darkness and self-expression collide.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/36/thumb_5635872_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "310",
     "artist": "Karyuu",
     "stage": "VISA Live x dropYard",
-    "day": "Saturday",
+    "day": "Tuesday",
     "startTime": "2026-08-12T01:10:00.000+02:00",
     "endTime": "2026-08-12T02:10:00.000+02:00",
     "countryCode": "HU",
@@ -2630,7 +2796,7 @@
     "id": "428",
     "artist": "Mike Trotter",
     "stage": "Magic Mirror",
-    "day": null,
+    "day": "Tuesday",
     "startTime": "2026-08-12T02:00:00.000+02:00",
     "endTime": "2026-08-12T04:00:00.000+02:00",
     "countryCode": "US",
@@ -2640,7 +2806,7 @@
       "TECH HOUSE",
       "DEEP HOUSE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2105655",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/djmiketrotter",
@@ -2800,7 +2966,7 @@
     "id": "263",
     "artist": "LA FAM Teatre",
     "stage": null,
-    "day": "Saturday",
+    "day": "Wednesday",
     "startTime": "2026-08-12T06:00:00.000+02:00",
     "endTime": "2026-08-12T06:00:00.000+02:00",
     "countryCode": "ES",
@@ -2928,7 +3094,7 @@
   },
   {
     "id": "386",
-    "artist": "Kinetic Orchestra",
+    "artist": "Kinetic Orchestra: Bolero",
     "stage": "Mobilis",
     "day": "Wednesday",
     "startTime": "2026-08-12T14:00:00.000+02:00",
@@ -2959,7 +3125,7 @@
   },
   {
     "id": "377",
-    "artist": "Flóra Boros",
+    "artist": "Flóra Boros: violet glace",
     "stage": "Magic Mirror",
     "day": "Wednesday",
     "startTime": "2026-08-12T14:30:00.000+02:00",
@@ -3169,9 +3335,9 @@
   },
   {
     "id": "411",
-    "artist": "PLAYWORK-GROUP",
+    "artist": "PLAYWORK-GROUP:PLAYWORK",
     "stage": "Mobilis",
-    "day": null,
+    "day": "Wednesday",
     "startTime": "2026-08-12T16:00:00.000+02:00",
     "endTime": "2026-08-12T16:30:00.000+02:00",
     "countryCode": "DE",
@@ -3227,6 +3393,35 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "462",
+    "artist": "Mirror Talks: The New Era of Love and Sex",
+    "stage": "Magic Mirror",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T16:00:00.000+02:00",
+    "endTime": "2026-08-12T17:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "DISCUSSION"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106693",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Sex is no longer a taboo — but have we truly become more liberated? As conversations around desire, trauma, and intimacy grow more open, entirely new relationship models and emotional dynamics are emerging around us. Situationships, polyamory, and intentional singlehood are no longer fringe concepts, but part of a new generation’s understanding of love and connection. Where do the new boundaries lie, and how are social media, pop culture, and constant self-expression reshaping the way we experience modern relationships?",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644406_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "260",
@@ -3523,7 +3718,7 @@
   },
   {
     "id": "254",
-    "artist": "Compagnie Accrorap",
+    "artist": "Compagnie Accrorap: Prélude Out",
     "stage": "Mobilis",
     "day": "Wednesday",
     "startTime": "2026-08-12T17:00:00.000+02:00",
@@ -3546,7 +3741,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "Prélude Out is a vibrant \"all-terrain\" performance by Kader Attou and Cie Accrorap, designed specifically for public spaces. In this condensed 35-minute version, nine virtuoso dancers from diverse backgrounds explore a raw, collective dance that celebrates the power of movement and shared emotion. Set to Romain Dubois’s intense electroacoustic score, the choreography becomes a physical and poetic metaphor for human struggle and solidarity. It is an urgent, joyful invitation to connect through the vital impulse of breath.Performers / Dancers: Alexis de Saint Jean, Jikay, Damien Bourletsis, Aline Lopes, Margaux Senechault, Yann Miettaux, Azdine Bouncer, Nabjibe Said, Simon Hernandez. Choreography: Kader Attou Artistic direction: Kader Attou Music (Musical composition): Romain Dubois. Lighting Design: Cécile Giovansili-Vissière. roduction: Cie Accrorap. Coproduction: Scènes et Cinés, Scène conventionnée d’intérêt national Art en Territoire.",
+    "description": "Prélude Out is a vibrant \"all-terrain\" performance by Kader Attou and Cie Accrorap, designed specifically for public spaces. In this condensed 35-minute version, nine virtuoso dancers from diverse backgrounds explore a raw, collective dance that celebrates the power of movement and shared emotion. Set to Romain Dubois’s intense electroacoustic score, the choreography becomes a physical and poetic metaphor for human struggle and solidarity. It is an urgent, joyful invitation to connect through the vital impulse of breath. Performers / Dancers: Alexis de Saint Jean, Jikay, Damien Bourletsis, Aline Lopes, Margaux Senechault, Yann Miettaux, Azdine Bouncer, Nabjibe Said, Simon Hernandez. Choreography: Kader Attou Artistic direction: Kader Attou Music (Musical composition): Romain Dubois. Lighting Design: Cécile Giovansili-Vissière. roduction: Cie Accrorap. Coproduction: Scènes et Cinés, Scène conventionnée d’intérêt national Art en Territoire.",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/24/thumb_5623135_performance_1440.jpeg",
     "vibes": [
       "Party",
@@ -3587,6 +3782,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "477",
+    "artist": "Girlhood",
+    "stage": "Bacardi Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T17:00:00.000+02:00",
+    "endTime": "2026-08-12T17:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118677",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/girlhoodzenekar",
+      "instagram": "https://www.instagram.com/girlhoodzenekar",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCTUUKlHogB6Kc8qY5nBRRQA",
+      "spotify": "https://open.spotify.com/artist/3fNcMexoD7MGbJ2rzqpk6U",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "girlhood is an all-female band that sings mostly about heartbreak, casual relationships, the struggles of growing up, life’s challenges, and mental health – blending playful synths with bursts of punky guitars.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682685_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "398",
@@ -3656,7 +3878,7 @@
   },
   {
     "id": "242",
-    "artist": "Alta Gama",
+    "artist": "Alta Gama: Mentir lo Mínimo",
     "stage": "CIRQUE du SZIGET",
     "day": "Wednesday",
     "startTime": "2026-08-12T17:30:00.000+02:00",
@@ -3677,7 +3899,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "A show that, with its apparent simplicity, brings us closer to the complexity of self-acceptance.The theme is your presence, our presence. The subject is the body.The journey of three bodies (the woman, the man and the bicycle) and their stripping down to the essential: the body itself. This body in which we live and with which we have a relation.Is this relation comfortable for you?Would you change it?",
+    "description": "A show that, with its apparent simplicity, brings us closer to the complexity of self-acceptance.The theme is your presence, our presence. The subject is the body.The journey of three bodies (the woman, the man and the bicycle) and their stripping down to the essential: the body itself. This body in which we live and with which we have a relation.Is this relation comfortable for you?Would you change it?An idea of Cie Alta Gama Performers : Amanda Delgado and Alejo Gamboa Direction : Alejo Gamboa Light creation ( inside version) - Cristina Eujén and Florian Lyonne Technical (inside version) : Florian Lyonne (alternating with Léo Sellez) Technical view : Frédéric Perrin Costume designer : Pilar Aguilar Music : Pere Vilaplana and Amanda Delgado French translation : Sophie Tuchscherer Video : Julià Rocha Pujol and Loïc NysDiffusion : Angéla Kontis - With the support of : Malraux, Scène nationale de Chambéry et de la Savoie (FR) Formalisation de projet - Esacto’Lido - École supérieure des arts du cirque Toulouse-Occitanie (FR) Département de la Savoie (FR) Festival Trapezi, Reus (ES) Oficina de Suport a la Iniciativa Cultural, OSIC (ES) Festival Mirabilia, International Circus & Performing Arts Festival - Fossano (IT) La Central del Circ, Barcelona (ES) Ondadurto Teatro, Roma (IT) Residency : Centre Régional des Arts du cirque “Arc en Cirque” - Chambéry (FR) CADHAME - Halle Verrière, Meisenthal (FR) Espace Culturel Jean Blanc - La Ravoire (FR ) Testimoni Escènic, Creació d’Arts Escèniques - Avinyó (ES) L’Endroit - Chambéry (FR) Salle de spectacle Saint-Jean - La Motte Servolex (FR) L’Estruch, Fàbrica de Creació - Sabadell (ES)Festival Mirabilia, International Circus & Performing Arts Festival - Fossano (IT) Théâtre Gérard Philipe - Saint Jean de Maurienne (FR) Ex convento Santa Croce di Tuscania - Borgo Velino (IT) Performing Lands, Residenze multidisciplinare de la Regione Lazio (IT)",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/23/thumb_5622478_performance_1440.jpeg",
     "vibes": [
       "Discover"
@@ -3690,7 +3912,7 @@
     "id": "366",
     "artist": "Cypher Town Battle",
     "stage": "The Cypher by Friss",
-    "day": null,
+    "day": "Wednesday",
     "startTime": "2026-08-12T17:55:00.000+02:00",
     "endTime": "2026-08-12T18:15:00.000+02:00",
     "countryCode": null,
@@ -3720,7 +3942,7 @@
     "id": "233",
     "artist": "Tolo & Falcao (LavaLava)",
     "stage": "Yettel Colosseum",
-    "day": "Tuesday",
+    "day": "Wednesday",
     "startTime": "2026-08-12T18:00:00.000+02:00",
     "endTime": "2026-08-12T19:30:00.000+02:00",
     "countryCode": "HU",
@@ -3936,7 +4158,7 @@
   },
   {
     "id": "256",
-    "artist": "DIANA SALLES",
+    "artist": "DIANA SALLES: DELUSIONAL I Killed a Man",
     "stage": "Magic Mirror",
     "day": "Wednesday",
     "startTime": "2026-08-12T18:30:00.000+02:00",
@@ -3999,9 +4221,9 @@
   },
   {
     "id": "406",
-    "artist": "Nóra Horváth/Balázs Oláh",
+    "artist": "Nóra Horváth/Balázs Oláh: BÁL - Hungarian Mulatós dance workshop",
     "stage": "Mobilis",
-    "day": "Friday",
+    "day": "Wednesday",
     "startTime": "2026-08-12T18:30:00.000+02:00",
     "endTime": "2026-08-12T19:30:00.000+02:00",
     "countryCode": "HU",
@@ -4021,12 +4243,39 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "Discover the world of mulatós dance! In our workshop, you will learn the most important basic steps and figures step by step. Whether you are a absolute beginner or already have some experience, you will definitely find your place with us. You can dance to the best mulatós hits in our class, and a great atmosphere is guaranteed!&nbsp; Nóri and Balázs first met in 2015, and have shared a close personal and professional relationship ever since. They began their research into mulatós culture in 2021, aiming to uncover and archive the true value of mulatós music and dance.Balázs Oláh - Dancer Nóra Horváth - Dancer János R. Szabó - DJ",
+    "description": "Discover the world of mulatós dance! In our workshop, you will learn the most important basic steps and figures step by step. Whether you are a absolute beginner or already have some experience, you will definitely find your place with us. You can dance to the best mulatós hits in our class, and a great atmosphere is guaranteed!&nbsp; Nóri and Balázs first met in 2015, and have shared a close personal and professional relationship ever since. They began their research into mulatós culture in 2021, aiming to uncover and archive the true value of mulatós music and dance. Balázs Oláh - Dancer Nóra Horváth - Dancer János R. Szabó - DJ",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646237_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "478",
+    "artist": "WXLFLESS",
+    "stage": "Bacardi Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T18:30:00.000+02:00",
+    "endTime": "2026-08-12T19:15:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118678",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/wxlfless",
+      "instagram": "https://www.instagram.com/wxlfless",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCO_Y_1BrQ6JyMAwMqkccleA",
+      "spotify": "https://open.spotify.com/artist/7hhhDArCYPA0njtiX2E9Pr",
+      "appleMusic": "https://music.apple.com/hu/artist/wxlfless/1488368247",
+      "soundcloud": null
+    },
+    "description": "WXLFLESS has evolved over the years from a bedroom project into a solo rap act, and today his live performances are best described as a fusion of pop-punk and rap. In 2025, he performed at nearly every major festival in Hungary and released his third studio album, featuring collaborations with artists such as Sisi, Beton.Hofi, and Co Lee. After an extended creative break, WXLFLESS is excited to return to the Sziget Festival, where he debuted his live band last year.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682690_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "206",
@@ -4341,7 +4590,7 @@
     "id": "300",
     "artist": "Gabriella Lester",
     "stage": "The Joker",
-    "day": "Saturday",
+    "day": "Wednesday",
     "startTime": "2026-08-12T20:00:00.000+02:00",
     "endTime": "2026-08-12T20:45:00.000+02:00",
     "countryCode": "US",
@@ -4369,6 +4618,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "479",
+    "artist": "Saya Noé",
+    "stage": "Bacardi Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T20:00:00.000+02:00",
+    "endTime": "2026-08-12T20:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118679",
+    "socials": {
+      "website": "https://sayanoe.com/",
+      "facebook": "https://www.facebook.com/sayanoemusic",
+      "instagram": "https://www.instagram.com/sayanoemusic",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCM87PunNqy-MQeTQsxj4Z7A",
+      "spotify": "https://open.spotify.com/artist/563nLkswIGnyeDcdWHeead",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Hungarian alt-pop artist Saya Noé emerged into the Eastern European music scene region early thanks to her characteristic songs, molding a perfect fusion of Alt Pop and Electronic, performed both as a solo artist and with a live band. After having performed at every major festival in Hungary, (Sziget, Volt, Campus, Szin, ect..), she is now expanding her audience in countries such as Poland, Czech Republic and Slovakia. Since 2020, she has consistently ranked among the top 10 ar/sts on HOTS, the Hungarian music export agency, posi/oning herself as one of the most promising&nbsp;domes/c acts capable of making an impact on the interna/onal scene. In 2022, she received the Artisjus Award as Pop Music Songwriter and Creator of the Year. In 2023, Saya Noé became an ambassador for Spotify's EQUAL campaign as an independent ar/st. Her album “Jupiter” was released in late September 2023 and went on to win the Fonogram Prize for Best Electronic Album of 2024. Her latest EP, “Venus”, was released in the spring of 2024.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682695_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "18",
@@ -4732,6 +5008,37 @@
     "showInSchedule": true
   },
   {
+    "id": "449",
+    "artist": "Stacey Clare and Keri Gold ELSC Productions CIC",
+    "stage": "The Joker",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T23:00:00.000+02:00",
+    "endTime": "2026-08-13T00:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "CABARET",
+      "COMEDY"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110620",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/ethicalstripper",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Do you have a problem? Don't know where to turn? Come and share your load with two unshockable, world-weary strippers, who've seen and heard it all. Stacey Clare and Keri Gold are on a quest to bring empathy, compassion and understanding out of the strip club and onto the stage. These hardened therapists in thigh-highs hold space for their audience, offering shrewd insights and razor-sharp intuition – after all they’ve been giving free therapy to men in strip clubs for years. So if you are dealing with a personal dilemma or just want to experience candid and hilarious life advice, don’t miss out - laughter, wisdom and sage advice guaranteed.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/65/thumb_5664386_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false,
+    "showInSchedule": true
+  },
+  {
     "id": "108",
     "artist": "Kispál és a Borz",
     "stage": "Budapest Park Stage by Johnnie Walker",
@@ -4850,7 +5157,7 @@
     "genres": [
       "INSTALLATION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110009",
     "socials": {
       "website": "https://zsofiahelmeczi.hu/",
       "facebook": null,
@@ -4881,7 +5188,7 @@
       "CABARET",
       "COMEDY"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110620",
     "socials": {
       "website": null,
       "facebook": null,
@@ -4899,6 +5206,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "480",
+    "artist": "Kkevin",
+    "stage": "Bacardi Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T23:00:00.000+02:00",
+    "endTime": "2026-08-12T23:40:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118680",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/kkevin.official",
+      "instagram": "https://www.instagram.com/kkevin.official",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCKKJnhEgCz3kNgANUINWP3Q",
+      "spotify": "https://open.spotify.com/artist/2O9w0WQhGtr7oQWG6nUqh5",
+      "appleMusic": "https://music.apple.com/hu/artist/kkevin/1534353706",
+      "soundcloud": null
+    },
+    "description": "KKEVIN (Kevin Kövesi) is one of the leading names in Hungary’s rap and new wave rap scene. He broke through in 2020 with his hit “Chivas” and has since built a strong presence through nationwide tours, major festival appearances, and increasingly large headline shows. Known for his honest and personal lyrics, KKEVIN has cultivated a loyal fanbase while collaborating with artists such as ValMar, Bruno x Spacc, T. Danny, Desh, and Young Fly. His 2025 EP PRIORITÁS marked a new chapter in his career, followed by sold-out shows at Akvárium Klub and two successful headline concerts at Budapest Park, including one attended by nearly 10,000 fans. His digital success is equally impressive: “Csavargó” with L.L. Junior has surpassed 43 million YouTube views, while KKEVIN attracts over 500,000 monthly listeners on Spotify.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/69d8057937ef9156cefb24c024b8a6f34df85370.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "89",
@@ -5042,6 +5376,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "481",
+    "artist": "Belano",
+    "stage": "Bacardi Stage",
+    "day": "Wednesday",
+    "startTime": "2026-08-12T23:45:00.000+02:00",
+    "endTime": "2026-08-13T00:25:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118703",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/belano_prod",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCvsLP93cA1a_alEqon6mDbw",
+      "spotify": "https://open.spotify.com/artist/3YuXDaxA5aNH0yA4SLeEPA",
+      "appleMusic": "https://music.apple.com/hu/artist/belano/1759763296",
+      "soundcloud": null
+    },
+    "description": "BELANO is one of the fastest-rising new artists on the Hungarian pop scene. With his distinctive sound, honest songwriting, and unique blend of Hungarian and German influences, he has quickly built a strong following. He currently has over 355,000 monthly listeners on Spotify, with standout tracks including “STARBOY”, “SHAKE DAT” with VINI, and “BULLSHIT” with BSW. Combining modern pop with infectious energy and a recognizable artistic identity, BELANO has established himself as one of the most exciting voices of Hungary’s new generation of artists.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/2dd90644ddce5a019dfa44cc039b8c4842015b26.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "186",
@@ -5229,7 +5590,7 @@
     "genres": [
       "ELECTRONIC"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2115618",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/p",
@@ -5313,6 +5674,37 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "460",
+    "artist": "Me siento extraña: Verushka, Meritxell de Soto, Maia: Me siento extraña Takeover <3",
+    "stage": "Magic Mirror",
+    "day": "Wednesday",
+    "startTime": "2026-08-13T01:00:00.000+02:00",
+    "endTime": "2026-08-13T04:00:00.000+02:00",
+    "countryCode": "ES",
+    "genres": [
+      "BASS HOUSE",
+      "PERFORMINGARTS",
+      "CLUB"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2102606",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/mesientoextranya",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCA8NJ8OFLh0rFrL0ItxVqdA",
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": "https://soundcloud.com/me-siento-extrana"
+    },
+    "description": "Me Siento Extraña (MSE) is a Barcelona-based collective creating safer spaces for FLINTA* identities through music, art, and community. Founded in 2021 by Maia Jenkinson (ES) and Verushka Sirit (VE), it emerged as a response to the lack of visibility and cultural spaces. With a sharp curatorial vision, MSE blends underground club nights with cultural gatherings that amplify dissident voices. Beyond its impact on Barcelona’s club scene, the collective collaborates with festivals and cultural spaces while hosting weekly gatherings, creating an irreplaceable space for the community.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/37/thumb_5636868_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "1",
@@ -5669,14 +6061,14 @@
     "id": "451",
     "artist": "Játszóház Projekt - modern board games",
     "stage": "The Joker",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-13T12:00:00.000+02:00",
     "endTime": "2026-08-13T18:00:00.000+02:00",
     "countryCode": null,
     "genres": [
       "BOARD GAMES"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110929",
     "socials": {
       "website": null,
       "facebook": null,
@@ -5699,7 +6091,7 @@
     "id": "274",
     "artist": "Stone Sober",
     "stage": "Light Stage",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-13T13:00:00.000+02:00",
     "endTime": "2026-08-13T13:40:00.000+02:00",
     "countryCode": "HU",
@@ -5823,7 +6215,7 @@
   },
   {
     "id": "350",
-    "artist": "Alen Nsambu",
+    "artist": "Alen Nsambu: NEON BEIGE",
     "stage": "Magic Mirror",
     "day": "Thursday",
     "startTime": "2026-08-13T14:30:00.000+02:00",
@@ -5856,7 +6248,7 @@
     "id": "369",
     "artist": "Daytime Party",
     "stage": "The Cypher by Friss",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-13T14:30:00.000+02:00",
     "endTime": "2026-08-13T15:40:00.000+02:00",
     "countryCode": null,
@@ -5922,7 +6314,7 @@
   },
   {
     "id": "374",
-    "artist": "Emese Pongrácz, Dominik Gazdag",
+    "artist": "Emese Pongrácz, Dominik Gazdag: Minorities within the LGBTQ minority",
     "stage": "Magic Runway",
     "day": "Thursday",
     "startTime": "2026-08-13T15:00:00.000+02:00",
@@ -6209,7 +6601,7 @@
     "id": "316",
     "artist": "Lil 404",
     "stage": "The Cypher by Friss",
-    "day": "Saturday",
+    "day": "Thursday",
     "startTime": "2026-08-13T16:00:00.000+02:00",
     "endTime": "2026-08-13T17:10:00.000+02:00",
     "countryCode": "HU",
@@ -6320,7 +6712,7 @@
       "HIP HOP",
       "RAP"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2100064",
     "socials": {
       "website": null,
       "facebook": null,
@@ -6368,6 +6760,35 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "463",
+    "artist": "Mirror Talks: The New Era of Gender",
+    "stage": "Magic Mirror",
+    "day": "Thursday",
+    "startTime": "2026-08-13T16:00:00.000+02:00",
+    "endTime": "2026-08-13T17:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "DISCUSSION"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106694",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "What is happening to gender in a world where traditional gender roles are shifting even within the most mainstream and conservative cultures? As fashion, media, and everyday life become increasingly open toward self-expression, identities such as agender, genderfluid, and non-binary are no longer unfamiliar concepts. For younger generations, gender often carries fewer restrictions and entirely different meanings than it did before. But what future awaits gender, and how will we define ourselves in an increasingly fluid world?",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644408_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "270",
@@ -6581,6 +7002,33 @@
     "showInSchedule": true
   },
   {
+    "id": "482",
+    "artist": "Waiting room",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T17:00:00.000+02:00",
+    "endTime": "2026-08-13T17:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118704",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/waitingroom11",
+      "instagram": "https://www.instagram.com/waitingroom._",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@waiting._room",
+      "youtube": "https://www.youtube.com/channel/UCJuchaZ4Jp0Q0Zsiv3cn7kw",
+      "spotify": "https://open.spotify.com/artist/6AkIWFj7J1rzYkGRgqZndc",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "With a unique sound drawing inspiration from the 70’s and from todays’ alternative scenes, the Hungarian band Waiting Room captures a sound that is classic but also modern. They can be full of energy with distorted riffs, and also lean into more melancholic, emotional melodies. Loud, exciting, and unmistakably unique, Waiting Room delivers music that hits hard while staying deeply expressive.&nbsp;&nbsp;",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/86/thumb_5685708_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "441",
     "artist": "Sara Sandvik Arnestad",
     "stage": "Le DÔME",
@@ -6591,7 +7039,7 @@
     "genres": [
       "DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110201",
     "socials": {
       "website": null,
       "facebook": null,
@@ -6647,7 +7095,7 @@
   },
   {
     "id": "407",
-    "artist": "OneTwoMany",
+    "artist": "OneTwoMany: Don’t Forget to Breathe!",
     "stage": "CIRQUE du SZIGET",
     "day": "Thursday",
     "startTime": "2026-08-13T17:30:00.000+02:00",
@@ -6669,7 +7117,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "Don't Forget to Breathe! is a contemporary circus performance that explores the relationship between breathing, awareness, and connection. The piece evolves in, on and around a geodesic dome and serves as a gentle reminder: pause for a moment, turn your attention inward, give yourself time—but also look around and try to connect with the people surrounding you. The acrobatic spectacle is a celebration of the air that moves through all of us, reminding us that, no matter what happens, in the end, we all share the same breath.Concept, performers: Sophie Zoletnik Mentor: Darragh McLoughlin Outside eye: Gábor Goda Choreographic advisor: Jenna Jalonen",
+    "description": "Don't Forget to Breathe! is a contemporary circus performance that explores the relationship between breathing, awareness, and connection. The piece evolves in, on and around a geodesic dome and serves as a gentle reminder: pause for a moment, turn your attention inward, give yourself time—but also look around and try to connect with the people surrounding you. The acrobatic spectacle is a celebration of the air that moves through all of us, reminding us that, no matter what happens, in the end, we all share the same breath. Concept, performers: Sophie Zoletnik Mentor: Darragh McLoughlin Outside eye: Gábor Goda Choreographic advisor: Jenna Jalonen",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/66/thumb_5665111_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -6978,6 +7426,63 @@
     "showInSchedule": true
   },
   {
+    "id": "468",
+    "artist": "TRUESCHOOL: Open Jam workshop",
+    "stage": "Mobilis",
+    "day": "Thursday",
+    "startTime": "2026-08-13T18:30:00.000+02:00",
+    "endTime": "2026-08-13T19:30:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [
+      "WORKSHOP",
+      "STREET AND CLUB DANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107631",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/trueschoolhun",
+      "instagram": "https://www.instagram.com/trueschool_hun",
+      "x": null,
+      "tiktok": "https://www.tiktok.com/@trueschool_hun",
+      "youtube": "https://www.youtube.com/channel/UC0vFVlGWFdiRVKr-f80lG3w",
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "TrueSchool’s 60-minute Open Jam workshop welcomes everyone with a live DJ set featuring Hip Hop, House and Funk music. The main focus is sharing the community power of street and club dance styles – no matter your age or experience, anyone can join in. Through guided and improvisational exercises, participants will explore playful dance tools and social movement concepts they can freely use later during the festival parties. The goal is simple: connection, self-expression and having fun. Teachers : Péter Katona “Soldier P” Róbert Fazekas “Pizsy” DJ: Noren",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646236_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
+    "id": "483",
+    "artist": "Jules War",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T18:30:00.000+02:00",
+    "endTime": "2026-08-13T19:15:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118706",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/thisisjuleswar",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCShlGGWoF0wkFo-sYNN82bw",
+      "spotify": "https://open.spotify.com/artist/2TWsfl0PPlcA4nQanzfsz6",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "The band Jules War grew out of singer-songwriter Eszter Lovasi’s unique musical project. The band’s signature enchanting dream pop and introspective lyrics came together on their full-length album, The Greatest Climber on Earth, released in late 2024. The band’s name is derived from the singer’s nickname, Juliska, while War refers to the inner struggles one's have. This theme even runs through the band’s last two releases (Berlin; Not for the Thrill). Alongside the singer, the band features Domonkos Szilágyi on drums, Balázs Bajnok on guitar, and Márton Lévai on keyboards. Despite its short history, the recently formed Jules War has already garnered numerous accolades: they performed at one of Europe’s largest showcase festivals, ESNS, and have also played at Poland’s Next Fest and BuSH. Soon, their guaranteed-to-give-you-goosebumps songs will be heard at Waves Vienna. In addition to Budapest Park, the general public can catch them at the country’s most significant festivals and at Germany’s Superbloom.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682821_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "6",
     "artist": "Alizade",
     "stage": "VISA Live x dropYard",
@@ -7220,7 +7725,7 @@
     "id": "70",
     "artist": "Ential",
     "stage": "Arzenál x Turbina: Der Klub",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-13T20:00:00.000+02:00",
     "endTime": "2026-08-13T21:15:00.000+02:00",
     "countryCode": "HU",
@@ -7291,7 +7796,7 @@
   },
   {
     "id": "267",
-    "artist": "Losinformalls",
+    "artist": "Losinformalls: PERDÓN",
     "stage": "Le DÔME",
     "day": "Thursday",
     "startTime": "2026-08-13T20:00:00.000+02:00",
@@ -7322,6 +7827,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "492",
+    "artist": "Fiúk",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T20:00:00.000+02:00",
+    "endTime": "2026-08-13T20:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2119021",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/fiukhivatalos",
+      "instagram": "https://www.instagram.com/fiukzenekar",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/18sTF3DgwshbIZU9vdghG7",
+      "appleMusic": "https://music.apple.com/us/artist/fi%C3%BAk/1460459033",
+      "soundcloud": null
+    },
+    "description": null,
+    "imageUrl": null,
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "13",
@@ -7793,7 +8325,7 @@
     "id": "447",
     "artist": "Tejfakasztó (Lactation) Alt-Comedy Club",
     "stage": "The Joker",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-13T23:00:00.000+02:00",
     "endTime": "2026-08-14T00:00:00.000+02:00",
     "countryCode": "HU",
@@ -7802,7 +8334,7 @@
       "ALT COMEDY",
       "CHAOTIC VARIETY SHOW"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110619",
     "socials": {
       "website": null,
       "facebook": null,
@@ -7820,6 +8352,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "484",
+    "artist": "VINI",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T23:00:00.000+02:00",
+    "endTime": "2026-08-13T23:40:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118707",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/nemethvini",
+      "instagram": "https://www.instagram.com/nemethvini",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCvy3HfN166_motI16e-MSSw",
+      "spotify": "https://open.spotify.com/artist/7Ac0uxdCzBBRgjbtel2bbV",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Despite his young age, VINI—aka Vincent Németh—has already made his mark on the history of Hungarian hip-hop and rap, and he has no intention of slowing down. After several years of writing music and producing, he turned a new page in 2024, continuing his career with professional management. His album VINNER, which debuted in 2026, was highly anticipated even before its release, and after it came out, the tracks dominated the top spots on the charts for months. The album features collaborations with artists such as KKevin, Burai, Mollywood, Peti Marics, Sofi, and BELANO. Millions of streams and views, a sold-out Akvárium, and performances on stages across the country: the sky’s the limit. VINI is the voice of today’s youth, but his style resonates not only with Gen Z but with everyone who believes in the outspokenness, honesty, and timelessness of hip-hop and rap.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682835_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "189",
@@ -7973,6 +8532,33 @@
     "showInSchedule": true
   },
   {
+    "id": "471",
+    "artist": "Bruno X Spacc",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-13T23:45:00.000+02:00",
+    "endTime": "2026-08-14T00:25:00.000+02:00",
+    "countryCode": null,
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116431",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/officialbrunoxspacc",
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/5ALUgNuS421MZrrrAhM9Bv",
+      "appleMusic": "https://music.apple.com/hu/artist/bruno-x-spacc/1519148459",
+      "soundcloud": null
+    },
+    "description": "Bruno X Spacc are one of the most influential and trendsetting duos in the Hungarian rap and trap scene. They broke into the mainstream with their hit “Budán vagy Pesten” and quickly established themselves among the leading names of Hungary’s new generation of hip-hop artists. Their 2022 EP “NEMELVAGYUNK?” further strengthened their position, showcasing a distinctive sound and uncompromising attitude that helped define the direction of modern Hungarian trap. Tracks such as “Vakmeleg” amassed tens of millions of views on YouTube, while “Aha-Aha” surpassed 30 million streams across platforms, highlighting the duo’s exceptional reach and popularity. Collaborations with major artists including KKevin, T. Danny, and ValMar expanded their audience even further, while they consistently maintained their bold, authentic, and unmistakable artistic identity. With hundreds of thousands of monthly Spotify listeners and tens of millions of YouTube views, Bruno X Spacc have become one of the most important organically built acts in Hungarian trap. In 2025, they reached new milestones by performing at Sziget Festival and later headlining Budapest Park, proving that their large-scale live show and crowd-moving energy place them firmly among the country’s top-tier performers.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/86/d71f526964c186b34cb1a3ff3cea3a6b2717bbae.png",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "3",
     "artist": "6363",
     "stage": "VISA Live x dropYard",
@@ -8118,6 +8704,33 @@
     "showInSchedule": true
   },
   {
+    "id": "485",
+    "artist": "K-OSZ DISCO",
+    "stage": "Bacardi Stage",
+    "day": "Thursday",
+    "startTime": "2026-08-14T00:30:00.000+02:00",
+    "endTime": "2026-08-14T02:00:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118708",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "K-OSZ DISCO is the high-energy DJ duo of Marci Miskovits and Kristóf Kovács, bringing one of Hungary’s most entertaining touring party shows to audiences across the country. Combining back-to-back DJ sets with constant MCing and dynamic show elements, they deliver unforgettable party experiences. After proving themselves over the past seasons, the duo returns to Sziget Festival this summer for another explosive performance.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682847_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "146",
     "artist": "Night Tapes",
     "stage": "The Buzz delivered by DHL",
@@ -8161,7 +8774,7 @@
     "genres": [
       "POP"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2115619",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/neccpartyofficial",
@@ -8514,7 +9127,7 @@
     "id": "289",
     "artist": "Blooom",
     "stage": "VISA Live x dropYard",
-    "day": null,
+    "day": "Thursday",
     "startTime": "2026-08-14T03:00:00.000+02:00",
     "endTime": "2026-08-14T04:00:00.000+02:00",
     "countryCode": null,
@@ -8785,7 +9398,7 @@
     "id": "292",
     "artist": "Carlota",
     "stage": "The Cypher by Friss",
-    "day": "Saturday",
+    "day": "Friday",
     "startTime": "2026-08-14T13:00:00.000+02:00",
     "endTime": "2026-08-14T14:30:00.000+02:00",
     "countryCode": "FR",
@@ -8815,7 +9428,7 @@
     "id": "328",
     "artist": "Nebz",
     "stage": "The Cypher by Friss",
-    "day": "Saturday",
+    "day": "Friday",
     "startTime": "2026-08-14T13:00:00.000+02:00",
     "endTime": "2026-08-14T14:30:00.000+02:00",
     "countryCode": "US",
@@ -8877,7 +9490,7 @@
   },
   {
     "id": "352",
-    "artist": "Andrea Costanzo Martini",
+    "artist": "Andrea Costanzo Martini: Life in Lycra",
     "stage": "Mobilis",
     "day": "Friday",
     "startTime": "2026-08-14T14:00:00.000+02:00",
@@ -8898,7 +9511,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "A dance duel between a ballerina and a choreographer. Wearing nothing but outrageously tight Lycra costumes, two characters battle for the audience’s attention. Through a mix of sharp words, bold gestures, and the assistance of Artificial Intelligence, they embark on a journey through the twists and turns of contemporary dance—revealing just how silly it can be to take things too seriously. Beneath its apparent lightness, the work raises questions about power dynamics and control within the world of performance.Choreographer ANDREA COSTANZO MARTINI Performers&nbsp; AVIGAIL SHAFRIR ANDREA COSTANZO MARTINI Dramaturgy YAEL VENEZIA Music LOSCIL&nbsp; A. BRANDUARDI Lighting Design YOAV BAREL",
+    "description": "A dance duel between a ballerina and a choreographer. Wearing nothing but outrageously tight Lycra costumes, two characters battle for the audience’s attention. Through a mix of sharp words, bold gestures, and the assistance of Artificial Intelligence, they embark on a journey through the twists and turns of contemporary dance—revealing just how silly it can be to take things too seriously. Beneath its apparent lightness, the work raises questions about power dynamics and control within the world of performance. Choreographer ANDREA COSTANZO MARTINI Performers&nbsp; AVIGAIL SHAFRIR ANDREA COSTANZO MARTINI Dramaturgy YAEL VENEZIA Music LOSCIL&nbsp; A. BRANDUARDI Lighting Design YOAV BAREL",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/46/thumb_5645378_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -8907,7 +9520,7 @@
   },
   {
     "id": "397",
-    "artist": "Mazorra",
+    "artist": "Mazorra: ENG I wanted to be a faggot but I was born latino",
     "stage": "Magic Mirror",
     "day": "Friday",
     "startTime": "2026-08-14T14:30:00.000+02:00",
@@ -8974,7 +9587,7 @@
   },
   {
     "id": "264",
-    "artist": "Le Patin Libre",
+    "artist": "Le Patin Libre: Wheels & cello",
     "stage": "Mobilis",
     "day": "Friday",
     "startTime": "2026-08-14T15:00:00.000+02:00",
@@ -9091,7 +9704,7 @@
     "id": "241",
     "artist": "Ahmed Ayed",
     "stage": "Mobilis",
-    "day": "Saturday",
+    "day": "Friday",
     "startTime": "2026-08-14T16:00:00.000+02:00",
     "endTime": "2026-08-14T16:30:00.000+02:00",
     "countryCode": "TN",
@@ -9177,6 +9790,35 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "464",
+    "artist": "Mirror Talks: The New Era of Drag",
+    "stage": "Magic Mirror",
+    "day": "Friday",
+    "startTime": "2026-08-14T16:00:00.000+02:00",
+    "endTime": "2026-08-14T17:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "DISCUSSION"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106695",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Drag has been constantly reinventing itself for centuries — but are we now standing at another major turning point? Questions of humor, politics, gender, and self-expression have taken on entirely new meanings in an era where drag exists both as underground culture and mainstream spectacle. What do we preserve from drag history, and what is being permanently transformed by social media and younger generations? A conversation about how drag continues to reinvent itself as one of queer culture’s most powerful forms of expression.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644409_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "335",
@@ -9389,10 +10031,37 @@
     "showInSchedule": true
   },
   {
+    "id": "486",
+    "artist": "FRANKO",
+    "stage": "Bacardi Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T17:00:00.000+02:00",
+    "endTime": "2026-08-14T17:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118709",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/frankobbyy",
+      "instagram": "https://www.instagram.com/frankobbyyy",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UC0Hl0uZ3kc3hUy7JfvzNzPg",
+      "spotify": "https://open.spotify.com/artist/4z7BpuAzNBJCtnkNjYNgKb",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "FRANKO (Zsombor Bartha) has been an active presence in the Hungarian music scene since 2023. Drawing inspiration from UK grime and electronic music, his tracks combine high-energy production with deeply honest lyrics, creating a strong connection with his growing audience. As both a member of the WAVY collective and a solo artist, he regularly performs at festivals and packed club venues across Hungary. In 2026, he released his second studio album, nem lesz ez így jó.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682851_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "304",
     "artist": "Hiro 10",
     "stage": "The Cypher by Friss",
-    "day": null,
+    "day": "Friday",
     "startTime": "2026-08-14T17:15:00.000+02:00",
     "endTime": "2026-08-14T18:15:00.000+02:00",
     "countryCode": null,
@@ -9496,7 +10165,7 @@
     "genres": [
       "DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110210",
     "socials": {
       "website": null,
       "facebook": null,
@@ -9551,9 +10220,9 @@
   },
   {
     "id": "414",
-    "artist": "RAISHA COSIMA",
+    "artist": "RAISHA COSIMA: VOGUING WORKSHOP",
     "stage": "Magic Runway",
-    "day": "Saturday",
+    "day": "Friday",
     "startTime": "2026-08-14T17:30:00.000+02:00",
     "endTime": "2026-08-14T18:30:00.000+02:00",
     "countryCode": "ES",
@@ -9575,7 +10244,7 @@
       "soundcloud": null
     },
     "description": "Raisha Cosima is one of the leading figures of the Spanish Ballroom scene. A dancer, model and actress, she has brought her art to stages across Europe and New York, earning multiple awards within the Ballroom community. She is a member of the House of Miyake-Mugler and the Kiki House of Versace, two internationally respected houses within Ballroom culture. Throughout her career, she has collaborated on projects with acclaimed artists such as Kylie Minogue, Young Miko, Aitana and Chanel, combining technical excellence, stage presence and a magnetic personality. Throughout the festival, she will lead daily voguing workshops and present a special performance at the Magic Mirror, celebrating freedom, identity and self-expression through movement. Raisha Cosima&nbsp; Assistant Nieves Cardoso",
-    "imageUrl": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/87/thumb_5686878_performance_960.png",
     "vibes": [],
     "isHeadliner": false,
     "returningHero": false,
@@ -9828,7 +10497,7 @@
       "ACTIVITY",
       "PARTICIPATORY DANCE JAM"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107628",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/taancrafel",
@@ -9846,6 +10515,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "487",
+    "artist": "Henri Gonzo és a Papírsárkányok",
+    "stage": "Bacardi Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T18:30:00.000+02:00",
+    "endTime": "2026-08-14T19:15:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118710",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCqGVBUZriNNjYCKyCSBIe8w",
+      "spotify": "https://open.spotify.com/artist/3Ivom8GRMaWJGmLgmYB37E",
+      "appleMusic": "https://music.apple.com/hu/artist/henri-gonzo-%C3%A9s-a-pap%C3%ADrs%C3%A1rk%C3%A1nyok/1616666405",
+      "soundcloud": null
+    },
+    "description": "Henri Gonzo és a Papírsárkányok is an alternative band formed in the aftermath of the pandemic by Cuban-Hungarian singer-songwriter Henri Gonzo. Blending literary influences with a timeless musical approach, the band performs in Hungarian and creates atmospheric, emotionally rich songs. Their debut EP was released on a limited-edition cassette in 2022, followed by their first full-length album in 2023, which was named among the year's best releases by We Love Budapest and Telex. They have since performed at major music and literary events, including MÜPA, Kolorádó Festival, and Margó Festival. Their second album, Vízszemű Gyík, was praised by both audiences and critics, earning a place among the most acclaimed Hungarian releases of the year.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682864_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "64",
@@ -10089,6 +10785,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "488",
+    "artist": "imago mundi",
+    "stage": "Bacardi Stage",
+    "day": "Friday",
+    "startTime": "2026-08-14T20:00:00.000+02:00",
+    "endTime": "2026-08-14T20:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118711",
+    "socials": {
+      "website": "https://www.imagomundi.hu/",
+      "facebook": "https://www.facebook.com/imagomundi.official",
+      "instagram": "https://www.instagram.com/imagomundi_official",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCAQVITBZWCXHsa1_Az4oY-Q",
+      "spotify": "https://open.spotify.com/artist/4pD0Y4NqCiTWh4IhpH2NQO",
+      "appleMusic": "https://music.apple.com/hu/artist/imago-mundi/1750021952",
+      "soundcloud": null
+    },
+    "description": null,
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682866_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "338",
@@ -10694,7 +11417,7 @@
       "HIP HOP",
       "BEATBOX"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2098698",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/alemalexinhouniteam",
@@ -10724,7 +11447,7 @@
     "genres": [
       "VISUAL"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110204",
     "socials": {
       "website": "https://www.tasvisuals.com",
       "facebook": "https://www.facebook.com/tasvision",
@@ -11059,9 +11782,9 @@
   },
   {
     "id": "413",
-    "artist": "Rachel Erdos",
+    "artist": "Rachel Erdos: Karaoke",
     "stage": "Magic Mirror",
-    "day": null,
+    "day": "Friday",
     "startTime": "2026-08-15T01:00:00.000+02:00",
     "endTime": "2026-08-15T04:00:00.000+02:00",
     "countryCode": "IL",
@@ -11082,7 +11805,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "Akár hangosan éneklünk nyilvánosan, akár csak magunkban dúdolunk, vagy az autóban énekelünk bele a világba, az éneklés mindannyiunk életének része. A dalok formálják az emlékeinket, és képesek pillanatok alatt visszarepíteni bennünket életünk meghatározó eseményeihez. A Karaoke című előadásban a közönség egy karaoke-parti részesévé válik, amelyet három előadó vezet, akik zenei történeteken keresztül osztják meg életük fontos pillanatait. A vendégeket arra invitáljuk, hogy énekeljenek együtt, válasszák ki kedvenc dalaikat, vagy egyszerűen csak élvezzék a dallamokból, mozgásból és emlékekből épülő estét. Az élő előadás fokozatosan valódi karaoke-partivá alakul, ahol mindenki tovább énekelhet és együtt ünnepelhet.",
+    "description": "Whether we sing loudly in public, hum to ourselves or belt out songs in the car, singing is part of all our lives. Songs shape our memories and can instantly transport us back to defining moments. In Karaoke, the audience joins a karaoke party hosted by three performers sharing key moments from their lives through music. Guests are invited to sing along, choose their favourite songs or simply enjoy an evening of melodies, movement and memories. The live performance then transforms into a real karaoke party where everyone can continue singing and celebrating together.",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/42/thumb_5641219_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -11758,6 +12481,35 @@
     "showInSchedule": true
   },
   {
+    "id": "466",
+    "artist": "Vivi Piti: Morning Dance",
+    "stage": "Mobilis",
+    "day": "Saturday",
+    "startTime": "2026-08-15T11:00:00.000+02:00",
+    "endTime": "2026-08-15T12:00:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [
+      "CONTEMPORARY DANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107629",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/61583969142431",
+      "instagram": "https://www.instagram.com/mycore_testtudatws",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "During the Morning Dance sessions, we focus on waking up and aligning the body through coordination, mobility, and exercises inspired by contemporary dance. We develop spatial awareness, body usage, and connection to ourselves and others.The class is accompanied by a carefully curated playlist that supports our connection to rhythm and sense of timing, allowing movement to emerge more as a spontaneous, direct response.It offers practical movement tools for everyday clubbing, while opening space for releasing inhibitions and observing our own patterns.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646229_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "396",
     "artist": "MÁTÉ MÉSZÁROS, ANDRÁS SZOMBATHY, PATRIK KERESZTES, ÁBRIS GRYLLUS",
     "stage": "Le DÔME",
@@ -11854,8 +12606,38 @@
     "showInSchedule": true
   },
   {
+    "id": "467",
+    "artist": "TRUESCHOOL: Rhythm & Flow",
+    "stage": "Mobilis",
+    "day": "Saturday",
+    "startTime": "2026-08-15T14:00:00.000+02:00",
+    "endTime": "2026-08-15T14:30:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [
+      "DANCE",
+      "STREET AND CLUB DANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107630",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "TrueSchool’s new dance performance, Rhythm & Flow, is built around the HipHop, House, Popping, and Locking styles. The piece aims to present these four street and club dance styles through an artistic and conceptual approach, where the experience of rhythm and flow plays a central role both in movement and music. The performance features dancers from the TrueSchool community of different ages and skill levels, united by their shared passion, respect for these dance cultures, and the sense of community they create together. Performers:Kispál CsengeHugauf DorkaTóth MajaPataki NikiSzalai VivienMadarász VivienNagy SáraLaczkó TímeaKatona RebekaSoós ÁdámNagy NorbertLu EasonKatona PéterFazekas Róbert Choreographers:Katona PéterFazekas Róbert",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646233_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "387",
-    "artist": "Kinga Ötvös",
+    "artist": "Kinga Ötvös: Ice Requiem",
     "stage": "Magic Mirror",
     "day": "Saturday",
     "startTime": "2026-08-15T14:30:00.000+02:00",
@@ -11888,7 +12670,7 @@
     "id": "269",
     "artist": "Melanie Baker",
     "stage": "Light Stage",
-    "day": "Friday",
+    "day": "Saturday",
     "startTime": "2026-08-15T14:50:00.000+02:00",
     "endTime": "2026-08-15T15:50:00.000+02:00",
     "countryCode": "UK",
@@ -11920,7 +12702,7 @@
   },
   {
     "id": "395",
-    "artist": "manoAmano",
+    "artist": "manoAmano: KINEMATOS",
     "stage": "CIRQUE du SZIGET",
     "day": "Saturday",
     "startTime": "2026-08-15T15:00:00.000+02:00",
@@ -11942,7 +12724,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "From the southernmost South, from Mar del Plata, Argentina, the manoAmano Circus Company tours around the world with its master piece of precision, vertigo and comedy. A duo of acrobats rests six meters high, fed by the most suffering tension, ready to break anything that may seem to be standing still. manoAmano Company exhibits how acrobatics takes a new shape when it is transferred from the floor that everybody steps on, to the air that everybody dreams of. This couple of tender characters put together simple situations sharing lots naughty sweet humor through powerful language of acrobatics. manoAmano does not fly, they know they never will, but they keep trying anyhow.Creation and Interpretation: Ana Clara Manera & Martín Umerez",
+    "description": "From the southernmost South, from Mar del Plata, Argentina, the manoAmano Circus Company tours around the world with its master piece of precision, vertigo and comedy. A duo of acrobats rests six meters high, fed by the most suffering tension, ready to break anything that may seem to be standing still. manoAmano Company exhibits how acrobatics takes a new shape when it is transferred from the floor that everybody steps on, to the air that everybody dreams of. This couple of tender characters put together simple situations sharing lots naughty sweet humor through powerful language of acrobatics. manoAmano does not fly, they know they never will, but they keep trying anyhow. Creation and Interpretation: Ana Clara Manera & Martín Umerez",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/66/thumb_5665094_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -11991,7 +12773,7 @@
     "genres": [
       "THEATRE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110005",
     "socials": {
       "website": null,
       "facebook": null,
@@ -12041,6 +12823,67 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "469",
+    "artist": "SUB.LAB.PRO  - Valentin Alfery (AT): Slow Burner",
+    "stage": "Mobilis",
+    "day": "Saturday",
+    "startTime": "2026-08-15T15:00:00.000+02:00",
+    "endTime": "2026-08-15T15:30:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [
+      "DANCE",
+      "CONTEMPORARY DANCE"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107643",
+    "socials": {
+      "website": "https://sublab.pro/",
+      "facebook": "https://www.facebook.com/sub.lab.pro",
+      "instagram": "https://www.instagram.com/sub.lab.pro",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "SLOW BURNER is a choreographed jigsaw puzzle that invites the audience into a space of perceiving how human impulses, encounters and interrelationships shape the world we move through.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646298_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
+    "id": "472",
+    "artist": "Vándor Kamilló, Matuska Gréta: Drag & Draw: Cosmic Creatures",
+    "stage": "Magic Runway",
+    "day": "Saturday",
+    "startTime": "2026-08-15T15:00:00.000+02:00",
+    "endTime": "2026-08-15T16:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "WORKSHOP",
+      "CREATIVE AND FINE ARTS ACTIVITIES",
+      "FINE ARTS"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116546",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": "https://www.instagram.com/itsgretalicious",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Drag and draw is an artistic practice where participants draw, paint, collage, or create in other ways inspired by the live poses of drag performers. Models hold alternating poses for 5–20 minutes, giving participants freedom to capture the energy, personality, and style of each pose Vándor Kamilló, Matuska Gréta, Gősi Robi Lance",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/78/thumb_5677017_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "55",
@@ -12149,7 +12992,7 @@
     "id": "285",
     "artist": "AKE",
     "stage": "The Cypher by Friss",
-    "day": "Friday",
+    "day": "Saturday",
     "startTime": "2026-08-15T16:00:00.000+02:00",
     "endTime": "2026-08-15T17:10:00.000+02:00",
     "countryCode": "IT",
@@ -12208,6 +13051,35 @@
     "showInSchedule": true
   },
   {
+    "id": "465",
+    "artist": "Mirror Talks: The New Era of Queer Revolution",
+    "stage": "Magic Mirror",
+    "day": "Saturday",
+    "startTime": "2026-08-15T16:00:00.000+02:00",
+    "endTime": "2026-08-15T17:00:00.000+02:00",
+    "countryCode": null,
+    "genres": [
+      "DISCUSSION"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106696",
+    "socials": {
+      "website": null,
+      "facebook": null,
+      "instagram": null,
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "The queer revolution has entered a new era: activism is no longer shaped only on the streets, but through podcasts, TikTok videos, and online communities. For younger generations, openly speaking about identity, sexuality, and personal boundaries has become second nature, while new labels, demands, and conversations continue to emerge within the community. From gender neutrality to asexuality, from polyamory to digital self-expression, the meaning of being queer is constantly being redefined. But how are social media and digital culture reshaping the revolution itself?",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644410_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "73",
     "artist": "FAEDA",
     "stage": "Light Stage",
@@ -12245,7 +13117,7 @@
   },
   {
     "id": "365",
-    "artist": "Csaba Molnár ⇄ Nicole Clore",
+    "artist": "Csaba Molnár ⇄ Nicole Clore: Lust Lab: Embodying Desire",
     "stage": "Magic Runway",
     "day": "Saturday",
     "startTime": "2026-08-15T16:15:00.000+02:00",
@@ -12347,7 +13219,7 @@
     "id": "253",
     "artist": "cmqmartina",
     "stage": "Light Stage",
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-15T17:00:00.000+02:00",
     "endTime": "2026-08-15T17:40:00.000+02:00",
     "countryCode": "IT",
@@ -12414,7 +13286,7 @@
   },
   {
     "id": "389",
-    "artist": "LaCerda",
+    "artist": "LaCerda: El Baile de la Zurda",
     "stage": "Mobilis",
     "day": "Saturday",
     "startTime": "2026-08-15T17:00:00.000+02:00",
@@ -12436,7 +13308,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "LaCerda takes the vital impulse that moves all the bodies that dance to the rhythm of the music, to investigate the nature of dance as movement, but also as a festive meeting space and a paradigm of collectivity. They have&nbsp; created a looping choreographic composition&nbsp;system that focuses on the relationship of the feet with the pelvis, on space, rhythm and the group, is inspired by danceable marathons and Latin American musical rhythms. El Baile de la Zurda is a tribute to dance, to the desire to live dancing despite everything, a tribute also to the Latin American roots of LaCerda’s artistic directors, source of their passion for dance.Creation and production: LaCerda Direction and choreography: Edward Tamayo Performers: Valentina Azzati, Johann Perez, Edward Tamayo, Aina Lanas&nbsp; Original music: Alejandro Dutra Conceptualization: Júlia Vernet Gaudes",
+    "description": "LaCerda takes the vital impulse that moves all the bodies that dance to the rhythm of the music, to investigate the nature of dance as movement, but also as a festive meeting space and a paradigm of collectivity. They have&nbsp; created a looping choreographic composition&nbsp;system that focuses on the relationship of the feet with the pelvis, on space, rhythm and the group, is inspired by danceable marathons and Latin American musical rhythms. El Baile de la Zurda is a tribute to dance, to the desire to live dancing despite everything, a tribute also to the Latin American roots of LaCerda’s artistic directors, source of their passion for dance. Creation and production: LaCerda Direction and choreography: Edward Tamayo Performers: Valentina Azzati, Johann Perez, Edward Tamayo, Aina Lanas&nbsp; Original music: Alejandro Dutra Conceptualization: Júlia Vernet Gaudes",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/46/thumb_5645417_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
@@ -12456,7 +13328,7 @@
       "POP",
       "DISCO"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2116588",
     "socials": {
       "website": null,
       "facebook": null,
@@ -12727,7 +13599,7 @@
   },
   {
     "id": "376",
-    "artist": "Fabla Collective",
+    "artist": "Fabla Collective: Do Birds Dream of Flying?",
     "stage": "CIRQUE du SZIGET",
     "day": "Saturday",
     "startTime": "2026-08-15T17:30:00.000+02:00",
@@ -12906,7 +13778,7 @@
   },
   {
     "id": "284",
-    "artist": "YAV",
+    "artist": "YAV: MOVEMENTS OF SOUL (ALWAYS WRITTEN IN CAPSLOCK )",
     "stage": "Magic Mirror",
     "day": "Saturday",
     "startTime": "2026-08-15T18:30:00.000+02:00",
@@ -12969,7 +13841,7 @@
   },
   {
     "id": "393",
-    "artist": "Losinformalls",
+    "artist": "Losinformalls: INFORMAL STAGE",
     "stage": "Mobilis",
     "day": "Saturday",
     "startTime": "2026-08-15T18:30:00.000+02:00",
@@ -12997,6 +13869,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "491",
+    "artist": "cancel.",
+    "stage": "Bacardi Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T18:30:00.000+02:00",
+    "endTime": "2026-08-15T19:15:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118723",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/iamcancel",
+      "instagram": "https://www.instagram.com/i.am.cancel",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": "https://open.spotify.com/artist/1fKbqLy0DtrJWgYCHObOWt",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "cancel. is a rapper, producer, multimedia creator and self-proclaimed maniac. Named one of Hungary’s most exciting emerging artists by Telekom Electronic Beats in 2022, he has built a unique artistic identity that goes far beyond traditional rap. Blending alternative and lo-fi hip-hop, cancel. creates immersive audiovisual worlds where every song is part of a bigger story. His energetic live shows combine rapping, singing, and live instrumentation, while his meticulous attention to detail gives each release a deeper emotional and conceptual layer. On stage, cancel. performs with a full band: founder Kenny, alongside Dani (drums), Armand (synths), Ákos (guitar), and Atti (bass).",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682890_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "106",
@@ -13173,6 +14072,35 @@
     "showInSchedule": false
   },
   {
+    "id": "493",
+    "artist": "GBA Style: GBA Style fashion show",
+    "stage": "Magic Runway",
+    "day": "Saturday",
+    "startTime": "2026-08-15T19:00:00.000+02:00",
+    "endTime": "2026-08-15T19:30:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [
+      "FASHION SHOW"
+    ],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2119322",
+    "socials": {
+      "website": "https://gbastyle.shop",
+      "facebook": null,
+      "instagram": "https://www.instagram.com/gba.style07",
+      "x": null,
+      "tiktok": null,
+      "youtube": null,
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "GBA Style is a Hungarian fashion brand creating limited-edition, handcrafted statement pieces for festivals, stage performances and creative productions. Its distinctive designs are made using recycled textiles, plant-based vegan leather and reclaimed industrial metal elements. The brand regularly appears in music videos, television and stage productions, editorial photoshoots, fashion shows, as well as Hungarian and international festivals. GBA Style views respect for nature, conscious material use and self-expression as core values shaping contemporary festival culture.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/87/thumb_5686870_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "102",
     "artist": "Jorja Smith (party set)",
     "stage": "Main Stage",
@@ -13207,7 +14135,7 @@
   },
   {
     "id": "279",
-    "artist": "Tridiculous",
+    "artist": "Tridiculous: The Show",
     "stage": "CIRQUE du SZIGET",
     "day": "Saturday",
     "startTime": "2026-08-15T19:15:00.000+02:00",
@@ -13503,7 +14431,7 @@
       "appleMusic": null,
       "soundcloud": null
     },
-    "description": "Creator, Choreographer, and Performer: Oli Mathiesen (Ngāti Manu, Ngāti Hine, Ngāpuhi) Choreographer and Performer: Lucy Lynch (Ngāti Kahungunu) Choreographer and Performer: Sharvon Mortimer (Ngāti Porou) Producer and Stage Manager: Gina Heidekruger Production Manager, Lighting Designer, and Operator: Shanell Bielawa (Te Ātihaunui-a-Pāpārangi) Music: Suburban Knight",
+    "description": "The award-winning endurance-based dance work to the booming techno album 'Nocturbulous Behaviour' by Suburban Knight is the atmosphere and culture of a 3-day rave condensed into an hour. Relentless movement, seamless without pause, detailed down to every beat. Exploring the movement used in techno and rave culture, witness the destruction of 3 humans. Indulge in the pain, the sweat; a display of pure endurance to achieve a goal. A spectacle of the human body as a victim to music, to passion, to our endless desire to achieve more. To win and win again. Creator, Choreographer, and Performer: Oli Mathiesen (Ngāti Manu, Ngāti Hine, Ngāpuhi) Choreographer and Performer: Lucy Lynch (Ngāti Kahungunu) Choreographer and Performer: Sharvon Mortimer (Ngāti Porou) Producer and Stage Manager: Gina Heidekruger Production Manager, Lighting Designer, and Operator: Shanell Bielawa (Te Ātihaunui-a-Pāpārangi) Music: Suburban Knight",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/21/thumb_5620536_performance_1440.jpeg",
     "vibes": [
       "Discover"
@@ -13516,7 +14444,7 @@
     "id": "450",
     "artist": "Balazs V. Kiss",
     "stage": "The Joker",
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-15T20:00:00.000+02:00",
     "endTime": "2026-08-15T20:45:00.000+02:00",
     "countryCode": "HU",
@@ -13525,7 +14453,7 @@
       "MAGIC",
       "STAND UP COMEDY"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2110622",
     "socials": {
       "website": "https://www.kissvbalazs.hu/",
       "facebook": "https://www.facebook.com/kissvbalazsmagic",
@@ -13543,6 +14471,33 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
+  },
+  {
+    "id": "490",
+    "artist": "Csinszka",
+    "stage": "Bacardi Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T20:00:00.000+02:00",
+    "endTime": "2026-08-15T20:45:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118714",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/csinszkacsernik",
+      "instagram": "https://www.instagram.com/csinszka.hu",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCRGZQcqvRJ0zSrAtj8QU4Qw",
+      "spotify": "https://open.spotify.com/artist/5Tnw6MRgzvpCp6iH0YHKJ6",
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Csinszka is a Hungarian singer-songwriter of Transylvanian origin, blending pop, electronic music, and alternative R&B into a distinctive sound. Her debut album, Finally Opening Up (2023), introduced her introspective songwriting and atmospheric production, followed by collaborations with artists including DomBeats and Jazzbois. In 2025, she entered a new creative chapter with Hibrid, fusing traditional Hungarian folk music with electronic elements. Her breakthrough came with Felsütött a napsugára, which went viral on TikTok, while Airday reached #1 on Spotify Viral 50 Hungary. Later that year, she represented Hungary in Spotify’s global EQUAL campaign supporting female artists. Her second album, TRANSFORMANIA, further established her unique artistic vision and was introduced with a sold-out headline show. In 2026, Csinszka continues her momentum with another sold-out concert at Akvárium Klub, a support show for Manuel at Budapest Park, and a busy summer festival season, while working on new music.",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682880_performance_960.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
   },
   {
     "id": "5",
@@ -13587,7 +14542,7 @@
     "id": "86",
     "artist": "House of Circus - Carnivale Royale",
     "stage": "Magic Mirror",
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-15T20:30:00.000+02:00",
     "endTime": "2026-08-15T21:30:00.000+02:00",
     "countryCode": "NL",
@@ -14096,7 +15051,7 @@
     "id": "230",
     "artist": "The Whale Street",
     "stage": null,
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-15T23:00:00.000+02:00",
     "endTime": "2026-08-15T23:50:00.000+02:00",
     "countryCode": "FR",
@@ -14189,6 +15144,33 @@
     "showInSchedule": true
   },
   {
+    "id": "489",
+    "artist": "Don't Stop The Queen",
+    "stage": "Bacardi Stage",
+    "day": "Saturday",
+    "startTime": "2026-08-15T23:00:00.000+02:00",
+    "endTime": "2026-08-16T00:00:00.000+02:00",
+    "countryCode": "HU",
+    "genres": [],
+    "festivalUrl": "https://szigetfestival.com/#/artist/2118712",
+    "socials": {
+      "website": null,
+      "facebook": "https://www.facebook.com/dstqueentribute",
+      "instagram": "https://www.instagram.com/dstqueentribute",
+      "x": null,
+      "tiktok": null,
+      "youtube": "https://www.youtube.com/channel/UCyX8hn_Wet30g-A5kwBLH-g",
+      "spotify": null,
+      "appleMusic": null,
+      "soundcloud": null
+    },
+    "description": "Don't Stop The Queen is Hungary’s most versatile and internationally acclaimed Queen tribute band. In just four years, they have performed successful concerts across eight countries and two continents, bringing the timeless music of Queen to audiences around the world. Their ever-evolving setlist spans every era of Queen’s career, while their explosive live show captures the spirit of the original band without imitation or gimmicks. Led by vocalist Máté Takáts, every member of the band also contributes backing vocals, faithfully recreating Queen’s signature layered harmonies. Combined with meticulously crafted arrangements, this results in an authentic live experience that comes remarkably close to the sound of the original studio recordings. Members: Máté Takáts – vocalsLászló Móczár – guitar, backing vocalsLászló Károlyi – keyboards, backing vocalsGábor Mészáros – bass, backing vocalsAttila Brassói – drums, backing vocals",
+    "imageUrl": "https://media.appmiral.com/prod/performance/0057/83/thumb_5682867_performance_1440.jpeg",
+    "vibes": [],
+    "isHeadliner": false,
+    "returningHero": false
+  },
+  {
     "id": "82",
     "artist": "Hamdi",
     "stage": "BOLT Night Stage",
@@ -14268,9 +15250,9 @@
   },
   {
     "id": "357",
-    "artist": "Aserdus FireDance Company",
+    "artist": "Aserdus FireDance Company: Sparklingers",
     "stage": "CIRQUE du SZIGET",
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-15T23:50:00.000+02:00",
     "endTime": "2026-08-16T00:10:00.000+02:00",
     "countryCode": "HU",
@@ -14301,7 +15283,7 @@
     "id": "163",
     "artist": "QUEST",
     "stage": "Arzenál x Turbina: Der Klub",
-    "day": null,
+    "day": "Saturday",
     "startTime": "2026-08-16T00:00:00.000+02:00",
     "endTime": "2026-08-16T02:00:00.000+02:00",
     "countryCode": "IT",
@@ -14584,7 +15566,7 @@
   },
   {
     "id": "287",
-    "artist": "Anybody Walking",
+    "artist": "Anybody Walking: Ballroom Magic",
     "stage": "Magic Mirror",
     "day": "Saturday",
     "startTime": "2026-08-16T01:00:00.000+02:00",
@@ -14903,7 +15885,7 @@
     "genres": [
       "ELECTRONIC"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2115785",
     "socials": {
       "website": null,
       "facebook": null,
@@ -15338,7 +16320,7 @@
   },
   {
     "id": "137",
-    "artist": "Missio",
+    "artist": "MISSIO",
     "stage": "The Buzz delivered by DHL",
     "day": "Saturday",
     "startTime": null,
@@ -15357,9 +16339,10 @@
       "tiktok": null,
       "youtube": "https://www.youtube.com/@missiomusic",
       "spotify": "https://open.spotify.com/artist/2HOMW1liAxI3URnEq95SMS",
-      "appleMusic": "https://music.apple.com/us/artist/https://music.apple.com/us/artist/missio/1228281701"
+      "appleMusic": "https://music.apple.com/us/artist/missio/1228281701",
+      "soundcloud": null
     },
-    "description": "Austin duo MISSIO—Matthew Brue and David Butler—fearlessly break the rules as they fuse elements of rock, electronic, indie, and hip-hop into an unmatched and uncompromising hybrid. They tie seemingly disparate threads together with honest and heartfelt lyrics meant to both provoke and inspire. Following the 2023-2024 Cinco EP series, the pair present their most definitive and dynamic vision with their full-length double-album, I Am Cinco [Nettwerk]. It collates five moods— ...",
+    "description": "Austin duo MISSIO—Matthew Brue and David Butler—fearlessly break the rules as they fuse elements of rock, electronic, indie, and hip-hop into an unmatched and uncompromising hybrid. They tie seemingly disparate threads together with honest and heartfelt lyrics meant to both provoke and inspire. Following the 2023-2024 Cinco EP series, the pair present their most definitive and dynamic vision with their full-length double-album, I Am Cinco [Nettwerk]. It collates five moods—I Am Sad, I Am High, I Am Awesome, I Am Angry and I Am Crazy—into one.Since 2015, MISSIO have painted this picture with Loner [2017], The Darker the Weather // The Better the Man [2019], Can You Feel The Sun [2020], and VILLAIN [2022]. Tallying over 1 billion streams, their catalog has notably resonated with the Gold-certified “Everybody Gets High” Between packing houses on tour, they appeared at festivals like ACL and Lollapalooza and incited praise from Atwood, Billboard, Rolling Stone, New Noise and Substream.The music initially took shape in Austin only to be completed on a creative sojourn to Mexico City. Excited to share the music with the world, everything set the stage for them to finally release I Am Cinco.“We’ve been to multiple countries and had 10 different sessions to write and record these 28 songs,” David leaves off. “We’re not just here to check a box; we’re here to be prolific.”",
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/09/thumb_5608583_performance_1440.jpeg",
     "vibes": [
       "High Energy",

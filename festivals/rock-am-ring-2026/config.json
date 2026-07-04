@@ -11,7 +11,10 @@
   "deepLinkScheme": "rockamring2026",
   "i18n": {
     "defaultLocale": "de",
-    "locales": ["de", "en"],
+    "locales": [
+      "de",
+      "en"
+    ],
     "translations": {
       "de": {
         "nav_home": "Home",
@@ -69,7 +72,11 @@
     "year": 2026,
     "startDate": "2026-06-05",
     "endDate": "2026-06-07",
-    "days": ["Friday", "Saturday", "Sunday"],
+    "days": [
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
     "dayLabels": {
       "Friday": "FRI",
       "Saturday": "SAT",
@@ -148,7 +155,6 @@
     "posterGenerator": true,
     "customThemes": true,
     "feedbackSystem": false,
-    "stageCapacity": false,
     "newsBulletin": false
   },
   "content": {

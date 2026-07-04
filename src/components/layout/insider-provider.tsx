@@ -4,6 +4,7 @@ import { BASE_PATH } from '@/lib/base-path';
 import React, { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import { getFestivalConfig, FestivalConfig } from '@/config/festival-engine';
 import type { LineupItem } from '@/types';
+import { areSlotsOverlapping } from '@/lib/utils';
 
 export type FavoriteTier = 'must_see' | 'interested';
 
@@ -213,12 +214,7 @@ export function InsiderProvider({
           const favA = favoritesWithDetails[i];
           const favB = favoritesWithDetails[j];
 
-          const startA = new Date(favA.startTime!).getTime();
-          const endA = new Date(favA.endTime!).getTime();
-          const startB = new Date(favB.startTime!).getTime();
-          const endB = new Date(favB.endTime!).getTime();
-
-          if (startA < endB && startB < endA) {
+          if (areSlotsOverlapping(favA, favB)) {
             newConflicts.add(favA.id);
             newConflicts.add(favB.id);
           }

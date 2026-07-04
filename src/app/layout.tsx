@@ -6,6 +6,7 @@ import { SwUpdateBanner } from '@/components/layout/sw-update-banner';
 import MuiRegistry from '@/components/layout/mui-registry';
 import InstallPrompt from '@/components/layout/install-prompt';
 import { ThemeProvider } from '@/components/layout/theme-provider';
+import { BASE_PATH } from '@/lib/base-path';
 
 export const metadata: Metadata = {
   applicationName: 'Festival Insider',
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     template: `%s | Festival Insider`,
   },
   description: 'Your tactical companion for global festivals.',
-  manifest: "/manifest.json",
+  manifest: `${BASE_PATH}/manifest.json`,
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

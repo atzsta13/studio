@@ -7,7 +7,7 @@
   "tagline": "Island of Freedom",
   "description": "Your unofficial offline-first guide to Sziget Festival 2026.",
   "officialWebsite": "https://szigetfestival.com",
-  "productionUrl": "https://sziget-2026.vercel.app",
+  "productionUrl": "https://atzsta13.github.io/studio/sziget-2026",
   "deepLinkScheme": "sziget2026",
   "i18n": {
     "defaultLocale": "en",
@@ -128,7 +128,6 @@
     "groupSchedules": true,
     "similarArtists": true,
     "vibeOfTheHour": true,
-    "stageCapacity": false,
     "foodRatings": true,
     "budgetTracker": true,
     "lostAndFound": true,

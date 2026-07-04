@@ -88,7 +88,6 @@ function makeConfig(overrides: Partial<FestivalConfig> = {}): FestivalConfig {
       groupSchedules: false,
       similarArtists: false,
       vibeOfTheHour: false,
-      stageCapacity: false,
       foodRatings: false,
       budgetTracker: false,
       lostAndFound: false,

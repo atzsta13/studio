@@ -11,6 +11,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
@@ -536,8 +537,11 @@ private fun DayHeader(day: String) {
 
 // Hours before this are treated as "past midnight" and belong to the previous festival day.
 private const val ROLLOVER_HOUR = 6
-private const val DP_PER_MINUTE = 1.7f
-private val GUTTER_WIDTH = 44.dp
+private const val DP_PER_MINUTE = 2.2f
+private val GUTTER_WIDTH = 48.dp
+// Each stage column gets at least this width; on busy days the board scrolls
+// horizontally rather than cramming 17 stages into the phone width.
+private val MIN_STAGE_WIDTH = 158.dp
 
 private fun wallMinutes(t: String?): Int? {
     val time = parseTime(t) ?: return null
@@ -595,123 +599,142 @@ fun TimetableGrid(
         if (DAY_TO_DATE[selectedDay] == effectiveDate && mins in dayStart..dayEnd) mins else null
     }
 
-    val scrollState = rememberScrollState()
+    val vScroll = rememberScrollState()
+    val hScroll = rememberScrollState()
     val density = LocalDensity.current
     LaunchedEffect(selectedDay) {
         nowMinutes?.let { mins ->
             val targetPx = with(density) { (((mins - dayStart) * DP_PER_MINUTE) - 120f).dp.toPx() }
-            scrollState.scrollTo(targetPx.toInt().coerceAtLeast(0))
+            vScroll.scrollTo(targetPx.toInt().coerceAtLeast(0))
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        // Sticky stage header
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp)
-                .background(OLEDBlack)
-                .drawBehind {
-                    drawLine(
-                        color = Color.White.copy(alpha = 0.15f),
-                        start = androidx.compose.ui.geometry.Offset(0f, size.height),
-                        end = androidx.compose.ui.geometry.Offset(size.width, size.height),
-                        strokeWidth = 1.dp.toPx()
-                    )
-                },
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Spacer(modifier = Modifier.width(GUTTER_WIDTH))
-            byStage.forEach { entry ->
-                Box(modifier = Modifier.weight(1f).fillMaxHeight(), contentAlignment = Alignment.Center) {
-                    Text(
-                        text = entry.key.uppercase(),
-                        color = MaterialTheme.colorScheme.primary,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Black,
-                        fontStyle = FontStyle.Italic,
-                        letterSpacing = 1.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        // Few stages → columns grow to fill the screen. Many stages → each keeps a
+        // readable width and the board scrolls horizontally.
+        val colWidth = maxOf(MIN_STAGE_WIDTH, (maxWidth - GUTTER_WIDTH) / byStage.size.toFloat())
+        val stagesWidth = colWidth * byStage.size
+
+        Column(modifier = Modifier.fillMaxSize()) {
+            // Sticky stage header — scrolls horizontally in sync with the board
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(40.dp)
+                    .background(OLEDBlack)
+                    .drawBehind {
+                        drawLine(
+                            color = Color.White.copy(alpha = 0.15f),
+                            start = androidx.compose.ui.geometry.Offset(0f, size.height),
+                            end = androidx.compose.ui.geometry.Offset(size.width, size.height),
+                            strokeWidth = 1.dp.toPx()
+                        )
+                    },
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Spacer(modifier = Modifier.width(GUTTER_WIDTH))
+                Row(modifier = Modifier.weight(1f).horizontalScroll(hScroll)) {
+                    byStage.forEach { entry ->
+                        Box(
+                            modifier = Modifier.width(colWidth).fillMaxHeight().padding(horizontal = 6.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = entry.key.uppercase(),
+                                color = MaterialTheme.colorScheme.primary,
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.Black,
+                                fontStyle = FontStyle.Italic,
+                                letterSpacing = 1.sp,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    }
                 }
             }
-        }
 
-        // Vertical time board
-        Box(modifier = Modifier.fillMaxSize().verticalScroll(scrollState)) {
-            Box(modifier = Modifier.fillMaxWidth().height(boardHeight)) {
-                // Hour gridlines + labels in the left gutter
-                var hourMark = dayStart
-                while (hourMark <= dayEnd) {
-                    val y = ((hourMark - dayStart) * DP_PER_MINUTE).dp
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(1.dp)
-                            .offset(y = y)
-                            .background(Color.White.copy(alpha = 0.08f))
-                    )
-                    Text(
-                        text = formatWallMinutes(hourMark),
-                        color = TextMuted,
-                        fontSize = 9.sp,
-                        fontWeight = FontWeight.Black,
-                        modifier = Modifier.offset(x = 4.dp, y = y + 2.dp)
-                    )
-                    hourMark += 60
-                }
+            // Scrollable time board
+            Box(modifier = Modifier.fillMaxSize().verticalScroll(vScroll)) {
+                Row(modifier = Modifier.fillMaxWidth().height(boardHeight)) {
+                    // Pinned time gutter — stays put while stages scroll sideways
+                    Box(modifier = Modifier.width(GUTTER_WIDTH).fillMaxHeight()) {
+                        var hourMark = dayStart
+                        while (hourMark <= dayEnd) {
+                            val y = ((hourMark - dayStart) * DP_PER_MINUTE).dp
+                            Text(
+                                text = formatWallMinutes(hourMark),
+                                color = TextMuted,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Black,
+                                modifier = Modifier.offset(x = 5.dp, y = y - 7.dp)
+                            )
+                            hourMark += 60
+                        }
+                    }
 
-                // Stage columns
-                Row(modifier = Modifier.fillMaxSize()) {
-                    Spacer(modifier = Modifier.width(GUTTER_WIDTH))
-                    val nowMins = nowMinutes
-                    byStage.forEach { entry ->
-                        Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
-                            entry.value.forEach { artist ->
-                                val start = wallMinutes(artist.startTime) ?: return@forEach
-                                val end = wallMinutes(artist.endTime) ?: (start + 30)
-                                ArtistGridBlock(
-                                    artist = artist,
-                                    y = (start - dayStart) * DP_PER_MINUTE,
-                                    blockHeight = ((end - start) * DP_PER_MINUTE).coerceAtLeast(52f),
-                                    isFavorite = favoriteIds.contains(artist.id),
-                                    inSquad = squadIds.contains(artist.id),
-                                    isPast = nowMins != null && end <= nowMins,
-                                    minuteTick = minuteTick,
-                                    onArtistClick = onArtistClick,
-                                    haptic = haptic
+                    // Horizontally-scrollable stage area
+                    Box(modifier = Modifier.weight(1f).fillMaxHeight().horizontalScroll(hScroll)) {
+                        Box(modifier = Modifier.width(stagesWidth).fillMaxHeight()) {
+                            // Hour gridlines spanning every stage
+                            var hourMark = dayStart
+                            while (hourMark <= dayEnd) {
+                                val y = ((hourMark - dayStart) * DP_PER_MINUTE).dp
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(1.dp)
+                                        .offset(y = y)
+                                        .background(Color.White.copy(alpha = 0.08f))
+                                )
+                                hourMark += 60
+                            }
+
+                            // Stage columns
+                            Row(modifier = Modifier.fillMaxSize()) {
+                                val nowMins = nowMinutes
+                                byStage.forEach { entry ->
+                                    Box(modifier = Modifier.width(colWidth).fillMaxHeight()) {
+                                        entry.value.forEach { artist ->
+                                            val start = wallMinutes(artist.startTime) ?: return@forEach
+                                            val end = wallMinutes(artist.endTime) ?: (start + 30)
+                                            ArtistGridBlock(
+                                                artist = artist,
+                                                y = (start - dayStart) * DP_PER_MINUTE,
+                                                blockHeight = ((end - start) * DP_PER_MINUTE).coerceAtLeast(56f),
+                                                isFavorite = favoriteIds.contains(artist.id),
+                                                inSquad = squadIds.contains(artist.id),
+                                                isPast = nowMins != null && end <= nowMins,
+                                                minuteTick = minuteTick,
+                                                onArtistClick = onArtistClick,
+                                                haptic = haptic
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+
+                            // Now line
+                            nowMinutes?.let { mins ->
+                                val y = ((mins - dayStart) * DP_PER_MINUTE).dp
+                                Box(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .height(2.dp)
+                                        .offset(y = y - 1.dp)
+                                        .background(ToxicGreen)
+                                )
+                                Text(
+                                    text = "NOW",
+                                    color = ToxicGreen,
+                                    fontSize = 9.sp,
+                                    fontWeight = FontWeight.Black,
+                                    letterSpacing = 1.sp,
+                                    modifier = Modifier.offset(x = 4.dp, y = y - 14.dp)
                                 )
                             }
                         }
                     }
-                }
-
-                // Now line
-                nowMinutes?.let { mins ->
-                    val y = ((mins - dayStart) * DP_PER_MINUTE).dp
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(12.dp)
-                            .offset(y = y - 6.dp)
-                            .background(Brush.verticalGradient(listOf(Color.Transparent, ToxicGreen.copy(alpha = 0.2f), Color.Transparent)))
-                    )
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(2.dp)
-                            .offset(y = y - 1.dp)
-                            .background(ToxicGreen)
-                    )
-                    Text(
-                        text = "NOW",
-                        color = ToxicGreen,
-                        fontSize = 8.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp,
-                        modifier = Modifier.offset(x = 4.dp, y = y - 14.dp)
-                    )
                 }
             }
         }

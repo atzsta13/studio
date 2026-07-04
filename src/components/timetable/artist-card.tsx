@@ -5,12 +5,13 @@ import { Heart, MapPin } from 'lucide-react';
 import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
 import Link from 'next/link';
-import { FESTIVAL } from '@/config/festival-engine';
+import { getFestivalConfig } from '@/config/festival-engine';
 
 interface ArtistCardProps {
   artist: LineupItem;
   festivalId: string;
   isFavorite: boolean;
+  favoriteTier?: 'must_see' | 'interested' | null;
   isConflicting: boolean;
   isLive?: boolean;
   isPast?: boolean;
@@ -19,8 +20,22 @@ interface ArtistCardProps {
 
 const LIVE_HEX = '#22c55e';
 
-export default function ArtistCard({ artist, festivalId, isFavorite, isConflicting, isLive = false, isPast = false, onToggleFavorite }: ArtistCardProps) {
+export default function ArtistCard({
+  artist,
+  festivalId,
+  isFavorite,
+  favoriteTier,
+  isConflicting,
+  isLive = false,
+  isPast = false,
+  onToggleFavorite
+}: ArtistCardProps) {
   if (!artist.startTime || !artist.endTime) return null;
+
+  const festivalConfig = getFestivalConfig(festivalId);
+  const favColor = favoriteTier === 'must_see'
+    ? festivalConfig.theme.primaryHex
+    : (festivalConfig.theme.secondaryHex || festivalConfig.theme.accentHex);
 
   const start = new Date(artist.startTime);
   const end = new Date(artist.endTime);
@@ -36,7 +51,7 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
     : isLive
       ? `4px solid ${LIVE_HEX}`
       : isFavorite
-        ? `4px solid ${FESTIVAL.theme.primaryHex}`
+        ? `4px solid ${favColor}`
         : '1px solid rgba(255,255,255,0.06)';
 
   return (
@@ -49,16 +64,24 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
         justifyContent: isSmall ? 'center' : 'space-between',
         p: isTiny ? 0.5 : 1.5,
         borderRadius: '0.75rem',
-        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : isLive ? 'rgba(34, 197, 94, 0.08)' : FESTIVAL.theme.backgroundHex,
+        bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : isLive ? 'rgba(34, 197, 94, 0.08)' : festivalConfig.theme.backgroundHex,
         border: '1px solid rgba(255,255,255,0.06)',
         borderLeft,
         opacity: isPast && !isFavorite && !isConflicting ? 0.4 : 1,
         transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         cursor: 'default',
-        boxShadow: isConflicting ? '0 10px 30px rgba(239, 68, 68, 0.2)' : isLive ? `0 0 0 1px ${LIVE_HEX}, 0 10px 30px rgba(34, 197, 94, 0.25)` : isFavorite ? `0 10px 30px ${FESTIVAL.theme.glowColor}` : 'none',
+        boxShadow: isConflicting
+          ? '0 10px 30px rgba(239, 68, 68, 0.2)'
+          : isLive
+            ? `0 0 0 1px ${LIVE_HEX}, 0 10px 30px rgba(34, 197, 94, 0.25)`
+            : isFavorite
+              ? favoriteTier === 'must_see'
+                ? `0 10px 30px ${festivalConfig.theme.glowColor}`
+                : `0 10px 30px rgba(0, 195, 255, 0.15)`
+              : 'none',
         '&:hover': {
-          bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : FESTIVAL.theme.backgroundHex,
-          borderColor: isConflicting ? '#ef4444' : isFavorite ? FESTIVAL.theme.primaryHex : 'rgba(255,255,255,0.2)',
+          bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.2)' : festivalConfig.theme.backgroundHex,
+          borderColor: isConflicting ? '#ef4444' : isFavorite ? favColor : 'rgba(255,255,255,0.2)',
           zIndex: 50,
           transform: 'scale(1.02)'
         },
@@ -82,7 +105,7 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
               whiteSpace: 'nowrap',
               textTransform: 'uppercase',
               fontStyle: 'italic',
-              '&:hover': { color: FESTIVAL.theme.primaryHex }
+              '&:hover': { color: festivalConfig.theme.primaryHex }
             }}
           >
             {artist.artist}
@@ -119,13 +142,13 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
             sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', p: 0.25 }}
           >
             {isFavorite
-              ? <Heart size={isTiny ? 12 : 16} fill={FESTIVAL.theme.primaryHex} color={FESTIVAL.theme.primaryHex} />
+              ? <Heart size={isTiny ? 12 : 16} fill={favColor} color={favColor} />
               : !isTiny && <Heart size={14} color="rgba(255,255,255,0.15)" style={{ display: 'block' }} />
             }
           </Box>
           {!isSmall && (
             <Link href={`/map?stage=${encodeURIComponent(artist.stage || "")}`} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
-              <IconButton size="small" aria-label="View on map" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: FESTIVAL.theme.secondaryHex } }}>
+              <IconButton size="small" aria-label="View on map" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: festivalConfig.theme.secondaryHex } }}>
                 <MapPin size={14} />
               </IconButton>
             </Link>
@@ -138,7 +161,7 @@ export default function ArtistCard({ artist, festivalId, isFavorite, isConflicti
           sx={{
             fontSize: '0.65rem',
             fontWeight: 900,
-            color: isFavorite ? FESTIVAL.theme.primaryHex : FESTIVAL.theme.secondaryHex,
+            color: isFavorite ? favColor : festivalConfig.theme.secondaryHex,
             letterSpacing: '0.2em',
             mt: 'auto',
             opacity: 0.8
