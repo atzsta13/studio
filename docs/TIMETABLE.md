@@ -165,8 +165,7 @@ function wallMinutes(iso: string): number {
 ### Favoriting + notifications
 - Two tiers: `must_see` and `interested` (default is `interested` when tapping the heart in the timetable).
 - Stored in `localStorage` as `${festivalId}-favorites-v2`, keyed by artist ID.
-- When favoriting and notification permission is granted, a local service-worker notification is scheduled for 5 minutes before the set starts.
-- Unfavoriting cancels the scheduled notification.
+- ⚠️ **The notification scheduling code path is dead in every current browser** — `src/lib/notifications.ts` gates on the Notification Triggers API (`showTrigger`), which was removed from Chrome in 2021, so `areNotificationsSupported()` always returns false and nothing is ever scheduled. See `TASKS.md` P0.4 for the options (delete vs reimplement).
 
 ---
 
@@ -194,21 +193,19 @@ config.theme.glowColor     // used for favorite glow shadow
 
 ## Known issues / rough edges
 
-1. **Day field vs calendar date mismatch** — Appmiral's `day` labels don't reliably map to calendar weekdays. For Sziget, a day label like `"Saturday"` can contain artists on Aug 12, 13, 14, 15, and 16. The UI groups by `day` label (which is what Appmiral intended) rather than actual calendar date. This is correct behavior given the data, but can look confusing if explored analytically.
+1. **Sziget day labels are corrupted — grid shows wrong days** (audited 2026-07-04, supersedes the earlier "this is correct behavior" claim): 19 artists have a `startTime` but no `day` → invisible in the grid; 11 artists carry a wrong day label, so e.g. the "Saturday" tab mixes sets from Aug 12/14/15/16 in one board and live/past states anchor to the wrong date. Fix is data-side: derive `day` from the startTime date with 06:00 rollover. Full spec: `TASKS.md` P1.1.
 
 2. **Playwright click in inner scroll container** — Artist card links require `el.evaluate(el => el.click())` in Playwright tests because the scroll container is a `div` with `overflow-auto`, not `window`. Standard `page.locator().click()` doesn't scroll the inner container to the element first.
 
-3. **Service worker missing in dev** — `sw.js` 404s in development (Next.js dev server doesn't serve it). Works correctly in the static build deployed to GitHub Pages.
+3. **Service worker dead in production too** — audited 2026-07-04: `pwa-loader.tsx` registers `/sw.js` without the `/studio` basePath, so the SW never registers on GitHub Pages at all (offline caching and the existing update banner never run). Full diagnosis and fix: `TASKS.md` P0.1–0.3.
 
-4. **No SW update prompt** — PWA users on GitHub Pages silently receive stale deploys until the browser decides to refresh the service worker. No "new version available" UI exists.
+4. **Tiered favorites not surfaced in timetable** — The `must_see` / `interested` tiers exist in the data model and provider, but the timetable grid treats all favorites identically (same border color, same glow). There is no visual distinction between tiers in the grid.
 
-5. **Tiered favorites not surfaced in timetable** — The `must_see` / `interested` tiers exist in the data model and provider, but the timetable grid treats all favorites identically (same border color, same glow). There is no visual distinction between tiers in the grid.
+5. **Clash detection uses JS Date parsing** — Unlike `wallMinutes()`, the clash resolver parses startTime/endTime via `new Date()`. This is fine because clash detection only needs relative ordering (does A overlap B?), not absolute pixel position. But it's inconsistent with the rest of the time math.
 
-6. **Clash detection uses JS Date parsing** — Unlike `wallMinutes()`, the clash resolver parses startTime/endTime via `new Date()`. This is fine because clash detection only needs relative ordering (does A overlap B?), not absolute pixel position. But it's inconsistent with the rest of the time math.
+6. **No horizontal scroll indicator** — On days with 15+ stages, the grid scrolls horizontally but there's no visual affordance (scrollbar is hidden via `no-scrollbar`).
 
-7. **No horizontal scroll indicator** — On days with 15+ stages, the grid scrolls horizontally but there's no visual affordance (scrollbar is hidden via `no-scrollbar`).
-
-8. **Stage column min-width is fixed at 200px** — On mobile with 15 stages, this means ~3000px of horizontal scroll. No responsive collapse or "compact mode" exists.
+7. **Stage column min-width is fixed at 200px** — On mobile with 15 stages, this means ~3000px of horizontal scroll. No responsive collapse or "compact mode" exists.
 
 ---
 
