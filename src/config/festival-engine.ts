@@ -103,7 +103,6 @@ export interface FestivalConfig {
     genreBreakdown: boolean
     vibeAnalysis: boolean
     surpriseRoulette: boolean
-    setlistLinks: boolean
     secretStages: boolean
     afterMovie: boolean
 

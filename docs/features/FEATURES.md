@@ -12,7 +12,6 @@
 | `highContrast` | Accessibility | ✅ | ✅ | Android: High Contrast card implemented |
 | `vibeQuiz` | Discovery | ✅ | ✅ | Android: VibeQuizScreen + VibeResultScreen |
 | `aiRecommendations` | Discovery | ✅ | ✅ | Android: AI Scout panel in DiscoverScreen |
-| `setlistLinks` | Discovery | ✅ | ⏳ | Android: Detail screen section pending |
 | `secretStages` | Discovery | ⏳ | ⏳ | Blocked — needs unannounced location data |
 | `surpriseRoulette` | Discovery | ✅ | ✅ | Web: SerendipityModal; Android: SURPRISE button |
 | `genreBreakdown` | Discovery | ✅ | ✅ | Android: DiscoverScreen chart |

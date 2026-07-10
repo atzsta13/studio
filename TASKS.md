@@ -36,7 +36,6 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
 | `familyZone` | ❌ | ❌ | POI filter — small task: poi.json category + map filter |
 | `feedbackSystem` | ✅ | ❌ | Web card exists; Android missing |
 | `waterCounter` | ✅ | ❌ | Android ToolsScreen card missing |
-| `setlistLinks` | ✅ | ❌ | Android ArtistDetailScreen section missing |
 
 ---
 

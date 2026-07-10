@@ -58,9 +58,6 @@ Goal: reflect your taste fingerprint back at you. After you've saved 10 artists,
 **`vibeOfTheHour`**
 Goal: answer "what should I watch right now?" Uses your vibe profile against the schedule (when available) to suggest the best live act at any given moment.
 
-**`setlistLinks`**
-Goal: pre-festival research. Link out to setlist.fm so you can hear what an artist actually plays live, not just what their studio albums sound like.
-
 **`secretStages`** (blocked — needs undisclosed location data)
 Goal: create discovery excitement for unannounced acts. Gives hardcore attendees a reason to open the app repeatedly before the festival.
 

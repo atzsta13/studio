@@ -36,7 +36,6 @@ data class FestivalFeatures(
     val chargingStations: Boolean = false,
     val shuttleTimetable: Boolean = false,
     val weatherRadar: Boolean = false,
-    val setlistLinks: Boolean = false,
     val collabPlaylists: Boolean = false,
     val arStageView: Boolean = false,
     val fanPolls: Boolean = false,

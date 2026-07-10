@@ -136,7 +136,6 @@
     "chargingStations": true,
     "shuttleTimetable": true,
     "weatherRadar": true,
-    "setlistLinks": true,
     "clashResolver": true,
     "posterGenerator": true,
     "customThemes": true,

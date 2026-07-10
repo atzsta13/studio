@@ -97,7 +97,6 @@ function makeConfig(overrides: Partial<FestivalConfig> = {}): FestivalConfig {
       chargingStations: false,
       shuttleTimetable: false,
       weatherRadar: false,
-      setlistLinks: false,
       clashResolver: false,
       posterGenerator: false,
       customThemes: false,
