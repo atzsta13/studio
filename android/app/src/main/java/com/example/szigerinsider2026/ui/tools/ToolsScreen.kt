@@ -2,6 +2,7 @@ package com.example.szigerinsider2026.ui.tools
 
 import android.content.Intent
 import android.net.Uri
+import kotlinx.coroutines.launch
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -21,6 +22,8 @@ import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
+import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.AccountBalanceWallet
 import androidx.compose.material.icons.automirrored.filled.NoteAdd
@@ -54,6 +57,7 @@ import java.util.Locale
 fun ToolsScreen(navController: NavController) {
     val haptic = rememberHapticManager()
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     val vm: ToolsViewModel = viewModel(factory = ToolsViewModel.Factory(context))
     val weather by vm.weather.collectAsStateWithLifecycle()
     val isLoadingWeather by vm.isLoadingWeather.collectAsStateWithLifecycle()
@@ -168,7 +172,7 @@ fun ToolsScreen(navController: NavController) {
                             CarFinderCard()
                         }
 
-                        if (config.features.hydrationTracker) {
+                        if (config.features.hydrationTracker || config.features.waterCounter) {
                             HydrationTrackerCard()
                         }
 
@@ -257,7 +261,7 @@ fun ToolsScreen(navController: NavController) {
                             }
                         }
 
-                        if (config.features.squadLink) {
+                        if (config.features.friendFinder) {
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
@@ -354,6 +358,10 @@ fun ToolsScreen(navController: NavController) {
                                 containerColor = Color(0xFF2563EB),
                                 icon = Icons.Default.MedicalServices
                             )
+                        }
+
+                        if (config.features.feedbackSystem) {
+                            FeedbackSystemCard(snackbarHostState = snackbarHostState, scope = scope)
                         }
 
                         // Cloud Sync Card
@@ -824,6 +832,177 @@ fun FlashOverlay(onDismiss: () -> Unit) {
             Box(modifier = Modifier.size(200.dp).border(16.dp, Color.Black, CircleShape).background(Color.Transparent, CircleShape).clickable(onClick = onDismiss), contentAlignment = Alignment.Center) { Text(text = "OFF", color = Color.Black, fontSize = 56.sp, fontWeight = FontWeight.Black) }
             Spacer(modifier = Modifier.height(48.dp))
             Text(text = "FIND ME!", color = Color.Black, fontSize = 72.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-4).sp)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FeedbackSystemCard(snackbarHostState: SnackbarHostState, scope: kotlinx.coroutines.CoroutineScope) {
+    val haptic = rememberHapticManager()
+    val config = FestivalConfig.current
+    var text by remember { mutableStateOf("") }
+    var sent by remember { mutableStateOf(false) }
+
+    if (sent) {
+        Card(
+            colors = CardDefaults.cardColors(containerColor = ToxicGreen.copy(alpha = 0.1f)),
+            shape = RoundedCornerShape(32.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, ToxicGreen.copy(alpha = 0.2f), RoundedCornerShape(32.dp))
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(24.dp)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(64.dp)
+                        .clip(CircleShape)
+                        .background(ToxicGreen.copy(alpha = 0.2f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        Icons.Default.Favorite,
+                        contentDescription = null,
+                        tint = ToxicGreen,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Transmission Success",
+                    color = TextPrimary,
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Black,
+                    fontStyle = FontStyle.Italic,
+                    letterSpacing = (-1).sp
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = "The Scouts thank you. Your feedback helps make ${config.name} even more legendary.",
+                    color = TextMuted,
+                    fontSize = 14.sp,
+                    fontStyle = FontStyle.Italic,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                    lineHeight = 20.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Button(
+                    onClick = {
+                        haptic.lightTap()
+                        sent = false
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent, contentColor = ToxicGreen),
+                    border = androidx.compose.foundation.BorderStroke(1.dp, ToxicGreen.copy(alpha = 0.2f)),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Text(
+                        text = "SEND ANOTHER",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 2.sp
+                    )
+                }
+            }
+        }
+    } else {
+        Card(
+            colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
+            shape = RoundedCornerShape(32.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
+        ) {
+            Column(modifier = Modifier.padding(24.dp)) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(RoundedCornerShape(14.dp))
+                            .background(PrimaryMagenta.copy(alpha = 0.1f)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.Message,
+                            contentDescription = null,
+                            tint = PrimaryMagenta,
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
+                    Spacer(modifier = Modifier.width(16.dp))
+                    Text(
+                        text = "HQ FEEDBACK",
+                        color = PrimaryMagenta,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Black,
+                        fontStyle = FontStyle.Italic,
+                        letterSpacing = (-1).sp
+                    )
+                }
+
+                Text(
+                    text = "Found a bug? Have a suggestion? Spotted a secret stage? Report it directly to the ${config.name} Insider team.",
+                    color = TextMuted,
+                    fontSize = 14.sp,
+                    fontStyle = FontStyle.Italic,
+                    lineHeight = 20.sp,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                OutlinedTextField(
+                    value = text,
+                    onValueChange = { text = it },
+                    placeholder = { Text("Report your findings...", color = TextMuted.copy(alpha = 0.5f)) },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedContainerColor = MutedBackground.copy(alpha = 0.3f),
+                        unfocusedContainerColor = MutedBackground.copy(alpha = 0.3f),
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        focusedTextColor = TextPrimary,
+                        unfocusedTextColor = TextPrimary
+                    ),
+                    textStyle = TextStyle(fontSize = 16.sp, color = TextPrimary),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(120.dp)
+                        .padding(bottom = 16.dp)
+                )
+
+                Button(
+                    onClick = {
+                        if (text.trim().isNotEmpty()) {
+                            haptic.successBurst()
+                            scope.launch {
+                                snackbarHostState.showSnackbar("INTEL RECEIVED: Your report has been transmitted to Island HQ.")
+                            }
+                            text = ""
+                            sent = true
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryMagenta, contentColor = Color.White),
+                    shape = RoundedCornerShape(16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp)
+                ) {
+                    Icon(Icons.AutoMirrored.Filled.Send, contentDescription = null)
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "TRANSMIT INTEL",
+                        fontWeight = FontWeight.Black,
+                        letterSpacing = 1.sp
+                    )
+                }
+            }
         }
     }
 }

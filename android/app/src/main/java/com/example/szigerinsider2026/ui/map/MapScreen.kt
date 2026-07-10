@@ -185,6 +185,7 @@ fun MapScreen(navController: NavController? = null) {
         // Header Interface
         Column(
             modifier = Modifier
+                .statusBarsPadding()
                 .padding(24.dp)
                 .align(Alignment.TopStart)
         ) {

@@ -22,7 +22,7 @@ data class FestivalFeatures(
     val hydrationTracker: Boolean = false,
     val sunscreenAlert: Boolean = false,
     val batterySaver: Boolean = false,
-    val squadLink: Boolean = false,
+    val friendFinder: Boolean = false,
     val groupSchedules: Boolean = false,
     val similarArtists: Boolean = false,
     val vibeOfTheHour: Boolean = false,
@@ -55,7 +55,9 @@ data class FestivalFeatures(
     val secretStages: Boolean = false,
     val offlineBanner: Boolean = false,
     val audioMonitor: Boolean = false,
-    val highContrast: Boolean = false
+    val highContrast: Boolean = false,
+    val feedbackSystem: Boolean = false,
+    val newsBulletin: Boolean = false
 )
 
 @Serializable

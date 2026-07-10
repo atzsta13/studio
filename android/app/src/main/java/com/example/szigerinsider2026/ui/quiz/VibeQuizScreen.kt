@@ -51,8 +51,9 @@ fun VibeQuizScreen(navController: NavController, quizViewModel: VibeQuizViewMode
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .statusBarsPadding()
                 .padding(horizontal = 24.dp)
-                .padding(top = 48.dp, bottom = 120.dp)
+                .padding(top = 16.dp, bottom = 120.dp)
         ) {
             // Top bar
             Row(

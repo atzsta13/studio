@@ -29,7 +29,12 @@ object QRUtils {
 
     fun decodeSquad(uri: String): List<String>? {
         val prefix = "${FestivalConfig.DEEP_LINK_SCHEME}://squad?ids="
-        if (!uri.startsWith(prefix)) return null
-        return uri.substringAfter("ids=").split(",").filter { it.isNotEmpty() }
+        if (uri.startsWith(prefix)) {
+            return uri.substringAfter("ids=").split(",").filter { it.isNotEmpty() }
+        }
+        if (uri.isNotBlank()) {
+            return uri.split(",").map { it.trim() }.filter { it.isNotEmpty() }
+        }
+        return null
     }
 }

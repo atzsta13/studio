@@ -34,14 +34,12 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
 | `groupSchedules` | ❌ | ❌ | Compare two people's highlights locally (P2P) |
 | `customThemes` | ❌ | ❌ | Per-user theme selection |
 | `familyZone` | ❌ | ❌ | POI filter — small task: poi.json category + map filter |
-| `feedbackSystem` | ✅ | ❌ | Web card exists; Android missing |
-| `waterCounter` | ✅ | ❌ | Android ToolsScreen card missing |
 
 ---
 
 ## P3 — Web UX improvements (component is sound, these are gaps)
 
-- [ ] **Timetable mobile compact mode** — 18 Sziget stages × 200px min column ≈ 3,600px horizontal scroll on a phone. Needs a collapsed single-column / by-time list mode (Android already has a BY-TIME tab; web has nothing).
+- [x] **Timetable mobile compact mode** — 18 Sziget stages × 200px min column ≈ 3,600px horizontal scroll on a phone. Needs a collapsed single-column / by-time list mode (Android already has a BY-TIME tab; web has nothing).
 - [x] **Auto-select the live day** — `timetable-view.tsx` always opens on day tab 0; during the festival it should open on today.
 - [x] **Timetable tier distinction** — `must_see` vs `interested` favorites render identically in the grid.
 - [x] **Horizontal-scroll affordance** — scrollbar is hidden (`no-scrollbar`); nothing signals more stages to the right.
@@ -70,7 +68,7 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
   - [x] **Fake streaming removed.** No more blocking `generateResponse()` + 30ms word-by-word replay; the real response is emitted as one chunk.
   - [ ] **Real token streaming (optional).** For an actual typing effect, switch to `generateResponseAsync` (tasks-genai 0.10.14) — left undone deliberately: cannot be runtime-verified without a device + the 1.2GB model.
   - [ ] **Model hosting.** Download URL is `config.productionUrl + "/ai/gemma4-2b-android.bin"` — nobody hosts a 1.2GB model there and GitHub Pages can't (100MB limit). Only the adb-push "SCAN LOCAL" path works. Decide hosting or declare it a power-user feature.
-  - [ ] **Acoustic Scout is thin.** `AcousticRepository` maps mic RMS + zero-crossings to ~9 canned sentences (3 volume × 3 energy) — it can't identify a set. It now at least feeds through the schedule-aware candidate context, but real "who's playing now" needs time-based retrieval (filter candidates to the current slot). Reframe or wire up.
+  - [x] **Location Scout (refactored from Acoustic Scout).** Replaced microphone recording with real GPS location retrieval + nearest-stage timetable mapping. Discards mic permission requirements and determines who is currently performing on the nearest stage with offline/test fallback.
 - [ ] **Accessibility audit** — no `contentDescription` pass has ever been done.
 - [ ] **ArtistViewModel tests** — needs Room in-memory DB (complex without Robolectric).
 - [ ] **ToolsViewModel tests** — currently would make real Open-Meteo calls; needs a network fake.

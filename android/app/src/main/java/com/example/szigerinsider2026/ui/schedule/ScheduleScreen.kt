@@ -339,7 +339,7 @@ fun ScheduleScreen(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 BrutalistBadge(
-                                    text = "SCAN SQUAD",
+                                    text = "LINK SQUAD",
                                     color = CyanPulse,
                                     modifier = Modifier.clickable { showScanner = true }
                                 )
@@ -390,7 +390,7 @@ fun ScheduleScreen(
     }
 
     if (showScanner) {
-        SquadScannerDialog(
+        SquadLinkEntryDialog(
             onIdsDetected = { ids ->
                 viewModel.updateSquadFavorites(ids)
                 showScanner = false
@@ -1007,22 +1007,63 @@ private fun ArtistDetailSheet(artist: Artist, isFavorite: Boolean, onToggleFavor
     }
 }
 
-@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)
 @Composable
-private fun SquadScannerDialog(onIdsDetected: (List<String>) -> Unit, onDismiss: () -> Unit) {
-    val context = androidx.compose.ui.platform.LocalContext.current
-    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
-    val cameraProviderFuture = remember { androidx.camera.lifecycle.ProcessCameraProvider.getInstance(context) }
-    val scanner = remember { com.google.mlkit.vision.barcode.BarcodeScanning.getClient() }
+private fun SquadLinkEntryDialog(onIdsDetected: (List<String>) -> Unit, onDismiss: () -> Unit) {
+    var input by remember { mutableStateOf("") }
+    val haptic = rememberHapticManager()
 
     androidx.compose.ui.window.Dialog(onDismissRequest = onDismiss) {
-        Card(modifier = Modifier.fillMaxWidth().height(480.dp).padding(24.dp), shape = RoundedCornerShape(28.dp), colors = CardDefaults.cardColors(containerColor = MutedBackground), border = androidx.compose.foundation.BorderStroke(1.dp, CyanPulse.copy(alpha = 0.2f))) {
-            Column(modifier = Modifier.fillMaxSize()) {
-                Box(modifier = Modifier.weight(1f)) {
-                    androidx.compose.ui.viewinterop.AndroidView(factory = { ctx -> androidx.camera.view.PreviewView(ctx).apply { scaleType = androidx.camera.view.PreviewView.ScaleType.FILL_CENTER } }, modifier = Modifier.fillMaxSize(), update = { previewView -> cameraProviderFuture.addListener({ try { val cameraProvider = cameraProviderFuture.get(); val preview = androidx.camera.core.Preview.Builder().build().apply { setSurfaceProvider(previewView.surfaceProvider) }; val imageAnalysis = androidx.camera.core.ImageAnalysis.Builder().setBackpressureStrategy(androidx.camera.core.ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build(); imageAnalysis.setAnalyzer(java.util.concurrent.Executors.newSingleThreadExecutor()) { imageProxy -> val mediaImage = imageProxy.image; if (mediaImage != null) { val image = com.google.mlkit.vision.common.InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees); scanner.process(image).addOnSuccessListener { barcodes -> for (barcode in barcodes) { barcode.rawValue?.let { raw -> val ids = com.example.szigerinsider2026.ui.utils.QRUtils.decodeSquad(raw); if (ids != null) { onIdsDetected(ids) } } } }.addOnCompleteListener { imageProxy.close() } } else { imageProxy.close() } }; cameraProvider.unbindAll(); cameraProvider.bindToLifecycle(lifecycleOwner, androidx.camera.core.CameraSelector.DEFAULT_BACK_CAMERA, preview, imageAnalysis) } catch (e: Exception) { e.printStackTrace() } }, androidx.core.content.ContextCompat.getMainExecutor(context)) })
-                    Box(modifier = Modifier.fillMaxSize().padding(40.dp).border(2.dp, CyanPulse.copy(alpha = 0.4f), RoundedCornerShape(12.dp)))
+        Card(
+            modifier = Modifier.fillMaxWidth().padding(24.dp),
+            shape = RoundedCornerShape(28.dp),
+            colors = CardDefaults.cardColors(containerColor = MutedBackground),
+            border = androidx.compose.foundation.BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+        ) {
+            Column(modifier = Modifier.padding(24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                BrutalistHeader(title = "LINK SQUAD", subtitle = "Paste your friend's squad link or code to show their schedule.")
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                OutlinedTextField(
+                    value = input,
+                    onValueChange = { input = it },
+                    placeholder = { Text("Paste link or artist IDs...", color = TextMuted, fontSize = 13.sp) },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = CyanPulse,
+                        unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                        focusedContainerColor = OLEDBlack.copy(alpha = 0.5f),
+                        unfocusedContainerColor = OLEDBlack.copy(alpha = 0.3f)
+                    ),
+                    singleLine = true
+                )
+                
+                Spacer(modifier = Modifier.height(24.dp))
+                
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    BrutalistButton(
+                        text = "CANCEL",
+                        onClick = onDismiss,
+                        color = Color.White.copy(alpha = 0.05f),
+                        textColor = Color.White,
+                        modifier = Modifier.weight(1f)
+                    )
+                    
+                    BrutalistButton(
+                        text = "LINK",
+                        onClick = {
+                            val decoded = com.example.szigerinsider2026.ui.utils.QRUtils.decodeSquad(input.trim())
+                            if (decoded != null) {
+                                haptic.successBurst()
+                                onIdsDetected(decoded)
+                            }
+                        },
+                        color = CyanPulse,
+                        textColor = OLEDBlack,
+                        modifier = Modifier.weight(1f),
+                        enabled = input.isNotBlank()
+                    )
                 }
-                Box(modifier = Modifier.fillMaxWidth().background(MutedBackground).clickable { onDismiss() }.padding(16.dp), contentAlignment = Alignment.Center) { Text("CANCEL", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 12.sp) }
             }
         }
     }

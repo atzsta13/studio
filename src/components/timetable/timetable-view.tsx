@@ -42,6 +42,13 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     const hasInitializedRef = useRef(false);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
+    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.innerWidth < 768) {
+            setViewMode('list');
+        }
+    }, []);
 
     useEffect(() => {
         setNow(new Date());
@@ -140,6 +147,29 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         if (!trimmedQuery) return stageFiltered;
         return stageFiltered.filter(item => item.artist.toLowerCase().includes(trimmedQuery));
     }, [scheduled, activeDay, showFavoritesOnly, favorites, hiddenStages, trimmedQuery]);
+
+    const listLineup = useMemo(() => {
+        return [...dailyLineup].sort((a, b) => {
+            const startA = wallMinutes(a.startTime);
+            const startB = wallMinutes(b.startTime);
+            if (startA !== startB) return startA - startB;
+            return a.stage.localeCompare(b.stage);
+        });
+    }, [dailyLineup]);
+
+    const groupedList = useMemo(() => {
+        const groups: { time: string; items: ScheduledItem[] }[] = [];
+        listLineup.forEach(item => {
+            const timeStr = item.startTime.slice(11, 16);
+            let existing = groups.find(g => g.time === timeStr);
+            if (!existing) {
+                existing = { time: timeStr, items: [] };
+                groups.push(existing);
+            }
+            existing.items.push(item);
+        });
+        return groups;
+    }, [listLineup]);
 
     const checkScroll = useCallback(() => {
         const el = scrollRef.current;
@@ -245,6 +275,12 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                             </button>
                         )}
                         <button
+                            onClick={() => setViewMode(m => m === 'grid' ? 'list' : 'grid')}
+                            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all whitespace-nowrap"
+                        >
+                            {viewMode === 'grid' ? 'LIST' : 'GRID'}
+                        </button>
+                        <button
                             onClick={() => setShowFavoritesOnly(v => !v)}
                             className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 transition-all whitespace-nowrap ${showFavoritesOnly
                                 ? 'bg-primary border-primary text-primary-foreground'
@@ -314,6 +350,47 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     <Search size={32} className="opacity-20" />
                     <span className="text-[11px] font-black uppercase tracking-widest">No artists match “{query.trim()}”</span>
                     <span className="text-[10px] text-muted-foreground/50">Try another name or a different day</span>
+                </div>
+            ) : viewMode === 'list' ? (
+                /* List View */
+                <div className="flex flex-col gap-6 px-4 py-4 overflow-y-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
+                    {groupedList.map(group => (
+                        <div key={group.time} className="flex gap-4 items-start">
+                            {/* Time Gutter */}
+                            <div className="w-12 shrink-0 sticky top-0 py-1 bg-background/90 z-10">
+                                <span className="text-[12px] font-black text-foreground/80 tabular-nums">
+                                    {group.time}
+                                </span>
+                            </div>
+                            {/* Cards Column */}
+                            <div className="flex-1 flex flex-col gap-4">
+                                {group.items.map(item => {
+                                    const startWall = wallMinutes(item.startTime);
+                                    const endWall = wallMinutes(item.endTime);
+                                    const isLive = nowWallMinutes !== null && startWall <= nowWallMinutes && nowWallMinutes < endWall;
+                                    const isPast = nowWallMinutes !== null && endWall <= nowWallMinutes;
+                                    return (
+                                        <div key={item.id} className="flex flex-col gap-1 w-full">
+                                            <div className="text-[8px] font-black tracking-widest text-primary/80 uppercase">
+                                                {item.stage}
+                                            </div>
+                                            <ArtistCard
+                                                artist={item}
+                                                festivalId={festivalId}
+                                                isFavorite={favorites.has(item.id)}
+                                                favoriteTier={getFavoriteTier(item.id)}
+                                                isConflicting={conflicts.has(item.id)}
+                                                isLive={isLive}
+                                                isPast={isPast}
+                                                onToggleFavorite={() => handleToggleFavorite(item)}
+                                                positionRelative={true}
+                                            />
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
                 </div>
             ) : (
             <div className="relative">

@@ -27,8 +27,8 @@ import androidx.compose.material.icons.filled.BubbleChart
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material.icons.outlined.MusicNote
+import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -75,7 +75,7 @@ fun DiscoverScreen(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
-            viewModel?.startAcousticScout()
+            viewModel?.startLocationScout()
         }
     }
     val db = remember { AppDatabase.getDatabase(context) }
@@ -260,12 +260,12 @@ fun DiscoverScreen(
                             onScanLocal = { discoverViewModel.scanForLocalModel() },
                             onSearch = { discoverViewModel.runLocalScout(it) },
                             onListen = { 
-                                if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                                    discoverViewModel.startAcousticScout() 
-                                } else {
-                                    permissionLauncher.launch(Manifest.permission.RECORD_AUDIO)
-                                }
-                            },
+                                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                                     discoverViewModel.startLocationScout() 
+                                 } else {
+                                     permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                                 }
+                             },
                             onClear = { discoverViewModel.clearLocalScout() }
                         )
                     )
@@ -631,7 +631,7 @@ fun LocalAiScoutCard(
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
                                 Spacer(modifier = Modifier.width(12.dp))
-                                Text("ANALYZING ACOUSTIC VIBE...", color = CyanPulse, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
+                                Text("RESOLVING GPS POSITION...", color = CyanPulse, fontSize = 12.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
                             }
                         }
                     } else {
@@ -654,7 +654,7 @@ fun LocalAiScoutCard(
                                         CircularProgressIndicator(color = CyanPulse, modifier = Modifier.size(20.dp))
                                     } else {
                                         IconButton(onClick = { actions.onSearch(prompt) }, enabled = prompt.isNotBlank()) {
-                                            Icon(Icons.Default.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
+                                            Icon(Icons.AutoMirrored.Filled.Send, contentDescription = "Search", tint = if (prompt.isNotBlank()) ToxicGreen else TextMuted)
                                         }
                                     }
                                 }
@@ -668,7 +668,7 @@ fun LocalAiScoutCard(
                                     .background(ToxicGreen.copy(alpha = 0.1f))
                                     .border(1.dp, ToxicGreen.copy(alpha = 0.3f), RoundedCornerShape(16.dp))
                             ) {
-                                Icon(Icons.Outlined.MusicNote, contentDescription = "Acoustic Scout", tint = ToxicGreen, modifier = Modifier.size(24.dp))
+                                Icon(Icons.Default.MyLocation, contentDescription = "GPS Scout", tint = ToxicGreen, modifier = Modifier.size(24.dp))
                             }
                         }
                     }

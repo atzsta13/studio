@@ -89,6 +89,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-10 | Android feature pass (Gemini, verified): implemented `waterCounter`/`hydrationTracker` + `feedbackSystem` cards on Android (web parity closed); replaced the mic-based Acoustic Scout with a GPS **Location Scout** (nearest-stage → "who's playing now") and removed the `RECORD_AUDIO`/`CAMERA` permissions + CameraX/ML Kit deps (latent constraint violations); edge-to-edge insets in Navigation; web `ArtistImage` now falls back to an initial-letter placeholder on broken hotlinks. Both platforms green |
 | 2026-07-10 | Build perf: enabled Gradle parallel + build cache + configuration cache and raised daemon heap 2G→4G (clean build 41s→3s, incremental ~8-20s→1s on an 8-core machine); `next dev` now uses Turbopack. Production web build stays on webpack (Turbopack only ~4% there — cost is static-export prerender, not compile) |
 | 2026-07-10 | Removed the `setlistLinks` feature entirely (UI-only link-out to setlist.fm, no data, Android port never built) — component, flag, types, all configs, and docs. No festival data touched |
 | 2026-07-10 | Paused GitHub Pages auto-deploy (site under maintenance) — commented out the workflow `push` trigger; manual `workflow_dispatch` still available |

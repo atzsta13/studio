@@ -75,10 +75,6 @@ dependencies {
     implementation("androidx.glance:glance-material3:1.1.1")
 
     // QR & Squad Link
-    implementation(libs.androidx.camera.camera2)
-    implementation(libs.androidx.camera.lifecycle)
-    implementation(libs.androidx.camera.view)
-    implementation(libs.mlkit.barcode.scanning)
     implementation(libs.zxing.core)
     implementation(libs.google.ai.edge.genai)
 

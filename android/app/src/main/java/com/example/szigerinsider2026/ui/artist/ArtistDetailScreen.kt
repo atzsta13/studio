@@ -154,7 +154,8 @@ fun ArtistDetailScreen(
                     // Back
                     Box(
                         modifier = Modifier
-                            .padding(top = 48.dp, start = 16.dp)
+                            .statusBarsPadding()
+                            .padding(top = 16.dp, start = 16.dp)
                             .size(44.dp)
                             .clip(CircleShape)
                             .background(Color.Black.copy(alpha = 0.55f))
@@ -168,7 +169,8 @@ fun ArtistDetailScreen(
                     Box(
                         modifier = Modifier
                             .align(Alignment.TopEnd)
-                            .padding(top = 48.dp, end = 16.dp)
+                            .statusBarsPadding()
+                            .padding(top = 16.dp, end = 16.dp)
                             .size(44.dp)
                             .clip(CircleShape)
                             .background(Color.Black.copy(alpha = 0.55f))

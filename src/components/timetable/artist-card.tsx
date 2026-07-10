@@ -16,6 +16,7 @@ interface ArtistCardProps {
   isLive?: boolean;
   isPast?: boolean;
   onToggleFavorite: () => void;
+  positionRelative?: boolean;
 }
 
 const LIVE_HEX = '#22c55e';
@@ -28,7 +29,8 @@ export default function ArtistCard({
   isConflicting,
   isLive = false,
   isPast = false,
-  onToggleFavorite
+  onToggleFavorite,
+  positionRelative = false
 }: ArtistCardProps) {
   if (!artist.startTime || !artist.endTime) return null;
 
@@ -57,8 +59,10 @@ export default function ArtistCard({
   return (
     <Box
       sx={{
-        position: 'absolute',
-        inset: '1px',
+        position: positionRelative ? 'relative' : 'absolute',
+        inset: positionRelative ? '0' : '1px',
+        width: positionRelative ? '100%' : 'auto',
+        minHeight: positionRelative ? '76px' : 'auto',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: isSmall ? 'center' : 'space-between',

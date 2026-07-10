@@ -123,9 +123,14 @@ fun AppNavigation() {
                     FluidBottomNavigation(navController = navController)
                 }
             }
-        }
+        },
+        contentWindowInsets = WindowInsets(0, 0, 0, 0)
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = innerPadding.calculateBottomPadding())
+        ) {
             com.example.szigerinsider2026.ui.components.OfflineBanner()
             NavHost(
                 navController = navController,

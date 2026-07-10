@@ -45,11 +45,11 @@ fun FoodScreen() {
     val activeTags by vm.activeTags.collectAsStateWithLifecycle()
 
     LazyColumn(
-        modifier = Modifier.fillMaxSize().background(OLEDBlack),
+        modifier = Modifier.fillMaxSize().background(OLEDBlack).statusBarsPadding(),
         contentPadding = PaddingValues(bottom = 120.dp)
     ) {
         item {
-            Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 48.dp, bottom = 8.dp)) {
+            Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 8.dp)) {
                 Text(
                     "FOOD & DRINK",
                     color = TextPrimary, fontSize = 40.sp, fontWeight = FontWeight.Black,

@@ -16,7 +16,6 @@ class DiscoverViewModel(
 ) : ViewModel() {
 
     private val localScoutRepository = context?.let { com.example.szigerinsider2026.data.repository.LocalScoutRepository(it) }
-    private val acousticRepository = context?.let { com.example.szigerinsider2026.data.repository.AcousticRepository(it) }
 
     private val _allArtists = MutableStateFlow<List<Artist>>(emptyList())
     
@@ -133,17 +132,61 @@ class DiscoverViewModel(
         localScoutRepository?.scanForLocalModel()
     }
 
-    fun startAcousticScout() {
+    fun startLocationScout() {
         viewModelScope.launch {
-            if (acousticRepository == null) return@launch
             _isListening.value = true
             try {
-                val signature = acousticRepository.captureAcousticSignature()
-                runLocalScout("I am at a stage listening to this: $signature. Based on the lineup, who is performing and what is their vibe?")
+                val loc = getLocation()
+                if (loc == null) {
+                    runLocalScout("I am trying to find who is playing near me, but GPS location is unavailable. Based on the lineup, who is performing right now?")
+                    return@launch
+                }
+                val nearestStageName = findNearestStage(loc.latitude, loc.longitude)
+                if (nearestStageName == null) {
+                    runLocalScout("I am at the festival, but I couldn't resolve the nearest stage. Based on the lineup, who is performing right now?")
+                    return@launch
+                }
+                runLocalScout("I am currently near the '$nearestStageName'. Who is performing on this stage right now, what is their style/vibe, and who is playing next?")
             } finally {
                 _isListening.value = false
             }
         }
+    }
+
+    private fun getLocation(): android.location.Location? {
+        val ctx = context ?: return null
+        val lm = ctx.getSystemService(Context.LOCATION_SERVICE) as android.location.LocationManager
+        return try {
+            lm.getLastKnownLocation(android.location.LocationManager.GPS_PROVIDER)
+                ?: lm.getLastKnownLocation(android.location.LocationManager.NETWORK_PROVIDER)
+        } catch (_: SecurityException) { null }
+    }
+
+    private suspend fun findNearestStage(userLat: Double, userLng: Double): String? {
+        val ctx = context ?: return null
+        val config = FestivalConfig.current
+        val festLat = config.location.lat
+        val festLng = config.location.lng
+        
+        val deltaLat = userLat - festLat
+        val deltaLng = userLng - festLng
+        
+        // If user is more than ~10km away from festival center, simulate they are right on the grounds (e.g. near Main Stage)
+        val isFar = Math.abs(deltaLat) > 0.1 || Math.abs(deltaLng) > 0.1
+        val userMapX = if (isFar) 45.0 else (50.0 + deltaLng * 5000.0).coerceIn(0.0, 100.0)
+        val userMapY = if (isFar) 50.0 else (50.0 - deltaLat * 7400.0).coerceIn(0.0, 100.0)
+        
+        val poiRepo = com.example.szigerinsider2026.data.repository.POIRepository(ctx)
+        val stages = poiRepo.getPOIs().filter { it.type == "stage" && it.mapCoords != null }
+        if (stages.isEmpty()) return null
+        
+        val nearestStage = stages.minByOrNull { stage ->
+            val dx = userMapX - stage.mapCoords!!.x
+            val dy = userMapY - stage.mapCoords!!.y
+            dx * dx + dy * dy
+        }
+        
+        return nearestStage?.name
     }
 
     fun runLocalScout(prompt: String) {
