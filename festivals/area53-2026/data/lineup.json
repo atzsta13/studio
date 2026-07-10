@@ -1,100 +1,102 @@
 [
   {
     "id": "a53-2026-th-1",
-    "artist": "In Flames",
+    "artist": "Saxon",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T22:30:00+02:00",
-    "endTime": "2026-07-17T00:00:00+02:00",
-    "countryCode": "SE",
+    "startTime": "2026-07-16T21:30:00+02:00",
+    "endTime": "2026-07-16T23:00:00+02:00",
+    "countryCode": "GB",
     "genres": [
-      "MELODIC DEATH METAL"
+      "HEAVY METAL"
     ],
     "vibes": [
-      "INTENSE",
-      "MELODIC",
-      "LEGENDARY"
+      "EPIC",
+      "CLASSIC",
+      "POWER"
     ],
     "isHeadliner": true,
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/7e/0d/d6/mzi.erqdieqp.jpg/600x600bb.jpg"
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a5/ee/c2/a5eec22b-4d17-0338-7e78-487a7fae169d/5054197747694.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-2",
-    "artist": "Pain",
+    "artist": "Cavalera",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T20:45:00+02:00",
-    "endTime": "2026-07-16T22:00:00+02:00",
-    "countryCode": "SE",
+    "startTime": "2026-07-16T19:50:00+02:00",
+    "endTime": "2026-07-16T20:55:00+02:00",
+    "countryCode": "BR",
     "genres": [
-      "INDUSTRIAL METAL"
+      "THRASH METAL",
+      "GROOVE METAL"
     ],
+    "description": "Chaos A.D. - Sepultura classics live.",
     "vibes": [
-      "CYBER",
-      "HEAVY",
-      "PARTY"
+      "LEGENDARY",
+      "INTENSE",
+      "OLD-SCHOOL"
     ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/48/da/5c48daee-d1ce-a5cd-e271-a3600213ba34/artwork.jpg/600x600bb.jpg"
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/e6/e5/78/mzi.rmhvwpii.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-3",
-    "artist": "Bleed From Within",
+    "artist": "Visions Of Atlantis",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T19:15:00+02:00",
-    "endTime": "2026-07-16T20:15:00+02:00",
-    "countryCode": "GB",
-    "genres": [
-      "METALCORE"
-    ],
-    "vibes": [
-      "HEAVY",
-      "MODERN"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/c5/ba/76c5ba35-3e43-a0ac-3177-3ae4d56907cb/886448350705.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-th-4",
-    "artist": "Voivod",
-    "stage": "Main Stage",
-    "day": "Thursday",
-    "startTime": "2026-07-16T17:45:00+02:00",
-    "endTime": "2026-07-16T18:45:00+02:00",
-    "countryCode": "CA",
-    "genres": [
-      "PROG THRASH"
-    ],
-    "vibes": [
-      "TECHNICAL",
-      "WEIRD",
-      "CULT"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/27/b3/9f27b32a-1267-ddcf-a761-5bc1c0a31d95/823000447183.png/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-th-5",
-    "artist": "Ad Infinitum",
-    "stage": "Main Stage",
-    "day": "Thursday",
-    "startTime": "2026-07-16T16:30:00+02:00",
-    "endTime": "2026-07-16T17:15:00+02:00",
-    "countryCode": "CH",
+    "startTime": "2026-07-16T18:30:00+02:00",
+    "endTime": "2026-07-16T19:25:00+02:00",
+    "countryCode": "AT",
     "genres": [
       "SYMPHONIC METAL"
     ],
     "vibes": [
       "EPIC",
+      "MELODIC",
+      "OCEAN"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/26/a5/e8/26a5e867-924e-d463-5ee9-225f35e6d4ca/810135715836.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-th-4",
+    "artist": "Hiraes",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-07-16T17:20:00+02:00",
+    "endTime": "2026-07-16T18:05:00+02:00",
+    "countryCode": "DE",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
       "MELODIC"
     ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f5/af/a5/f5afa5c3-656b-79f2-c51e-29ffe129f9bb/840588150496.jpg/600x600bb.jpg"
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/35/08/a3350820-1cfd-56d5-01bf-dfdd2b68cabf/810135715362.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-th-5",
+    "artist": "Firewind",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-07-16T16:10:00+02:00",
+    "endTime": "2026-07-16T16:55:00+02:00",
+    "countryCode": "GR",
+    "genres": [
+      "POWER METAL"
+    ],
+    "vibes": [
+      "POWER",
+      "GUITAR-SHREDDING"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/02/e1/eb/02e1eb05-cf5a-78e0-75d7-05618ee5f314/cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-th-6",
     "artist": "Agathodaimon",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T15:15:00+02:00",
-    "endTime": "2026-07-16T16:00:00+02:00",
+    "startTime": "2026-07-16T15:10:00+02:00",
+    "endTime": "2026-07-16T15:50:00+02:00",
     "countryCode": "DE",
     "genres": [
       "DARK METAL",
@@ -108,45 +110,61 @@
   },
   {
     "id": "a53-2026-th-7",
-    "artist": "Never Obey Again",
+    "artist": "Igel vs Shark",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T14:15:00+02:00",
-    "endTime": "2026-07-16T14:45:00+02:00",
-    "countryCode": "IT",
+    "startTime": "2026-07-16T14:10:00+02:00",
+    "endTime": "2026-07-16T14:50:00+02:00",
+    "countryCode": "AT",
     "genres": [
-      "MODERN METAL"
+      "ROCK 'N' ROLL"
     ],
     "vibes": [
-      "MODERN",
-      "LOUD"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/50/d7/b1/50d7b1b5-c777-7c21-2fcf-9bd186bfad9a/cover.jpg/600x600bb.jpg"
+      "HIGH-VOLTAGE",
+      "LOUD",
+      "LOCAL-HEROES"
+    ]
   },
   {
     "id": "a53-2026-th-8",
-    "artist": "Watch Them Fail",
+    "artist": "Patriarcha",
     "stage": "Main Stage",
     "day": "Thursday",
-    "startTime": "2026-07-16T13:15:00+02:00",
-    "endTime": "2026-07-16T13:45:00+02:00",
+    "startTime": "2026-07-16T13:20:00+02:00",
+    "endTime": "2026-07-16T13:50:00+02:00",
     "countryCode": "AT",
     "genres": [
-      "METALCORE"
+      "DEATH METAL",
+      "THRASH"
     ],
     "vibes": [
-      "LOCAL-HEROES",
-      "HEAVY"
+      "HEAVY",
+      "OLD-SCHOOL"
+    ]
+  },
+  {
+    "id": "a53-2026-th-9",
+    "artist": "Matter of Taste",
+    "stage": "Main Stage",
+    "day": "Thursday",
+    "startTime": "2026-07-16T12:30:00+02:00",
+    "endTime": "2026-07-16T13:00:00+02:00",
+    "countryCode": "AT",
+    "genres": [
+      "METAL"
     ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/60/2c/3e/602c3e6a-8839-6607-1f15-33adc2c2d128/196925226608.jpg/600x600bb.jpg"
+    "vibes": [
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/07/c0/6a/07c06a16-aae2-73ac-1e5c-cd74ff15c59d/5059137225782_cover.jpg/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-1",
     "artist": "Arch Enemy",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "2026-07-17T22:30:00+02:00",
-    "endTime": "2026-07-18T00:00:00+02:00",
+    "startTime": "2026-07-17T21:30:00+02:00",
+    "endTime": "2026-07-17T23:00:00+02:00",
     "countryCode": "SE",
     "genres": [
       "MELODIC DEATH METAL"
@@ -164,8 +182,8 @@
     "artist": "Dirkschneider",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "2026-07-17T20:45:00+02:00",
-    "endTime": "2026-07-17T22:00:00+02:00",
+    "startTime": "2026-07-17T19:50:00+02:00",
+    "endTime": "2026-07-17T20:55:00+02:00",
     "countryCode": "DE",
     "genres": [
       "HEAVY METAL"
@@ -183,8 +201,8 @@
     "artist": "Self Deception",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "2026-07-17T19:15:00+02:00",
-    "endTime": "2026-07-17T20:15:00+02:00",
+    "startTime": "2026-07-17T18:30:00+02:00",
+    "endTime": "2026-07-17T19:25:00+02:00",
     "countryCode": "SE",
     "genres": [
       "MODERN ROCK"
@@ -197,45 +215,29 @@
   },
   {
     "id": "a53-2026-fr-4",
-    "artist": "Hiraes",
+    "artist": "Voivod",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "2026-07-17T17:45:00+02:00",
-    "endTime": "2026-07-17T18:45:00+02:00",
-    "countryCode": "DE",
+    "startTime": "2026-07-17T17:20:00+02:00",
+    "endTime": "2026-07-17T18:05:00+02:00",
+    "countryCode": "CA",
     "genres": [
-      "MELODIC DEATH METAL"
+      "PROG THRASH"
     ],
     "vibes": [
-      "HEAVY",
-      "MELODIC"
+      "TECHNICAL",
+      "WEIRD",
+      "CULT"
     ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a3/35/08/a3350820-1cfd-56d5-01bf-dfdd2b68cabf/810135715362.jpg/600x600bb.jpg"
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/27/b3/9f27b32a-1267-ddcf-a761-5bc1c0a31d95/823000447183.png/600x600bb.jpg"
   },
   {
     "id": "a53-2026-fr-5",
-    "artist": "Firewind",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T16:30:00+02:00",
-    "endTime": "2026-07-17T17:15:00+02:00",
-    "countryCode": "GR",
-    "genres": [
-      "POWER METAL"
-    ],
-    "vibes": [
-      "POWER",
-      "GUITAR-SHREDDING"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/02/e1/eb/02e1eb05-cf5a-78e0-75d7-05618ee5f314/cover.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-fr-6",
     "artist": "Kontrust",
     "stage": "Main Stage",
     "day": "Friday",
-    "startTime": "2026-07-17T15:15:00+02:00",
-    "endTime": "2026-07-17T16:00:00+02:00",
+    "startTime": "2026-07-17T16:10:00+02:00",
+    "endTime": "2026-07-17T16:55:00+02:00",
     "countryCode": "AT",
     "genres": [
       "CROSSOVER"
@@ -248,99 +250,12 @@
     "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/6d/c0/26/6dc026b3-587f-c84b-9098-593da01cb995/191018548247.jpg/600x600bb.jpg"
   },
   {
-    "id": "a53-2026-fr-7",
-    "artist": "Vinegar Hill",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T14:15:00+02:00",
-    "endTime": "2026-07-17T14:45:00+02:00",
-    "countryCode": "AT",
-    "genres": [
-      "MELODIC DEATH METAL"
-    ],
-    "vibes": [
-      "HEAVY",
-      "LOCAL-HEROES"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/8c/a9/9f8ca94c-4e24-2f43-2571-ea437d6f4670/cover.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-fr-8",
-    "artist": "Brutal Sphincter",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T13:15:00+02:00",
-    "endTime": "2026-07-17T13:45:00+02:00",
-    "countryCode": "BE",
-    "genres": [
-      "GOREGRIND"
-    ],
-    "vibes": [
-      "BRUTAL",
-      "PARTY"
-    ]
-  },
-  {
-    "id": "a53-2026-fr-9",
-    "artist": "All Will Know",
-    "stage": "Main Stage",
-    "day": "Friday",
-    "startTime": "2026-07-17T12:30:00+02:00",
-    "endTime": "2026-07-17T13:00:00+02:00",
-    "countryCode": "DE",
-    "genres": [
-      "MELODIC DEATH METAL"
-    ],
-    "vibes": [
-      "MELODIC",
-      "HEAVY"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/be/65/b0be65b5-e08a-51af-d0f1-0e4f49af30ff/8721416157615_cover.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-sa-1",
-    "artist": "Saxon",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T22:30:00+02:00",
-    "endTime": "2026-07-19T00:00:00+02:00",
-    "countryCode": "GB",
-    "genres": [
-      "HEAVY METAL"
-    ],
-    "vibes": [
-      "EPIC",
-      "CLASSIC",
-      "POWER"
-    ],
-    "isHeadliner": true,
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/a5/ee/c2/a5eec22b-4d17-0338-7e78-487a7fae169d/5054197747694.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-sa-2",
-    "artist": "Visions Of Atlantis",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T20:45:00+02:00",
-    "endTime": "2026-07-18T22:00:00+02:00",
-    "countryCode": "AT",
-    "genres": [
-      "SYMPHONIC METAL"
-    ],
-    "vibes": [
-      "EPIC",
-      "MELODIC",
-      "OCEAN"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/26/a5/e8/26a5e867-924e-d463-5ee9-225f35e6d4ca/810135715836.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-sa-3",
+    "id": "a53-2026-fr-6",
     "artist": "Temptations For The Weak",
     "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T19:15:00+02:00",
-    "endTime": "2026-07-18T20:15:00+02:00",
+    "day": "Friday",
+    "startTime": "2026-07-17T15:10:00+02:00",
+    "endTime": "2026-07-17T15:50:00+02:00",
     "countryCode": "BE",
     "genres": [
       "METALCORE"
@@ -352,101 +267,225 @@
     "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/44/e1/2c/44e12c24-4432-6853-58c5-22a6210e964b/artwork.jpg/600x600bb.jpg"
   },
   {
-    "id": "a53-2026-sa-4",
-    "artist": "Igel vs Shark",
+    "id": "a53-2026-fr-7",
+    "artist": "All Will Know",
     "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T17:45:00+02:00",
-    "endTime": "2026-07-18T18:45:00+02:00",
-    "countryCode": "AT",
+    "day": "Friday",
+    "startTime": "2026-07-17T14:10:00+02:00",
+    "endTime": "2026-07-17T14:50:00+02:00",
+    "countryCode": "DE",
     "genres": [
-      "ROCK 'N' ROLL"
+      "MELODIC DEATH METAL"
     ],
     "vibes": [
-      "HIGH-VOLTAGE",
-      "LOUD",
-      "LOCAL-HEROES"
-    ]
+      "MELODIC",
+      "HEAVY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b0/be/65/b0be65b5-e08a-51af-d0f1-0e4f49af30ff/8721416157615_cover.jpg/600x600bb.jpg"
   },
   {
-    "id": "a53-2026-sa-5",
-    "artist": "Patriarcha",
+    "id": "a53-2026-fr-8",
+    "artist": "The Devastation",
     "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T16:30:00+02:00",
-    "endTime": "2026-07-18T17:15:00+02:00",
+    "day": "Friday",
+    "startTime": "2026-07-17T13:20:00+02:00",
+    "endTime": "2026-07-17T13:50:00+02:00",
     "countryCode": "AT",
     "genres": [
-      "DEATH METAL",
-      "THRASH"
+      "OCCULT METAL",
+      "HARD ROCK"
     ],
-    "vibes": [
-      "HEAVY",
-      "OLD-SCHOOL"
-    ]
-  },
-  {
-    "id": "a53-2026-sa-6",
-    "artist": "Matter of Taste",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T15:15:00+02:00",
-    "endTime": "2026-07-18T16:00:00+02:00",
-    "countryCode": "AT",
-    "genres": [
-      "METAL"
-    ],
-    "vibes": [
-      "LOCAL-HEROES"
-    ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music113/v4/07/c0/6a/07c06a16-aae2-73ac-1e5c-cd74ff15c59d/5059137225782_cover.jpg/600x600bb.jpg"
-  },
-  {
-    "id": "a53-2026-sa-7",
-    "artist": "Aris",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T14:15:00+02:00",
-    "endTime": "2026-07-18T14:45:00+02:00",
-    "countryCode": "AT",
-    "genres": [
-      "METAL"
-    ],
-    "vibes": [
-      "LOCAL-HEROES"
-    ]
-  },
-  {
-    "id": "a53-2026-sa-8",
-    "artist": "Morituri",
-    "stage": "Main Stage",
-    "day": "Saturday",
-    "startTime": "2026-07-18T13:15:00+02:00",
-    "endTime": "2026-07-18T13:45:00+02:00",
-    "countryCode": "AT",
-    "genres": [
-      "METAL"
-    ],
-    "description": "Bandcontest Winner 2026.",
+    "description": "Bandcontest 2026 winner. Members aged 14-17.",
     "vibes": [
       "FRESH",
       "LOCAL-HEROES"
     ],
-    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music49/v4/90/d2/7d/90d27d00-78f1-c056-64e6-0bd80aa44fdc/cover.jpg/600x600bb.jpg"
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/db/ff/b1/dbffb108-d771-bcc1-041d-ed0d7fb2a66b/artwork.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-fr-9",
+    "artist": "Enter Infinite",
+    "stage": "Main Stage",
+    "day": "Friday",
+    "startTime": "2026-07-17T12:30:00+02:00",
+    "endTime": "2026-07-17T13:00:00+02:00",
+    "countryCode": "AT",
+    "genres": [
+      "PROGRESSIVE METALCORE"
+    ],
+    "description": "Bandcontest 2026 runner-up. From Graz.",
+    "vibes": [
+      "MODERN",
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/65/b6/e2/65b6e20a-0e17-80f5-4896-d51d76e8fa00/artwork.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-1",
+    "artist": "In Flames",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T21:30:00+02:00",
+    "endTime": "2026-07-18T23:00:00+02:00",
+    "countryCode": "SE",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "INTENSE",
+      "MELODIC",
+      "LEGENDARY"
+    ],
+    "isHeadliner": true,
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music/7e/0d/d6/mzi.erqdieqp.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-2",
+    "artist": "Pain",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T19:50:00+02:00",
+    "endTime": "2026-07-18T20:55:00+02:00",
+    "countryCode": "SE",
+    "genres": [
+      "INDUSTRIAL METAL"
+    ],
+    "vibes": [
+      "CYBER",
+      "HEAVY",
+      "PARTY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/5c/48/da/5c48daee-d1ce-a5cd-e271-a3600213ba34/artwork.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-3",
+    "artist": "Bleed From Within",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T18:30:00+02:00",
+    "endTime": "2026-07-18T19:25:00+02:00",
+    "countryCode": "GB",
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "HEAVY",
+      "MODERN"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/76/c5/ba/76c5ba35-3e43-a0ac-3177-3ae4d56907cb/886448350705.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-4",
+    "artist": "Ad Infinitum",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T17:20:00+02:00",
+    "endTime": "2026-07-18T18:05:00+02:00",
+    "countryCode": "CH",
+    "genres": [
+      "SYMPHONIC METAL"
+    ],
+    "vibes": [
+      "EPIC",
+      "MELODIC"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/f5/af/a5/f5afa5c3-656b-79f2-c51e-29ffe129f9bb/840588150496.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-5",
+    "artist": "Vinegar Hill",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T16:10:00+02:00",
+    "endTime": "2026-07-18T16:55:00+02:00",
+    "countryCode": "AT",
+    "genres": [
+      "MELODIC DEATH METAL"
+    ],
+    "vibes": [
+      "HEAVY",
+      "LOCAL-HEROES"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/9f/8c/a9/9f8ca94c-4e24-2f43-2571-ea437d6f4670/cover.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-6",
+    "artist": "Brutal Sphincter",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T15:10:00+02:00",
+    "endTime": "2026-07-18T15:50:00+02:00",
+    "countryCode": "BE",
+    "genres": [
+      "GOREGRIND"
+    ],
+    "vibes": [
+      "BRUTAL",
+      "PARTY"
+    ]
+  },
+  {
+    "id": "a53-2026-sa-7",
+    "artist": "Never Obey Again",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T14:10:00+02:00",
+    "endTime": "2026-07-18T14:50:00+02:00",
+    "countryCode": "IT",
+    "genres": [
+      "MODERN METAL"
+    ],
+    "vibes": [
+      "MODERN",
+      "LOUD"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/50/d7/b1/50d7b1b5-c777-7c21-2fcf-9bd186bfad9a/cover.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-8",
+    "artist": "Watch Them Fail",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T13:20:00+02:00",
+    "endTime": "2026-07-18T13:50:00+02:00",
+    "countryCode": "AT",
+    "genres": [
+      "METALCORE"
+    ],
+    "vibes": [
+      "LOCAL-HEROES",
+      "HEAVY"
+    ],
+    "imageUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/60/2c/3e/602c3e6a-8839-6607-1f15-33adc2c2d128/196925226608.jpg/600x600bb.jpg"
+  },
+  {
+    "id": "a53-2026-sa-9",
+    "artist": "Apis",
+    "stage": "Main Stage",
+    "day": "Saturday",
+    "startTime": "2026-07-18T12:30:00+02:00",
+    "endTime": "2026-07-18T13:00:00+02:00",
+    "countryCode": "AT",
+    "genres": [
+      "METAL"
+    ],
+    "vibes": [
+      "LOCAL-HEROES"
+    ]
   },
   {
     "id": "a53-2026-sa-morning",
     "artist": "Jazz Gitti",
     "stage": "Main Stage",
     "day": "Saturday",
-    "startTime": "2026-07-18T11:00:00+02:00",
-    "endTime": "2026-07-18T12:30:00+02:00",
+    "startTime": "2026-07-18T11:15:00+02:00",
+    "endTime": "2026-07-18T12:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "AUSTRO-POP",
       "CULT"
     ],
-    "description": "Samstag Frühschoppen. MANDATORY.",
+    "description": "Samstag Fruehschoppen. MANDATORY.",
     "vibes": [
       "CULT",
       "FUN",
@@ -477,14 +516,14 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Thursday",
-    "startTime": "2026-07-16T23:59:00+02:00",
+    "startTime": "2026-07-16T23:30:00+02:00",
     "endTime": "2026-07-17T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
       "PARTY"
     ],
-    "description": "Täglich Aftershow nach dem Headliner.",
+    "description": "Taeglich Aftershow nach dem Headliner. + Special Guests.",
     "vibes": [
       "PARTY",
       "UNHINGED",
@@ -496,14 +535,14 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Friday",
-    "startTime": "2026-07-17T23:59:00+02:00",
+    "startTime": "2026-07-17T23:30:00+02:00",
     "endTime": "2026-07-18T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
       "PARTY"
     ],
-    "description": "Täglich Aftershow nach dem Headliner.",
+    "description": "Taeglich Aftershow nach dem Headliner. + Special Guests.",
     "vibes": [
       "PARTY",
       "UNHINGED",
@@ -515,14 +554,14 @@
     "artist": "Horny Monkeys",
     "stage": "The Tenne",
     "day": "Saturday",
-    "startTime": "2026-07-18T23:59:00+02:00",
+    "startTime": "2026-07-18T23:30:00+02:00",
     "endTime": "2026-07-19T02:00:00+02:00",
     "countryCode": "AT",
     "genres": [
       "ROCK",
       "PARTY"
     ],
-    "description": "Täglich Aftershow nach dem Headliner.",
+    "description": "Taeglich Aftershow nach dem Headliner. + Special Guests.",
     "vibes": [
       "PARTY",
       "UNHINGED",
