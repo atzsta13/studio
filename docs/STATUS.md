@@ -37,7 +37,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 | Sziget 2026 | 458 | ✅ 442/458 | ✅ 447/458 have stage | Full timetable live (Aug 9–16). 431 flagged showInSchedule. ISO 8601 with CEST (+02:00). |
 | Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | Festival ran Jun 11–14. Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
-| Area 53 2026 | 30 | ✅ 30/30 | ✅ | Full timetable (Jul 15–18, incl. Wednesday warm-up + aftershows), ISO timestamps. |
+| Area 53 2026 | 29 | ✅ 29/29 | ✅ | Full timetable, verified line-by-line against the official 2026 poster + area53festival.at (2026-07-10). Music runs Thu–Sat (Jul 16–18); Wednesday warm-up + nightly Tenne aftershows included. ISO timestamps. |
 | Frequency 2026 | 95 | ❌ TBA | ❌ | No schedule yet. |
 | Ernte Punk 2026 | 17 | ❌ TBA | ❌ | No schedule yet. |
 
@@ -88,6 +88,7 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-10 | Area 53 timetable rebuilt from the official 2026 poster — prior data was a stale, scrambled running order (headliners on wrong days, all set times off, Morituri listed while Cavalera/The Devastation/Enter Infinite were missing). Corrected days/times, removed Morituri, added the 3 missing acts, moved Patriarcha to Thu 13:20, fixed Jazz Gitti to 11:15–12:00. Synced to public/data + Android assets |
 | 2026-07-04 | Fixed PWA/offline layer (registration basePath, scope, neutral manifest.json, 512px icon, cross-origin open-meteo caching), corrected Sziget timetable day mapping with 06:00 rollover, resolved favorites bleed, unified clash detection, deleted 21 unused UI components, pruned 56 unused dependencies, deleted dead stageCapacity flag, updated config productionUrl values, added live day auto-selection, styled must_see vs interested favorite tiers in the timetable grid, and added horizontal scroll indicators/gradients |
 | 2026-07-04 | Docs housekeeping round 2 — vendor LLM files streamlined (deleted legacy Cursor rules; Copilot pointer made literal), corrected TIMETABLE.md notification claims, fixed stale counts/claims across GOALS, UI_GUIDE, TROUBLESHOOTING |
 | 2026-07-04 | Web deep-dive audit documented in TASKS.md (broken PWA layer in production, provider favorites bug, dead weight inventory) |

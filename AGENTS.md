@@ -60,7 +60,7 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 | `sziget-2026` | Sziget | 458 | **Full timetable** 442/458 | Upcoming — Aug 9–16. **Flagship priority.** |
 | `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 | Past (Jun 11–14) |
 | `frequency-2026` | Frequency | ~95 | TBA (null) | Upcoming — Aug, schedule not published |
-| `area53-2026` | Area 53 | 30 | **Full timetable** | **Imminent — Jul 15–18** |
+| `area53-2026` | Area 53 | 29 | **Full timetable** | **Imminent — music Jul 16–18 (Wed 15 warm-up)** |
 | `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) | Upcoming, schedule not published |
 | `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** | Past (Jun 5–7) |
 

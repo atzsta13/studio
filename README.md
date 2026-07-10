@@ -22,7 +22,7 @@ A white-label, **offline-first** engine for festival companion apps. Built to su
 | **Sziget** | `sziget-2026` | 458 | ✅ Aug 9–16 |
 | **Nova Rock** | `novarock-2026` | 84 | ✅ Jun 11–14 |
 | **Rock am Ring** | `rock-am-ring-2026` | 73 | ✅ Jun 5–7 |
-| **Area 53** | `area53-2026` | 30 | ✅ Jul 15–18 |
+| **Area 53** | `area53-2026` | 29 | ✅ Jul 16–18 |
 | **Frequency** | `frequency-2026` | ~95 | ⏳ TBA |
 | **Ernte Punk** | `ernte-punk-2026` | ~17 | ⏳ TBA |
 
