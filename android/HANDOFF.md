@@ -39,5 +39,17 @@ A previous session (Claude, 2026-07-10) finished data fixes, an AI-Scout refacto
 - **Generated dirs** `android/app/src/main/assets/<id>/` are synced from `festivals/<id>/` by `npm run lineup:sync` — never hand-edit them.
 - **Web deploy is paused** (site under maintenance) — irrelevant to Android, but don't be confused by the commented-out workflow.
 
+## Use the official Android agent skills
+Google publishes AI-agent skills for Android at **https://github.com/android/skills** — modular `SKILL.md` instructions for domains where LLMs underperform. Install the ones relevant to this app before working:
+
+```
+android skills add --skill=jetpack-compose --project=.
+android skills add --skill=android-intent-security --project=.
+android skills add --skill=testing --project=.
+android skills add --skill=edge-to-edge --project=.
+```
+
+Most relevant here: **jetpack-compose** (all UI is Compose), **android-intent-security** (deep-link `squad?ids=` parsing in `QRUtils.decodeSquad` + `switchFestival` launch intent), **testing** (the untested ViewModels below), **edge-to-edge** (already partially applied in `Navigation.kt`). Skip **camera** — this app has no camera by mandate.
+
 ## Ground truth at handoff (2026-07-10)
 Toolchain is current: SDK 36, Gradle 9.5.1, AGP 9.2.0, Kotlin 2.3.20, JDK 21, Compose BOM 2026.06.01. App builds green; unit tests pass.
