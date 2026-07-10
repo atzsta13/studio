@@ -156,7 +156,11 @@ class DiscoverViewModel(
                 "The user is currently focusing on the '$currentFocus' territory. "
             } else ""
 
-            localScoutRepository?.getLocalRecommendationsStreaming(contextPrefix + prompt, _allArtists.value)
+            localScoutRepository?.getLocalRecommendationsStreaming(
+                contextPrefix + prompt,
+                _allArtists.value,
+                FestivalConfig.current.aiPersona
+            )
                 ?.collect { chunk ->
                     _localAiResponse.value = (_localAiResponse.value ?: "") + chunk
                 }

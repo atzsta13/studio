@@ -125,15 +125,15 @@ class LocalScoutRepository(private val context: Context) {
      */
     fun initializeLlm() {
         val path = getAvailableModelPath() ?: return
-        
+
         try {
             val options = LlmInference.LlmInferenceOptions.builder()
                 .setModelPath(path)
-                .setMaxTokens(512)
+                .setMaxTokens(2048)
                 .setTopK(40)
                 .setTemperature(0.7f)
                 .build()
-                
+
             llmInference = LlmInference.createFromOptions(context, options)
         } catch (e: Exception) {
             _error.value = "AI Initialization failed: ${e.localizedMessage}"
@@ -141,48 +141,104 @@ class LocalScoutRepository(private val context: Context) {
     }
 
     /**
-     * Performs streaming local inference to find artists.
-     * This provides a "typing" effect in the UI.
+     * Runs local inference to recommend acts, emitting the response as a single
+     * chunk. The lineup is pre-filtered to a bounded candidate set so the prompt
+     * size stays flat no matter how large a festival is. [persona] is the
+     * festival's configured aiPersona — the prompt is not hardcoded here.
      */
-    fun getLocalRecommendationsStreaming(prompt: String, artists: List<Artist>): Flow<String> = callbackFlow {
+    fun getLocalRecommendationsStreaming(
+        query: String,
+        artists: List<Artist>,
+        persona: String
+    ): Flow<String> = callbackFlow {
         val llm = llmInference
         if (llm == null) {
             trySend("AI Scout is not ready yet.")
             close()
             return@callbackFlow
         }
-        
-        // Context pruning (RAG-Lite)
-        val artistsContext = artists.joinToString("\n") { 
-            "- ${it.artist} (${it.genres.joinToString()}): ${it.description?.take(120)}..."
-        }
-        
-        val fullPrompt = """
-            You are the high-energy Festival Scout. Recommend artists from the lineup based on the user's vibe request.
-            Be concise, enthusiastic, and direct.
-            
-            LINEUP DATA:
-            $artistsContext
-            
-            USER VIBE REQUEST:
-            $prompt
-            
-            SCOUT RECOMMENDATION:
-        """.trimIndent()
-        
+
+        val prompt = buildScoutPrompt(persona, query, selectCandidates(query, artists))
+
         try {
-            val response = llm.generateResponse(fullPrompt)
-            // Word-by-word emit to give a typing effect in the UI
-            response.split(" ").forEach { word ->
-                trySend("$word ")
-                kotlinx.coroutines.delay(30)
-            }
-            close()
+            trySend(llm.generateResponse(prompt))
         } catch (e: Exception) {
             trySend("The Scout is confused: ${e.message}")
-            close()
         }
-        
-        awaitClose { /* Cleanup if needed */ }
+        close()
+        awaitClose { }
+    }
+
+    /**
+     * Bounded retrieval: rank the lineup by query overlap (name / genre / vibe /
+     * description) and keep the top [MAX_CANDIDATES]. Falls back to headliners
+     * first when nothing matches, so the prompt is never the entire lineup.
+     */
+    private fun selectCandidates(query: String, artists: List<Artist>): List<Artist> {
+        val terms = query.lowercase()
+            .split(Regex("[^a-z0-9]+"))
+            .filter { it.length > 2 }
+            .toSet()
+
+        if (terms.isEmpty()) {
+            return artists.sortedByDescending { it.isHeadliner }.take(MAX_CANDIDATES)
+        }
+
+        val matched = artists
+            .map { artist ->
+                val haystack = (
+                    artist.artist + " " +
+                        artist.genres.joinToString(" ") + " " +
+                        artist.vibes.joinToString(" ") + " " +
+                        (artist.description ?: "")
+                    ).lowercase()
+                artist to terms.count { haystack.contains(it) }
+            }
+            .filter { it.second > 0 }
+            .sortedByDescending { it.second }
+            .map { it.first }
+
+        return if (matched.isNotEmpty()) {
+            matched.take(MAX_CANDIDATES)
+        } else {
+            artists.sortedByDescending { it.isHeadliner }.take(MAX_CANDIDATES)
+        }
+    }
+
+    /** Single source of truth for the Scout prompt. Includes schedule so the model can answer "who's playing when/where". */
+    private fun buildScoutPrompt(persona: String, query: String, candidates: List<Artist>): String {
+        val lineup = candidates.joinToString("\n") { artist ->
+            val slot = listOfNotNull(
+                artist.day,
+                artist.startTime?.let(::formatClock),
+                artist.stage
+            ).joinToString(" · ")
+            val genres = artist.genres.joinToString(", ").ifBlank { "—" }
+            val where = if (slot.isBlank()) "" else " [$slot]"
+            "- ${artist.artist}$where — $genres"
+        }
+
+        return """
+            You are $persona
+            Recommend acts from the lineup below that fit the user's request. Be concise and specific, and only mention acts that appear in the list. If asked who plays at a given time or stage, use the schedule shown in brackets.
+
+            LINEUP (day · time · stage — genres):
+            $lineup
+
+            USER REQUEST:
+            $query
+
+            RECOMMENDATION:
+        """.trimIndent()
+    }
+
+    /** "2026-07-16T21:30:00+02:00" -> "21:30". Dependency-free, keeps this repo off the UI layer. */
+    private fun formatClock(iso: String): String? {
+        val t = iso.indexOf('T')
+        return if (t >= 0 && iso.length >= t + 6) iso.substring(t + 1, t + 6) else null
+    }
+
+    companion object {
+        private const val MAX_CANDIDATES = 20
     }
 }
