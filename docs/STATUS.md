@@ -37,7 +37,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 | Sziget 2026 | 458 | ✅ 442/458 | ✅ 447/458 have stage | Full timetable live (Aug 9–16). 431 flagged showInSchedule. ISO 8601 with CEST (+02:00). |
 | Nova Rock 2026 | 84 | ✅ 84/84 | ✅ | Festival ran Jun 11–14. Lineup = official timetable, verified line-by-line against novarock.at. ISO 8601 with CEST (+02:00). |
 | Rock am Ring 2026 | 73 | ✅ 73/73 | ✅ | Full timetable, ISO timestamps. Festival ran Jun 5–7. |
-| Area 53 2026 | 29 | ✅ 29/29 | ✅ | Full timetable, verified line-by-line against the official 2026 poster + area53festival.at (2026-07-10). Music runs Thu–Sat (Jul 16–18); Wednesday warm-up + nightly Tenne aftershows included. ISO timestamps. |
+| Area 53 2026 | 29 | ✅ 29/29 | ✅ | Full timetable, verified line-by-line against the official 2026 poster + area53festival.at (2026-07-10). Music runs Thu–Sat (Jul 16–18); Wednesday warm-up + nightly Tenne aftershows included. ISO timestamps. **Data note:** the Sat 12:30 act is **`Apis`** — its stylized poster logo misreads as "ARIS"; confirmed Apis. Do not "correct" it back. |
 | Frequency 2026 | 95 | ❌ TBA | ❌ | No schedule yet. |
 | Ernte Punk 2026 | 17 | ❌ TBA | ❌ | No schedule yet. |
 
