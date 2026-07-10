@@ -1,45 +1,29 @@
 package com.example.szigerinsider2026.data.repository
 
 import android.content.Context
-import android.os.StatFs
 import com.example.szigerinsider2026.data.model.Artist
-import com.google.mediapipe.tasks.genai.llminference.LlmInference
+import com.google.mlkit.genai.common.DownloadStatus
+import com.google.mlkit.genai.common.FeatureStatus
+import com.google.mlkit.genai.prompt.Generation
+import com.google.mlkit.genai.prompt.GenerativeModel
+import com.google.mlkit.genai.prompt.TextPart
+import com.google.mlkit.genai.prompt.generateContentRequest
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.File
-import java.net.URL
 
 class LocalScoutRepository(private val context: Context) {
 
-    private var llmInference: LlmInference? = null
-    private val modelFileName = "gemma4-2b-android.bin"
-    private val internalModelFile = File(context.filesDir, modelFileName)
-    
-    // Common tactical paths for pre-downloaded models
-    private val externalPaths = listOf(
-        "/data/local/tmp/llm/gemma4-2b-android.bin",
-        "/data/local/tmp/llm/model.bin",
-        File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "gemma4-2b-android.bin").absolutePath,
-        File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "model.bin").absolutePath
-    )
+    private val generativeModel: GenerativeModel = Generation.getClient()
+    private val scope = CoroutineScope(Dispatchers.Main)
 
-    private val _isModelDownloaded = MutableStateFlow(checkIfModelExists())
+    private val _isModelDownloaded = MutableStateFlow(false)
     val isModelDownloaded = _isModelDownloaded.asStateFlow()
-
-    private fun checkIfModelExists(): Boolean {
-        if (internalModelFile.exists()) return true
-        return externalPaths.any { File(it).exists() }
-    }
-
-    private fun getAvailableModelPath(): String? {
-        if (internalModelFile.exists()) return internalModelFile.absolutePath
-        return externalPaths.find { File(it).exists() }
-    }
 
     private val _downloadProgress = MutableStateFlow(0f)
     val downloadProgress = _downloadProgress.asStateFlow()
@@ -47,133 +31,115 @@ class LocalScoutRepository(private val context: Context) {
     private val _error = MutableStateFlow<String?>(null)
     val error = _error.asStateFlow()
 
+    init {
+        scope.launch {
+            checkModelStatus()
+        }
+    }
+
+    private suspend fun checkModelStatus() {
+        try {
+            val status = generativeModel.checkStatus()
+            _isModelDownloaded.value = (status == FeatureStatus.AVAILABLE)
+            if (status == FeatureStatus.UNAVAILABLE) {
+                _error.value = "Gemini Nano is not supported on this device."
+            }
+        } catch (e: Exception) {
+            _error.value = "Status check failed: ${e.localizedMessage}"
+        }
+    }
+
     /**
-     * Downloads the Gemma 4 model from the production server.
+     * Triggers the system download for Gemini Nano via AICore.
      */
-    suspend fun downloadModel(modelUrl: String): Boolean = withContext(Dispatchers.IO) {
+    suspend fun downloadModel(modelUrl: String? = null): Boolean = withContext(Dispatchers.IO) {
         try {
             _error.value = null
+            val status = generativeModel.checkStatus()
             
-            // 1. Check if we already have it somewhere else first
-            val existing = getAvailableModelPath()
-            if (existing != null) {
+            if (status == FeatureStatus.AVAILABLE) {
                 _isModelDownloaded.value = true
                 return@withContext true
             }
 
-            // 1. Check Disk Space (Gemma 4 is ~1.2GB, we want 2GB free for safety)
-            if (!hasEnoughSpace(2000 * 1024 * 1024L)) {
-                _error.value = "Not enough disk space (2GB required)."
+            if (status == FeatureStatus.UNAVAILABLE) {
+                _error.value = "Gemini Nano is not supported on this device."
                 return@withContext false
             }
 
-            val url = URL(modelUrl)
-            val connection = url.openConnection()
-            connection.connect()
-            
-            val totalSize = connection.contentLengthLong
-            val inputStream = connection.getInputStream()
-            val outputStream = internalModelFile.outputStream()
-            
-            val buffer = ByteArray(1024 * 1024) // 1MB buffer
-            var bytesRead: Int
-            var totalBytesRead = 0L
-            
-            while (inputStream.read(buffer).also { bytesRead = it } != -1) {
-                outputStream.write(buffer, 0, bytesRead)
-                totalBytesRead += bytesRead
-                if (totalSize > 0) {
-                    _downloadProgress.value = totalBytesRead.toFloat() / totalSize.toFloat()
-                } else {
-                    // Fallback for unknown size: show something is happening
-                    _downloadProgress.value = -1f 
+            var success = false
+            var totalBytes: Long = 0
+            generativeModel.download().collect { downloadStatus ->
+                when (downloadStatus) {
+                    is DownloadStatus.DownloadStarted -> {
+                        totalBytes = downloadStatus.bytesToDownload
+                        _downloadProgress.value = 0.01f
+                    }
+                    is DownloadStatus.DownloadProgress -> {
+                        if (totalBytes > 0) {
+                            _downloadProgress.value = downloadStatus.totalBytesDownloaded.toFloat() / totalBytes.toFloat()
+                        }
+                    }
+                    is DownloadStatus.DownloadCompleted -> {
+                        _isModelDownloaded.value = true
+                        _downloadProgress.value = 1f
+                        success = true
+                    }
+                    is DownloadStatus.DownloadFailed -> {
+                        _error.value = "Download failed"
+                    }
                 }
             }
-            
-            outputStream.close()
-            inputStream.close()
-            _isModelDownloaded.value = true
-            true
+            success
         } catch (e: Exception) {
             e.printStackTrace()
-            _error.value = "Download failed: ${e.localizedMessage}"
+            _error.value = "Download trigger failed: ${e.localizedMessage}"
             false
         }
     }
 
-    /**
-     * Force a local file system check for the model.
-     */
     fun scanForLocalModel() {
-        val path = getAvailableModelPath()
-        if (path != null) {
-            _isModelDownloaded.value = true
-            initializeLlm()
-        } else {
-            _error.value = "No local model found. Ensure model is at /data/local/tmp/llm/gemma4-2b-android.bin"
+        scope.launch {
+            checkModelStatus()
         }
     }
 
-    private fun hasEnoughSpace(requiredBytes: Long): Boolean {
-        val stat = StatFs(context.filesDir.path)
-        val availableBytes = stat.availableBlocksLong * stat.blockSizeLong
-        return availableBytes >= requiredBytes
-    }
-
-    /**
-     * Initializes the LLM with the local model file.
-     */
     fun initializeLlm() {
-        val path = getAvailableModelPath() ?: return
-
-        try {
-            val options = LlmInference.LlmInferenceOptions.builder()
-                .setModelPath(path)
-                .setMaxTokens(2048)
-                .setTopK(40)
-                .setTemperature(0.7f)
-                .build()
-
-            llmInference = LlmInference.createFromOptions(context, options)
-        } catch (e: Exception) {
-            _error.value = "AI Initialization failed: ${e.localizedMessage}"
+        scope.launch {
+            checkModelStatus()
         }
     }
 
     /**
-     * Runs local inference to recommend acts, emitting the response as a single
-     * chunk. The lineup is pre-filtered to a bounded candidate set so the prompt
-     * size stays flat no matter how large a festival is. [persona] is the
-     * festival's configured aiPersona — the prompt is not hardcoded here.
+     * Runs local inference to recommend acts, emitting the response in chunks.
      */
     fun getLocalRecommendationsStreaming(
         query: String,
         artists: List<Artist>,
         persona: String
     ): Flow<String> = callbackFlow {
-        val llm = llmInference
-        if (llm == null) {
+        if (!_isModelDownloaded.value) {
             trySend("AI Scout is not ready yet.")
             close()
             return@callbackFlow
         }
 
         val prompt = buildScoutPrompt(persona, query, selectCandidates(query, artists))
+        // Passing the prompt directly if the builder supports it, or using TextPart
+        val request = generateContentRequest(TextPart(prompt)) { }
 
         try {
-            trySend(llm.generateResponse(prompt))
+            generativeModel.generateContentStream(request).collect { response ->
+                // Try to get text from the first candidate
+                val text = response.candidates.firstOrNull()?.text ?: ""
+                trySend(text)
+            }
         } catch (e: Exception) {
             trySend("The Scout is confused: ${e.message}")
         }
         close()
-        awaitClose { }
     }
 
-    /**
-     * Bounded retrieval: rank the lineup by query overlap (name / genre / vibe /
-     * description) and keep the top [MAX_CANDIDATES]. Falls back to headliners
-     * first when nothing matches, so the prompt is never the entire lineup.
-     */
     private fun selectCandidates(query: String, artists: List<Artist>): List<Artist> {
         val terms = query.lowercase()
             .split(Regex("[^a-z0-9]+"))
@@ -205,7 +171,6 @@ class LocalScoutRepository(private val context: Context) {
         }
     }
 
-    /** Single source of truth for the Scout prompt. Includes schedule so the model can answer "who's playing when/where". */
     private fun buildScoutPrompt(persona: String, query: String, candidates: List<Artist>): String {
         val lineup = candidates.joinToString("\n") { artist ->
             val slot = listOfNotNull(
@@ -232,7 +197,6 @@ class LocalScoutRepository(private val context: Context) {
         """.trimIndent()
     }
 
-    /** "2026-07-16T21:30:00+02:00" -> "21:30". Dependency-free, keeps this repo off the UI layer. */
     private fun formatClock(iso: String): String? {
         val t = iso.indexOf('T')
         return if (t >= 0 && iso.length >= t + 6) iso.substring(t + 1, t + 6) else null

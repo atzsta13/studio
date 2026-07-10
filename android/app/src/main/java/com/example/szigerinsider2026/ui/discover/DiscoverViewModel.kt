@@ -164,6 +164,22 @@ class DiscoverViewModel(
 
     private suspend fun findNearestStage(userLat: Double, userLng: Double): String? {
         val ctx = context ?: return null
+        val poiRepo = com.example.szigerinsider2026.data.repository.POIRepository(ctx)
+        val stages = poiRepo.getPOIs().filter { it.type == "stage" }
+        if (stages.isEmpty()) return null
+
+        // 1. Try GPS distance if stages have lat/lng
+        val stagesWithGps = stages.filter { it.lat != null && it.lng != null }
+        if (stagesWithGps.isNotEmpty()) {
+            val nearest = stagesWithGps.minByOrNull { stage ->
+                val results = FloatArray(1)
+                android.location.Location.distanceBetween(userLat, userLng, stage.lat!!, stage.lng!!, results)
+                results[0]
+            }
+            return nearest?.name
+        }
+
+        // 2. Fallback to Map heuristic if they only have mapCoords
         val config = FestivalConfig.current
         val festLat = config.location.lat
         val festLng = config.location.lng
@@ -171,16 +187,15 @@ class DiscoverViewModel(
         val deltaLat = userLat - festLat
         val deltaLng = userLng - festLng
         
-        // If user is more than ~10km away from festival center, simulate they are right on the grounds (e.g. near Main Stage)
+        // If user is more than ~10km away from festival center, simulate they are right on the grounds
         val isFar = Math.abs(deltaLat) > 0.1 || Math.abs(deltaLng) > 0.1
         val userMapX = if (isFar) 45.0 else (50.0 + deltaLng * 5000.0).coerceIn(0.0, 100.0)
         val userMapY = if (isFar) 50.0 else (50.0 - deltaLat * 7400.0).coerceIn(0.0, 100.0)
         
-        val poiRepo = com.example.szigerinsider2026.data.repository.POIRepository(ctx)
-        val stages = poiRepo.getPOIs().filter { it.type == "stage" && it.mapCoords != null }
-        if (stages.isEmpty()) return null
+        val stagesWithMap = stages.filter { it.mapCoords != null }
+        if (stagesWithMap.isEmpty()) return null
         
-        val nearestStage = stages.minByOrNull { stage ->
+        val nearestStage = stagesWithMap.minByOrNull { stage ->
             val dx = userMapX - stage.mapCoords!!.x
             val dy = userMapY - stage.mapCoords!!.y
             dx * dx + dy * dy
