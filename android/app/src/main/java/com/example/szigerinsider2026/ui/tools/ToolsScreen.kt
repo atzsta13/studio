@@ -20,10 +20,10 @@ import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
-import androidx.compose.material.icons.filled.VolumeUp
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.AccountBalanceWallet
-import androidx.compose.material.icons.filled.NoteAdd
+import androidx.compose.material.icons.automirrored.filled.NoteAdd
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -215,7 +215,7 @@ fun ToolsScreen(navController: NavController) {
                                             .background(AcidYellow.copy(alpha = 0.12f)),
                                         contentAlignment = Alignment.Center
                                     ) {
-                                        Icon(Icons.Default.NoteAdd, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(26.dp))
+                                        Icon(Icons.AutoMirrored.Filled.NoteAdd, contentDescription = null, tint = AcidYellow, modifier = Modifier.size(26.dp))
                                     }
                                     Spacer(modifier = Modifier.width(16.dp))
                                     Column(modifier = Modifier.weight(1f)) {
@@ -519,7 +519,7 @@ fun AudioMonitorCard() {
         Column(modifier = Modifier.padding(24.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
                 Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(Color.Red.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Default.VolumeUp, contentDescription = null, tint = Color.Red, modifier = Modifier.size(24.dp))
+                    Icon(Icons.AutoMirrored.Filled.VolumeUp, contentDescription = null, tint = Color.Red, modifier = Modifier.size(24.dp))
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(text = "AUDIO MONITOR", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)

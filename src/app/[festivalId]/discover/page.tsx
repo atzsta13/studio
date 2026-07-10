@@ -19,7 +19,7 @@ import {
   Zap,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
@@ -39,7 +39,6 @@ import { FestivalLayoutShell } from '@/components/layout/festival-layout-shell';
 type ViewMode = 'discover' | 'az' | 'by-day' | 'by-country';
 
 export default function DiscoverPage() {
-  const { festivalId } = useParams() as { festivalId: string };
   const { config, lineup } = useInsider();
   const haptic = useHaptic();
   
