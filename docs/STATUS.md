@@ -67,7 +67,8 @@ The only persisted preference is the selected festival ID; there are no tokens, 
 
 ### Web
 
-None.
+**GitHub Pages auto-deploy paused (site under maintenance, 2026-07-10).**
+The live site has outstanding problems, so the `push` trigger in `.github/workflows/deploy-pages.yml` is commented out — merges to `main` no longer redeploy. Manual deploy still works via `workflow_dispatch` (Actions → Run workflow). Re-enable by uncommenting the `push` trigger once the site is fixed. The PWA/offline layer is the prime suspect (see prior P0 work).
 
 ### Features blocked on schedule data
 
@@ -88,6 +89,11 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-10 | Build perf: enabled Gradle parallel + build cache + configuration cache and raised daemon heap 2G→4G (clean build 41s→3s, incremental ~8-20s→1s on an 8-core machine); `next dev` now uses Turbopack. Production web build stays on webpack (Turbopack only ~4% there — cost is static-export prerender, not compile) |
+| 2026-07-10 | Removed the `setlistLinks` feature entirely (UI-only link-out to setlist.fm, no data, Android port never built) — component, flag, types, all configs, and docs. No festival data touched |
+| 2026-07-10 | Paused GitHub Pages auto-deploy (site under maintenance) — commented out the workflow `push` trigger; manual `workflow_dispatch` still available |
+| 2026-07-10 | Dep bumps (safe tier): React 19.0→19.2, Next 16.1→16.2, Compose BOM 2026.05.00→2026.06.01, plus in-range minors. Held: MUI 6→9, TypeScript 5→7, lucide 0→1, recharts 2→3 (breaking, deferred past the festivals) |
+| 2026-07-10 | AI Scout prompt layer refactor — bounded retrieval (top-20 candidates, was the entire lineup in a 512-token budget), persona now read from `config.aiPersona` (was hardcoded), single `buildScoutPrompt` builder with schedule context, maxTokens 512→2048, removed fake word-by-word streaming |
 | 2026-07-10 | Area 53 timetable rebuilt from the official 2026 poster — prior data was a stale, scrambled running order (headliners on wrong days, all set times off, Morituri listed while Cavalera/The Devastation/Enter Infinite were missing). Corrected days/times, removed Morituri, added the 3 missing acts, moved Patriarcha to Thu 13:20, fixed Jazz Gitti to 11:15–12:00. Synced to public/data + Android assets |
 | 2026-07-04 | Fixed PWA/offline layer (registration basePath, scope, neutral manifest.json, 512px icon, cross-origin open-meteo caching), corrected Sziget timetable day mapping with 06:00 rollover, resolved favorites bleed, unified clash detection, deleted 21 unused UI components, pruned 56 unused dependencies, deleted dead stageCapacity flag, updated config productionUrl values, added live day auto-selection, styled must_see vs interested favorite tiers in the timetable grid, and added horizontal scroll indicators/gradients |
 | 2026-07-04 | Docs housekeeping round 2 — vendor LLM files streamlined (deleted legacy Cursor rules; Copilot pointer made literal), corrected TIMETABLE.md notification claims, fixed stale counts/claims across GOALS, UI_GUIDE, TROUBLESHOOTING |

@@ -107,8 +107,7 @@ npm run lineup:sync
 ```
 
 ### Deployment
-Push to `main` → GitHub Actions builds static export → deploys to GitHub Pages automatically.
-Workflow: `.github/workflows/deploy-pages.yml`
+**Auto-deploy is PAUSED (site under maintenance, 2026-07-10).** The `push` trigger in `.github/workflows/deploy-pages.yml` is commented out, so merges to `main` no longer deploy. Deploy manually via Actions → "Deploy to GitHub Pages" → Run workflow (`workflow_dispatch`). Re-enable auto-deploy by uncommenting the `push` trigger once the live site is fixed.
 
 ## Architecture
 
