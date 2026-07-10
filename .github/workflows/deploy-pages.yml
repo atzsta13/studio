@@ -1,8 +1,12 @@
 name: Deploy to GitHub Pages
 
+# MAINTENANCE: auto-deploy on push is paused while the live site is being
+# fixed. Re-enable by uncommenting the `push` trigger below. Until then the
+# site can still be deployed manually via the "Run workflow" button
+# (workflow_dispatch) in the Actions tab.
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 permissions:
