@@ -1,0 +1,37 @@
+name: Add a festival
+description: Propose a festival that should be covered
+title: "[festival] "
+labels: ["festival"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Small festivals are the whole point of this project — the commercial app vendors start around CHF 8,450 per edition, so festivals below that line get nothing. If yours is one of them, you're exactly who this is for.
+
+        You can also just open a pull request: see [CONTRIBUTING.md](../../CONTRIBUTING.md). It needs no code.
+  - type: input
+    id: name
+    attributes:
+      label: Festival name
+    validations:
+      required: true
+  - type: input
+    id: dates
+    attributes:
+      label: Dates and location
+    validations:
+      required: true
+  - type: input
+    id: schedule
+    attributes:
+      label: Where is the lineup or timetable published?
+      description: A URL, or "not published yet"
+    validations:
+      required: true
+  - type: checkboxes
+    id: role
+    attributes:
+      label: Optional
+      options:
+        - label: I'm involved in organising this festival
+        - label: I'm willing to help keep the data accurate

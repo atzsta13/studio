@@ -115,7 +115,7 @@
     "vibeQuiz": true,
     "aiRecommendations": true,
     "survivalGuide": true,
-    "timetable": false,
+    "timetable": true,
     "cashlessLink": true,
     "cashlessUrl": "https://www.frequency.at/en/cashless/",
     "dayparkNightpark": true,

@@ -1,0 +1,36 @@
+name: Wrong festival data
+description: A set time, stage, or artist is incorrect
+title: "[data] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Wrong set times are the bugs that actually cost people bands. Thank you for catching it.
+  - type: input
+    id: festival
+    attributes:
+      label: Festival
+      description: The festival ID, e.g. `frequency-2026`
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What we currently show
+      placeholder: "Lorde — Space Stage, Thursday 21:45–22:55"
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What it should be
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Where did you check?
+      description: Official timetable page, the festival's own app, a photo of the on-site board — anything. Firsthand from the festival itself is great.
+    validations:
+      required: true
