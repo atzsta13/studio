@@ -10,6 +10,9 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.gestures.rememberTransformableState
+import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.text.BasicTextField
@@ -31,6 +34,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
@@ -58,8 +62,8 @@ import com.example.szigerinsider2026.ui.utils.parseTime
 import com.example.szigerinsider2026.ui.utils.formatTime
 import java.time.LocalDate
 import java.time.LocalTime
-import java.time.format.DateTimeFormatter
 import com.example.szigerinsider2026.data.config.FestivalConfig
+import androidx.compose.ui.input.pointer.pointerInput
 
 // ─── Constants (derived from FestivalConfig.current) ───────────────────────────
 
@@ -73,16 +77,11 @@ private val DAY_TO_DATE: Map<String, LocalDate> get() {
     }.toMap()
 }
 
-private val FESTIVAL_START get() = FestivalConfig.current.let { LocalDate.parse(it.dates.startDate) }
-private val FESTIVAL_END   get() = FestivalConfig.current.let { LocalDate.parse(it.dates.endDate) }
-
 private val ClashBannerBg     = Color(0xFF2A0A00)
 private val ClashBannerBorder = Color(0xFFFF4500)
 private val ClashBadgeColor   = Color(0xFFFF6B00)
 
 // ─── Live-state ticker ──────────────────────────────────────────────────────────
-// One coroutine, hoisted once per screen. Its value bumps every 60s; pass it as a
-// remember-key wherever live/past state is derived so the grid advances on its own.
 @Composable
 private fun rememberMinuteTick(): Long {
     var tick by remember { mutableStateOf(0L) }
@@ -537,11 +536,9 @@ private fun DayHeader(day: String) {
 
 // Hours before this are treated as "past midnight" and belong to the previous festival day.
 private const val ROLLOVER_HOUR = 6
-private const val DP_PER_MINUTE = 2.2f
 private val GUTTER_WIDTH = 48.dp
-// Each stage column gets at least this width; on busy days the board scrolls
-// horizontally rather than cramming 17 stages into the phone width.
-private val MIN_STAGE_WIDTH = 158.dp
+// Each stage column gets at least this width
+private val BASE_MIN_STAGE_WIDTH = 158.dp
 
 private fun wallMinutes(t: String?): Int? {
     val time = parseTime(t) ?: return null
@@ -585,12 +582,23 @@ fun TimetableGrid(
     }
 
     val dayStart = remember(byStage) {
-        (byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.startTime) }.min() / 60) * 60
+        (byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.startTime) }.minOrNull() ?: 720) / 60 * 60
     }
     val dayEnd = remember(byStage) {
-        ((byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.endTime) }.max() + 59) / 60) * 60
+        ((byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.endTime) }.maxOrNull() ?: 1440) + 59) / 60 * 60
     }
-    val boardHeight = ((dayEnd - dayStart) * DP_PER_MINUTE).dp
+
+    // Zoom and pan states
+    var scale by remember { mutableStateOf(1f) }
+    var offsetX by remember { mutableStateOf(0f) }
+    var offsetY by remember { mutableStateOf(0f) }
+
+    val minScale = 0.5f
+    val maxScale = 2.5f
+    val dpPerMinute = 2.2f * scale
+
+    val boardHeight = ((dayEnd - dayStart) * dpPerMinute).dp
+    val density = LocalDensity.current
 
     val nowMinutes = remember(selectedDay, dayStart, dayEnd, minuteTick) {
         val now = LocalTime.now()
@@ -599,24 +607,31 @@ fun TimetableGrid(
         if (DAY_TO_DATE[selectedDay] == effectiveDate && mins in dayStart..dayEnd) mins else null
     }
 
-    val vScroll = rememberScrollState()
-    val hScroll = rememberScrollState()
-    val density = LocalDensity.current
-    LaunchedEffect(selectedDay) {
-        nowMinutes?.let { mins ->
-            val targetPx = with(density) { (((mins - dayStart) * DP_PER_MINUTE) - 120f).dp.toPx() }
-            vScroll.scrollTo(targetPx.toInt().coerceAtLeast(0))
-        }
-    }
-
-    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        // Few stages → columns grow to fill the screen. Many stages → each keeps a
-        // readable width and the board scrolls horizontally.
-        val colWidth = maxOf(MIN_STAGE_WIDTH, (maxWidth - GUTTER_WIDTH) / byStage.size.toFloat())
+    BoxWithConstraints(
+        modifier = Modifier
+            .fillMaxSize()
+            .pointerInput(Unit) {
+                detectTransformGestures { _, pan, zoom, _ ->
+                    scale = (scale * zoom).coerceIn(minScale, maxScale)
+                    offsetX += pan.x
+                    offsetY += pan.y
+                }
+            }
+    ) {
+        val colWidth = maxOf(BASE_MIN_STAGE_WIDTH * scale, (maxWidth - GUTTER_WIDTH) / byStage.size.toFloat())
         val stagesWidth = colWidth * byStage.size
+        
+        // Bounds for panning
+        val maxOffsetX = 0f
+        val minOffsetX = -(stagesWidth.value * density.density - (maxWidth.value * density.density - GUTTER_WIDTH.value * density.density)).coerceAtLeast(0f)
+        val maxOffsetY = 0f
+        val minOffsetY = -(boardHeight.value * density.density - maxHeight.value * density.density).coerceAtLeast(0f)
+
+        offsetX = offsetX.coerceIn(minOffsetX, maxOffsetX)
+        offsetY = offsetY.coerceIn(minOffsetY, maxOffsetY)
 
         Column(modifier = Modifier.fillMaxSize()) {
-            // Sticky stage header — scrolls horizontally in sync with the board
+            // Stage Headers
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -633,39 +648,45 @@ fun TimetableGrid(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Spacer(modifier = Modifier.width(GUTTER_WIDTH))
-                Row(modifier = Modifier.weight(1f).horizontalScroll(hScroll)) {
-                    byStage.forEach { entry ->
-                        Box(
-                            modifier = Modifier.width(colWidth).fillMaxHeight().padding(horizontal = 6.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text(
-                                text = entry.key.uppercase(),
-                                color = MaterialTheme.colorScheme.primary,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Black,
-                                fontStyle = FontStyle.Italic,
-                                letterSpacing = 1.sp,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
+                Box(modifier = Modifier.weight(1f).clipToBounds()) {
+                    Row(modifier = Modifier.offset { androidx.compose.ui.unit.IntOffset(offsetX.toInt(), 0) }) {
+                        byStage.forEach { entry ->
+                            Box(
+                                modifier = Modifier.width(colWidth).fillMaxHeight().padding(horizontal = 6.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = entry.key.uppercase(),
+                                    color = MaterialTheme.colorScheme.primary,
+                                    fontSize = (11 * scale).coerceAtMost(14f).sp,
+                                    fontWeight = FontWeight.Black,
+                                    fontStyle = FontStyle.Italic,
+                                    letterSpacing = 1.sp,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
                         }
                     }
                 }
             }
 
-            // Scrollable time board
-            Box(modifier = Modifier.fillMaxSize().verticalScroll(vScroll)) {
-                Row(modifier = Modifier.fillMaxWidth().height(boardHeight)) {
-                    // Pinned time gutter — stays put while stages scroll sideways
-                    Box(modifier = Modifier.width(GUTTER_WIDTH).fillMaxHeight()) {
+            Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+                // Main Grid
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .offset { androidx.compose.ui.unit.IntOffset(0, offsetY.toInt()) }
+                ) {
+                    // Time Gutter
+                    Box(modifier = Modifier.width(GUTTER_WIDTH).fillMaxHeight().background(OLEDBlack)) {
                         var hourMark = dayStart
                         while (hourMark <= dayEnd) {
-                            val y = ((hourMark - dayStart) * DP_PER_MINUTE).dp
+                            val y = ((hourMark - dayStart) * dpPerMinute).dp
                             Text(
                                 text = formatWallMinutes(hourMark),
                                 color = TextMuted,
-                                fontSize = 10.sp,
+                                fontSize = (10 * scale).coerceAtMost(12f).sp,
                                 fontWeight = FontWeight.Black,
                                 modifier = Modifier.offset(x = 5.dp, y = y - 7.dp)
                             )
@@ -673,13 +694,17 @@ fun TimetableGrid(
                         }
                     }
 
-                    // Horizontally-scrollable stage area
-                    Box(modifier = Modifier.weight(1f).fillMaxHeight().horizontalScroll(hScroll)) {
-                        Box(modifier = Modifier.width(stagesWidth).fillMaxHeight()) {
-                            // Hour gridlines spanning every stage
+                    // Content Area
+                    Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
+                        Box(modifier = Modifier
+                            .width(stagesWidth)
+                            .fillMaxHeight()
+                            .offset { androidx.compose.ui.unit.IntOffset(offsetX.toInt(), 0) }
+                        ) {
+                            // Hour gridlines
                             var hourMark = dayStart
                             while (hourMark <= dayEnd) {
-                                val y = ((hourMark - dayStart) * DP_PER_MINUTE).dp
+                                val y = ((hourMark - dayStart) * dpPerMinute).dp
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -690,9 +715,8 @@ fun TimetableGrid(
                                 hourMark += 60
                             }
 
-                            // Stage columns
+                            // Columns
                             Row(modifier = Modifier.fillMaxSize()) {
-                                val nowMins = nowMinutes
                                 byStage.forEach { entry ->
                                     Box(modifier = Modifier.width(colWidth).fillMaxHeight()) {
                                         entry.value.forEach { artist ->
@@ -700,14 +724,15 @@ fun TimetableGrid(
                                             val end = wallMinutes(artist.endTime) ?: (start + 30)
                                             ArtistGridBlock(
                                                 artist = artist,
-                                                y = (start - dayStart) * DP_PER_MINUTE,
-                                                blockHeight = ((end - start) * DP_PER_MINUTE).coerceAtLeast(56f),
+                                                y = (start - dayStart) * dpPerMinute,
+                                                blockHeight = ((end - start) * dpPerMinute).coerceAtLeast(40f * scale),
                                                 isFavorite = favoriteIds.contains(artist.id),
                                                 inSquad = squadIds.contains(artist.id),
-                                                isPast = nowMins != null && end <= nowMins,
+                                                isPast = nowMinutes != null && end <= nowMinutes,
                                                 minuteTick = minuteTick,
                                                 onArtistClick = onArtistClick,
-                                                haptic = haptic
+                                                haptic = haptic,
+                                                scale = scale
                                             )
                                         }
                                     }
@@ -716,21 +741,13 @@ fun TimetableGrid(
 
                             // Now line
                             nowMinutes?.let { mins ->
-                                val y = ((mins - dayStart) * DP_PER_MINUTE).dp
+                                val y = ((mins - dayStart) * dpPerMinute).dp
                                 Box(
                                     modifier = Modifier
                                         .fillMaxWidth()
                                         .height(2.dp)
                                         .offset(y = y - 1.dp)
                                         .background(ToxicGreen)
-                                )
-                                Text(
-                                    text = "NOW",
-                                    color = ToxicGreen,
-                                    fontSize = 9.sp,
-                                    fontWeight = FontWeight.Black,
-                                    letterSpacing = 1.sp,
-                                    modifier = Modifier.offset(x = 4.dp, y = y - 14.dp)
                                 )
                             }
                         }
@@ -751,7 +768,8 @@ private fun ArtistGridBlock(
     isPast: Boolean = false,
     minuteTick: Long = 0L,
     onArtistClick: (String) -> Unit,
-    haptic: com.example.szigerinsider2026.ui.utils.HapticManager
+    haptic: com.example.szigerinsider2026.ui.utils.HapticManager,
+    scale: Float = 1f
 ) {
     val isLive = remember(artist, minuteTick) { isNowPlaying(artist) }
     val dimmed = isPast && !isFavorite && !inSquad && !isLive
@@ -762,7 +780,7 @@ private fun ArtistGridBlock(
         artist.isHeadliner -> MaterialTheme.colorScheme.primary
         else -> Color.White.copy(alpha = 0.2f)
     }
-    val isCompact = blockHeight < 80f
+    val isCompact = blockHeight < (60f * scale)
 
     Box(
         modifier = Modifier
@@ -770,17 +788,16 @@ private fun ArtistGridBlock(
             .fillMaxWidth()
             .height(blockHeight.dp)
             .graphicsLayer { alpha = if (dimmed) 0.45f else 1f }
-            .padding(horizontal = 3.dp, vertical = 2.dp)
-            .clip(RoundedCornerShape(14.dp))
+            .padding(horizontal = 2.dp, vertical = 1.dp)
+            .clip(RoundedCornerShape(8.dp * scale))
             .background(if (isLive) CardBackground.copy(alpha = 0.9f) else CardBackground)
             .border(
-                width = if (isFavorite || isLive || artist.isHeadliner) 1.5.dp else 1.dp,
+                width = if (isFavorite || isLive || artist.isHeadliner) (1.5 * scale).dp else (1 * scale).dp,
                 color = accentColor.copy(alpha = if (isFavorite || isLive || artist.isHeadliner) 0.8f else 0.15f),
-                shape = RoundedCornerShape(14.dp)
+                shape = RoundedCornerShape(8.dp * scale)
             )
             .clickable { haptic.lightTap(); onArtistClick(artist.id) }
     ) {
-        // Subtle background glow for high-importance acts
         if (isFavorite || isLive || artist.isHeadliner) {
             Box(
                 modifier = Modifier
@@ -795,41 +812,24 @@ private fun ArtistGridBlock(
             )
         }
 
-        Column(modifier = Modifier.fillMaxSize().padding(horizontal = 8.dp, vertical = 6.dp)) {
+        // Image background for high importance or if zoomed in enough
+        if (artist.imageUrl != null && (isFavorite || artist.isHeadliner || scale > 1.2f)) {
+            AsyncImage(
+                model = artist.imageUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize().graphicsLayer { alpha = 0.15f },
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Column(modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp, vertical = 4.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (isLive) {
-                    Box(
-                        modifier = Modifier
-                            .padding(end = 4.dp)
-                            .size(6.dp)
-                            .clip(CircleShape)
-                            .background(ToxicGreen)
-                    )
-                    if (!isCompact) {
-                        Text(
-                            text = "LIVE NOW",
-                            color = ToxicGreen,
-                            fontSize = 7.sp,
-                            fontWeight = FontWeight.Black,
-                            letterSpacing = 1.sp
-                        )
-                    }
-                } else if (artist.isHeadliner && !isCompact) {
-                    Text(
-                        text = "HEADLINER",
-                        color = MaterialTheme.colorScheme.primary,
-                        fontSize = 7.sp,
-                        fontWeight = FontWeight.Black,
-                        letterSpacing = 1.sp
-                    )
+                    Box(modifier = Modifier.padding(end = 4.dp).size(4.dp).clip(CircleShape).background(ToxicGreen))
                 }
-
                 Spacer(modifier = Modifier.weight(1f))
-
                 if (isFavorite) {
-                    Icon(Icons.Filled.Star, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size(12.dp))
-                } else if (inSquad) {
-                    Text("👥", fontSize = 10.sp)
+                    Icon(Icons.Filled.Star, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size((10 * scale).coerceAtMost(14f).dp))
                 }
             }
 
@@ -837,24 +837,25 @@ private fun ArtistGridBlock(
                 text = artist.artist.uppercase(),
                 color = if (isFavorite) MaterialTheme.colorScheme.secondary else Color.White,
                 fontWeight = FontWeight.Black,
-                fontSize = if (isCompact) 10.sp else 12.sp,
+                fontSize = (10 * scale).coerceIn(8f, 14f).sp,
                 maxLines = if (isCompact) 1 else 2,
                 overflow = TextOverflow.Ellipsis,
-                lineHeight = 12.sp,
+                lineHeight = (11 * scale).sp,
                 letterSpacing = (-0.2).sp,
                 fontStyle = FontStyle.Italic
             )
 
-            Spacer(modifier = Modifier.weight(1f))
-
-            Text(
-                text = "${formatTime(artist.startTime)} - ${formatTime(artist.endTime)}",
-                color = if (isLive) ToxicGreen.copy(alpha = 0.7f) else TextMuted,
-                fontSize = 8.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 0.5.sp,
-                maxLines = 1
-            )
+            if (!isCompact && scale > 0.8f) {
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = "${formatTime(artist.startTime)} - ${formatTime(artist.endTime)}",
+                    color = if (isLive) ToxicGreen.copy(alpha = 0.7f) else TextMuted,
+                    fontSize = (8 * scale).coerceAtMost(10f).sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 0.5.sp,
+                    maxLines = 1
+                )
+            }
         }
     }
 }

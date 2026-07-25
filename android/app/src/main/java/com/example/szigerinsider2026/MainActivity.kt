@@ -1,13 +1,12 @@
 package com.example.szigerinsider2026
 
-import android.net.Uri
 import android.os.Bundle
 import android.os.Process
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -17,12 +16,27 @@ import androidx.compose.ui.unit.dp
 import com.example.szigerinsider2026.ui.theme.AcidYellow
 import com.example.szigerinsider2026.ui.theme.FestivalInsiderTheme
 
+import androidx.compose.runtime.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import com.example.szigerinsider2026.data.config.FestivalConfig
 import com.example.szigerinsider2026.ui.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        // Initialize festival config
+        FestivalConfig.initialize(applicationContext)
+
+        // Optional: Customize exit animation to transition based on festival theme
+        splashScreen.setOnExitAnimationListener { splashScreenView ->
+            // You could add a custom animation here if desired
+            splashScreenView.remove()
+        }
+
+        enableEdgeToEdge()
 
         Thread.setDefaultUncaughtExceptionHandler { _, exception ->
             Log.e("FestivalInsider", "Uncaught exception", exception)

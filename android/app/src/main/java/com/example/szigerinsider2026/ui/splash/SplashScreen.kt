@@ -1,28 +1,25 @@
 package com.example.szigerinsider2026.ui.splash
 
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.szigerinsider2026.ui.theme.*
-import kotlinx.coroutines.delay
-
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.platform.LocalContext
 import com.example.szigerinsider2026.data.config.FestivalConfig
+import com.example.szigerinsider2026.ui.theme.OLEDBlack
+import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(navController: NavController) {
@@ -31,17 +28,21 @@ fun SplashScreen(navController: NavController) {
     var showBadge by remember { mutableStateOf(false) }
     val hapticFeedback = LocalHapticFeedback.current
     val context = LocalContext.current
+    
+    val isSelected = remember { FestivalConfig.isSelected(context) }
+    val festivalName = remember { if (isSelected) FestivalConfig.NAME else "FESTIVAL" }
 
     LaunchedEffect(Unit) {
-        delay(80)
+        delay(150)
         showFestivalName = true
         hapticFeedback.performHapticFeedback(HapticFeedbackType.LongPress)
-        delay(180)
+        delay(200)
         showInsider = true
-        delay(280)
+        delay(300)
         showBadge = true
-        delay(1800)
-        val dest = if (FestivalConfig.isSelected(context)) "home" else "festival_select"
+        delay(1400)
+        
+        val dest = if (isSelected) "home" else "festival_select"
         navController.navigate(dest) {
             popUpTo("splash") { inclusive = true }
         }
@@ -52,16 +53,7 @@ fun SplashScreen(navController: NavController) {
             .fillMaxSize()
             .background(OLEDBlack)
     ) {
-        // Decorative top-right square
-        Box(
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .size(150.dp)
-                .padding(24.dp)
-                .background(MaterialTheme.colorScheme.primary)
-        )
-
-        // Main content
+        // High-end tactical layout
         Column(
             horizontalAlignment = Alignment.Start,
             modifier = Modifier
@@ -71,60 +63,72 @@ fun SplashScreen(navController: NavController) {
         ) {
             AnimatedVisibility(
                 visible = showFestivalName,
-                enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { it / 2 }
+                enter = fadeIn(tween(400)) + slideInHorizontally(tween(400, easing = androidx.compose.animation.core.LinearOutSlowInEasing)) { -it / 4 }
             ) {
                 Text(
-                    text = "FESTIVAL",
-                    fontSize = 100.sp,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colorScheme.secondary,
-                    lineHeight = 85.sp,
-                    letterSpacing = (-4).sp
+                    text = festivalName.uppercase(),
+                    style = MaterialTheme.typography.displayLarge.copy(
+                        fontSize = 72.sp,
+                        fontWeight = FontWeight.Black,
+                        fontStyle = FontStyle.Italic,
+                        color = MaterialTheme.colorScheme.primary,
+                        lineHeight = 62.sp,
+                        letterSpacing = (-4).sp
+                    )
                 )
             }
 
             AnimatedVisibility(
                 visible = showInsider,
-                enter = fadeIn(tween(400)) + slideInVertically(tween(400)) { it / 2 }
+                enter = fadeIn(tween(400)) + slideInHorizontally(tween(400, easing = androidx.compose.animation.core.LinearOutSlowInEasing)) { it / 4 }
             ) {
                 Text(
                     text = "INSIDER",
-                    fontSize = 100.sp,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colorScheme.primary,
-                    lineHeight = 85.sp,
-                    letterSpacing = (-4).sp
+                    style = MaterialTheme.typography.displayLarge.copy(
+                        fontSize = 72.sp,
+                        fontWeight = FontWeight.Black,
+                        fontStyle = FontStyle.Italic,
+                        color = Color.White,
+                        lineHeight = 62.sp,
+                        letterSpacing = (-4).sp
+                    )
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             AnimatedVisibility(
                 visible = showBadge,
-                enter = fadeIn(tween(350))
+                enter = scaleIn(tween(300)) + fadeIn(tween(300))
             ) {
-                Box(
-                    modifier = Modifier
-                        .background(Color.White)
-                        .padding(horizontal = 12.dp, vertical = 4.dp)
+                Surface(
+                    color = MaterialTheme.colorScheme.primary,
+                    contentColor = Color.Black,
+                    shape = androidx.compose.foundation.shape.CutCornerShape(topEnd = 8.dp),
+                    modifier = Modifier.padding(top = 8.dp)
                 ) {
                     Text(
-                        text = "EST. ${FestivalConfig.current.dates.year} – ALPHA v2.0",
-                        fontWeight = FontWeight.Black,
-                        color = Color.Black,
-                        fontSize = 12.sp,
-                        letterSpacing = 2.sp
+                        text = "VERSION 2.0.26 // ELITE PLATFORM",
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            fontWeight = FontWeight.Black,
+                            letterSpacing = 2.sp
+                        )
                     )
                 }
             }
         }
 
-        Box(
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-                .fillMaxWidth(0.4f)
-                .height(8.dp)
-                .background(MaterialTheme.colorScheme.secondary)
-        )
+        // Bottom progress decoration
+        if (showBadge) {
+            LinearProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .height(2.dp),
+                color = MaterialTheme.colorScheme.primary,
+                trackColor = Color.Transparent
+            )
+        }
     }
 }
