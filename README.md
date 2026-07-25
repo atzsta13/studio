@@ -44,7 +44,7 @@ Artist images are never downloaded or re-hosted — every image is hotlinked to 
 
 | Festival | ID | Artists | Timetable |
 | :--- | :--- | :--- | :--- |
-| **Sziget** | `sziget-2026` | 458 | ✅ Aug 9–16 |
+| **Sziget** | `sziget-2026` | 463 | ✅ Aug 9–16 |
 | **Nova Rock** | `novarock-2026` | 84 | ✅ Jun 11–14 |
 | **Rock am Ring** | `rock-am-ring-2026` | 73 | ✅ Jun 5–7 |
 | **Area 53** | `area53-2026` | 29 | ✅ Jul 16–18 |
@@ -112,3 +112,16 @@ Source of truth: `festivals/<id>/data/*.json` → synced to `public/data/` (web)
 - [`docs/GOALS.md`](docs/GOALS.md) — the why behind every feature
 - [`docs/LANDSCAPE.md`](docs/LANDSCAPE.md) — who builds festival apps, and why this one exists
 - [`android/README.md`](android/README.md) — Android architecture and routes
+
+---
+
+## 🤝 Contributing
+
+Adding a festival needs **no code** — it's a folder of JSON and a pull request. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Wrong set times are the bugs that actually cost people bands; corrections are the most valuable small PRs here.
+
+## 📄 Licence
+
+- **Code** — [AGPL-3.0](LICENSE). Copyleft is deliberate: it prevents a closed fork with trackers and ads bolted on.
+- **Festival data** in `festivals/**` — [ODbL-1.0](LICENSE-DATA), so derived databases stay open.

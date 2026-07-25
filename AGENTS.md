@@ -57,7 +57,7 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 
 | ID | Name | Artists | Schedule | Status (as of 2026-07-25) |
 |----|------|---------|----------|--------|
-| `sziget-2026` | Sziget | 458 | **Full timetable** 442/458 | Upcoming — Aug 9–16. **Flagship priority.** |
+| `sziget-2026` | Sziget | 463 | **Full timetable** 443/463 | Upcoming — Aug 9–16. **Flagship priority.** |
 | `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 | Past (Jun 11–14) |
 | `frequency-2026` | Frequency | 82 | **Full timetable** 82/82 | **Imminent — Aug 20–22.** |
 | `area53-2026` | Area 53 | 29 | **Full timetable** | Past (music Jul 16–18, Wed 15 warm-up) |
@@ -199,6 +199,7 @@ festivals/<id>/data/*.json
 | `docs/guides/MANDATES.md` | Hard constraints |
 | `docs/guides/UI_GUIDE.md` | Design system |
 | `docs/guides/TROUBLESHOOTING.md` | Dev troubleshooting |
+| `CONTRIBUTING.md` | How to contribute — the "add your festival in one PR" flow |
 | `android/README.md` | Android architecture + routes |
 
 Do **not** create new status/snapshot docs (`CURRENT.md`, `UPDATED.md`, `LLM_BRIEF.md` etc. were deleted for rotting). Update `docs/STATUS.md` and `TASKS.md` instead.

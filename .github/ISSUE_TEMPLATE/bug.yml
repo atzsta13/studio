@@ -1,0 +1,33 @@
+name: Bug report
+description: Something in the app is broken
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options: ["Web", "Android", "Both"]
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device / browser
+      placeholder: "Pixel 8, Android 15  ·  or  ·  Firefox 141 on Linux"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+  - type: checkboxes
+    id: offline
+    attributes:
+      label: Context
+      options:
+        - label: This happened offline / with no signal
