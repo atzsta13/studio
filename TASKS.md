@@ -73,7 +73,7 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
 - [ ] **ArtistViewModel tests** — needs Room in-memory DB (complex without Robolectric).
 - [ ] **ToolsViewModel tests** — currently would make real Open-Meteo calls; needs a network fake.
 - [ ] **Festival switch UX** — full app restart via launch intent; abrupt but functional. Revisit before store release.
-- [ ] **`applicationId` is still `com.example.festivalinsider`** — must change before any Play Store release.
+- [ ] **`applicationId` is still `org.openfestivalhub`** — must change before any Play Store release.
 - [ ] **Instrumented UI tests** — zero UI-level tests on Android; unit tests only.
 
 ---

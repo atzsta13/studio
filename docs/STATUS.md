@@ -1,4 +1,4 @@
-# Project Status — Festival Insider 2026
+# Project Status — Open Festival Hub 2026
 
 > Live snapshot. Update this after significant changes. Last updated: 2026-07-04.
 
@@ -23,7 +23,7 @@ Single website + single Android APK. This was refactored on 2026-06-12.
 
 | | Before | Now |
 |---|---|---|
-| Android | 6 product flavors (6 APKs) | 1 APK (`com.example.festivalinsider`) |
+| Android | 6 product flavors (6 APKs) | 1 APK (`org.openfestivalhub`) |
 | Web | Hub page only, no in-page switcher | Header has `FestivalSwitcher` dropdown on all festival pages |
 | Android assets | `src/<flavor>/assets/` | `src/main/assets/<festival-id>/` |
 | First launch (Android) | Opened into hardcoded festival | Routes to `FestivalSelectionScreen` |

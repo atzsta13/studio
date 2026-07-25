@@ -11,7 +11,7 @@
 | Android won't build | `cd android && ./gradlew clean && ./gradlew assembleDebug` |
 | TypeScript errors | `npm run typecheck` — must be 0 errors |
 | Lineup data missing | Run `npm run lineup:sync` to sync all festival data |
-| Festival not switching on Android | Clear app data: `adb shell pm clear com.example.festivalinsider` |
+| Festival not switching on Android | Clear app data: `adb shell pm clear org.openfestivalhub` |
 
 ---
 
@@ -55,7 +55,7 @@ Glance has sparse version availability. Current pinned version: `1.1.1`. Check h
 ### Festival not loading after switch
 `switchFestival()` restarts the app. If it loops, check that SharedPreferences is being written:
 ```bash
-adb shell run-as com.example.festivalinsider cat shared_prefs/festival_insider_prefs.xml
+adb shell run-as org.openfestivalhub cat shared_prefs/festival_insider_prefs.xml
 ```
 
 ### Room DB stale after festival switch
@@ -67,7 +67,7 @@ All festival assets live under `src/main/assets/<festival-id>/`. If adding a new
 ### App stuck on splash / loops back to festival selection
 Likely a bad `config.json`. Check logcat:
 ```bash
-adb logcat -s FestivalInsider
+adb logcat -s OpenFestivalHub
 ```
 
 ### `adb` not found
@@ -84,7 +84,7 @@ export PATH="$HOME/Android/Sdk/platform-tools:$PATH"
 
 ### After scraping, Android doesn't see new artists
 Room caches the old data. Either:
-- Clear app data: `adb shell pm clear com.example.festivalinsider`
+- Clear app data: `adb shell pm clear org.openfestivalhub`
 - Or increment `@Database(version=N)` in `AppDatabase.kt` to force a destructive migration
 
 ### Timetable not showing for a festival

@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Sziger Insider 2026"
+rootProject.name = "Open Festival Hub"
 include(":app")
  

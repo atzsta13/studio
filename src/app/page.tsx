@@ -122,7 +122,7 @@ export default function HubPage() {
 
       <footer className="container mx-auto px-4 py-20 text-center border-t border-white/5 mt-20">
         <p className="text-[10px] font-black uppercase tracking-[0.5em] text-muted-foreground/40">
-          Festival Insider Ecosystem © 2026 · Antigravity Core
+          Open Festival Hub · Open source, community-driven, non-commercial
         </p>
       </footer>
     </div>

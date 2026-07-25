@@ -1,4 +1,4 @@
-# Festival Insider — Android
+# Open Festival Hub — Android
 
 Jetpack Compose / Kotlin native app. Standalone — shares lineup data with the web app but has no runtime dependency on it.
 
@@ -62,7 +62,7 @@ Assets (JSON) + Room DB (SQLite)
 ## Project structure
 
 ```
-android/app/src/main/java/com/example/szigerinsider2026/
+android/app/src/main/java/org/openfestivalhub/
 │
 ├── data/
 │   ├── config/
@@ -196,7 +196,7 @@ TextMuted       // ~65% white — secondary info
 
 From `android/` directory:
 ```bash
-./gradlew assembleDebug            # Build the single "Festival Insider" APK
+./gradlew assembleDebug            # Build the single "Open Festival Hub" APK
 ./gradlew test                     # Unit tests (no device needed)
 ./gradlew installDebug             # Build + install to connected device/ADB
 # APK: app/build/outputs/apk/debug/app-debug.apk

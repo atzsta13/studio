@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SzigerInsider2026">
+        android:theme="@style/Theme.OpenFestivalHub">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,14 +28,14 @@
         </activity>
 
         <receiver
-            android:name=".widget.SzigetWidgetReceiver"
+            android:name=".widget.FestivalWidgetReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/sziget_widget_info" />
+                android:resource="@xml/festival_widget_info" />
         </receiver>
     </application>
 

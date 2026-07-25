@@ -17,7 +17,7 @@ Refactored `findNearestStage()` to use real Great-circle distance calculation vi
 ## 🟡 Not broken — unfinished (see `TASKS.md` P3 — Android)
 
 These *work*; they're just incomplete. Listed here only so they aren't mistaken for breakage:
-- `applicationId` still `com.example.festivalinsider` — blocks Play Store release.
+- `applicationId` still `org.openfestivalhub` — blocks Play Store release.
 - Zero instrumented UI tests; `ArtistViewModel` / `ToolsViewModel` untested.
 - No accessibility / `contentDescription` pass.
 

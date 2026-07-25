@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.szigerinsider2026"
+    namespace = "org.openfestivalhub"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.festivalinsider"
+        applicationId = "org.openfestivalhub"
         minSdk = 26
         targetSdk = 36
         versionCode = 1

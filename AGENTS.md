@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Agent instructions for the Festival Insider Platform. Applies to Claude Code, Cursor, Gemini, and any other AI tool working in this repo.
+Agent instructions for the Open Festival Hub. Applies to Claude Code, Cursor, Gemini, and any other AI tool working in this repo.
 
 ## Start Here
 
@@ -15,7 +15,7 @@ Read in this order, nothing more:
 |---|---|
 | Web page or feature | `src/app/[festivalId]/<page>/page.tsx`; shared components in `src/components/`; data + favorites via `useInsider()` from `src/components/layout/insider-provider.tsx` |
 | Timetable (web) | `docs/TIMETABLE.md` first, then `src/components/timetable/` |
-| Android screen or feature | `android/README.md` first, then `android/app/src/main/java/com/example/szigerinsider2026/ui/<area>/` |
+| Android screen or feature | `android/README.md` first, then `android/app/src/main/java/org/openfestivalhub/ui/<area>/` |
 | Festival data or lineups | Edit `festivals/<id>/data/*.json` and `festivals/<id>/config.json`, then run `npm run lineup:sync` |
 | Adding a festival | `scripts/add-festival.mjs` + `festivals/festival-config.schema.json` |
 | Styling / design | `docs/guides/UI_GUIDE.md` |
@@ -41,7 +41,7 @@ Edit the source in `festivals/<id>/` and re-run the sync — direct edits to the
 
 ## Project Overview
 
-The **Festival Insider Platform** is a multi-festival, offline-first companion app with two parallel codebases:
+The **Open Festival Hub** is a multi-festival, offline-first companion app with two parallel codebases:
 - **Web** (Next.js 16 / React 19) — root directory. Exported as a **fully static site** (`output: 'export'`), deployed to GitHub Pages at `https://atzsta13.github.io/studio/`.
 - **Android** (Jetpack Compose / Kotlin) — `android/` directory.
 
@@ -102,11 +102,13 @@ npm run lineup:sync
 
 ### Android
 ```bash
-./gradlew assembleDebug   # single "Festival Insider" APK
+./gradlew assembleDebug   # single "Open Festival Hub" APK
 ./gradlew test            # unit tests (no device needed)
 ```
 
 ### Deployment
+**The URL still says `/studio`.** The project was renamed to Open Festival Hub on 2026-07-25, but `basePath` tracks the *GitHub Pages repo name*, not the product name. It stays `/studio` until the repo is renamed to `openfestivalhub` or a custom domain is wired up. When that happens, three things move together: `basePath` + `NEXT_PUBLIC_BASE_PATH` in `next.config.ts`, `productionUrl` in every `festivals/<id>/config.json`, and the cache names in `public/sw.js`. Changing one without the others breaks the live site.
+
 **Auto-deploy is PAUSED (site under maintenance, 2026-07-10).** The `push` trigger in `.github/workflows/deploy-pages.yml` is commented out, so merges to `main` no longer deploy. Deploy manually via Actions → "Deploy to GitHub Pages" → Run workflow (`workflow_dispatch`). Re-enable auto-deploy by uncommenting the `push` trigger once the live site is fixed.
 
 ## Architecture
@@ -137,7 +139,7 @@ Without this, fetches will 404 on GitHub Pages. `BASE_PATH` is `'/studio'` in pr
 **Hydration**: Use `isMounted` pattern or `suppressHydrationWarning` for browser-only values.
 
 ### Android — Key Patterns
-- **Single APK**: `applicationId = "com.example.festivalinsider"`, all festival assets bundled under `src/main/assets/<festival-id>/`
+- **Single APK**: `applicationId = "org.openfestivalhub"`, all festival assets bundled under `src/main/assets/<festival-id>/`
 - **Config**: `FestivalConfig.kt` — reads `assets/<festival-id>/config.json` for the selected festival
 - **DB**: Room v2, `fallbackToDestructiveMigration()`, increment `@Database(version=…)` for every entity change
 - **Nav**: Manual `ViewModelProvider.Factory` — no Hilt
@@ -170,6 +172,9 @@ festivals/<id>/data/*.json
 - **OFFLINE FIRST** — Map, Guide, Lineup, and all core features must work with zero signal.
 - **CONFIG FIRST** — no hardcoded festival names, colors, coordinates, or dates in any component.
 - **IMAGES** — never download or host artist images. Always hotlink to source CDN. Always use `ArtistImage` component for attribution.
+- **NO CRITICAL INFRA** — never build ticketing, payments, cashless wristband top-up, entry scanning, or anything where failure strands an attendee at a gate. Those belong to the official festival app. This is a companion, not a replacement.
+- **NON-COMMERCIAL** — no ads, no sponsored placement, no paid tiers, no monetisation of any kind.
+- **UNOFFICIAL** — never imply affiliation with or endorsement by any festival. No festival logos, wordmarks, or official artwork anywhere in the repo or app.
 
 ## Coding Standards
 - **TypeScript**: Strict mode. No `any`. Interfaces in `src/types/index.ts`.
@@ -187,6 +192,7 @@ festivals/<id>/data/*.json
 | `docs/STATUS.md` | Live state snapshot (data coverage, open issues, recently shipped) |
 | `docs/architecture/ARCHITECTURE.md` | Deep technical reference |
 | `docs/GOALS.md` | The why behind every feature |
+| `docs/LANDSCAPE.md` | Market survey — who builds festival apps, why this one exists. Public-facing. |
 | `docs/features/FEATURES.md` | Feature matrix per platform |
 | `docs/TIMETABLE.md` | Full brief of the timetable feature |
 | `docs/guides/MANDATES.md` | Hard constraints |
