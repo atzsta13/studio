@@ -1,4 +1,4 @@
-# Festival Insider — Architecture Reference
+# Open Festival Hub — Architecture Reference
 
 > Written for AI models and new engineers joining cold. Read this before touching any code.
 
@@ -121,7 +121,7 @@ Artist images are **hotlinked to source CDN** — never downloaded or self-hoste
 
 ### Single APK
 
-One APK: `com.example.festivalinsider` / "Festival Insider". **No product flavors.** All festival data bundled under `src/main/assets/<festival-id>/`:
+One APK: `org.openfestivalhub` / "Open Festival Hub". **No product flavors.** All festival data bundled under `src/main/assets/<festival-id>/`:
 
 ```
 src/main/assets/
@@ -139,7 +139,7 @@ src/main/assets/
 App launch
   → MainActivity.onCreate()
       FestivalConfig.initialize(context)   // loads saved pref or defaults to "sziget-2026"
-      FestivalInsiderTheme { AppNavigation() }
+      OpenFestivalHubTheme { AppNavigation() }
   → SplashScreen
       FestivalConfig.isSelected(context)?
         yes → navigate("home")
@@ -201,7 +201,7 @@ ViewModels use **manual `ViewModelProvider.Factory`** — Hilt is not used.
 
 ### Theme
 
-`FestivalInsiderTheme` in `Theme.kt` reads `FestivalConfig.current.theme.androidPrimaryLong/AccentLong/SecondaryLong` to build the Material 3 color scheme. Must be called after `FestivalConfig.initialize()`.
+`OpenFestivalHubTheme` in `Theme.kt` reads `FestivalConfig.current.theme.androidPrimaryLong/AccentLong/SecondaryLong` to build the Material 3 color scheme. Must be called after `FestivalConfig.initialize()`.
 
 ### Haptics
 

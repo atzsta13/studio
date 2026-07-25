@@ -4,8 +4,8 @@ import fs from 'fs'
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '/studio'
 
 const manifest = {
-  name: 'Festival Insider',
-  short_name: 'Festival Insider',
+  name: 'Open Festival Hub',
+  short_name: 'Festival Hub',
   description: 'Your tactical companion for global festivals.',
   theme_color: '#000000',
   background_color: '#09090B',

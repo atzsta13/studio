@@ -9,17 +9,17 @@ import { ThemeProvider } from '@/components/layout/theme-provider';
 import { BASE_PATH } from '@/lib/base-path';
 
 export const metadata: Metadata = {
-  applicationName: 'Festival Insider',
+  applicationName: 'Open Festival Hub',
   title: {
-    default: 'Festival Insider Hub',
-    template: `%s | Festival Insider`,
+    default: 'Open Festival Hub',
+    template: `%s | Open Festival Hub`,
   },
   description: 'Your tactical companion for global festivals.',
   manifest: `${BASE_PATH}/manifest.json`,
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: 'Festival Insider',
+    title: 'Open Festival Hub',
   },
   formatDetection: {
     telephone: false,

@@ -1,4 +1,4 @@
-# Goals — Festival Insider Platform
+# Goals — Open Festival Hub
 
 The purpose of this document is the **why** behind every feature and the platform as a whole. The **what** lives in `docs/features/FEATURES.md`. The **how** lives in `docs/architecture/ARCHITECTURE.md`.
 

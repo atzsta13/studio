@@ -1,4 +1,4 @@
-# Festival Insider Platform
+# Open Festival Hub
 
 Multi-festival, offline-first companion app. Two codebases (Next.js web + Jetpack Compose Android) sharing one JSON data source. No backend, no accounts, no tracking.
 

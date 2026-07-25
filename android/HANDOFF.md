@@ -1,4 +1,4 @@
-# Handoff: Improve the Android app — Festival Insider Platform
+# Handoff: Improve the Android app — Open Festival Hub
 
 > Transient working brief for the next AI tool (e.g. Gemini) picking up the **Android app**.
 > The canonical sources are `AGENTS.md`, `android/README.md`, and `TASKS.md` — this file just orients you and points there. Delete/refresh it when the work below is done.
@@ -12,7 +12,7 @@ A previous session (Claude, 2026-07-10) finished data fixes, an AI-Scout refacto
 4. **`docs/STATUS.md`** "Recently Shipped" (2026-07-10 entries) — what just changed.
 
 ## Working directory & build loop
-- Code: `android/app/src/main/java/com/example/szigerinsider2026/`
+- Code: `android/app/src/main/java/org/openfestivalhub/`
 - Build the APK: `./android/gradlew -p android assembleDebug` (~3s warm — Gradle caches are enabled)
 - Tests: `./android/gradlew -p android testDebugUnitTest`
 - **Definition of done (Android):** both green. Verify by building — don't claim done off a read.
@@ -30,7 +30,7 @@ A previous session (Claude, 2026-07-10) finished data fixes, an AI-Scout refacto
 1. **Feature parity — `waterCounter` and `feedbackSystem`.** Both flags are `true` and the **web** app implements them; Android doesn't. Grep the flag name across `src/` to find the web reference implementation, then mirror it. `waterCounter` → a card in `ui/tools/ToolsScreen.kt`; `feedbackSystem` → a card (Tools/Home). Best first task: self-contained, visible, verifiable.
 2. **Accessibility pass** — no `contentDescription` audit has ever been done. Many `Icon(...)` calls pass `contentDescription = null`.
 3. **AI Scout — two items remain** (the prompt layer was already refactored to bounded, config-driven retrieval): (a) real token streaming via `generateResponseAsync`; (b) the Acoustic Scout needs time-based candidate filtering to actually answer "who's playing now." Details in `TASKS.md`.
-4. **`applicationId` is still `com.example.festivalinsider`** — must change before any Play Store release (DB/asset-path implications; do it deliberately).
+4. **`applicationId` is still `org.openfestivalhub`** — must change before any Play Store release (DB/asset-path implications; do it deliberately).
 5. **Tests** — `ArtistViewModel`/`ToolsViewModel` have none (need Room in-memory / a network fake); zero instrumented UI tests.
 
 ## Gotchas that will bite you

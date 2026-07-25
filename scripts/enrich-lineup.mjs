@@ -12,7 +12,7 @@ const FESTIVALS = [
   'rock-am-ring-2026',
 ];
 
-const MUSICBRAINZ_UA = 'FestivalInsiderPlatform/1.0 (stefan.atzlinger@gmail.com)';
+const MUSICBRAINZ_UA = 'OpenFestivalHub/1.0 (+https://github.com/openfestivalhub)';
 
 async function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
