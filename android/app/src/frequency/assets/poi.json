@@ -1,5 +1,0 @@
-[
-  { "id": "stage-space", "name": "Space Stage", "type": "stage", "mapCoords": { "x": 40, "y": 30 } },
-  { "id": "stage-green", "name": "Green Stage", "type": "stage", "mapCoords": { "x": 60, "y": 30 } },
-  { "id": "stage-nightpark-a", "name": "Nightpark Arena", "type": "stage", "mapCoords": { "x": 50, "y": 80 } }
-]

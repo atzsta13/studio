@@ -1,7 +1,0 @@
-[
-  { "id": "stage-blue", "name": "Blue Stage", "type": "stage", "mapCoords": { "x": 30, "y": 40 } },
-  { "id": "stage-red", "name": "Red Stage", "type": "stage", "mapCoords": { "x": 70, "y": 40 } },
-  { "id": "stage-redbull", "name": "Red Bull Stage", "type": "stage", "mapCoords": { "x": 50, "y": 80 } },
-  { "id": "water-1", "name": "Free Water North", "type": "water", "mapCoords": { "x": 20, "y": 20 } },
-  { "id": "medical-1", "name": "Medical Center", "type": "first-aid", "mapCoords": { "x": 50, "y": 10 } }
-]
