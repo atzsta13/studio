@@ -48,7 +48,7 @@ Artist images are never downloaded or re-hosted — every image is hotlinked to 
 | **Nova Rock** | `novarock-2026` | 84 | ✅ Jun 11–14 |
 | **Rock am Ring** | `rock-am-ring-2026` | 73 | ✅ Jun 5–7 |
 | **Area 53** | `area53-2026` | 29 | ✅ Jul 16–18 |
-| **Frequency** | `frequency-2026` | ~95 | ⏳ TBA |
+| **Frequency** | `frequency-2026` | 82 | ✅ Aug 20–22 |
 | **Ernte Punk** | `ernte-punk-2026` | ~17 | ⏳ TBA |
 
 ---
