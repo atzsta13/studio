@@ -40,6 +40,17 @@ export interface LineupItem {
   showInSchedule?: boolean;
 }
 
+/**
+ * A lineup item that is actually on the timetable — the schedule fields are
+ * guaranteed present. Produced by filtering `LineupItem[]` on times + stage.
+ */
+export type ScheduledSlot = LineupItem & {
+  stage: string;
+  day: string;
+  startTime: string;
+  endTime: string;
+};
+
 /** POI dot on the festival map. position is % from top-left of the map image. */
 export interface MapPin {
   id: string;

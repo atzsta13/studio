@@ -43,7 +43,7 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
 ## P3 — Half-finished systems (web)
 
 - [ ] **i18n partially adopted** — `use-translation` is wired into exactly 3 components (`tools/page.tsx`, `bottom-nav.tsx`, `header.tsx`); the rest of the UI is hardcoded English. Decide: roll it out or declare English-only and delete the half-system.
-- [ ] **Test coverage gaps** — 190 tests cover hooks and small components. Still untested: `timetable-view` (day sorting, live/past states, the 06:00 rollover) and the whole PWA/service-worker layer. `insider-provider` now has one test, for the cross-festival favorites bleed only.
+- [ ] **Test coverage gaps** — 221 tests cover hooks and small components. `timetable-view` now has 11 (zoom, gestures, stage filter, search, block rendering, rollover ordering); still untested there: day-tab sorting from `config.dates.days` and the live/past card states. The whole PWA/service-worker layer remains untested. `insider-provider` has one test, for the cross-festival favorites bleed only. Android has 82 unit tests; `TimetableZoom` is covered (21) but no Compose UI test exercises the grid itself.
 
 ---
 
@@ -60,8 +60,17 @@ These flags exist in `config.json` / `festival-engine.ts` / `FestivalConfig.kt` 
 
 ---
 
+## P2 — Two vibe taxonomies (needs a decision)
+
+- [ ] **`scripts/vibe-taxonomy.mjs` calls itself "single source of truth" and nothing imports it.** 60 genres. The script actually wired into `npm run lineup:vibes` — `scripts/backfill-vibes.mjs` — inlines its own 17-genre `GENRE_VIBE_MAP`, and the two disagree on vocabulary *and* casing (`METAL` → `Heavy/Energetic/Intense` vs `Hard/High Energy/Mosh`; `Feel-Good` vs `Feel-good`). The committed data was generated with the 60-genre map, so **running `lineup:vibes` today would rewrite every festival's vibes into the smaller vocabulary** and change quiz results on both platforms. 108 distinct vibe strings exist in the data, some duplicated by casing.
+  **Decide:** (a) make `backfill-vibes.mjs` import `VIBE_TAXONOMY`, re-run the pipeline, and re-check the quiz's `buildTargetVibes` lists against the new vocabulary, or (b) delete `vibe-taxonomy.mjs` and promote the inline map to the source of truth. Either way the data should end up with one casing per vibe.
+  *Mitigated, not fixed (2026-07-26):* web vibe matching is now case-insensitive like Android's, so the 47 `Feel-Good` artists are no longer invisible to the quiz. That removes the user-visible symptom; the duplicated taxonomy is still there.
+
+---
+
 ## P4 — Repo hygiene / chores
 
+- [ ] **`scripts/enrich-lineup.mjs` and `scripts/vibe-taxonomy.mjs` are referenced by nothing** — not `package.json`, not another script, not a doc. `enrich-lineup` backfills `imageUrl`/`countryCode` from iTunes + MusicBrainz for 4 festivals and may still be useful; `vibe-taxonomy` is covered by the P2 item above. Wire in or delete.
 - [ ] **`scripts/scrape-frequency-enhanced.mjs`** — not wired into package.json and the Frequency timetable has since landed (hand-parsed, 2026-07-25). Decide now: wire it in for re-scrapes, or delete it.
 - [ ] **`scripts/add-festival.mjs`** — utility, not in package.json. Verify it still matches the current config schema before next use.
 - [ ] **Sziget `showInSchedule: false` artists (27)** — hidden from the grid by design; re-check against the official app before Aug 9.

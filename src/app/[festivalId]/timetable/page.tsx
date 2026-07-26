@@ -43,7 +43,10 @@ export default function TimetablePage() {
   if (!mounted) return null;
 
   return (
-    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: 'background.default', minHeight: '100vh' }}>
+    /* No minHeight here: the grid caps its own height to the visible viewport,
+       and any page taller than that is scroll slack that drags the grid's
+       sticky stage header up behind the sticky toolbar. */
+    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', bgcolor: 'background.default' }}>
       <Box sx={{
         pt: { xs: 7, md: 8 },
         pb: 1.5,

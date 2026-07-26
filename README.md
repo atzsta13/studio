@@ -88,7 +88,7 @@ cd android
 ```bash
 npm run typecheck     # 0 errors
 npm run lint          # 0 errors
-npm test -- --run     # 190 tests, keep green
+npm test -- --run     # 221 tests, keep green
 ```
 
 ---

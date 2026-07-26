@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import type { LineupItem } from '@/types';
 import Link from 'next/link';
 import { getFestivalConfig } from '@/config/festival-engine';
+import { densityTier } from '@/hooks/use-timetable-zoom';
 
 interface ArtistCardProps {
   artist: LineupItem;
@@ -17,6 +18,10 @@ interface ArtistCardProps {
   isPast?: boolean;
   onToggleFavorite: () => void;
   positionRelative?: boolean;
+  /** Rendered height in px. Under zoom this, not duration, decides density. */
+  pxHeight?: number;
+  /** Rendered column width in px, used to drop non-essentials when narrow. */
+  pxWidth?: number;
 }
 
 const LIVE_HEX = '#22c55e';
@@ -30,7 +35,9 @@ export default function ArtistCard({
   isLive = false,
   isPast = false,
   onToggleFavorite,
-  positionRelative = false
+  positionRelative = false,
+  pxHeight,
+  pxWidth
 }: ArtistCardProps) {
   if (!artist.startTime || !artist.endTime) return null;
 
@@ -45,8 +52,16 @@ export default function ArtistCard({
   const endTime = format(end, 'HH:mm');
   const duration = (end.getTime() - start.getTime()) / (1000 * 60);
 
-  const isTiny = duration < 25;
-  const isSmall = duration < 40;
+  const tier = pxHeight !== undefined
+    ? densityTier(pxHeight)
+    : duration < 25 ? 'tiny' : duration < 40 ? 'small' : 'full';
+  const isMicro = pxHeight !== undefined && pxHeight < 24;
+  const isTiny = tier === 'tiny';
+  const isSmall = tier !== 'full';
+  const isNarrow = pxWidth !== undefined && pxWidth < 130;
+  // Zoomed all the way out there is no room for a single readable character,
+  // so the slot becomes a colour-coded block: the day's shape at a glance.
+  const isBlock = (pxWidth !== undefined && pxWidth < 46) || (pxHeight !== undefined && pxHeight < 13);
 
   const borderLeft = isConflicting
     ? '4px solid #ef4444'
@@ -55,6 +70,31 @@ export default function ArtistCard({
       : isFavorite
         ? `4px solid ${favColor}`
         : '1px solid rgba(255,255,255,0.06)';
+
+  if (isBlock) {
+    return (
+      <Link
+        href={`/${festivalId}/artist/${artist.id}`}
+        title={`${artist.artist} · ${startTime}–${endTime}`}
+        aria-label={`${artist.artist}, ${startTime} to ${endTime}`}
+        style={{
+          position: 'absolute',
+          inset: '1px',
+          display: 'block',
+          borderRadius: '2px',
+          textDecoration: 'none',
+          backgroundColor: isConflicting
+            ? '#ef4444'
+            : isLive
+              ? LIVE_HEX
+              : isFavorite
+                ? favColor
+                : 'rgba(255,255,255,0.22)',
+          opacity: isPast && !isFavorite && !isConflicting ? 0.3 : 1,
+        }}
+      />
+    );
+  }
 
   return (
     <Box
@@ -65,9 +105,12 @@ export default function ArtistCard({
         minHeight: positionRelative ? '76px' : 'auto',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: isSmall ? 'center' : 'space-between',
-        p: isTiny ? 0.5 : 1.5,
-        borderRadius: '0.75rem',
+        // Centering a card whose wrapped name is taller than the slot clips the
+        // text at both ends; top-aligning keeps the first line readable.
+        justifyContent: isSmall ? 'flex-start' : 'space-between',
+        overflow: 'hidden',
+        p: isMicro ? '1px 3px' : isTiny ? 0.5 : 1.5,
+        borderRadius: isMicro ? '0.25rem' : '0.75rem',
         bgcolor: isConflicting ? 'rgba(239, 68, 68, 0.1)' : isLive ? 'rgba(34, 197, 94, 0.08)' : festivalConfig.theme.backgroundHex,
         border: '1px solid rgba(255,255,255,0.06)',
         borderLeft,
@@ -101,12 +144,21 @@ export default function ArtistCard({
             sx={{
               color: isConflicting ? '#ef4444' : '#fff',
               fontWeight: 900,
-              fontSize: isTiny ? '0.7rem' : isSmall ? '0.8rem' : '1rem',
-              lineHeight: 1,
+              fontSize: isMicro ? '0.55rem' : isTiny ? '0.7rem' : isNarrow ? '0.72rem' : isSmall ? '0.8rem' : '1rem',
+              lineHeight: 1.05,
               letterSpacing: '-0.03em',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
-              whiteSpace: 'nowrap',
+              // Zoomed out, a wrapped name beats "DAY OF BROD…" — but a card
+              // only one line tall has to stay on one line.
+              ...(isTiny
+                ? { whiteSpace: 'nowrap' }
+                : {
+                  display: '-webkit-box',
+                  WebkitBoxOrient: 'vertical',
+                  WebkitLineClamp: isSmall ? 2 : 3,
+                  wordBreak: 'break-word',
+                }),
               textTransform: 'uppercase',
               fontStyle: 'italic',
               '&:hover': { color: festivalConfig.theme.primaryHex }
@@ -114,11 +166,11 @@ export default function ArtistCard({
           >
             {artist.artist}
           </Typography>
-          {!isTiny && (
+          {!isTiny && !(isSmall && isNarrow) && (
             <Typography
               sx={{
                 color: isConflicting ? 'rgba(239, 68, 68, 0.8)' : isLive ? LIVE_HEX : 'rgba(255,255,255,0.4)',
-                fontSize: '0.7rem',
+                fontSize: isNarrow ? '0.62rem' : '0.7rem',
                 fontWeight: 800,
                 fontFamily: '"Outfit", sans-serif',
                 mt: 0.5,
@@ -146,11 +198,11 @@ export default function ArtistCard({
             sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', p: 0.25 }}
           >
             {isFavorite
-              ? <Heart size={isTiny ? 12 : 16} fill={favColor} color={favColor} />
+              ? <Heart size={isMicro ? 9 : isTiny ? 12 : 16} fill={favColor} color={favColor} />
               : !isTiny && <Heart size={14} color="rgba(255,255,255,0.15)" style={{ display: 'block' }} />
             }
           </Box>
-          {!isSmall && (
+          {!isSmall && !isNarrow && (
             <Link href={`/map?stage=${encodeURIComponent(artist.stage || "")}`} style={{ textDecoration: 'none' }} onClick={e => e.stopPropagation()}>
               <IconButton size="small" aria-label="View on map" sx={{ p: 0.5, color: 'rgba(255,255,255,0.2)', '&:hover': { color: festivalConfig.theme.secondaryHex } }}>
                 <MapPin size={14} />
@@ -160,7 +212,7 @@ export default function ArtistCard({
         </Box>
       </Box>
 
-      {!isSmall && artist.genres?.[0] && (
+      {!isSmall && !isNarrow && artist.genres?.[0] && (
         <Typography
           sx={{
             fontSize: '0.65rem',

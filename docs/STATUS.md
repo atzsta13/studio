@@ -9,10 +9,10 @@
 | Check | Status | Detail |
 |---|---|---|
 | Web TypeScript | ✅ 0 errors | `npm run typecheck` |
-| Web tests | ✅ 190 passing | `npm test -- --run` |
+| Web tests | ✅ 221 passing | `npm test -- --run` |
 | Web lint | ✅ Clean | `npm run lint` |
 | Android Kotlin compile | ✅ 0 errors | Only deprecation warnings (pre-existing) |
-| Android unit tests | ✅ Passing | `./gradlew test` |
+| Android unit tests | ✅ 82 passing | `./gradlew test` |
 | Deployed | ⚠️ Live, manual only | https://atzsta13.github.io/studio/ (GitHub Pages). Auto-deploy paused since 2026-07-10 — deploy via Actions → `workflow_dispatch` |
 
 ---
@@ -91,9 +91,11 @@ These features are implemented but show nothing meaningful for festivals with nu
 
 | Date | What |
 |---|---|
+| 2026-07-26 | Web vibe matching is now case-insensitive, like Android's has always been. The data carries two casings of the same vibe (`Feel-Good` / `Feel-good`) because two generations of the vibe taxonomy wrote it, and exact matching scored the capitalised half at zero — 47 artists including Lorde and Zara Larsson were invisible to every quiz mood keyed on that vibe. Root cause (two rival taxonomies, one of them dead) is specified in `TASKS.md` P2 |
+| 2026-07-26 | **Timetable zoom + 2D pan, both platforms.** The grid scrolls both axes at once with the time gutter pinned left and the stage header pinned top, and zooms 10–260% anchored on the focal point — pinch, ctrl/⌘+wheel, double-tap, keys and a −/%/+/FIT cluster on web; pinch and −/%/+/FIT on Android. At the floor a whole 18-stage Sziget day fits one phone screen as colour-coded blocks; cards pick their density from rendered pixels, not set duration. Android's hand-rolled offset/clamp grid was replaced with real Compose scroll state (it mutated state during composition and rendered empty columns when zoomed in). Shared math is mirrored in `use-timetable-zoom.ts` / `TimetableZoom.kt`; +30 web and +21 Android tests. Android verified on a Pixel 8 emulator except the pinch gesture itself, which adb cannot synthesise. Full brief: `docs/TIMETABLE.md`. |
 | 2026-07-26 | Housekeeping: removed the fake `audioMonitor` dB meter from both platforms (it never measured anything — hardcoded "102dB" on web and a `// Simulated Meter` on Android) and the flag from all configs; dropped the unused MediaPipe `tasks-genai` dep and the dead CameraX/barcode entries from the version catalog; tightened the camera/mic mandate to absolute; deleted `ISSUES.md` + `android/HANDOFF.md` |
 | 2026-07-25 | Frequency 2026 full timetable — 82 slots across 5 stages (Aug 20–22), `features.timetable: true`. Lineup reconciled 95→82: 12 duplicate scraper entries collapsed, Lina-Mariah added, Missio + t-low removed (dropped from the bill). Nightstage runs to 05:30, so post-midnight sets roll to the next date |
-| 2026-07-25 | Sziget deduped — 30 exact duplicate rows removed (headliners rendered twice); now 463 acts, 443 scheduled |
+| 2026-07-25 | Sziget deduped — 30 exact duplicate rows removed (headliners rendered twice). A second pass on 2026-07-26 caught 12 near-duplicates, leaving today's 451 acts / 431 scheduled |
 | 2026-07-10 | Android feature pass (Gemini, verified): implemented `waterCounter`/`hydrationTracker` + `feedbackSystem` cards on Android (web parity closed); replaced the mic-based Acoustic Scout with a GPS **Location Scout** (nearest-stage → "who's playing now") and removed the `RECORD_AUDIO`/`CAMERA` permissions + CameraX/ML Kit deps (latent constraint violations); edge-to-edge insets in Navigation; web `ArtistImage` now falls back to an initial-letter placeholder on broken hotlinks. Both platforms green |
 | 2026-07-10 | Build perf: enabled Gradle parallel + build cache + configuration cache and raised daemon heap 2G→4G (clean build 41s→3s, incremental ~8-20s→1s on an 8-core machine); `next dev` now uses Turbopack. Production web build stays on webpack (Turbopack only ~4% there — cost is static-export prerender, not compile) |
 | 2026-07-10 | Removed the `setlistLinks` feature entirely (UI-only link-out to setlist.fm, no data, Android port never built) — component, flag, types, all configs, and docs. No festival data touched |

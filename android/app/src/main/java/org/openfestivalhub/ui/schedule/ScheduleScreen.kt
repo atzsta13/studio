@@ -10,15 +10,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectTransformGestures
-import androidx.compose.foundation.gestures.rememberTransformableState
-import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -34,18 +27,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -63,13 +52,12 @@ import org.openfestivalhub.ui.utils.formatTime
 import java.time.LocalDate
 import java.time.LocalTime
 import org.openfestivalhub.data.config.FestivalConfig
-import androidx.compose.ui.input.pointer.pointerInput
 
 // ─── Constants (derived from FestivalConfig.current) ───────────────────────────
 
 private val DAY_LABELS get() = FestivalConfig.current.dates.dayLabels
 
-private val DAY_TO_DATE: Map<String, LocalDate> get() {
+internal val DAY_TO_DATE: Map<String, LocalDate> get() {
     val config = FestivalConfig.current
     val start = LocalDate.parse(config.dates.startDate)
     return config.dates.days.mapIndexed { i, day ->
@@ -96,7 +84,7 @@ private fun rememberMinuteTick(): Long {
 
 // ─── Now-playing helper ───────────────────────────────────────────────────────
 
-private fun isNowPlaying(artist: Artist): Boolean {
+internal fun isNowPlaying(artist: Artist): Boolean {
     val config = FestivalConfig.current
     val today = LocalDate.now()
     val startDate = LocalDate.parse(config.dates.startDate)
@@ -531,332 +519,6 @@ private fun DayHeader(day: String) {
     ) {
         val label = (FestivalConfig.current.dates.dayLabels[day] ?: day.take(3).uppercase()) + " · " + day.uppercase()
         BrutalistBadge(text = label, color = MaterialTheme.colorScheme.secondary)
-    }
-}
-
-// Hours before this are treated as "past midnight" and belong to the previous festival day.
-private const val ROLLOVER_HOUR = 6
-private val GUTTER_WIDTH = 48.dp
-// Each stage column gets at least this width
-private val BASE_MIN_STAGE_WIDTH = 158.dp
-
-private fun wallMinutes(t: String?): Int? {
-    val time = parseTime(t) ?: return null
-    val mins = time.hour * 60 + time.minute
-    return if (time.hour < ROLLOVER_HOUR) mins + 24 * 60 else mins
-}
-
-private fun formatWallMinutes(mins: Int): String {
-    val h = (mins / 60) % 24
-    val m = mins % 60
-    return "%02d:%02d".format(h, m)
-}
-
-@Composable
-fun TimetableGrid(
-    dayArtists: List<Artist>,
-    selectedDay: String,
-    favoriteIds: Set<String>,
-    squadIds: Set<String> = emptySet(),
-    searchQuery: String = "",
-    minuteTick: Long = 0L,
-    onArtistClick: (String) -> Unit,
-    onToggleFavorite: (String) -> Unit
-) {
-    val haptic = rememberHapticManager()
-    val byStage = remember(dayArtists) {
-        dayArtists.filter { wallMinutes(it.startTime) != null && wallMinutes(it.endTime) != null }
-            .groupBy { it.stage ?: "Other" }.entries
-            .sortedBy { if (it.key.contains("main", true) || it.key.contains("blue", true)) 0 else 1 }
-    }
-
-    if (byStage.isEmpty()) {
-        Box(modifier = Modifier.fillMaxSize().padding(horizontal = 32.dp), contentAlignment = Alignment.Center) {
-            if (searchQuery.isNotBlank()) {
-                BrutalistHeader(title = "NO ARTISTS MATCH", subtitle = "No acts named \"${searchQuery.trim()}\" on this day.")
-            } else {
-                BrutalistHeader(title = "NO STAGE TIMES YET", subtitle = "The schedule for this day has not been published.")
-            }
-        }
-        return
-    }
-
-    val dayStart = remember(byStage) {
-        (byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.startTime) }.minOrNull() ?: 720) / 60 * 60
-    }
-    val dayEnd = remember(byStage) {
-        ((byStage.flatMap { it.value }.mapNotNull { wallMinutes(it.endTime) }.maxOrNull() ?: 1440) + 59) / 60 * 60
-    }
-
-    // Zoom and pan states
-    var scale by remember { mutableStateOf(1f) }
-    var offsetX by remember { mutableStateOf(0f) }
-    var offsetY by remember { mutableStateOf(0f) }
-
-    val minScale = 0.5f
-    val maxScale = 2.5f
-    val dpPerMinute = 2.2f * scale
-
-    val boardHeight = ((dayEnd - dayStart) * dpPerMinute).dp
-    val density = LocalDensity.current
-
-    val nowMinutes = remember(selectedDay, dayStart, dayEnd, minuteTick) {
-        val now = LocalTime.now()
-        val mins = now.hour * 60 + now.minute + if (now.hour < ROLLOVER_HOUR) 24 * 60 else 0
-        val effectiveDate = if (now.hour < ROLLOVER_HOUR) LocalDate.now().minusDays(1) else LocalDate.now()
-        if (DAY_TO_DATE[selectedDay] == effectiveDate && mins in dayStart..dayEnd) mins else null
-    }
-
-    BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxSize()
-            .pointerInput(Unit) {
-                detectTransformGestures { _, pan, zoom, _ ->
-                    scale = (scale * zoom).coerceIn(minScale, maxScale)
-                    offsetX += pan.x
-                    offsetY += pan.y
-                }
-            }
-    ) {
-        val colWidth = maxOf(BASE_MIN_STAGE_WIDTH * scale, (maxWidth - GUTTER_WIDTH) / byStage.size.toFloat())
-        val stagesWidth = colWidth * byStage.size
-        
-        // Bounds for panning
-        val maxOffsetX = 0f
-        val minOffsetX = -(stagesWidth.value * density.density - (maxWidth.value * density.density - GUTTER_WIDTH.value * density.density)).coerceAtLeast(0f)
-        val maxOffsetY = 0f
-        val minOffsetY = -(boardHeight.value * density.density - maxHeight.value * density.density).coerceAtLeast(0f)
-
-        offsetX = offsetX.coerceIn(minOffsetX, maxOffsetX)
-        offsetY = offsetY.coerceIn(minOffsetY, maxOffsetY)
-
-        Column(modifier = Modifier.fillMaxSize()) {
-            // Stage Headers
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(40.dp)
-                    .background(OLEDBlack)
-                    .drawBehind {
-                        drawLine(
-                            color = Color.White.copy(alpha = 0.15f),
-                            start = androidx.compose.ui.geometry.Offset(0f, size.height),
-                            end = androidx.compose.ui.geometry.Offset(size.width, size.height),
-                            strokeWidth = 1.dp.toPx()
-                        )
-                    },
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Spacer(modifier = Modifier.width(GUTTER_WIDTH))
-                Box(modifier = Modifier.weight(1f).clipToBounds()) {
-                    Row(modifier = Modifier.offset { androidx.compose.ui.unit.IntOffset(offsetX.toInt(), 0) }) {
-                        byStage.forEach { entry ->
-                            Box(
-                                modifier = Modifier.width(colWidth).fillMaxHeight().padding(horizontal = 6.dp),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Text(
-                                    text = entry.key.uppercase(),
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontSize = (11 * scale).coerceAtMost(14f).sp,
-                                    fontWeight = FontWeight.Black,
-                                    fontStyle = FontStyle.Italic,
-                                    letterSpacing = 1.sp,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-            Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
-                // Main Grid
-                Row(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .offset { androidx.compose.ui.unit.IntOffset(0, offsetY.toInt()) }
-                ) {
-                    // Time Gutter
-                    Box(modifier = Modifier.width(GUTTER_WIDTH).fillMaxHeight().background(OLEDBlack)) {
-                        var hourMark = dayStart
-                        while (hourMark <= dayEnd) {
-                            val y = ((hourMark - dayStart) * dpPerMinute).dp
-                            Text(
-                                text = formatWallMinutes(hourMark),
-                                color = TextMuted,
-                                fontSize = (10 * scale).coerceAtMost(12f).sp,
-                                fontWeight = FontWeight.Black,
-                                modifier = Modifier.offset(x = 5.dp, y = y - 7.dp)
-                            )
-                            hourMark += 60
-                        }
-                    }
-
-                    // Content Area
-                    Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
-                        Box(modifier = Modifier
-                            .width(stagesWidth)
-                            .fillMaxHeight()
-                            .offset { androidx.compose.ui.unit.IntOffset(offsetX.toInt(), 0) }
-                        ) {
-                            // Hour gridlines
-                            var hourMark = dayStart
-                            while (hourMark <= dayEnd) {
-                                val y = ((hourMark - dayStart) * dpPerMinute).dp
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(1.dp)
-                                        .offset(y = y)
-                                        .background(Color.White.copy(alpha = 0.08f))
-                                )
-                                hourMark += 60
-                            }
-
-                            // Columns
-                            Row(modifier = Modifier.fillMaxSize()) {
-                                byStage.forEach { entry ->
-                                    Box(modifier = Modifier.width(colWidth).fillMaxHeight()) {
-                                        entry.value.forEach { artist ->
-                                            val start = wallMinutes(artist.startTime) ?: return@forEach
-                                            val end = wallMinutes(artist.endTime) ?: (start + 30)
-                                            ArtistGridBlock(
-                                                artist = artist,
-                                                y = (start - dayStart) * dpPerMinute,
-                                                blockHeight = ((end - start) * dpPerMinute).coerceAtLeast(40f * scale),
-                                                isFavorite = favoriteIds.contains(artist.id),
-                                                inSquad = squadIds.contains(artist.id),
-                                                isPast = nowMinutes != null && end <= nowMinutes,
-                                                minuteTick = minuteTick,
-                                                onArtistClick = onArtistClick,
-                                                haptic = haptic,
-                                                scale = scale
-                                            )
-                                        }
-                                    }
-                                }
-                            }
-
-                            // Now line
-                            nowMinutes?.let { mins ->
-                                val y = ((mins - dayStart) * dpPerMinute).dp
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .height(2.dp)
-                                        .offset(y = y - 1.dp)
-                                        .background(ToxicGreen)
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun ArtistGridBlock(
-    artist: Artist,
-    y: Float,
-    blockHeight: Float,
-    isFavorite: Boolean,
-    inSquad: Boolean,
-    isPast: Boolean = false,
-    minuteTick: Long = 0L,
-    onArtistClick: (String) -> Unit,
-    haptic: org.openfestivalhub.ui.utils.HapticManager,
-    scale: Float = 1f
-) {
-    val isLive = remember(artist, minuteTick) { isNowPlaying(artist) }
-    val dimmed = isPast && !isFavorite && !inSquad && !isLive
-    val accentColor = when {
-        isFavorite -> MaterialTheme.colorScheme.secondary
-        inSquad -> CyanPulse
-        isLive -> ToxicGreen
-        artist.isHeadliner -> MaterialTheme.colorScheme.primary
-        else -> Color.White.copy(alpha = 0.2f)
-    }
-    val isCompact = blockHeight < (60f * scale)
-
-    Box(
-        modifier = Modifier
-            .offset(y = y.dp)
-            .fillMaxWidth()
-            .height(blockHeight.dp)
-            .graphicsLayer { alpha = if (dimmed) 0.45f else 1f }
-            .padding(horizontal = 2.dp, vertical = 1.dp)
-            .clip(RoundedCornerShape(8.dp * scale))
-            .background(if (isLive) CardBackground.copy(alpha = 0.9f) else CardBackground)
-            .border(
-                width = if (isFavorite || isLive || artist.isHeadliner) (1.5 * scale).dp else (1 * scale).dp,
-                color = accentColor.copy(alpha = if (isFavorite || isLive || artist.isHeadliner) 0.8f else 0.15f),
-                shape = RoundedCornerShape(8.dp * scale)
-            )
-            .clickable { haptic.lightTap(); onArtistClick(artist.id) }
-    ) {
-        if (isFavorite || isLive || artist.isHeadliner) {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .drawBehind {
-                        drawRect(
-                            brush = Brush.verticalGradient(
-                                colors = listOf(accentColor.copy(alpha = 0.08f), Color.Transparent)
-                            )
-                        )
-                    }
-            )
-        }
-
-        // Image background for high importance or if zoomed in enough
-        if (artist.imageUrl != null && (isFavorite || artist.isHeadliner || scale > 1.2f)) {
-            AsyncImage(
-                model = artist.imageUrl,
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize().graphicsLayer { alpha = 0.15f },
-                contentScale = ContentScale.Crop
-            )
-        }
-
-        Column(modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp, vertical = 4.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (isLive) {
-                    Box(modifier = Modifier.padding(end = 4.dp).size(4.dp).clip(CircleShape).background(ToxicGreen))
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                if (isFavorite) {
-                    Icon(Icons.Filled.Star, contentDescription = null, tint = MaterialTheme.colorScheme.secondary, modifier = Modifier.size((10 * scale).coerceAtMost(14f).dp))
-                }
-            }
-
-            Text(
-                text = artist.artist.uppercase(),
-                color = if (isFavorite) MaterialTheme.colorScheme.secondary else Color.White,
-                fontWeight = FontWeight.Black,
-                fontSize = (10 * scale).coerceIn(8f, 14f).sp,
-                maxLines = if (isCompact) 1 else 2,
-                overflow = TextOverflow.Ellipsis,
-                lineHeight = (11 * scale).sp,
-                letterSpacing = (-0.2).sp,
-                fontStyle = FontStyle.Italic
-            )
-
-            if (!isCompact && scale > 0.8f) {
-                Spacer(modifier = Modifier.weight(1f))
-                Text(
-                    text = "${formatTime(artist.startTime)} - ${formatTime(artist.endTime)}",
-                    color = if (isLive) ToxicGreen.copy(alpha = 0.7f) else TextMuted,
-                    fontSize = (8 * scale).coerceAtMost(10f).sp,
-                    fontWeight = FontWeight.Bold,
-                    letterSpacing = 0.5.sp,
-                    maxLines = 1
-                )
-            }
-        }
     }
 }
 

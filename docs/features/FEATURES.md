@@ -42,7 +42,7 @@
 | `tentFinder` | Map | ✅ | ✅ | Android: TentFinderCard in ToolsScreen |
 | `friendFinder` | Social (P2P) | ✅ | ✅ | Android: FriendFinderScreen — QR generated for display, never scanned |
 | `customThemes` | Personalization | ⏳ | ⏳ | Pending — per-user theme selection |
-| `timetable` | Schedule | ✅ | ✅ | Full grid live for 5 of 6 festivals; `false` only for Ernte Punk (no data yet) |
+| `timetable` | Schedule | ✅ | ✅ | Full grid live for 5 of 6 festivals; `false` only for Ernte Punk (no data yet). Both grids zoom 10–260% with 2D pan — web via pinch / ctrl+wheel / double-tap / keys / FIT, Android via pinch / −+ / FIT |
 | `currencyConverter` | Practical | ✅ | ✅ | Android: ToolsScreen card |
 | `cashlessLink` | Practical | ✅ | ✅ | Outbound deep link to the festival's own top-up page only — we never handle balances or payments (NO CRITICAL INFRA) |
 | `dayparkNightpark` | Schedule | ✅ | ✅ | Frequency-specific day/night split |

@@ -72,7 +72,7 @@ Package root: `android/app/src/main/java/org/openfestivalhub/`
 | `ui/artist/` | `ArtistDetailScreen` — hero, social links, Spotify embed island, "more like this" |
 | `ui/components/` | Shared UI — `ArtistCard`, `DesignSystem`, `OfflineBanner` |
 | `ui/discover/` | Lineup browsing: filters/search, speed discovery, serendipity, genre breakdown, vibe radar, tag cloud, AI Scout entry |
-| `ui/schedule/` | `ScheduleScreen` — GRID / BY-TIME / MY-LINEUP tabs, live states, clash banner |
+| `ui/schedule/` | `ScheduleScreen` (tabs, search, rows, dialogs) + `TimetableGrid.kt` (the grid itself) — GRID / BY-TIME / MY-LINEUP tabs, live states, clash banner. The GRID is zoomable (10–260%): pinch or the on-screen −/%/+/FIT cluster. Pan is real `verticalScroll`/`horizontalScroll` state shared with the pinned stage header, **not** hand-managed offsets; zoom changes dp sizes, never a `graphicsLayer` scale. Math + persistence in `ui/schedule/TimetableZoom.kt` (unit-tested, mirrors the web hook) |
 | `ui/home/` `ui/map/` `ui/food/` `ui/quiz/` `ui/packing/` `ui/splash/` | One screen area each, `*Screen.kt` + optional `*ViewModel.kt` |
 | `ui/tools/` | Every tool card, each gated by a `config.features` flag — budget, notes, tent/car finder, squad QR, weather, countdown, survival guide |
 | `ui/navigation/` | `Navigation.kt` — NavHost + bottom bar, all 20 routes |

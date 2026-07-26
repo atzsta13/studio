@@ -14,7 +14,7 @@ Read in this order, nothing more:
 | Your task touches… | Read / edit |
 |---|---|
 | Web page or feature | `src/app/[festivalId]/<page>/page.tsx`; shared components in `src/components/`; data + favorites via `useInsider()` from `src/components/layout/insider-provider.tsx` |
-| Timetable (web) | `docs/TIMETABLE.md` first, then `src/components/timetable/` |
+| Timetable (web) | `docs/TIMETABLE.md` first, then `src/components/timetable/` + `src/hooks/use-timetable-{zoom,gestures,viewport}.ts` |
 | Android screen or feature | `android/README.md` first, then `android/app/src/main/java/org/openfestivalhub/ui/<area>/` |
 | Festival data or lineups | Edit `festivals/<id>/data/*.json` and `festivals/<id>/config.json`, then run `npm run lineup:sync` |
 | Adding a festival | `scripts/add-festival.mjs` + `festivals/festival-config.schema.json` |
@@ -79,7 +79,7 @@ npm run dev
 npm run typecheck
 npm run lint
 
-# Tests (Vitest + React Testing Library) — 190 passing
+# Tests (Vitest + React Testing Library) — 221 passing
 npm test -- --run
 
 # Static export build (outputs to out/)
@@ -180,7 +180,7 @@ festivals/<id>/data/*.json
 - **TypeScript**: Strict mode. No `any`. Interfaces in `src/types/index.ts`.
 - **Icons**: Lucide (Web), import individually. Android uses Vector Drawables.
 - **No comments** unless the WHY is non-obvious.
-- **Tests**: 190 passing — keep green. Run `npm test -- --run` before committing.
+- **Tests**: 221 passing — keep green. Run `npm test -- --run` before committing.
 
 ## Docs Map (keep it this lean)
 

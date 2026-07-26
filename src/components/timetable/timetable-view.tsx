@@ -1,35 +1,24 @@
 import { useInsider } from '@/components/layout/insider-provider';
 import { useMemo, useState, useEffect, useRef, useCallback } from 'react';
-import type { LineupItem } from '@/types';
+import type { LineupItem, ScheduledSlot } from '@/types';
 import ArtistCard from './artist-card';
+import TimetableList from './timetable-list';
+import PillButton from './pill-button';
+import ZoomCluster from './zoom-cluster';
 import { Clock, AlertTriangle, Heart, Target, Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
-
-const PX_PER_MIN = 2.4;
-const GUTTER_PX = 52;
-const MIN_COL_PX = 200;
-const ROLLOVER_HOUR = 6;
-
-// Wall-clock minutes at the venue, read straight from the ISO string —
-// no Date/UTC conversion, so it can't drift with viewer timezone or DST.
-function wallMinutes(iso: string): number {
-    const h = parseInt(iso.slice(11, 13), 10);
-    const m = parseInt(iso.slice(14, 16), 10);
-    const total = h * 60 + m;
-    return h < ROLLOVER_HOUR ? total + 24 * 60 : total;
-}
-
-function formatMinutes(mins: number): string {
-    const h = Math.floor(mins / 60) % 24;
-    const m = mins % 60;
-    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-}
-
-interface ScheduledItem extends LineupItem {
-    startTime: string;
-    endTime: string;
-    stage: string;
-    day: string;
-}
+import {
+    BASE_COL_PX,
+    BASE_PX_PER_MIN,
+    GUTTER_PX,
+    HEADER_PX,
+    ZOOM_STEP,
+    fitWidthZoom,
+    fitZoom,
+    useTimetableZoom,
+} from '@/hooks/use-timetable-zoom';
+import { useTimetableGestures } from '@/hooks/use-timetable-gestures';
+import { useTimetableViewport } from '@/hooks/use-timetable-viewport';
+import { ROLLOVER_HOUR, formatMinutes, wallMinutes } from '@/lib/festival-time';
 
 export default function TimetableView({ lineup, festivalId }: { lineup: LineupItem[]; festivalId: string }) {
     const { favorites, toggleFavorite, conflicts, config, getFavoriteTier } = useInsider();
@@ -44,11 +33,18 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     const [canScrollRight, setCanScrollRight] = useState(false);
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
-    useEffect(() => {
-        if (typeof window !== 'undefined' && window.innerWidth < 768) {
-            setViewMode('list');
-        }
-    }, []);
+    const { zoom, setZoom, setZoomTransient, hydrated: zoomHydrated, hadStored: hadStoredZoom } = useTimetableZoom(festivalId);
+    // Any deliberate zoom (button, pinch, wheel, key) switches the grid off
+    // auto-fit, so the chosen density survives day switches.
+    const userZoomedRef = useRef(false);
+    const setZoomByUser = useCallback((next: number | ((current: number) => number)) => {
+        userZoomedRef.current = true;
+        setZoom(next);
+    }, [setZoom]);
+    const zoomIn = useCallback(() => setZoomByUser(z => z * ZOOM_STEP), [setZoomByUser]);
+    const zoomOut = useCallback(() => setZoomByUser(z => z / ZOOM_STEP), [setZoomByUser]);
+    const pxPerMin = BASE_PX_PER_MIN * zoom;
+    const [viewportWidth, setViewportWidth] = useState(0);
 
     useEffect(() => {
         setNow(new Date());
@@ -71,7 +67,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
 
     const scheduled = useMemo(
         () => lineup.filter(
-            (item): item is ScheduledItem => !!(item.day && item.stage && item.startTime && item.endTime) && item.showInSchedule !== false
+            (item): item is ScheduledSlot => !!(item.day && item.stage && item.startTime && item.endTime) && item.showInSchedule !== false
         ),
         [lineup]
     );
@@ -139,6 +135,26 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         [allStages, hiddenStages]
     );
 
+    const { toolbarRef, topInset, stickyHeaderTop, boardMaxHeight } =
+        useTimetableViewport(scrollRef, allStages.length);
+
+    useEffect(() => {
+        const el = scrollRef.current;
+        if (!el || typeof ResizeObserver === 'undefined') return;
+        setViewportWidth(el.clientWidth);
+        const observer = new ResizeObserver(([entry]) => setViewportWidth(entry.contentRect.width));
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [viewMode]);
+
+    // Zoomed-out columns stretch to fill the container instead of leaving dead
+    // space — a 3-stage festival should never render as a thin strip.
+    const colWidth = useMemo(() => {
+        const scaled = BASE_COL_PX * zoom;
+        if (stages.length === 0 || viewportWidth === 0) return scaled;
+        return Math.max(scaled, Math.floor((viewportWidth - GUTTER_PX) / stages.length));
+    }, [zoom, stages.length, viewportWidth]);
+
     const trimmedQuery = query.trim().toLowerCase();
     const dailyLineup = useMemo(() => {
         const daily = scheduled.filter(item => item.day === activeDay);
@@ -147,6 +163,16 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         if (!trimmedQuery) return stageFiltered;
         return stageFiltered.filter(item => item.artist.toLowerCase().includes(trimmedQuery));
     }, [scheduled, activeDay, showFavoritesOnly, favorites, hiddenStages, trimmedQuery]);
+
+    const byStage = useMemo(() => {
+        const groups = new Map<string, ScheduledSlot[]>();
+        dailyLineup.forEach(item => {
+            const bucket = groups.get(item.stage);
+            if (bucket) bucket.push(item);
+            else groups.set(item.stage, [item]);
+        });
+        return groups;
+    }, [dailyLineup]);
 
     const listLineup = useMemo(() => {
         return [...dailyLineup].sort((a, b) => {
@@ -158,7 +184,7 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     }, [dailyLineup]);
 
     const groupedList = useMemo(() => {
-        const groups: { time: string; items: ScheduledItem[] }[] = [];
+        const groups: { time: string; items: ScheduledSlot[] }[] = [];
         listLineup.forEach(item => {
             const timeStr = item.startTime.slice(11, 16);
             let existing = groups.find(g => g.time === timeStr);
@@ -193,7 +219,59 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     }, [checkScroll, stages, dailyLineup]);
 
     const totalMinutes = dayEnd - dayStart;
-    const boardHeight = totalMinutes * PX_PER_MIN;
+    const boardHeight = totalMinutes * pxPerMin;
+
+    const { isPanning } = useTimetableGestures({
+        containerRef: scrollRef,
+        zoom,
+        setZoom: setZoomByUser,
+        gutterPx: GUTTER_PX,
+        enabled: viewMode === 'grid',
+    });
+
+    const fitAll = useCallback(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        // The container is height-capped, not height-fixed, so once zoomed out
+        // its clientHeight follows the content. Fit against the cap instead,
+        // or FIT would ratchet the zoom down every time it is pressed.
+        const cap = Number.parseFloat(window.getComputedStyle(el).maxHeight);
+        setZoomByUser(fitZoom({
+            containerWidth: el.clientWidth,
+            containerHeight: Number.isFinite(cap) ? cap : el.clientHeight,
+            stageCount: stages.length,
+            totalMinutes,
+        }));
+        el.scrollTo({ top: 0, left: 0 });
+    }, [setZoomByUser, stages.length, totalMinutes]);
+
+    // Until the user zooms for themselves, keep every stage column on screen —
+    // an 18-stage Sziget day on a phone is unusable at 100%.
+    useEffect(() => {
+        if (!zoomHydrated || hadStoredZoom || userZoomedRef.current) return;
+        const el = scrollRef.current;
+        if (!el || stages.length === 0 || el.clientWidth === 0) return;
+        setZoomTransient(
+            el.clientWidth < GUTTER_PX + stages.length * BASE_COL_PX
+                ? fitWidthZoom(el.clientWidth, stages.length)
+                : 1
+        );
+    }, [zoomHydrated, hadStoredZoom, stages.length, viewportWidth, activeDay, setZoomTransient]);
+
+    // Keyboard zoom, ignored while the search field has focus.
+    useEffect(() => {
+        if (viewMode !== 'grid') return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            const target = e.target as HTMLElement | null;
+            if (target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return;
+            if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomIn(); }
+            else if (e.key === '-' || e.key === '_') { e.preventDefault(); zoomOut(); }
+            else if (e.key === '0') { e.preventDefault(); setZoomByUser(1); }
+            else if (e.key === 'f' || e.key === 'F') { e.preventDefault(); fitAll(); }
+        };
+        window.addEventListener('keydown', onKeyDown);
+        return () => window.removeEventListener('keydown', onKeyDown);
+    }, [viewMode, zoomIn, zoomOut, setZoomByUser, fitAll]);
 
     // Current wall-minute at the venue, only when the viewer's local date
     // matches the active day's venue date (festival-goers are on site, so
@@ -216,8 +294,8 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
     // Now-line pixel offset — only when the live minute falls inside the board.
     const nowOffset = useMemo(() => {
         if (nowWallMinutes === null || nowWallMinutes < dayStart || nowWallMinutes > dayEnd) return null;
-        return (nowWallMinutes - dayStart) * PX_PER_MIN;
-    }, [nowWallMinutes, dayStart, dayEnd]);
+        return (nowWallMinutes - dayStart) * pxPerMin;
+    }, [nowWallMinutes, dayStart, dayEnd, pxPerMin]);
 
     const jumpToNow = useCallback(() => {
         if (nowOffset !== null && scrollRef.current) {
@@ -233,63 +311,69 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeDay]);
 
+    // One definition of live/past for both views.
+    const liveState = useCallback((item: ScheduledSlot) => {
+        if (nowWallMinutes === null) return { isLive: false, isPast: false };
+        const start = wallMinutes(item.startTime);
+        const end = wallMinutes(item.endTime);
+        return {
+            isLive: start <= nowWallMinutes && nowWallMinutes < end,
+            isPast: end <= nowWallMinutes,
+        };
+    }, [nowWallMinutes]);
+
     const hourMarks = useMemo(() => {
         const marks: number[] = [];
         for (let m = dayStart; m <= dayEnd; m += 60) marks.push(m);
         return marks;
     }, [dayStart, dayEnd]);
 
+    // Zoomed out, hourly labels collide — thin them out but keep the lines.
+    const hourHeight = 60 * pxPerMin;
+    const labelStepHours = hourHeight < 26 ? 3 : hourHeight < 44 ? 2 : 1;
+
     const dayLabel = (day: string) => config.dates.dayLabels?.[day] ?? day.slice(0, 3);
+
+    const favCount = useMemo(
+        () => scheduled.filter(i => i.day === activeDay && favorites.has(i.id)).length,
+        [scheduled, activeDay, favorites]
+    );
 
     if (!days.length) return null;
 
-    const favCount = scheduled.filter(i => i.day === activeDay && favorites.has(i.id)).length;
+
 
     return (
-        <div className="w-full bg-background min-h-screen text-foreground font-sans">
-            <div className="sticky top-0 z-[100] bg-background/90 backdrop-blur-xl border-b border-border">
+        // No min-h-screen: any page height beyond the toolbar + capped board is
+        // scroll slack that would drag the board's sticky stage header out of view.
+        <div className="w-full bg-background text-foreground font-sans">
+            {/* Pins under the global site header; the board below is capped to
+                the space that leaves, so its own sticky stage header can never
+                slide out of view behind this toolbar. */}
+            <div ref={toolbarRef} className="sticky z-[100] bg-background/90 backdrop-blur-xl border-b border-border" style={{ top: topInset }}>
                 {/* Day tabs + controls row */}
                 <div className="flex items-center gap-2 px-4 py-3 border-b border-border/40">
                     <div className="flex items-center gap-2 overflow-x-auto no-scrollbar flex-1">
                         {days.map((day, idx) => (
-                            <button
-                                key={day}
-                                onClick={() => setActiveDayIdx(idx)}
-                                className={`px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase transition-all whitespace-nowrap border-2 ${activeDayIdx === idx
-                                    ? 'bg-primary border-primary text-primary-foreground'
-                                    : 'bg-transparent border-border text-muted-foreground hover:text-foreground hover:border-foreground/30'
-                                    }`}
-                            >
+                            <PillButton key={day} onClick={() => setActiveDayIdx(idx)} active={activeDayIdx === idx}>
                                 {dayLabel(day)}
-                            </button>
+                            </PillButton>
                         ))}
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
                         {nowOffset !== null && (
-                            <button
-                                onClick={jumpToNow}
-                                className="flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 border-destructive text-destructive hover:bg-destructive hover:text-destructive-foreground transition-all whitespace-nowrap"
-                            >
+                            <PillButton onClick={jumpToNow} tone="danger">
                                 <Target size={10} />
                                 NOW
-                            </button>
+                            </PillButton>
                         )}
-                        <button
-                            onClick={() => setViewMode(m => m === 'grid' ? 'list' : 'grid')}
-                            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-all whitespace-nowrap"
-                        >
+                        <PillButton onClick={() => setViewMode(m => m === 'grid' ? 'list' : 'grid')}>
                             {viewMode === 'grid' ? 'LIST' : 'GRID'}
-                        </button>
-                        <button
-                            onClick={() => setShowFavoritesOnly(v => !v)}
-                            className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase border-2 transition-all whitespace-nowrap ${showFavoritesOnly
-                                ? 'bg-primary border-primary text-primary-foreground'
-                                : 'border-border text-muted-foreground hover:text-foreground hover:border-foreground/30'
-                                }`}
-                        >
+                        </PillButton>
+                        <PillButton onClick={() => setShowFavoritesOnly(v => !v)} active={showFavoritesOnly}>
                             <Heart size={10} fill={showFavoritesOnly ? 'currentColor' : 'none'} />
                             {favCount > 0 ? favCount : 'FAV'}
-                        </button>
+                        </PillButton>
                     </div>
                 </div>
 
@@ -315,26 +399,25 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                             </button>
                         )}
                     </div>
+
+                    {viewMode === 'grid' && (
+                        <ZoomCluster zoom={zoom} onZoomIn={zoomIn} onZoomOut={zoomOut} onFit={fitAll} />
+                    )}
                 </div>
 
                 {/* Stage filter pills */}
                 {allStages.length > 1 && (
                     <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar px-4 py-2">
-                        {allStages.map(stage => {
-                            const hidden = hiddenStages.has(stage);
-                            return (
-                                <button
-                                    key={stage}
-                                    onClick={() => toggleStage(stage)}
-                                    className={`px-2.5 py-1 rounded-full text-[9px] font-black tracking-wider uppercase whitespace-nowrap transition-all border ${hidden
-                                        ? 'border-border/30 text-muted-foreground/40 bg-transparent line-through'
-                                        : 'border-border text-muted-foreground bg-transparent hover:border-foreground/40 hover:text-foreground'
-                                        }`}
-                                >
-                                    {stage}
-                                </button>
-                            );
-                        })}
+                        {allStages.map(stage => (
+                            <PillButton
+                                key={stage}
+                                onClick={() => toggleStage(stage)}
+                                size="sm"
+                                muted={hiddenStages.has(stage)}
+                            >
+                                {stage}
+                            </PillButton>
+                        ))}
                     </div>
                 )}
             </div>
@@ -352,46 +435,16 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     <span className="text-[10px] text-muted-foreground/50">Try another name or a different day</span>
                 </div>
             ) : viewMode === 'list' ? (
-                /* List View */
-                <div className="flex flex-col gap-6 px-4 py-4 overflow-y-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
-                    {groupedList.map(group => (
-                        <div key={group.time} className="flex gap-4 items-start">
-                            {/* Time Gutter */}
-                            <div className="w-12 shrink-0 sticky top-0 py-1 bg-background/90 z-10">
-                                <span className="text-[12px] font-black text-foreground/80 tabular-nums">
-                                    {group.time}
-                                </span>
-                            </div>
-                            {/* Cards Column */}
-                            <div className="flex-1 flex flex-col gap-4">
-                                {group.items.map(item => {
-                                    const startWall = wallMinutes(item.startTime);
-                                    const endWall = wallMinutes(item.endTime);
-                                    const isLive = nowWallMinutes !== null && startWall <= nowWallMinutes && nowWallMinutes < endWall;
-                                    const isPast = nowWallMinutes !== null && endWall <= nowWallMinutes;
-                                    return (
-                                        <div key={item.id} className="flex flex-col gap-1 w-full">
-                                            <div className="text-[8px] font-black tracking-widest text-primary/80 uppercase">
-                                                {item.stage}
-                                            </div>
-                                            <ArtistCard
-                                                artist={item}
-                                                festivalId={festivalId}
-                                                isFavorite={favorites.has(item.id)}
-                                                favoriteTier={getFavoriteTier(item.id)}
-                                                isConflicting={conflicts.has(item.id)}
-                                                isLive={isLive}
-                                                isPast={isPast}
-                                                onToggleFavorite={() => handleToggleFavorite(item)}
-                                                positionRelative={true}
-                                            />
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                <TimetableList
+                    groups={groupedList}
+                    festivalId={festivalId}
+                    maxHeight={boardMaxHeight}
+                    isFavorite={id => favorites.has(id)}
+                    favoriteTier={getFavoriteTier}
+                    isConflicting={id => conflicts.has(id)}
+                    liveState={liveState}
+                    onToggleFavorite={handleToggleFavorite}
+                />
             ) : (
             <div className="relative">
                 {canScrollLeft && (
@@ -411,20 +464,37 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                     </>
                 )}
 
-                <div ref={scrollRef} className="overflow-auto no-scrollbar" style={{ maxHeight: 'calc(100dvh - 200px)' }}>
-                <div className="relative min-w-max">
-                    {/* Stage header row — sticky inside the scroll container */}
+                <div
+                    ref={scrollRef}
+                    className="overflow-auto no-scrollbar"
+                    style={{
+                        maxHeight: boardMaxHeight,
+                        overscrollBehavior: 'contain',
+                        cursor: isPanning ? 'grabbing' : undefined,
+                    }}
+                >
+                <div className="relative" style={{ width: stages.length ? GUTTER_PX + stages.length * colWidth : '100%' }}>
+                    {/* Stage header row — sticky top; its first cell is also sticky left,
+                        so the corner survives scrolling on both axes at once. */}
                     {stages.length > 0 && (
-                        <div
-                            className="sticky top-0 z-30 grid bg-background border-b border-border"
-                            style={{ gridTemplateColumns: `${GUTTER_PX}px repeat(${stages.length}, minmax(${MIN_COL_PX}px, 1fr))` }}
-                        >
-                            <div className="h-11 flex items-center justify-center border-r border-border">
+                        <div className="sticky z-40 flex bg-background border-b border-border" style={{ top: stickyHeaderTop }}>
+                            <div
+                                className="sticky left-0 z-10 flex items-center justify-center border-r border-border bg-background shrink-0"
+                                style={{ width: GUTTER_PX, height: HEADER_PX }}
+                            >
                                 <Clock size={14} className="opacity-30" />
                             </div>
                             {stages.map(stage => (
-                                <div key={stage} className="h-11 flex items-center justify-center px-2">
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary whitespace-nowrap overflow-hidden text-ellipsis">
+                                <div
+                                    key={stage}
+                                    className="flex items-center justify-center px-1.5 shrink-0 border-r border-border/30 last:border-r-0"
+                                    style={{ width: colWidth, height: HEADER_PX }}
+                                    title={stage}
+                                >
+                                    <span
+                                        className="font-black uppercase tracking-[0.15em] text-primary whitespace-nowrap overflow-hidden text-ellipsis"
+                                        style={{ fontSize: colWidth < 110 ? 8 : 10 }}
+                                    >
                                         {stage}
                                     </span>
                                 </div>
@@ -437,72 +507,84 @@ export default function TimetableView({ lineup, festivalId }: { lineup: LineupIt
                             <span className="text-[11px] font-black uppercase tracking-widest">All stages hidden</span>
                         </div>
                     ) : (
-                        /* Time board */
-                        <div
-                            className="relative grid"
-                            style={{
-                                gridTemplateColumns: `${GUTTER_PX}px repeat(${stages.length}, minmax(${MIN_COL_PX}px, 1fr))`,
-                                height: boardHeight,
-                            }}
-                        >
-                            {hourMarks.map(m => (
-                                <div
-                                    key={m}
-                                    className="absolute left-0 right-0 border-t border-border/60 pointer-events-none"
-                                    style={{ top: (m - dayStart) * PX_PER_MIN }}
-                                >
-                                    <span className="absolute left-0 w-[52px] -top-2 text-center text-[10px] font-black text-muted-foreground tabular-nums bg-background">
-                                        {formatMinutes(m)}
-                                    </span>
-                                </div>
-                            ))}
+                        /* Time board — fixed gutter column + scaled stage columns */
+                        <div className="flex" style={{ height: boardHeight }}>
+                            <div
+                                className="sticky left-0 z-30 shrink-0 border-r border-border bg-background"
+                                style={{ width: GUTTER_PX }}
+                            >
+                                {hourMarks.map((m, i) => (
+                                    i % labelStepHours === 0 && (
+                                        <span
+                                            key={m}
+                                            className="absolute left-0 text-center text-[10px] font-black text-muted-foreground tabular-nums bg-background"
+                                            style={{ width: GUTTER_PX, top: (m - dayStart) * pxPerMin - 7 }}
+                                        >
+                                            {formatMinutes(m)}
+                                        </span>
+                                    )
+                                ))}
+                            </div>
 
-                            <div className="border-r border-border" />
+                            <div className="relative flex" style={{ width: stages.length * colWidth }}>
+                                {hourMarks.map(m => (
+                                    <div
+                                        key={m}
+                                        className="absolute left-0 right-0 border-t border-border/60 pointer-events-none"
+                                        style={{ top: (m - dayStart) * pxPerMin }}
+                                    />
+                                ))}
 
-                            {stages.map(stage => (
-                                <div key={stage} className="relative border-r border-border/30 last:border-r-0">
-                                    {dailyLineup
-                                        .filter(item => item.stage === stage)
-                                        .map(item => {
-                                            const startWall = wallMinutes(item.startTime);
-                                            const endWall = wallMinutes(item.endTime);
-                                            const top = (startWall - dayStart) * PX_PER_MIN;
-                                            const height = Math.max((endWall - startWall) * PX_PER_MIN, 34);
-                                            const isLive = nowWallMinutes !== null && startWall <= nowWallMinutes && nowWallMinutes < endWall;
-                                            const isPast = nowWallMinutes !== null && endWall <= nowWallMinutes;
-                                            return (
-                                                <div
-                                                    key={item.id}
-                                                    className="absolute left-0 right-0 z-10"
-                                                    style={{ top, height }}
-                                                >
-                                                    <ArtistCard
-                                                        artist={item}
-                                                        festivalId={festivalId}
-                                                        isFavorite={favorites.has(item.id)}
-                                                        favoriteTier={getFavoriteTier(item.id)}
-                                                        isConflicting={conflicts.has(item.id)}
-                                                        isLive={isLive}
-                                                        isPast={isPast}
-                                                        onToggleFavorite={() => handleToggleFavorite(item)}
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                </div>
-                            ))}
+                                {stages.map(stage => (
+                                    <div
+                                        key={stage}
+                                        className="relative shrink-0 border-r border-border/30 last:border-r-0 h-full"
+                                        style={{ width: colWidth }}
+                                    >
+                                        {(byStage.get(stage) ?? [])
+                                            .map(item => {
+                                                const startWall = wallMinutes(item.startTime);
+                                                const endWall = wallMinutes(item.endTime);
+                                                const top = (startWall - dayStart) * pxPerMin;
+                                                const height = Math.max((endWall - startWall) * pxPerMin, 18);
+                                                const { isLive, isPast } = liveState(item);
+                                                return (
+                                                    <div
+                                                        key={item.id}
+                                                        data-no-pan
+                                                        className="absolute left-0 right-0 z-10"
+                                                        style={{ top, height }}
+                                                    >
+                                                        <ArtistCard
+                                                            artist={item}
+                                                            festivalId={festivalId}
+                                                            isFavorite={favorites.has(item.id)}
+                                                            favoriteTier={getFavoriteTier(item.id)}
+                                                            isConflicting={conflicts.has(item.id)}
+                                                            isLive={isLive}
+                                                            isPast={isPast}
+                                                            onToggleFavorite={() => handleToggleFavorite(item)}
+                                                            pxHeight={height}
+                                                            pxWidth={colWidth}
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                    </div>
+                                ))}
 
-                            {nowOffset !== null && (
-                                <div
-                                    className="absolute left-0 right-0 z-20 pointer-events-none"
-                                    style={{ top: nowOffset }}
-                                >
-                                    <div className="h-[2px] bg-destructive shadow-[0_0_8px_2px_rgba(239,68,68,0.5)]" />
-                                    <span className="absolute left-1 -top-2 text-[9px] font-black uppercase tracking-widest text-destructive bg-background px-1">
-                                        Now
-                                    </span>
-                                </div>
-                            )}
+                                {nowOffset !== null && (
+                                    <div
+                                        className="absolute left-0 right-0 z-20 pointer-events-none"
+                                        style={{ top: nowOffset }}
+                                    >
+                                        <div className="h-[2px] bg-destructive shadow-[0_0_8px_2px_rgba(239,68,68,0.5)]" />
+                                        <span className="absolute left-1 -top-2 text-[9px] font-black uppercase tracking-widest text-destructive bg-background px-1">
+                                            Now
+                                        </span>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     )}
                 </div>
