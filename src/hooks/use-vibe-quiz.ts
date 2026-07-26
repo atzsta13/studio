@@ -64,7 +64,13 @@ export function useVibeQuiz(lineup: LineupItem[]) {
       return;
     }
 
-    const targetVibes = buildTargetVibes(state.energy, state.moodTag);
+    // Matched case-insensitively, like Android's `equals(t, ignoreCase = true)`:
+    // the data carries two casings of the same vibe ("Feel-Good" / "Feel-good")
+    // because two generations of the vibe taxonomy wrote it. Exact matching
+    // silently hid 47 artists — Lorde and Zara Larsson among them.
+    const targetVibes = new Set(
+      buildTargetVibes(state.energy, state.moodTag).map((v) => v.toLowerCase())
+    );
 
     const scored = lineup.map((artist) => {
       const genreScore =
@@ -73,7 +79,7 @@ export function useVibeQuiz(lineup: LineupItem[]) {
         ).length * 2;
 
       const vibeScore = (artist.vibes || []).filter((v) =>
-        targetVibes.includes(v)
+        targetVibes.has(v.toLowerCase())
       ).length;
 
       // Headliners have stage + day assignments (when schedule data is available)

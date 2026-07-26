@@ -162,6 +162,24 @@ describe('useVibeQuiz — computeResults', () => {
     expect(result.current.results).toEqual([])
   })
 
+  it('scores vibes case-insensitively, matching Android', () => {
+    // Real data carries both "Feel-Good" and "Feel-good" — two generations of
+    // the vibe taxonomy wrote it. Exact matching scored the capitalised half at
+    // zero, hiding 47 artists (Lorde, Zara Larsson) from every mood that keys
+    // on that vibe. Both artists here match on genre, so only the vibe score can
+    // separate them, and the capitalised one is deliberately listed second: a
+    // stable sort leaves it behind on a tie, so it can only lead if it scored.
+    const otherPop = makeArtist('pop-other', ['POP'], ['Introspective'])
+    const capitalised = makeArtist('pop-caps', ['POP'], ['Feel-Good'])
+    const { result } = renderHook(() => useVibeQuiz([otherPop, capitalised]))
+    act(() => { result.current.setEnergy('BALANCED') })
+    act(() => { result.current.toggleGenre('POP') })
+    act(() => { result.current.setMoodTag('EUPHORIC') })
+    act(() => { result.current.computeResults() })
+
+    expect(result.current.results[0]?.id).toBe('pop-caps')
+  })
+
   it('returns results when all required fields are set', () => {
     const { result } = renderHook(() => useVibeQuiz(FULL_LINEUP))
     act(() => { result.current.setEnergy('UNHINGED') })
