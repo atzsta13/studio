@@ -1,12 +1,13 @@
 # Platform Capabilities
 
+*Verified against the code on 2026-07-26.*
+
 | Feature | Category | Web | Android | Status / Implementation |
 | :--- | :--- | :--- | :--- | :--- |
 | `hydrationTracker` | Health | ✅ | ✅ | Android: ToolsScreen card |
 | `sunscreenAlert` | Health | ✅ | ✅ | Android: ToolsScreen card |
-| `waterCounter` | Health | ✅ | ⏳ | Android: card pending |
-| `audioMonitor` | Health | ✅ | ✅ | Android: AudioMonitorCard |
-| `sosMorseCode` | Health | ✅ | ✅ | Android: SOSScreen |
+| `waterCounter` | Health | ✅ | ✅ | Android: ToolsScreen card |
+| `sosMorseCode` | Health | ✅ | ✅ | Android: SOS beacon button in ToolsScreen |
 | `batterySaver` | Tactical | ✅ | ✅ | Android: BatterySaverCard in ToolsScreen |
 | `offlineBanner` | Tactical | ✅ | ✅ | Android: OfflineBanner component |
 | `highContrast` | Accessibility | ✅ | ✅ | Android: High Contrast card implemented |
@@ -30,21 +31,20 @@
 | `foodRatings` | Practical | ✅ | ✅ | Android: FoodScreen ratings |
 | `posterGenerator` | Practical | ⏳ | ⏳ | Pending — shareable highlights image |
 | `newsBulletin` | Practical | ⏳ | ⏳ | Pending — static pre-loaded announcements |
-| `feedbackSystem` | Practical | ✅ | ⏳ | Web: FeedbackSystem card in tools; Android pending |
-| `clashResolver` | Schedule | ✅ | ✅ | Android: tiered clash banner in ScheduleScreen. Needs schedule data (live for 4/6 festivals) |
-| `setCountdowns` | Schedule | ✅ | ⏳ | Needs schedule data (live for 4/6 festivals); Android card pending |
+| `feedbackSystem` | Practical | ✅ | ✅ | Android: FeedbackSystemCard in ToolsScreen |
+| `clashResolver` | Schedule | ✅ | ✅ | Android: tiered clash banner in ScheduleScreen. Needs schedule data (live for 5/6 festivals) |
+| `setCountdowns` | Schedule | ✅ | ⏳ | Needs schedule data (live for 5/6 festivals); Android card pending |
 | `groupSchedules` | Schedule | ⏳ | ⏳ | Not implemented on either platform |
 | `accessibilityMap` | Map | ✅ | ✅ | Android: MapScreen accessible routes filter |
 | `quietZones` | Map | ✅ | ✅ | Android: MapScreen quiet zone filter |
 | `chargingStations` | Map | ✅ | ✅ | Android: MapScreen charging filter |
 | `firstAidFinder` | Map | ✅ | ✅ | Android: MapScreen first aid filter |
 | `tentFinder` | Map | ✅ | ✅ | Android: TentFinderCard in ToolsScreen |
-| `friendFinder` | Social (P2P) | ✅ | ✅ | Android: SquadLinkScreen (Local QR Sync) |
-| `stageCapacity` | Tactical | ⏳ | ⏳ | Pending — stage crowd level display |
+| `friendFinder` | Social (P2P) | ✅ | ✅ | Android: FriendFinderScreen — QR generated for display, never scanned |
 | `customThemes` | Personalization | ⏳ | ⏳ | Pending — per-user theme selection |
-| `timetable` | Schedule | ✅ | ✅ | Full grid live for Sziget, Nova Rock, Rock am Ring, Area 53; `false` for Frequency + Ernte Punk (no data yet) |
+| `timetable` | Schedule | ✅ | ✅ | Full grid live for 5 of 6 festivals; `false` only for Ernte Punk (no data yet) |
 | `currencyConverter` | Practical | ✅ | ✅ | Android: ToolsScreen card |
-| `cashlessLink` | Practical | ✅ | ✅ | Deep link to festival cashless top-up |
+| `cashlessLink` | Practical | ✅ | ✅ | Outbound deep link to the festival's own top-up page only — we never handle balances or payments (NO CRITICAL INFRA) |
 | `dayparkNightpark` | Schedule | ✅ | ✅ | Frequency-specific day/night split |
 | `familyZone` | Map | ⏳ | ⏳ | Pending — family area POI filter |
 

@@ -244,19 +244,14 @@ fun DiscoverScreen(
                     LocalAiScoutCard(
                         state = LocalAiScoutUiState(
                             isDownloaded = isLocalAiDownloaded,
-                            canDownload = config.productionUrl != null,
+                            canDownload = true,
                             progress = localAiDownloadProgress,
                             isLoading = isLocalAiLoading,
                             isListening = isListening,
                             response = localAiResponse
                         ),
                         actions = LocalAiScoutActions(
-                            onDownload = {
-                                val base = config.productionUrl
-                                if (base != null) {
-                                    discoverViewModel.downloadModel("$base/ai/gemma4-2b-android.bin")
-                                }
-                            },
+                            onDownload = { discoverViewModel.downloadModel() },
                             onScanLocal = { discoverViewModel.scanForLocalModel() },
                             onSearch = { discoverViewModel.runLocalScout(it) },
                             onListen = { 
@@ -541,7 +536,7 @@ fun LocalAiScoutCard(
             
             if (!state.isDownloaded) {
                 Text(
-                    text = "Download the Gemma 4 intelligence model to find artists without any signal. (~1.2GB)",
+                    text = "Set up the on-device model to find artists without any signal. Android manages the download; nothing you type leaves the phone.",
                     color = TextMuted,
                     fontSize = 12.sp,
                     lineHeight = 18.sp
@@ -549,7 +544,7 @@ fun LocalAiScoutCard(
                 if (!state.canDownload) {
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = "AI model unavailable for this festival build.",
+                        text = "On-device AI is not supported on this device.",
                         color = TextMuted.copy(alpha = 0.5f),
                         fontSize = 11.sp,
                         fontStyle = FontStyle.Italic

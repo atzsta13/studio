@@ -8,7 +8,7 @@ This document is a full technical and UX brief of the timetable feature, written
 
 A pixel-accurate, offline-first festival grid that maps artists to stage columns and minute-resolution time slots. Think a visual TV guide, rotated 90°: time runs top-to-bottom on the Y axis, stages run left-to-right on the X axis.
 
-It is the flagship feature of the app. For Sziget 2026 it renders 442 artists across 18 stages over 7 days.
+It is the flagship feature of the app. For Sziget 2026 it renders 431 artists across 18 stages over 7 days.
 
 ---
 
@@ -30,8 +30,7 @@ It is the flagship feature of the app. For Sziget 2026 it renders 442 artists ac
 | `src/components/timetable/artist-card.tsx` | Single slot card — name link, heart toggle, map pin, genre tag |
 | `src/components/timetable/clash-resolver.tsx` | Card shown above the grid listing up to 3 overlapping favorites |
 | `src/hooks/use-clash-resolver.ts` | Pure hook — O(n²) overlap detection on favorited artists |
-| `src/components/layout/insider-provider.tsx` | Global context — lineup data, favorites (tiered), conflicts set, notifications |
-| `src/lib/notifications.ts` | Service-worker-based local push notifications for favorited sets |
+| `src/components/layout/insider-provider.tsx` | Global context — lineup data, favorites (tiered), conflicts set |
 
 ---
 
@@ -58,7 +57,7 @@ Every artist in `lineup.json` that appears in the timetable has:
 - `showInSchedule: false` hides an artist from the grid (they still appear in the artist list). Currently 27 Sziget artists are hidden this way.
 - Artists with `null` startTime/endTime are excluded from the grid entirely.
 
-**Sziget 2026 coverage:** 458 total artists, 442 have times, 431 are `showInSchedule: true`, across 18 stages, Aug 9–16.
+**Sziget 2026 coverage:** 451 total artists, 431 have times, 424 are `showInSchedule: true`, across 18 stages, Aug 9–16.
 
 ---
 
@@ -193,31 +192,24 @@ config.theme.glowColor     // used for favorite glow shadow
 
 ## Known issues / rough edges
 
-1. **Sziget day labels are corrupted — grid shows wrong days** (audited 2026-07-04, supersedes the earlier "this is correct behavior" claim): 19 artists have a `startTime` but no `day` → invisible in the grid; 11 artists carry a wrong day label, so e.g. the "Saturday" tab mixes sets from Aug 12/14/15/16 in one board and live/past states anchor to the wrong date. Fix is data-side: derive `day` from the startTime date with 06:00 rollover. Full spec: `TASKS.md` P1.1.
+Audited 2026-07-26 — the earlier list was almost entirely stale and has been cut to what is still true.
 
-2. **Playwright click in inner scroll container** — Artist card links require `el.evaluate(el => el.click())` in Playwright tests because the scroll container is a `div` with `overflow-auto`, not `window`. Standard `page.locator().click()` doesn't scroll the inner container to the element first.
+1. **Clash detection uses JS `Date` parsing.** Unlike `wallMinutes()`, the clash resolver parses `startTime`/`endTime` via `new Date()`. Harmless — clash detection only needs relative ordering, not absolute pixel position — but it is inconsistent with the rest of the time math.
 
-3. **Service worker dead in production too** — audited 2026-07-04: `pwa-loader.tsx` registers `/sw.js` without the `/studio` basePath, so the SW never registers on GitHub Pages at all (offline caching and the existing update banner never run). Full diagnosis and fix: `TASKS.md` P0.1–0.3.
+2. **Now-line assumes you are at the festival.** The NOW button only lines up when the viewer's local time matches the festival day. International viewers in other timezones won't see it correctly.
 
-4. **Tiered favorites not surfaced in timetable** — The `must_see` / `interested` tiers exist in the data model and provider, but the timetable grid treats all favorites identically (same border color, same glow). There is no visual distinction between tiers in the grid.
+3. **No pinch-to-zoom.** `PX_PER_MIN` is fixed; there is no way to zoom out to see a full day at once.
 
-5. **Clash detection uses JS Date parsing** — Unlike `wallMinutes()`, the clash resolver parses startTime/endTime via `new Date()`. This is fine because clash detection only needs relative ordering (does A overlap B?), not absolute pixel position. But it's inconsistent with the rest of the time math.
+4. **No offline indicator.** Nothing tells the user whether the timetable is running from cached data.
 
-6. **No horizontal scroll indicator** — On days with 15+ stages, the grid scrolls horizontally but there's no visual affordance (scrollbar is hidden via `no-scrollbar`).
-
-7. **Stage column min-width is fixed at 200px** — On mobile with 15 stages, this means ~3000px of horizontal scroll. No responsive collapse or "compact mode" exists.
+Fixed and removed from this list: corrupted Sziget day labels (data rebuilt; every scheduled act now has a `day` consistent with the 06:00 rollover), the service worker not registering under `basePath`, missing `must_see`/`interested` tier styling, the absent horizontal-scroll affordance, and the lack of a mobile compact mode. The Playwright note went too — this project has no Playwright suite.
 
 ---
 
 ## What does NOT exist yet (potential improvements)
 
-- **Compact/mobile mode** — collapse multiple stages into a single scrollable list when screen is narrow, rather than forcing horizontal scroll.
-- **Visual tier distinction** — `must_see` cards could have a different color border or star icon vs `interested`.
 - **"My Schedule" export** — generate an iCal / share link of favorited sets.
-- **Cross-day favorites summary** — a view that shows all your favorites across all days at once (currently you must browse each day tab).
-- **Pinch-to-zoom on mobile** — PX_PER_MIN is fixed; there's no way to zoom out to see the full day at once.
-- **Offline indicator** — no visual feedback that the timetable is running from cached data vs live.
-- **Now-line for other festivals** — NOW button only works when viewer's local time matches the festival day. International viewers or those in different timezones won't see it correctly unless they're physically at the festival.
+- **Cross-day favorites summary** — a view showing all favorites across all days at once (today you must browse each day tab).
 
 ---
 
@@ -234,9 +226,9 @@ Android additionally has GRID / BY-TIME / MY-LINEUP tabs, a tiered clash banner 
 
 | Festival | `features.timetable` | Artists with times | Stages | Date range |
 |---|---|---|---|---|
-| Sziget 2026 | `true` | 442 / 458 | 18 | Aug 9–16 |
-| Nova Rock 2026 | `true` | 84 / 84 | multiple | Jun 11–14 (past) |
-| Rock am Ring 2026 | `true` | 73 / 73 | multiple | Jun 5–7 (past) |
-| Area 53 2026 | `true` | 30 / 30 | multiple | Jul 15–18 |
-| Frequency 2026 | `false` | 0 | — | TBA |
-| Ernte Punk 2026 | `false` | 0 | — | TBA |
+| Sziget 2026 | `true` | 431 / 451 | 18 | Aug 9–16 |
+| Nova Rock 2026 | `true` | 84 / 84 | 3 | Jun 11–14 (past) |
+| Rock am Ring 2026 | `true` | 73 / 73 | 3 | Jun 5–7 (past) |
+| Area 53 2026 | `true` | 32 / 32 | 2 | Jul 15–18 (past) |
+| Frequency 2026 | `true` | 82 / 82 | 5 | Aug 20–22 |
+| Ernte Punk 2026 | `false` | 0 / 17 | — | TBA |
