@@ -12,6 +12,10 @@ const FESTIVALS_DIR = path.join(process.cwd(), 'festivals')
 const ISO_OFFSET =
   /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:[+-]\d{2}:\d{2}|Z)$/
 
+const DAY_NAMES = [
+  'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday',
+]
+
 const errors = []
 const warnings = []
 
@@ -105,6 +109,22 @@ for (const id of festivals) {
     if (exact.has(sig)) fail(id, `${who}: exact duplicate row (${a.stage}, ${a.startTime})`)
     exact.add(sig)
 
+    // Day labels follow a 06:00 rollover: a 01:00 set belongs to the previous
+    // day's programme. Every festival's data obeys this, including Frequency's
+    // Nightstage running to 05:30.
+    if (a.day) {
+      const hour = Number(a.startTime.slice(11, 13))
+      const shifted = new Date(start.getTime() - (hour < 6 ? 6 * 36e5 : 0))
+      const expected = DAY_NAMES[shifted.getUTCDay()]
+      if (expected !== a.day) {
+        fail(
+          id,
+          `${who}: day "${a.day}" disagrees with startTime ${a.startTime}` +
+            ` — expected "${expected}" under the 06:00 rollover`
+        )
+      }
+    }
+
     if (!a.stage) {
       warnings.push(`[${id}] ${who}: has times but no stage`)
       continue
@@ -120,7 +140,35 @@ for (const id of festivals) {
     )
   }
 
-  // 4. no two acts on the same stage at the same time
+  // 4. near-duplicate rows — the Sziget feed emits the same set twice, once as
+  // the bare act name and once prefixed with its programme title. Exact-match
+  // dedupe misses these; 12 of them survived until 2026-07-26.
+  const bySlot = new Map()
+  for (const [stage, acts] of byStage) {
+    for (const a of acts) {
+      const key = `${stage}|${a.startTime}`
+      if (!bySlot.has(key)) bySlot.set(key, [])
+      bySlot.get(key).push(a)
+    }
+  }
+  const squash = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, '')
+  for (const [key, acts] of bySlot) {
+    for (let i = 0; i < acts.length; i++) {
+      for (let j = i + 1; j < acts.length; j++) {
+        const x = squash(acts[i].artist)
+        const y = squash(acts[j].artist)
+        if (x.includes(y) || y.includes(x)) {
+          fail(
+            id,
+            `near-duplicate row at ${key}: "${acts[i].artist}" vs ` +
+              `"${acts[j].artist}" — one name contains the other`
+          )
+        }
+      }
+    }
+  }
+
+  // 5. no two acts on the same stage at the same time
   for (const [stage, acts] of byStage) {
     acts.sort((x, y) => new Date(x.startTime) - new Date(y.startTime))
     for (let i = 1; i < acts.length; i++) {

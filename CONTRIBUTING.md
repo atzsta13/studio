@@ -69,8 +69,10 @@ Only `id`, `artist`, `stage`, `day`, `startTime`, `endTime` are required. Everyt
 1. **Times are ISO 8601 with offset.** `"2026-08-20T21:45:00+02:00"` — never bare `"21:45"`. If a set runs past midnight, roll the date: a Thursday-billed 04:30 set carries Friday's date.
 2. **The lineup mirrors the official timetable.** If an act isn't on the festival's published running order, it doesn't go in `lineup.json`. No speculative or rumoured bookings.
 3. **No schedule yet?** Use `null` times and set `features.timetable: false` in `config.json`.
-4. **Config must validate** against `festivals/festival-config.schema.json`.
-5. **Never edit `public/data/` or `android/app/src/main/assets/<id>/`.** They're generated — `lineup:sync` overwrites them. Edit `festivals/<id>/` only.
+4. **`day` must agree with `startTime` under a 06:00 rollover.** A 01:00 set belongs to the previous day's programme — label it Wednesday, not Thursday. CI computes this and fails on a mismatch.
+5. **No duplicate rows for one slot.** Two acts sharing a stage and start time are fine (showcases do this), but if one act's name *contains* the other's, it's the same set scraped twice and CI rejects it.
+6. **Config must validate** against `festivals/festival-config.schema.json`.
+7. **Never edit `public/data/` or `android/app/src/main/assets/<id>/`.** They're generated — `lineup:sync` overwrites them. Edit `festivals/<id>/` only.
 
 See [`docs/DATA_SOURCES.md`](docs/DATA_SOURCES.md) for how existing festivals were sourced, and cite your source in the PR.
 
