@@ -18,7 +18,7 @@ See [`docs/LANDSCAPE.md`](docs/LANDSCAPE.md) for the full survey of who builds f
 - **100% OFFLINE FIRST**: Every tactical feature (Map, Timetable, Guide, Local AI) works without internet.
 - **NO ACCOUNTS**: Zero logins, zero tracking. 100% anonymous.
 - **NO SOCIAL**: Strictly P2P local group sync via **Squad Link**. No feeds, no moderation liability.
-- **NO CLOUD AI**: All intelligence is local inference (on-device Gemma, Android only). Zero data leaves the device.
+- **NO CLOUD AI**: All intelligence is local inference (on-device Gemini Nano, Android only). Zero data leaves the device.
 - **CONFIG DRIVEN**: One engine, six festivals. Branding and data are decoupled from the UI layers.
 - **NON-COMMERCIAL**: No ads, no sponsored placement, no monetisation.
 
@@ -44,12 +44,12 @@ Artist images are never downloaded or re-hosted — every image is hotlinked to 
 
 | Festival | ID | Artists | Timetable |
 | :--- | :--- | :--- | :--- |
-| **Sziget** | `sziget-2026` | 463 | ✅ Aug 9–16 |
+| **Sziget** | `sziget-2026` | 451 | ✅ Aug 9–16 |
 | **Nova Rock** | `novarock-2026` | 84 | ✅ Jun 11–14 |
 | **Rock am Ring** | `rock-am-ring-2026` | 73 | ✅ Jun 5–7 |
-| **Area 53** | `area53-2026` | 29 | ✅ Jul 16–18 |
+| **Area 53** | `area53-2026` | 32 | ✅ Jul 16–18 |
 | **Frequency** | `frequency-2026` | 82 | ✅ Aug 20–22 |
-| **Ernte Punk** | `ernte-punk-2026` | ~17 | ⏳ TBA |
+| **Ernte Punk** | `ernte-punk-2026` | 17 | ⏳ TBA |
 
 ---
 

@@ -19,7 +19,7 @@ Read in this order, nothing more:
 | Festival data or lineups | Edit `festivals/<id>/data/*.json` and `festivals/<id>/config.json`, then run `npm run lineup:sync` |
 | Adding a festival | `scripts/add-festival.mjs` + `festivals/festival-config.schema.json` |
 | Styling / design | `docs/guides/UI_GUIDE.md` |
-| PWA / service worker / offline | `public/sw.js` + `src/components/layout/pwa-loader.tsx` — read `TASKS.md` P0 first, this area has known bugs |
+| PWA / service worker / offline | `public/sw.js` + `src/components/layout/pwa-loader.tsx`. Every path must go through `BASE_PATH`; cache names in `sw.js` must match `basePath` or the live site serves stale assets |
 | Something is broken | `docs/guides/TROUBLESHOOTING.md` |
 
 ### Generated directories — NEVER edit directly
@@ -55,14 +55,14 @@ This is a **Config-First** platform. **NEVER** hardcode brand names, dates, colo
 
 ## Festivals
 
-| ID | Name | Artists | Schedule | Status (as of 2026-07-25) |
+| ID | Name | Artists | Schedule | Status (as of 2026-07-26) |
 |----|------|---------|----------|--------|
-| `sziget-2026` | Sziget | 463 | **Full timetable** 443/463 | Upcoming — Aug 9–16. **Flagship priority.** |
+| `sziget-2026` | Sziget | 451 | **Full timetable** 431/451 | Upcoming — Aug 9–16. **Flagship priority.** |
 | `novarock-2026` | Nova Rock | 84 | **Full timetable** 84/84 | Past (Jun 11–14) |
 | `frequency-2026` | Frequency | 82 | **Full timetable** 82/82 | **Imminent — Aug 20–22.** |
-| `area53-2026` | Area 53 | 29 | **Full timetable** | Past (music Jul 16–18, Wed 15 warm-up) |
-| `ernte-punk-2026` | Ernte Punk | ~17 | TBA (null) | Upcoming, schedule not published |
-| `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** | Past (Jun 5–7) |
+| `area53-2026` | Area 53 | 32 | **Full timetable** 32/32 | Past (music Jul 16–18, Wed 15 warm-up). 32 slots / 29 distinct acts |
+| `ernte-punk-2026` | Ernte Punk | 17 | TBA (null) | Upcoming, schedule not published |
+| `rock-am-ring-2026` | Rock am Ring | 73 | **Full timetable** 73/73 | Past (Jun 5–7) |
 
 All `startTime`/`endTime` values are **ISO 8601 with offset** (e.g. `"2026-07-16T22:30:00+02:00"`) — never plain `"HH:mm"`. Festivals marked TBA have `null` times. `features.timetable` is `false` for festivals without schedule data.
 
@@ -79,7 +79,7 @@ npm run dev
 npm run typecheck
 npm run lint
 
-# Tests (Vitest + React Testing Library) — 189 passing
+# Tests (Vitest + React Testing Library) — 190 passing
 npm test -- --run
 
 # Static export build (outputs to out/)
@@ -160,13 +160,13 @@ festivals/<id>/data/*.json
 - **Firebase** — Project migrated away from Firebase Studio. No Firebase dependency, no `firebase.ts`.
 - **API routes** — There are zero Next.js API routes. The app is fully static. Do not add `route.ts` files.
 - **Rate limiting / middleware** — No server, so no middleware. `src/proxy.ts` is deleted.
-- **Server-side AI** — No Genkit, no Gemini API calls from the web app. Android uses on-device Gemma only.
+- **Server-side AI** — No Genkit, no cloud Gemini API calls. Android uses on-device Gemini Nano (ML Kit Prompt API) only.
 
 ## Hard Constraints
 
 - **NO ACCOUNTS** — no login, no email, no phone numbers. 100% anonymous.
 - **NO SOCIAL** — no feeds, no photo walls, no moderation liability.
-- **NO CAMERA** — no AR, no QR scanning. Ever.
+- **NO CAMERA, NO MICROPHONE** — no AR, no QR scanning, no audio capture. Ever, and not even for local-only processing. Generating a QR code to display is fine; reading one is not. On-device AI is allowed (Gemini Nano via ML Kit) but its input is text + local lineup data, never a sensor feed.
 - **NO DATA COLLECTION** — all user data stays 100% local.
 - **NO API ROUTES** — static export only. Any `route.ts` breaks the build.
 - **OFFLINE FIRST** — Map, Guide, Lineup, and all core features must work with zero signal.
@@ -180,7 +180,7 @@ festivals/<id>/data/*.json
 - **TypeScript**: Strict mode. No `any`. Interfaces in `src/types/index.ts`.
 - **Icons**: Lucide (Web), import individually. Android uses Vector Drawables.
 - **No comments** unless the WHY is non-obvious.
-- **Tests**: 189 passing — keep green. Run `npm test -- --run` before committing.
+- **Tests**: 190 passing — keep green. Run `npm test -- --run` before committing.
 
 ## Docs Map (keep it this lean)
 
@@ -200,9 +200,10 @@ festivals/<id>/data/*.json
 | `docs/guides/UI_GUIDE.md` | Design system |
 | `docs/guides/TROUBLESHOOTING.md` | Dev troubleshooting |
 | `CONTRIBUTING.md` | How to contribute — the "add your festival in one PR" flow |
+| `CODE_OF_CONDUCT.md` / `SECURITY.md` | Community health files — rarely need edits |
 | `android/README.md` | Android architecture + routes |
 
-Do **not** create new status/snapshot docs (`CURRENT.md`, `UPDATED.md`, `LLM_BRIEF.md` etc. were deleted for rotting). Update `docs/STATUS.md` and `TASKS.md` instead.
+Do **not** create new status/snapshot docs. `CURRENT.md`, `UPDATED.md`, `LLM_BRIEF.md`, `VERIFICATION.md`, `ISSUES.md`, and `android/HANDOFF.md` were all deleted for rotting — every one of them drifted from the code within weeks. Update `docs/STATUS.md` and `TASKS.md` instead. Handoff notes between AI sessions belong in `TASKS.md`, not a new file.
 
 ### Vendor entry files (do not fork content into them)
 

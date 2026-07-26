@@ -356,7 +356,7 @@
     "genres": [
       "DISCUSSION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106692",
     "socials": {
       "website": null,
       "facebook": null,
@@ -405,35 +405,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "461",
-    "artist": "Mirror Talks: The New Era of Queer Hungary",
-    "stage": "Magic Mirror",
-    "day": "Tuesday",
-    "startTime": "2026-08-11T16:00:00.000+02:00",
-    "endTime": "2026-08-11T17:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "DISCUSSION"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2106692",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "Hungary is pulsing with new energy and the promise of a new beginning when it comes to LGBTQ rights. The work has already begun: we all want to live in a better world, but to build it, we first need to understand the world around us. This year, Mirror Talks helps us do exactly that, as experts, artists, and activists — led by András Ádám Kanicsár — explore the present and sketch out the future. We will talk about what happens to love in the age of situationships and to sex as it becomes increasingly embedded in the world of drugs, about the future of gender, fashion, and culture in the middle of an everyday gender revolution, and about how queer activism is finding new forms through a new generation and new digital spaces. The week begins with the portrait of a new queer Hungary — and closes at the dawn of a new era of queer revolution.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644397_performance_960.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "271",
@@ -2276,7 +2247,7 @@
       "ELECTROPOP",
       "DANCE POP"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2100902",
     "socials": {
       "website": "https://www.steminmusic.com",
       "facebook": "https://www.facebook.com/steminmusic",
@@ -2294,36 +2265,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "459",
-    "artist": "Stemin: Sinners & Lovers",
-    "stage": "Magic Mirror",
-    "day": "Tuesday",
-    "startTime": "2026-08-12T01:00:00.000+02:00",
-    "endTime": "2026-08-12T02:00:00.000+02:00",
-    "countryCode": "NL",
-    "genres": [
-      "ELECTROPOP",
-      "DANCE POP"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2100902",
-    "socials": {
-      "website": "https://www.steminmusic.com",
-      "facebook": "https://www.facebook.com/steminmusic",
-      "instagram": "https://www.instagram.com/steminmusic",
-      "x": null,
-      "tiktok": "https://www.tiktok.com/@steminmusic",
-      "youtube": "https://www.youtube.com/channel/UCnm-_FGDX8ijLJgsgmDUvSA",
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "Stemin is an Amsterdam-based queer pop artist blending sensual pop, soul and electronic elements into an empowering live show. Think The Weeknd meets Dua Lipa with the playful wink of Sabrina Carpenter. Tales of a Gay Romance is a journey through desire, identity and liberation, driven by powerful vocals and dancefloor energy. At Sziget Stemin will present new music from his upcoming project Sinners & Lovers, a darker and more seductive chapter: pop bangers where desire, darkness and self-expression collide.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/36/thumb_5635872_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "310",
@@ -3057,7 +2998,7 @@
     "genres": [
       "DISCUSSION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106693",
     "socials": {
       "website": null,
       "facebook": null,
@@ -3075,35 +3016,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "462",
-    "artist": "Mirror Talks: The New Era of Love and Sex",
-    "stage": "Magic Mirror",
-    "day": "Wednesday",
-    "startTime": "2026-08-12T16:00:00.000+02:00",
-    "endTime": "2026-08-12T17:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "DISCUSSION"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2106693",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "Sex is no longer a taboo — but have we truly become more liberated? As conversations around desire, trauma, and intimacy grow more open, entirely new relationship models and emotional dynamics are emerging around us. Situationships, polyamory, and intentional singlehood are no longer fringe concepts, but part of a new generation’s understanding of love and connection. Where do the new boundaries lie, and how are social media, pop culture, and constant self-expression reshaping the way we experience modern relationships?",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644406_performance_960.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "260",
@@ -5132,38 +5044,6 @@
     "id": "427",
     "artist": "Verushka, Meritxell de Soto, Maia",
     "stage": "Magic Mirror",
-    "day": "Thursday",
-    "startTime": "2026-08-13T01:00:00.000+02:00",
-    "endTime": "2026-08-13T04:00:00.000+02:00",
-    "countryCode": "ES",
-    "genres": [
-      "BASS HOUSE",
-      "PERFORMINGARTS",
-      "CLUB"
-    ],
-    "festivalUrl": null,
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": "https://www.instagram.com/mesientoextranya",
-      "x": null,
-      "tiktok": null,
-      "youtube": "https://www.youtube.com/channel/UCA8NJ8OFLh0rFrL0ItxVqdA",
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": "https://soundcloud.com/me-siento-extrana"
-    },
-    "description": "Me Siento Extraña (MSE) is a Barcelona-based collective creating safer spaces for FLINTA* identities through music, art, and community. Founded in 2021 by Maia Jenkinson (ES) and Verushka Sirit (VE), it emerged as a response to the lack of visibility and cultural spaces. With a sharp curatorial vision, MSE blends underground club nights with cultural gatherings that amplify dissident voices. Beyond its impact on Barcelona’s club scene, the collective collaborates with festivals and cultural spaces while hosting weekly gatherings, creating an irreplaceable space for the community.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/37/thumb_5636868_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false,
-    "showInSchedule": true
-  },
-  {
-    "id": "460",
-    "artist": "Me siento extraña: Verushka, Meritxell de Soto, Maia: Me siento extraña Takeover <3",
-    "stage": "Magic Mirror",
     "day": "Wednesday",
     "startTime": "2026-08-13T01:00:00.000+02:00",
     "endTime": "2026-08-13T04:00:00.000+02:00",
@@ -5189,7 +5069,8 @@
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/37/thumb_5636868_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
-    "returningHero": false
+    "returningHero": false,
+    "showInSchedule": true
   },
   {
     "id": "1",
@@ -6165,7 +6046,7 @@
     "genres": [
       "DISCUSSION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106694",
     "socials": {
       "website": null,
       "facebook": null,
@@ -6183,35 +6064,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "463",
-    "artist": "Mirror Talks: The New Era of Gender",
-    "stage": "Magic Mirror",
-    "day": "Thursday",
-    "startTime": "2026-08-13T16:00:00.000+02:00",
-    "endTime": "2026-08-13T17:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "DISCUSSION"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2106694",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "What is happening to gender in a world where traditional gender roles are shifting even within the most mainstream and conservative cultures? As fashion, media, and everyday life become increasingly open toward self-expression, identities such as agender, genderfluid, and non-binary are no longer unfamiliar concepts. For younger generations, gender often carries fewer restrictions and entirely different meanings than it did before. But what future awaits gender, and how will we define ourselves in an increasingly fluid world?",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644408_performance_960.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "270",
@@ -6798,7 +6650,7 @@
       "WORKSHOP",
       "STREET AND CLUB DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107631",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/trueschoolhun",
@@ -6816,36 +6668,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "468",
-    "artist": "TRUESCHOOL: Open Jam workshop",
-    "stage": "Mobilis",
-    "day": "Thursday",
-    "startTime": "2026-08-13T18:30:00.000+02:00",
-    "endTime": "2026-08-13T19:30:00.000+02:00",
-    "countryCode": "HU",
-    "genres": [
-      "WORKSHOP",
-      "STREET AND CLUB DANCE"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2107631",
-    "socials": {
-      "website": null,
-      "facebook": "https://www.facebook.com/trueschoolhun",
-      "instagram": "https://www.instagram.com/trueschool_hun",
-      "x": null,
-      "tiktok": "https://www.tiktok.com/@trueschool_hun",
-      "youtube": "https://www.youtube.com/channel/UC0vFVlGWFdiRVKr-f80lG3w",
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "TrueSchool’s 60-minute Open Jam workshop welcomes everyone with a live DJ set featuring Hip Hop, House and Funk music. The main focus is sharing the community power of street and club dance styles – no matter your age or experience, anyone can join in. Through guided and improvisational exercises, participants will explore playful dance tools and social movement concepts they can freely use later during the festival parties. The goal is simple: connection, self-expression and having fun. Teachers : Péter Katona “Soldier P” Róbert Fazekas “Pizsy” DJ: Noren",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646236_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "483",
@@ -8966,7 +8788,7 @@
     "genres": [
       "DISCUSSION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106695",
     "socials": {
       "website": null,
       "facebook": null,
@@ -8984,35 +8806,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "464",
-    "artist": "Mirror Talks: The New Era of Drag",
-    "stage": "Magic Mirror",
-    "day": "Friday",
-    "startTime": "2026-08-14T16:00:00.000+02:00",
-    "endTime": "2026-08-14T17:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "DISCUSSION"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2106695",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "Drag has been constantly reinventing itself for centuries — but are we now standing at another major turning point? Questions of humor, politics, gender, and self-expression have taken on entirely new meanings in an era where drag exists both as underground culture and mainstream spectacle. What do we preserve from drag history, and what is being permanently transformed by social media and younger generations? A conversation about how drag continues to reinvent itself as one of queer culture’s most powerful forms of expression.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644409_performance_960.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "335",
@@ -11586,7 +11379,7 @@
     "genres": [
       "CONTEMPORARY DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107629",
     "socials": {
       "website": null,
       "facebook": "https://www.facebook.com/61583969142431",
@@ -11604,35 +11397,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "466",
-    "artist": "Vivi Piti: Morning Dance",
-    "stage": "Mobilis",
-    "day": "Saturday",
-    "startTime": "2026-08-15T11:00:00.000+02:00",
-    "endTime": "2026-08-15T12:00:00.000+02:00",
-    "countryCode": "HU",
-    "genres": [
-      "CONTEMPORARY DANCE"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2107629",
-    "socials": {
-      "website": null,
-      "facebook": "https://www.facebook.com/61583969142431",
-      "instagram": "https://www.instagram.com/mycore_testtudatws",
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "During the Morning Dance sessions, we focus on waking up and aligning the body through coordination, mobility, and exercises inspired by contemporary dance. We develop spatial awareness, body usage, and connection to ourselves and others.The class is accompanied by a carefully curated playlist that supports our connection to rhythm and sense of timing, allowing movement to emerge more as a spontaneous, direct response.It offers practical movement tools for everyday clubbing, while opening space for releasing inhibitions and observing our own patterns.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646229_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "396",
@@ -11711,7 +11475,7 @@
       "DANCE",
       "STREET AND CLUB DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107630",
     "socials": {
       "website": null,
       "facebook": null,
@@ -11729,36 +11493,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "467",
-    "artist": "TRUESCHOOL: Rhythm & Flow",
-    "stage": "Mobilis",
-    "day": "Saturday",
-    "startTime": "2026-08-15T14:00:00.000+02:00",
-    "endTime": "2026-08-15T14:30:00.000+02:00",
-    "countryCode": "HU",
-    "genres": [
-      "DANCE",
-      "STREET AND CLUB DANCE"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2107630",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "TrueSchool’s new dance performance, Rhythm & Flow, is built around the HipHop, House, Popping, and Locking styles. The piece aims to present these four street and club dance styles through an artistic and conceptual approach, where the experience of rhythm and flow plays a central role both in movement and music. The performance features dancers from the TrueSchool community of different ages and skill levels, united by their shared passion, respect for these dance cultures, and the sense of community they create together. Performers:Kispál CsengeHugauf DorkaTóth MajaPataki NikiSzalai VivienMadarász VivienNagy SáraLaczkó TímeaKatona RebekaSoós ÁdámNagy NorbertLu EasonKatona PéterFazekas Róbert Choreographers:Katona PéterFazekas Róbert",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646233_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "387",
@@ -11868,7 +11602,7 @@
       "DANCE",
       "CONTEMPORARY DANCE"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2107643",
     "socials": {
       "website": "https://sublab.pro/",
       "facebook": "https://www.facebook.com/sub.lab.pro",
@@ -11921,68 +11655,6 @@
     "id": "456",
     "artist": "Vándor Kamilló, Matuska Gréta",
     "stage": "Magic Runway",
-    "day": "Friday",
-    "startTime": "2026-08-15T15:00:00.000+02:00",
-    "endTime": "2026-08-15T16:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "WORKSHOP",
-      "CREATIVE AND FINE ARTS ACTIVITIES",
-      "FINE ARTS"
-    ],
-    "festivalUrl": null,
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": "https://www.instagram.com/itsgretalicious",
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "Drag and draw is an artistic practice where participants draw, paint, collage, or create in other ways inspired by the live poses of drag performers. Models hold alternating poses for 5–20 minutes, giving participants freedom to capture the energy, personality, and style of each pose Vándor Kamilló, Matuska Gréta, Gősi Robi Lance",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/78/thumb_5677017_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false,
-    "showInSchedule": true
-  },
-  {
-    "id": "469",
-    "artist": "SUB.LAB.PRO  - Valentin Alfery (AT): Slow Burner",
-    "stage": "Mobilis",
-    "day": "Saturday",
-    "startTime": "2026-08-15T15:00:00.000+02:00",
-    "endTime": "2026-08-15T15:30:00.000+02:00",
-    "countryCode": "HU",
-    "genres": [
-      "DANCE",
-      "CONTEMPORARY DANCE"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2107643",
-    "socials": {
-      "website": "https://sublab.pro/",
-      "facebook": "https://www.facebook.com/sub.lab.pro",
-      "instagram": "https://www.instagram.com/sub.lab.pro",
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "SLOW BURNER is a choreographed jigsaw puzzle that invites the audience into a space of perceiving how human impulses, encounters and interrelationships shape the world we move through.",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/47/thumb_5646298_performance_1440.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
-  },
-  {
-    "id": "472",
-    "artist": "Vándor Kamilló, Matuska Gréta: Drag & Draw: Cosmic Creatures",
-    "stage": "Magic Runway",
     "day": "Saturday",
     "startTime": "2026-08-15T15:00:00.000+02:00",
     "endTime": "2026-08-15T16:00:00.000+02:00",
@@ -12008,7 +11680,8 @@
     "imageUrl": "https://media.appmiral.com/prod/performance/0057/78/thumb_5677017_performance_1440.jpeg",
     "vibes": [],
     "isHeadliner": false,
-    "returningHero": false
+    "returningHero": false,
+    "showInSchedule": true
   },
   {
     "id": "55",
@@ -12156,7 +11829,7 @@
     "genres": [
       "DISCUSSION"
     ],
-    "festivalUrl": null,
+    "festivalUrl": "https://szigetfestival.com/#/artist/2106696",
     "socials": {
       "website": null,
       "facebook": null,
@@ -12174,35 +11847,6 @@
     "isHeadliner": false,
     "returningHero": false,
     "showInSchedule": true
-  },
-  {
-    "id": "465",
-    "artist": "Mirror Talks: The New Era of Queer Revolution",
-    "stage": "Magic Mirror",
-    "day": "Saturday",
-    "startTime": "2026-08-15T16:00:00.000+02:00",
-    "endTime": "2026-08-15T17:00:00.000+02:00",
-    "countryCode": null,
-    "genres": [
-      "DISCUSSION"
-    ],
-    "festivalUrl": "https://szigetfestival.com/#/artist/2106696",
-    "socials": {
-      "website": null,
-      "facebook": null,
-      "instagram": null,
-      "x": null,
-      "tiktok": null,
-      "youtube": null,
-      "spotify": null,
-      "appleMusic": null,
-      "soundcloud": null
-    },
-    "description": "The queer revolution has entered a new era: activism is no longer shaped only on the streets, but through podcasts, TikTok videos, and online communities. For younger generations, openly speaking about identity, sexuality, and personal boundaries has become second nature, while new labels, demands, and conversations continue to emerge within the community. From gender neutrality to asexuality, from polyamory to digital self-expression, the meaning of being queer is constantly being redefined. But how are social media and digital culture reshaping the revolution itself?",
-    "imageUrl": "https://media.appmiral.com/prod/performance/0057/45/thumb_5644410_performance_960.jpeg",
-    "vibes": [],
-    "isHeadliner": false,
-    "returningHero": false
   },
   {
     "id": "73",

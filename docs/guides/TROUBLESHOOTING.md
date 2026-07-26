@@ -7,7 +7,7 @@
 | Problem | Fix |
 |---|---|
 | Web won't start | `npm install && npm run dev` |
-| PWA / offline / update banner not working on the live site | Known broken — SW registration ignores the `/studio` basePath. See `TASKS.md` P0 |
+| PWA / offline / update banner not working on the live site | Fixed 2026-07-04 — registration, scope and manifest all honour `BASE_PATH`. If it misbehaves again, check `pwa-loader.tsx` registers `${BASE_PATH}/sw.js` with scope `${BASE_PATH}/`, and that the `sw.js` cache names match the current `basePath` |
 | Android won't build | `cd android && ./gradlew clean && ./gradlew assembleDebug` |
 | TypeScript errors | `npm run typecheck` — must be 0 errors |
 | Lineup data missing | Run `npm run lineup:sync` to sync all festival data |

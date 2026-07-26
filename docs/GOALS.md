@@ -14,7 +14,7 @@ The two platforms serve two distinct phases of a festival:
 
 | Platform | When | Core problem it solves |
 |----------|------|------------------------|
-| **Web (Hub)** | Before the festival, at home or hotel | "There are 458 artists I don't know. Which ones are for me?" |
+| **Web (Hub)** | Before the festival, at home or hotel | "There are 451 artists I don't know. Which ones are for me?" |
 | **Android (APK)** | On-site, in the crowd | "I have no signal, 12% battery, and I can't find my tent." |
 
 Both are driven by the same data pipeline and config system. One engine, six festivals, no hardcoded branding.
@@ -38,9 +38,9 @@ Features that fail in context 2 or 3 are not shipped.
 ### Discovery & Lineup
 
 **`vibeQuiz`**
-Goal: onboard someone who knows nothing about the lineup. Thirty seconds of music taste questions produces a ranked shortlist of 5–10 matched artists. This is the entry point for casual attendees who won't scroll 458 names.
+Goal: onboard someone who knows nothing about the lineup. Thirty seconds of music taste questions produces a ranked shortlist of 5–10 matched artists. This is the entry point for casual attendees who won't scroll 451 names.
 
-**`aiRecommendations`** (Android: local Gemma 4; Web: client-side scoring)
+**`aiRecommendations`** (Android: on-device Gemini Nano; Web: client-side scoring)
 Goal: surface hidden gems — mid-bill artists that match your taste but you'd never click on. Distinct from the vibe quiz in that it's continuous: it re-runs as your favorites grow.
 
 **`surpriseRoulette` / Serendipity**
@@ -117,9 +117,6 @@ Goal: same trigger as hydration but for UV protection. Outdoor festival, direct 
 
 **`waterCounter`**
 Goal: a simple tally for users who want to track intake quantitatively rather than just receive reminders.
-
-**`audioMonitor`**
-Goal: loud stage exposure causes permanent hearing damage. Show the current ambient dB level and warn at thresholds. Informs the decision to use earplugs. No audio is ever stored or transmitted.
 
 **`batterySaver`**
 Goal: when the user is at low battery and far from chargers, they need the app to survive more than they need animations. This mode kills visual effects, reduces refresh rates, and strips the UI to text-only — extending useful phone life.
@@ -207,7 +204,8 @@ These categories are not deferral items. They are architectural decisions that w
 |----------|--------------|
 | Accounts / login | Creates data liability. The app is anonymous by design. |
 | Social feeds / photo walls | Require live servers and moderation. Break offline mandate. |
-| Camera features (AR, QR for non-tactical use) | Hard mandate. No exceptions. |
+| Camera features (AR, QR scanning) | Hard mandate. No exceptions. Generating a QR to display is fine; reading one is not. |
+| Microphone features (dB meter, audio ID) | Hard mandate, absolute — not even for local-only processing. The `audioMonitor` dB meter was removed on 2026-07-26 for this reason; it had never measured anything. |
 | Cloud AI | Privacy mandate. Any AI must run on-device. |
 | Real-time crowd heatmaps | Require live signal. Fail the Main Stage Test. |
 | Advertising / sponsor SDKs | Corrupt the "pure signal" UX. |

@@ -54,7 +54,6 @@ data class FestivalFeatures(
     val quietZones: Boolean = false,
     val secretStages: Boolean = false,
     val offlineBanner: Boolean = false,
-    val audioMonitor: Boolean = false,
     val highContrast: Boolean = false,
     val feedbackSystem: Boolean = false,
     val newsBulletin: Boolean = false

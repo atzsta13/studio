@@ -21,7 +21,6 @@ import androidx.compose.material.icons.filled.FlashOn
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.MedicalServices
-import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.CloudDownload
@@ -328,10 +327,6 @@ fun ToolsScreen(navController: NavController) {
                         if (config.features.highContrast) {
                             HighContrastCard()
                         }
-
-                        if (config.features.audioMonitor) {
-                            AudioMonitorCard()
-                        }
                     }
                 }
             } else {
@@ -512,39 +507,6 @@ fun EmergencyCard(title: String, description: String, buttonText: String, phoneN
             Text(text = description, color = Color.White.copy(alpha = 0.9f), fontSize = 17.sp, fontStyle = FontStyle.Italic, lineHeight = 24.sp, modifier = Modifier.padding(bottom = 32.dp))
             Button(onClick = dialAction, colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = containerColor), shape = RoundedCornerShape(20.dp), modifier = Modifier.fillMaxWidth().height(72.dp)) {
                 Text(text = buttonText, fontSize = 18.sp, fontWeight = FontWeight.Black, letterSpacing = 2.sp)
-            }
-        }
-    }
-}
-
-@Composable
-fun AudioMonitorCard() {
-    Card(
-        colors = CardDefaults.cardColors(containerColor = CardBackground.copy(alpha = 0.5f)),
-        shape = RoundedCornerShape(32.dp),
-        modifier = Modifier.fillMaxWidth().border(1.dp, Color.White.copy(alpha = 0.05f), RoundedCornerShape(32.dp))
-    ) {
-        Column(modifier = Modifier.padding(24.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(bottom = 16.dp)) {
-                Box(modifier = Modifier.size(48.dp).clip(RoundedCornerShape(14.dp)).background(Color.Red.copy(alpha = 0.1f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.AutoMirrored.Filled.VolumeUp, contentDescription = null, tint = Color.Red, modifier = Modifier.size(24.dp))
-                }
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(text = "AUDIO MONITOR", color = TextPrimary, fontSize = 20.sp, fontWeight = FontWeight.Black, fontStyle = FontStyle.Italic, letterSpacing = (-1).sp)
-            }
-            
-            // Simulated Meter
-            Box(modifier = Modifier.fillMaxWidth().height(12.dp).clip(RoundedCornerShape(6.dp)).background(OLEDBlack)) {
-                Box(modifier = Modifier.fillMaxWidth(0.85f).fillMaxHeight().background(Brush.horizontalGradient(listOf(Color.Green, Color.Yellow, Color.Red))))
-            }
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "EST. EXPOSURE: 102dB", color = TextMuted, fontSize = 12.sp, fontWeight = FontWeight.Bold, letterSpacing = 1.sp)
-                Box(modifier = Modifier.clip(RoundedCornerShape(100)).background(Color.Red.copy(alpha = 0.15f)).border(1.dp, Color.Red.copy(alpha = 0.3f), RoundedCornerShape(100)).padding(horizontal = 10.dp, vertical = 4.dp)) {
-                    Text(text = "WEAR PLUGS", color = Color.Red, fontSize = 9.sp, fontWeight = FontWeight.Black, letterSpacing = 1.sp)
-                }
             }
         }
     }

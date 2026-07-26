@@ -5,10 +5,10 @@ These rules are foundational to the project's philosophy and must **NEVER** be v
 ## 1. Privacy & Sensory Mandates
 - **NO ACCOUNTS**: Users shall never be required to create an account, log in, or provide an email/phone number. The app is 100% anonymous.
 - **NO SOCIAL**: No public feeds, photo walls, fan polls, or community boards. All interaction must be local or P2P (e.g., Squad Link QR).
-- **NO CAMERA**: Under no circumstances shall the app implement camera-based features (AR, QR scanning for non-tactical use, or visual recognition). 
+- **NO CAMERA**: Under no circumstances shall the app implement camera-based features (AR, QR *scanning*, or visual recognition). Generating a QR code for display is fine — reading one is not.
+- **NO MICROPHONE**: No audio capture of any kind, for any purpose. This is absolute, not "local-only". The former mic-based Acoustic Scout was deleted on 2026-07-10 and must not return in any form; the `RECORD_AUDIO` and `CAMERA` permissions are gone from the manifest and must stay gone.
 - **NO DATA COLLECTION**: User data (favorites, location) must remain 100% local.
-- **NO CLOUD AI**: Absolutely no external LLM API calls. All AI must be local inference (e.g., Gemma 4 on Android). Web AI features are strictly prohibited unless strictly local.
-- **Microphone Use**: Strictly limited to the "Acoustic Scout" (Local Inference ONLY). No audio is ever stored or transmitted.
+- **NO CLOUD AI**: Absolutely no external LLM API calls. On-device inference is welcome and is the only permitted form — currently Gemini Nano via the ML Kit Prompt API on Android. Its inputs are text and local lineup data only, never a sensor feed.
 
 ## 2. Signal & Connectivity Mandates
 - **ZERO SIGNAL SURVIVABILITY**: The app must be fully functional at the Main Stage with 100,000+ people and 0 bars of signal.

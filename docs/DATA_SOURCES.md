@@ -9,9 +9,9 @@ This project is **unofficial**. All data is compiled from festivals' own public 
 | Festival | Source | Coverage | Last verified |
 |---|---|---|---|
 | `frequency-2026` | [frequency.at/en/timetable](https://www.frequency.at/en/timetable/) + [/en/lineup](https://www.frequency.at/en/lineup/) | 82/82 slots, 5 stages, Aug 20–22 | 2026-07-25 |
-| `sziget-2026` | szigetfestival.com official programme | 442/458 artists | see `docs/STATUS.md` |
+| `sziget-2026` | szigetfestival.com official programme | 431/451 acts scheduled, 18 stages, Aug 9–16 | 2026-07-26 |
 | `novarock-2026` | novarock.at official timetable | 84/84 — verified line-by-line | 2026-06-12 |
-| `area53-2026` | area53festival.at + official 2026 poster | 29 artists / 32 slots | 2026-07-10 |
+| `area53-2026` | area53festival.at + official 2026 poster | 32/32 slots (29 distinct acts) | 2026-07-10 |
 | `rock-am-ring-2026` | official timetable PDF, hand-authored | 73/73 | — |
 | `ernte-punk-2026` | not yet published by the festival | TBA (`null` times) | — |
 
@@ -24,6 +24,8 @@ This project is **unofficial**. All data is compiled from festivals' own public 
 **Artist images are never re-hosted.** Every image is hotlinked to its original CDN and displayed through the `ArtistImage` component, which renders a `© source.com` attribution watermark. If you own an image and want it gone, open an issue.
 
 **Scraping is done gently.** `robots.txt` is respected, requests are rate-limited, and the MusicBrainz client sends an identifying User-Agent as their guidelines require. We are guests on other people's servers.
+
+**Duplicate rows are a recurring scraper failure.** The Sziget feed emits the same set twice — once under the bare act name, once under its programme title (`"Mirror Talks: The New Era of Gender"`). 30 exact duplicates were removed on 2026-07-25 and 12 near-duplicates (same stage, same start, same image) on 2026-07-26. After any Sziget re-scrape, check for two acts sharing one stage+`startTime` before committing.
 
 **No raw page dumps.** Scraped HTML is parsed into structured data and discarded. Verbatim copies of festival web pages are not committed — twelve such files (`lineup_2025_official.json`) were removed in `685f1a1` for exactly this reason.
 

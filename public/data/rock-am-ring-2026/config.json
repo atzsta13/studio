@@ -124,7 +124,6 @@
     "sunscreenAlert": true,
     "batterySaver": true,
     "waterCounter": true,
-    "audioMonitor": true,
     "sosMorseCode": true,
     "highContrast": true,
     "offlineBanner": true,

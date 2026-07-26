@@ -158,7 +158,6 @@
     "afterMovie": true,
     "feedbackSystem": false,
     "offlineBanner": true,
-    "audioMonitor": true,
     "highContrast": true
   },
   "content": {

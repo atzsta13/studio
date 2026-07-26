@@ -239,7 +239,7 @@ npm run lineup:update:rock-am-ring       # sync only (timetable is hand-authored
 | No API routes | `output: 'export'` — any `route.ts` breaks the build |
 | No Spotify OAuth | Spotify revoked API access; removed entirely |
 | No Firebase | Removed; no dependency anywhere |
-| No server-side AI | Android uses on-device Gemma only |
+| No server-side AI | Android uses on-device Gemini Nano (ML Kit Prompt API) only |
 | Offline first | Map, Lineup, Guide work with zero signal |
 | Config-first | No hardcoded festival name/color/date/coords in components |
 | Hotlink images only | Never download or host artist images |
@@ -253,7 +253,7 @@ npm run lineup:update:rock-am-ring       # sync only (timetable is hand-authored
 npm run dev             # dev server
 npm run typecheck       # TypeScript — must pass before commit
 npm run lint            # ESLint — must pass before commit
-npm test -- --run       # 189 unit tests — must stay green
+npm test -- --run       # 190 unit tests — must stay green
 npm run build           # static export → out/
 
 # Android (from android/)

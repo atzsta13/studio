@@ -52,7 +52,7 @@ class LocalScoutRepository(private val context: Context) {
     /**
      * Triggers the system download for Gemini Nano via AICore.
      */
-    suspend fun downloadModel(modelUrl: String? = null): Boolean = withContext(Dispatchers.IO) {
+    suspend fun downloadModel(): Boolean = withContext(Dispatchers.IO) {
         try {
             _error.value = null
             val status = generativeModel.checkStatus()

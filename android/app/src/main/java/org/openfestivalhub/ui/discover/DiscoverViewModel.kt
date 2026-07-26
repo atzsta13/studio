@@ -115,9 +115,9 @@ class DiscoverViewModel(
         }
     }
 
-    fun downloadModel(url: String) {
+    fun downloadModel() {
         viewModelScope.launch {
-            val success = localScoutRepository?.downloadModel(url) == true
+            val success = localScoutRepository?.downloadModel() == true
             if (success) {
                 initializeLocalScout()
             }
