@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import {
   Coins,
   Zap,
-  Ear,
   Sun,
   Phone,
   ShieldAlert,
@@ -181,23 +180,6 @@ export default function ToolsPage() {
                   </div>
                 </GlassCard>
 
-                {config.features.audioMonitor && (
-                  <GlassCard className="p-10">
-                    <div className="flex items-center gap-6 mb-8">
-                      <div className="p-5 rounded-[2rem] bg-red-500/10 text-red-500 shadow-inner">
-                        <Ear size={40} />
-                      </div>
-                      <h4 className="font-black text-2xl uppercase italic tracking-tighter">Audio Monitor</h4>
-                    </div>
-                    <div className="h-10 bg-muted/20 rounded-full overflow-hidden mb-6 shadow-inner p-1">
-                      <div className="h-full w-[85%] bg-gradient-to-r from-emerald-500 via-yellow-500 to-red-500 rounded-full" />
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <p className="text-sm font-black uppercase tracking-[0.2em] text-muted-foreground/60">EST. Exposure: 102dB</p>
-                      <p className="text-[11px] font-black text-red-500 uppercase tracking-[0.3em] bg-red-500/10 px-5 py-2 rounded-full border border-red-500/20">Wear Earplugs</p>
-                    </div>
-                  </GlassCard>
-                )}
               </div>
 
               {config.features.sosMorseCode && <SOSMorse />}

@@ -11,10 +11,7 @@ ksp = "2.3.9"
 room = "2.8.4"
 coil = "3.4.0"
 lifecycle = "2.10.0"
-camerax = "1.4.1"
-mlkit = "17.3.0"
 zxing = "3.5.3"
-tasks-genai = "0.10.14"
 mlkit-genai = "1.0.0-beta2"
 core-splashscreen = "1.0.1"
 
@@ -32,13 +29,8 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref 
 androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
-androidx-camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
-androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
-androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
-mlkit-barcode-scanning = { group = "com.google.mlkit", name = "barcode-scanning", version.ref = "mlkit" }
 mlkit-genai-prompt = { group = "com.google.mlkit", name = "genai-prompt", version.ref = "mlkit-genai" }
 zxing-core = { group = "com.google.zxing", name = "core", version.ref = "zxing" }
-google-ai-edge-genai = { group = "com.google.mediapipe", name = "tasks-genai", version.ref = "tasks-genai" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
 
 [plugins]

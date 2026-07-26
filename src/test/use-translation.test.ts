@@ -114,7 +114,6 @@ function makeConfig(overrides: Partial<FestivalConfig> = {}): FestivalConfig {
       afterMovie: false,
       feedbackSystem: false,
       offlineBanner: false,
-      audioMonitor: false,
       highContrast: false,
     },
     content: {

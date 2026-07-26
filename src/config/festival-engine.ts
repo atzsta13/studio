@@ -86,7 +86,6 @@ export interface FestivalConfig {
     sunscreenAlert: boolean
     batterySaver: boolean
     waterCounter: boolean
-    audioMonitor: boolean
     sosMorseCode: boolean
     highContrast: boolean
     offlineBanner: boolean

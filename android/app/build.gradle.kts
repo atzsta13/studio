@@ -81,7 +81,6 @@ dependencies {
     // QR & Squad Link
     implementation(libs.zxing.core)
     implementation(libs.mlkit.genai.prompt)
-    implementation(libs.google.ai.edge.genai)
 
     testImplementation(libs.junit)
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.0")
